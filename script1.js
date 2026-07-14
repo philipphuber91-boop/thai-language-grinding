@@ -21,9 +21,9 @@ startDeutsch.addEventListener("click", function () {
 
 //Auftrag - Thai
 startThai.addEventListener("click", function () {
-    quest.style.display = "none";
-    deutsch.style.display = "none";
-    thai.style.display = "block";
+    
+    localStorage.setItem("aktuelleQuest", 1);
+    window.location.href = "../typing.html";
 
 });
 
