@@ -1,0 +1,127 @@
+body {
+    background-color: #202124;
+    color: rgb(53, 163, 139);
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+button {
+    background-color: #00b894;
+    color: rgb(131, 28, 28);
+    border: none;
+    padding: 20px 100px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #00d4a5;
+    padding: 22px 110px;
+}
+
+.quest-card {
+
+    background-color: #16090979;
+
+    width: 800px;
+
+    margin: 40px auto;
+
+    padding: 5px;
+
+    border-radius: 25px;
+
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.4);
+
+}
+
+#thai {
+
+    width: 800px;
+
+
+}
+
+#deutscherText {
+
+    font-size: 20px;
+    line-height: 1.7;
+
+}
+
+#thaiText {
+
+    font-size: 28px;
+    line-height: 1.7;
+
+}
+
+.quest-container {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 30px;
+    
+}
+
+.progress-bar{
+    width:100%;
+    height:18px;
+    background:#333;
+    border-radius:20px;
+    overflow:hidden;
+    margin:15px 0;
+}
+
+.progress{
+    width:40%;
+    height:100%;
+    background:#635505a8;
+
+}
+
+.progress{
+    width:40%;
+    height:100%;
+    background:#72c095ec;
+
+    box-shadow:
+        0 0 10px #00ff88,
+        0 0 20px #00ff88;
+}
+
+#deutsch {
+    display: none;
+
+}
+
+#thai {
+    display: none;
+
+}
+
+#quest {
+     display: none;
+
+}
+
+input{
+
+    width:120px;
+
+    height:35px;
+
+    border-radius:12px;
+
+    border:none;
+
+    text-align:center;
+
+    font-size:18px;
+
+}

@@ -1,0 +1,21 @@
+# Ideen
+
+## Gameplay
+- Prestige-System
+- XP
+- Level
+- Titel
+- Achievements
+
+## Lernen
+- 10-/20-/30-/60-Minuten-Modus
+- Automatische Questlänge anhand der WPM
+- Audio
+- Vokabelmodus
+- Satzmodus
+
+## Statistik
+- Wörter pro Minute
+- Gesamtwörter
+- Gesamtzeit
+- Streak
