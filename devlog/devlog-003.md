@@ -14,6 +14,11 @@
 - Gelber Cursor springt bei richtiger Eingabe zum nächsten Buchstaben
 - Erster funktionierender Buchstabenvergleich implementiert
 
+## Bekannte Bugs
+
+- Gespeicherte Questwerte wurden nach einem Umbau teilweise zurückgesetzt.
+- Ursache noch unbekannt.
+- Wird untersucht.
 ---
 
 ## Wichtige Erkenntnis des Tages
@@ -110,3 +115,17 @@ Dabei stehen folgende Punkte im Mittelpunkt:
 - WPM
 
 Erst wenn diese Mechanik vollständig funktioniert, werden weitere Features entwickelt.
+
+## Meilenstein
+
+Heute wurde die Thai-Eingabe verbessert.
+
+Anstatt kombinierte Zeichen als einen Buchstaben zu behandeln, verarbeitet Language Grinding jeden Tastendruck einzeln.
+
+Dadurch bleibt die Eingabelogik natürlich und entspricht dem echten Schreiben auf einer Thai-Tastatur.
+
+Die Darstellung markiert dennoch den gesamten Buchstaben.
+
+Dadurch fühlt sich das Schreiben natürlicher an als bei keybr.
+
+**Erstes Feature, das sich beim Lernen besser anfühlt als keybr.**

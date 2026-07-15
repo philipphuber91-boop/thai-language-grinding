@@ -10,29 +10,74 @@
 
 <body>
 
-<h1>⌨️ Typing Mode</h1>
+<h1>🏝 Quest</h1>
 
-<div class="quest-card">
+<div id="auftrag" class="quest-card">
+
+    <h2>📜 Auftrag</h2>
+
+    <p id="storyText">
+        Lies zuerst den deutschen Text.
+    </p>
+
+    <button id="startDeutsch">
+        Deutsch beginnen
+    </button>
+
+</div>
+
+<div id="deutsch" class="quest-card">
+
+    <h2 id="questTitel"></h2>
+
+    <div id="deutscherText"></div>
+
+    <button id="startThai">
+        Deutsch abgeschlossen
+    </button>
+
+</div>
+
+<div id="typingBereich" class="quest-card">
+
+    <h2>⌨️ Thai Typing</h2>
 
     <p>Zeit:</p>
+    <p id="zeitAnzeige">00:00</p>
 
-    <p>WPM:</p>
+    <p>Buchstaben/Min:</p>
+    <p id="wpmAnzeige">0.0</p>
 
     <p>Genauigkeit:</p>
+    <p id="accuracyAnzeige">100%</p>
 
-</div>
+    <hr>
 
-<div class="quest-card">
+    <div id="textAnzeige"></div>
 
-    <div id="textAnzeige">
-
-    </div>
-
-</div>
-
-<div class="quest-card">
+    <br>
 
     <textarea id="eingabe"></textarea>
+
+</div>
+
+<div id="questComplete" class="popup">
+
+    <div class="popup-content">
+
+        <h2>🏆 Quest Complete!</h2>
+
+        <h3 id="popupTitel"></h3>
+
+        <p>Zeit: <span id="popupZeit"></span></p>
+
+        <p>Buchstaben/Min: <span id="popupCPM"></span></p>
+
+        <p>Genauigkeit: <span id="popupAccuracy"></span></p>
+
+        <button id="weiterButton">Weiter</button>
+
+    </div>
 
 </div>
 <script src="quests.js"></script>

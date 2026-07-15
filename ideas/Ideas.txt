@@ -6,6 +6,7 @@
 - Level
 - Titel
 - Achievements
+- Wortmix
 
 ## Lernen
 - 10-/20-/30-/60-Minuten-Modus

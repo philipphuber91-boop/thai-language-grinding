@@ -1,17 +1,18 @@
 const quests = {
 
-    1: {
+   1: {
 
-        titel: "Im Urlaub",
+    titel: "Im Urlaub",
 
-        deutsch: `Quest 1 – Im Urlaub
-Teera macht Urlaub in Südthailand...`,
+    story:
+        "Lies zuerst den deutschen Text. Erst danach wird Thai freigeschaltet.",
 
-        thai: `ในช่วงพักร้อน
-ธีระอยู่ในช่วงพักร้อนที่ภาคใต้...`,
+    deutsch: "...",
 
-        woerter: 209
+    thai: "...",
 
-    }
+    woerter: 209
 
+}
 };
+
