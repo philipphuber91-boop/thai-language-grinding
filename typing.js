@@ -29,9 +29,13 @@ const popupZeit = document.getElementById("popupZeit");
 
 const popupCPM = document.getElementById("popupCPM");
 
-const popupAccuracy = document.getElementById("popupAccuracy");
+const popupQuestText =
+    document.getElementById("popupQuestText");
 
-const popupTitel = document.getElementById("popupTitel");
+const popupKapitel =
+    document.getElementById("popupKapitel");
+
+const popupAccuracy = document.getElementById("popupAccuracy");
 
 const weiterButton = document.getElementById("weiterButton");
 
@@ -39,6 +43,14 @@ const weiterButton = document.getElementById("weiterButton");
 const questTitel = document.getElementById("questTitel");
 const deutscherText = document.getElementById("deutscherText");
 const storyText = document.getElementById("storyText");
+questTitel.textContent =
+    quests[aktuelleQuest].titel;
+
+storyText.textContent =
+    quests[aktuelleQuest].story;
+
+deutscherText.textContent =
+    quests[aktuelleQuest].deutsch;
 const auftrag = document.getElementById("auftrag");
 const deutsch = document.getElementById("deutsch");
 const typingBereich =
@@ -54,8 +66,6 @@ questTitel.textContent = quests[aktuelleQuest].titel;
 
 deutscherText.textContent = quests[aktuelleQuest].deutsch;
 
-storyText.textContent =
-"Lies zuerst den deutschen Text. Erst danach wird der Thai-Text freigeschaltet.";
 console.log(quests[aktuelleQuest]);
 console.log(quests[aktuelleQuest].deutsch);
 console.log(deutscherText);
@@ -139,7 +149,13 @@ if (position === text.length) {
 
     accuracyAnzeigeElement.textContent = accuracy + "%";
 
-    popupTitel.textContent = quests[aktuelleQuest].titel;
+    popupQuestText.textContent =
+    "Quest " +
+    aktuelleQuest +
+    " erfolgreich abgeschlossen!";
+
+popupKapitel.textContent =
+    quests[aktuelleQuest].titel;
 
     popupZeit.textContent = zeitAnzeige;
 

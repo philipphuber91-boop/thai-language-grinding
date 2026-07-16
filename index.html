@@ -15,30 +15,34 @@
 
     <p>XP: 0 / 100</p>
 
-<div class="quest-container">
+<div class="quest-card">
 
-    <div class="quest-card">
-        <h2>🏝 Quest 1</h2>
-        <p>Urlaub in Thailand</p>
-        <p>📖 283 Wörter</p>
-        <button onclick="starteQuest(1)">
-         Start
-        </button>
-        <div class="progress-bar">
+<p id="quest1Beschreibung"></p>
+
+<h2 id="quest1Titel"></h2>
+
+<p id="quest1Woerter"></p>
+    <button onclick="starteQuest(1)">
+        Start
+    </button>
+<div class="progress-bar">
         <div class="progress"></div>
 </div>
 
         <p>120 / 283 Wörter</p>
+        
+</div>
+
+
 </div>
 
     <div class="quest-card">
         <h2>🏨 Quest 2</h2>
         <p>Im Urlaub</p>
         <p>📖 327 Wörter</p>
-        <a href="quests/quest2.html">
-            <button>Start</button>
-
-        </a>
+<button onclick="starteQuest(2)">
+    Start
+</button>
         <div class="progress-bar">
         <div class="progress"></div>
 </div>
@@ -50,10 +54,10 @@
         <h2>🏦 Quest 3</h2>
         <p>Bahnhof & Bank</p>
         <p>📖 397 Wörter</p>
-        <a href="quests/quest3.html">
-            <button>Start</button>
+<button onclick="starteQuest(3)">
+    Start
+</button>
 
-        </a>
         <div class="progress-bar">
         <div class="progress"></div>
 </div>
@@ -65,9 +69,9 @@
         <h2>☕ Quest 4</h2>
         <p>Café & Wetter</p>
         <p>📖 374 Wörter</p>
-        <a href="quests/quest4.html">
-            <button>Start</button>
-        </a>
+<button onclick="starteQuest(4)">
+    Start
+</button>
         <div class="progress-bar">
         <div class="progress"></div>
 </div>
@@ -75,7 +79,8 @@
          <p>0 / 374 Wörter</p>
 
 </div>
-<script src="script.js"></script>
+<script src="quests.js"></script>
+<script src="engine.js"></script>
 </body>
 
 </html>
