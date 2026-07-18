@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Language Grinding</title>
+
+    <link rel="stylesheet" href="../style.css">
+
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <h1>THAI</h1>
+
+    <h2>LANGUAGE GRINDING</h2>
+
+    <p>LEVEL 1 • ANFÄNGER</p>
+
+</header>
+
+    <div class="layout">
+
+<aside class="sidebar">
+
+    <div class="player-card">
+
+        <h2>🇹🇭 Flipu</h2>
+
+        <p>Level 1</p>
+
+        <div class="xp-bar">
+
+            <div class="xp-fill"></div>
+
+        </div>
+
+        <p>XP 0 / 100</p>
+
+    </div>
+
+    <div class="menu-card">
+
+        <button>🗺 Weltkarte</button>
+
+        <button>📖 Quests</button>
+
+        <button>📊 Statistik</button>
+
+        <button>🏆 Erfolge</button>
+
+        <button>⚙ Einstellungen</button>
+
+    </div>
+
+</aside>
+
+        <main class="content">
+
+            <div id="questListe"></div>
+
+        </main>
+
+    </div>
+
+<script src="../js/save.js"></script>
+<script src="../js/player.js"></script>
+
+<script>
+
+loadPlayer();
+loadQuestStats();
+
+</script>
+
+<script src="../data/quests.js"></script>
+<script src="../js/engine.js"></script>
+
+</body>
+
+</html>

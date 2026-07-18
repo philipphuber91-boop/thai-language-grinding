@@ -1,5 +1,94 @@
 # Ideen
 
+
+REGEL NR. 1
+
+Das Spiel bleibt jederzeit spielbar.
+
+Neue Features werden erst eingebaut,
+wenn das vorherige Feature vollständig
+funktioniert.
+
+
+🎮 Language Grinding – Development Roadmap
+🟢 Phase 1 – Core Gameplay (JETZT)
+
+Das Fundament für alle zukünftigen Features.
+
+1. ✅ Player-System
+Spielerdaten
+Questdaten
+Save-/Load-System
+saubere Datenstruktur
+
+2. 🔁 Spaced Repetition
+Quest merkt sich:
+Letztes Abschlussdatum
+Wiederholungsstufe
+Fällige Quests berechnen
+Empfehlung beim Spielstart
+Marker auf der Weltkarte
+
+Das wird dein persönlicher Lerncoach.
+
+3. 📊 Stats
+Gesamtspielzeit
+Gesamtzeichen
+Gesamtversuche
+Beste CPM
+Beste Accuracy
+Quests abgeschlossen
+
+4. ⭐ Levelsystem
+XP
+Level
+XP-Leiste
+Level-Up
+
+5. 🏆 Achievements
+Speed
+Accuracy
+Story
+Wiederholungen
+Meilensteine
+
+🟡 Phase 2 – Neue Spielmechaniken
+
+6. 🧩 WordMix
+
+Das nächste große Gameplay-Feature.
+
+7. 📖 Weitere Questtypen
+Multiple Choice
+Hörverständnis
+Satzbau
+usw.
+8. 🎁 Daily Quests
+
+Jeden Tag kleine Bonusaufgaben.
+
+9. 🔥 Daily Streak
+
+Spielserie belohnen.
+
+🔵 Phase 3 – Polish
+10. 🎆 Animationen
+Feuerwerk
+Funken
+Übergänge
+kleine Effekte
+11. 🔊 Sounds
+Tippen
+Quest Complete
+Level Up
+Achievement
+12. 🎨 Grafische Verbesserungen
+Icons
+Rahmen
+RPG-Look
+Karten
+🔴 Ideenliste (keine Priorität)
+
 ## Gameplay
 - Prestige-System
 - XP
@@ -20,3 +109,79 @@
 - Gesamtwörter
 - Gesamtzeit
 - Streak
+
+Zum Beispiel:
+
+💬 NPCs
+🛒 Shop
+🐉 Bosskämpfe
+🐱 Haustiere
+🏡 Eigenes Haus
+🌍 Mehr Welten
+👥 Multiplayer
+☁️ Cloud Save
+📱 Mobile Version
+🤖 KI-generierte Quests
+
+Ohne Druck. Einfach sammeln.
+
+🎮 Gameplay
+
+XP & Level
+Achievements
+Daily Quests
+Questketten
+Combo-System
+Streaks
+Boss-Quests (lange Lektionen)
+Events ("Heute doppelte XP auf Listening!")
+
+🏰 RPG
+
+Titel ("Anfänger", "Sprachritter", "Meister")
+Avatare
+Haustiere oder Begleiter (rein kosmetisch)
+Freischaltbare Themes
+Kartenregionen statt einfacher Menüs
+
+⚔️ Typing
+
+Combo-Anzeige
+Floating XP
+Kritische Treffer (z. B. bei 100 Zeichen fehlerfrei)
+Bildschirm-Effekte bei Level-Up
+Neue persönliche Rekorde werden gefeiert
+
+📈 Langzeitmotivation
+
+365-Tage-Kalender
+Statistiken
+Heatmap der Lerntage
+Meisterschaft jeder Quest
+100%-Abschluss aller Regionen
+
+
+# Gameplay-Ideen
+
+## Typing
+- Floating XP
+- Combo x10
+- Combo x25
+- Combo x50
+- New Speed Record
+- Perfect Line
+
+## Achievements
+- 100.000 Zeichen
+- 365 Tage Streak
+- Erste gemasterte Quest
+
+## Events
+- Double XP Weekend
+- Listening Week
+- Halloween Event
+
+## RPG
+- Haustiere
+- Titel
+- Regionen

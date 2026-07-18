@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Typing Mode</title>
+
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+
+<h1>🏝 Quest</h1>
+
+<div id="auftrag" class="quest-card">
+
+    <h2>📜 Auftrag</h2>
+
+    <p id="storyText">
+        Lies zuerst den Text.
+    </p>
+
+    <button id="startDeutsch">
+     Weiter   
+    </button>
+
+</div>
+
+<div id="deutsch" class="quest-card buch-card">
+
+
+    <h2 id="questTitel"></h2>
+
+    <div class="buch">
+
+    <div class="buch-seite">
+
+        <h3>🇩🇪 Deutsch</h3>
+
+        <div id="deutscherText"></div>
+
+    </div>
+
+    <div class="buch-seite">
+
+        <h3>🇹🇭 ไทย</h3>
+
+        <div id="thaiText"></div>
+
+    </div>
+
+</div>
+
+    <button id="startThai">
+        Lesen abgeschlossen
+    </button>
+
+</div>
+
+<div id="typingBereich" class="quest-card">
+
+    <div class="typing-header">
+
+    <h2>⌨️ Thai schreiben</h2>
+
+    <div class="typing-stats">
+
+        <span>⏱ <span id="zeitAnzeige">00:00</span></span>
+
+        <span>⌨️ <span id="wpmAnzeige">0</span> BpM</span>
+
+        <span>🎯 <span id="accuracyAnzeige">100%</span></span>
+
+    </div>
+
+</div>
+
+<hr>
+
+<div id="typingFenster">
+
+    <div id="zeile1" class="typing-zeile"></div>
+
+    <div id="zeile2" class="typing-zeile"></div>
+
+</div>
+
+<textarea id="eingabe"></textarea>
+
+</div>
+
+<div id="questCompleteScreen" class="quest-complete">
+
+    <h1>🏆 QUEST COMPLETE</h1>
+
+    <h2 id="popupKapitel">
+        Quest erfolgreich abgeschlossen!
+    </h2>
+
+    <div class="stats">
+
+        <div class="stat">
+            <div class="icon">⏱</div>
+            <div class="wert" id="popupZeit">00:00</div>
+            <div class="titel">Zeit</div>
+        </div>
+
+        <div class="stat">
+            <div class="icon">⌨️</div>
+            <div class="wert" id="popupCPM">0</div>
+            <div class="titel">Buchstaben / Min</div>
+        </div>
+
+        <div class="stat">
+            <div class="icon">🎯</div>
+            <div class="wert" id="popupAccuracy">100%</div>
+            <div class="titel">Genauigkeit</div>
+        </div>
+
+    </div>
+
+    <div class="xp" id="xpAnzeige">
+        ⭐ +50 XP ⭐
+    </div>
+
+    <button id="weiterButton">
+        Zur Weltkarte
+    </button>
+
+</div>
+
+</div>
+
+<script src="../js/save.js"></script>
+<script src="../js/player.js"></script>
+
+<script>
+
+loadPlayer();
+loadQuestStats();
+
+</script>
+
+<script src="../data/quests.js"></script>
+<script src="../js/engine.js"></script>
+<script src="../js/typing.js"></script>
+
+</body>
+
+</html>
