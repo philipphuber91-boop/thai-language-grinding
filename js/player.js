@@ -2,21 +2,30 @@ const defaultPlayer = {
 
     
 
-    stats: {
+stats: {
 
-        completedQuests: 0,
+    // Allgemein
+    xp: 0,
+    level: 1,
 
-        totalAttempts: 0,
+    // Quests
+    completedQuests: 0,
+    totalAttempts: 0,
 
-        totalCharacters: 0,
+    // Schreiben
+    totalCharacters: 0,
+    totalTime: 0,
+    averageTime: 0,
 
-        totalTime: 0,
+    // Geschwindigkeit
+    bestCPM: 0,
+    averageCPM: 0,
 
-        bestCPM: 0,
+    // Genauigkeit
+    bestAccuracy: 0,
+    averageAccuracy: 0
 
-        bestAccuracy: 0
-
-    }
+}
 
 };
 
@@ -50,11 +59,15 @@ function getQuestStats(questId) {
 
             completed: false,
 
-           records: {
+          records: {
 
     bestTime: null,
-    bestCPM: 0,
-    bestAccuracy: 0
+    bestCPM: null,
+    bestAccuracy: null,
+
+    lastTime: null,
+    lastCPM: null,
+    lastAccuracy: null
 
 },
 
@@ -99,13 +112,32 @@ repetition: {
 
 function updatePlayerStats(zeit, cpm, accuracy, zeichen) {
 
-    player.stats.completedQuests++;
-
     player.stats.totalAttempts++;
 
     player.stats.totalCharacters += zeichen;
 
     player.stats.totalTime += zeit;
+
+    // Durchschnittswerte
+
+    player.stats.averageTime =
+        player.stats.totalTime / player.stats.totalAttempts;
+
+    player.stats.averageCPM =
+    Number(
+    (
+    (player.stats.averageCPM * (player.stats.totalAttempts - 1) + cpm)
+    / player.stats.totalAttempts
+    ).toFixed(1));
+
+    player.stats.averageAccuracy =
+    Number(
+    (
+    (player.stats.averageAccuracy * (player.stats.totalAttempts - 1) + accuracy)
+    / player.stats.totalAttempts
+    ).toFixed(1));
+
+    // Rekorde
 
     if (cpm > player.stats.bestCPM) {
 
@@ -123,9 +155,15 @@ function updatePlayerStats(zeit, cpm, accuracy, zeichen) {
 
 }
 
-    function getToday() {
+function getToday() {
 
-    return new Date().toISOString().split("T")[0];
+    const today = new Date();
+
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
 
 }
 
@@ -135,7 +173,11 @@ function addDays(dateString, days) {
 
     date.setDate(date.getDate() + days);
 
-    return date.toISOString().split("T")[0];
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+    const day = String(date.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
 
 }
 
@@ -153,7 +195,7 @@ function updateRepetition(stats) {
     // Erster Abschluss überhaupt
     if (stats.repetition.nextReview === null) {
 
-        stats.repetition.level = 1;
+        stats.repetition.level = 0;
 
         stats.repetition.lastReview = today;
 
@@ -243,7 +285,22 @@ function completeQuest(questId, zeit, cpm, accuracy, zeichen) {
 
     stats.attempts++;
 
+    const firstCompletion = !stats.completed;
+
     stats.completed = true;
+
+    if (firstCompletion) {
+
+    player.stats.completedQuests++;
+
+}
+
+    stats.records.lastTime = zeit;
+
+    stats.records.lastCPM = cpm;
+
+    stats.records.lastAccuracy = accuracy;
+
 
     if (
         stats.records.bestTime === null ||

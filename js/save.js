@@ -2,11 +2,23 @@ function loadPlayer() {
 
     const savedPlayer = localStorage.getItem("player");
 
-    if (savedPlayer) {
+    if (!savedPlayer) {
 
-        player = JSON.parse(savedPlayer);
+        return;
 
     }
+
+    player = JSON.parse(savedPlayer);
+
+    player.stats = {
+
+        ...defaultPlayer.stats,
+
+        ...player.stats
+
+    };
+
+    savePlayer();
 
 }
 

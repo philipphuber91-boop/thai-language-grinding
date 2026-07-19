@@ -1,5 +1,19 @@
-# Ideen
+# Ideen  
 
+Prompt für die Bilderstellung
+
+Für alle zukünftigen Quests würde ich einen kleinen Style Guide verwenden:
+
+Perspektive: leicht cineastisch, leicht erhöht
+Licht: warmes Golden-Hour-Licht
+Farben: goldene und braune Töne wie jetzt
+Stil: semi-realistisch, gemalt (nicht fotorealistisch)
+Keine Schrift
+Keine Logos
+Keine Rahmen
+Kein Hintergrund außerhalb des Motivs
+Quadratisches PNG mit Transparenz
+Komposition bereits für einen kreisförmigen Ausschnitt optimiert (wichtige Elemente in der Mitte)
 
 REGEL NR. 1
 

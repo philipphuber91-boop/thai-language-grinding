@@ -265,17 +265,11 @@ zeigePhase();
 console.log("completeQuest wird aufgerufen");
 
 completeQuest(
-
     aktuelleQuest,
-
-    zeit,
-
+    sekunden,
     Number(cpm),
-
     Number(accuracy),
-
     gesamtZeichen
-
 );
 
 

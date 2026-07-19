@@ -2,13 +2,11 @@ const quests = {
 
 1: {
 
-    titel: "Im Urlaub",
-
-    icon:"🏝",
+    titel: "Im Urlaub - ในช่วงพักร้อน",
 
     bild:"urlaub",
 
-    beschreibung: "Im Urlaub ",
+    beschreibung: "Im Urlaub",
 
     kapitel: "Kapitel 1",
 
@@ -16,7 +14,7 @@ const quests = {
 
     xp: 50,
 
-    woerter: 209,
+    woerter: 53,
 
     story:
 `Lies zuerst den Text.
@@ -25,45 +23,37 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 
     deutschZeilen:[
 
-"In den Schulferien.",
+"Theera ist im Urlaub im Süden von Thailand.",
 
-"Teera ist während den Ferien im Süden Thailands.",
+"Er trifft Wannee.",
 
-"Dort traf er Waranee.",
+"Hallo! Ich heiße Theera.",
 
-"Hallo, ich heiße Teera.",
+"Ich bin sechsundzwanzig Jahre alt.",
 
-"Ich bin 26 Jahre alt.",
+"Nett, dich kennenzulernen.",
 
-"Freut mich, Sie kennenzulernen.",
+"Ich heiße Wannee.",
 
-"Ich heiße Waranee.",
-
-"Woher kommen Sie?",
+"Woher kommst du?",
 
 "Ich komme aus Bangkok.",
 
-"Herzlich willkommen.",
+"Willkommen! Bist du hier im Urlaub?",
 
-"Sind Sie im Urlaub?",
+"Ja. Lebst du hier?",
 
-"Ja.",
+"Nein, ich komme aus Bangkok.",
 
-"Wohnen Sie hier?",
+"Ich verbringe auch meine Ferien hier.",
 
-"Nein.",
+"Dann sehen wir uns nochmal.Tschüss.",
 
-"Ich bin nur während der Schulferien hier.",
-
-"Wir sehen uns wieder.",
-
-"Tschüss."
+"Tschüss. Bis bald."
 
 ],
 
-    thaiZeilen: [
-
-"ในช่วงพักร้อน",
+    thaiZeilen:[
 
 "ธีระอยู่ในช่วงพักร้อนที่ภาคใต้",
 
@@ -81,33 +71,28 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 
 "ผมมาจากกรุงเทพครับ",
 
-"ยินดีต้อนรับค่ะ",
+"ยินดีต้อนรับค่ะ มาพักร้อนหรือคะ",
 
-"มาพักร้อนเหรอคะ",
+"ใช่แล้วครับ คุณใช้ชีวิตอยู่ที่นี่หรือครับ",
 
-"ใช่ครับ",
+"ไม่ใช่ค่ะ ฉันมาจากกรุงเทพ",
 
-"คุณพักอยู่ที่นี่เหรอ",
+"ฉันมาเที่ยวช่วงปิดเทอมที่นี่เหมือนกันค่ะ",
 
-"เปล่าครับ",
+"เราต้องเจอกันอีกแน่ๆ ลาก่อนครับ",
 
-"ผมมาพักช่วงปิดเทอม",
-
-"แล้วเจอกันใหม่นะครับ",
-
-"สวัสดีครับ"
+"ลาก่อนค่ะ แล้วค่อยพบกันใหม่"
 
 ],
-},
 
-//ในช่วงปิดเทอมครั้งนี้ ธีระตัดสินใจเดินทางมาพักร้อนที่ภาคใต้ของประเทศไทย เพราะเขาอยากพักผ่อนจากชีวิตในกรุงเทพและอยากเห็นทะเลสวย ๆ ด้วยตาของตัวเอง ตั้งแต่มาถึงเขาก็รู้สึกว่าบรรยากาศที่นี่เงียบสงบ ผู้คนยิ้มแย้มและเป็นกันเอง ทำให้เขารู้สึกสบายใจมาก วันหนึ่งระหว่างที่เขาเดินเล่นอยู่ใกล้ชายหาด เขาสังเกตเห็นผู้หญิงคนหนึ่งกำลังมองวิวทะเลอยู่ เมื่อสบตากัน ทั้งสองก็ยิ้มให้กันอย่างเป็นมิตร ธีระจึงเดินเข้าไปทักทายก่อนสวัสดีครับ ผมชื่อธีระ ผมอายุยี่สิบหกปีครับ ผู้หญิงคนนั้นยิ้มและตอบกลับอย่างสุภาพ ยินดีที่ได้รู้จักคุณค่ะ ฉันชื่อวรรณี หลังจากแนะนำตัวกันแล้ว วรรณีก็ถามต่อด้วยความสนใจ คุณมาจากที่ไหนคะ ผมมาจากกรุงเทพครับ แล้วคุณล่ะครับ วรรณีหัวเราะเบา ๆ ก่อนจะตอบ ฉันก็มาจากกรุงเทพเหมือนกันค่ะ ยินดีต้อนรับนะคะ มาพักร้อนหรือคะ ใช่แล้วครับ คุณใช้ชีวิตอยู่ที่นี่หรือครับ ไม่ใช่ค่ะ ฉันมาเที่ยวช่วงปิดเทอมที่นี่เหมือนกัน พอดีอยากเปลี่ยนบรรยากาศบ้าง ทั้งสองคนคุยกันอีกเล็กน้อยเกี่ยวกับการเดินทางและสถานที่ท่องเที่ยวแถวนี้ แม้จะเพิ่งรู้จักกัน แต่การสนทนาก็เป็นกันเองอย่างไม่น่าเชื่อ ก่อนจะแยกย้ายกัน ธีระยิ้มแล้วพูดว่า เราต้องเจอกันอีกแน่ ๆ ลาก่อนครับ วรรณียิ้มตอบพร้อมโบกมือ ลาก่อนค่ะ แล้วค่อยพบกันใหม่"
+},
 
 
 2: {
 
-    titel: "Im Hotel",
+    titel: "Im Hotel - ในโรงแรม",
 
-    icon:"🏨",
+    bild:"hotel",
 
     beschreibung: "Im Hotel",
 
@@ -117,32 +102,80 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 
     xp: 50,
 
-    woerter: 209,
+    woerter: 72,
 
     story:
-`Lies zuerst den deutschen Text.
+`Lies zuerst den Text.
 
-Erst danach wird der Thai-Text freigeschaltet.`,
+Erst danach wird das Thai-Typing freigeschaltet.`,
 
-deutschZeilen: [
-"Teera kam am Nachmittag",
+    deutschZeilen:[
 
-"Die Angestellte sah im Computer nach",
+"Theera sucht ein Zimmer.",
 
-"Teera war sehr zufrieden",
+"Er spricht mit der Rezeptionistin eines Hotels.",
+
+"Guten Abend. Ich suche ein Einzelzimmer.",
+
+"Kein Problem.",
+
+"Wir haben oben große und helle Zimmer mit Bad.",
+
+"Ist es das, was Sie wollen?",
+
+"Selbstverständlich, das ist gut.",
+
+"Hat das Zimmer einen Fernseher?",
+
+"Ja, wir haben sogar Satellitenfernsehen.",
+
+"Sie können sechzig Fernsehsender empfangen.",
+
+"In jedem Zimmer gibt es ein Radio.",
+
+"Wunderbar. Ich nehme eines der Zimmer.",
+
+"Können Sie mir bitte den Schlüssel geben?",
+
+"Gerne, hier ist er.",
+
+"Frühstück gibt es von 7.30 Uhr bis 10 Uhr."
 
 ],
 
-thaiZeilen: [
-"ธีระเดินทางมาถึงโรงแรมแห่งหนึ่ง",
+    thaiZeilen:[
 
-"พนักงานตรวจสอบข้อมูล",
+"ธีระหาห้องพัก",
 
-"ธีระรู้สึกพอใจมาก",
+"เขาพูดกับพนักงานต้อนรับของโรงแรม",
+
+"สวัสดีครับ ผมต้องการจองห้องเดี่ยวครับ",
+
+"รอสักครู่ค่ะ",
+
+"ชั้นบนเรามีห้องกว้างและสว่างพร้อมด้วยห้องน้ำ", 
+
+"ใช่ที่ต้องการไหมคะ",
+
+"แน่นอนครับ ฟังดูดีครับ",
+
+"ห้องที่กล่าวถึงนี่มีโทรทัศน์ไหมครับ",
+
+"ค่ะ เรามีโทรทัศน์ผ่านดาวเทียมด้วยนะคะ",
+
+"คุณสามารถเลือกได้ถึง 60 ช่องค่ะ",
+
+"ทุกห้องมีวิทยุติดตั้งอยู่ค่ะ",
+
+"ดีมากเลยครับ ผมเอาห้องที่คุณกล่าวถึงนี่แล้วกัน",
+
+"ผมขอกุญแจห้องได้ไหมครับ",
+
+"นี่ค่ะ",
+
+"อาหารเช้า ทานได้ตั้งแต่เจ็ดโมงครึ่งจนถึงสิบโมงค่ะ"
 
 ],
-
-
 
 },
 

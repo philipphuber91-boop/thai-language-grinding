@@ -11,13 +11,14 @@ const status = getQuestStatus(nummer);
 
 const statusIcons = {
 
-    due: "↻",
+    due: '<span class="status-review">↻</span>',
 
-    doneToday: "✓",
+    doneToday: '<span class="status-complete">✔</span>',
 
-    mastered: "⭐"
+    mastered: '<span class="status-mastered">★</span>'
 
 };
+
 
 const statusLabel = statusIcons[status] || "";
 
@@ -25,55 +26,72 @@ const statusLabel = statusIcons[status] || "";
 
         karte.className = "quest-card";
 
-        karte.innerHTML = `
+        karte.id = "quest-" + nummer;
 
-${statusLabel ? `
+        karte.onclick = () => toggleQuest(nummer);
+
+karte.innerHTML = `
+
 <div class="quest-status ${status}">
-    ${statusLabel}
-</div>
-` : ""}
 
-<div class="quest-top">
+    ${statusLabel || ""}
+
+</div>
+
+
+<div class="quest-header">
+
+<div class="quest-avatar">
 
 <div class="quest-badge">
 
-    <img src="../assets/ui/shield.png">
+    <img
+        src="../assets/ui/quest-badge.png"
+        class="quest-badge-image">
+        
+        
 
-    <span>${nummer}</span>
+    <span class="quest-badge-number">
+        ${nummer}
+    </span>
 
 </div>
 
 <div class="quest-image">
 
-    <img src="../assets/quests/default.png">
-
-</div>
-
-<div class="quest-info">
-
-    <h2>${quest.titel}</h2>
-
-    <p class="quest-meta">
-
-        ${quest.kapitel}
-        •
-        <span class="difficulty">
-            ${quest.schwierigkeit}
-        </span>
-
-    </p>
-
-    <p class="quest-words">
-        📖 ${quest.woerter} Wörter
-    </p>
+    <img
+        src="../assets/quest/${quest.bild}.png"
+        alt="${quest.titel}">
 
 </div>
 
 </div>
 
-<hr class="quest-line">
+    <div class="quest-main">
 
-<div class="quest-footer">
+        <h2>${quest.titel}</h2>
+
+        <p class="quest-meta">
+
+            ${quest.kapitel}
+
+            •
+
+            <span class="difficulty">
+
+                ${quest.schwierigkeit}
+
+            </span>
+
+        </p>
+
+        <p class="quest-words">
+
+            📖 ${quest.woerter} Wörter
+
+        </p>
+
+    </div>
 
     <div class="quest-progress">
 
@@ -93,15 +111,40 @@ ${statusLabel ? `
 
     <div class="quest-actions">
 
-        <button onclick="starteQuest(${nummer})">
+<button class="quest-start-button"
+        onclick="event.stopPropagation(); starteQuest(${nummer})">
 
-            ▶ START QUEST
+    <span class="corner tl"></span>
+    <span class="corner tr"></span>
+    <span class="corner bl"></span>
+    <span class="corner br"></span>
 
-        </button>
+    <span class="start-icon">▶</span>
+    <span>START</span>
+
+</button>
+
 
     </div>
 
 </div>
+
+<div class="quest-details">
+
+    <div class="quest-detail-grid">
+
+        <div>🏆 Bester Lauf</div>
+
+        <div>📌 Letzter Lauf</div>
+
+        <div>🔁 Wiederholung</div>
+
+        <div>⭐ Belohnung</div>
+
+    </div>
+
+</div>
+
 
 `;
 
@@ -118,5 +161,35 @@ function starteQuest(questNummer) {
     localStorage.setItem("aktuelleQuest", questNummer);
 
     window.location.href = "typing.html";
+
+}
+
+function openStats() {
+
+    window.location.href = "stats.html";
+
+}
+
+function openQuest(questId){
+
+    document
+        .getElementById("questOverlay")
+        .classList.add("active");
+
+}
+
+function closeQuest(){
+
+    document
+        .getElementById("questOverlay")
+        .classList.remove("active");
+
+}
+
+function toggleQuest(questId) {
+
+    const karte = document.getElementById("quest-" + questId);
+
+    karte.classList.toggle("expanded");
 
 }
