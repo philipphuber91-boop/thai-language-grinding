@@ -117,7 +117,7 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 
 "Guten Abend. Ich suche ein Einzelzimmer.",
 
-"Kein Problem.",
+"Bitte warten Sie einen moment.",
 
 "Wir haben oben große und helle Zimmer mit Bad.",
 
@@ -181,9 +181,9 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 
 3: {
 
-    titel: "Am Strand",
+    titel: "Am Strand - ริมชายหาด",
 
-    icon:"🚂",
+    bild:"strand",
 
     beschreibung: "Am Strand",
 
@@ -193,37 +193,68 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 
     xp: 50,
 
-    woerter: 209,
+    woerter: 72,
 
     story:
-`Lies zuerst den deutschen Text.
+`Lies zuerst den Text.
 
-Erst danach wird der Thai-Text freigeschaltet.`,
+Erst danach wird das Thai-Typing freigeschaltet.`,
 
-deutschZeilen: [
-"Teera kam am Nachmittag",
+    deutschZeilen:[
 
-"Die Angestellte sah im Computer nach",
+"Am nächsten Morgen liegt Theera am Strand.",
 
-"Teera war sehr zufrieden",
+"Wannee ist ebenfalls dort.",
+
+"Sie kommt zu ihm herüber und fragt:.",
+
+"Weißt du, wo die Toilette ist?",
+
+"Ja, sie ist dort drüben.",
+
+"Du Übernachtest auch im Hotel gegenüber, oder?",
+
+"Ja, ich habe dort ein schönes Zimmer gebucht.",
+
+"Wenn das so ist können wir zusammen frühstücken.",
+
+"Treffen wir uns morgen am Frühstückstisch?",
+
+"Gerne. Das ist eine sehr gute Idee."
 
 ],
 
-thaiZeilen: [
-"ธีระเดินทางมาถึงโรงแรมแห่งหนึ่ง",
+    thaiZeilen:[
 
-"พนักงานตรวจสอบข้อมูล",
+"เช้าวันรุ่งขึ้น ธีระนอนอยู่ริมชายหาด",
 
-"ธีระรู้สึกพอใจมาก",
+"วรรณีก็อยู่ที่นั่น",
+
+"เธอเดินมาหาเขาแล้วถาม",
+
+"คุณรู้ไหมคะ ว่าห้องน้ำอยู่ที่ไหน",
+
+"อยู่ทางโน้นครับ",
+
+"คุณพักอยู่ที่โรงแรมฝั่งตรงข้ามเหมือนกันใช่ไหมคะ",
+
+"ครับ ผมได้จองห้องพักสวยห้องหนึ่งเอาไว้",
+
+"ถ้าเช่นนั้นเราทานอาหารเช้าร่วมกันนะคะ",
+
+"พรุ่งนี้เราพบกันที่โต๊ะอาหารเช้าได้ไหมคะ",
+
+"ได้ครับ เป็นความคิดที่ดีมาก"
 
 ],
+
 },
 
 4: {
 
-    titel: "Beim Frühstück",
+    titel: "Beim Frühstück - ที่โต๊ะอาหารเช้า",
 
-    icon:"☕",
+    bild:"frühstück",
 
     beschreibung: "Beim Frühstück",
 
@@ -233,33 +264,76 @@ thaiZeilen: [
 
     xp: 50,
 
-    woerter: 209,
+    woerter: 79,
 
     story:
-`Lies zuerst den deutschen Text.
+`Lies zuerst den Text.
 
-Erst danach wird der Thai-Text freigeschaltet.`,
+Erst danach wird das Thai-Typing freigeschaltet.`,
 
-deutschZeilen: [
-"...",
+    deutschZeilen:[
 
+"Wannee und Theera sitzen am Frühstückstisch.",
+
+"Auf dem Tisch stehen Honig, Marmelade, Wurst, Käse, Rührei und Brot.",
+
+"Das Rührei schmeckt wirklich sehr gut.",
+
+"Das stimmt. Schade, dass es keinen Speck dazu gibt.",
+
+"Ja, wirklich schade.",
+
+"Ich esse ebenfalls gerne Fleisch.",
+
+"Probier doch einmal die Brötchen, vielleicht schmecken sie dir auch",
+
+"Kann ich hier eigentlich auch zu Mittag und zu Abend essen?",
+
+"Leider ist das nicht möglich.",
+
+"Aber ganz in der Nähe gibt es ein sehr beliebtes Restaurant.",
+
+"Es liegt direkt gegenüber von unserem Hotel.",
+
+"Gehen wir gemeinsam dorthin?"
 
 ],
 
-thaiZeilen: [
-"...",
+    thaiZeilen:[
 
+"วรรณีและธีระนั่งอยู่ที่โต๊ะอาหารเช้า",
+
+"บนโต๊ะมีน้ำผึ้ง แยม ไส้กรอก ชีส ไข่กวน และขนมปัง",
+
+"ไข่กวนอร่อยมากครับ",
+
+"จริงด้วยค่ะ แต่น่าเสียดายที่ไม่มีเบคอน",
+
+"แย่จริงครับ",
+
+"ผมก็ชอบกินเนื้อสัตว์เหมือนกัน",
+
+"ลองชิมขนมปังสิคะ บางทีคุณอาจจะชอบทาน",
+
+"ผมมากินอาหารกลางวันและอาหารเย็นที่นี่อีกได้ไหมครับ",
+
+"ที่นี่ไม่ได้ค่ะ แต่ใกล้กับที่นี่มีร้านอาหารขึ้นชื่อร้านหนึ่ง",
+
+"ร้านอยู่ตรงข้ามโรงแรมเรานี้เองค่ะ",
+
+"เราไปที่นั่นด้วยกันไหมคะ"
 
 ],
+
 },
 
 5: {
 
-    titel: "quest 5",
+    titel: "Am Bahnhof - ที่สถานีรถไฟ",
 
-    icon:"🚂",
+    bild:"bahnhof",
 
-    beschreibung: "Am Strand",
+    beschreibung: "Am Bahnhof",
 
     kapitel: "Kapitel 1",
 
@@ -267,30 +341,65 @@ thaiZeilen: [
 
     xp: 50,
 
-    woerter: 209,
+    woerter: 74,
 
     story:
-`Lies zuerst den deutschen Text.
+`Lies zuerst den Text.
 
-Erst danach wird der Thai-Text freigeschaltet.`,
+Erst danach wird das Thai-Typing freigeschaltet.`,
 
-deutschZeilen: [
-"Teera kam am Nachmittag",
+    deutschZeilen:[
 
-"Die Angestellte sah im Computer nach",
+"Theera möchte mit dem Taxi in die Stadt fahren.",
 
-"Teera war sehr zufrieden",
+"Er fragt eine Frau, wo er ein Taxi finden kann.",
+
+"Sie antwortet:",
+
+"Mit dem Zug ist es viel günstiger.",
+
+"Vielen Dank für den Tipp.",
+
+"Am Bahnhof geht Theera zum Fahrkartenschalter.",
+
+"Entschuldigung, wann fährt der nächste Zug?",
+
+"In einer halben Stunde.",
+
+"Dann hätte ich gerne eine einfache Fahrkarte in die Stadt.",
+
+"Das macht zwanzig Baht, bitte.",
+
+"Zum Glück habe ich das passende Kleingeld."
 
 ],
 
-thaiZeilen: [
-"ธีระเดินทางมาถึงโรงแรมแห่งหนึ่ง",
+    thaiZeilen:[
 
-"พนักงานตรวจสอบข้อมูล",
+"ธีระต้องการนั่งรถแท็กซี่ไปในเมือง",
 
-"ธีระรู้สึกพอใจมาก",
+"เขาถามผู้หญิงคนหนึ่งว่าเขาจะเรียกรถแท็กซี่ได้ที่ไหน",
+
+"เธอบอกว่า",
+
+"ราคาจะถูกกว่ามากค่ะ ถ้านั่งรถไฟ",
+
+"ขอบคุณมากครับ สำหรับคำแนะนำ",
+
+"ที่สถานีรถไฟธีระเดินไปที่เคาน์เตอร์ขายตั๋ว",
+
+"ขอโทษครับ รถไฟคันถัดไปออกเดินทางเมื่อไหร่ครับ",
+
+"ภายในครึ่งชั่วโมงนี้ค่ะ",
+
+"ผมต้องการซื้อตั๋วขาไป เข้าไปในเมืองครับ",
+
+"ยี่สิบบาทค่ะ",
+
+"ผมจ่ายด้วยเหรียญครับ"
 
 ],
+
 },
 
 };

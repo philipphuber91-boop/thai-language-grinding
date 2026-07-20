@@ -22,9 +22,25 @@ const statusIcons = {
 
 const statusLabel = statusIcons[status] || "";
 
-        const karte = document.createElement("div");
+const stats = getQuestStats(nummer);
 
-        karte.className = "quest-card";
+let progress = 0;
+
+if (stats.completed) {
+
+    progress = Math.round(
+
+        ((stats.repetition.level + 1) /
+
+        repetitionIntervals.length) * 100
+
+    );
+
+}
+
+const karte = document.createElement("div");
+
+karte.className = "quest-card";
 
         karte.id = "quest-" + nummer;
 
@@ -61,7 +77,13 @@ karte.innerHTML = `
 
     <img
         src="../assets/quest/${quest.bild}.png"
-        alt="${quest.titel}">
+        alt="${quest.titel}"
+        class="quest-image-content">
+
+    <img
+        src="../assets/ui/quest-frame.png"
+        class="quest-frame"
+        alt="">
 
 </div>
 
@@ -95,17 +117,21 @@ karte.innerHTML = `
 
     <div class="quest-progress">
 
-        <p class="progress-text">
+<p class="progress-text">
 
-            0 / ${quest.woerter} Wörter
+    ${progress}%
 
-        </p>
+</p>
 
-        <div class="progress-bar">
+<div class="progress-bar">
 
-            <div class="progress"></div>
+    <div
+        class="progress"
+        style="width:${progress}%">
+    </div>
 
-        </div>
+</div>
+
 
     </div>
 
@@ -114,13 +140,9 @@ karte.innerHTML = `
 <button class="quest-start-button"
         onclick="event.stopPropagation(); starteQuest(${nummer})">
 
-    <span class="corner tl"></span>
-    <span class="corner tr"></span>
-    <span class="corner bl"></span>
-    <span class="corner br"></span>
-
-    <span class="start-icon">▶</span>
-    <span>START</span>
+    <img
+        src="../assets/ui/button-start.png"
+        alt="Start">
 
 </button>
 
