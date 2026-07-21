@@ -178,11 +178,64 @@ karte.innerHTML = `
 
 
 // Quest starten
+let ausgewaehlteQuest = null;
+
+// Quest starten
 function starteQuest(questNummer) {
 
-    localStorage.setItem("aktuelleQuest", questNummer);
+    ausgewaehlteQuest = questNummer;
 
-    window.location.href = "typing.html";
+    document
+        .getElementById("startQuestOverlay")
+        .classList.add("active");
+
+}
+
+const cancelQuestButton =
+    document.getElementById("cancelQuestButton");
+
+if (cancelQuestButton) {
+
+    cancelQuestButton.onclick = function () {
+
+        document
+            .getElementById("startQuestOverlay")
+            .classList.remove("active");
+
+    };
+
+}
+
+
+const campaignButton =
+    document.getElementById("campaignButton");
+
+if (campaignButton) {
+
+    campaignButton.onclick = function () {
+
+        localStorage.setItem("aktuelleQuest", ausgewaehlteQuest);
+        localStorage.setItem("questMode", "campaign");
+
+        window.location.href = "typing.html";
+
+    };
+
+}
+
+const challengeButton =
+    document.getElementById("challengeButton");
+
+if (challengeButton) {
+
+    challengeButton.onclick = function () {
+
+        localStorage.setItem("aktuelleQuest", ausgewaehlteQuest);
+        localStorage.setItem("questMode", "challenge");
+
+        window.location.href = "typing.html";
+
+    };
 
 }
 

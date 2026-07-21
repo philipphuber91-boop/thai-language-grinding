@@ -1,4 +1,8 @@
 let phase = "auftrag";
+
+// Kampagne = Lernmodus
+// Challenge = direkt zur Prüfung
+let mode = "learning";
 let startZeit = null;
 let endZeit = null;
 let fehler = 0;
@@ -6,6 +10,8 @@ const zeile1 = document.getElementById("zeile1");
 const zeile2 = document.getElementById("zeile2");
 const eingabe = document.getElementById("eingabe");
 const aktuelleQuest = localStorage.getItem("aktuelleQuest");
+const questMode = localStorage.getItem("questMode") || "campaign";
+
 const stats = getQuestStats(aktuelleQuest);
 function zeigePhase() {
 
@@ -25,9 +31,17 @@ function zeigePhase() {
             deutsch.style.display = "block";
             break;
 
-        case "typing":
-            typingBereich.style.display = "block";
-            break;
+case "typing":
+
+    typingBereich.style.display = "block";
+
+    setTimeout(function () {
+
+        eingabe.focus();
+
+    }, 0);
+
+    break;
 
         case "abschluss":
             popup.style.display = "flex";
@@ -60,6 +74,25 @@ const questTitel = document.getElementById("questTitel");
 const deutscherText = document.getElementById("deutscherText");
 const thaiText = document.getElementById("thaiText");
 const storyText = document.getElementById("storyText");
+const deutschAktuell =
+    document.getElementById("deutschAktuell");
+const toggleGermanButton =
+    document.getElementById("toggleGermanButton");
+
+    const deutschTitel =
+    document.getElementById("deutschTitel");
+
+let germanVisible = true;
+
+function aktualisiereGermanToggle() {
+
+    toggleGermanButton.textContent =
+        germanVisible ? "🇩🇪 EIN" : "🇩🇪 AUS";
+
+    toggleGermanButton.disabled =
+        startZeit !== null;
+
+}
 questTitel.textContent =
     quests[aktuelleQuest].titel;
 
@@ -83,6 +116,8 @@ const startDeutschButton =
     document.getElementById("startDeutsch");
 const thaiZeilen =
     quests[aktuelleQuest].thaiZeilen;
+const deutschZeilen =
+    quests[aktuelleQuest].deutschZeilen;
 
 let text = thaiZeilen[0];
 
@@ -91,7 +126,21 @@ let aktuelleZeile = 0;
 let fehlerTimeout = null;
 let gesamtZeichen = 0;
 
+function aktualisiereDeutsch() {
+
+    deutschTitel.style.display =
+        germanVisible ? "block" : "none";
+
+    deutschAktuell.textContent =
+        germanVisible
+            ? deutschZeilen[aktuelleZeile] || ""
+            : "";
+
+}
+
 function zeigeZeilen() {
+
+    aktualisiereDeutsch();
 
     let geschrieben =
         text.substring(0, position);
@@ -120,14 +169,6 @@ function zeigeZeilen() {
 
 }
 
-
-
-function aktualisiereNaechsteZeile() {
-
-    zeile2.textContent =
-        thaiZeilen[aktuelleZeile + 1] || "";
-
-}
 
 function naechsteZeile() {
 
@@ -181,9 +222,138 @@ function zeigeFehler() {
 
 }
 
+function verarbeiteRichtigenBuchstaben() {
+
+    position++;
+    gesamtZeichen++;
+
+    eingabe.value = "";
+
+    if (position < text.length) {
+
+        zeigeZeilen();
+
+    }
+
+    // Zeile fertig?
+    if (position >= text.length) {
+
+        aktuelleZeile++;
+
+        // Quest fertig?
+        if (aktuelleZeile >= thaiZeilen.length) {
+
+            endZeit = Date.now();
+
+            if (mode === "learning") {
+
+                document
+                    .getElementById("examOverlay")
+                    .classList.add("active");
+
+                return;
+
+            }
+
+            beendePruefung();
+
+            return;
+
+        }
+
+        naechsteZeile();
+
+    }
+
+}
+
+function beendePruefung() {
+
+    const zeit = endZeit - startZeit;
+    const sekunden = Math.floor(zeit / 1000);
+
+    const minuten = Math.floor(sekunden / 60);
+    const restSekunden = sekunden % 60;
+
+    const minutenGesamt = zeit / 60000;
+
+    const cpm = (gesamtZeichen / minutenGesamt).toFixed(1);
+
+    const accuracy =
+        (
+            (gesamtZeichen / (gesamtZeichen + fehler)) * 100
+        ).toFixed(1);
+
+    const zeitAnzeige =
+        String(minuten).padStart(2, "0") +
+        ":" +
+        String(restSekunden).padStart(2, "0");
+
+    zeitAnzeigeElement.textContent = zeitAnzeige;
+    wpmAnzeigeElement.textContent = cpm;
+    accuracyAnzeigeElement.textContent = accuracy + "%";
+
+    popupKapitel.textContent =
+        quests[aktuelleQuest].titel +
+        " erfolgreich abgeschlossen!";
+
+    popupZeit.textContent = zeitAnzeige;
+    popupCPM.textContent = cpm;
+    popupAccuracy.textContent = accuracy + "%";
+
+    phase = "abschluss";
+    zeigePhase();
+
+    completeQuest(
+        aktuelleQuest,
+        sekunden,
+        Number(cpm),
+        Number(accuracy),
+        gesamtZeichen
+    );
+
+}
+
+function startePruefung() {
+
+    if (startZeit !== null) {
+
+        return;
+
+    }
+
+    startZeit = Date.now();
+
+    aktualisiereGermanToggle();
+
+}
+
+function bereitePruefungVor() {
+
+    startZeit = null;
+    endZeit = null;
+
+    fehler = 0;
+    gesamtZeichen = 0;
+
+    position = 0;
+    aktuelleZeile = 0;
+
+    text = thaiZeilen[0];
+
+    eingabe.value = "";
+
+    zeigeZeilen();
+
+    eingabe.focus();
+
+    aktualisiereGermanToggle();
+}
+
 
 eingabe.addEventListener("input", function () {
 
+    console.log("INPUT", eingabe.value);
 
     const eingegeben = eingabe.value;
 
@@ -193,103 +363,30 @@ eingabe.addEventListener("input", function () {
     }
 
     // Erster Tastendruck startet die Zeit
-    if (startZeit === null) {
-        startZeit = Date.now();
-    }
+    startePruefung();
 
     // Erwarteter Buchstabe
     const erwartet = text[position];
 
-    if (eingegeben === erwartet) {
+if (eingegeben === erwartet) {
 
-        position++;
-        gesamtZeichen++;
-        
-        eingabe.value = "";
+    verarbeiteRichtigenBuchstaben();
 
-        if (position < text.length) {
+}
 
-        zeigeZeilen();
+else {
 
-        
-
-    }
-        // Zeile fertig?
-        if (position >= text.length) {
-
-            aktuelleZeile++;
-
-            // Quest fertig?
-            if (aktuelleZeile >= thaiZeilen.length) {
-
-                endZeit = Date.now();
-
-                const zeit = endZeit - startZeit;
-                const sekunden = Math.floor(zeit / 1000);
-
-                const minuten = Math.floor(sekunden / 60);
-                const restSekunden = sekunden % 60;
-
-                const minutenGesamt = zeit / 60000;
-
-                const cpm = (gesamtZeichen / minutenGesamt).toFixed(1);
-
-                const accuracy =
-                (
-                    (gesamtZeichen / (gesamtZeichen + fehler)) * 100
-                ).toFixed(1);
-
-                const zeitAnzeige =
-                    String(minuten).padStart(2, "0") +
-                    ":" +
-                    String(restSekunden).padStart(2, "0");
-
-                zeitAnzeigeElement.textContent = zeitAnzeige;
-                wpmAnzeigeElement.textContent = cpm;
-                accuracyAnzeigeElement.textContent = accuracy + "%";
-
-popupKapitel.textContent =
-    quests[aktuelleQuest].titel + " erfolgreich abgeschlossen!";
-
-                popupKapitel.textContent =
-                quests[aktuelleQuest].titel + " erfolgreich abgeschlossen!";
-
-                popupZeit.textContent = zeitAnzeige;
-                popupCPM.textContent = cpm;
-                popupAccuracy.textContent = accuracy + "%";
-
-                
-phase = "abschluss";
-zeigePhase();
-                
-console.log("completeQuest wird aufgerufen");
-
-completeQuest(
-    aktuelleQuest,
-    sekunden,
-    Number(cpm),
-    Number(accuracy),
-    gesamtZeichen
-);
-
-
-                return;
-
-            }
-
-           naechsteZeile();
-
-        }
-
-    }
-
-    else {
+    if (mode === "exam") {
 
         fehler++;
-        zeigeFehler();
-        eingabe.value = "";
 
     }
+
+    zeigeFehler();
+
+    eingabe.value = "";
+
+}
 
 });
 
@@ -309,7 +406,11 @@ startThaiButton.addEventListener("click", function () {
 
     zeigePhase();
 
-    eingabe.focus();
+    setInterval(function () {
+
+        eingabe.focus();
+
+    }, 100);
 
 });
 
@@ -319,9 +420,52 @@ weiterButton.addEventListener("click", function () {
 
 });
 
-storyText.textContent =
-    quests[aktuelleQuest].story;
+toggleGermanButton.addEventListener("mousedown", function (event) {
 
-    zeigePhase();
+    event.preventDefault();
+
+});
+
+toggleGermanButton.addEventListener("click", function () {
+
+    germanVisible = !germanVisible;
+
+    aktualisiereGermanToggle();
+
     zeigeZeilen();
+
+    eingabe.focus();
+
+});
+
+
+document
+    .getElementById("startExamButton")
+    ?.addEventListener("click", function () {
+
+        mode = "exam";
+
+        document
+            .getElementById("examOverlay")
+            .classList.remove("active");
+
+        bereitePruefungVor();
+
+    });
+
+if (questMode === "challenge") {
+
+    phase = "typing";
+
+    mode = "exam";
+
+    germanVisible = false;
+
+}
+
+aktualisiereGermanToggle();
+
+zeigePhase();
+
+zeigeZeilen();
 

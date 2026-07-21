@@ -63,21 +63,39 @@
 
     <h2>⌨️ Thai schreiben</h2>
 
-    <div class="typing-stats">
+<div class="typing-stats">
 
-        <span>⏱ <span id="zeitAnzeige">00:00</span></span>
+    <span>⏱ <span id="zeitAnzeige">00:00</span></span>
 
-        <span>⌨️ <span id="wpmAnzeige">0</span> BpM</span>
+    <span>⌨️ <span id="wpmAnzeige">0</span> BpM</span>
 
-        <span>🎯 <span id="accuracyAnzeige">100%</span></span>
+    <span>🎯 <span id="accuracyAnzeige">100%</span></span>
 
-    </div>
+    <button id="toggleGermanButton">
+
+        🇩🇪 EIN
+
+    </button>
+
+</div>
 
 </div>
 
 <hr>
 
 <div id="typingFenster">
+
+    <div id="learningContainer">
+
+<div id="deutschTitel" class="learning-title">
+    🇩🇪 Deutsch
+</div>
+
+        <div id="deutschAktuell" class="learning-text"></div>
+
+        <div class="thai-title"></div>
+
+    </div>
 
     <div id="zeile1" class="typing-zeile"></div>
 
@@ -132,6 +150,35 @@
 </div>
 
 <script src="../js/save.js"></script>
+
+
+<div id="examOverlay" class="start-quest-overlay">
+
+    <div class="start-quest-window">
+
+        <h2>📖 Lernphase abgeschlossen!</h2>
+
+        <p>
+            Jetzt beginnt die Prüfung.<br><br>
+
+            Der deutsche Text wird ausgeblendet.<br><br>
+
+            Nur dieser Durchgang zählt für
+            Rekorde, Achievements und deinen
+            Lernfortschritt.
+        </p>
+
+        <button id="startExamButton">
+
+            Prüfung starten
+
+        </button>
+
+    </div>
+
+</div>
+
+
 <script src="../js/player.js"></script>
 
 <script>

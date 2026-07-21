@@ -340,6 +340,7 @@ function getQuestStatus(questId) {
 
     const stats = getQuestStats(questId);
 
+    // Alle Wiederholungen abgeschlossen
     if (
         stats.repetition.level >= repetitionIntervals.length - 1
     ) {
@@ -348,18 +349,21 @@ function getQuestStatus(questId) {
 
     }
 
-    if (stats.repetition.lastReview === getToday()) {
-
-        return "doneToday";
-
-    }
-
+    // Quest ist zur Wiederholung fällig
     if (isQuestDue(questId)) {
 
         return "due";
 
     }
 
+    // Quest wurde bereits abgeschlossen
+    if (stats.completed) {
+
+        return "doneToday";
+
+    }
+
+    // Noch nie gespielt
     return "";
 
 }
