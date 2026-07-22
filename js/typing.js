@@ -12,6 +12,14 @@ const eingabe = document.getElementById("eingabe");
 const aktuelleQuest = localStorage.getItem("aktuelleQuest");
 const questMode = localStorage.getItem("questMode") || "campaign";
 
+const contentMode =
+    localStorage.getItem("contentMode") || "campaign";
+
+const daten =
+    contentMode === "campaign"
+        ? quests
+        : missions;
+
 const stats = getQuestStats(aktuelleQuest);
 function zeigePhase() {
 
@@ -94,16 +102,16 @@ function aktualisiereGermanToggle() {
 
 }
 questTitel.textContent =
-    quests[aktuelleQuest].titel;
+    daten[aktuelleQuest].titel;
 
 storyText.textContent =
-    quests[aktuelleQuest].story;
+    daten[aktuelleQuest].story;
 
 deutscherText.innerHTML =
-    quests[aktuelleQuest].deutschZeilen.join("<br><br>");
+    daten[aktuelleQuest].deutschZeilen.join("<br><br>");
 
 thaiText.innerHTML =
-    quests[aktuelleQuest].thaiZeilen.join("<br><br>");
+    daten[aktuelleQuest].thaiZeilen.join("<br><br>");
 const auftrag = document.getElementById("auftrag");
 const deutsch = document.getElementById("deutsch");
 const typingBereich =
@@ -115,10 +123,10 @@ const startThaiButton =
 const startDeutschButton =
     document.getElementById("startDeutsch");
 const thaiZeilen =
-    quests[aktuelleQuest].thaiZeilen;
-const deutschZeilen =
-    quests[aktuelleQuest].deutschZeilen;
+    daten[aktuelleQuest].thaiZeilen;
 
+const deutschZeilen =
+    daten[aktuelleQuest].deutschZeilen;
 let text = thaiZeilen[0];
 
 let position = 0;
@@ -294,8 +302,8 @@ function beendePruefung() {
     accuracyAnzeigeElement.textContent = accuracy + "%";
 
     popupKapitel.textContent =
-        quests[aktuelleQuest].titel +
-        " erfolgreich abgeschlossen!";
+    daten[aktuelleQuest].titel +
+    " erfolgreich abgeschlossen!";
 
     popupZeit.textContent = zeitAnzeige;
     popupCPM.textContent = cpm;

@@ -1,13 +1,25 @@
 const questListe = document.getElementById("questListe");
 
-// Nur auf der Weltkarte ausführen
-if (questListe) {
+let contentMode = "campaign";
 
-    for (const nummer in quests) {
+function ladeKarten() {
 
-        const quest = quests[nummer];
+    questListe.innerHTML = "";
 
-const status = getQuestStatus(nummer);
+    const daten =
+        contentMode === "campaign"
+            ? quests
+            : missions;
+
+    for (const nummer in daten) {
+
+        const quest = daten[nummer];
+
+
+const status =
+    contentMode === "campaign"
+        ? getQuestStatus(nummer)
+        : "due";
 
 const statusIcons = {
 
@@ -22,7 +34,20 @@ const statusIcons = {
 
 const statusLabel = statusIcons[status] || "";
 
-const stats = getQuestStats(nummer);
+const stats =
+    contentMode === "campaign"
+        ? getQuestStats(nummer)
+        : {
+
+            completed: false,
+
+            repetition: {
+
+                level: 0
+
+            }
+
+        };
 
 let progress = 0;
 
@@ -176,6 +201,12 @@ karte.innerHTML = `
 
 }
 
+if (questListe) {
+
+    ladeKarten();
+
+}
+
 
 // Quest starten
 let ausgewaehlteQuest = null;
@@ -215,7 +246,10 @@ if (campaignButton) {
     campaignButton.onclick = function () {
 
         localStorage.setItem("aktuelleQuest", ausgewaehlteQuest);
-        localStorage.setItem("questMode", "campaign");
+
+    localStorage.setItem("contentMode", contentMode);
+
+    localStorage.setItem("questMode", "campaign");
 
         window.location.href = "typing.html";
 
@@ -231,6 +265,9 @@ if (challengeButton) {
     challengeButton.onclick = function () {
 
         localStorage.setItem("aktuelleQuest", ausgewaehlteQuest);
+
+        localStorage.setItem("contentMode", contentMode);
+
         localStorage.setItem("questMode", "challenge");
 
         window.location.href = "typing.html";
@@ -268,3 +305,35 @@ function toggleQuest(questId) {
     karte.classList.toggle("expanded");
 
 }
+
+
+const campaignMenuButton =
+    document.getElementById("campaignMenuButton");
+
+if (campaignMenuButton) {
+
+    campaignMenuButton.onclick = function () {
+
+        contentMode = "campaign";
+
+        ladeKarten();
+
+    };
+
+}
+
+const missionsMenuButton =
+    document.getElementById("missionsMenuButton");
+
+if (missionsMenuButton) {
+
+    missionsMenuButton.onclick = function () {
+
+        contentMode = "missions";
+
+        ladeKarten();
+
+    };
+
+}
+

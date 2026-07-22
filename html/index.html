@@ -47,11 +47,24 @@
 
         <button>🗺 Weltkarte</button>
 
-        <button>📖 Quests</button>
+        <button id="campaignMenuButton">
 
-        <button id="statsButton" onclick="openStats()">
-        Statistik
-        </button>
+    📖 Kampagne
+
+</button>
+
+<button id="missionsMenuButton">
+
+    🎯 Missionen
+
+</button>
+
+<button id="statsButton" onclick="openStats()">
+
+    Statistik
+
+</button>
+    
 
         <button>🏆 Erfolge</button>
 
@@ -72,19 +85,47 @@
 
     <div class="start-quest-window">
 
-        <h2>Quest starten</h2>
+        <h2 id="startOverlayTitle">
 
-        <button id="campaignButton">
+            📖 Kampagne starten
 
-            📖 Kampagne
+        </h2>
 
-        </button>
+        <div class="mode-card">
 
-        <button id="challengeButton">
+            <h3>📚 Lernen</h3>
 
-            🏆 Challenge
+            <p>✔ Deutscher Text sichtbar</p>
 
-        </button>
+            <p>✔ Lernphase</p>
+
+            <p>✔ Danach Prüfung</p>
+
+            <button id="campaignButton">
+
+                ▶ START
+
+            </button>
+
+        </div>
+
+        <div class="mode-card">
+
+            <h3>🏆 Challenge</h3>
+
+            <p>✔ Keine Hilfe</p>
+
+            <p>✔ Alles zählt</p>
+
+            <p>✔ Rekorde</p>
+
+            <button id="challengeButton">
+
+                ▶ START
+
+            </button>
+
+        </div>
 
         <button id="cancelQuestButton">
 
@@ -109,6 +150,7 @@ loadQuestStats();
 </script>
 
 <script src="../data/quests.js"></script>
+<script src="../data/missions.js"></script>
 <script src="../js/engine.js"></script>
 
 
