@@ -419,11 +419,7 @@ startThaiButton.addEventListener("click", function () {
 
     zeigePhase();
 
-    setInterval(function () {
-
-        eingabe.focus();
-
-    }, 100);
+eingabe.focus();
 
 });
 
@@ -469,10 +465,10 @@ document
 if (questMode === "challenge") {
 
     phase = "typing";
-
     mode = "exam";
-
     germanVisible = false;
+
+    eingabe.focus();
 
 }
 
@@ -625,3 +621,17 @@ records.oldBestAccuracy
     }
 
 }
+
+document.addEventListener("pointerdown", function () {
+
+    if (phase === "typing") {
+
+        setTimeout(function () {
+
+            eingabe.focus();
+
+        }, 0);
+
+    }
+
+});
