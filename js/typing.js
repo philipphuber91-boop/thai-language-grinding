@@ -309,16 +309,21 @@ function beendePruefung() {
     popupCPM.textContent = cpm;
     popupAccuracy.textContent = accuracy + "%";
 
-    phase = "abschluss";
-    zeigePhase();
+const newRecords = completeQuest(
 
-    completeQuest(
-        aktuelleQuest,
-        sekunden,
-        Number(cpm),
-        Number(accuracy),
-        gesamtZeichen
-    );
+    aktuelleQuest,
+    sekunden,
+    Number(cpm),
+    Number(accuracy),
+    gesamtZeichen
+
+);
+
+showRecordSummary(newRecords);
+
+phase = "abschluss";
+
+zeigePhase();
 
 }
 
@@ -477,3 +482,146 @@ zeigePhase();
 
 zeigeZeilen();
 
+
+function showRecordSummary(records){
+
+    const container =
+        document.getElementById("recordContainer");
+
+    const list =
+        document.getElementById("recordList");
+
+    list.innerHTML = "";
+
+    container.classList.remove("active");
+
+    let improvements = 0;
+
+    if(records.newBestTime){
+
+        improvements++;
+
+let oldTimeText = "—";
+
+if(records.oldBestTime !== null){
+
+    const oldMinutes =
+        Math.floor(records.oldBestTime / 60);
+
+    const oldSeconds =
+        String(records.oldBestTime % 60)
+        .padStart(2,"0");
+
+    oldTimeText =
+        `${oldMinutes}:${oldSeconds}`;
+
+}
+
+const newMinutes =
+    Math.floor(records.newTime / 60);
+
+const newSeconds =
+    String(records.newTime % 60)
+    .padStart(2,"0");
+
+const newTimeText =
+    `${newMinutes}:${newSeconds}`;
+
+const improvement =
+
+    records.oldBestTime === null
+
+        ? null
+
+        : records.oldBestTime - records.newTime;
+
+        list.innerHTML += `
+            <div class="record-item">
+
+                <div class="record-name">
+
+                    ⏱ Persönliche Bestzeit
+
+                </div>
+
+                <div class="record-values">
+
+                ${oldTimeText}
+
+↓
+
+${newTimeText}
+
+${
+improvement !== null
+
+? `<br><span class="record-improvement">
+
+(-${improvement} Sek.)
+
+</span>`
+
+: ""
+
+}
+
+                </div>
+
+            </div>
+        `;
+
+    }
+
+    if(records.newBestAccuracy){
+
+        improvements++;
+
+        list.innerHTML += `
+            <div class="record-item">
+
+                <div class="record-name">
+
+                    🎯 Höchste Genauigkeit
+
+                </div>
+
+                <div class="record-values">
+
+                ${
+records.oldBestAccuracy ?? "—"
+} %
+
+↓
+
+${records.newAccuracy} %
+
+${
+records.oldBestAccuracy !== null
+
+? `<br><span class="record-improvement">
+
+(+${(
+records.newAccuracy -
+records.oldBestAccuracy
+).toFixed(1)}%)
+
+</span>`
+
+: ""
+
+}
+
+                </div>
+
+            </div>
+        `;
+
+    }
+
+    if(improvements > 0){
+
+        container.classList.add("active");
+
+    }
+
+}

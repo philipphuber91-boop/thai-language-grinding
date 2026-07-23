@@ -2162,3 +2162,72 @@ box-shadow:
 
 }
 
+.record-container{
+
+    display:none;
+
+    margin-top:35px;
+
+    padding:20px;
+
+    border:2px solid #d4af37;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.08);
+
+}
+
+.record-container.active{
+
+    display:block;
+
+}
+
+#recordTitle{
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    color:#f6d36a;
+
+}
+
+.record-item{
+
+    margin-bottom:25px;
+
+}
+
+.record-name{
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+
+.record-values{
+
+    margin-top:8px;
+
+    font-size:20px;
+
+    line-height:1.8;
+
+}
+
+.record-improvement{
+
+    display:block;
+
+    margin-top:8px;
+
+    color:#5bd65b;
+
+    font-weight:bold;
+
+    font-size:18px;
+
+}

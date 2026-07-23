@@ -277,8 +277,6 @@ function getDueQuests() {
 
 }
 
-
-
 function completeQuest(questId, zeit, cpm, accuracy, zeichen) {
 
     const stats = getQuestStats(questId);
@@ -291,16 +289,21 @@ function completeQuest(questId, zeit, cpm, accuracy, zeichen) {
 
     if (firstCompletion) {
 
-    player.stats.completedQuests++;
+        player.stats.completedQuests++;
 
-}
+    }
 
     stats.records.lastTime = zeit;
-
     stats.records.lastCPM = cpm;
-
     stats.records.lastAccuracy = accuracy;
 
+let newBestTime = false;
+let newBestCPM = false;
+let newBestAccuracy = false;
+
+const oldBestTime = stats.records.bestTime;
+const oldBestCPM = stats.records.bestCPM;
+const oldBestAccuracy = stats.records.bestAccuracy;
 
     if (
         stats.records.bestTime === null ||
@@ -308,21 +311,32 @@ function completeQuest(questId, zeit, cpm, accuracy, zeichen) {
     ) {
 
         stats.records.bestTime = zeit;
+        newBestTime = true;
 
     }
 
-    if (cpm > stats.records.bestCPM) {
+    if (
+        stats.records.bestCPM === null ||
+        cpm > stats.records.bestCPM
+    ) {
 
         stats.records.bestCPM = cpm;
+        newBestCPM = true;
 
     }
 
-    if (accuracy > stats.records.bestAccuracy) {
+    if (
+        stats.records.bestAccuracy === null ||
+        accuracy > stats.records.bestAccuracy
+    ) {
 
         stats.records.bestAccuracy = accuracy;
+        newBestAccuracy = true;
 
     }
+
     updateRepetition(stats);
+
     saveQuestStats();
 
     updatePlayerStats(
@@ -333,6 +347,23 @@ function completeQuest(questId, zeit, cpm, accuracy, zeichen) {
         zeichen
 
     );
+
+  
+   return {
+
+    newBestTime,
+    newBestCPM,
+    newBestAccuracy,
+
+    oldBestTime,
+    oldBestCPM,
+    oldBestAccuracy,
+
+    newTime: stats.records.bestTime,
+    newCPM: stats.records.bestCPM,
+    newAccuracy: stats.records.bestAccuracy
+
+};
 
 }
 

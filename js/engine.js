@@ -260,11 +260,36 @@ function starteQuest(questNummer) {
 
         // Platzhalter für spätere Statistik
 
-document.getElementById("startQuestBestTime").textContent =
-    "--:--";
+const questStats = getQuestStats(questNummer);
 
-document.getElementById("startQuestAccuracy").textContent =
-    "-- %";
+if (questStats.records.bestTime !== null) {
+
+    const minuten = Math.floor(questStats.records.bestTime / 60);
+    const sekunden = String(
+        Math.floor(questStats.records.bestTime % 60)
+    ).padStart(2, "0");
+
+    document.getElementById("startQuestBestTime").textContent =
+        `${minuten}:${sekunden}`;
+
+} else {
+
+    document.getElementById("startQuestBestTime").textContent =
+        "--:--";
+
+}
+
+if (questStats.records.bestAccuracy !== null) {
+
+    document.getElementById("startQuestAccuracy").textContent =
+        `${questStats.records.bestAccuracy.toFixed(1)} %`;
+
+} else {
+
+    document.getElementById("startQuestAccuracy").textContent =
+        "-- %";
+
+}
 
     document
         .getElementById("startQuestOverlay")
