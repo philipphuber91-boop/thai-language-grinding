@@ -91,39 +91,128 @@
 
         </h2>
 
-        <div class="mode-card">
+        <div class="start-quest-info">
 
-            <h3>📚 Lernen</h3>
+            <div class="start-quest-image">
 
-            <p>✔ Deutscher Text sichtbar</p>
+                <img
+                    id="startQuestImage"
+                    src="../assets/quest/urlaub.png"
+                    alt="">
 
-            <p>✔ Lernphase</p>
+            </div>
 
-            <p>✔ Danach Prüfung</p>
+            <div class="start-quest-meta">
 
-            <button id="campaignButton">
+                <h3 id="startQuestName">
 
-                ▶ START
+                    Im Urlaub
 
-            </button>
+                </h3>
+
+<div class="start-quest-stats">
+
+    <span id="startQuestDifficulty">
+
+        🏅 A1
+
+    </span>
+
+    <span id="startQuestWords">
+
+        📖 53 Wörter
+
+    </span>
+
+    <span id="startQuestTime">
+
+        ⏱ --:--
+
+    </span>
+
+</div>
+
+<div class="start-quest-records">
+
+    <div class="record-box">
+
+        <div class="record-title">
+
+            🏆 Rekord
 
         </div>
 
-        <div class="mode-card">
+        <div
+            class="record-value"
+            id="startQuestBestTime">
 
-            <h3>🏆 Challenge</h3>
+            --:--
 
-            <p>✔ Keine Hilfe</p>
+        </div>
 
-            <p>✔ Alles zählt</p>
+    </div>
 
-            <p>✔ Rekorde</p>
+    <div class="record-box">
 
-            <button id="challengeButton">
+        <div class="record-title">
 
-                ▶ START
+            🎯 Genauigkeit
 
-            </button>
+        </div>
+
+        <div
+            class="record-value"
+            id="startQuestAccuracy">
+
+            -- %
+
+        </div>
+
+    </div>
+
+</div>
+
+</div>
+
+            </div>
+
+        <div class="mode-container">
+
+            <div class="mode-card">
+
+                <h3>📚 Lernen</h3>
+
+                <p>📖 Deutscher Text sichtbar</p>
+
+                <p>🧠 Lernphase</p>
+
+                <p>🏁 Danach Prüfung</p>
+
+                <button id="campaignButton">
+
+                    ▶ START
+
+                </button>
+
+            </div>
+
+            <div class="mode-card challenge">
+
+                <h3>🏆 Challenge</h3>
+
+                <p>🚫 Keine Hilfe</p>
+
+                <p>🏆 Alles zählt</p>
+
+                <p>⚡ Rekorde</p>
+
+                <button id="challengeButton">
+
+                    ▶ START
+
+                </button>
+
+            </div>
 
         </div>
 
@@ -153,9 +242,6 @@ loadQuestStats();
 <script src="../data/missions.js"></script>
 <script src="../js/engine.js"></script>
 
-
-
-</div>
 
 </body>
 

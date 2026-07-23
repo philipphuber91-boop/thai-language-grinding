@@ -216,6 +216,56 @@ function starteQuest(questNummer) {
 
     ausgewaehlteQuest = questNummer;
 
+    const daten =
+        contentMode === "campaign"
+            ? quests
+            : missions;
+
+    const quest = daten[questNummer];
+
+    // Titel des Fensters
+    document.getElementById("startOverlayTitle").textContent =
+        contentMode === "campaign"
+            ? "📖 Kampagne starten"
+            : "🎯 Mission starten";
+
+    // Questdaten
+    document.getElementById("startQuestName").textContent =
+        quest.titel;
+
+    document.getElementById("startQuestDifficulty").textContent =
+        "🏅 " + quest.schwierigkeit;
+
+    document.getElementById("startQuestWords").textContent =
+        "📖 " + quest.woerter + " Wörter";
+
+    // Questbild
+    document.getElementById("startQuestImage").src =
+        "../assets/quest/" + quest.bild + ".png";
+
+    // Zeit berechnen
+    const cpm = 20;
+
+    const gesamtSekunden =
+        Math.ceil((quest.woerter / cpm) * 60);
+
+    const minuten =
+        Math.floor(gesamtSekunden / 60);
+
+    const sekunden =
+        String(gesamtSekunden % 60).padStart(2, "0");
+
+    document.getElementById("startQuestTime").textContent =
+        `⏱ ${minuten}:${sekunden}`;
+
+        // Platzhalter für spätere Statistik
+
+document.getElementById("startQuestBestTime").textContent =
+    "--:--";
+
+document.getElementById("startQuestAccuracy").textContent =
+    "-- %";
+
     document
         .getElementById("startQuestOverlay")
         .classList.add("active");
