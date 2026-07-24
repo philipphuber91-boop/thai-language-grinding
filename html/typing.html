@@ -107,61 +107,97 @@
 
 </div>
 
-<div id="questCompleteScreen" class="quest-complete">
+<div id="questCompleteOverlay" class="start-quest-overlay">
 
-    <h1>🏆 QUEST COMPLETE</h1>
+    <div class="quest-complete-window">
 
-    <h2 id="popupKapitel">
-        Quest erfolgreich abgeschlossen!
-    </h2>
+        <h1 class="complete-main-title">
 
-    <div class="stats">
+            🏆 Quest abgeschlossen
 
-        <div class="stat">
-            <div class="icon">⏱</div>
-            <div class="wert" id="popupZeit">00:00</div>
-            <div class="titel">Zeit</div>
-        </div>
+        </h1>
 
-        <div class="stat">
-            <div class="icon">⌨️</div>
-            <div class="wert" id="popupCPM">0</div>
-            <div class="titel">Buchstaben / Min</div>
-        </div>
+        <div class="window-divider"></div>
 
-        <div class="stat">
-            <div class="icon">🎯</div>
-            <div class="wert" id="popupAccuracy">100%</div>
-            <div class="titel">Genauigkeit</div>
+<div class="complete-quest-card">
+
+    <div class="complete-quest-header">
+
+        <img
+            id="completeQuestImage"
+            class="complete-quest-image"
+            alt="Quest">
+
+        <div class="complete-quest-title">
+
+            <h2 id="popupKapitel"></h2>
+
         </div>
 
     </div>
 
-<div class="xp" id="xpAnzeige">
-
-    ⭐ +50 XP ⭐
-
 </div>
+        <div class="complete-stats">
 
-<div id="recordContainer" class="record-container">
+            <div class="stat">
 
-    <h2 id="recordTitle">
+                <div class="icon">⏱</div>
 
-        🏆 NEUER REKORD!
+                <div class="wert" id="popupZeit"></div>
 
-    </h2>
+                <div class="titel">Zeit</div>
 
-    <div id="recordList">
+            </div>
+
+            <div class="stat">
+
+                <div class="icon">⌨️</div>
+
+                <div class="wert" id="popupCPM"></div>
+
+                <div class="titel">Buchstaben / Min</div>
+
+            </div>
+
+            <div class="stat">
+
+                <div class="icon">🎯</div>
+
+                <div class="wert" id="popupAccuracy"></div>
+
+                <div class="titel">Genauigkeit</div>
+
+            </div>
+
+        </div>
+
+        <div class="window-divider"></div>
+
+        <div class="comparison-section">
+
+    <h3 class="comparison-title">
+
+        📊 Persönlicher Vergleich
+
+    </h3>
+
+    <div
+        id="recordContainer"
+        class="record-container">
 
     </div>
 
 </div>
 
-    <button id="weiterButton">
-        Zur Weltkarte
-    </button>
-
 </div>
+
+        <button id="weiterButton">
+
+            🗺️ Zur Weltkarte
+
+        </button>
+
+    </div>
 
 </div>
 

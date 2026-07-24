@@ -349,7 +349,7 @@ const oldBestAccuracy = stats.records.bestAccuracy;
     );
 
   
-   return {
+return {
 
     newBestTime,
     newBestCPM,
@@ -359,9 +359,9 @@ const oldBestAccuracy = stats.records.bestAccuracy;
     oldBestCPM,
     oldBestAccuracy,
 
-    newTime: stats.records.bestTime,
-    newCPM: stats.records.bestCPM,
-    newAccuracy: stats.records.bestAccuracy
+    newTime: zeit,
+    newCPM: cpm,
+    newAccuracy: accuracy
 
 };
 

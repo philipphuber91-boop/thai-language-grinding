@@ -27,7 +27,7 @@ function zeigePhase() {
     auftrag.style.display = "none";
     deutsch.style.display = "none";
     typingBereich.style.display = "none";
-    popup.style.display = "none";
+    popup.classList.remove("active");
 
     switch (phase) {
 
@@ -51,10 +51,9 @@ case "typing":
 
     break;
 
-        case "abschluss":
-            popup.style.display = "flex";
-            break;
+case "abschluss":
 
+    break;
     }
 
 }
@@ -65,7 +64,7 @@ const wpmAnzeigeElement = document.getElementById("wpmAnzeige");
 const accuracyAnzeigeElement = document.getElementById("accuracyAnzeige");
 
 const popup =
-document.getElementById("questCompleteScreen");
+document.getElementById("questCompleteOverlay");
 const popupZeit = document.getElementById("popupZeit");
 
 const popupCPM = document.getElementById("popupCPM");
@@ -305,6 +304,17 @@ function beendePruefung() {
     daten[aktuelleQuest].titel +
     " erfolgreich abgeschlossen!";
 
+    const completeQuestImage =
+    document.getElementById("completeQuestImage");
+
+if(daten[aktuelleQuest].bild){
+
+    completeQuestImage.src =
+        "../assets/" +
+        daten[aktuelleQuest].bild;
+
+}
+
     popupZeit.textContent = zeitAnzeige;
     popupCPM.textContent = cpm;
     popupAccuracy.textContent = accuracy + "%";
@@ -321,9 +331,7 @@ const newRecords = completeQuest(
 
 showRecordSummary(newRecords);
 
-phase = "abschluss";
-
-zeigePhase();
+popup.classList.add("active");
 
 }
 
@@ -425,6 +433,8 @@ eingabe.focus();
 
 weiterButton.addEventListener("click", function () {
 
+    popup.classList.remove("active");
+
     window.location.href = "index.html";
 
 });
@@ -484,141 +494,142 @@ function showRecordSummary(records){
     const container =
         document.getElementById("recordContainer");
 
-    const list =
-        document.getElementById("recordList");
+    container.classList.add("active");
 
-    list.innerHTML = "";
+    const bestTime =
+        records.oldBestTime === null
+            ? records.newTime
+            : records.oldBestTime;
 
-    container.classList.remove("active");
+    const bestAccuracy =
+        records.oldBestAccuracy === null
+            ? records.newAccuracy
+            : records.oldBestAccuracy;
 
-    let improvements = 0;
+    const bestMinutes =
+        Math.floor(bestTime / 60);
 
-    if(records.newBestTime){
+    const bestSeconds =
+        String(bestTime % 60).padStart(2,"0");
 
-        improvements++;
+    const currentMinutes =
+        Math.floor(records.newTime / 60);
 
-let oldTimeText = "—";
+    const currentSeconds =
+        String(records.newTime % 60).padStart(2,"0");
 
-if(records.oldBestTime !== null){
+const timeDiff =
+    records.newTime - bestTime;
 
-    const oldMinutes =
-        Math.floor(records.oldBestTime / 60);
+const accuracyDiff =
+    Number(
+        (
+            records.newAccuracy -
+            bestAccuracy
+        ).toFixed(1)
+    );
 
-    const oldSeconds =
-        String(records.oldBestTime % 60)
-        .padStart(2,"0");
+const timeColor =
+    timeDiff < 0
+        ? "#2aa84a"
+        : timeDiff > 0
+            ? "#cc4040"
+            : "#777";
 
-    oldTimeText =
-        `${oldMinutes}:${oldSeconds}`;
+const accuracyColor =
+    accuracyDiff > 0
+        ? "#2aa84a"
+        : accuracyDiff < 0
+            ? "#cc4040"
+            : "#777";
 
-}
 
-const newMinutes =
-    Math.floor(records.newTime / 60);
+container.innerHTML = `
 
-const newSeconds =
-    String(records.newTime % 60)
-    .padStart(2,"0");
+<div class="compare-table">
 
-const newTimeText =
-    `${newMinutes}:${newSeconds}`;
+    <div class="compare-header compare-empty"></div>
+    <div class="compare-header">🏆 Persönlicher Rekord</div>
+    <div class="compare-header">⚔ Aktueller Lauf</div>
+    <div class="compare-header">⭐ Ergebnis</div>
 
-const improvement =
+    <div class="compare-icon">
 
-    records.oldBestTime === null
+        ⏱ ZEIT
 
-        ? null
+    </div>
 
-        : records.oldBestTime - records.newTime;
+    <div class="compare-value">
 
-        list.innerHTML += `
-            <div class="record-item">
+        ${bestMinutes}:${bestSeconds}
 
-                <div class="record-name">
+    </div>
 
-                    ⏱ Persönliche Bestzeit
+    <div class="compare-value">
 
-                </div>
+        ${currentMinutes}:${currentSeconds}
 
-                <div class="record-values">
+    </div>
 
-                ${oldTimeText}
+    <div
+        class="compare-result"
+        style="color:${timeColor}">
 
-↓
+        ${
+            timeDiff < 0
 
-${newTimeText}
+                ? `🟢 Neuer Rekord! (${Math.abs(timeDiff)} Sek.)`
 
-${
-improvement !== null
+                : timeDiff > 0
 
-? `<br><span class="record-improvement">
+                    ? `+${timeDiff} Sek.`
 
-(-${improvement} Sek.)
+                    : "Gleich schnell"
 
-</span>`
+        }
 
-: ""
+    </div>
 
-}
+    <div class="compare-icon">
 
-                </div>
+        🎯 GENAUIGKEIT
 
-            </div>
-        `;
+    </div>
 
-    }
+    <div class="compare-value">
 
-    if(records.newBestAccuracy){
+        ${bestAccuracy} %
 
-        improvements++;
+    </div>
 
-        list.innerHTML += `
-            <div class="record-item">
+    <div class="compare-value">
 
-                <div class="record-name">
+        ${records.newAccuracy} %
 
-                    🎯 Höchste Genauigkeit
+    </div>
 
-                </div>
+    <div
+        class="compare-result"
+        style="color:${accuracyColor}">
 
-                <div class="record-values">
+        ${
+            accuracyDiff > 0
 
-                ${
-records.oldBestAccuracy ?? "—"
-} %
+                ? "⭐ Neuer Rekord!"
 
-↓
+                : accuracyDiff < 0
 
-${records.newAccuracy} %
+                    ? `${accuracyDiff}%`
 
-${
-records.oldBestAccuracy !== null
+                    : "Unverändert"
 
-? `<br><span class="record-improvement">
+        }
 
-(+${(
-records.newAccuracy -
-records.oldBestAccuracy
-).toFixed(1)}%)
+    </div>
 
-</span>`
+</div>
 
-: ""
-
-}
-
-                </div>
-
-            </div>
-        `;
-
-    }
-
-    if(improvements > 0){
-
-        container.classList.add("active");
-
-    }
+`;
 
 }
 
