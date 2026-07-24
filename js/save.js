@@ -30,6 +30,28 @@ function loadQuestStats() {
 
         questStats = JSON.parse(savedQuestStats);
 
+        // Savegames before the separation used only numeric IDs. Those
+        // entries belong to the campaign and are migrated once on load.
+        let migrated = false;
+
+        for (const questId in questStats) {
+
+            if (/^\d+$/.test(questId)) {
+
+                questStats[`campaign:${questId}`] = questStats[questId];
+                delete questStats[questId];
+                migrated = true;
+
+            }
+
+        }
+
+        if (migrated) {
+
+            saveQuestStats();
+
+        }
+
     }
 
 }

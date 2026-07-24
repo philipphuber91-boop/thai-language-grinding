@@ -18,7 +18,7 @@ function ladeKarten() {
 
 const status =
     contentMode === "campaign"
-        ? getQuestStatus(nummer)
+        ? getQuestStatus(`${contentMode}:${nummer}`)
         : "due";
 
 const statusIcons = {
@@ -36,7 +36,7 @@ const statusLabel = statusIcons[status] || "";
 
 const stats =
     contentMode === "campaign"
-        ? getQuestStats(nummer)
+        ? getQuestStats(`${contentMode}:${nummer}`)
         : {
 
             completed: false,
@@ -260,7 +260,7 @@ function starteQuest(questNummer) {
 
         // Platzhalter für spätere Statistik
 
-const questStats = getQuestStats(questNummer);
+const questStats = getQuestStats(`${contentMode}:${questNummer}`);
 
 if (questStats.records.bestTime !== null) {
 

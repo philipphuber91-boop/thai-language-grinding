@@ -20,7 +20,10 @@ const daten =
         ? quests
         : missions;
 
-const stats = getQuestStats(aktuelleQuest);
+// Separate IDs prevent a campaign quest and a mission with the same number
+// from sharing progress, records, and review dates.
+const questStatsId = `${contentMode}:${aktuelleQuest}`;
+const stats = getQuestStats(questStatsId);
 function zeigePhase() {
 
     // Alles ausblenden
@@ -73,6 +76,9 @@ const popupKapitel =
     document.getElementById("popupKapitel");
 
 const popupAccuracy = document.getElementById("popupAccuracy");
+const popupWords = document.getElementById("popupWords");
+const popupDuration = document.getElementById("popupDuration");
+const popupDifficulty = document.getElementById("popupDifficulty");
 
 const weiterButton = document.getElementById("weiterButton");
 
@@ -300,9 +306,10 @@ function beendePruefung() {
     wpmAnzeigeElement.textContent = cpm;
     accuracyAnzeigeElement.textContent = accuracy + "%";
 
-    popupKapitel.textContent =
-    daten[aktuelleQuest].titel +
-    " erfolgreich abgeschlossen!";
+    popupKapitel.textContent = daten[aktuelleQuest].titel;
+    popupWords.textContent = daten[aktuelleQuest].woerter;
+    popupDuration.textContent = zeitAnzeige;
+    popupDifficulty.textContent = daten[aktuelleQuest].schwierigkeit;
 
     const completeQuestImage =
     document.getElementById("completeQuestImage");
@@ -310,8 +317,9 @@ function beendePruefung() {
 if(daten[aktuelleQuest].bild){
 
     completeQuestImage.src =
-        "../assets/" +
-        daten[aktuelleQuest].bild;
+        "../assets/quest/" +
+        daten[aktuelleQuest].bild +
+        ".png";
 
 }
 
@@ -321,7 +329,7 @@ if(daten[aktuelleQuest].bild){
 
 const newRecords = completeQuest(
 
-    aktuelleQuest,
+    questStatsId,
     sekunden,
     Number(cpm),
     Number(accuracy),
@@ -630,6 +638,56 @@ container.innerHTML = `
 </div>
 
 `;
+
+    // Zwei separate Vergleichszeilen sind auf einen Blick lesbarer als
+    // eine gemeinsame Tabelle. Die Berechnungen oberhalb werden weiterverwendet.
+    container.innerHTML = `
+
+        <div class="record-row">
+            <div class="record-label">&#9201; ZEIT</div>
+            <div class="record-cell">
+                <span class="record-heading">&#127942; Pers&ouml;nlicher Rekord</span>
+                <strong>${bestMinutes}:${bestSeconds}</strong>
+            </div>
+            <div class="record-cell">
+                <span class="record-heading">&#9876; Aktueller Lauf</span>
+                <strong>${currentMinutes}:${currentSeconds}</strong>
+            </div>
+            <div class="record-cell record-result" style="color:${timeColor}">
+                <span class="record-heading">&#10024; Ergebnis</span>
+                <strong>${
+                    timeDiff < 0
+                        ? `Neuer Rekord! (-${Math.abs(timeDiff)} Sek.)`
+                        : timeDiff > 0
+                            ? `+${timeDiff} Sek.`
+                            : "Gleich schnell"
+                }</strong>
+            </div>
+        </div>
+
+        <div class="record-row">
+            <div class="record-label">&#127919; GENAUIGKEIT</div>
+            <div class="record-cell">
+                <span class="record-heading">&#127942; Pers&ouml;nlicher Rekord</span>
+                <strong>${bestAccuracy} %</strong>
+            </div>
+            <div class="record-cell">
+                <span class="record-heading">&#9876; Aktueller Lauf</span>
+                <strong>${records.newAccuracy} %</strong>
+            </div>
+            <div class="record-cell record-result" style="color:${accuracyColor}">
+                <span class="record-heading">&#10024; Ergebnis</span>
+                <strong>${
+                    accuracyDiff > 0
+                        ? "Neuer Rekord!"
+                        : accuracyDiff < 0
+                            ? `${accuracyDiff}%`
+                            : "Unver&auml;ndert"
+                }</strong>
+            </div>
+        </div>
+
+    `;
 
 }
 
