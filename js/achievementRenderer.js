@@ -1,3 +1,31 @@
+function formatAchievementProgress(achievement){
+
+    if(achievement.stat === "totalTime"){
+
+        function formatTime(seconds){
+
+            const hours = Math.floor(seconds / 3600);
+
+            const minutes = Math.floor(
+                (seconds % 3600) / 60
+            );
+
+            return minutes > 0
+    ? `${hours} Std. ${minutes} Min.`
+    : `${hours} Std.`;
+
+        }
+
+
+        return `${formatTime(achievement.progress)} / ${formatTime(achievement.goal)}`;
+
+    }
+
+
+    return `${achievement.progress} / ${achievement.goal}`;
+
+}
+
 let selectedAchievement = null;
 
 function renderAchievements() {
@@ -112,15 +140,15 @@ function createAchievementCard(achievement) {
 
             <div class="achievementCardProgress">
 
-                ${achievement.progress} / ${achievement.goal}
+                ${formatAchievementProgress(achievement)}
 
             </div>
 
-            <div class="achievementCardStatus">
+<div class="achievementCardStatus ${achievement.completed ? "completed" : ""}">
 
-                ${achievement.completed ? "✔" : "›"}
+    ${achievement.completed ? "✔" : "›"}
 
-            </div>
+</div>
 
         </div>
 
@@ -185,13 +213,11 @@ function renderAchievementDetail() {
 
         </div>
 
-        <div class="achievementDetailNumbers">
+<div class="achievementDetailNumbers">
 
-            ${selectedAchievement.progress}
-            /
-            ${selectedAchievement.goal}
+    ${formatAchievementProgress(selectedAchievement)}
 
-        </div>
+</div>
 
         <div class="achievementDetailPercent">
 
@@ -199,11 +225,11 @@ function renderAchievementDetail() {
 
         </div>
 
-        <div class="achievementUnlockState">
+        <div class="achievementUnlockState ${unlocked ? "unlocked" : "locked"}">
 
-            ${unlocked ? "✔ FREIGESCHALTET" : "🔒 GESPERRT"}
+    ${unlocked ? "✔ FREIGESCHALTET" : "🔒 GESPERRT"}
 
-        </div>
+</div>
 
     `;
 

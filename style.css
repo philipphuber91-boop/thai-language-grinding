@@ -3226,6 +3226,33 @@ margin:26px auto 0;
 
 }
 
+.achievementCardStatus.unlocked {
+    color: #4cff4c;
+    text-shadow: 0 0 8px rgba(76,255,76,0.6);
+}
+
+.achievementCardStatus.completed {
+    color: #4cff4c;
+    text-shadow: 0 0 10px rgba(76,255,76,0.7);
+}
+
+.achievementCardStatus.completed {
+    color: #4cff4c !important;
+    text-shadow: 
+        0 0 5px rgba(76,255,76,0.8),
+        0 0 12px rgba(76,255,76,0.5);
+}
+
+.achievementUnlockState.unlocked {
+    color: #4cff4c;
+    border-color: #4cff4c;
+    text-shadow: 0 0 10px rgba(76,255,76,0.5);
+}
+
+.achievementUnlockState.locked {
+    color: #c8b27a;
+}
+
 .progressFill {
 
     height:100%;
