@@ -3145,7 +3145,7 @@ margin:26px auto 0;
 
 }
 
-#achievementSummary{
+#achievementSummary {
 
     background:#2b1b10;
 
@@ -3153,21 +3153,21 @@ margin:26px auto 0;
 
     border-radius:15px;
 
-    padding:30px;
+    padding:25px 35px;
+
+    display:grid;
+
+    grid-template-columns:
+        300px
+        1fr
+        420px;
+
+    align-items:center;
+
+    gap:20px;
 
 }
 
-
-
-.summaryDivider{
-
-    width:1px;
-
-    height:65px;
-
-    background:rgba(255,196,90,.25);
-
-}
 
 #achievementDetail{
 
@@ -3194,15 +3194,7 @@ margin:26px auto 0;
     overflow:hidden;
 }
 
-#achievementSummary{
 
-    display:flex;
-
-    align-items:center;
-
-    gap:40px;
-
-}
 
 .summaryLeft{
 
@@ -3216,31 +3208,50 @@ margin:26px auto 0;
 
 }
 
-.progressBar{
+.progressBar {
 
-    width:100%;
+    height:12px;
 
-    height:18px;
-
-    background:#1a120c;
+    background:#17100b;
 
     border-radius:20px;
 
     overflow:hidden;
 
-    margin:10px 0;
+    position:relative;
+
+        width:100%;
+
+    max-width:3600px;
 
 }
 
-.progressFill{
+.progressFill {
 
     height:100%;
 
-    background:#45d8f3;
+    background:
+    linear-gradient(
+        90deg,
+        #42d6ee 0%,
+        #42d6ee 75%,
+        rgba(66,214,238,0.4) 90%,
+        rgba(66,214,238,0) 100%
+    );
 
     border-radius:20px;
 
-    transition:width .3s;
+}
+
+.summaryText {
+
+    margin-top:8px;
+
+}
+
+.summaryPercent {
+
+    margin-top:8px;
 
 }
 
@@ -3475,25 +3486,42 @@ margin:26px auto 0;
    SUMMARY
 ========================================== */
 
-#achievementSummary{
 
-    display:grid;
 
-    grid-template-columns:250px 1fr 340px;
-
-    align-items:center;
-
-    gap:40px;
-
-}
-
-.achievementSummaryLeft{
+.achievementSummaryLeft {
 
     display:flex;
 
     align-items:center;
 
-    gap:25px;
+    gap:20px;
+
+}
+
+.rarityIcon {
+
+    width:22px;
+
+    height:22px;
+
+}
+
+.achievementSummaryCenter .progressBar {
+
+    width:450px;
+
+}
+
+.achievementSummaryCenter {
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
 
 }
 
@@ -3518,7 +3546,7 @@ margin:26px auto 0;
     font-size:22px;
 
     color:#CDBA8D;
-
+    margin-top:5px;
 }
 
 .summaryLabel{
@@ -3537,23 +3565,58 @@ margin:26px auto 0;
 
 }
 
-.achievementSummaryRight{
+.achievementSummaryRight {
 
     display:grid;
 
     grid-template-columns:1fr 1fr;
 
-    gap:15px;
+    gap:15px 40px;
+
+    align-items:center;
 
 }
 
-.rarityBox{
+.rarityBox {
 
-    border-left:1px solid #6a4d25;
+    display:flex;
 
-    padding-left:20px;
+    align-items:center;
 
-    font-size:20px;
+    gap:8px;
+
+    border-left:1px solid #7b5a2f;
+
+    padding-left:15px;
+
+}
+
+
+
+
+.rarityBox img{
+
+    width:28px;
+
+    height:28px;
+
+}
+
+
+.rarityBox span{
+
+    font-size:18px;
+
+}
+
+
+.rarityBox strong {
+
+    margin-left:auto;
+
+    color:#f2c35c;
+
+    font-size:22px;
 
 }
 

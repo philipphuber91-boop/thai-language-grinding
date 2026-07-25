@@ -237,90 +237,110 @@ function renderAchievementSummary() {
 
     const summary = getAchievementSummary();
 
-    document.getElementById("achievementSummary").innerHTML = `
+document.getElementById("achievementSummary").innerHTML = `
 
-        <div class="achievementSummaryLeft">
-
-<div class="summaryTrophy">
+<div class="achievementSummaryLeft">
 
     <img
         src="../assets/icons/achievements/pokal.png"
-        alt="pokal"
         class="summaryTrophyImage">
+
+    <div>
+
+        <div class="summaryNumbers">
+
+            ${summary.unlocked} / ${summary.total}
+
+        </div>
+
+        <div class="summaryText">
+
+            freigeschaltet
+
+        </div>
+
+    </div>
 
 </div>
 
-            <div>
 
-                <div class="summaryNumbers">
+<div class="achievementSummaryCenter">
 
-                    ${summary.unlocked} / ${summary.total}
+    <div class="summaryLabel">
 
-                </div>
+        Gesamtfortschritt
 
-                <div class="summaryText">
+    </div>
 
-                    freigeschaltet
 
-                </div>
+    <div class="progressBar">
 
-            </div>
-
+        <div
+            class="progressFill"
+            style="width:${summary.percent}%">
         </div>
 
-        <div class="achievementSummaryCenter">
+    </div>
 
-            <div class="summaryLabel">
 
-                Gesamtfortschritt
+    <div class="summaryPercent">
 
-            </div>
+        ${summary.percent}%
 
-            <div class="progressBar">
+    </div>
 
-                <div
-                    class="progressFill"
-                    style="width:${summary.percent}%">
-                </div>
+</div>
 
-            </div>
 
-            <div class="summaryPercent">
+<div class="achievementSummaryRight">
 
-                ${summary.percent}%
 
-            </div>
+<div class="rarityBox">
 
-        </div>
+    <img src="../assets/icons/achievements/common.png">
 
-        <div class="achievementSummaryRight">
+    <span>Gewöhnlich</span>
 
-            <div class="rarityBox">
+    <strong>${getRarityCount("common")}</strong>
 
-                ⭐ Gewöhnlich
+</div>
 
-            </div>
 
-            <div class="rarityBox">
+<div class="rarityBox">
 
-                🔷 Selten
+    <img src="../assets/icons/achievements/rare.png">
 
-            </div>
+    <span>Selten</span>
 
-            <div class="rarityBox">
+    <strong>${getRarityCount("rare")}</strong>
 
-                💜 Episch
+</div>
 
-            </div>
 
-            <div class="rarityBox">
+<div class="rarityBox">
 
-                🟨 Legendär
+    <img src="../assets/icons/achievements/epic.png">
 
-            </div>
+    <span>Episch</span>
 
-        </div>
+    <strong>${getRarityCount("epic")}</strong>
 
-    `;
+</div>
+
+
+<div class="rarityBox">
+
+    <img src="../assets/icons/achievements/legendary.png">
+
+    <span>Legendär</span>
+
+    <strong>${getRarityCount("legendary")}</strong>
+
+</div>
+
+
+</div>
+
+`;
 
 }

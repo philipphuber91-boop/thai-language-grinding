@@ -491,3 +491,13 @@ document.addEventListener("DOMContentLoaded", () => {
     renderAchievements();
 
 });
+
+function getRarityCount(rarity){
+
+    return achievementDefinitions.filter(
+
+        achievement => achievement.rarity === rarity
+
+    ).length;
+
+}
