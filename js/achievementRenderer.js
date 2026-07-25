@@ -30,7 +30,7 @@ let selectedAchievement = null;
 
 function renderAchievements() {
 
-    const content = document.getElementById("questListe");
+    const content = document.getElementById("achievementContainer");
 
     if (!selectedAchievement) {
 

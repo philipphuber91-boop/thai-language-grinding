@@ -3706,3 +3706,355 @@ margin:26px auto 0;
     object-fit:contain;
 
 }
+
+.chronik-panel {
+
+
+    background-image:
+    url("../assets/ui/cards.png");
+
+
+    background-size:
+    100% 100%;
+
+
+    background-repeat:
+    no-repeat;
+
+
+    padding:40px;
+
+
+    color:#f5d98c;
+
+
+}
+
+#chronikPage {
+
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:30px;
+
+
+}
+
+
+.chronikGrid {
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4, minmax(180px,1fr));
+
+    gap:25px;
+
+    margin-top:35px;
+
+}
+
+.chronik-section-title{
+
+    color:#f5d98c;
+
+    font-size:28px;
+
+    margin-bottom:10px;
+
+}
+
+
+.stat-box{
+
+    min-height:180px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+
+.stat-icon{
+
+    font-size:40px;
+
+    margin-bottom:10px;
+
+}
+
+
+.stat-box h3{
+
+    margin:5px;
+
+    color:#d8b46a;
+
+}
+
+
+.stat-box strong{
+
+    font-size:28px;
+
+    color:white;
+
+}
+
+/* ========================= */
+/* CHRONIK */
+/* ========================= */
+
+
+#chronikPage {
+
+    width:100%;
+
+}
+
+
+#chronikHeader {
+
+    margin-bottom:40px;
+
+}
+
+
+#chronikHeader h1 {
+
+    font-size:42px;
+    color:#d8b15a;
+
+}
+
+
+#chronikHeader p {
+
+    color:#ddd;
+    font-size:18px;
+
+}
+
+
+
+/* Profil */
+
+
+
+
+
+/* Spieler */
+
+.chronik-profile {
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+}
+
+
+.profile-avatar {
+
+    font-size:70px;
+
+}
+
+
+.profile-info h2 {
+
+    color:#d8b15a;
+
+    font-size:32px;
+
+}
+
+
+/* Statistik Grid */
+
+
+
+
+
+
+.stat-box {
+
+    text-align:center;
+
+    min-height:170px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+.stat-icon {
+
+    font-size:40px;
+
+}
+
+
+.stat-box h3 {
+
+    color:#d8b15a;
+
+}
+
+
+.stat-box strong {
+
+    display:block;
+
+    font-size:30px;
+
+    color:#fff;
+
+}
+
+.chronik-panel {
+
+    background:
+    linear-gradient(
+        rgba(40,25,15,0.9),
+        rgba(20,12,8,0.95)
+    );
+
+    border:1px solid #9b6b20;
+
+    border-radius:12px;
+
+    padding:25px;
+
+    box-shadow:
+    0 0 20px rgba(0,0,0,0.5);
+
+    color:#f5e6c8;
+
+}
+
+.chronik-profile {
+
+    min-height:160px;
+
+    max-width:500px;
+
+}
+
+.chronik-profile-card {
+
+
+    width:520px;
+
+    min-height:170px;
+
+
+    border:1px solid #8a5a20;
+
+    background:#21140d;
+
+
+    display:flex;
+
+    align-items:center;
+
+
+    gap:25px;
+
+
+    padding:25px;
+
+
+}
+
+
+
+.profile-mini-stat {
+
+
+    margin-left:auto;
+
+
+    width:100px;
+
+    height:110px;
+
+
+    border:1px solid #8a5a20;
+
+
+    display:flex;
+
+    flex-direction:column;
+
+
+    align-items:center;
+
+    justify-content:center;
+
+
+}
+
+
+
+.profile-mini-stat h3 {
+
+
+    font-size:14px;
+
+    color:#d8a94b;
+
+    margin:5px;
+
+
+}
+
+
+
+.profile-mini-stat strong {
+
+
+    font-size:28px;
+
+}
+
+
+.profile-avatar {
+
+    font-size:70px;
+
+}
+
+
+.profile-info h2 {
+
+    color:#d8a94b;
+
+    margin:0 0 15px 0;
+
+}
+
+
+.profile-info p {
+
+    margin:8px 0;
+
+}

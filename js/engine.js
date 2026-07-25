@@ -337,9 +337,9 @@ if (challengeButton) {
 
 }
 
-function openStats() {
+function openChronik(){
 
-    window.location.href = "stats.html";
+    renderChronik();
 
 }
 
@@ -375,25 +375,58 @@ function switchContent(mode) {
 
     switch (mode) {
 
+
         case "campaign":
+
+            document.getElementById("questListe").style.display = "block";
+
+            document.getElementById("chronikContainer").style.display = "none";
 
             ladeKarten();
 
             break;
+
+
 
         case "missions":
 
+            document.getElementById("questListe").style.display = "block";
+
+            document.getElementById("chronikContainer").style.display = "none";
+
             ladeKarten();
 
             break;
 
-        case "achievements":
 
-            console.log("Achievements werden gerendert");
+case "achievements":
 
-            renderAchievements();
+    document.getElementById("questListe").style.display = "none";
 
-            break;
+    document.getElementById("chronikContainer").style.display = "none";
+
+    document.getElementById("achievementContainer").style.display = "block";
+
+
+    console.log("Achievements werden gerendert");
+
+    renderAchievements();
+
+    break;       
+
+
+
+case "chronik":
+
+    document.getElementById("questListe").style.display = "none";
+
+    document.getElementById("achievementContainer").style.display = "none";
+
+    document.getElementById("chronikContainer").style.display = "block";
+
+    renderChronik();
+
+    break;
 
     }
 
@@ -438,3 +471,19 @@ if (achievementButton) {
     };
 
 }
+
+const chronikButton =
+    document.getElementById("chronikButton");
+
+
+if (chronikButton) {
+
+    chronikButton.onclick = function () {
+
+        switchContent("chronik");
+
+    };
+
+}
+
+

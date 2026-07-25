@@ -59,16 +59,17 @@
 
 </button>
 
-<button id="statsButton" onclick="openStats()">
+<button id="chronikButton">
 
-    Statistik
+    📜 Chronik
 
 </button>
+
     
 
         <button id="achievementButton">
 
-    🏆 Erfolge
+    🏆 Errungenschaften
 
 </button>
 
@@ -81,6 +82,19 @@
 <main class="content">
 
     <div id="questListe"></div>
+
+    <div id="chronikContainer" style="display:none;">
+        
+
+        <div id="chronikProfile"></div>
+
+        <div id="chronikStats"></div>
+
+        <div id="chronikRecords"></div>
+
+    </div>
+
+    <div id="achievementContainer" style="display:none;"></div>
 
 </main>
 
@@ -232,10 +246,8 @@
 <script src="../js/save.js"></script>
 
 <script src="../data/quests.js"></script>
-<script src="../data/missions.js"></script>
 
-<script src="../js/achievementData.js"></script>
-<script src="../js/achievements.js"></script>
+<script src="../data/missions.js"></script>
 
 <script src="../js/player.js"></script>
 
@@ -246,8 +258,14 @@ loadQuestStats();
 
 </script>
 
+<script src="../js/achievements.js"></script>
+
+
+
+<script src="../js/chronik.js"></script>
 <script src="../js/achievementRenderer.js"></script>
 <script src="../js/engine.js"></script>
+
 
 
 
