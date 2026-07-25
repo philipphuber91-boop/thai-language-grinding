@@ -153,6 +153,8 @@ function updatePlayerStats(zeit, cpm, accuracy, zeichen) {
 
     savePlayer();
 
+    updateAchievements();
+
 }
 
 function getToday() {
@@ -267,7 +269,7 @@ function getDueQuests() {
 
         if (isQuestDue(questId)) {
 
-            dueQuests.push(Number(questId));
+            dueQuests.push(questId);
 
         }
 
@@ -337,7 +339,16 @@ const oldBestAccuracy = stats.records.bestAccuracy;
 
     updateRepetition(stats);
 
+    console.log("Quest-ID:", questId);
+console.log("Versuche:", stats.attempts);
+console.log("Komplette questStats:", structuredClone(questStats));
+
     saveQuestStats();
+
+    console.log(
+    "Im LocalStorage:",
+    JSON.parse(localStorage.getItem("questStats"))
+);
 
     updatePlayerStats(
 

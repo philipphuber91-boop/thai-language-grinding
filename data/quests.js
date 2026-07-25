@@ -402,4 +402,38 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 
 },
 
+6: {
+
+    titel: "Beim Frühstück - ที่โต๊ะอาหารเช้า",
+
+    bild:"frühstück",
+
+    beschreibung: "Beim Frühstück",
+
+    kapitel: "Kapitel 1",
+
+    schwierigkeit: "A1",
+
+    xp: 50,
+
+    woerter: 79,
+
+    story:
+`Lies zuerst den Text.
+
+Erst danach wird das Thai-Typing freigeschaltet.`,
+
+    deutschZeilen:[
+
+"Wannee und Theera sitzen am Frühstückstisch.",
+
+],
+
+    thaiZeilen:[
+
+"วรรณีและธีระนั่งอยู่ที่โต๊ะอาหารเช้า",
+],
+
+},
+
 };

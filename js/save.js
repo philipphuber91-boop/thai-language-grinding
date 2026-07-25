@@ -20,6 +20,8 @@ function loadPlayer() {
 
     savePlayer();
 
+    
+
 }
 
 function loadQuestStats() {

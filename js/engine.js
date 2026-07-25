@@ -16,10 +16,7 @@ function ladeKarten() {
         const quest = daten[nummer];
 
 
-const status =
-    contentMode === "campaign"
-        ? getQuestStatus(`${contentMode}:${nummer}`)
-        : "due";
+
 
 const statusIcons = {
 
@@ -30,24 +27,13 @@ const statusIcons = {
     mastered: '<span class="status-mastered">★</span>'
 
 };
+const status = getQuestStatus(`${contentMode}:${nummer}`);
 
+const stats = getQuestStats(`${contentMode}:${nummer}`);
 
 const statusLabel = statusIcons[status] || "";
 
-const stats =
-    contentMode === "campaign"
-        ? getQuestStats(`${contentMode}:${nummer}`)
-        : {
 
-            completed: false,
-
-            repetition: {
-
-                level: 0
-
-            }
-
-        };
 
 let progress = 0;
 
@@ -324,7 +310,7 @@ if (campaignButton) {
 
     localStorage.setItem("contentMode", contentMode);
 
-    localStorage.setItem("questMode", "campaign");
+    localStorage.setItem("questMode", "learning");
 
         window.location.href = "typing.html";
 
@@ -381,19 +367,49 @@ function toggleQuest(questId) {
 
 }
 
+function switchContent(mode) {
+
+    console.log("switchContent:", mode);
+
+    contentMode = mode;
+
+    switch (mode) {
+
+        case "campaign":
+
+            ladeKarten();
+
+            break;
+
+        case "missions":
+
+            ladeKarten();
+
+            break;
+
+        case "achievements":
+
+            console.log("Achievements werden gerendert");
+
+            renderAchievements();
+
+            break;
+
+    }
+
+}
+
 
 const campaignMenuButton =
     document.getElementById("campaignMenuButton");
 
 if (campaignMenuButton) {
 
-    campaignMenuButton.onclick = function () {
+campaignMenuButton.onclick = function () {
 
-        contentMode = "campaign";
+    switchContent("campaign");
 
-        ladeKarten();
-
-    };
+};
 
 }
 
@@ -402,13 +418,23 @@ const missionsMenuButton =
 
 if (missionsMenuButton) {
 
-    missionsMenuButton.onclick = function () {
+missionsMenuButton.onclick = function () {
 
-        contentMode = "missions";
+    switchContent("missions");
 
-        ladeKarten();
+};
+
+}
+
+const achievementButton =
+    document.getElementById("achievementButton");
+
+if (achievementButton) {
+
+    achievementButton.onclick = function () {
+
+        switchContent("achievements");
 
     };
 
 }
-
