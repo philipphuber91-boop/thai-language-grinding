@@ -318,36 +318,34 @@ function renderLineChart(values, xLabels, yAxisLabel) {
 
 }
 
-function renderChronikHistoryCard(title, icon, bigValue, chartSvg) {
+function renderChronikHistoryCard(title, icon, bigValue, chartSvg){
 
     return `
-
         <div class="chronik-history-card">
 
             <div class="chronik-history-card-header">
 
                 <div>
-
                     <h3>${title}</h3>
-
                 </div>
 
-                <div class="chronik-history-icon">${icon}</div>
+                <img
+                    class="chronik-history-icon"
+                    src="${icon}"
+                    alt="${title}">
 
             </div>
 
-            <div class="chronik-history-big-number">${bigValue}</div>
+            <div class="chronik-history-big-number">
+                ${bigValue}
+            </div>
 
             <div class="chronik-chart-wrapper">
-
                 ${chartSvg}
-
             </div>
 
         </div>
-
     `;
-
 }
 
 
@@ -431,21 +429,21 @@ function renderChronikRecords(){
 
                 ${renderChronikHistoryCard(
                     "Spielzeit",
-                    "⏳",
+                    "../assets/icons/achievements/sanduhr.png",
                     `${formatTime(player.stats.totalTime)}`,
                     renderBarChart(totalTimeValues, chronikWeekdayLabels, "Minuten")
                 )}
 
                 ${renderChronikHistoryCard(
                     "Tempo Verlauf",
-                    "⚡",
+                    "../assets/icons/achievements/blitz.png",
                     `${player.stats.averageCPM} CPM`,
                     renderLineChart(tempoValues, chronikRelativeLabels, "CPM")
                 )}
 
                 ${renderChronikHistoryCard(
                     "Genauigkeit Verlauf",
-                    "🎯",
+                    "../assets/icons/achievements/scharfschütze.png",
                     `${player.stats.averageAccuracy}%`,
                     renderLineChart(accuracyValues, chronikRelativeLabels, "%")
                 )}

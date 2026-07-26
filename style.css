@@ -1600,21 +1600,11 @@ box-shadow:
 
 }
 
-.chronik-history-icon {
+.chronik-history-icon{
 
-   width: 46px;
-
-   height: 46px;
-
-   display: grid;
-
-   place-items: center;
-
-   border-radius: 14px;
-
-   background: rgba(255,255,255,0.12);
-
-   font-size: 22px;
+    width:100px;
+    height:100px;
+    object-fit:contain;
 
 }
 
