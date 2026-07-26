@@ -111,45 +111,38 @@
 
     <div class="quest-complete-window">
 
-        <h1 class="complete-main-title">
+        <h1 class="complete-main-title">🏆 Quest abgeschlossen</h1>
 
-            🏆 Quest abgeschlossen
-
-        </h1>
+        <p class="complete-subtitle">Du hast die Quest erfolgreich beendet. Vergleiche deinen Lauf und sieh, ob du einen neuen persönlichen Rekord aufgestellt hast.</p>
 
         <div class="window-divider"></div>
 
-<div class="complete-quest-card">
+        <div class="complete-info">
 
-    <div class="complete-quest-header">
+            <div class="complete-image">
 
-        <img
-            id="completeQuestImage"
-            class="complete-quest-image"
-            alt="Quest">
+                <img id="completeQuestImage" class="complete-quest-image" alt="Quest">
 
-        <div class="complete-quest-title">
+            </div>
 
-            <h2 id="popupKapitel"></h2>
+            <div class="complete-meta">
 
-            <div class="complete-quest-meta">
+                <h2 id="popupKapitel"></h2>
 
-                <span>&#128214; <span id="popupWords"></span> W&ouml;rter</span>
+                <div class="complete-quest-meta">
 
-                <span>&#9201; <span id="popupDuration"></span></span>
+                    <span>📖 <strong id="popupWords"></strong> Wörter</span>
 
-                <span>
-                    <strong id="popupDifficulty"></strong>
-                    Schwierigkeit
-                </span>
+                    <span>⏱ <strong id="popupDuration"></strong></span>
+
+                    <span><strong id="popupDifficulty"></strong> Schwierigkeit</span>
+
+                </div>
 
             </div>
 
         </div>
 
-    </div>
-
-</div>
         <div class="complete-stats">
 
             <div class="stat">
@@ -188,25 +181,15 @@
 
         <div class="comparison-section">
 
-    <h3 class="comparison-title">
+            <h3 class="comparison-title">📊 Persönlicher Vergleich</h3>
 
-        📊 Persönlicher Vergleich
+            <div id="recordSummary" class="record-summary"></div>
 
-    </h3>
+            <div id="recordContainer" class="record-container"></div>
 
-    <div
-        id="recordContainer"
-        class="record-container">
+        </div>
 
-    </div>
-
-</div>
-
-        <button id="weiterButton">
-
-            🗺️ Zur Weltkarte
-
-        </button>
+        <button id="weiterButton">🗺️ Zur Weltkarte</button>
 
     </div>
 

@@ -503,6 +503,7 @@ function showRecordSummary(records){
         document.getElementById("recordContainer");
 
     container.classList.add("active");
+    const summary = document.getElementById("recordSummary");
 
     const bestTime =
         records.oldBestTime === null
@@ -526,30 +527,11 @@ function showRecordSummary(records){
     const currentSeconds =
         String(records.newTime % 60).padStart(2,"0");
 
-const timeDiff =
-    records.newTime - bestTime;
+const timeDiff = records.newTime - bestTime;
+const accuracyDiff = Number((records.newAccuracy - bestAccuracy).toFixed(1));
 
-const accuracyDiff =
-    Number(
-        (
-            records.newAccuracy -
-            bestAccuracy
-        ).toFixed(1)
-    );
-
-const timeColor =
-    timeDiff < 0
-        ? "#2aa84a"
-        : timeDiff > 0
-            ? "#cc4040"
-            : "#777";
-
-const accuracyColor =
-    accuracyDiff > 0
-        ? "#2aa84a"
-        : accuracyDiff < 0
-            ? "#cc4040"
-            : "#777";
+const timeColor = timeDiff < 0 ? "#2aa84a" : timeDiff > 0 ? "#cc4040" : "#f1e0a1";
+const accuracyColor = accuracyDiff > 0 ? "#2aa84a" : accuracyDiff < 0 ? "#cc4040" : "#f1e0a1";
 
 
 container.innerHTML = `
