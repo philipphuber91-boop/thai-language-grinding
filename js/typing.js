@@ -113,21 +113,33 @@ function animateTimeValue(element, startSeconds, endSeconds, duration = 1200) {
     return animateNumber(element, startSeconds, endSeconds, duration, value => formatTime(Math.round(value)));
 }
 
-function waitForTransition(element, propertyName = "opacity") {
+function waitForTransition(element, propertyName = "opacity", timeout = 600) {
     return new Promise(resolve => {
+        let finished = false;
+
+        const cleanup = () => {
+            if (finished) {
+                return;
+            }
+            finished = true;
+            element.removeEventListener("transitionend", onTransitionEnd);
+            clearTimeout(timeoutId);
+            resolve();
+        };
+
         const onTransitionEnd = event => {
             if (event.target === element && event.propertyName === propertyName) {
-                element.removeEventListener("transitionend", onTransitionEnd);
-                resolve();
+                cleanup();
             }
         };
 
+        const timeoutId = setTimeout(cleanup, timeout);
         element.addEventListener("transitionend", onTransitionEnd);
     });
 }
 
 function hideCompletionSections() {
-    [completeInfo, completeStats, comparisonSection, weiterButton].forEach(el => {
+    [completeInfo, completeStats, comparisonSection].forEach(el => {
         if (!el) return;
         el.classList.remove("animated-visible");
     });
@@ -138,8 +150,12 @@ function revealElement(element) {
         return Promise.resolve();
     }
 
-    element.classList.add("animated-visible");
-    return waitForTransition(element);
+    return new Promise(resolve => {
+        requestAnimationFrame(() => {
+            element.classList.add("animated-visible");
+            waitForTransition(element).then(resolve);
+        });
+    });
 }
 
 
@@ -406,7 +422,6 @@ function beendePruefung() {
 
         await revealElement(comparisonSection);
         await animateRecordSummary(newRecords);
-        await revealElement(weiterButton);
     };
 
     completionAnimation();

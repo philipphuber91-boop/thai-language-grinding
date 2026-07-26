@@ -1572,7 +1572,7 @@ box-shadow:
 
 .chronik-history-card {
 
-   background: rgba(255,255,255,0.08);
+   background: rgba(255, 255, 255, 0.08);
 
    border: 2px solid #c9a64d;
 
@@ -1614,7 +1614,7 @@ box-shadow:
 
    font-size: 20px;
 
-   color: #fff9dd;
+   color: #e5b65c;
 
 }
 
@@ -1624,7 +1624,7 @@ box-shadow:
 
    font-weight: 700;
 
-   color: #fff;
+   color: #e5b65c;
 
    margin-bottom: 14px;
 
@@ -1684,7 +1684,7 @@ box-shadow:
 
 .chart-bar {
 
-   fill: #f2ca5c;
+   fill: #6e0b86bb;
 
 }
 
@@ -1692,7 +1692,7 @@ box-shadow:
 
    fill: none;
 
-   stroke: #f2ca5c;
+   stroke: #48eb48b4;
 
    stroke-width: 3;
 
@@ -1704,7 +1704,7 @@ box-shadow:
 
 .chart-dot {
 
-   fill: #f8e696;
+   fill: #099e11;
 
    stroke: #ffffff;
 
@@ -2840,8 +2840,7 @@ padding:28px 34px;
 
 .complete-info,
 .complete-stats,
-.comparison-section,
-#weiterButton{
+.comparison-section{
 
     opacity:0;
 
@@ -3173,7 +3172,7 @@ padding:28px 34px;
 
 #weiterButton{
     display:block;
-    width:min(460px, 90%);
+    width:min(340px, 90%);
     margin:10px auto 0;
     padding:10px 26px;
     border:1px solid #f1bf3e;

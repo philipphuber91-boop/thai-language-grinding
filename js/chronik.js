@@ -423,7 +423,7 @@ function renderChronikRecords(){
     
     <section class="chronik-history-panel">
 
-            <h2 class="chronik-section-title">Verlauf</h2>
+            
 
             <div class="chronik-history-grid">
 
@@ -493,24 +493,21 @@ function renderChronikStats(){
 
     <div class="main-stat-grid">
 
+       <div class="stat-image-card">
 
-
-        <div class="stat-image-card">
-
-            <img src="../assets/ui/chronik/stat-quests.png">
+            <img src="../assets/ui/chronik/stat-time.png">
 
             <h3>
-                Quests
+                Gesamtspielzeit
             </h3>
 
             <div class="stat-overlay-value">
 
-                ${player.stats.completedQuests}
+                ${formatTime(player.stats.totalTime)}
 
             </div>
 
         </div>
-
 
 
         <div class="stat-image-card">
@@ -601,23 +598,26 @@ function renderChronikStats(){
 
         </div>
 
-
-
+        
         <div class="stat-image-card">
 
-            <img src="../assets/ui/chronik/stat-time.png">
+            <img src="../assets/ui/chronik/stat-quests.png">
 
             <h3>
-                Gesamtspielzeit
+                Quests
             </h3>
 
             <div class="stat-overlay-value">
 
-                ${formatTime(player.stats.totalTime)}
+                ${player.stats.completedQuests}
 
             </div>
 
         </div>
+
+
+
+ 
 
 
 
