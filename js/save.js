@@ -18,6 +18,12 @@ function loadPlayer() {
 
     };
 
+    if (!player.stats.history || !Array.isArray(player.stats.history.daily)) {
+
+        player.stats.history = { daily: [] };
+
+    }
+    
     savePlayer();
 
     

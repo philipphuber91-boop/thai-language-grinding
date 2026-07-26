@@ -1549,6 +1549,177 @@ box-shadow:
     color:#ffe7b3;
 
     margin-top:20px;
+
+}
+
+.chronik-history-panel {
+
+   margin-top: 30px;
+
+}
+
+.chronik-history-grid {
+
+   display: grid;
+
+   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+   gap: 20px;
+
+   margin-top: 20px;
+
+}
+
+.chronik-history-card {
+
+   background: rgba(255,255,255,0.08);
+
+   border: 2px solid #c9a64d;
+
+   border-radius: 18px;
+
+   padding: 22px;
+
+   color: #f5e2b0;
+
+   box-shadow: 0 12px 28px rgba(0,0,0,.26);
+
+}
+
+.chronik-history-card-header {
+
+   display: flex;
+
+   justify-content: space-between;
+
+   align-items: center;
+
+   gap: 12px;
+
+   margin-bottom: 18px;
+
+}
+
+.chronik-history-icon {
+
+   width: 46px;
+
+   height: 46px;
+
+   display: grid;
+
+   place-items: center;
+
+   border-radius: 14px;
+
+   background: rgba(255,255,255,0.12);
+
+   font-size: 22px;
+
+}
+
+.chronik-history-card h3 {
+
+   margin: 0;
+
+   font-size: 20px;
+
+   color: #fff9dd;
+
+}
+
+.chronik-history-big-number {
+
+   font-size: 2rem;
+
+   font-weight: 700;
+
+   color: #fff;
+
+   margin-bottom: 14px;
+
+   line-height: 1.1;
+
+}
+
+.chronik-chart-wrapper {
+
+   min-height: 260px;
+
+}
+
+.chart-svg {
+
+   width: 100%;
+
+   height: 100%;
+
+   display: block;
+
+   overflow: visible;
+
+}
+
+.chart-axis-path {
+
+   fill: none;
+
+   stroke: rgba(255,230,165,.7);
+
+   stroke-width: 1.5;
+
+}
+
+.chart-grid-line {
+
+   fill: none;
+
+   stroke: rgba(255,255,255,.12);
+
+   stroke-width: 1;
+
+}
+
+.chart-axis-text,
+.chart-label,
+.chart-axis-label {
+
+   fill: #f3e2b3;
+
+   font-size: 11px;
+
+   font-family: sans-serif;
+
+}
+
+.chart-bar {
+
+   fill: #f2ca5c;
+
+}
+
+.chart-line {
+
+   fill: none;
+
+   stroke: #f2ca5c;
+
+   stroke-width: 3;
+
+   stroke-linecap: round;
+
+   stroke-linejoin: round;
+
+}
+
+.chart-dot {
+
+   fill: #f8e696;
+
+   stroke: #ffffff;
+
+   stroke-width: 1.5;
+
 }
 
 /* ==========================

@@ -23,7 +23,13 @@ stats: {
 
     // Genauigkeit
     bestAccuracy: 0,
-    averageAccuracy: 0
+    averageAccuracy: 0,
+
+    history: {
+
+        daily: []
+
+    }
 
 }
 
