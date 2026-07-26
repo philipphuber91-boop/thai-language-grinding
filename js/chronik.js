@@ -72,48 +72,24 @@ function getChronikHistoryEntries() {
         : [];
 
 
-    if (historyEntries.length > 0) {
-
         return historyEntries.map(entry => ({
 
             date: entry.date || "",
 
-            totalMinutes: Number(entry.totalMinutes ?? 0),
+                    totalMinutes: Number(
+            entry.totalMinutes ??
+            Math.round((entry.playTime ?? 0) / 60)
+        ),
 
-            averageCPM: Number(entry.averageCPM ?? 0),
+                    averageCPM: Number(
+            entry.averageCPM ?? entry.averageCpm ?? 0
+        ),
 
-            accuracy: Number(entry.accuracy ?? 0)
-
-        }));
-
-    }
-
-
-    const today = new Date();
-
-    const monday = getMonday(today);
-
-    const dummyEntries = [];
-
-    for (let index = 0; index < chronikWeekdayLabels.length; index++) {
-
-        dummyEntries.push({
-
-            date: addDays(toIsoDate(monday), index),
-
-            totalMinutes: 25 + index * 6,
-
-            averageCPM: 80 + index * 4,
-
-            accuracy: Math.min(100, 88 + Math.round(index * 1.5))
-
-        });
-
-    }
-
-
-    return dummyEntries;
-
+ 
+accuracy: Number(
+            entry.accuracy ?? entry.averageAccuracy ?? 0
+        )
+    }));
 }
 
 function toIsoDate(date) {
@@ -198,11 +174,11 @@ function getChronikRelativeSeries(entries) {
 
 function renderBarChart(values, xLabels, yAxisLabel) {
 
-    const width = 360;
+    const width = 320;
 
-    const height = 220;
+    const height = 200;
 
-    const padding = { top: 20, right: 20, bottom: 42, left: 36 };
+    const padding = { top: 18, right: 18, bottom: 36, left: 30 };
 
     const maxValue = Math.max(...values, 10);
 
@@ -273,11 +249,11 @@ function renderBarChart(values, xLabels, yAxisLabel) {
 
 function renderLineChart(values, xLabels, yAxisLabel) {
 
-    const width = 360;
+    const width = 320;
 
-    const height = 220;
+    const height = 200;
 
-    const padding = { top: 20, right: 20, bottom: 42, left: 36 };
+    const padding = { top: 18, right: 18, bottom: 36, left: 30 };
 
     const maxValue = Math.max(...values, 10);
 

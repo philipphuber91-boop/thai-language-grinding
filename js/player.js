@@ -116,6 +116,76 @@ repetition: {
 
 }
 
+function updateDailyHistory(zeit, cpm, accuracy, zeichen) {
+ 
+    if (!player.stats.history || !Array.isArray(player.stats.history.daily)) {
+ 
+        player.stats.history = { daily: [] };
+ 
+    }
+ 
+    const today = getToday();
+ 
+    let entry = player.stats.history.daily.find(
+ 
+        day => day.date === today
+ 
+    );
+ 
+    if (!entry) {
+ 
+        entry = {
+ 
+            date: today,
+ 
+            quests: 0,
+ 
+            playTime: 0,
+ 
+            typedCharacters: 0,
+ 
+            averageCPM: 0,
+ 
+            averageAccuracy: 0
+ 
+        };
+ 
+        player.stats.history.daily.push(entry);
+ 
+    }
+ 
+    entry.quests = Number(entry.quests ?? 0) + 1;
+ 
+    entry.playTime = Number(entry.playTime ?? 0) + zeit;
+ 
+    entry.typedCharacters = Number(entry.typedCharacters ?? 0) + zeichen;
+ 
+    entry.averageCPM = Number(
+ 
+        (
+ 
+            (entry.averageCPM * (entry.quests - 1) + cpm) /
+ 
+            entry.quests
+ 
+        ).toFixed(1)
+ 
+    );
+ 
+    entry.averageAccuracy = Number(
+ 
+        (
+ 
+            (entry.averageAccuracy * (entry.quests - 1) + accuracy) /
+ 
+            entry.quests
+ 
+        ).toFixed(1)
+ 
+    );
+ 
+}
+ 
 function updatePlayerStats(zeit, cpm, accuracy, zeichen) {
 
     player.stats.totalAttempts++;
@@ -157,6 +227,8 @@ function updatePlayerStats(zeit, cpm, accuracy, zeichen) {
 
     }
 
+    updateDailyHistory(zeit, cpm, accuracy, zeichen);
+ 
     savePlayer();
 
     updateAchievements();
