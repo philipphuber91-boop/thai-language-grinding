@@ -76,11 +76,71 @@ const popupKapitel =
     document.getElementById("popupKapitel");
 
 const popupAccuracy = document.getElementById("popupAccuracy");
-const popupWords = document.getElementById("popupWords");
-const popupDuration = document.getElementById("popupDuration");
-const popupDifficulty = document.getElementById("popupDifficulty");
 
 const weiterButton = document.getElementById("weiterButton");
+
+const completeInfo = document.querySelector(".complete-info");
+const completeStats = document.querySelector(".complete-stats");
+const comparisonSection = document.querySelector(".comparison-section");
+
+function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const secs = String(seconds % 60).padStart(2, "0");
+    return `${minutes}:${secs}`;
+}
+
+function animateNumber(element, start, end, duration = 1200, formatter = value => String(Math.round(value))) {
+    return new Promise(resolve => {
+        const startTime = performance.now();
+
+        const step = currentTime => {
+            const progress = Math.min(1, (currentTime - startTime) / duration);
+            const value = start + (end - start) * progress;
+            element.textContent = formatter(value);
+
+            if (progress < 1) {
+                requestAnimationFrame(step);
+            } else {
+                resolve();
+            }
+        };
+
+        requestAnimationFrame(step);
+    });
+}
+
+function animateTimeValue(element, startSeconds, endSeconds, duration = 1200) {
+    return animateNumber(element, startSeconds, endSeconds, duration, value => formatTime(Math.round(value)));
+}
+
+function waitForTransition(element, propertyName = "opacity") {
+    return new Promise(resolve => {
+        const onTransitionEnd = event => {
+            if (event.target === element && event.propertyName === propertyName) {
+                element.removeEventListener("transitionend", onTransitionEnd);
+                resolve();
+            }
+        };
+
+        element.addEventListener("transitionend", onTransitionEnd);
+    });
+}
+
+function hideCompletionSections() {
+    [completeInfo, completeStats, comparisonSection, weiterButton].forEach(el => {
+        if (!el) return;
+        el.classList.remove("animated-visible");
+    });
+}
+
+function revealElement(element) {
+    if (!element) {
+        return Promise.resolve();
+    }
+
+    element.classList.add("animated-visible");
+    return waitForTransition(element);
+}
 
 
 const questTitel = document.getElementById("questTitel");
@@ -307,39 +367,49 @@ function beendePruefung() {
     accuracyAnzeigeElement.textContent = accuracy + "%";
 
     popupKapitel.textContent = daten[aktuelleQuest].titel;
-    popupWords.textContent = daten[aktuelleQuest].woerter;
-    popupDuration.textContent = zeitAnzeige;
-    popupDifficulty.textContent = daten[aktuelleQuest].schwierigkeit;
 
     const completeQuestImage =
-    document.getElementById("completeQuestImage");
+        document.getElementById("completeQuestImage");
 
-if(daten[aktuelleQuest].bild){
+    if (daten[aktuelleQuest].bild) {
+        completeQuestImage.src =
+            "../assets/quest/" +
+            daten[aktuelleQuest].bild +
+            ".png";
+    }
 
-    completeQuestImage.src =
-        "../assets/quest/" +
-        daten[aktuelleQuest].bild +
-        ".png";
+    popupZeit.textContent = "00:00";
+    popupCPM.textContent = "0";
+    popupAccuracy.textContent = "0%";
 
-}
+    const newRecords = completeQuest(
+        questStatsId,
+        sekunden,
+        Number(cpm),
+        Number(accuracy),
+        gesamtZeichen
+    );
 
-    popupZeit.textContent = zeitAnzeige;
-    popupCPM.textContent = cpm;
-    popupAccuracy.textContent = accuracy + "%";
+    showRecordSummary(newRecords);
+    hideCompletionSections();
+    popup.classList.add("active");
 
-const newRecords = completeQuest(
+    const completionAnimation = async () => {
+        await revealElement(completeInfo);
+        await revealElement(completeStats);
 
-    questStatsId,
-    sekunden,
-    Number(cpm),
-    Number(accuracy),
-    gesamtZeichen
+        await Promise.all([
+            animateTimeValue(popupZeit, 0, sekunden, 1300),
+            animateNumber(popupCPM, 0, Number(cpm), 1300, value => value.toFixed(1)),
+            animateNumber(popupAccuracy, 0, Number(accuracy), 1300, value => `${value.toFixed(1)}%`),
+        ]);
 
-);
+        await revealElement(comparisonSection);
+        await animateRecordSummary(newRecords);
+        await revealElement(weiterButton);
+    };
 
-showRecordSummary(newRecords);
-
-popup.classList.add("active");
+    completionAnimation();
 
 }
 
@@ -503,7 +573,6 @@ function showRecordSummary(records){
         document.getElementById("recordContainer");
 
     container.classList.add("active");
-    const summary = document.getElementById("recordSummary");
 
     const bestTime =
         records.oldBestTime === null
@@ -515,18 +584,6 @@ function showRecordSummary(records){
             ? records.newAccuracy
             : records.oldBestAccuracy;
 
-    const bestMinutes =
-        Math.floor(bestTime / 60);
-
-    const bestSeconds =
-        String(bestTime % 60).padStart(2,"0");
-
-    const currentMinutes =
-        Math.floor(records.newTime / 60);
-
-    const currentSeconds =
-        String(records.newTime % 60).padStart(2,"0");
-
 const timeDiff = records.newTime - bestTime;
 const accuracyDiff = Number((records.newAccuracy - bestAccuracy).toFixed(1));
 
@@ -534,110 +591,21 @@ const timeColor = timeDiff < 0 ? "#2aa84a" : timeDiff > 0 ? "#cc4040" : "#f1e0a1
 const accuracyColor = accuracyDiff > 0 ? "#2aa84a" : accuracyDiff < 0 ? "#cc4040" : "#f1e0a1";
 
 
-container.innerHTML = `
-
-<div class="compare-table">
-
-    <div class="compare-header compare-empty"></div>
-    <div class="compare-header">🏆 Persönlicher Rekord</div>
-    <div class="compare-header">⚔ Aktueller Lauf</div>
-    <div class="compare-header">⭐ Ergebnis</div>
-
-    <div class="compare-icon">
-
-        ⏱ ZEIT
-
-    </div>
-
-    <div class="compare-value">
-
-        ${bestMinutes}:${bestSeconds}
-
-    </div>
-
-    <div class="compare-value">
-
-        ${currentMinutes}:${currentSeconds}
-
-    </div>
-
-    <div
-        class="compare-result"
-        style="color:${timeColor}">
-
-        ${
-            timeDiff < 0
-
-                ? `🟢 Neuer Rekord! (${Math.abs(timeDiff)} Sek.)`
-
-                : timeDiff > 0
-
-                    ? `+${timeDiff} Sek.`
-
-                    : "Gleich schnell"
-
-        }
-
-    </div>
-
-    <div class="compare-icon">
-
-        🎯 GENAUIGKEIT
-
-    </div>
-
-    <div class="compare-value">
-
-        ${bestAccuracy} %
-
-    </div>
-
-    <div class="compare-value">
-
-        ${records.newAccuracy} %
-
-    </div>
-
-    <div
-        class="compare-result"
-        style="color:${accuracyColor}">
-
-        ${
-            accuracyDiff > 0
-
-                ? "⭐ Neuer Rekord!"
-
-                : accuracyDiff < 0
-
-                    ? `${accuracyDiff}%`
-
-                    : "Unverändert"
-
-        }
-
-    </div>
-
-</div>
-
-`;
-
-    // Zwei separate Vergleichszeilen sind auf einen Blick lesbarer als
     // eine gemeinsame Tabelle. Die Berechnungen oberhalb werden weiterverwendet.
     container.innerHTML = `
-
         <div class="record-row">
             <div class="record-label">&#9201; ZEIT</div>
             <div class="record-cell">
                 <span class="record-heading">&#127942; Pers&ouml;nlicher Rekord</span>
-                <strong>${bestMinutes}:${bestSeconds}</strong>
+                <strong id="bestTimeValue">${formatTime(0)}</strong>
             </div>
             <div class="record-cell">
                 <span class="record-heading">&#9876; Aktueller Lauf</span>
-                <strong>${currentMinutes}:${currentSeconds}</strong>
+                <strong id="currentTimeValue">${formatTime(0)}</strong>
             </div>
             <div class="record-cell record-result" style="color:${timeColor}">
                 <span class="record-heading">&#10024; Ergebnis</span>
-                <strong>${
+                <strong id="timeResultText">${
                     timeDiff < 0
                         ? `Neuer Rekord! (-${Math.abs(timeDiff)} Sek.)`
                         : timeDiff > 0
@@ -651,15 +619,15 @@ container.innerHTML = `
             <div class="record-label">&#127919; GENAUIGKEIT</div>
             <div class="record-cell">
                 <span class="record-heading">&#127942; Pers&ouml;nlicher Rekord</span>
-                <strong>${bestAccuracy} %</strong>
+                <strong id="bestAccuracyValue">0 %</strong>
             </div>
             <div class="record-cell">
                 <span class="record-heading">&#9876; Aktueller Lauf</span>
-                <strong>${records.newAccuracy} %</strong>
+                <strong id="currentAccuracyValue">0 %</strong>
             </div>
             <div class="record-cell record-result" style="color:${accuracyColor}">
                 <span class="record-heading">&#10024; Ergebnis</span>
-                <strong>${
+                <strong id="accuracyResultText">${
                     accuracyDiff > 0
                         ? "Neuer Rekord!"
                         : accuracyDiff < 0
@@ -668,9 +636,57 @@ container.innerHTML = `
                 }</strong>
             </div>
         </div>
-
     `;
 
+    return {
+        bestTime,
+        bestAccuracy,
+        timeDiff,
+        accuracyDiff,
+        timeColor,
+        accuracyColor,
+        records,
+    };
+
+}
+
+function animateRecordSummary(records) {
+    const bestTimeValue = document.getElementById("bestTimeValue");
+    const currentTimeValue = document.getElementById("currentTimeValue");
+    const bestAccuracyValue = document.getElementById("bestAccuracyValue");
+    const currentAccuracyValue = document.getElementById("currentAccuracyValue");
+    const timeResultText = document.getElementById("timeResultText");
+    const accuracyResultText = document.getElementById("accuracyResultText");
+
+    const bestTime = records.oldBestTime === null ? records.newTime : records.oldBestTime;
+    const bestAccuracy = records.oldBestAccuracy === null ? records.newAccuracy : records.oldBestAccuracy;
+    const timeDiff = records.newTime - bestTime;
+    const accuracyDiff = Number((records.newAccuracy - bestAccuracy).toFixed(1));
+
+    const animatePromises = [
+        bestTimeValue ? animateTimeValue(bestTimeValue, 0, bestTime, 1200) : Promise.resolve(),
+        currentTimeValue ? animateTimeValue(currentTimeValue, 0, records.newTime, 1200) : Promise.resolve(),
+        bestAccuracyValue ? animateNumber(bestAccuracyValue, 0, bestAccuracy, 1200, value => `${value.toFixed(1)}%`) : Promise.resolve(),
+        currentAccuracyValue ? animateNumber(currentAccuracyValue, 0, records.newAccuracy, 1200, value => `${value.toFixed(1)}%`) : Promise.resolve(),
+    ];
+
+    return Promise.all(animatePromises).then(() => {
+        if (timeResultText) {
+            timeResultText.textContent = timeDiff < 0
+                ? `Neuer Rekord! (-${Math.abs(timeDiff)} Sek.)`
+                : timeDiff > 0
+                    ? `+${timeDiff} Sek.`
+                    : "Gleich schnell";
+        }
+
+        if (accuracyResultText) {
+            accuracyResultText.textContent = accuracyDiff > 0
+                ? "Neuer Rekord!"
+                : accuracyDiff < 0
+                    ? `${accuracyDiff}%`
+                    : "Unverändert";
+        }
+    });
 }
 
 document.addEventListener("pointerdown", function () {
