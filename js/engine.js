@@ -378,6 +378,8 @@ function switchContent(mode) {
 
         case "campaign":
 
+            document.getElementById("achievementContainer").style.display = "none";
+
             document.getElementById("questListe").style.display = "block";
 
             document.getElementById("chronikContainer").style.display = "none";
@@ -385,11 +387,12 @@ function switchContent(mode) {
             ladeKarten();
 
             break;
-
 
 
         case "missions":
 
+            document.getElementById("achievementContainer").style.display = "none";
+
             document.getElementById("questListe").style.display = "block";
 
             document.getElementById("chronikContainer").style.display = "none";
@@ -397,7 +400,6 @@ function switchContent(mode) {
             ladeKarten();
 
             break;
-
 
 case "achievements":
 
