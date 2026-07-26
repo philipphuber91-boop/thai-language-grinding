@@ -70,12 +70,8 @@
 ========================================================= */
 
 body{
-    background:
-        radial-gradient(circle at top,
-            #2d1b11 0%,
-            #1a120d 45%,
-            #100c09 100%);
-            zoom: 0.8;
+    background:#1a120d;
+    zoom:0.8;
 }
 
 
@@ -3732,16 +3728,9 @@ margin:26px auto 0;
 
 #chronikPage {
 
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:30px;
-
+    padding-top: 20px;
 
 }
-
 
 .chronikGrid {
 
@@ -3815,16 +3804,11 @@ margin:26px auto 0;
 /* ========================= */
 
 
-#chronikPage {
-
-    width:100%;
-
-}
 
 
 #chronikHeader {
 
-    margin-bottom:40px;
+ margin-bottom: 60px;
 
 }
 
@@ -4056,5 +4040,144 @@ margin:26px auto 0;
 .profile-info p {
 
     margin:8px 0;
+
+}
+
+.chronik-main-stats {
+
+    display:grid;
+
+    grid-template-columns: repeat(6, 1fr);
+
+    gap:15px;
+
+    max-width:1400px;
+
+}
+
+
+
+.chronik-stat-card {
+
+    position:relative;
+
+    width:100%;
+
+}
+
+
+.chronik-stat-card img {
+
+    width:100%;
+
+    max-width:220px;
+
+    display:block;
+
+}
+
+
+.chronik-stat-image {
+
+    width:180px;
+
+    height:auto;
+
+}
+
+.chronik-main-stats {
+
+    display:flex;
+
+    gap:15px;
+
+    justify-content:center;
+
+}
+
+.main-stat-grid {
+
+    display:grid;
+
+    grid-template-columns:repeat(7, 1fr);
+
+    gap:15px;
+
+}
+
+
+.stat-image-card {
+
+    position:relative;
+
+    text-align:center;
+
+}
+
+
+.stat-image-card h3 {
+
+    position:absolute;
+
+    top:20px;
+
+    left:0;
+
+    width:100%;
+
+    text-align:center;
+
+    color:#e5b65c;
+
+    font-family:Georgia, serif;
+
+    font-size:18px;
+
+}
+
+
+.stat-overlay-value {
+
+    position:absolute;
+
+    bottom:60px;
+
+    left:0;
+
+    width:100%;
+
+    text-align:center;
+
+    color:#e5b65c;
+
+    font-family:Georgia, serif;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+
+.stat-image-card img {
+
+    width:100%;
+
+    display:block;
+
+}
+
+#cancelQuestButton {
+
+    margin-top:20px;
+
+}
+
+.chronik-title-image {
+
+    width: 400px;
+
+    height: auto;
+
+    display: block;
 
 }

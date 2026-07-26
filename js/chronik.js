@@ -41,22 +41,15 @@ content.innerHTML = `
 <div id="chronikPage">
 
 
-    <div id="chronikHeader">
+<div id="chronikHeader">
 
-        <h1>
-            📜 Chronik
-        </h1>
+    <img 
+        src="../assets/ui/chronik/chronik-title.png"
+        class="chronik-title-image"
+        alt="Chronik">
 
-        <p>
-            Deine Reise als Sprachschüler
-        </p>
-
-    </div>
-
+</div>
     
-
-
-
     <div id="chronikProfile"></div>
 
 
@@ -125,82 +118,7 @@ function renderChronikProfile(){
     const minutes = Math.floor(
         (player.stats.totalTime % 3600) / 60
     );
-
-
-container.innerHTML = `
-
-<div class="chronik-profile-card">
-
-
-    <div class="profile-avatar">
-
-        🇹🇭
-
-    </div>
-
-
-
-    <div class="profile-info">
-
-
-        <h2>
-            ${player.name || "Flipu"}
-        </h2>
-
-
-        <p>
-            Level ${player.stats.level}
-        </p>
-
-
-        <p>
-            XP ${player.stats.xp}
-        </p>
-
-
-        <p>
-            ⏳ ${hours} Std. ${minutes} Min.
-        </p>
-
-
-    </div>
-
-
-
-    <div class="profile-mini-stat">
-
-
-        <div class="stat-icon">
-
-            ⚔
-
-        </div>
-
-
-        <h3>
-
-            Quests
-
-        </h3>
-
-
-        <strong>
-
-            ${player.stats.completedQuests}
-
-        </strong>
-
-
-    </div>
-
-
-
-</div>
-
-`;
-
 }
-
 function renderChronikStats(){
 
     const container =
@@ -215,116 +133,134 @@ function renderChronikStats(){
     container.innerHTML = `
 
 
-    <h2 class="chronik-section-title">
-
-        📖 Deine Reise
-
-    </h2>
+    <div class="main-stat-grid">
 
 
-<div class="chronikGrid">
 
+        <div class="stat-image-card">
 
-<div class="chronik-panel stat-box">
-
-<div class="stat-icon">
-⚡
-</div>
-
-<h3>
-Bestes Tempo
-</h3>
-
-<strong>
-${player.stats.bestCPM} CPM
-</strong>
-
-</div>
-
-        <div class="chronik-panel stat-box">
-
-            <div class="stat-icon">
-                ⚔
-            </div>
+            <img src="../assets/ui/chronik/stat-quests.png">
 
             <h3>
-                Quests gemeistert
+                Quests
             </h3>
 
-            <strong>
+            <div class="stat-overlay-value">
+
                 ${player.stats.completedQuests}
-            </strong>
+
+            </div>
 
         </div>
 
 
-<div class="chronik-panel stat-box">
 
-<div class="stat-icon">
-🎯
-</div>
+        <div class="stat-image-card">
 
-<h3>
-Beste Genauigkeit
-</h3>
+            <img src="../assets/ui/chronik/stat-characters.png">
 
-<strong>
-${player.stats.bestAccuracy}%
-</strong>
+            <h3>
+                Getippte Zeichen
+            </h3>
 
-</div>
+            <div class="stat-overlay-value">
 
+                ${player.stats.totalCharacters}
 
-<div class="chronik-panel stat-box">
-
-<div class="stat-icon">
-📈
-</div>
-
-<h3>
-Durchschnitt Tempo
-</h3>
-
-<strong>
-${player.stats.averageCPM || 0} CPM
-</strong>
-
-</div>
-
-
-<div class="chronik-panel stat-box">
-
-<div class="stat-icon">
-🎯
-</div>
-
-<h3>
-Durchschnitt Genauigkeit
-</h3>
-
-<strong>
-${player.stats.averageAccuracy || 0}%
-</strong>
-
-</div>
-
-
-
-        <div class="chronik-panel stat-box">
-
-            <div class="stat-icon">
-                🔄
             </div>
+
+        </div>
+
+
+
+        <div class="stat-image-card">
+
+            <img src="../assets/ui/chronik/stat-bestcpm.png">
+
+            <h3>
+                Bestes Tempo
+            </h3>
+
+            <div class="stat-overlay-value">
+
+                ${player.stats.bestCPM} CPM
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-image-card">
+
+            <img src="../assets/ui/chronik/stat-averagecpm.png">
+
+            <h3>
+                Ø  Tempo
+            </h3>
+
+            <div class="stat-overlay-value">
+
+                ${player.stats.averageCPM} CPM
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-image-card">
+
+            <img src="../assets/ui/chronik/stat-accuracy.png">
+
+            <h3>
+                Ø   Genauigkeit 
+            </h3>
+
+            <div class="stat-overlay-value">
+
+                ${player.stats.averageAccuracy}%
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-image-card">
+
+            <img src="../assets/ui/chronik/stat-attempts.png">
 
             <h3>
                 Versuche
             </h3>
 
-            <strong>
+            <div class="stat-overlay-value">
+
                 ${player.stats.totalAttempts}
-            </strong>
+
+            </div>
 
         </div>
+
+
+
+        <div class="stat-image-card">
+
+            <img src="../assets/ui/chronik/stat-time.png">
+
+            <h3>
+                Gesamtspielzeit
+            </h3>
+
+            <div class="stat-overlay-value">
+
+                ${formatTime(player.stats.totalTime)}
+
+            </div>
+
+        </div>
+
 
 
     </div>
