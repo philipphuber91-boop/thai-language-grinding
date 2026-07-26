@@ -605,13 +605,7 @@ const accuracyColor = accuracyDiff > 0 ? "#2aa84a" : accuracyDiff < 0 ? "#cc4040
             </div>
             <div class="record-cell record-result" style="color:${timeColor}">
                 <span class="record-heading">&#10024; Ergebnis</span>
-                <strong id="timeResultText">${
-                    timeDiff < 0
-                        ? `Neuer Rekord! (-${Math.abs(timeDiff)} Sek.)`
-                        : timeDiff > 0
-                            ? `+${timeDiff} Sek.`
-                            : "Gleich schnell"
-                }</strong>
+                <strong id="timeResultText" class="result-hidden"></strong>
             </div>
         </div>
 
@@ -627,13 +621,7 @@ const accuracyColor = accuracyDiff > 0 ? "#2aa84a" : accuracyDiff < 0 ? "#cc4040
             </div>
             <div class="record-cell record-result" style="color:${accuracyColor}">
                 <span class="record-heading">&#10024; Ergebnis</span>
-                <strong id="accuracyResultText">${
-                    accuracyDiff > 0
-                        ? "Neuer Rekord!"
-                        : accuracyDiff < 0
-                            ? `${accuracyDiff}%`
-                            : "Unver&auml;ndert"
-                }</strong>
+                <strong id="accuracyResultText" class="result-hidden"></strong>
             </div>
         </div>
     `;
@@ -677,6 +665,8 @@ function animateRecordSummary(records) {
                 : timeDiff > 0
                     ? `+${timeDiff} Sek.`
                     : "Gleich schnell";
+            timeResultText.classList.remove("result-hidden");
+            timeResultText.classList.add("result-visible");
         }
 
         if (accuracyResultText) {
@@ -685,6 +675,8 @@ function animateRecordSummary(records) {
                 : accuracyDiff < 0
                     ? `${accuracyDiff}%`
                     : "Unverändert";
+            accuracyResultText.classList.remove("result-hidden");
+            accuracyResultText.classList.add("result-visible");
         }
     });
 }
