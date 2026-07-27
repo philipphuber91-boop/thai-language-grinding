@@ -79,14 +79,83 @@ const popupAccuracy = document.getElementById("popupAccuracy");
 
 const weiterButton = document.getElementById("weiterButton");
 
+const activityStatusElement = document.getElementById("activityStatus");
+const afkOverlay = document.getElementById("afkOverlay");
+const afkCountdown = document.getElementById("afkCountdown");
+const resumeAfkButton = document.getElementById("resumeAfkButton");
+
 const completeInfo = document.querySelector(".complete-info");
 const completeStats = document.querySelector(".complete-stats");
 const comparisonSection = document.querySelector(".comparison-section");
+
+ActivityManager.onStatusChange = updateActivityStatus;
+ActivityManager.onAfkDialogOpen = showAfkOverlay;
+ActivityManager.onAfkDialogClose = hideAfkOverlay;
+ActivityManager.onAutoAbort = handleAutoAbort;
+
+updateActivityStatus();
 
 function formatTime(seconds) {
     const minutes = Math.floor(seconds / 60);
     const secs = String(seconds % 60).padStart(2, "0");
     return `${minutes}:${secs}`;
+}
+
+function formatCountdown(milliseconds) {
+    const totalSeconds = Math.max(0, Math.ceil(milliseconds / 1000));
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
+
+function updateActivityStatus() {
+    if (!activityStatusElement) {
+        return;
+    }
+
+    activityStatusElement.textContent = ActivityManager.getCurrentStatusLabel();
+    activityStatusElement.classList.toggle("afk", ActivityManager.isAFK);
+}
+
+let afkCountdownInterval = null;
+
+function updateAfkCountdown() {
+    if (!afkCountdown) {
+        return;
+    }
+
+    afkCountdown.textContent = formatCountdown(
+        ActivityManager.getAfkRemainingMs()
+    );
+}
+
+function showAfkOverlay() {
+    if (!afkOverlay) {
+        return;
+    }
+
+    updateAfkCountdown();
+    afkOverlay.classList.add("active");
+
+    clearInterval(afkCountdownInterval);
+    afkCountdownInterval = setInterval(updateAfkCountdown, 1000);
+}
+
+function hideAfkOverlay() {
+    if (!afkOverlay) {
+        return;
+    }
+
+    afkOverlay.classList.remove("active");
+    clearInterval(afkCountdownInterval);
+    afkCountdownInterval = null;
+}
+
+function handleAutoAbort() {
+    hideAfkOverlay();
+    ActivityManager.stopPlaying();
+    popup.classList.remove("active");
+    window.location.href = "index.html";
 }
 
 function animateNumber(element, start, end, duration = 1200, formatter = value => String(Math.round(value))) {
@@ -336,6 +405,7 @@ function verarbeiteRichtigenBuchstaben() {
 
             if (mode === "learning") {
 
+                ActivityManager.stopPlaying();
                 document
                     .getElementById("examOverlay")
                     .classList.add("active");
@@ -357,10 +427,8 @@ function verarbeiteRichtigenBuchstaben() {
 }
 
 function beendePruefung() {
- 
-    ActivityManager.stopPlaying();
- 
-    const zeit = endZeit - startZeit;
+
+    const zeit = ActivityManager.getActiveTimeMs();
     const sekunden = Math.floor(zeit / 1000);
 
     const minuten = Math.floor(sekunden / 60);
@@ -374,6 +442,8 @@ function beendePruefung() {
         (
             (gesamtZeichen / (gesamtZeichen + fehler)) * 100
         ).toFixed(1);
+
+    ActivityManager.stopPlaying();
 
     const zeitAnzeige =
         String(minuten).padStart(2, "0") +
@@ -449,6 +519,8 @@ function startePruefung() {
 
 function bereitePruefungVor() {
 
+    ActivityManager.stopPlaying();
+
     startZeit = null;
     endZeit = null;
 
@@ -457,6 +529,8 @@ function bereitePruefungVor() {
 
     position = 0;
     aktuelleZeile = 0;
+
+    germanVisible = false;
 
     text = thaiZeilen[0];
 
@@ -481,10 +555,12 @@ eingabe.addEventListener("input", function () {
         return;
     }
 
-    // Erster Tastendruck startet die Zeit
-    startePruefung();
+    if (mode === "exam") {
+        // Erster Tastendruck startet die Zeit
+        startePruefung();
  
-    ActivityManager.registerActivity();
+        ActivityManager.registerActivity();
+    }
  
     // Erwarteter Buchstabe
     const erwartet = text[position];
@@ -555,6 +631,11 @@ toggleGermanButton.addEventListener("click", function () {
 
     eingabe.focus();
 
+});
+
+resumeAfkButton?.addEventListener("click", function () {
+    ActivityManager.registerActivity();
+    eingabe.focus();
 });
 
 

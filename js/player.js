@@ -272,129 +272,272 @@ function formatIsoDate(date) {
 }
  
 const ActivityManager = {
- 
+
     status: "INACTIVE",
- 
+
     activeSince: null,
- 
+
     inactivityTimer: null,
- 
+
+    afkWarningTimer: null,
+
+    afkAbortTimer: null,
+
+    afkStartTime: null,
+
+    afkAccumulatedMs: 0,
+
     inactivityDelay: 5000,
- 
+
+    afkWarningDelay: 2 * 60 * 1000,
+
+    afkAbortDelay: 10 * 60 * 1000,
+
+    onStatusChange: null,
+
+    onAfkDialogOpen: null,
+
+    onAfkDialogClose: null,
+
+    onAutoAbort: null,
+
+    get isPlaying() {
+        return this.status === "PLAYING";
+    },
+
+    get isAFK() {
+        return this.status === "AFK";
+    },
+
+    getActiveTimeMs() {
+        if (this.activeSince !== null && this.status === "PLAYING") {
+            return this.sessionActiveMs + (Date.now() - this.activeSince);
+        }
+
+        return this.sessionActiveMs;
+    },
+
+    getPausedDurationMs() {
+        const currentAfkElapsed = this.afkStartTime
+            ? Date.now() - this.afkStartTime
+            : 0;
+
+        return this.afkAccumulatedMs + currentAfkElapsed;
+    },
+
+    getAfkRemainingMs() {
+        return Math.max(0, this.afkAbortDelay - this.getPausedDurationMs());
+    },
+
+    getCurrentStatusLabel() {
+        return this.status === "AFK" ? "🟡 AFK" : "🟢 Aktiv";
+    },
+
+    sessionActiveMs: 0,
+
     startPlaying() {
- 
+
         if (this.status === "PLAYING") {
- 
             return;
- 
         }
- 
+
         this.status = "PLAYING";
- 
-        this.resumeCounting();
- 
+        this.activeSince = Date.now();
+        this.clearAfkTimers();
+        this.afkStartTime = null;
+        this.afkAccumulatedMs = 0;
+        this.resetInactivityTimer();
+        this.triggerStatusChange();
     },
- 
+
     stopPlaying() {
- 
+
         if (this.activeSince !== null) {
- 
             this.flushActiveTime();
- 
         }
- 
+
+        if (this.afkStartTime !== null) {
+            this.afkAccumulatedMs += Date.now() - this.afkStartTime;
+            this.afkStartTime = null;
+        }
+
         this.status = "INACTIVE";
- 
-        this.clearInactivityTimer();
- 
-    },
- 
-    resumeCounting() {
- 
-        if (this.activeSince === null) {
- 
-            this.activeSince = Date.now();
- 
-        }
- 
-        this.resetInactivityTimer();
- 
-    },
- 
-    pauseCounting() {
- 
-        if (this.activeSince !== null) {
- 
-            this.flushActiveTime();
- 
-            this.activeSince = null;
- 
-        }
- 
-        this.clearInactivityTimer();
- 
-    },
- 
-    registerActivity() {
- 
-        if (this.status !== "PLAYING") {
- 
-            return;
- 
-        }
- 
-        if (this.activeSince === null) {
- 
-            this.activeSince = Date.now();
- 
-        }
- 
-        this.resetInactivityTimer();
- 
-    },
- 
-    resetInactivityTimer() {
- 
-        this.clearInactivityTimer();
- 
-        this.inactivityTimer = setTimeout(() => {
- 
-            this.pauseCounting();
- 
-        }, this.inactivityDelay);
- 
-    },
- 
-    clearInactivityTimer() {
- 
-        if (this.inactivityTimer !== null) {
- 
-            clearTimeout(this.inactivityTimer);
- 
-            this.inactivityTimer = null;
- 
-        }
- 
-    },
- 
-    flushActiveTime() {
- 
-        if (this.activeSince === null) {
- 
-            return;
- 
-        }
- 
-        const now = Date.now();
- 
-        recordPlayTimeSpan(this.activeSince, now);
- 
         this.activeSince = null;
- 
+        this.sessionActiveMs = 0;
+        this.afkAccumulatedMs = 0;
+        this.clearInactivityTimer();
+        this.clearAfkTimers();
+        this.triggerAfkDialogClose();
+        this.triggerStatusChange();
+    },
+
+    resumeCounting() {
+
+        if (this.activeSince === null) {
+            this.activeSince = Date.now();
+        }
+
+        this.resetInactivityTimer();
+    },
+
+    pauseCounting() {
+
+        if (this.status !== "PLAYING") {
+            return;
+        }
+
+        if (this.activeSince !== null) {
+            this.flushActiveTime();
+            this.activeSince = null;
+        }
+
+        this.status = "AFK";
+        this.afkStartTime = Date.now();
+        this.clearInactivityTimer();
+        this.setupAfkTimers();
+        this.triggerStatusChange();
+    },
+
+    resumeFromAfk() {
+        if (this.status !== "AFK") {
+            return;
+        }
+
+        if (this.afkStartTime !== null) {
+            this.afkAccumulatedMs += Date.now() - this.afkStartTime;
+            this.afkStartTime = null;
+        }
+
+        this.clearAfkTimers();
+        this.status = "PLAYING";
+        this.activeSince = Date.now();
+        this.resetInactivityTimer();
+        this.triggerAfkDialogClose();
+        this.triggerStatusChange();
+    },
+
+    registerActivity() {
+
+        if (this.status === "AFK") {
+            this.resumeFromAfk();
+            return;
+        }
+
+        if (this.status !== "PLAYING") {
+            return;
+        }
+
+        if (this.activeSince === null) {
+            this.activeSince = Date.now();
+        }
+
+        this.resetInactivityTimer();
+    },
+
+    resetInactivityTimer() {
+
+        this.clearInactivityTimer();
+
+        this.inactivityTimer = setTimeout(() => {
+            this.pauseCounting();
+        }, this.inactivityDelay);
+    },
+
+    clearInactivityTimer() {
+
+        if (this.inactivityTimer !== null) {
+            clearTimeout(this.inactivityTimer);
+            this.inactivityTimer = null;
+        }
+    },
+
+    setupAfkTimers() {
+
+        this.clearAfkTimers();
+
+        const elapsed = this.getPausedDurationMs();
+        const warningRemaining = Math.max(0, this.afkWarningDelay - elapsed);
+        const abortRemaining = Math.max(0, this.afkAbortDelay - elapsed);
+
+        this.afkWarningTimer = setTimeout(() => {
+            if (this.status === "AFK") {
+                this.triggerAfkDialogOpen();
+            }
+        }, warningRemaining);
+
+        this.afkAbortTimer = setTimeout(() => {
+            if (this.status === "AFK") {
+                this.autoAbort();
+            }
+        }, abortRemaining);
+    },
+
+    clearAfkTimers() {
+
+        if (this.afkWarningTimer !== null) {
+            clearTimeout(this.afkWarningTimer);
+            this.afkWarningTimer = null;
+        }
+
+        if (this.afkAbortTimer !== null) {
+            clearTimeout(this.afkAbortTimer);
+            this.afkAbortTimer = null;
+        }
+    },
+
+    triggerStatusChange() {
+        if (typeof this.onStatusChange === "function") {
+            this.onStatusChange(this.status);
+        }
+    },
+
+    triggerAfkDialogOpen() {
+        if (typeof this.onAfkDialogOpen === "function") {
+            this.onAfkDialogOpen();
+        }
+    },
+
+    triggerAfkDialogClose() {
+        if (typeof this.onAfkDialogClose === "function") {
+            this.onAfkDialogClose();
+        }
+    },
+
+    autoAbort() {
+        this.clearAfkTimers();
+
+        if (this.afkStartTime !== null) {
+            this.afkAccumulatedMs += Date.now() - this.afkStartTime;
+            this.afkStartTime = null;
+        }
+
+        this.status = "INACTIVE";
+        this.activeSince = null;
+        this.sessionActiveMs = 0;
+        this.clearInactivityTimer();
+        this.triggerStatusChange();
+        this.triggerAfkDialogClose();
+
+        if (typeof this.onAutoAbort === "function") {
+            this.onAutoAbort();
+        }
+    },
+
+    flushActiveTime() {
+
+        if (this.activeSince === null) {
+            return;
+        }
+
+        const now = Date.now();
+        const elapsedMs = now - this.activeSince;
+
+        this.sessionActiveMs += elapsedMs;
+        recordPlayTimeSpan(this.activeSince, now);
+        this.activeSince = null;
     }
- 
-};
- 
+
+}; 
 window.addEventListener("pagehide", () => {
  
     ActivityManager.stopPlaying();

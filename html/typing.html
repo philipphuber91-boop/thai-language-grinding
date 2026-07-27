@@ -60,22 +60,28 @@
 <div id="typingBereich" class="quest-card">
 
     <div class="typing-header">
-
+ 
     <h2>⌨️ Thai schreiben</h2>
-
+ 
 <div class="typing-stats">
-
+ 
     <span>⏱ <span id="zeitAnzeige">00:00</span></span>
-
+ 
     <span>⌨️ <span id="wpmAnzeige">0</span> BpM</span>
-
+ 
     <span>🎯 <span id="accuracyAnzeige">100%</span></span>
-
+ 
     <button id="toggleGermanButton">
-
+ 
         🇩🇪 EIN
-
+ 
     </button>
+ 
+</div>
+
+<div class="typing-status">
+
+    <span id="activityStatus">🟢 Aktiv</span>
 
 </div>
 
@@ -189,6 +195,20 @@
         </div>
 
         <button id="weiterButton">🗺️ Zur Weltkarte</button>
+
+    </div>
+
+</div>
+
+<div id="afkOverlay" class="start-quest-overlay">
+
+    <div class="start-quest-window">
+
+        <h2>Du bist momentan inaktiv.</h2>
+
+        <p>Es verbleiben noch <strong id="afkCountdown">08:00</strong> bis zum automatischen Abbruch.</p>
+
+        <button id="resumeAfkButton">Weiter</button>
 
     </div>
 
