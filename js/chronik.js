@@ -78,7 +78,7 @@ function getChronikHistoryEntries() {
 
                     totalMinutes: Number(
             entry.totalMinutes ??
-            Math.round((entry.playTime ?? 0) / 60)
+                        Math.ceil((entry.playTime ?? 0) / 60)
         ),
 
                     averageCPM: Number(

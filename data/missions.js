@@ -1,10 +1,9 @@
 const missions = {
-
     1: {
-        
-        titel: "Test Mission",
-        
-        bild: "urlaub",
+
+        titel: "Neue Herausforderungen",
+
+        bild: "mission1",
 
         kapitel: "Missionen",
 
@@ -12,34 +11,117 @@ const missions = {
 
         xp: 50,
 
-        woerter: 25,
-    
+        woerter: 165,
+
         story:
+`Diese Mission enthält häufige Alltagssätze.
+Lies sie zuerst aufmerksam durch.
+Danach kannst du dein Thai im Typing-Spiel trainieren.`,
 
-        `Lies zuerst den Text.
+        deutschZeilen: [
+            "Ich möchte meinen Job wechseln.",
+            "Welche Option wählst du?",
+            "Ich habe mich noch nicht entschieden.",
+            "Kannst du es noch einmal erklären?",
+            "Ich vergleiche gerade die Preise.",
+            "Ich möchte mein Thai verbessern.",
+            "Ich muss die Dokumente korrigieren.",
+            "Wir planen gerade eine Reise.",
+            "Kannst du mir ein Restaurant empfehlen?",
+            "Ich habe eine Veränderung bemerkt.",
+            "Er gibt seinen Fehler zu.",
+            "Sie lehnt das Angebot ab.",
+            "Erwarte nicht zu viel.",
+            "Er hat Erfolg.",
+            "Du kannst mich jederzeit kontaktieren.",
+            "Ich habe mich auf eine neue Stelle beworben.",
+            "Er investiert in Aktien.",
+            "Bist du bereit?",
+            "Ich übe jeden Tag Thai.",
+            "Ich versuche Thai zu sprechen.",
+            "Ich muss Geld sparen.",
+            "Bitte überprüfe die Informationen.",
+            "Er baut ein neues Haus.",
+            "Ich kann das selbst erledigen.",
+            "Meine Familie unterstützt mich.",
+            "Man sollte Unfälle verhindern.",
+            "Betreten ohne Erlaubnis verboten.",
+            "Ich glaube dir.",
+            "Ich habe Zweifel daran.",
+            "Ich suche Informationen im Internet.",
+            "Wissenschaftler haben etwas Neues entdeckt.",
+            "Man sollte Probleme vermeiden.",
+            "Danke, dass du deine Erfahrungen teilst.",
+            "Die Firma hat die Ergebnisse bekannt gegeben.",
+            "Er führt sein Unternehmen selbst.",
+            "Die Fabrik produziert Autos.",
+            "Die Waren wurden heute transportiert.",
+            "Ich habe das Hotel bereits gebucht.",
+            "Der Flug wurde abgesagt.",
+            "Das Auto wird gerade repariert.",
+            "Der Computer ist kaputt.",
+            "Unser Team hat gewonnen.",
+            "Heute hat unser Team verloren.",
+            "Spare das Geld erst einmal.",
+            "Wirf keinen Müll weg.",
+            "Kann ich mir deinen Stift ausleihen?",
+            "Vergiss nicht, das Buch zurückzugeben.",
+            "Ich möchte dich zu mir nach Hause einladen.",
+            "Ich besuche einen Freund.",
+            "Ich muss auf meine Gesundheit achten."
+        ],
 
-        Erst danach wird das Thai-Typing freigeschaltet.`,
-
-    deutschZeilen:[
-
-"Theera ist im Urlaub im Süden von Thailand.",
-
-"Er trifft Wannee.",
-
-"Hallo! Ich heiße Theera.",
-
-],
-
-    thaiZeilen:[
-
-"ธีระอยู่ในช่วงพักร้อนที่ภาคใต้",
-
-"เขาพบวรรณี",
-
-"สวัสดีครับ ผมชื่อธีระ",
-
-],
-
+        thaiZeilen: [
+            "ผมอยากเปลี่ยนงาน",
+            "คุณเลือกอันไหน",
+            "ผมยังไม่ได้ตัดสินใจ",
+            "ช่วยอธิบายอีกครั้งได้ไหม",
+            "ผมกำลังเปรียบเทียบราคา",
+            "ผมอยากพัฒนาภาษาไทย",
+            "ผมต้องแก้ไขเอกสาร",
+            "เรากำลังวางแผนเที่ยว",
+            "ช่วยแนะนำร้านอาหารหน่อย",
+            "ผมสังเกตเห็นความเปลี่ยนแปลง",
+            "เขายอมรับความผิด",
+            "เธอปฏิเสธข้อเสนอ",
+            "อย่าคาดหวังมากเกินไป",
+            "เขาประสบความสำเร็จ",
+            "ติดต่อผมได้ทุกเวลา",
+            "ผมสมัครงานใหม่",
+            "เขาลงทุนในหุ้น",
+            "คุณเตรียมตัวหรือยัง",
+            "ผมฝึกภาษาไทยทุกวัน",
+            "ผมพยายามพูดไทย",
+            "ต้องประหยัดเงิน",
+            "กรุณาตรวจสอบข้อมูล",
+            "เขาสร้างบ้านใหม่",
+            "ผมจัดการเองได้",
+            "ครอบครัวสนับสนุนผม",
+            "ควรป้องกันอุบัติเหตุ",
+            "ห้ามเข้าโดยไม่ได้รับอนุญาต",
+            "ผมเชื่อคุณ",
+            "ผมสงสัยเรื่องนี้",
+            "ผมค้นหาข้อมูลในอินเทอร์เน็ต",
+            "นักวิทยาศาสตร์ค้นพบสิ่งใหม่",
+            "ควรหลีกเลี่ยงปัญหา",
+            "ขอบคุณที่แบ่งปันประสบการณ์",
+            "บริษัทประกาศผลแล้ว",
+            "เขาบริหารธุรกิจเอง",
+            "โรงงานผลิตรถยนต์",
+            "สินค้าถูกขนส่งวันนี้",
+            "ผมจองโรงแรมแล้ว",
+            "เที่ยวบินถูกยกเลิก",
+            "รถกำลังซ่อมอยู่",
+            "คอมพิวเตอร์เสีย",
+            "ทีมเราชนะแล้ว",
+            "วันนี้ทีมเราแพ้",
+            "เก็บเงินไว้ก่อน",
+            "อย่าโยนขยะ",
+            "ผมขอยืมปากกาได้ไหม",
+            "อย่าลืมคืนหนังสือ",
+            "ผมอยากเชิญคุณมาบ้าน",
+            "ผมไปเยี่ยมเพื่อน",
+            "ต้องรักษาสุขภาพ"
+        ]
     }
-
 };

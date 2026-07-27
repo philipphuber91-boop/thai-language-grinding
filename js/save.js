@@ -18,9 +18,13 @@ function loadPlayer() {
 
     };
 
-    if (!player.stats.history || !Array.isArray(player.stats.history.daily)) {
+    if (!player.stats.history || Array.isArray(player.stats.history)) {
 
-        player.stats.history = { daily: [] };
+        player.stats.history = { daily: Array.isArray(player.stats.history) ? player.stats.history : [] };
+
+    } else if (!Array.isArray(player.stats.history.daily)) {
+
+        player.stats.history.daily = [];
 
     }
     
