@@ -23,7 +23,7 @@ const daten =
 // Separate IDs prevent a campaign quest and a mission with the same number
 // from sharing progress, records, and review dates.
 const questStatsId = `${contentMode}:${aktuelleQuest}`;
-const stats = getQuestStats(questStatsId);
+const stats = getQuestStats(questStatsId, daten[aktuelleQuest].version ?? 1);
 function zeigePhase() {
 
     // Alles ausblenden
@@ -357,7 +357,9 @@ function verarbeiteRichtigenBuchstaben() {
 }
 
 function beendePruefung() {
-
+ 
+    ActivityManager.stopPlaying();
+ 
     const zeit = endZeit - startZeit;
     const sekunden = Math.floor(zeit / 1000);
 
@@ -403,7 +405,8 @@ function beendePruefung() {
         sekunden,
         Number(cpm),
         Number(accuracy),
-        gesamtZeichen
+        gesamtZeichen,
+        daten[aktuelleQuest].version ?? 1
     );
 
     showRecordSummary(newRecords);
@@ -429,17 +432,19 @@ function beendePruefung() {
 }
 
 function startePruefung() {
-
+ 
     if (startZeit !== null) {
-
+ 
         return;
-
+ 
     }
-
+ 
     startZeit = Date.now();
-
+ 
+    ActivityManager.startPlaying();
+ 
     aktualisiereGermanToggle();
-
+ 
 }
 
 function bereitePruefungVor() {
@@ -478,7 +483,9 @@ eingabe.addEventListener("input", function () {
 
     // Erster Tastendruck startet die Zeit
     startePruefung();
-
+ 
+    ActivityManager.registerActivity();
+ 
     // Erwarteter Buchstabe
     const erwartet = text[position];
 
@@ -503,11 +510,9 @@ else {
 }
 
 });
-
-
-
+ 
+ 
 startDeutschButton.addEventListener("click", function () {
-
     phase = "deutsch";
 
     zeigePhase();
@@ -525,11 +530,13 @@ eingabe.focus();
 });
 
 weiterButton.addEventListener("click", function () {
-
+ 
+    ActivityManager.stopPlaying();
+ 
     popup.classList.remove("active");
-
+ 
     window.location.href = "index.html";
-
+ 
 });
 
 toggleGermanButton.addEventListener("mousedown", function (event) {

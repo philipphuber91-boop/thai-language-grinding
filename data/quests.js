@@ -2,6 +2,8 @@ const quests = {
 
 1: {
 
+    version: 1,
+
     titel: "Im Urlaub - ในช่วงพักร้อน",
 
     bild:"urlaub",
@@ -89,6 +91,8 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 
 
 2: {
+
+    version: 1,
 
     titel: "Im Hotel - ในโรงแรม",
 
@@ -181,6 +185,8 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 
 3: {
 
+    version: 1,
+
     titel: "Am Strand - ริมชายหาด",
 
     bild:"strand",
@@ -251,6 +257,8 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 },
 
 4: {
+
+    version: 1,
 
     titel: "Beim Frühstück - ที่โต๊ะอาหารเช้า",
 
@@ -329,6 +337,8 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 
 5: {
 
+    version: 1,
+
     titel: "Am Bahnhof - ที่สถานีรถไฟ",
 
     bild:"bahnhof",
@@ -403,6 +413,8 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 },
 
 6: {
+
+    version: 1,
 
     titel: "Beim Frühstück - ที่โต๊ะอาหารเช้า",
 

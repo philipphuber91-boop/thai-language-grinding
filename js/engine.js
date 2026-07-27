@@ -27,9 +27,15 @@ const statusIcons = {
     mastered: '<span class="status-mastered">★</span>'
 
 };
-const status = getQuestStatus(`${contentMode}:${nummer}`);
+const status = getQuestStatus(
+    `${contentMode}:${nummer}`,
+    daten[nummer].version ?? 1
+);
 
-const stats = getQuestStats(`${contentMode}:${nummer}`);
+const stats = getQuestStats(
+    `${contentMode}:${nummer}`,
+    daten[nummer].version ?? 1
+);
 
 const statusLabel = statusIcons[status] || "";
 
@@ -246,7 +252,10 @@ function starteQuest(questNummer) {
 
         // Platzhalter für spätere Statistik
 
-const questStats = getQuestStats(`${contentMode}:${questNummer}`);
+const questStats = getQuestStats(
+    `${contentMode}:${questNummer}`,
+    quest.version ?? 1
+);
 
 if (questStats.records.bestTime !== null) {
 

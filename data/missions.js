@@ -1,13 +1,15 @@
 const missions = {
     1: {
 
+        version: 1,
+
         titel: "Neue Herausforderungen",
 
         bild: "mission1",
 
         kapitel: "Missionen",
 
-        schwierigkeit: "A1",
+        schwierigkeit: "B2",
 
         xp: 50,
 
@@ -17,6 +19,8 @@ const missions = {
 `Diese Mission enthält häufige Alltagssätze.
 Lies sie zuerst aufmerksam durch.
 Danach kannst du dein Thai im Typing-Spiel trainieren.`,
+
+
 
         deutschZeilen: [
             "Ich möchte meinen Job wechseln.",

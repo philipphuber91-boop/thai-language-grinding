@@ -55,68 +55,87 @@ const repetitionIntervals = [
 
 let questStats = structuredClone(defaultQuestStats);
 
-function getQuestStats(questId) {
+function createQuestStats(version) {
 
-    if (!questStats[questId]) {
+    return {
 
-        questStats[questId] = {
+        version,
 
-            attempts: 0,
+        attempts: 0,
 
-            completed: false,
+        completed: false,
 
-          records: {
+        records: {
 
-    bestTime: null,
-    bestCPM: null,
-    bestAccuracy: null,
+            bestTime: null,
+            bestCPM: null,
+            bestAccuracy: null,
 
-    lastTime: null,
-    lastCPM: null,
-    lastAccuracy: null
+            lastTime: null,
+            lastCPM: null,
+            lastAccuracy: null
 
-},
+        },
 
-repetition: {
+        repetition: {
 
-    level: 0,
+            level: 0,
 
-    lastReview: null,
+            lastReview: null,
 
-    nextReview: null
+            nextReview: null
+
+        }
+
+    };
 
 }
 
-            
+function getQuestStats(questId, currentVersion) {
 
-        };
+    const existingStats = questStats[questId];
+
+    // Noch nie gespielt
+    if (!existingStats) {
+
+        const version = currentVersion ?? 1;
+
+        questStats[questId] = createQuestStats(version);
+
+        saveQuestStats();
+
+        return questStats[questId];
+
+    }
+
+    // Quest/Mission wurde geändert -> ALLES zurücksetzen
+    if (
+        currentVersion !== undefined &&
+        existingStats.version !== currentVersion
+    ) {
+
+        if (existingStats.completed) {
+
+            player.stats.completedQuests = Math.max(
+                0,
+                player.stats.completedQuests - 1
+            );
+
+            savePlayer();
+
+        }
+
+        questStats[questId] = createQuestStats(currentVersion);
 
         saveQuestStats();
 
     }
 
-
-    if (!questStats[questId].repetition) {
-
-    questStats[questId].repetition = {
-
-        level: 0,
-
-        lastReview: null,
-
-        nextReview: null
-
-    };
-
-    saveQuestStats();
-
-}
-
     return questStats[questId];
 
 }
 
-function updateDailyHistory(zeit, cpm, accuracy, zeichen) {
+function getOrCreateDailyHistoryEntry(dateString) {
  
     if (!player.stats.history || !Array.isArray(player.stats.history.daily)) {
  
@@ -124,11 +143,9 @@ function updateDailyHistory(zeit, cpm, accuracy, zeichen) {
  
     }
  
-    const today = getToday();
- 
     let entry = player.stats.history.daily.find(
  
-        day => day.date === today
+        day => day.date === dateString
  
     );
  
@@ -136,7 +153,7 @@ function updateDailyHistory(zeit, cpm, accuracy, zeichen) {
  
         entry = {
  
-            date: today,
+            date: dateString,
  
             quests: 0,
  
@@ -154,9 +171,17 @@ function updateDailyHistory(zeit, cpm, accuracy, zeichen) {
  
     }
  
-    entry.quests = Number(entry.quests ?? 0) + 1;
+    return entry;
  
-    entry.playTime = Number(entry.playTime ?? 0) + zeit;
+}
+ 
+function updateDailyHistory(zeit, cpm, accuracy, zeichen) {
+ 
+    const today = getToday();
+ 
+    const entry = getOrCreateDailyHistoryEntry(today);
+ 
+    entry.quests = Number(entry.quests ?? 0) + 1;
  
     entry.typedCharacters = Number(entry.typedCharacters ?? 0) + zeichen;
  
@@ -186,14 +211,210 @@ function updateDailyHistory(zeit, cpm, accuracy, zeichen) {
  
 }
  
+function addPlayTimeToDailyHistory(dateString, seconds) {
+ 
+    const entry = getOrCreateDailyHistoryEntry(dateString);
+ 
+    entry.playTime = Number(entry.playTime ?? 0) + seconds;
+ 
+}
+ 
+function recordPlayTimeSpan(startMs, endMs) {
+ 
+    if (endMs <= startMs) {
+ 
+        return;
+ 
+    }
+ 
+    let segmentStart = startMs;
+ 
+    while (segmentStart < endMs) {
+ 
+        const segmentDate = new Date(segmentStart);
+ 
+        const nextMidnight = new Date(segmentDate);
+ 
+        nextMidnight.setHours(24, 0, 0, 0);
+ 
+        const segmentEnd = Math.min(endMs, nextMidnight.getTime());
+ 
+        const elapsedSeconds = Math.round((segmentEnd - segmentStart) / 1000);
+ 
+        if (elapsedSeconds > 0) {
+ 
+            const dayKey = formatIsoDate(segmentDate);
+ 
+            addPlayTimeToDailyHistory(dayKey, elapsedSeconds);
+ 
+            player.stats.totalTime = Number(player.stats.totalTime ?? 0) + elapsedSeconds;
+ 
+        }
+ 
+        segmentStart = segmentEnd;
+ 
+    }
+ 
+    savePlayer();
+ 
+}
+ 
+function formatIsoDate(date) {
+ 
+    const year = date.getFullYear();
+ 
+    const month = String(date.getMonth() + 1).padStart(2, "0");
+ 
+    const day = String(date.getDate()).padStart(2, "0");
+ 
+    return `${year}-${month}-${day}`;
+ 
+}
+ 
+const ActivityManager = {
+ 
+    status: "INACTIVE",
+ 
+    activeSince: null,
+ 
+    inactivityTimer: null,
+ 
+    inactivityDelay: 5000,
+ 
+    startPlaying() {
+ 
+        if (this.status === "PLAYING") {
+ 
+            return;
+ 
+        }
+ 
+        this.status = "PLAYING";
+ 
+        this.resumeCounting();
+ 
+    },
+ 
+    stopPlaying() {
+ 
+        if (this.activeSince !== null) {
+ 
+            this.flushActiveTime();
+ 
+        }
+ 
+        this.status = "INACTIVE";
+ 
+        this.clearInactivityTimer();
+ 
+    },
+ 
+    resumeCounting() {
+ 
+        if (this.activeSince === null) {
+ 
+            this.activeSince = Date.now();
+ 
+        }
+ 
+        this.resetInactivityTimer();
+ 
+    },
+ 
+    pauseCounting() {
+ 
+        if (this.activeSince !== null) {
+ 
+            this.flushActiveTime();
+ 
+            this.activeSince = null;
+ 
+        }
+ 
+        this.clearInactivityTimer();
+ 
+    },
+ 
+    registerActivity() {
+ 
+        if (this.status !== "PLAYING") {
+ 
+            return;
+ 
+        }
+ 
+        if (this.activeSince === null) {
+ 
+            this.activeSince = Date.now();
+ 
+        }
+ 
+        this.resetInactivityTimer();
+ 
+    },
+ 
+    resetInactivityTimer() {
+ 
+        this.clearInactivityTimer();
+ 
+        this.inactivityTimer = setTimeout(() => {
+ 
+            this.pauseCounting();
+ 
+        }, this.inactivityDelay);
+ 
+    },
+ 
+    clearInactivityTimer() {
+ 
+        if (this.inactivityTimer !== null) {
+ 
+            clearTimeout(this.inactivityTimer);
+ 
+            this.inactivityTimer = null;
+ 
+        }
+ 
+    },
+ 
+    flushActiveTime() {
+ 
+        if (this.activeSince === null) {
+ 
+            return;
+ 
+        }
+ 
+        const now = Date.now();
+ 
+        recordPlayTimeSpan(this.activeSince, now);
+ 
+        this.activeSince = null;
+ 
+    }
+ 
+};
+ 
+window.addEventListener("pagehide", () => {
+ 
+    ActivityManager.stopPlaying();
+ 
+});
+ 
+window.addEventListener("beforeunload", () => {
+ 
+    ActivityManager.stopPlaying();
+ 
+});
+ 
 function updatePlayerStats(zeit, cpm, accuracy, zeichen) {
 
     player.stats.totalAttempts++;
 
     player.stats.totalCharacters += zeichen;
-
-    player.stats.totalTime += zeit;
-
+ 
+    // Gesamtspielzeit wird ausschließlich über den ActivityManager erfasst.
+ 
     // Durchschnittswerte
 
     player.stats.averageTime =
@@ -319,9 +540,9 @@ function updateRepetition(stats) {
 
 }
 
-function isQuestDue(questId) {
+function isQuestDue(questId, currentVersion) {
 
-    const stats = getQuestStats(questId);
+    const stats = getQuestStats(questId, currentVersion);
 
     if (!stats.completed) {
 
@@ -357,9 +578,9 @@ function getDueQuests() {
 
 }
 
-function completeQuest(questId, zeit, cpm, accuracy, zeichen) {
+function completeQuest(questId, zeit, cpm, accuracy, zeichen, currentVersion) {
 
-    const stats = getQuestStats(questId);
+    const stats = getQuestStats(questId, currentVersion);
 
     stats.attempts++;
 
@@ -456,9 +677,9 @@ return {
 
 }
 
-function getQuestStatus(questId) {
+function getQuestStatus(questId, currentVersion) {
 
-    const stats = getQuestStats(questId);
+    const stats = getQuestStats(questId, currentVersion);
 
     // Alle Wiederholungen abgeschlossen
     if (
@@ -470,7 +691,7 @@ function getQuestStatus(questId) {
     }
 
     // Quest ist zur Wiederholung fällig
-    if (isQuestDue(questId)) {
+    if (isQuestDue(questId, currentVersion)) {
 
         return "due";
 
