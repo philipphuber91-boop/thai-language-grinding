@@ -1434,8 +1434,8 @@ box-shadow:
     border:1px solid var(--keyboard-key-border);
     background:linear-gradient(180deg, var(--keyboard-key), var(--keyboard-key-strong));
     color:#3e2311;
-    font-size:1.05rem;
-    font-weight:700;
+    font-size:1.8rem;
+    font-weight:500;
     letter-spacing:.02em;
     text-shadow:0 1px 1px rgba(255,255,255,.42);
     box-shadow:
