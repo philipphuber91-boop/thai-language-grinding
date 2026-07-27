@@ -555,13 +555,18 @@ eingabe.addEventListener("input", function () {
         return;
     }
 
-    if (mode === "exam") {
-        // Erster Tastendruck startet die Zeit
-        startePruefung();
- 
-        ActivityManager.registerActivity();
+    // Gesamtspielzeit erfassen in beiden Modi
+    if (ActivityManager.status !== "PLAYING") {
+        ActivityManager.startPlaying();
     }
- 
+
+    ActivityManager.registerActivity();
+
+    if (mode === "exam") {
+        // Erster Tastendruck startet nur den Questmodus
+        startePruefung();
+    }
+
     // Erwarteter Buchstabe
     const erwartet = text[position];
 
