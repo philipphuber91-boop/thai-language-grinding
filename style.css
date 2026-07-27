@@ -1514,6 +1514,14 @@ box-shadow:
     }
 }
 
+.typing-keyboard .key.pressed{
+    transform:translateY(2px) scale(0.98);
+    box-shadow:
+        inset 0 2px 6px rgba(0,0,0,.26),
+        0 6px 14px rgba(0,0,0,.2);
+    filter:brightness(0.95);
+}
+
 .typing-keyboard .key.active{
     animation:keyGlowPulse .9s ease-in-out infinite alternate;
     box-shadow:
@@ -1522,6 +1530,14 @@ box-shadow:
         0 0 24px rgba(255,215,110,.4);
     transform:scale(1.04);
     background:linear-gradient(180deg, #fff1c1, #e6c16a);
+}
+
+.typing-keyboard .key.active.pressed{
+    transform:translateY(2px) scale(1.02);
+    box-shadow:
+        inset 0 2px 6px rgba(0,0,0,.26),
+        0 0 0 1px rgba(255,221,103,.35),
+        0 0 24px rgba(255,215,110,.25);
 }
 
 @keyframes keyGlowPulse{

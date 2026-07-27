@@ -24,7 +24,208 @@ const daten =
 // from sharing progress, records, and review dates.
 const questStatsId = `${contentMode}:${aktuelleQuest}`;
 const stats = getQuestStats(questStatsId, daten[aktuelleQuest].version ?? 1);
+
+const keyboardElement = document.getElementById("thaiKeyboard");
+let highlightedKeyElement = null;
+let examHighlightTimer = null;
+let examHighlightRequestId = 0;
+const examHighlightDelayMs = 2000;
+const keyPressAnimationDurationMs = 130;
+
+const physicalKeyToVirtualKeyMap = {
+    "1": "ๅ",
+    "2": "/",
+    "3": "-",
+    "4": "ภ",
+    "5": "ถ",
+    "6": "ุ",
+    "7": "ึ",
+    "8": "ค",
+    "9": "ต",
+    "0": "จ",
+    "-": "ข",
+    "=": "ช",
+    "`": "ฃ",
+    "q": "ๆ",
+    "w": "ไ",
+    "e": "ำ",
+    "r": "พ",
+    "t": "ะ",
+    "y": "ั",
+    "u": "ี",
+    "i": "ร",
+    "o": "น",
+    "p": "ย",
+    "[": "บ",
+    "]": "ล",
+    "\\": "ฅ",
+    "a": "ฟ",
+    "s": "ห",
+    "d": "ก",
+    "f": "ด",
+    "g": "เ",
+    "h": "้",
+    "j": "่",
+    "k": "า",
+    "l": "ส",
+    ";": "ว",
+    "'": "ง",
+    "z": "ผ",
+    "x": "ป",
+    "c": "แ",
+    "v": "อ",
+    "b": "ิ",
+    "n": "ื",
+    "m": "ท",
+    ",": "ม",
+    ".": "ใ",
+    "/": "ฝ",
+    " ": " ",
+    "backspace": "Backspace",
+    "enter": "Enter",
+    "shift": "Shift",
+    "tab": "Tab",
+    "escape": "Escape"
+};
+
+function getKeyElement(character) {
+    if (!keyboardElement || character === null || character === undefined) {
+        return null;
+    }
+
+    return Array.from(keyboardElement.querySelectorAll(".key")).find(key => key.getAttribute("data-key") === String(character)) || null;
+}
+
+function clearHighlight() {
+    if (highlightedKeyElement) {
+        highlightedKeyElement.classList.remove("active");
+        highlightedKeyElement = null;
+    }
+}
+
+function highlightKey(character) {
+    clearHighlight();
+
+    const keyElement = getKeyElement(character);
+
+    if (!keyElement) {
+        return;
+    }
+
+    keyElement.classList.add("active");
+    highlightedKeyElement = keyElement;
+}
+
+function clearExamHighlightTimer() {
+    if (examHighlightTimer !== null) {
+        clearTimeout(examHighlightTimer);
+        examHighlightTimer = null;
+    }
+}
+
+function getCurrentExpectedCharacter() {
+    if (!text || typeof text !== "string") {
+        return null;
+    }
+
+    return text[position] || null;
+}
+
+function syncKeyboardHighlight() {
+    clearHighlight();
+    clearExamHighlightTimer();
+
+    if (phase !== "typing") {
+        return;
+    }
+
+    const expectedCharacter = getCurrentExpectedCharacter();
+
+    if (!expectedCharacter) {
+        return;
+    }
+
+    if (mode === "learning") {
+        highlightKey(expectedCharacter);
+        return;
+    }
+
+    if (mode === "exam") {
+        const currentRequestId = ++examHighlightRequestId;
+
+        examHighlightTimer = setTimeout(() => {
+            if (currentRequestId !== examHighlightRequestId) {
+                return;
+            }
+
+            if (mode !== "exam" || phase !== "typing") {
+                return;
+            }
+
+            const currentCharacter = getCurrentExpectedCharacter();
+
+            if (currentCharacter) {
+                highlightKey(currentCharacter);
+            }
+
+            examHighlightTimer = null;
+        }, examHighlightDelayMs);
+    }
+}
+
+function pressKey(character) {
+    const keyElement = getKeyElement(character);
+
+    if (!keyElement) {
+        return;
+    }
+
+    keyElement.classList.remove("pressed");
+    void keyElement.offsetWidth;
+    keyElement.classList.add("pressed");
+
+    if (keyElement.__pressTimeoutId) {
+        clearTimeout(keyElement.__pressTimeoutId);
+    }
+
+    keyElement.__pressTimeoutId = setTimeout(() => {
+        keyElement.classList.remove("pressed");
+        keyElement.__pressTimeoutId = null;
+    }, keyPressAnimationDurationMs);
+}
+
+function releaseKey(character) {
+    const keyElement = getKeyElement(character);
+
+    if (!keyElement) {
+        return;
+    }
+
+    keyElement.classList.remove("pressed");
+
+    if (keyElement.__pressTimeoutId) {
+        clearTimeout(keyElement.__pressTimeoutId);
+        keyElement.__pressTimeoutId = null;
+    }
+}
+
+function resolvePhysicalKey(event) {
+    if (!event || event.defaultPrevented || event.isComposing) {
+        return null;
+    }
+
+    if (event.key === " ") {
+        return " ";
+    }
+
+    const normalizedKey = event.key.length === 1 ? event.key.toLowerCase() : event.key.toLowerCase();
+
+    return physicalKeyToVirtualKeyMap[normalizedKey] || null;
+}
+
 function zeigePhase() {
+    clearHighlight();
+    clearExamHighlightTimer();
 
     // Alles ausblenden
     auftrag.style.display = "none";
@@ -33,32 +234,33 @@ function zeigePhase() {
     popup.classList.remove("active");
 
     switch (phase) {
-
+ 
         case "auftrag":
             auftrag.style.display = "block";
             break;
-
+ 
         case "deutsch":
             deutsch.style.display = "block";
             break;
-
+ 
 case "typing":
-
+ 
     typingBereich.style.display = "block";
-
+ 
     setTimeout(function () {
-
+ 
         eingabe.focus();
-
+ 
     }, 0);
-
+ 
+    syncKeyboardHighlight();
     break;
-
+ 
 case "abschluss":
-
+ 
     break;
     }
-
+ 
 }
 
 
@@ -329,20 +531,21 @@ function zeigeZeilen() {
 
 
 function naechsteZeile() {
-
+ 
     zeile1.classList.add("nach-oben");
-
+ 
     setTimeout(function(){
-
+ 
         text = thaiZeilen[aktuelleZeile];
         position = 0;
-
+ 
         zeigeZeilen();
-
+        syncKeyboardHighlight();
+ 
         zeile1.classList.remove("nach-oben");
-
+ 
     },250);
-
+ 
 }
 
 function zeigeFehler() {
@@ -381,49 +584,51 @@ function zeigeFehler() {
 }
 
 function verarbeiteRichtigenBuchstaben() {
-
+ 
     position++;
     gesamtZeichen++;
-
+ 
     eingabe.value = "";
-
+ 
     if (position < text.length) {
-
+ 
         zeigeZeilen();
-
+        syncKeyboardHighlight();
+ 
     }
-
+ 
     // Zeile fertig?
     if (position >= text.length) {
-
+ 
         aktuelleZeile++;
-
+ 
         // Quest fertig?
         if (aktuelleZeile >= thaiZeilen.length) {
-
+ 
             endZeit = Date.now();
-
+ 
             if (mode === "learning") {
-
+ 
                 ActivityManager.stopPlaying();
                 document
                     .getElementById("examOverlay")
                     .classList.add("active");
-
+ 
+                syncKeyboardHighlight();
                 return;
-
+ 
             }
-
+ 
             beendePruefung();
-
+ 
             return;
-
+ 
         }
-
+ 
         naechsteZeile();
-
+  
     }
-
+ 
 }
 
 function beendePruefung() {
@@ -537,9 +742,10 @@ function bereitePruefungVor() {
     eingabe.value = "";
 
     zeigeZeilen();
-
+   syncKeyboardHighlight();
+ 
     eingabe.focus();
-
+ 
     aktualisiereGermanToggle();
 }
 
@@ -673,6 +879,7 @@ aktualisiereGermanToggle();
 zeigePhase();
 
 zeigeZeilen();
+syncKeyboardHighlight();
 
 
 function showRecordSummary(records){
@@ -789,16 +996,32 @@ function animateRecordSummary(records) {
     });
 }
 
+document.addEventListener("keydown", function (event) {
+
+   if (phase !== "typing") {
+       return;
+   }
+
+   const physicalKey = resolvePhysicalKey(event);
+
+   if (!physicalKey) {
+       return;
+   }
+
+   pressKey(physicalKey);
+
+});
+
 document.addEventListener("pointerdown", function () {
-
+ 
     if (phase === "typing") {
-
+ 
         setTimeout(function () {
-
+ 
             eingabe.focus();
-
+ 
         }, 0);
-
+ 
     }
-
+ 
 });
