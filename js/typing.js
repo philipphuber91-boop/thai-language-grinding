@@ -26,94 +26,52 @@ const questStatsId = `${contentMode}:${aktuelleQuest}`;
 const stats = getQuestStats(questStatsId, daten[aktuelleQuest].version ?? 1);
 
 const keyboardElement = document.getElementById("thaiKeyboard");
-let highlightedKeyElement = null;
+let highlightedKeyElements = [];
 let examHighlightTimer = null;
 let examHighlightRequestId = 0;
 const examHighlightDelayMs = 2000;
 const keyPressAnimationDurationMs = 130;
 
-const physicalKeyToVirtualKeyMap = {
-    "1": "ๅ",
-    "2": "/",
-    "3": "-",
-    "4": "ภ",
-    "5": "ถ",
-    "6": "ุ",
-    "7": "ึ",
-    "8": "ค",
-    "9": "ต",
-    "0": "จ",
-    "-": "ข",
-    "=": "ช",
-    "`": "ฃ",
-    "q": "ๆ",
-    "w": "ไ",
-    "e": "ำ",
-    "r": "พ",
-    "t": "ะ",
-    "y": "ั",
-    "u": "ี",
-    "i": "ร",
-    "o": "น",
-    "p": "ย",
-    "[": "บ",
-    "]": "ล",
-    "\\": "ฅ",
-    "a": "ฟ",
-    "s": "ห",
-    "d": "ก",
-    "f": "ด",
-    "g": "เ",
-    "h": "้",
-    "j": "่",
-    "k": "า",
-    "l": "ส",
-    ";": "ว",
-    "'": "ง",
-    "z": "ผ",
-    "x": "ป",
-    "c": "แ",
-    "v": "อ",
-    "b": "ิ",
-    "n": "ื",
-    "m": "ท",
-    ",": "ม",
-    ".": "ใ",
-    "/": "ฝ",
-    " ": " ",
-    "backspace": "Backspace",
-    "enter": "Enter",
-    "shift": "Shift",
-    "tab": "Tab",
-    "escape": "Escape"
-};
+// keyboard.js liefert: thaiKeyboardMap, latinToThaiMap, physicalKeyLayout
 
-function getKeyElement(character) {
+function getKeyElements(character) {
     if (!keyboardElement || character === null || character === undefined) {
-        return null;
+        return [];
     }
 
-    return Array.from(keyboardElement.querySelectorAll(".key")).find(key => key.getAttribute("data-key") === String(character)) || null;
+    const str = String(character);
+    return Array.from(keyboardElement.querySelectorAll(".key")).filter(
+        el => el.getAttribute("data-key") === str
+    );
 }
 
 function clearHighlight() {
-    if (highlightedKeyElement) {
-        highlightedKeyElement.classList.remove("active");
-        highlightedKeyElement = null;
-    }
+    highlightedKeyElements.forEach(el => el.classList.remove("active"));
+    highlightedKeyElements = [];
 }
 
 function highlightKey(character) {
-    clearHighlight();
+    getKeyElements(character).forEach(el => {
+        el.classList.add("active");
 
-    const keyElement = getKeyElement(character);
+        if (!highlightedKeyElements.includes(el)) {
+            highlightedKeyElements.push(el);
+        }
+    });
+}
 
-    if (!keyElement) {
+function applyKeyboardHighlight(character) {
+    const mapping = thaiKeyboardMap[character];
+
+    if (!mapping) {
         return;
     }
 
-    keyElement.classList.add("active");
-    highlightedKeyElement = keyElement;
+    highlightKey(mapping.key);
+
+    if (mapping.shift) {
+        highlightKey("Shift");
+    }
 }
 
 function clearExamHighlightTimer() {
@@ -146,7 +104,7 @@ function syncKeyboardHighlight() {
     }
 
     if (mode === "learning") {
-        highlightKey(expectedCharacter);
+        applyKeyboardHighlight(expectedCharacter);
         return;
     }
 
@@ -165,7 +123,7 @@ function syncKeyboardHighlight() {
             const currentCharacter = getCurrentExpectedCharacter();
 
             if (currentCharacter) {
-                highlightKey(currentCharacter);
+                applyKeyboardHighlight(currentCharacter);
             }
 
             examHighlightTimer = null;
@@ -174,39 +132,31 @@ function syncKeyboardHighlight() {
 }
 
 function pressKey(character) {
-    const keyElement = getKeyElement(character);
+    getKeyElements(character).forEach(el => {
+        el.classList.remove("pressed");
+        void el.offsetWidth;
+        el.classList.add("pressed");
 
-    if (!keyElement) {
-        return;
-    }
+        if (el.__pressTimeoutId) {
+            clearTimeout(el.__pressTimeoutId);
+        }
 
-    keyElement.classList.remove("pressed");
-    void keyElement.offsetWidth;
-    keyElement.classList.add("pressed");
-
-    if (keyElement.__pressTimeoutId) {
-        clearTimeout(keyElement.__pressTimeoutId);
-    }
-
-    keyElement.__pressTimeoutId = setTimeout(() => {
-        keyElement.classList.remove("pressed");
-        keyElement.__pressTimeoutId = null;
-    }, keyPressAnimationDurationMs);
+        el.__pressTimeoutId = setTimeout(() => {
+            el.classList.remove("pressed");
+            el.__pressTimeoutId = null;
+        }, keyPressAnimationDurationMs);
+    });
 }
 
 function releaseKey(character) {
-    const keyElement = getKeyElement(character);
+    getKeyElements(character).forEach(el => {
+        el.classList.remove("pressed");
 
-    if (!keyElement) {
-        return;
-    }
-
-    keyElement.classList.remove("pressed");
-
-    if (keyElement.__pressTimeoutId) {
-        clearTimeout(keyElement.__pressTimeoutId);
-        keyElement.__pressTimeoutId = null;
-    }
+        if (el.__pressTimeoutId) {
+            clearTimeout(el.__pressTimeoutId);
+            el.__pressTimeoutId = null;
+        }
+    });
 }
 
 function resolvePhysicalKey(event) {
@@ -214,14 +164,26 @@ function resolvePhysicalKey(event) {
         return null;
     }
 
-    if (event.key === " ") {
-        return " ";
+    const rawKey = event.key;
+
+    // Thai-Zeichen direkt (Thai-Tastaturmodus im OS)
+    if (rawKey.length === 1 && thaiKeyboardMap[rawKey]) {
+        return thaiKeyboardMap[rawKey].key;
     }
 
-    const normalizedKey = event.key.length === 1 ? event.key.toLowerCase() : event.key.toLowerCase();
+    // Lateinischer Buchstabe → primäres Thai-Zeichen der Taste
+    if (rawKey.length === 1) {
+        return latinToThaiMap[rawKey.toLowerCase()] || null;
+    }
 
-    return physicalKeyToVirtualKeyMap[normalizedKey] || null;
+    // Sondertasten
+    if (rawKey === "Shift")     return "Shift";
+    if (rawKey === "Backspace") return "Backspace";
+    if (rawKey === "Enter")     return "Enter";
+
+    return null;
 }
+
 
 function zeigePhase() {
     clearHighlight();

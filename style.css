@@ -1514,6 +1514,23 @@ box-shadow:
     }
 }
 
+.typing-keyboard .key[data-shift-key]::after{
+    content: attr(data-shift-key);
+    position:absolute;
+    top:5px;
+    right:6px;
+    font-size:1.2rem;
+    font-weight:700;
+    line-height:1;
+    opacity:1.4;
+    color:#57300a91;
+    pointer-events:none;
+}
+
+.typing-keyboard .key.active[data-shift-key]::after{
+    opacity:0.65;
+}
+
 .typing-keyboard .key.pressed{
     transform:translateY(2px) scale(0.98);
     box-shadow:
