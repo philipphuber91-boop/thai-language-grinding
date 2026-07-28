@@ -11,6 +11,8 @@ const zeile2 = document.getElementById("zeile2");
 const eingabe = document.getElementById("eingabe");
 const aktuelleQuest = localStorage.getItem("aktuelleQuest");
 const questMode = localStorage.getItem("questMode") || "campaign";
+const keyboardTutorModeEnabled =
+    localStorage.getItem("keyboardTutorMode") === "true";
 
 const contentMode =
     localStorage.getItem("contentMode") || "campaign";
@@ -29,10 +31,12 @@ const keyboardElement = document.getElementById("thaiKeyboard");
 let highlightedKeyElements = [];
 let examHighlightTimer = null;
 let examHighlightRequestId = 0;
+let pendingTutorInput = null;
 const examHighlightDelayMs = 2000;
 const keyPressAnimationDurationMs = 130;
 
-// keyboard.js liefert: thaiKeyboardMap, latinToThaiMap, physicalKeyLayout
+// keyboard.js liefert: thaiKeyboardMap, latinToThaiMap, physicalKeyLayout,
+// resolvePhysicalLayoutKeyFromCode, translatePhysicalCode, translatePhysicalKey
 
 function getKeyElements(character) {
     if (!keyboardElement || character === null || character === undefined) {
@@ -716,10 +720,13 @@ eingabe.addEventListener("input", function () {
 
     console.log("INPUT", eingabe.value);
 
-    const eingegeben = eingabe.value;
+    const eingegeben = keyboardTutorModeEnabled
+        ? pendingTutorInput
+        : eingabe.value;
+    pendingTutorInput = null;
 
     // Noch nichts eingegeben
-    if (eingegeben.length === 0) {
+    if (!eingegeben || eingegeben.length === 0) {
         return;
     }
 
@@ -965,12 +972,24 @@ document.addEventListener("keydown", function (event) {
    }
 
    const physicalKey = resolvePhysicalKey(event);
+   if (physicalKey) {
+       pressKey(physicalKey);
+   }
 
-   if (!physicalKey) {
+   if (!keyboardTutorModeEnabled) {
        return;
    }
 
-   pressKey(physicalKey);
+   const translatedCharacter = translatePhysicalKey(event);
+
+   if (!translatedCharacter) {
+       return;
+   }
+
+   event.preventDefault();
+   pendingTutorInput = translatedCharacter;
+   eingabe.value = translatedCharacter;
+   eingabe.dispatchEvent(new Event("input", { bubbles: true }));
 
 });
 

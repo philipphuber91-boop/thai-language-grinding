@@ -95,3 +95,70 @@ const latinToThaiMap = {};
 for (const [physicalKey, { normal }] of Object.entries(physicalKeyLayout)) {
     if (normal) latinToThaiMap[physicalKey] = normal;
 }
+
+/*
+ * Übersetzt KeyboardEvent.code in den physicalKeyLayout-Schlüssel.
+ * Keine zusätzliche Mapping-Tabelle: Ableitung erfolgt direkt aus dem Code-Muster.
+ */
+function resolvePhysicalLayoutKeyFromCode(code) {
+    if (typeof code !== "string" || code.length === 0) {
+        return null;
+    }
+
+    if (code.startsWith("Key") && code.length === 4) {
+        return code.slice(3).toLowerCase();
+    }
+
+    if (code.startsWith("Digit") && code.length === 6) {
+        return code.slice(5);
+    }
+
+    switch (code) {
+        case "Backquote": return "`";
+        case "Minus": return "-";
+        case "Equal": return "=";
+        case "BracketLeft": return "[";
+        case "BracketRight": return "]";
+        case "Backslash": return "\\";
+        case "Semicolon": return ";";
+        case "Quote": return "'";
+        case "Comma": return ",";
+        case "Period": return ".";
+        case "Slash": return "/";
+        case "Space": return " ";
+        default: return null;
+    }
+}
+
+/*
+ * Kern-API für den Tutor-Mode:
+ * physical code + shift-Status -> Thai-Zeichen aus physicalKeyLayout
+ */
+function translatePhysicalCode(code, shiftKey) {
+    const layoutKey = resolvePhysicalLayoutKeyFromCode(code);
+
+    if (!layoutKey || !physicalKeyLayout[layoutKey]) {
+        return null;
+    }
+
+    const mapping = physicalKeyLayout[layoutKey];
+    const translated = shiftKey ? mapping.shift : mapping.normal;
+
+    return translated || null;
+}
+
+/*
+ * Convenience-API:
+ * KeyboardEvent -> Thai-Zeichen aus physicalKeyLayout
+ *
+ * Beispiel:
+ *   translatePhysicalKey(event) => "ก" (KeyD)
+ *   translatePhysicalKey(event) => "ฏ" (Shift+KeyD)
+ */
+function translatePhysicalKey(event) {
+    if (!event || typeof event.code !== "string") {
+        return null;
+    }
+
+    return translatePhysicalCode(event.code, Boolean(event.shiftKey));
+}
