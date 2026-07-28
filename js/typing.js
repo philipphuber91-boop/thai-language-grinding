@@ -11,7 +11,7 @@ const zeile2 = document.getElementById("zeile2");
 const eingabe = document.getElementById("eingabe");
 const aktuelleQuest = localStorage.getItem("aktuelleQuest");
 const questMode = localStorage.getItem("questMode") || "campaign";
-const keyboardTutorModeEnabled =
+let keyboardTutorModeEnabled =
     localStorage.getItem("keyboardTutorMode") === "true";
 
 const contentMode =
@@ -402,6 +402,8 @@ const thaiText = document.getElementById("thaiText");
 const storyText = document.getElementById("storyText");
 const deutschAktuell =
     document.getElementById("deutschAktuell");
+ const toggleKeyboardTutorButton =
+    document.getElementById("toggleKeyboardTutorButton");   
 const toggleGermanButton =
     document.getElementById("toggleGermanButton");
 
@@ -419,6 +421,24 @@ function aktualisiereGermanToggle() {
         startZeit !== null;
 
 }
+
+function aktualisiereKeyboardTutorToggle() {
+    if (!toggleKeyboardTutorButton) {
+        return;
+    }
+
+    toggleKeyboardTutorButton.textContent =
+        keyboardTutorModeEnabled ? "🎹 Tutor EIN" : "🎹 Tutor AUS";
+}
+
+function setKeyboardTutorMode(enabled) {
+    keyboardTutorModeEnabled = enabled;
+    pendingTutorInput = null;
+    eingabe.value = "";
+    localStorage.setItem("keyboardTutorMode", String(enabled));
+    aktualisiereKeyboardTutorToggle();
+}
+
 questTitel.textContent =
     daten[aktuelleQuest].titel;
 
@@ -783,6 +803,15 @@ startThaiButton.addEventListener("click", function () {
 
 eingabe.focus();
 
+});
+
+toggleKeyboardTutorButton?.addEventListener("mousedown", function (event) {
+    event.preventDefault();
+});
+
+toggleKeyboardTutorButton?.addEventListener("click", function () {
+    setKeyboardTutorMode(!keyboardTutorModeEnabled);
+    eingabe.focus();
 });
 
 weiterButton.addEventListener("click", function () {
