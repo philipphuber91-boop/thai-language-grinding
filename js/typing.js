@@ -163,29 +163,30 @@ function releaseKey(character) {
     });
 }
 
-function resolvePhysicalKey(event) {
+function resolvePressedVirtualKeys(event) {
     if (!event || event.defaultPrevented || event.isComposing) {
-        return null;
+        return [];
     }
 
-    const rawKey = event.key;
+    const translatedCharacter = translatePhysicalKey(event);
 
-    // Thai-Zeichen direkt (Thai-Tastaturmodus im OS)
-    if (rawKey.length === 1 && thaiKeyboardMap[rawKey]) {
-        return thaiKeyboardMap[rawKey].key;
+    if (translatedCharacter) {
+        const mapping = thaiKeyboardMap[translatedCharacter];
+        if (mapping) {
+            const pressedKeys = [mapping.key];
+            if (mapping.shift) {
+                pressedKeys.push("Shift");
+            }
+            return pressedKeys;
+        }
     }
 
-    // Lateinischer Buchstabe → primäres Thai-Zeichen der Taste
-    if (rawKey.length === 1) {
-        return latinToThaiMap[rawKey.toLowerCase()] || null;
-    }
+    // Nicht-Text-Sondertasten bleiben direkt abgebildet.
+    if (event.key === "Shift") return ["Shift"];
+    if (event.key === "Backspace") return ["Backspace"];
+    if (event.key === "Enter") return ["Enter"];
 
-    // Sondertasten
-    if (rawKey === "Shift")     return "Shift";
-    if (rawKey === "Backspace") return "Backspace";
-    if (rawKey === "Enter")     return "Enter";
-
-    return null;
+    return [];
 }
 
 
@@ -1000,10 +1001,8 @@ document.addEventListener("keydown", function (event) {
        return;
    }
 
-   const physicalKey = resolvePhysicalKey(event);
-   if (physicalKey) {
-       pressKey(physicalKey);
-   }
+      resolvePressedVirtualKeys(event).forEach(pressKey);
+
 
    if (!keyboardTutorModeEnabled) {
        return;
