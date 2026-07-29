@@ -5,13 +5,24 @@
 
     <meta charset="UTF-8">
 
+    <!-- Mobile: sorgt dafür, dass Media Queries an der echten Gerätebreite ausgerichtet werden -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
     <title>Language Grinding</title>
 
     <link rel="stylesheet" href="../style.css">
+    <!-- Nur additive Anpassungen für schmale Viewports, ändert keine bestehende Desktop-Regel -->
+    <link rel="stylesheet" href="../css/mobile.css">
 
 </head>
 
 <body>
+
+<!-- Mobile: öffnet/schließt die Sidebar (siehe css/mobile.css und js/engine.js) -->
+<button id="sidebarToggleButton" class="hamburger-button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mainSidebar">☰</button>
+
+<!-- Mobile: abgedunkelter Hintergrund hinter der geöffneten Sidebar -->
+<div id="sidebarBackdrop" class="sidebar-backdrop"></div>
 
 <header class="topbar">
 
@@ -23,7 +34,7 @@
 
     <div class="layout">
 
-<aside class="sidebar">
+<aside class="sidebar" id="mainSidebar">
 
     <div class="player-card">
 

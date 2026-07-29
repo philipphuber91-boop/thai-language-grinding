@@ -1034,3 +1034,93 @@ document.addEventListener("pointerdown", function () {
     }
  
 });
+
+/* =========================================================
+   MOBILE: Tap-to-Type für die virtuelle Thai-Tastatur
+   ---------------------------------------------------------
+   Auf Smartphones gibt es keine physische Tastatur - die
+   virtuelle Tastatur war bisher rein visuell (Tutor-Highlight
+   bei physischen Tastendrücken, siehe weiter oben). Diese
+   Erweiterung macht die Tasten zusätzlich antippbar, ohne
+   etwas an der physischen Tastatureingabe zu verändern.
+
+   Die Zeichen werden über denselben Weg eingespeist wie im
+   bestehenden Keyboard-Tutor-Modus (eingabe.value + "input"
+   Event) - es entsteht also KEINE zweite/parallele Spiellogik.
+
+   Aktiv nur auf Touch-Geräten (grobes Zeigegerät / kein Hover):
+   Auf Desktop mit Maus bleibt ein Klick auf die Tastatur exakt
+   folgenlos, wie es bisher schon der Fall war.
+========================================================= */
+
+const isTouchDevice =
+    (typeof window.matchMedia === "function" &&
+        window.matchMedia("(hover: none), (pointer: coarse)").matches) ||
+    navigator.maxTouchPoints > 0;
+
+// Mobile Geräte haben keine physische Shift-Taste: ein Tap auf
+// "Shift" aktiviert den Shift-Zustand für genau das nächste
+// Zeichen (klassisches Mobile-Keyboard-Verhalten).
+let virtualShiftActive = false;
+
+function updateVirtualShiftVisual() {
+    getKeyElements("Shift").forEach(el => {
+        el.classList.toggle("virtual-shift-active", virtualShiftActive);
+    });
+}
+
+function typeCharacterFromVirtualKey(character) {
+    if (phase !== "typing" || !character) {
+        return;
+    }
+
+    // Gleicher Einspeisungsweg wie der bestehende Tutor-Modus
+    // (siehe keydown-Listener oben): funktioniert unabhängig
+    // davon, ob der Tutor-Modus aktuell an- oder ausgeschaltet ist.
+    pendingTutorInput = character;
+    eingabe.value = character;
+    eingabe.dispatchEvent(new Event("input", { bubbles: true }));
+}
+
+function handleVirtualKeyTap(keyElement) {
+    if (!keyElement || phase !== "typing") {
+        return;
+    }
+
+    if (keyElement.classList.contains("key-shift")) {
+        pressKey("Shift");
+        virtualShiftActive = !virtualShiftActive;
+        updateVirtualShiftVisual();
+        return;
+    }
+
+    // Backspace/Enter haben in der bestehenden Eingabelogik keine
+    // Funktion (Prüfung erfolgt Zeichen für Zeichen, siehe der
+    // "input"-Listener von #eingabe weiter oben) - nur visuelles
+    // Feedback, kein Verhalten wird hinzuerfunden.
+    if (keyElement.classList.contains("key-action")) {
+        pressKey(keyElement.getAttribute("data-key"));
+        return;
+    }
+
+    const shiftCharacter = keyElement.getAttribute("data-shift-key");
+    const character = virtualShiftActive && shiftCharacter
+        ? shiftCharacter
+        : keyElement.getAttribute("data-key");
+
+    pressKey(character);
+    typeCharacterFromVirtualKey(character);
+
+    if (virtualShiftActive) {
+        virtualShiftActive = false;
+        updateVirtualShiftVisual();
+    }
+}
+
+if (isTouchDevice && keyboardElement) {
+    keyboardElement.querySelectorAll(".key").forEach(keyElement => {
+        keyElement.addEventListener("click", function () {
+            handleVirtualKeyTap(keyElement);
+        });
+    });
+}

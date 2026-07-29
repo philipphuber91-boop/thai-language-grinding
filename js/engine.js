@@ -498,3 +498,65 @@ if (chronikButton) {
 }
 
 
+/* =========================================================
+   MOBILE: Sidebar als Hamburger-Menü
+   ---------------------------------------------------------
+   Rein additiv – betrifft nur die neuen Elemente
+   (#sidebarToggleButton, #sidebarBackdrop) und die
+   Sichtbarkeits-Klasse "mobile-open" auf der Sidebar.
+   Auf Desktop bleibt die Sidebar wie bisher fixiert sichtbar,
+   diese Funktionen werden dort schlicht nicht benötigt.
+========================================================= */
+
+const sidebarToggleButton = document.getElementById("sidebarToggleButton");
+const mainSidebar = document.getElementById("mainSidebar");
+const sidebarBackdrop = document.getElementById("sidebarBackdrop");
+
+function openMobileSidebar() {
+
+    if (!mainSidebar) {
+        return;
+    }
+
+    mainSidebar.classList.add("mobile-open");
+    sidebarBackdrop?.classList.add("active");
+    sidebarToggleButton?.setAttribute("aria-expanded", "true");
+
+}
+
+function closeMobileSidebar() {
+
+    if (!mainSidebar) {
+        return;
+    }
+
+    mainSidebar.classList.remove("mobile-open");
+    sidebarBackdrop?.classList.remove("active");
+    sidebarToggleButton?.setAttribute("aria-expanded", "false");
+
+}
+
+if (sidebarToggleButton) {
+
+    sidebarToggleButton.onclick = function () {
+
+        if (mainSidebar.classList.contains("mobile-open")) {
+            closeMobileSidebar();
+        } else {
+            openMobileSidebar();
+        }
+
+    };
+
+}
+
+sidebarBackdrop?.addEventListener("click", closeMobileSidebar);
+
+// Nach Auswahl eines Menüpunkts soll sich die mobile Sidebar
+// automatisch schließen (bestehende onclick-Handler der
+// einzelnen Buttons bleiben davon unberührt).
+mainSidebar?.querySelectorAll(".menu-card button").forEach(button => {
+    button.addEventListener("click", closeMobileSidebar);
+});
+
+

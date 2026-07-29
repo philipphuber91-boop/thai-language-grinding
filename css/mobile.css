@@ -1,0 +1,335 @@
+/* =========================================================
+   MOBILE.CSS
+   ---------------------------------------------------------
+   Ausschließlich ADDITIVE Anpassungen für schmale Viewports
+   (Smartphones/Tablets). Diese Datei wird NACH style.css
+   geladen und verändert KEINE bestehende Desktop-Regel aus
+   style.css. Alle Layout-relevanten Overrides stehen in
+   @media-Blöcken und greifen nur unterhalb der jeweiligen
+   Breakpoint-Breite.
+
+   Reihenfolge der Abschnitte:
+     1. Basis (Hamburger-Button, verhindert horizontales Scrollen)
+     2. index.html – Sidebar/Navigation
+     3. index.html – Quest-Karten & Start-Overlay
+     4. achievements.html / eingebettete Achievements-Ansicht
+     5. Chronik
+     6. typing.html – Lese-Ansicht, Typing-Fenster, Tastatur
+========================================================= */
+
+
+/* =========================================================
+   1. BASIS
+========================================================= */
+
+/* Hamburger-Button existiert nur im Markup für Mobile-Zugriff
+   auf die Sidebar. Auf Desktop bleibt er unsichtbar. */
+.hamburger-button{
+    display:none;
+    position:fixed;
+    top:18px;
+    left:18px;
+    z-index:1001;
+    width:46px;
+    height:46px;
+    border-radius:12px;
+    border:2px solid var(--gold, #c89b3c);
+    background:linear-gradient(180deg, #352517, #25180f);
+    color:#f3e5c0;
+    font-size:22px;
+    line-height:1;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+
+/* Abdunkelung hinter der aufgeklappten Sidebar (Mobile-Drawer) */
+.sidebar-backdrop{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:998;
+}
+
+.sidebar-backdrop.active{
+    display:block;
+}
+
+/* Verhindert horizontales Scrollen durch einzelne überbreite
+   Elemente auf sehr schmalen Screens. */
+@media (max-width:900px){
+    html, body{
+        overflow-x:hidden;
+    }
+}
+
+
+/* =========================================================
+   2. INDEX.HTML – SIDEBAR / NAVIGATION
+========================================================= */
+
+@media (max-width:900px){
+
+    .hamburger-button{
+        display:flex;
+    }
+
+    .topbar h1{
+        font-size:44px;
+    }
+
+    .topbar h2{
+        font-size:22px;
+    }
+
+    /* Sidebar wird zum ausklappbaren Drawer von links.
+       "position:fixed" wird hier bewusst erneut gesetzt, da
+       eine bereits bestehende Regel in style.css (@media
+       max-width:1300px) die Sidebar auf position:relative
+       umstellt - unsere Drawer-Lösung braucht aber fixed. */
+    .sidebar{
+        position:fixed;
+        top:0;
+        left:0;
+        height:100%;
+        width:min(82%, 320px);
+        max-width:320px;
+        padding:80px 20px 20px;
+        overflow-y:auto;
+        background:#1a120d;
+        z-index:999;
+        transform:translateX(-100%);
+        transition:transform .25s ease;
+        box-shadow:0 0 30px rgba(0,0,0,.5);
+    }
+
+    .sidebar.mobile-open{
+        transform:translateX(0);
+    }
+
+    /* Content nimmt die volle Breite ein, der Fixed-Offset
+       für die Desktop-Sidebar entfällt */
+    .content{
+        margin-left:0;
+        width:100%;
+        padding-top:10px;
+    }
+
+    .layout{
+        flex-direction:column;
+        align-items:stretch;
+        padding:16px;
+        gap:16px;
+    }
+}
+
+
+/* =========================================================
+   3. QUEST-KARTEN & START-OVERLAY
+========================================================= */
+
+@media (max-width:900px){
+
+    /* Die 4-spaltige Grid-Anordnung passt nicht auf schmale
+       Screens – wird gestapelt. */
+    .quest-header{
+        grid-template-columns:1fr;
+        justify-items:center;
+        text-align:center;
+        gap:10px;
+    }
+
+    .quest-main h2{
+        transform:none;
+    }
+
+    .quest-meta,
+    .quest-words{
+        text-align:center;
+    }
+
+    .quest-actions{
+        justify-content:center;
+        align-self:stretch;
+    }
+
+    .start-quest-info{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .mode-container{
+        grid-template-columns:1fr;
+    }
+
+    /* Fix: Das Overlay-Fenster hatte keine Höhenbegrenzung.
+       Auf kurzen Mobile-Viewports ragte der Inhalt (Modus-
+       Karten, Challenge-Button) über den sichtbaren Bereich
+       hinaus und war nicht erreichbar. Das Overlay selbst
+       wird scrollbar, das Fenster darf nach oben ausrichten. */
+    .start-quest-overlay{
+        align-items:flex-start;
+        overflow-y:auto;
+        padding:20px 0;
+    }
+
+    .start-quest-window{
+        max-height:none;
+        margin:0 auto;
+    }
+}
+
+@media (max-width:520px){
+    .quest-card{
+        padding:12px;
+    }
+
+    .start-quest-window{
+        padding:20px;
+    }
+}
+
+
+/* =========================================================
+   4. ACHIEVEMENTS (eingebettet in #achievementContainer
+      sowie in der eigenständigen achievements.html)
+========================================================= */
+
+@media (max-width:900px){
+
+    #achievementBody{
+        grid-template-columns:1fr;
+        height:auto;
+    }
+
+    #achievementSummary{
+        grid-template-columns:1fr;
+        text-align:center;
+        gap:14px;
+    }
+
+    .achievementSummaryRight{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .achievementCard{
+        grid-template-columns:56px 1fr 70px;
+        padding:14px;
+    }
+}
+
+
+/* =========================================================
+   5. CHRONIK
+========================================================= */
+
+@media (max-width:900px){
+
+    /* Die 3 Verlaufs-Karten (Gesamtspielzeit/Bestes Tempo/…) nutzen im
+       Original repeat(auto-fit, minmax(320px,1fr)) - das reicht auf
+       schmalen Screens nicht aus, um zuverlässig auf 1 Spalte zu
+       kollabieren, daher explizit erzwungen. */
+    .chronik-history-grid{
+        grid-template-columns:1fr;
+    }
+
+    .main-stat-grid{
+        grid-template-columns:repeat(2, 1fr);
+    }
+
+    .chronik-profile-card{
+        width:100%;
+        flex-wrap:wrap;
+    }
+}
+
+@media (max-width:520px){
+    .main-stat-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+
+/* =========================================================
+   6. TYPING.HTML – LESE-ANSICHT, TYPING-FENSTER, TASTATUR
+========================================================= */
+
+@media (max-width:900px){
+
+    /* Deutsch/Thai nebeneinander -> gestapelt */
+    .buch{
+        flex-direction:column;
+    }
+
+    .buch-seite{
+        width:100%;
+    }
+
+    .typing-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:12px;
+    }
+
+    .typing-stats{
+        flex-wrap:wrap;
+        gap:14px;
+    }
+
+    #typingFenster{
+        width:100%;
+    }
+
+    .typing-zeile{
+        font-size:1.6rem;
+    }
+
+    #deutscherText,
+    #thaiText{
+        font-size:1.3rem;
+    }
+}
+
+@media (max-width:600px){
+
+    /* Tastatur-Zeichen und Tasten weiter verkleinern, damit
+       alle Reihen ohne horizontales Scrollen passen. */
+    .typing-keyboard{
+        padding:14px 10px 12px;
+    }
+
+    .typing-keyboard .key{
+        min-height:46px;
+        font-size:1.2rem;
+        border-radius:12px;
+    }
+
+    .typing-keyboard .key[data-shift-key]::after{
+        font-size:.9rem;
+    }
+
+    .typing-keyboard .key.key-space{
+        min-width:0;
+    }
+}
+
+/* Auf Touch-Geräten ist die virtuelle Tastatur tatsächlich
+   antippbar (siehe js/typing.js, tapToType-Erweiterung) –
+   der Mauszeiger signalisiert das zusätzlich auf Geräten mit
+   Zeigegerät. Ändert nichts an der physischen Tastatureingabe. */
+@media (hover:none) and (pointer:coarse){
+    .typing-keyboard .key{
+        cursor:pointer;
+    }
+}
+
+/* Visuelles Feedback für den (mobilen) Shift-Zustand: ein Tap
+   auf "Shift" gilt für genau das nächste angetippte Zeichen. */
+.typing-keyboard .key.key-shift.virtual-shift-active{
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.75),
+        0 0 0 2px rgba(255,221,103,.55),
+        0 0 20px rgba(255,215,110,.4);
+    background:linear-gradient(180deg, #fff1c1, #e6c16a);
+}
