@@ -5430,3 +5430,359 @@ padding:28px 34px;
     transform:translateY(-1px);
 
 }
+
+
+/* Typing-Screen: ruhige, fein gerahmte RPG-Oberflächen. */
+@media (min-width:901px){
+
+    #typingBereich.quest-card{
+        width:min(1540px, 97%);
+        margin:10px auto;
+        padding:16px 20px 18px;
+        overflow:hidden;
+        border:2px solid #a96f24;
+        border-radius:10px;
+        background:
+            linear-gradient(180deg, rgba(255,249,225,.72), rgba(236,202,135,.44)),
+            linear-gradient(135deg, #faeecb 0%, #e7bd74 100%);
+        box-shadow:
+            inset 0 0 0 2px rgba(255,242,202,.82),
+            inset 0 0 0 5px rgba(146,92,27,.2),
+            0 14px 30px rgba(0,0,0,.32);
+    }
+
+    #typingBereich.quest-card:hover{
+        transform:none;
+        border-color:#a96f24;
+        box-shadow:
+            inset 0 0 0 2px rgba(255,242,202,.82),
+            inset 0 0 0 5px rgba(146,92,27,.2),
+            0 14px 30px rgba(0,0,0,.32);
+    }
+
+    #typingBereich.quest-card::before{
+        inset:8px;
+        border:1px solid rgba(155,98,28,.58);
+        border-radius:6px;
+        box-shadow:inset 0 0 0 2px rgba(255,241,196,.42);
+    }
+
+    #typingBereich.quest-card::after{
+        inset:12px;
+        border-radius:3px;
+        box-shadow:
+            inset 0 0 18px rgba(103,60,12,.08),
+            inset 0 0 0 1px rgba(255,246,213,.5);
+    }
+
+    .typing-header{
+        min-height:62px;
+        margin:0;
+        padding:0 8px 13px;
+        border-bottom:1px solid rgba(151,96,28,.52);
+    }
+
+    .typing-header h2{
+        color:#4a2c12;
+        font-size:2rem;
+        letter-spacing:.01em;
+        text-shadow:0 1px 0 rgba(255,255,255,.68);
+    }
+
+    .typing-stats{
+        gap:34px;
+        color:#593818;
+        font-size:1rem;
+        font-variant-numeric:tabular-nums;
+    }
+
+    .typing-status{
+        gap:10px;
+        color:#5e3b19;
+    }
+
+    .typing-status span{
+        padding:7px 11px;
+        border-color:rgba(139,86,25,.3);
+        background:rgba(255,245,210,.44);
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.6);
+    }
+
+    .settings-gear-button{
+        width:52px;
+        height:48px;
+        border:1px solid #8d5a1c;
+        border-radius:9px;
+        background:linear-gradient(135deg, #f7d47d 0%, #c58a31 48%, #8b571b 100%);
+        color:#4d2b0d;
+        font-size:24px;
+        box-shadow:
+            inset 0 0 0 2px rgba(255,237,181,.5),
+            inset 0 1px 0 rgba(255,255,255,.68),
+            0 3px 5px rgba(83,45,8,.3);
+    }
+
+    .settings-gear-button:hover,
+    .settings-gear-button[aria-expanded="true"]{
+        border-color:#724310;
+        color:#3c230a;
+        background:linear-gradient(135deg, #ffe7a4 0%, #d39b42 48%, #9a621e 100%);
+    }
+
+    .typing-divider{
+        margin:13px 0 14px;
+        background:linear-gradient(to right, transparent 2%, rgba(139,84,20,.42) 16%, rgba(139,84,20,.56) 50%, rgba(139,84,20,.42) 84%, transparent 98%);
+    }
+
+    .typing-divider::after{
+        padding:0 16px;
+        background:#efd29a;
+        color:#9c651f;
+        font-size:22px;
+        text-shadow:0 1px 0 rgba(255,255,255,.7);
+    }
+
+    #typingFenster{
+        width:min(100%, 1080px);
+        max-width:100%;
+        min-height:256px;
+        margin:0 auto 18px;
+        padding:34px 42px;
+        display:grid;
+        align-content:center;
+        border:1px solid #b77b2c;
+        border-radius:8px;
+        background:
+            linear-gradient(135deg, rgba(255,251,232,.68), rgba(243,210,143,.18)),
+            rgba(255,242,207,.38);
+        box-shadow:
+            inset 0 0 0 3px rgba(255,248,219,.72),
+            inset 0 0 0 5px rgba(153,94,24,.16);
+    }
+
+    .typing-zeile{
+        min-height:0;
+        color:#43270f;
+        font-size:2.55rem;
+        line-height:1.55;
+        text-shadow:0 1px 0 rgba(255,255,255,.54);
+    }
+
+    .aktuell{
+        border-radius:6px;
+        padding:2px 6px;
+        background:linear-gradient(180deg, #ffdb64, #efb83d);
+        box-shadow:inset 0 1px 0 rgba(255,250,193,.8);
+    }
+
+    .typing-keyboard{
+        width:min(100%, 1080px);
+        margin:0 auto;
+        padding:17px 24px 14px;
+        border:1px solid #ae7025;
+        border-radius:8px;
+        background:
+            linear-gradient(135deg, rgba(255,251,233,.68), rgba(238,194,116,.26)),
+            #f1d194;
+        box-shadow:
+            inset 0 0 0 3px rgba(255,247,215,.75),
+            inset 0 0 0 5px rgba(151,91,20,.15),
+            0 8px 16px rgba(74,43,9,.16);
+    }
+
+    .typing-keyboard::before{
+        top:-7px;
+        width:92px;
+        height:8px;
+        background:#edcf94;
+        box-shadow:0 0 0 1px rgba(178,118,39,.22);
+    }
+
+    .typing-keyboard .keyboard-row{
+        gap:9px;
+        margin-bottom:8px;
+    }
+
+    .typing-keyboard .keyboard-row.row-5{
+        padding-top:2px;
+    }
+
+    .typing-keyboard .key{
+        min-height:56px;
+        border:1px solid #b98037;
+        border-radius:8px;
+        background:linear-gradient(145deg, #fff0c8 0%, #f5d28c 58%, #d89f4f 100%);
+        box-shadow:
+            inset 0 1px 0 rgba(255,255,255,.82),
+            inset 0 -1px 0 rgba(120,70,15,.17),
+            0 2px 4px rgba(78,43,7,.2);
+        color:#4b2e12;
+        font-size:1.65rem;
+    }
+
+    .typing-keyboard .key:hover{
+        transform:translateY(-1px);
+        background:linear-gradient(145deg, #fff7dc 0%, #f9d995 58%, #dfa957 100%);
+        box-shadow:
+            inset 0 1px 0 rgba(255,255,255,.9),
+            0 4px 7px rgba(78,43,7,.22);
+    }
+
+    .typing-keyboard .key.key-action{
+        background:linear-gradient(145deg, #f3ce78 0%, #ce8d32 55%, #9b5d17 100%);
+        color:#4b290c;
+        text-shadow:0 1px 0 rgba(255,239,180,.55);
+    }
+
+    .typing-keyboard .key.key-space{
+        min-width:360px;
+        max-width:720px;
+        min-height:52px;
+        padding:12px;
+        border-radius:8px;
+    }
+
+    .typing-keyboard .key.key-space::before{
+        inset:4px;
+        border-radius:5px;
+        border-color:rgba(255,250,223,.48);
+    }
+
+    .typing-keyboard .key[data-shift-key]::after{
+        top:4px;
+        right:5px;
+        font-size:1.15rem;
+        color:rgba(92,52,12,.58);
+    }
+
+    .typing-quest-bar{
+        gap:26px;
+        margin-top:13px;
+        padding:12px 24px;
+        border:1px solid #ae7025;
+        border-radius:8px;
+        background:
+            linear-gradient(135deg, rgba(255,250,226,.82), rgba(234,191,112,.42)),
+            #efd19a;
+        box-shadow:
+            inset 0 0 0 3px rgba(255,248,216,.76),
+            inset 0 0 0 5px rgba(151,91,20,.13);
+    }
+
+    .typing-quest-badge{
+        width:76px;
+        height:76px;
+        border:2px solid #9c671f;
+        box-shadow:
+            0 3px 7px rgba(74,42,8,.32),
+            inset 0 0 0 3px rgba(255,231,160,.7);
+    }
+
+    .typing-quest-badge::after{
+        inset:4px;
+        border-color:rgba(255,235,170,.72);
+    }
+
+    .typing-quest-meta h3{
+        color:#4a2b11;
+        font-size:1.35rem;
+    }
+
+    .typing-quest-kapitel{
+        color:#5e3c1c;
+        font-size:1rem;
+    }
+
+    .typing-quest-progress-label{
+        color:#5c3918;
+        font-size:.85rem;
+        font-weight:bold;
+        letter-spacing:.02em;
+        text-transform:none;
+    }
+
+    .typing-quest-progress .progress-bar{
+        height:12px;
+        margin-top:0;
+    }
+
+    .typing-quest-progress-text{
+        color:#5a3616;
+        font-size:.9rem;
+    }
+
+    .typing-quest-leave-button{
+        min-width:192px;
+        justify-content:center;
+        padding:13px 20px;
+        border:1px solid #782717;
+        border-radius:7px;
+        background:linear-gradient(135deg, #d54e31 0%, #a82e1d 56%, #732112 100%);
+        box-shadow:
+            inset 0 0 0 2px rgba(255,205,135,.58),
+            inset 0 1px 0 rgba(255,230,177,.54),
+            0 3px 5px rgba(74,25,8,.28);
+        color:#fff3d5;
+        font-family:Georgia, "Times New Roman", serif;
+        font-size:1.1rem;
+    }
+
+    .settings-panel{
+        width:406px;
+        padding:22px 20px;
+        border-left:2px solid #aa7026;
+        background:
+            linear-gradient(135deg, rgba(255,249,224,.78), rgba(239,203,133,.42)),
+            #f1d49d;
+        box-shadow:
+            -12px 0 28px rgba(42,23,6,.34),
+            inset 0 0 0 3px rgba(255,247,214,.72),
+            inset 0 0 0 5px rgba(149,92,25,.16);
+    }
+
+    .settings-panel-header{
+        margin-bottom:14px;
+        padding-bottom:12px;
+        border-bottom:1px solid rgba(151,94,26,.4);
+    }
+
+    .settings-panel-header h2{
+        color:#4a2d12;
+        font-family:Georgia, "Times New Roman", serif;
+        font-size:1.25rem;
+    }
+
+    .settings-close-button{
+        width:38px;
+        height:38px;
+        border-color:#b47a2d;
+        border-radius:7px;
+        background:linear-gradient(145deg, #fff1c9, #e4b865);
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.85), 0 2px 4px rgba(77,43,8,.2);
+    }
+
+    .settings-section{
+        padding:14px 0;
+        border-top-color:rgba(151,94,26,.36);
+    }
+
+    .settings-section-title{
+        margin-bottom:10px;
+        color:#563316;
+        font-family:Georgia, "Times New Roman", serif;
+        font-size:.85rem;
+        letter-spacing:.02em;
+    }
+
+    .settings-row-label{
+        color:#513117;
+    }
+
+    .settings-hint{
+        margin-top:14px;
+        border:1px solid rgba(180,122,45,.38);
+        border-radius:7px;
+        background:rgba(255,246,216,.36);
+        color:#593a1c;
+    }
+}

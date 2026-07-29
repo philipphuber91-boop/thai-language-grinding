@@ -433,6 +433,182 @@
 }
 
 
+/* Mobile behält die reduzierte Informationshierarchie, übernimmt aber
+   die gleiche doppelte Goldrahmen- und Parchment-Sprache wie Desktop. */
+@media (max-width:900px){
+
+    #typingBereich.quest-card{
+        margin:8px auto;
+        padding:12px 14px 14px;
+        overflow:hidden;
+        border:2px solid #a96f24;
+        border-radius:12px;
+        background:
+            linear-gradient(180deg, rgba(255,249,225,.72), rgba(236,202,135,.42)),
+            linear-gradient(135deg, #faeecb 0%, #e7bd74 100%);
+        box-shadow:
+            inset 0 0 0 2px rgba(255,242,202,.82),
+            inset 0 0 0 4px rgba(146,92,27,.16),
+            0 8px 18px rgba(0,0,0,.28);
+    }
+
+    #typingBereich.quest-card::before{
+        inset:5px;
+        border-color:rgba(155,98,28,.55);
+        border-radius:8px;
+        box-shadow:inset 0 0 0 1px rgba(255,241,196,.46);
+    }
+
+    #typingBereich.quest-card::after{
+        inset:8px;
+        border-radius:5px;
+        box-shadow:inset 0 0 13px rgba(103,60,12,.07);
+    }
+
+    .typing-header{
+        min-height:44px;
+        padding:0 4px 10px;
+        border-bottom:1px solid rgba(151,96,28,.42);
+    }
+
+    .typing-header h2{
+        color:#4a2c12;
+        font-size:1.35rem;
+        text-shadow:0 1px 0 rgba(255,255,255,.68);
+    }
+
+    .settings-gear-button{
+        width:42px;
+        height:40px;
+        border:1px solid #8d5a1c;
+        border-radius:8px;
+        background:linear-gradient(135deg, #f7d47d 0%, #c58a31 48%, #8b571b 100%);
+        color:#4d2b0d;
+        font-size:20px;
+        box-shadow:
+            inset 0 0 0 2px rgba(255,237,181,.5),
+            inset 0 1px 0 rgba(255,255,255,.68),
+            0 2px 4px rgba(83,45,8,.25);
+    }
+
+    .typing-divider{
+        margin:10px 0 12px;
+        background:linear-gradient(to right, transparent 2%, rgba(139,84,20,.38) 16%, rgba(139,84,20,.52) 50%, rgba(139,84,20,.38) 84%, transparent 98%);
+    }
+
+    .typing-divider::after{
+        padding:0 11px;
+        background:#efd29a;
+        color:#9c651f;
+        font-size:16px;
+    }
+
+    #typingFenster{
+        width:100%;
+        max-width:100%;
+        min-height:208px;
+        margin:0 auto 12px;
+        padding:24px 12px;
+        display:grid;
+        align-content:center;
+        border:1px solid #b77b2c;
+        border-radius:8px;
+        background:
+            linear-gradient(135deg, rgba(255,251,232,.68), rgba(243,210,143,.17)),
+            rgba(255,242,207,.38);
+        box-shadow:
+            inset 0 0 0 2px rgba(255,248,219,.68),
+            inset 0 0 0 4px rgba(153,94,24,.13);
+    }
+
+    .typing-zeile{
+        min-height:0;
+        color:#43270f;
+        font-size:1.55rem;
+        line-height:1.55;
+        text-shadow:0 1px 0 rgba(255,255,255,.54);
+    }
+
+    .aktuell{
+        padding:1px 4px;
+        border-radius:5px;
+        background:linear-gradient(180deg, #ffdb64, #efb83d);
+        box-shadow:inset 0 1px 0 rgba(255,250,193,.8);
+    }
+
+    .typing-keyboard{
+        margin:0;
+        border:1px solid #ae7025;
+        border-radius:8px;
+        background:
+            linear-gradient(135deg, rgba(255,251,233,.68), rgba(238,194,116,.26)),
+            #f1d194;
+        box-shadow:
+            inset 0 0 0 2px rgba(255,247,215,.75),
+            inset 0 0 0 4px rgba(151,91,20,.13),
+            0 5px 10px rgba(74,43,9,.14);
+    }
+
+    .typing-keyboard::before{
+        width:62px;
+        height:6px;
+        top:-6px;
+        background:#edcf94;
+        box-shadow:0 0 0 1px rgba(178,118,39,.22);
+    }
+
+    .typing-keyboard .key{
+        border-color:#b98037;
+        border-radius:7px;
+        background:linear-gradient(145deg, #fff0c8 0%, #f5d28c 58%, #d89f4f 100%);
+        box-shadow:
+            inset 0 1px 0 rgba(255,255,255,.82),
+            inset 0 -1px 0 rgba(120,70,15,.17),
+            0 2px 3px rgba(78,43,7,.18);
+        color:#4b2e12;
+    }
+
+    .typing-keyboard .key.key-action{
+        background:linear-gradient(145deg, #f3ce78 0%, #ce8d32 55%, #9b5d17 100%);
+        color:#4b290c;
+        text-shadow:0 1px 0 rgba(255,239,180,.55);
+    }
+
+    .typing-keyboard .key.key-space{
+        border-radius:7px;
+    }
+
+    .settings-panel{
+        background:
+            linear-gradient(135deg, rgba(255,249,224,.78), rgba(239,203,133,.42)),
+            #f1d49d;
+        box-shadow:
+            0 -10px 26px rgba(42,23,6,.28),
+            inset 0 0 0 3px rgba(255,247,214,.72),
+            inset 0 0 0 5px rgba(149,92,25,.16);
+    }
+
+    .settings-panel-header{
+        margin-bottom:14px;
+        padding-bottom:12px;
+        border-bottom:1px solid rgba(151,94,26,.4);
+    }
+
+    .settings-panel-header h2,
+    .settings-section-title{
+        color:#4a2d12;
+        font-family:Georgia, "Times New Roman", serif;
+    }
+
+    .settings-close-button{
+        border-color:#b47a2d;
+        border-radius:7px;
+        background:linear-gradient(145deg, #fff1c9, #e4b865);
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.85), 0 2px 4px rgba(77,43,8,.2);
+    }
+}
+
+
 /* =========================================================
    7. TYPING.HTML – EINSTELLUNGSMENÜ (Zahnrad)
    ---------------------------------------------------------
