@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /* =========================================================
    LANGUAGE GRINDING UI
    Version 1.0
@@ -4666,15 +4667,15 @@ padding:28px 34px;
 
     overflow-y:auto;
 
-    background:linear-gradient(180deg, #3b3122 0%, #231d16 100%);
+    background:linear-gradient(180deg, #f7e6bf 0%, #dfbc7d 100%);
 
     border-left:3px solid var(--gold);
 
     box-shadow:
-        -10px 0 35px rgba(0,0,0,.55),
+        -10px 0 35px rgba(0,0,0,.45),
         0 0 25px rgba(255,210,120,.12);
 
-    color:var(--text);
+    color:#3b2818;
 
     z-index:1100;
 
@@ -4706,7 +4707,7 @@ padding:28px 34px;
 
     font-size:22px;
 
-    color:var(--gold-light);
+    color:#4b2b12;
 
     letter-spacing:.5px;
 
@@ -4720,11 +4721,11 @@ padding:28px 34px;
 
     border-radius:50%;
 
-    border:1px solid rgba(255,255,255,0.18);
+    border:1px solid rgba(120,80,20,.35);
 
-    background:rgba(0,0,0,0.25);
+    background:rgba(0,0,0,0.08);
 
-    color:var(--text);
+    color:#3b2818;
 
     font-size:15px;
 
@@ -4744,7 +4745,7 @@ padding:28px 34px;
 
     border-color:var(--gold);
 
-    color:var(--gold-light);
+    color:#6b3d10;
 
 }
 
@@ -4752,7 +4753,7 @@ padding:28px 34px;
 
     padding:16px 0;
 
-    border-top:1px solid rgba(255,255,255,0.1);
+    border-top:1px solid rgba(120,80,20,.25);
 
 }
 
@@ -4772,7 +4773,7 @@ padding:28px 34px;
 
     text-transform:uppercase;
 
-    color:var(--gold);
+    color:#8a5a1e;
 
     margin-bottom:14px;
 
@@ -4796,7 +4797,7 @@ padding:28px 34px;
 
     font-size:15px;
 
-    color:var(--text);
+    color:#3b2818;
 
 }
 
@@ -4840,9 +4841,9 @@ padding:28px 34px;
 
     border-radius:999px;
 
-    background:rgba(0,0,0,.35);
+    background:rgba(0,0,0,.18);
 
-    border:1px solid rgba(255,255,255,0.15);
+    border:1px solid rgba(120,80,20,.3);
 
     transition:var(--transition);
 
@@ -4862,7 +4863,7 @@ padding:28px 34px;
 
     border-radius:50%;
 
-    background:var(--parchment);
+    background:#fdf6e6;
 
     box-shadow:0 2px 4px rgba(0,0,0,.4);
 
@@ -4930,7 +4931,7 @@ padding:28px 34px;
 
     font-weight:bold;
 
-    color:var(--gold-light);
+    color:#8a5a1e;
 
 }
 
@@ -4946,7 +4947,7 @@ padding:28px 34px;
 
     border-radius:999px;
 
-    background:linear-gradient(90deg, var(--gold), rgba(255,255,255,0.12));
+    background:linear-gradient(90deg, var(--gold), rgba(0,0,0,0.12));
 
     cursor:pointer;
 
@@ -4964,11 +4965,11 @@ padding:28px 34px;
 
     border-radius:50%;
 
-    background:var(--gold-light);
+    background:#fdf6e6;
 
-    border:2px solid #2d1a06;
+    border:2px solid #6b3d10;
 
-    box-shadow:0 2px 6px rgba(0,0,0,.4);
+    box-shadow:0 2px 6px rgba(0,0,0,.35);
 
     cursor:pointer;
 
@@ -4982,11 +4983,11 @@ padding:28px 34px;
 
     border-radius:50%;
 
-    background:var(--gold-light);
+    background:#fdf6e6;
 
-    border:2px solid #2d1a06;
+    border:2px solid #6b3d10;
 
-    box-shadow:0 2px 6px rgba(0,0,0,.4);
+    box-shadow:0 2px 6px rgba(0,0,0,.35);
 
     cursor:pointer;
 
@@ -5008,7 +5009,7 @@ padding:28px 34px;
 
     font-size:11px;
 
-    color:rgba(243,229,192,0.55);
+    color:rgba(59,40,24,0.6);
 
 }
 
@@ -5028,11 +5029,11 @@ padding:28px 34px;
 
     border-radius:10px;
 
-    border:1px solid rgba(204,64,64,0.45);
+    border:1px solid rgba(170,40,40,0.45);
 
-    background:rgba(204,64,64,0.12);
+    background:rgba(204,64,64,0.14);
 
-    color:#f3b9b9;
+    color:#8a2222;
 
     font-size:15px;
 
@@ -5044,11 +5045,11 @@ padding:28px 34px;
 
 .settings-leave-quest-button:hover{
 
-    background:rgba(204,64,64,0.22);
+    background:rgba(204,64,64,0.24);
 
     border-color:#cc4040;
 
-    color:#ffd2d2;
+    color:#6e1414;
 }
 
 .settings-leave-quest-arrow{
@@ -5065,13 +5066,13 @@ padding:28px 34px;
 
     border-radius:10px;
 
-    background:rgba(255,255,255,0.05);
+    background:rgba(0,0,0,0.05);
 
     font-size:12.5px;
 
     line-height:1.5;
 
-    color:rgba(243,229,192,0.75);
+    color:rgba(59,40,24,0.75);
 
 }
 
@@ -5153,4 +5154,279 @@ padding:28px 34px;
 .leave-quest-confirm-button:hover{
 
     background:#e24d4d;
+}
+
+
+/* =========================================================
+   TYPING SCREEN – ORNAMENT-TRENNER
+   ---------------------------------------------------------
+   Ersetzt das schlichte <hr> unter der Kopfzeile durch einen
+   Trenner mit Diamant-Ornament, passend zum hellen Parchment-
+   Look der restlichen Karte (siehe .quest-card).
+========================================================= */
+
+.typing-divider{
+
+    position:relative;
+
+    height:1px;
+
+    margin:18px 0 26px 0;
+
+    background:
+        linear-gradient(
+            to right,
+            transparent,
+            rgba(120,80,20,.45),
+            transparent
+        );
+
+}
+
+.typing-divider::after{
+
+    content:"◆";
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-52%);
+
+    padding:0 12px;
+
+    background:#e9d5a4;
+
+    color:#8a5a1e;
+
+    font-size:15px;
+
+}
+
+
+/* =========================================================
+   TYPING SCREEN – QUEST-INFOLEISTE
+   ---------------------------------------------------------
+   Kompakte Leiste unterhalb der Tastatur mit Quest-Badge,
+   Titel/Kapitel, Fortschrittsbalken und Schnellzugriff
+   "Quest beenden". Nutzt bewusst dieselben .progress-bar/
+   .progress/.difficulty-Klassen wie die Questliste, damit das
+   Erscheinungsbild konsistent bleibt. Nur Desktop sichtbar
+   (siehe .desktop-only-stat in css/mobile.css).
+========================================================= */
+
+.typing-quest-bar{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:22px;
+
+    margin-top:22px;
+
+    padding:14px 22px;
+
+    border-radius:16px;
+
+    border:2px solid rgba(141,100,40,.55);
+
+    background:linear-gradient(180deg, rgba(255,255,255,.35), rgba(255,255,255,.08));
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.4),
+        0 4px 12px rgba(0,0,0,.15);
+
+}
+
+.typing-quest-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    flex:1 1 260px;
+
+    min-width:0;
+
+}
+
+.typing-quest-badge{
+
+    flex-shrink:0;
+
+    width:56px;
+
+    height:56px;
+
+    border-radius:50%;
+
+    overflow:hidden;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.3);
+
+    position:relative;
+
+}
+
+.typing-quest-badge::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:3px;
+
+    border-radius:50%;
+
+    border:2px solid rgba(255,235,170,.55);
+
+    pointer-events:none;
+
+}
+
+.typing-quest-badge-image{
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.typing-quest-meta{
+
+    min-width:0;
+
+}
+
+.typing-quest-meta h3{
+
+    font-size:1.1rem;
+
+    color:#4b2b12;
+
+    margin:0 0 4px 0;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+.typing-quest-kapitel{
+
+    font-size:.85rem;
+
+    color:#5d4a34;
+
+    font-weight:bold;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.typing-quest-kapitel .difficulty{
+
+    margin-left:0;
+
+    padding:2px 10px;
+
+    font-size:13px;
+
+}
+
+.typing-quest-progress{
+
+    flex:1 1 220px;
+
+    min-width:160px;
+
+}
+
+.typing-quest-progress-label{
+
+    font-size:.75rem;
+
+    letter-spacing:.5px;
+
+    text-transform:uppercase;
+
+    color:#6a4f2a;
+
+    margin-bottom:4px;
+
+    text-align:center;
+
+}
+
+.typing-quest-progress .progress-bar{
+
+    width:100%;
+
+}
+
+.typing-quest-progress-text{
+
+    margin-top:4px;
+
+    font-size:.8rem;
+
+    color:#4b3820;
+
+    text-align:center;
+
+}
+
+.typing-quest-leave-button{
+
+    flex-shrink:0;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:12px 18px;
+
+    border-radius:10px;
+
+    border:1px solid rgba(204,64,64,.55);
+
+    background:linear-gradient(180deg, #d24b4b, #a83333);
+
+    color:#fff0f0;
+
+    font-size:.95rem;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+    box-shadow:0 4px 10px rgba(0,0,0,.25);
+
+}
+
+.typing-quest-leave-button:hover{
+
+    background:linear-gradient(180deg, #e05a5a, #b73a3a);
+
+    transform:translateY(-1px);
+
 }

@@ -69,7 +69,9 @@
  
     <h2>⌨️ Thai schreiben</h2>
  
-<div class="typing-stats">
+<!-- Nur Desktop sichtbar: auf Mobile bleibt der Fokus aufs Tippen,
+     siehe css/mobile.css (.desktop-only-stat) -->
+<div class="typing-stats desktop-only-stat">
  
     <span>⏱ <span id="zeitAnzeige">00:00</span></span>
  
@@ -87,13 +89,16 @@
         aria-haspopup="true" aria-controls="settingsPanel" aria-expanded="false"
         aria-label="Einstellungen öffnen">⚙️</button>
 
-    <span id="activityStatus">🟢 Aktiv</span>
+    <!-- Nur Desktop: Zeit/BpM/Genauigkeit/Aktivitätsstatus werden auf
+         Mobile ausgeblendet (siehe css/mobile.css), Mobile bleibt auf
+         das Tippen fokussiert. -->
+    <span id="activityStatus" class="desktop-only-stat">🟢 Aktiv</span>
 
 </div>
 
 </div>
 
-<hr>
+<div class="typing-divider"></div>
 
 <div id="typingFenster">
 
@@ -184,6 +189,42 @@
     <div class="keyboard-row row-5">
         <div class="key key-space" data-key=" ">Space</div>
     </div>
+
+</div>
+
+<!-- Quest-Infoleiste: Badge/Bild, Titel, Kapitel, Fortschritt und
+     Schnellzugriff "Quest beenden". Nur Desktop sichtbar (siehe
+     css/mobile.css) - Mobile bleibt kompakt und tippfokussiert.
+     Nutzt dieselbe Quest-verlassen-Logik wie #leaveQuestButton im
+     Einstellungsmenü (siehe js/typing.js, kein zweiter Ablauf). -->
+<div class="typing-quest-bar desktop-only-stat">
+
+    <div class="typing-quest-info">
+
+        <div class="typing-quest-badge">
+            <img id="typingQuestBadgeImage" class="typing-quest-badge-image" src="" alt="">
+        </div>
+
+        <div class="typing-quest-meta">
+            <h3 id="typingQuestTitel"></h3>
+            <p class="typing-quest-kapitel">
+                <span id="typingQuestKapitel"></span>
+                •
+                <span id="typingQuestSchwierigkeit" class="difficulty"></span>
+            </p>
+        </div>
+
+    </div>
+
+    <div class="typing-quest-progress">
+        <p class="typing-quest-progress-label">Fortschritt</p>
+        <div class="progress-bar">
+            <div class="progress" id="typingProgressFill" style="width:0%"></div>
+        </div>
+        <p class="typing-quest-progress-text" id="typingProgressText">0 / 0 Zeichen (0%)</p>
+    </div>
+
+    <button id="questBarLeaveButton" type="button" class="typing-quest-leave-button">🚪 Quest beenden</button>
 
 </div>
 

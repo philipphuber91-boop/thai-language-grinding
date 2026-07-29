@@ -484,6 +484,63 @@ let aktuelleZeile = 0;
 let fehlerTimeout = null;
 let gesamtZeichen = 0;
 
+// --- Quest-Infoleiste (rein optische Anzeige, siehe html/typing.html) ---
+// Diese Elemente spiegeln nur den bereits vorhandenen Spielzustand
+// (gesamtZeichen, thaiZeilen) und greifen an keiner Stelle in die
+// Eingabelogik oder Wertung ein.
+const typingQuestBadgeImage = document.getElementById("typingQuestBadgeImage");
+const typingQuestTitel = document.getElementById("typingQuestTitel");
+const typingQuestKapitel = document.getElementById("typingQuestKapitel");
+const typingQuestSchwierigkeit = document.getElementById("typingQuestSchwierigkeit");
+const typingProgressFill = document.getElementById("typingProgressFill");
+const typingProgressText = document.getElementById("typingProgressText");
+
+const gesamtZeichenQuest = thaiZeilen.reduce(
+    (summe, zeile) => summe + zeile.length,
+    0
+);
+
+function aktualisiereQuestInfoleiste() {
+
+    if (typingQuestTitel) {
+        typingQuestTitel.textContent = daten[aktuelleQuest].titel;
+    }
+
+    if (typingQuestKapitel) {
+        typingQuestKapitel.textContent = daten[aktuelleQuest].kapitel || "";
+    }
+
+    if (typingQuestSchwierigkeit) {
+        typingQuestSchwierigkeit.textContent = daten[aktuelleQuest].schwierigkeit || "";
+    }
+
+    if (typingQuestBadgeImage && daten[aktuelleQuest].bild) {
+        typingQuestBadgeImage.src = "../assets/quest/" + daten[aktuelleQuest].bild + ".png";
+        typingQuestBadgeImage.alt = daten[aktuelleQuest].titel || "";
+    }
+
+}
+
+function aktualisiereQuestFortschrittUI() {
+
+    const prozent = gesamtZeichenQuest > 0
+        ? Math.min(100, Math.round((gesamtZeichen / gesamtZeichenQuest) * 100))
+        : 0;
+
+    if (typingProgressFill) {
+        typingProgressFill.style.width = prozent + "%";
+    }
+
+    if (typingProgressText) {
+        typingProgressText.textContent =
+            gesamtZeichen + " / " + gesamtZeichenQuest + " Zeichen (" + prozent + "%)";
+    }
+
+}
+
+aktualisiereQuestInfoleiste();
+aktualisiereQuestFortschrittUI();
+
 function aktualisiereDeutsch() {
 
     deutschTitel.style.display =
@@ -585,6 +642,8 @@ function verarbeiteRichtigenBuchstaben() {
  
     position++;
     gesamtZeichen++;
+
+    aktualisiereQuestFortschrittUI();
  
     eingabe.value = "";
  
@@ -730,6 +789,8 @@ function bereitePruefungVor() {
     fehler = 0;
     gesamtZeichen = 0;
 
+    aktualisiereQuestFortschrittUI();
+
     position = 0;
     aktuelleZeile = 0;
 
@@ -825,6 +886,7 @@ const settingsTastenhilfeToggle = document.getElementById("settingsTastenhilfeTo
 const settingsDelaySlider = document.getElementById("settingsDelaySlider");
 const settingsDelayValue = document.getElementById("settingsDelayValue");
 const leaveQuestButton = document.getElementById("leaveQuestButton");
+const questBarLeaveButton = document.getElementById("questBarLeaveButton");
 const leaveQuestOverlay = document.getElementById("leaveQuestOverlay");
 const cancelLeaveQuestButton = document.getElementById("cancelLeaveQuestButton");
 const confirmLeaveQuestButton = document.getElementById("confirmLeaveQuestButton");
@@ -947,11 +1009,17 @@ settingsDelaySlider?.addEventListener("input", function () {
 
 });
 
-leaveQuestButton?.addEventListener("click", function () {
+// Gemeinsame Logik für beide "Quest verlassen"-Einstiegspunkte
+// (Einstellungsmenü und Quest-Infoleiste) - öffnet denselben
+// Bestätigungsdialog, keine zweite Logik.
+function oeffneLeaveQuestBestaetigung() {
     closeSettingsPanel();
     leaveQuestOverlay?.classList.add("active");
     eingabe.blur();
-});
+}
+
+leaveQuestButton?.addEventListener("click", oeffneLeaveQuestBestaetigung);
+questBarLeaveButton?.addEventListener("click", oeffneLeaveQuestBestaetigung);
 
 cancelLeaveQuestButton?.addEventListener("click", function () {
 

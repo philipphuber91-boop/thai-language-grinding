@@ -253,6 +253,14 @@
 
 /* =========================================================
    6. TYPING.HTML – LESE-ANSICHT, TYPING-FENSTER, TASTATUR
+   ---------------------------------------------------------
+   Mobile bekommt bewusst eine reduzierte, aufs Tippen
+   fokussierte Oberfläche (native App-Gefühl):
+   Titel -> (Zahnrad) -> Deutsch (falls aktiviert) -> Thai-Text
+   -> Tastatur. Zeit/BpM/Genauigkeit/Aktivitätsstatus sowie die
+   Quest-Infoleiste (Badge/Fortschritt/"Quest beenden") werden
+   ausgeblendet - dieselbe Engine (js/typing.js) bleibt
+   unverändert, es wird nur die Darstellung reduziert.
 ========================================================= */
 
 @media (max-width:900px){
@@ -266,15 +274,28 @@
         width:100%;
     }
 
+    /* Nur Titel + Zahnrad sichtbar - passt weiterhin in eine Zeile,
+       da Zeit/BpM/Genauigkeit auf Mobile entfallen. */
     .typing-header{
-        flex-direction:column;
-        align-items:flex-start;
+        flex-direction:row;
+        align-items:center;
         gap:12px;
+        margin-bottom:14px;
     }
 
-    .typing-stats{
-        flex-wrap:wrap;
-        gap:14px;
+    .typing-header h2{
+        font-size:1.25rem;
+    }
+
+    /* Zeit/BpM/Genauigkeit, Aktivitätsstatus und die komplette
+       Quest-Infoleiste sind auf Mobile bewusst nicht sichtbar
+       (siehe html/typing.html: class="desktop-only-stat"). */
+    .desktop-only-stat{
+        display:none !important;
+    }
+
+    #typingBereich.quest-card{
+        padding:12px 14px;
     }
 
     #typingFenster{
@@ -282,35 +303,112 @@
     }
 
     .typing-zeile{
-        font-size:1.6rem;
+        font-size:1.5rem;
     }
 
     #deutscherText,
     #thaiText{
         font-size:1.3rem;
     }
+
+    .learning-title{
+        font-size:.95rem;
+        margin-bottom:6px;
+    }
+}
+
+/* =========================================================
+   6b. TYPING.HTML – ADAPTIVE SMARTPHONE-TASTATUR
+   ---------------------------------------------------------
+   Auf Smartphones wirkt die bisherige, nur verkleinerte
+   Desktop-Tastatur unnatürlich (zu viele Abstände, zu kleine
+   Sondertasten). Dieser Block ersetzt NUR das Layout (Grid/
+   Flex-Größen) der bestehenden Tasten für schmale Viewports -
+   keyboard.js/typing.js, Tutor, Highlighting, Shift und
+   Tap-to-Type bleiben vollständig unverändert, da sich nichts
+   an Markup, IDs, data-Attributen oder Klassenlogik ändert.
+========================================================= */
+
+@media (max-width:900px){
+
+    .typing-keyboard{
+        width:100%;
+        margin:14px 0 0 0;
+        padding:10px 6px 12px;
+        border-radius:20px 20px 0 0;
+    }
+
+    .typing-keyboard::before{
+        width:80px;
+        top:-8px;
+    }
+
+    /* Jede Reihe wird zu einer echten, gleichmäßig verteilten
+       Tastenreihe (wie auf einer nativen Smartphone-Tastatur) -
+       flex statt fixer Grid-Spaltenzahl, damit unterschiedlich
+       viele Tasten pro Reihe die Breite trotzdem exakt und ohne
+       Umbruch ausfüllen. */
+    .typing-keyboard .keyboard-row{
+        display:flex;
+        flex-wrap:nowrap;
+        gap:5px;
+        margin-bottom:6px;
+        align-items:stretch;
+    }
+
+    .typing-keyboard .key{
+        flex:1 1 0%;
+        min-width:0;
+        /* Werte bewusst größer gewählt als der sichtbare Zieltreffer
+           (~46px), da body{zoom:.8} (siehe style.css) die gesamte
+           Seite inkl. Tastatur auf 80% herunterskaliert - erst nach
+           dem Zoom ergibt sich ein wirklich daumenfreundliches Maß. */
+        min-height:min(14vw, 58px);
+        padding:0;
+        border-radius:9px;
+        font-size:min(4.6vw, 1.35rem);
+    }
+
+    /* Shift, Enter und Backspace deutlich größer und damit gut mit
+       dem Daumen erreichbar - wie bei einer nativen Tastatur. */
+    .typing-keyboard .key.key-backspace,
+    .typing-keyboard .key.key-enter,
+    .typing-keyboard .key.key-shift{
+        flex:1.8 1 0%;
+        font-size:min(3.4vw, 1rem);
+    }
+
+    /* Leertaste füllt die letzte Reihe komplett aus und bleibt
+       spürbar breiter/größer als eine normale Taste. */
+    .typing-keyboard .keyboard-row.row-5{
+        padding-top:0;
+    }
+
+    .typing-keyboard .key.key-space{
+        flex:1 1 0%;
+        width:100%;
+        min-width:0;
+        max-width:none;
+        min-height:min(15vw, 64px);
+        padding:0;
+    }
+
+    .typing-keyboard .key[data-shift-key]::after{
+        top:3px;
+        right:4px;
+        font-size:min(2.6vw, .8rem);
+    }
 }
 
 @media (max-width:600px){
 
-    /* Tastatur-Zeichen und Tasten weiter verkleinern, damit
-       alle Reihen ohne horizontales Scrollen passen. */
     .typing-keyboard{
-        padding:14px 10px 12px;
+        padding:8px 5px 10px;
     }
 
-    .typing-keyboard .key{
-        min-height:46px;
-        font-size:1.2rem;
-        border-radius:12px;
-    }
-
-    .typing-keyboard .key[data-shift-key]::after{
-        font-size:.9rem;
-    }
-
-    .typing-keyboard .key.key-space{
-        min-width:0;
+    .typing-keyboard .keyboard-row{
+        gap:4px;
+        margin-bottom:5px;
     }
 }
 
