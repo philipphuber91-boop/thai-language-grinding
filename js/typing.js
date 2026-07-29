@@ -11,8 +11,12 @@ const zeile2 = document.getElementById("zeile2");
 const eingabe = document.getElementById("eingabe");
 const aktuelleQuest = localStorage.getItem("aktuelleQuest");
 const questMode = localStorage.getItem("questMode") || "campaign";
-let keyboardTutorModeEnabled =
-    localStorage.getItem("keyboardTutorMode") === "true";
+
+// Der Keyboard Tutor unterstützt seit seiner Einführung alle
+// Tastaturlayouts (Deutsch, Englisch, ...) korrekt - ein Abschalten
+// ist daher nicht mehr sinnvoll/nötig. Der frühere Umschalt-Button
+// und seine localStorage-Einstellung ("keyboardTutorMode") entfallen.
+const keyboardTutorModeEnabled = true;
 
 const contentMode =
     localStorage.getItem("contentMode") || "campaign";
@@ -29,10 +33,33 @@ const stats = getQuestStats(questStatsId, daten[aktuelleQuest].version ?? 1);
 
 const keyboardElement = document.getElementById("thaiKeyboard");
 let highlightedKeyElements = [];
-let examHighlightTimer = null;
-let examHighlightRequestId = 0;
+let tastenhilfeTimer = null;
+let tastenhilfeRequestId = 0;
 let pendingTutorInput = null;
-const examHighlightDelayMs = 2000;
+
+// Tastenhilfe (Lernhilfen-Einstellung): steuert, ob und nach welcher
+// Verzögerung die Taste des als nächstes erwarteten Zeichens auf der
+// virtuellen Tastatur hervorgehoben wird. Gilt einheitlich für Lern-
+// und Prüfungsphase, siehe syncKeyboardHighlight().
+const TASTENHILFE_MIN_SEKUNDEN = 1;
+const TASTENHILFE_MAX_SEKUNDEN = 5;
+const TASTENHILFE_STANDARD_SEKUNDEN = 2;
+
+function clampTastenhilfeSekunden(value) {
+    const zahl = Number(value);
+    if (!Number.isFinite(zahl)) {
+        return TASTENHILFE_STANDARD_SEKUNDEN;
+    }
+    return Math.min(TASTENHILFE_MAX_SEKUNDEN, Math.max(TASTENHILFE_MIN_SEKUNDEN, Math.round(zahl)));
+}
+
+let tastenhilfeEnabled =
+    localStorage.getItem("tastenhilfeAktiviert") !== "false";
+
+let tastenhilfeVerzoegerungSekunden = clampTastenhilfeSekunden(
+    localStorage.getItem("tastenhilfeVerzoegerung") ?? TASTENHILFE_STANDARD_SEKUNDEN
+);
+
 const keyPressAnimationDurationMs = 130;
 
 // keyboard.js liefert: thaiKeyboardMap, latinToThaiMap, physicalKeyLayout,
@@ -78,10 +105,10 @@ function applyKeyboardHighlight(character) {
     }
 }
 
-function clearExamHighlightTimer() {
-    if (examHighlightTimer !== null) {
-        clearTimeout(examHighlightTimer);
-        examHighlightTimer = null;
+function clearTastenhilfeTimer() {
+    if (tastenhilfeTimer !== null) {
+        clearTimeout(tastenhilfeTimer);
+        tastenhilfeTimer = null;
     }
 }
 
@@ -95,9 +122,15 @@ function getCurrentExpectedCharacter() {
 
 function syncKeyboardHighlight() {
     clearHighlight();
-    clearExamHighlightTimer();
+    clearTastenhilfeTimer();
 
     if (phase !== "typing") {
+        return;
+    }
+
+    // Lernhilfen-Einstellung "Tastenhilfe": komplett aus = keine
+    // Hervorhebung, weder in der Lern- noch in der Prüfungsphase.
+    if (!tastenhilfeEnabled) {
         return;
     }
 
@@ -107,32 +140,26 @@ function syncKeyboardHighlight() {
         return;
     }
 
-    if (mode === "learning") {
-        applyKeyboardHighlight(expectedCharacter);
-        return;
-    }
+    const currentRequestId = ++tastenhilfeRequestId;
+    const verzoegerungMs = tastenhilfeVerzoegerungSekunden * 1000;
 
-    if (mode === "exam") {
-        const currentRequestId = ++examHighlightRequestId;
+    tastenhilfeTimer = setTimeout(() => {
+        if (currentRequestId !== tastenhilfeRequestId) {
+            return;
+        }
 
-        examHighlightTimer = setTimeout(() => {
-            if (currentRequestId !== examHighlightRequestId) {
-                return;
-            }
+        if (phase !== "typing") {
+            return;
+        }
 
-            if (mode !== "exam" || phase !== "typing") {
-                return;
-            }
+        const currentCharacter = getCurrentExpectedCharacter();
 
-            const currentCharacter = getCurrentExpectedCharacter();
+        if (currentCharacter) {
+            applyKeyboardHighlight(currentCharacter);
+        }
 
-            if (currentCharacter) {
-                applyKeyboardHighlight(currentCharacter);
-            }
-
-            examHighlightTimer = null;
-        }, examHighlightDelayMs);
-    }
+        tastenhilfeTimer = null;
+    }, verzoegerungMs);
 }
 
 function pressKey(character) {
@@ -192,7 +219,7 @@ function resolvePressedVirtualKeys(event) {
 
 function zeigePhase() {
     clearHighlight();
-    clearExamHighlightTimer();
+    clearTastenhilfeTimer();
 
     // Alles ausblenden
     auftrag.style.display = "none";
@@ -403,10 +430,8 @@ const thaiText = document.getElementById("thaiText");
 const storyText = document.getElementById("storyText");
 const deutschAktuell =
     document.getElementById("deutschAktuell");
- const toggleKeyboardTutorButton =
-    document.getElementById("toggleKeyboardTutorButton");   
-const toggleGermanButton =
-    document.getElementById("toggleGermanButton");
+const settingsGermanToggle =
+    document.getElementById("settingsGermanToggle");
 
     const deutschTitel =
     document.getElementById("deutschTitel");
@@ -415,29 +440,15 @@ let germanVisible = true;
 
 function aktualisiereGermanToggle() {
 
-    toggleGermanButton.textContent =
-        germanVisible ? "🇩🇪 EIN" : "🇩🇪 AUS";
-
-    toggleGermanButton.disabled =
-        startZeit !== null;
-
-}
-
-function aktualisiereKeyboardTutorToggle() {
-    if (!toggleKeyboardTutorButton) {
+    if (!settingsGermanToggle) {
         return;
     }
 
-    toggleKeyboardTutorButton.textContent =
-        keyboardTutorModeEnabled ? "🎹 Tutor EIN" : "🎹 Tutor AUS";
-}
+    settingsGermanToggle.checked = germanVisible;
 
-function setKeyboardTutorMode(enabled) {
-    keyboardTutorModeEnabled = enabled;
-    pendingTutorInput = null;
-    eingabe.value = "";
-    localStorage.setItem("keyboardTutorMode", String(enabled));
-    aktualisiereKeyboardTutorToggle();
+    settingsGermanToggle.disabled =
+        startZeit !== null;
+
 }
 
 questTitel.textContent =
@@ -806,13 +817,160 @@ eingabe.focus();
 
 });
 
-toggleKeyboardTutorButton?.addEventListener("mousedown", function (event) {
+const settingsButton = document.getElementById("settingsButton");
+const settingsPanel = document.getElementById("settingsPanel");
+const settingsBackdrop = document.getElementById("settingsBackdrop");
+const settingsCloseButton = document.getElementById("settingsCloseButton");
+const settingsTastenhilfeToggle = document.getElementById("settingsTastenhilfeToggle");
+const settingsDelaySlider = document.getElementById("settingsDelaySlider");
+const settingsDelayValue = document.getElementById("settingsDelayValue");
+const leaveQuestButton = document.getElementById("leaveQuestButton");
+const leaveQuestOverlay = document.getElementById("leaveQuestOverlay");
+const cancelLeaveQuestButton = document.getElementById("cancelLeaveQuestButton");
+const confirmLeaveQuestButton = document.getElementById("confirmLeaveQuestButton");
+
+// Verhindert, dass Tastatureingaben/Klicks im geöffneten Einstellungsmenü
+// (z.B. Leertaste zum Umschalten eines Toggles) versehentlich als
+// Spieleingabe in #eingabe landen oder ihr den Fokus entziehen.
+let settingsPanelOpen = false;
+
+// Gibt true zurück, solange irgendein Overlay (Einstellungsmenü oder
+// Quest-verlassen-Bestätigung) sichtbar ist. Wird verwendet, um
+// Tastatur-/Zeigereingaben währenddessen vom Spiel fernzuhalten.
+function isEingabeGesperrt() {
+    return (
+        settingsPanelOpen ||
+        Boolean(leaveQuestOverlay?.classList.contains("active"))
+    );
+}
+
+function formatiereTastenhilfeSekunden(sekunden) {
+    return sekunden === 1 ? "1 Sekunde" : `${sekunden} Sekunden`;
+}
+
+function aktualisiereTastenhilfeUI() {
+
+    if (settingsTastenhilfeToggle) {
+        settingsTastenhilfeToggle.checked = tastenhilfeEnabled;
+    }
+
+    if (settingsDelaySlider) {
+        settingsDelaySlider.value = String(tastenhilfeVerzoegerungSekunden);
+        settingsDelaySlider.disabled = !tastenhilfeEnabled;
+    }
+
+    if (settingsDelayValue) {
+        settingsDelayValue.textContent =
+            formatiereTastenhilfeSekunden(tastenhilfeVerzoegerungSekunden);
+    }
+
+}
+
+function openSettingsPanel() {
+
+    if (!settingsPanel) {
+        return;
+    }
+
+    settingsPanelOpen = true;
+    settingsPanel.classList.add("open");
+    settingsBackdrop?.classList.add("active");
+    settingsButton?.setAttribute("aria-expanded", "true");
+
+    // Fokus vom Eingabefeld nehmen, damit Tastatureingaben nicht
+    // ungefiltert (ohne Tutor-Übersetzung) im Spiel landen.
+    eingabe.blur();
+
+}
+
+function closeSettingsPanel() {
+
+    if (!settingsPanel) {
+        return;
+    }
+
+    settingsPanelOpen = false;
+    settingsPanel.classList.remove("open");
+    settingsBackdrop?.classList.remove("active");
+    settingsButton?.setAttribute("aria-expanded", "false");
+
+    if (phase === "typing") {
+        eingabe.focus();
+    }
+
+}
+
+settingsButton?.addEventListener("mousedown", function (event) {
     event.preventDefault();
 });
 
-toggleKeyboardTutorButton?.addEventListener("click", function () {
-    setKeyboardTutorMode(!keyboardTutorModeEnabled);
-    eingabe.focus();
+settingsButton?.addEventListener("click", function () {
+    if (settingsPanelOpen) {
+        closeSettingsPanel();
+    } else {
+        openSettingsPanel();
+    }
+});
+
+settingsCloseButton?.addEventListener("click", closeSettingsPanel);
+settingsBackdrop?.addEventListener("click", closeSettingsPanel);
+
+settingsGermanToggle?.addEventListener("change", function () {
+
+    germanVisible = settingsGermanToggle.checked;
+
+    aktualisiereGermanToggle();
+
+    zeigeZeilen();
+
+});
+
+settingsTastenhilfeToggle?.addEventListener("change", function () {
+
+    tastenhilfeEnabled = settingsTastenhilfeToggle.checked;
+
+    localStorage.setItem("tastenhilfeAktiviert", String(tastenhilfeEnabled));
+
+    aktualisiereTastenhilfeUI();
+    syncKeyboardHighlight();
+
+});
+
+settingsDelaySlider?.addEventListener("input", function () {
+
+    tastenhilfeVerzoegerungSekunden = clampTastenhilfeSekunden(settingsDelaySlider.value);
+
+    localStorage.setItem("tastenhilfeVerzoegerung", String(tastenhilfeVerzoegerungSekunden));
+
+    aktualisiereTastenhilfeUI();
+    syncKeyboardHighlight();
+
+});
+
+leaveQuestButton?.addEventListener("click", function () {
+    closeSettingsPanel();
+    leaveQuestOverlay?.classList.add("active");
+    eingabe.blur();
+});
+
+cancelLeaveQuestButton?.addEventListener("click", function () {
+
+    leaveQuestOverlay?.classList.remove("active");
+
+    if (phase === "typing") {
+        eingabe.focus();
+    }
+
+});
+
+confirmLeaveQuestButton?.addEventListener("click", function () {
+
+    ActivityManager.stopPlaying();
+
+    leaveQuestOverlay?.classList.remove("active");
+
+    window.location.href = "index.html";
+
 });
 
 weiterButton.addEventListener("click", function () {
@@ -823,24 +981,6 @@ weiterButton.addEventListener("click", function () {
  
     window.location.href = "index.html";
  
-});
-
-toggleGermanButton.addEventListener("mousedown", function (event) {
-
-    event.preventDefault();
-
-});
-
-toggleGermanButton.addEventListener("click", function () {
-
-    germanVisible = !germanVisible;
-
-    aktualisiereGermanToggle();
-
-    zeigeZeilen();
-
-    eingabe.focus();
-
 });
 
 resumeAfkButton?.addEventListener("click", function () {
@@ -874,6 +1014,7 @@ if (questMode === "challenge") {
 }
 
 aktualisiereGermanToggle();
+aktualisiereTastenhilfeUI();
 
 zeigePhase();
 
@@ -1001,6 +1142,13 @@ document.addEventListener("keydown", function (event) {
        return;
    }
 
+   // Solange das Einstellungsmenü oder der Quest-verlassen-Dialog
+   // offen ist, sollen Tastendrücke nicht als Spieleingabe in
+   // #eingabe interpretiert werden.
+   if (isEingabeGesperrt()) {
+       return;
+   }
+
       resolvePressedVirtualKeys(event).forEach(pressKey);
 
 
@@ -1023,7 +1171,7 @@ document.addEventListener("keydown", function (event) {
 
 document.addEventListener("pointerdown", function () {
  
-    if (phase === "typing") {
+    if (phase === "typing" && !isEingabeGesperrt()) {
  
         setTimeout(function () {
  

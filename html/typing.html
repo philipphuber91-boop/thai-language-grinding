@@ -77,21 +77,15 @@
  
     <span>🎯 <span id="accuracyAnzeige">100%</span></span>
 
-    <button id="toggleKeyboardTutorButton">
- 
-        🎹 Tutor AUS
- 
-    </button>
- 
-    <button id="toggleGermanButton">
- 
-        🇩🇪 EIN
- 
-    </button>
- 
 </div>
 
 <div class="typing-status">
+
+    <!-- Öffnet das neue Einstellungsmenü (ersetzt den alten Tutor-Button
+         sowie den Deutsch-Umschalter, siehe #settingsPanel weiter unten) -->
+    <button id="settingsButton" type="button" class="settings-gear-button"
+        aria-haspopup="true" aria-controls="settingsPanel" aria-expanded="false"
+        aria-label="Einstellungen öffnen">⚙️</button>
 
     <span id="activityStatus">🟢 Aktiv</span>
 
@@ -192,6 +186,99 @@
     </div>
 
 </div>
+
+</div>
+
+<!-- =========================================================
+     EINSTELLUNGSMENÜ (Zahnrad, siehe .typing-status weiter oben)
+     ---------------------------------------------------------
+     Ersetzt die früheren Buttons "Tutor EIN/AUS" (Keyboard Tutor
+     ist jetzt dauerhaft aktiv, siehe js/typing.js) und
+     "Deutsch EIN/AUS" (jetzt hier unter SPRACHE).
+     Identisches Menü für Desktop und Mobile - nur die Darstellung
+     unterscheidet sich responsiv (siehe css/mobile.css).
+========================================================= -->
+<div id="settingsBackdrop" class="settings-backdrop"></div>
+
+<div id="settingsPanel" class="settings-panel" role="dialog" aria-modal="true" aria-labelledby="settingsPanelTitle">
+
+    <div class="settings-panel-header">
+        <h2 id="settingsPanelTitle">Einstellungen</h2>
+        <button id="settingsCloseButton" type="button" class="settings-close-button" aria-label="Einstellungen schließen">✕</button>
+    </div>
+
+    <div class="settings-section">
+
+        <h3 class="settings-section-title">Sprache</h3>
+
+        <div class="settings-row">
+            <span class="settings-row-label">🇩🇪 Deutsche Übersetzung</span>
+            <label class="settings-switch">
+                <input type="checkbox" id="settingsGermanToggle" checked>
+                <span class="settings-switch-track"><span class="settings-switch-thumb"></span></span>
+            </label>
+        </div>
+
+    </div>
+
+    <div class="settings-section">
+
+        <h3 class="settings-section-title">Lernhilfen</h3>
+
+        <div class="settings-row">
+            <span class="settings-row-label">⌨️ Tastenhilfe</span>
+            <label class="settings-switch">
+                <input type="checkbox" id="settingsTastenhilfeToggle" checked>
+                <span class="settings-switch-track"><span class="settings-switch-thumb"></span></span>
+            </label>
+        </div>
+
+        <div class="settings-row settings-row-slider">
+            <div class="settings-row-slider-header">
+                <span class="settings-row-label">Verzögerung der Tastenhilfe</span>
+                <span id="settingsDelayValue" class="settings-delay-value">2 Sekunden</span>
+            </div>
+            <input type="range" id="settingsDelaySlider" class="settings-slider" min="1" max="5" step="1" value="2"
+                aria-label="Verzögerung der Tastenhilfe in Sekunden">
+            <div class="settings-slider-scale">
+                <span>1s</span><span>2s</span><span>3s</span><span>4s</span><span>5s</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="settings-section">
+
+        <h3 class="settings-section-title">Quest</h3>
+
+        <button id="leaveQuestButton" type="button" class="settings-leave-quest-button">
+            <span>🚪 Quest verlassen</span>
+            <span class="settings-leave-quest-arrow">›</span>
+        </button>
+
+    </div>
+
+    <p class="settings-hint">💡 Die Tastenhilfe zeigt dir nach der gewählten Verzögerung die richtige Taste an.</p>
+
+</div>
+
+<div id="leaveQuestOverlay" class="start-quest-overlay">
+
+    <div class="start-quest-window leave-quest-window">
+
+        <h2>Quest verlassen?</h2>
+
+        <p>
+            Möchtest du die aktuelle Quest wirklich verlassen?<br>
+            Der aktuelle Versuch wird beendet.
+        </p>
+
+        <div class="leave-quest-actions">
+            <button id="cancelLeaveQuestButton" type="button" class="leave-quest-cancel-button">Weiterlernen</button>
+            <button id="confirmLeaveQuestButton" type="button" class="leave-quest-confirm-button">Quest verlassen</button>
+        </div>
+
+    </div>
 
 </div>
 

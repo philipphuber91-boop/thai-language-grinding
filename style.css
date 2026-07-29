@@ -1215,6 +1215,8 @@ box-shadow:
 
     justify-content:flex-end;
 
+    gap:12px;
+
     font-size:0.95rem;
 
     color:#f3e5c0;
@@ -2537,29 +2539,6 @@ box-shadow:
 .thai-title{
 
     height:12px;
-
-}
-
-#toggleGermanButton,
-#toggleKeyboardTutorButton{
-    
-    padding:6px 12px;
-
-    border:none;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
-    font-size:15px;
-
-}
-
-#toggleGermanButton:disabled{
-
-    opacity:.45;
-
-    cursor:default;
 
 }
 
@@ -4590,4 +4569,588 @@ padding:28px 34px;
 
     display: block;
 
+}
+
+
+/* =========================================================
+   TYPING SCREEN – EINSTELLUNGSMENÜ (Zahnrad)
+   ---------------------------------------------------------
+   Ersetzt die früheren Buttons "Tutor EIN/AUS" (Keyboard Tutor
+   ist jetzt dauerhaft aktiv) und "Deutsch EIN/AUS" (jetzt unter
+   SPRACHE). Ein einziges Menü für Desktop & Mobile - nur die
+   Positionierung/Größe wird in css/mobile.css responsiv
+   angepasst, die Regeln hier bleiben die gemeinsame Basis.
+========================================================= */
+
+.settings-gear-button{
+
+    width:40px;
+
+    height:40px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,0.12);
+
+    background:rgba(0,0,0,0.22);
+
+    color:var(--text);
+
+    font-size:18px;
+
+    line-height:1;
+
+    cursor:pointer;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:var(--transition);
+
+}
+
+.settings-gear-button:hover{
+
+    border-color:var(--gold);
+
+    background:rgba(200,155,60,0.18);
+
+}
+
+.settings-gear-button[aria-expanded="true"]{
+
+    border-color:var(--gold-light);
+
+    color:var(--gold-light);
+
+}
+
+.settings-backdrop{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    z-index:1099;
+
+    display:none;
+
+}
+
+.settings-backdrop.active{
+
+    display:block;
+
+}
+
+.settings-panel{
+
+    position:fixed;
+
+    top:0;
+
+    right:0;
+
+    height:100%;
+
+    width:380px;
+
+    max-width:92vw;
+
+    padding:28px 26px;
+
+    overflow-y:auto;
+
+    background:linear-gradient(180deg, #3b3122 0%, #231d16 100%);
+
+    border-left:3px solid var(--gold);
+
+    box-shadow:
+        -10px 0 35px rgba(0,0,0,.55),
+        0 0 25px rgba(255,210,120,.12);
+
+    color:var(--text);
+
+    z-index:1100;
+
+    transform:translateX(100%);
+
+    transition:transform .28s ease;
+
+}
+
+.settings-panel.open{
+
+    transform:translateX(0);
+
+}
+
+.settings-panel-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:22px;
+
+}
+
+.settings-panel-header h2{
+
+    font-size:22px;
+
+    color:var(--gold-light);
+
+    letter-spacing:.5px;
+
+}
+
+.settings-close-button{
+
+    width:32px;
+
+    height:32px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,0.18);
+
+    background:rgba(0,0,0,0.25);
+
+    color:var(--text);
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:var(--transition);
+
+}
+
+.settings-close-button:hover{
+
+    border-color:var(--gold);
+
+    color:var(--gold-light);
+
+}
+
+.settings-section{
+
+    padding:16px 0;
+
+    border-top:1px solid rgba(255,255,255,0.1);
+
+}
+
+.settings-section:first-of-type{
+
+    border-top:none;
+
+    padding-top:0;
+
+}
+
+.settings-section-title{
+
+    font-size:12px;
+
+    letter-spacing:1.5px;
+
+    text-transform:uppercase;
+
+    color:var(--gold);
+
+    margin-bottom:14px;
+
+}
+
+.settings-row{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:16px;
+
+    padding:6px 0;
+
+}
+
+.settings-row-label{
+
+    font-size:15px;
+
+    color:var(--text);
+
+}
+
+/* Toggle-Switch (ersetzt die früheren Text-Buttons) */
+
+.settings-switch{
+
+    position:relative;
+
+    display:inline-block;
+
+    width:46px;
+
+    height:26px;
+
+    flex-shrink:0;
+
+}
+
+.settings-switch input{
+
+    position:absolute;
+
+    opacity:0;
+
+    width:100%;
+
+    height:100%;
+
+    margin:0;
+
+    cursor:pointer;
+
+}
+
+.settings-switch-track{
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:999px;
+
+    background:rgba(0,0,0,.35);
+
+    border:1px solid rgba(255,255,255,0.15);
+
+    transition:var(--transition);
+
+}
+
+.settings-switch-thumb{
+
+    position:absolute;
+
+    top:2px;
+
+    left:2px;
+
+    width:20px;
+
+    height:20px;
+
+    border-radius:50%;
+
+    background:var(--parchment);
+
+    box-shadow:0 2px 4px rgba(0,0,0,.4);
+
+    transition:var(--transition);
+
+}
+
+.settings-switch input:checked + .settings-switch-track{
+
+    background:linear-gradient(180deg, var(--gold-light), var(--gold));
+
+    border-color:var(--gold-light);
+
+}
+
+.settings-switch input:checked + .settings-switch-track .settings-switch-thumb{
+
+    transform:translateX(20px);
+
+    background:#2d1a06;
+
+}
+
+.settings-switch input:disabled + .settings-switch-track{
+
+    opacity:.4;
+
+    cursor:default;
+
+}
+
+.settings-switch input:focus-visible + .settings-switch-track{
+
+    outline:2px solid var(--turquoise);
+
+    outline-offset:2px;
+
+}
+
+/* Verzögerungs-Slider */
+
+.settings-row-slider{
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+    gap:10px;
+
+}
+
+.settings-row-slider-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+}
+
+.settings-delay-value{
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    color:var(--gold-light);
+
+}
+
+.settings-slider{
+
+    -webkit-appearance:none;
+
+    appearance:none;
+
+    width:100%;
+
+    height:6px;
+
+    border-radius:999px;
+
+    background:linear-gradient(90deg, var(--gold), rgba(255,255,255,0.12));
+
+    cursor:pointer;
+
+}
+
+.settings-slider::-webkit-slider-thumb{
+
+    -webkit-appearance:none;
+
+    appearance:none;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:var(--gold-light);
+
+    border:2px solid #2d1a06;
+
+    box-shadow:0 2px 6px rgba(0,0,0,.4);
+
+    cursor:pointer;
+
+}
+
+.settings-slider::-moz-range-thumb{
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:var(--gold-light);
+
+    border:2px solid #2d1a06;
+
+    box-shadow:0 2px 6px rgba(0,0,0,.4);
+
+    cursor:pointer;
+
+}
+
+.settings-slider:disabled{
+
+    opacity:.4;
+
+    cursor:default;
+
+}
+
+.settings-slider-scale{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    font-size:11px;
+
+    color:rgba(243,229,192,0.55);
+
+}
+
+/* Quest verlassen */
+
+.settings-leave-quest-button{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:12px 14px;
+
+    border-radius:10px;
+
+    border:1px solid rgba(204,64,64,0.45);
+
+    background:rgba(204,64,64,0.12);
+
+    color:#f3b9b9;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+}
+
+.settings-leave-quest-button:hover{
+
+    background:rgba(204,64,64,0.22);
+
+    border-color:#cc4040;
+
+    color:#ffd2d2;
+}
+
+.settings-leave-quest-arrow{
+
+    font-size:20px;
+
+}
+
+.settings-hint{
+
+    margin-top:18px;
+
+    padding:12px 14px;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,0.05);
+
+    font-size:12.5px;
+
+    line-height:1.5;
+
+    color:rgba(243,229,192,0.75);
+
+}
+
+/* Bestätigungsdialog "Quest verlassen?" – nutzt dieselbe
+   Overlay-/Fenster-Basis wie AFK- und Prüfungsdialog. */
+
+.leave-quest-window{
+
+    width:440px;
+
+}
+
+.leave-quest-window h2{
+
+    text-align:center;
+
+    color:#ffd56f;
+
+    margin-bottom:14px;
+
+}
+
+.leave-quest-window p{
+
+    text-align:center;
+
+    line-height:1.6;
+
+    margin-bottom:22px;
+
+}
+
+.leave-quest-actions{
+
+    display:flex;
+
+    gap:14px;
+
+}
+
+.leave-quest-actions button{
+
+    flex:1;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    border:none;
+
+    font-size:15px;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+}
+
+.leave-quest-cancel-button{
+
+    background:rgba(255,255,255,0.1);
+
+    color:var(--text);
+
+    border:1px solid rgba(255,255,255,0.2);
+}
+
+.leave-quest-cancel-button:hover{
+
+    background:rgba(255,255,255,0.18);
+}
+
+.leave-quest-confirm-button{
+
+    background:#cc4040;
+
+    color:white;
+}
+
+.leave-quest-confirm-button:hover{
+
+    background:#e24d4d;
 }

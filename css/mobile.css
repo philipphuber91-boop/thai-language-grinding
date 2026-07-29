@@ -333,3 +333,50 @@
         0 0 20px rgba(255,215,110,.4);
     background:linear-gradient(180deg, #fff1c1, #e6c16a);
 }
+
+
+/* =========================================================
+   7. TYPING.HTML – EINSTELLUNGSMENÜ (Zahnrad)
+   ---------------------------------------------------------
+   Dieselbe Engine/dasselbe Markup wie auf Desktop (siehe
+   style.css) - auf schmalen Viewports wird das rechte
+   Slide-in-Panel zu einem Bottom-Sheet, damit es bequem mit
+   dem Daumen erreichbar bleibt und nicht mit der virtuellen
+   Tastatur konkurriert.
+========================================================= */
+
+@media (max-width:900px){
+
+    .settings-panel{
+        top:auto;
+        bottom:0;
+        left:0;
+        right:0;
+        width:100%;
+        max-width:none;
+        max-height:85vh;
+        border-left:none;
+        border-top:3px solid var(--gold, #c89b3c);
+        border-radius:18px 18px 0 0;
+        transform:translateY(100%);
+    }
+
+    .settings-panel.open{
+        transform:translateY(0);
+    }
+
+    .leave-quest-window{
+        width:100%;
+    }
+}
+
+@media (max-width:520px){
+
+    .settings-panel{
+        padding:22px 18px;
+    }
+
+    .leave-quest-actions{
+        flex-direction:column;
+    }
+}
