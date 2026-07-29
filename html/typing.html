@@ -12,6 +12,16 @@
     <link rel="stylesheet" href="../style.css">
     <!-- Nur additive Anpassungen für schmale Viewports, ändert keine bestehende Desktop-Regel -->
     <link rel="stylesheet" href="../css/mobile.css">
+
+    <!-- PWA: Installierbarkeit & Offline-Support, ohne bestehende Optik/Logik zu verändern -->
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#15110d">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/pwa/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/icons/pwa/favicon-16.png">
+    <link rel="apple-touch-icon" href="../assets/icons/pwa/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Thai Grinding">
 </head>
 
 <body>
@@ -473,6 +483,9 @@ loadQuestStats();
 
 <script src="../js/keyboard.js"></script>
 <script src="../js/typing.js"></script>
+
+<!-- PWA: registriert den Service Worker, verändert keine Spiellogik -->
+<script src="../js/pwa-register.js"></script>
 
 </body>
 
