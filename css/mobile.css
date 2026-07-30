@@ -1610,6 +1610,13 @@
    restore gradients or flexible rows that squeeze neighboring keys. */
 @media (max-width:900px){
 
+    body:has(#typingBereich){
+        height:var(--mobile-vh, 100dvh);
+        min-height:var(--mobile-vh, 100dvh);
+        padding-right:max(0px, env(safe-area-inset-right));
+        padding-left:max(0px, env(safe-area-inset-left));
+    }
+
     #typingBereich.quest-card:not([style*="none"]){
         background:#fbefcf;
         box-shadow:none;
@@ -1622,8 +1629,21 @@
     }
 
     #typingFenster{
+        margin-right:0;
+        margin-left:0;
+        border-right:0;
+        border-left:0;
+        border-radius:8px;
         background:#fff4d8;
         box-shadow:none;
+    }
+
+    #zeile1{
+        flex-basis:auto !important;
+    }
+
+    #zeile2{
+        display:none;
     }
 
     .aktuell{
@@ -1632,6 +1652,12 @@
     }
 
     #thaiKeyboard{
+        width:100%;
+        margin-right:0;
+        margin-left:0;
+        padding:10px 2px 12px;
+        border-right:0;
+        border-left:0;
         background:#f5dfad;
         box-shadow:none;
     }
@@ -1640,8 +1666,10 @@
         display:grid;
         align-items:stretch;
         width:100%;
+        margin-bottom:5px;
         padding-right:0;
         padding-left:0;
+        gap:2px;
     }
 
     .typing-keyboard .keyboard-row.row-1,
@@ -1652,7 +1680,7 @@
     }
 
     .typing-keyboard .keyboard-row.row-1{
-        grid-template-columns:repeat(12, minmax(0, 1fr)) minmax(0, 1.7fr);
+        grid-template-columns:repeat(12, minmax(0, 1fr));
     }
 
     .typing-keyboard .keyboard-row.row-2{
@@ -1660,17 +1688,19 @@
     }
 
     .typing-keyboard .keyboard-row.row-3{
-        grid-template-columns:repeat(11, minmax(0, 1fr)) minmax(0, 1.7fr);
+        grid-template-columns:repeat(11, minmax(0, 1fr));
     }
 
     .typing-keyboard .keyboard-row.row-4{
-        grid-template-columns:minmax(0, 1.7fr) repeat(10, minmax(0, 1fr)) minmax(0, 1.7fr);
+        grid-template-columns:minmax(0, 1.8fr) repeat(10, minmax(0, 1fr)) minmax(0, 1.8fr);
     }
 
     .typing-keyboard .keyboard-row.row-5{
-        display:flex;
-        padding-right:20.5%;
-        padding-left:20.5%;
+        display:grid;
+        margin-bottom:0;
+        padding-right:0;
+        padding-left:0;
+        grid-template-columns:minmax(0, 3.8fr) minmax(0, 1.4fr);
     }
 
     .typing-keyboard .key,
@@ -1687,6 +1717,7 @@
         background:#f8e3b5;
         color:#563414;
         box-shadow:0 1px 2px rgba(91,55,17,.14);
+        line-height:1.08;
     }
 
     .typing-keyboard .key.key-action{
@@ -1701,6 +1732,10 @@
     .typing-keyboard .key.key-enter,
     .typing-keyboard .key.key-shift{
         grid-column:auto;
+    }
+
+    .typing-keyboard .key.mobile-secondary-shift{
+        display:none;
     }
 
     .typing-keyboard .key:hover{
@@ -1718,6 +1753,16 @@
         box-shadow:0 0 0 2px rgba(169,114,40,.24);
     }
 
+    .typing-keyboard .key[data-shift-key]::after{
+        display:none;
+    }
+
+    body.system-keyboard-mode #eingabe{
+        top:0;
+        bottom:auto;
+        left:0;
+    }
+
     .settings-panel{
         background:#f3dda9;
     }
@@ -1731,8 +1776,8 @@
 @media (max-width:340px){
 
     .typing-keyboard .keyboard-row.row-5{
-        padding-right:17%;
-        padding-left:17%;
+        padding-right:0;
+        padding-left:0;
     }
 
     .typing-keyboard .key,

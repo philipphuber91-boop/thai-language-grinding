@@ -249,7 +249,7 @@ case "typing":
  
     setTimeout(function () {
  
-        eingabe.focus();
+        focusEingabeWithoutScroll();
  
     }, 0);
  
@@ -587,8 +587,9 @@ function zeigeZeilen() {
         rest +
         "</span>";
 
-    zeile2.textContent =
-        thaiZeilen[aktuelleZeile + 1] || "";
+    zeile2.textContent = isMobileViewport()
+        ? ""
+        : (thaiZeilen[aktuelleZeile + 1] || "");
 
 }
 
@@ -811,7 +812,7 @@ function bereitePruefungVor() {
     zeigeZeilen();
    syncKeyboardHighlight();
  
-    eingabe.focus();
+    focusEingabeWithoutScroll();
  
     aktualisiereGermanToggle();
 }
@@ -882,7 +883,7 @@ startThaiButton.addEventListener("click", function () {
 
     zeigePhase();
 
-eingabe.focus();
+focusEingabeWithoutScroll();
 
 });
 
@@ -933,6 +934,93 @@ function isSystemKeyboardMode() {
     return isMobileViewport() && mobileInputMethod === "system";
 }
 
+function focusEingabeWithoutScroll() {
+    if (!eingabe) {
+        return;
+    }
+
+    try {
+        eingabe.focus({ preventScroll: true });
+    } catch (_error) {
+        focusEingabeWithoutScroll();
+    }
+
+    if (isMobileViewport()) {
+        window.scrollTo(0, 0);
+    }
+}
+
+function updateMobileViewportHeightVar() {
+    if (!isMobileViewport()) {
+        return;
+    }
+
+    const viewportHeight = window.visualViewport
+        ? Math.round(window.visualViewport.height)
+        : window.innerHeight;
+
+    document.documentElement.style.setProperty(
+        "--mobile-vh",
+        `${viewportHeight}px`
+    );
+}
+
+function enforceSystemKeyboardNoScroll() {
+    if (!isSystemKeyboardMode()) {
+        return;
+    }
+
+    window.scrollTo(0, 0);
+}
+
+function applyMobileKeyboardStructure() {
+    if (!keyboardElement) {
+        return;
+    }
+
+    const row1 = keyboardElement.querySelector(".row-1");
+    const row3 = keyboardElement.querySelector(".row-3");
+    const row4 = keyboardElement.querySelector(".row-4");
+    const row5 = keyboardElement.querySelector(".row-5");
+
+    if (!row1 || !row3 || !row4 || !row5) {
+        return;
+    }
+
+    const backspaceKey = keyboardElement.querySelector(".key-backspace");
+    const enterKey = keyboardElement.querySelector(".key-enter");
+    const shiftKeys = keyboardElement.querySelectorAll(".key-shift");
+    const rightShiftKey = shiftKeys.length > 1 ? shiftKeys[1] : null;
+
+    if (isMobileViewport()) {
+        if (rightShiftKey) {
+            rightShiftKey.classList.add("mobile-secondary-shift");
+        }
+
+        if (backspaceKey && backspaceKey.parentElement !== row4) {
+            row4.appendChild(backspaceKey);
+        }
+
+        if (enterKey && enterKey.parentElement !== row5) {
+            row5.appendChild(enterKey);
+        }
+
+        return;
+    }
+
+    if (rightShiftKey) {
+        rightShiftKey.classList.remove("mobile-secondary-shift");
+    }
+
+    if (backspaceKey && backspaceKey.parentElement !== row1) {
+        row1.appendChild(backspaceKey);
+    }
+
+    if (enterKey && enterKey.parentElement !== row3) {
+        row3.appendChild(enterKey);
+    }
+}
+
 function aktualisiereTastenhilfeUI() {
 
     const systemKeyboardActive = isSystemKeyboardMode();
@@ -976,8 +1064,11 @@ function applyMobileInputMethod() {
         ? false
         : gameTastenhilfeEnabled;
 
+    applyMobileKeyboardStructure();
+    updateMobileViewportHeightVar();
     aktualisiereTastenhilfeUI();
     syncKeyboardHighlight();
+    renderVirtualKeyboardLabels();
 }
 
 function setMobileInputMethod(method) {
@@ -1016,7 +1107,7 @@ function closeSettingsPanel() {
     settingsButton?.setAttribute("aria-expanded", "false");
 
     if (phase === "typing") {
-        eingabe.focus();
+        focusEingabeWithoutScroll();
     }
 
 }
@@ -1099,7 +1190,7 @@ cancelLeaveQuestButton?.addEventListener("click", function () {
     leaveQuestOverlay?.classList.remove("active");
 
     if (phase === "typing") {
-        eingabe.focus();
+        focusEingabeWithoutScroll();
     }
 
 });
@@ -1126,7 +1217,7 @@ weiterButton.addEventListener("click", function () {
 
 resumeAfkButton?.addEventListener("click", function () {
     ActivityManager.registerActivity();
-    eingabe.focus();
+    focusEingabeWithoutScroll();
 });
 
 
@@ -1152,7 +1243,7 @@ if (questMode === "challenge") {
     mode = "exam";
     germanVisible = false;
 
-    eingabe.focus();
+    focusEingabeWithoutScroll();
 
 }
 aktualisiereGermanToggle();
@@ -1320,7 +1411,7 @@ document.addEventListener("pointerdown", function () {
  
         setTimeout(function () {
  
-            eingabe.focus();
+            focusEingabeWithoutScroll();
  
         }, 0);
  
@@ -1354,12 +1445,63 @@ const isTouchDevice =
 // Mobile Geräte haben keine physische Shift-Taste: ein Tap auf
 // "Shift" aktiviert den Shift-Zustand für genau das nächste
 // Zeichen (klassisches Mobile-Keyboard-Verhalten).
-let virtualShiftActive = false;
+var virtualShiftActive = false;
+var virtualKeyLabelsInitialized = false;
+
+function initializeVirtualKeyboardLabels() {
+    if (virtualKeyLabelsInitialized || !keyboardElement) {
+        return;
+    }
+
+    keyboardElement.querySelectorAll(".key").forEach(keyElement => {
+        if (keyElement.classList.contains("key-action")) {
+            return;
+        }
+
+        keyElement.dataset.baseLabel = keyElement.textContent.trim();
+
+        const shiftLabel = keyElement.getAttribute("data-shift-key");
+        if (shiftLabel) {
+            keyElement.dataset.shiftLabel = shiftLabel;
+        }
+    });
+
+    virtualKeyLabelsInitialized = true;
+}
+
+function renderVirtualKeyboardLabels() {
+    if (!keyboardElement || !isMobileViewport()) {
+        return;
+    }
+
+    initializeVirtualKeyboardLabels();
+
+    keyboardElement.querySelectorAll(".key").forEach(keyElement => {
+        if (keyElement.classList.contains("key-action")) {
+            return;
+        }
+
+        const shiftLabel =
+            keyElement.dataset.shiftLabel ||
+            keyElement.getAttribute("data-shift-key");
+
+        const baseLabel =
+            keyElement.dataset.baseLabel ||
+            keyElement.getAttribute("data-key") ||
+            "";
+
+        keyElement.textContent =
+            virtualShiftActive && shiftLabel
+                ? shiftLabel
+                : baseLabel;
+    });
+}
 
 function updateVirtualShiftVisual() {
     getKeyElements("Shift").forEach(el => {
         el.classList.toggle("virtual-shift-active", virtualShiftActive);
     });
+    renderVirtualKeyboardLabels();
 }
 
 function typeCharacterFromVirtualKey(character) {
@@ -1411,9 +1553,30 @@ function handleVirtualKeyTap(keyElement) {
 }
 
 if (isTouchDevice && keyboardElement) {
+    initializeVirtualKeyboardLabels();
+    renderVirtualKeyboardLabels();
     keyboardElement.querySelectorAll(".key").forEach(keyElement => {
         keyElement.addEventListener("click", function () {
             handleVirtualKeyTap(keyElement);
         });
     });
 }
+
+updateMobileViewportHeightVar();
+
+if (window.visualViewport) {
+    window.visualViewport.addEventListener("resize", function () {
+        updateMobileViewportHeightVar();
+        enforceSystemKeyboardNoScroll();
+    });
+    window.visualViewport.addEventListener("scroll", enforceSystemKeyboardNoScroll);
+}
+
+window.addEventListener("resize", function () {
+    applyMobileKeyboardStructure();
+    updateMobileViewportHeightVar();
+});
+eingabe.addEventListener("focus", function () {
+    updateMobileViewportHeightVar();
+    enforceSystemKeyboardNoScroll();
+});
