@@ -348,6 +348,10 @@ if (challengeButton) {
 
 function openChronik(){
 
+    if (window.matchMedia("(max-width: 900px)").matches) {
+        document.body.classList.add("mobile-chronik-mode");
+    }
+
     renderChronik();
 
 }
@@ -387,6 +391,7 @@ function switchContent(mode) {
 
         case "campaign":
 
+            document.body.classList.remove("mobile-chronik-mode");
             document.getElementById("achievementContainer").style.display = "none";
 
             document.getElementById("questListe").style.display = "block";
@@ -400,6 +405,7 @@ function switchContent(mode) {
 
         case "missions":
 
+            document.body.classList.remove("mobile-chronik-mode");
             document.getElementById("achievementContainer").style.display = "none";
 
             document.getElementById("questListe").style.display = "block";
@@ -412,6 +418,7 @@ function switchContent(mode) {
 
 case "achievements":
 
+    document.body.classList.remove("mobile-chronik-mode");
     document.getElementById("questListe").style.display = "none";
 
     document.getElementById("chronikContainer").style.display = "none";
@@ -428,6 +435,10 @@ case "achievements":
 
 
 case "chronik":
+
+    if (window.matchMedia("(max-width: 900px)").matches) {
+        document.body.classList.add("mobile-chronik-mode");
+    }
 
     document.getElementById("questListe").style.display = "none";
 
@@ -558,5 +569,3 @@ sidebarBackdrop?.addEventListener("click", closeMobileSidebar);
 mainSidebar?.querySelectorAll(".menu-card button").forEach(button => {
     button.addEventListener("click", closeMobileSidebar);
 });
-
-

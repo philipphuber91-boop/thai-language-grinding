@@ -64,6 +64,32 @@
     }
 }
 
+@media (max-width:900px){
+    body:has(#chronikContainer){
+        box-sizing:border-box;
+        width:100%;
+        margin:0;
+        zoom:1 !important;
+    }
+
+    body:has(#chronikContainer) .content{
+        margin-left:0 !important;
+        width:100% !important;
+    }
+
+    body.mobile-chronik-mode{
+        box-sizing:border-box;
+        width:100%;
+        margin:0;
+        zoom:1 !important;
+    }
+
+    body.mobile-chronik-mode .content{
+        margin-left:0 !important;
+        width:100% !important;
+    }
+}
+
 
 /* =========================================================
    2. INDEX.HTML – SIDEBAR / NAVIGATION
@@ -202,7 +228,7 @@
 .mobile-input-method-settings,
 .system-keyboard-tutor-hint,
 .mobile-delay-zero{
-    display:none;
+    display:inline;
 }
 
 @media (max-width:900px){
@@ -805,45 +831,78 @@
        schmalen Screens nicht aus, um zuverlässig auf 1 Spalte zu
        kollabieren, daher explizit erzwungen. */
     .chronik-history-grid{
-        grid-template-columns:1fr;
+        width:100%;
+        max-width:100%;
+        min-width:0;
+        grid-template-columns:minmax(0, 1fr);
         gap:12px;
+    }
+
+    #chronikContainer,
+    #chronikPage,
+    #chronikProfile,
+    #chronikStats,
+    #chronikRecords,
+    .chronik-history-panel{
+        width:100%;
+        max-width:100%;
+        min-width:0;
+        box-sizing:border-box;
     }
 
     /* Kompaktere Verlaufs-Karten (Charts) - weniger Innenabstand
        und ein niedrigerer Chart, ohne die Lesbarkeit der Kurve/
        Balken zu verlieren. */
     .chronik-history-card{
-        padding:14px;
+        padding:12px;
+        overflow:visible;
+        min-width:0;
+        width:100%;
+        box-sizing:border-box;
     }
 
     .chronik-history-card-header{
-        margin-bottom:10px;
+        align-items:flex-start;
+        margin-bottom:8px;
+        gap:10px;
     }
 
     .chronik-history-icon{
-        width:56px;
-        height:56px;
+        width:48px;
+        height:48px;
     }
 
     .chronik-history-card h3{
-        font-size:16px;
+        font-size:14px;
+        line-height:1.15;
     }
 
     .chronik-history-big-number{
-        font-size:1.5rem;
-        margin-bottom:8px;
+        font-size:1.25rem;
+        margin-bottom:6px;
     }
 
     .chronik-chart-wrapper{
-        min-height:170px;
+        min-height:150px;
+        overflow:visible;
+    }
+
+    .chronik-chart-wrapper .chart-svg{
+        height:150px;
+    }
+
+    .chronik-chart-wrapper .chart-axis-text,
+    .chronik-chart-wrapper .chart-label,
+    .chronik-chart-wrapper .chart-axis-label{
+        font-size:9px;
     }
 
     .chronik-profile-card{
         width:100%;
         flex-wrap:wrap;
         min-height:0;
-        padding:16px;
-        gap:14px;
+        padding:14px;
+        gap:12px;
     }
 
     /* ---------------------------------------------------------
@@ -857,14 +916,19 @@
        wird beschnitten) - damit passen auf einem typischen
        Mobile-Viewport ca. 4 Karten (2 Spalten x 2 Zeilen) ins Bild. */
     .main-stat-grid{
-        grid-template-columns:repeat(2, 1fr);
+        width:100%;
+        max-width:100%;
+        min-width:0;
+        grid-template-columns:repeat(2, minmax(0, 1fr));
         gap:10px;
     }
 
     .stat-image-card{
-        aspect-ratio:1 / 1;
+        aspect-ratio:1 / 1.08;
         overflow:hidden;
         border-radius:10px;
+        min-width:0;
+        width:100%;
     }
 
     .stat-image-card img{
@@ -876,14 +940,14 @@
 
     .stat-image-card h3{
         top:6px;
-        font-size:11px;
+        font-size:10px;
         line-height:1.15;
         padding:0 4px;
     }
 
     .stat-overlay-value{
-        bottom:8px;
-        font-size:15px;
+        bottom:7px;
+        font-size:14px;
     }
 }
 
@@ -892,17 +956,17 @@
        damit weiterhin ca. 4 Karten pro Bildschirm sichtbar sind
        (1 Spalte würde das erneut auf ~1-2 Karten reduzieren). */
     .main-stat-grid{
-        grid-template-columns:repeat(2, 1fr);
+        grid-template-columns:repeat(2, minmax(0, 1fr));
         gap:8px;
     }
 
     .stat-image-card h3{
-        font-size:10px;
+        font-size:9px;
     }
 
     .stat-overlay-value{
-        font-size:13px;
-        bottom:6px;
+        font-size:12px;
+        bottom:5px;
     }
 }
 
@@ -1235,6 +1299,21 @@
         font-size:1.55rem;
         line-height:1.55;
         text-shadow:0 1px 0 rgba(255,255,255,.54);
+    }
+
+    .typing-zeile.mobile-sentence-exit{
+        transform:translateY(-10px);
+        opacity:0;
+    }
+
+    .typing-zeile.mobile-sentence-enter{
+        transform:translateY(8px);
+        opacity:0;
+    }
+
+    .typing-zeile.mobile-sentence-enter.mobile-sentence-enter-active{
+        transform:translateY(0);
+        opacity:1;
     }
 
     .aktuell{

@@ -40,8 +40,7 @@ let pendingTutorInput = null;
 // Verzögerung die Taste des als nächstes erwarteten Zeichens auf der
 // virtuellen Tastatur hervorgehoben wird. Gilt einheitlich für Lern-
 // und Prüfungsphase, siehe syncKeyboardHighlight().
-const TASTENHILFE_MIN_SEKUNDEN = 1;
-const TASTENHILFE_MIN_SEKUNDEN_MOBILE = 0;
+const TASTENHILFE_MIN_SEKUNDEN = 0;
 const TASTENHILFE_MAX_SEKUNDEN = 5;
 const TASTENHILFE_STANDARD_SEKUNDEN = 2;
 
@@ -68,7 +67,7 @@ let mobileInputMethod =
 
 let tastenhilfeVerzoegerungSekunden = clampTastenhilfeSekunden(
     localStorage.getItem("tastenhilfeVerzoegerung") ?? TASTENHILFE_STANDARD_SEKUNDEN,
-    TASTENHILFE_MIN_SEKUNDEN_MOBILE
+    TASTENHILFE_MIN_SEKUNDEN
 );
 
 const keyPressAnimationDurationMs = 130;
@@ -605,21 +604,45 @@ function zeigeZeilen() {
 
 
 function naechsteZeile() {
- 
+    if (isMobileViewport()) {
+        zeile1.classList.add("mobile-sentence-exit");
+
+        setTimeout(function () {
+            text = thaiZeilen[aktuelleZeile];
+            position = 0;
+
+            zeigeZeilen();
+            syncKeyboardHighlight();
+
+            zeile1.classList.remove("mobile-sentence-exit");
+            zeile1.classList.add("mobile-sentence-enter");
+
+            requestAnimationFrame(function () {
+                zeile1.classList.add("mobile-sentence-enter-active");
+            });
+
+            setTimeout(function () {
+                zeile1.classList.remove("mobile-sentence-enter");
+                zeile1.classList.remove("mobile-sentence-enter-active");
+            }, 180);
+        }, 150);
+        return;
+    }
+
     zeile1.classList.add("nach-oben");
- 
+
     setTimeout(function(){
- 
+
         text = thaiZeilen[aktuelleZeile];
         position = 0;
- 
+
         zeigeZeilen();
         syncKeyboardHighlight();
- 
+
         zeile1.classList.remove("nach-oben");
- 
+
     },250);
- 
+
 }
 
 function zeigeFehler() {
@@ -943,12 +966,6 @@ function isMobileViewport() {
         window.matchMedia("(max-width: 900px)").matches;
 }
 
-function getTastenhilfeMinSekunden() {
-    return isMobileViewport()
-        ? TASTENHILFE_MIN_SEKUNDEN_MOBILE
-        : TASTENHILFE_MIN_SEKUNDEN;
-}
-
 function isSystemKeyboardMode() {
     return isMobileViewport() && mobileInputMethod === "system";
 }
@@ -1050,7 +1067,7 @@ function aktualisiereTastenhilfeUI() {
     }
 
     if (settingsDelaySlider) {
-        const minSekunden = getTastenhilfeMinSekunden();
+        const minSekunden = TASTENHILFE_MIN_SEKUNDEN;
         if (tastenhilfeVerzoegerungSekunden < minSekunden) {
             tastenhilfeVerzoegerungSekunden = minSekunden;
             localStorage.setItem(
@@ -1194,7 +1211,7 @@ settingsDelaySlider?.addEventListener("input", function () {
 
     tastenhilfeVerzoegerungSekunden = clampTastenhilfeSekunden(
         settingsDelaySlider.value,
-        getTastenhilfeMinSekunden()
+        TASTENHILFE_MIN_SEKUNDEN
     );
 
     localStorage.setItem("tastenhilfeVerzoegerung", String(tastenhilfeVerzoegerungSekunden));

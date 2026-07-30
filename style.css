@@ -50,6 +50,132 @@
 
 }
 
+@media (min-width:901px){
+
+    body:has(#typingBereich) #typingBereich,
+    body:has(#typingBereich) #typingBereich.quest-card{
+        background:#fbefcf !important;
+        box-shadow:none !important;
+    }
+
+    body:has(#typingBereich) #typingFenster{
+        background:#fff4d8 !important;
+        box-shadow:none !important;
+        border-color:#c59854 !important;
+    }
+
+    body:has(#typingBereich) .learning-text{
+        color:#563414 !important;
+    }
+
+    body:has(#typingBereich) .geschrieben{
+        color:#776452 !important;
+    }
+
+    body:has(#typingBereich) .rest{
+        color:#2f2419 !important;
+    }
+
+    body:has(#typingBereich) .aktuell{
+        background:#ffcd45 !important;
+        color:#2f2419 !important;
+        box-shadow:none !important;
+    }
+
+    body:has(#typingBereich) .typing-status span{
+        background:#f4dfb1 !important;
+        border-color:#c59854 !important;
+        color:#563414 !important;
+        box-shadow:none !important;
+    }
+
+    body:has(#typingBereich) .typing-status span.afk{
+        background:#ffd364 !important;
+        color:#563414 !important;
+    }
+
+    body:has(#typingBereich) .typing-keyboard{
+        background:#f5dfad !important;
+        border-color:#c59854 !important;
+        box-shadow:none !important;
+    }
+
+    body:has(#typingBereich) .typing-keyboard::before{
+        background:rgba(255,235,170,.35) !important;
+        box-shadow:0 0 15px rgba(255,210,120,.25) !important;
+    }
+
+    body:has(#typingBereich) #thaiKeyboard .key,
+    body:has(#typingBereich) .typing-keyboard .key{
+        background:#f8e3b5 !important;
+        border-color:#c59854 !important;
+        color:#563414 !important;
+        text-shadow:none !important;
+        box-shadow:0 1px 2px rgba(91,55,17,.14) !important;
+    }
+
+    body:has(#typingBereich) #thaiKeyboard .key.key-action,
+    body:has(#typingBereich) .typing-keyboard .key.key-action{
+        background:#a97228 !important;
+        border-color:#98631e !important;
+        color:#fff8e7 !important;
+        text-shadow:none !important;
+        box-shadow:0 1px 2px rgba(91,55,17,.18) !important;
+    }
+
+    body:has(#typingBereich) #thaiKeyboard .key:hover,
+    body:has(#typingBereich) .typing-keyboard .key:hover{
+        background:#f8e3b5 !important;
+        box-shadow:0 1px 2px rgba(91,55,17,.14) !important;
+    }
+
+    body:has(#typingBereich) #thaiKeyboard .key.key-action:hover,
+    body:has(#typingBereich) .typing-keyboard .key.key-action:hover{
+        background:#a97228 !important;
+    }
+
+    body:has(#typingBereich) #thaiKeyboard .key.active,
+    body:has(#typingBereich) .typing-keyboard .key.active{
+        background:#ffd364 !important;
+        border-color:#a97228 !important;
+        box-shadow:0 0 0 2px rgba(169,114,40,.24) !important;
+    }
+
+    body:has(#typingBereich) .settings-panel{
+        background:#f3dda9 !important;
+    }
+
+    body:has(#typingBereich) .settings-close-button{
+        background:#f4dfb1 !important;
+        box-shadow:0 1px 2px rgba(91,55,17,.14) !important;
+    }
+
+    body:has(#typingBereich) .settings-delay-value{
+        color:#8a5a1e !important;
+    }
+
+    body:has(#typingBereich) .settings-slider{
+        background:#c59854 !important;
+    }
+
+    body:has(#typingBereich) .settings-slider::-webkit-slider-thumb,
+    body:has(#typingBereich) .settings-slider::-moz-range-thumb{
+        background:#fdf6e6 !important;
+        border-color:#6b3d10 !important;
+        box-shadow:0 2px 6px rgba(0,0,0,.35) !important;
+    }
+
+    body:has(#typingBereich) .settings-slider-scale,
+    body:has(#typingBereich) .settings-hint,
+    body:has(#typingBereich) .system-keyboard-tutor-hint{
+        color:rgba(59,40,24,0.75) !important;
+    }
+
+    body:has(#typingBereich) .mobile-delay-zero{
+        display:inline !important;
+    }
+}
+
 
 /* =========================================================
    RESET
