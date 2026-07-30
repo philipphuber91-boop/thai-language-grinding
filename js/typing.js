@@ -1248,7 +1248,11 @@ weiterButton.addEventListener("click", function () {
 });
 
 resumeAfkButton?.addEventListener("click", function () {
-    ActivityManager.registerActivity();
+    if (ActivityManager.isAFK) {
+        ActivityManager.resumeFromAfk();
+    } else {
+        ActivityManager.registerActivity();
+    }
     focusEingabeWithoutScroll();
 });
 

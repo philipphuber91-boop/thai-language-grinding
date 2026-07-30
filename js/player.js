@@ -403,11 +403,8 @@ const ActivityManager = {
             return;
         }
 
-        if (this.afkStartTime !== null) {
-            this.afkAccumulatedMs += Date.now() - this.afkStartTime;
-            this.afkStartTime = null;
-        }
-
+        this.afkStartTime = null;
+        this.afkAccumulatedMs = 0;
         this.clearAfkTimers();
         this.status = "PLAYING";
         this.activeSince = Date.now();
