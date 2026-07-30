@@ -192,6 +192,145 @@
 
 
 /* =========================================================
+   3b. QUEST-ABSCHLUSSBILDSCHIRM (#questCompleteOverlay)
+   ---------------------------------------------------------
+   Ursache des Mobile-Bugs: #questCompleteOverlay ist per
+   ID-Selektor in style.css fest auf align-items:center und
+   .quest-complete-window per @media(max-width:700px) fest auf
+   height:calc(100vh - 20px) + overflow:hidden gestellt. Die 3
+   Statistik-Icons (.complete-stats .icon) bleiben dabei immer
+   150x150px groß, wodurch die 3-spaltige Stats-Grid auf
+   schmalen Screens breiter wird als das Fenster - die dritte
+   Karte ("Genauigkeit") sowie der Vergleichsbereich werden vom
+   overflow:hidden abgeschnitten und sind nicht erreichbar.
+   Fix: Fenster schrumpft mit dem Inhalt (height:auto), das
+   Overlay darf bei Bedarf vertikal scrollen (wie beim Start-
+   Overlay oben), und alle Elemente werden für schmale Screens
+   deutlich verkleinert, damit i.d.R. gar kein Scrollen nötig
+   ist. #questCompleteOverlay wird hier per ID-Selektor
+   überschrieben, da style.css align-items ebenfalls per ID
+   setzt (Klassen-Regel würde sonst nicht gewinnen). */
+@media (max-width:900px){
+
+    #questCompleteOverlay{
+        align-items:flex-start;
+        overflow-y:auto;
+        -webkit-overflow-scrolling:touch;
+        padding:20px 0;
+    }
+
+    .quest-complete-window{
+        width:min(560px, 92vw);
+        height:auto;
+        max-height:none;
+        margin:0 auto;
+        padding:20px 16px 16px;
+        overflow:visible;
+    }
+
+    .complete-main-title{
+        margin:0 0 16px;
+        font-size:clamp(22px, 7vw, 32px);
+    }
+
+    .complete-info{
+        grid-template-columns:52px 1fr;
+        column-gap:12px;
+        padding:10px 12px;
+        margin-bottom:12px;
+    }
+
+    .complete-image,
+    .complete-quest-image{
+        width:52px;
+        height:52px;
+    }
+
+    .complete-meta h2,
+    .complete-quest-title h2{
+        font-size:clamp(17px, 5.5vw, 22px);
+    }
+
+    .complete-stats{
+        margin:0 0 18px;
+        gap:8px;
+    }
+
+    /* Die generische .stat-Regel (auch anderswo genutzt, siehe
+       style.css) setzt min-width:190px - auf schmalen Screens
+       sprengt das die 3-spaltige Grid und schneidet die dritte
+       Karte ("Genauigkeit") ab. Muss hier auf 0 zurückgesetzt
+       werden, damit die Spalten wirklich 1fr breit werden. */
+    .complete-stats .stat{
+        min-width:0;
+        min-height:auto;
+        padding:10px 4px;
+        border-radius:14px;
+    }
+
+    .complete-stats .icon{
+        width:52px;
+        height:52px;
+        margin:0 auto 4px;
+    }
+
+    .complete-stats .wert{
+        font-size:clamp(17px, 5.5vw, 24px);
+    }
+
+    .complete-stats .titel{
+        font-size:10px;
+    }
+
+    .comparison-section{
+        margin-top:12px;
+    }
+
+    .comparison-title{
+        font-size:18px;
+    }
+
+    .record-row,
+    .compare-table{
+        grid-template-columns:78px repeat(3, 1fr);
+    }
+
+    .record-label,
+    .record-cell,
+    .compare-table > *{
+        min-height:52px;
+        padding:6px 4px;
+    }
+
+    .record-label{
+        font-size:10px;
+    }
+
+    .record-heading,
+    .compare-header{
+        font-size:8px;
+    }
+
+    .record-cell strong,
+    .compare-value{
+        font-size:13px;
+    }
+
+    .record-result strong,
+    .compare-result{
+        font-size:10px;
+    }
+
+    #weiterButton{
+        width:min(280px, 90%);
+        margin-top:14px;
+        padding:10px 20px;
+        font-size:18px;
+    }
+}
+
+
+/* =========================================================
    4. ACHIEVEMENTS (eingebettet in #achievementContainer
       sowie in der eigenständigen achievements.html)
 ========================================================= */
@@ -232,21 +371,103 @@
        kollabieren, daher explizit erzwungen. */
     .chronik-history-grid{
         grid-template-columns:1fr;
+        gap:12px;
     }
 
-    .main-stat-grid{
-        grid-template-columns:repeat(2, 1fr);
+    /* Kompaktere Verlaufs-Karten (Charts) - weniger Innenabstand
+       und ein niedrigerer Chart, ohne die Lesbarkeit der Kurve/
+       Balken zu verlieren. */
+    .chronik-history-card{
+        padding:14px;
+    }
+
+    .chronik-history-card-header{
+        margin-bottom:10px;
+    }
+
+    .chronik-history-icon{
+        width:56px;
+        height:56px;
+    }
+
+    .chronik-history-card h3{
+        font-size:16px;
+    }
+
+    .chronik-history-big-number{
+        font-size:1.5rem;
+        margin-bottom:8px;
+    }
+
+    .chronik-chart-wrapper{
+        min-height:170px;
     }
 
     .chronik-profile-card{
         width:100%;
         flex-wrap:wrap;
+        min-height:0;
+        padding:16px;
+        gap:14px;
+    }
+
+    /* ---------------------------------------------------------
+       Statistikkarten (7 Bild-Karten: Spielzeit/Zeichen/Tempo/…):
+       Im Original bestimmt allein die Bildbreite (100%) die
+       Kartenhöhe (Seitenverhältnis ca. 0.68 => bis zu 645px hoch
+       auf einem 390px-Screen). Dadurch passte auf Mobile fast
+       nur 1 Karte pro Bildschirm. Fix: feste, deutlich kleinere
+       Kartenhöhe per aspect-ratio + object-fit:cover (Icon bleibt
+       zentriert/scharf sichtbar, nur der leere Rahmen oben/unten
+       wird beschnitten) - damit passen auf einem typischen
+       Mobile-Viewport ca. 4 Karten (2 Spalten x 2 Zeilen) ins Bild. */
+    .main-stat-grid{
+        grid-template-columns:repeat(2, 1fr);
+        gap:10px;
+    }
+
+    .stat-image-card{
+        aspect-ratio:1 / 1;
+        overflow:hidden;
+        border-radius:10px;
+    }
+
+    .stat-image-card img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        object-position:center;
+    }
+
+    .stat-image-card h3{
+        top:6px;
+        font-size:11px;
+        line-height:1.15;
+        padding:0 4px;
+    }
+
+    .stat-overlay-value{
+        bottom:8px;
+        font-size:15px;
     }
 }
 
 @media (max-width:520px){
+    /* Auch auf sehr schmalen Screens bleiben 2 Spalten erhalten,
+       damit weiterhin ca. 4 Karten pro Bildschirm sichtbar sind
+       (1 Spalte würde das erneut auf ~1-2 Karten reduzieren). */
     .main-stat-grid{
-        grid-template-columns:1fr;
+        grid-template-columns:repeat(2, 1fr);
+        gap:8px;
+    }
+
+    .stat-image-card h3{
+        font-size:10px;
+    }
+
+    .stat-overlay-value{
+        font-size:13px;
+        bottom:6px;
     }
 }
 
@@ -362,11 +583,16 @@
         /* Werte bewusst größer gewählt als der sichtbare Zieltreffer
            (~46px), da body{zoom:.8} (siehe style.css) die gesamte
            Seite inkl. Tastatur auf 80% herunterskaliert - erst nach
-           dem Zoom ergibt sich ein wirklich daumenfreundliches Maß. */
-        min-height:min(14vw, 58px);
+           dem Zoom ergibt sich ein wirklich daumenfreundliches Maß.
+           Durch das feste Viewport-Layout (siehe 6c.) steht mehr
+           Höhe zur Verfügung, die Tastatur wird deutlich größer
+           dargestellt als zuvor. Der dvh-Anteil begrenzt die Höhe
+           zusätzlich auf sehr niedrigen/breiten (Querformat-)
+           Screens, damit die Tastatur nie aus dem Bild wächst. */
+        min-height:min(16vw, 12dvh, 68px);
         padding:0;
         border-radius:9px;
-        font-size:min(4.6vw, 1.35rem);
+        font-size:min(5vw, 1.5rem);
     }
 
     /* Shift, Enter und Backspace deutlich größer und damit gut mit
@@ -375,7 +601,7 @@
     .typing-keyboard .key.key-enter,
     .typing-keyboard .key.key-shift{
         flex:1.8 1 0%;
-        font-size:min(3.4vw, 1rem);
+        font-size:min(3.6vw, 1.1rem);
     }
 
     /* Leertaste füllt die letzte Reihe komplett aus und bleibt
@@ -389,7 +615,7 @@
         width:100%;
         min-width:0;
         max-width:none;
-        min-height:min(15vw, 64px);
+        min-height:min(17vw, 13dvh, 74px);
         padding:0;
     }
 
@@ -409,6 +635,53 @@
     .typing-keyboard .keyboard-row{
         gap:4px;
         margin-bottom:5px;
+    }
+}
+
+/* =========================================================
+   6d. TYPING.HTML – TASTATUR-PERFORMANCE (Mobile)
+   ---------------------------------------------------------
+   Ursache der wahrgenommenen Trägheit: .key.active (Tastenhilfe-
+   Hervorhebung, siehe style.css) läuft dauerhaft mit einer
+   infinite-alternate-Animation (keyGlowPulse: scale 1.02->1.06
+   plus 3 weiche Box-Shadow-Ebenen, jede Sekunde neu bewertet)
+   und .key selbst transitioniert transform+box-shadow+background
+   gleichzeitig bei jedem Tap. Auf leistungsschwächeren Mobile-
+   GPUs verursacht das spürbares Ruckeln. Auf Mobile wird die
+   Pulsanimation durch eine einzelne statische Hervorhebung
+   ersetzt und die Übergänge auf "transform" reduziert (günstig,
+   da compositor-only) - Funktion/Optik der Tastenhilfe bleibt
+   (Taste wird weiterhin klar hervorgehoben), nur ohne Dauerschleife.
+   Wirkt ausschließlich unterhalb des Mobile-Breakpoints, Desktop
+   (style.css) bleibt unverändert. */
+@media (max-width:900px){
+
+    .typing-keyboard .key{
+        transition:transform .12s ease;
+    }
+
+    .typing-keyboard .key:hover{
+        transform:none;
+        box-shadow:
+            inset 0 1px 0 rgba(255,255,255,.82),
+            inset 0 -1px 0 rgba(120,70,15,.17),
+            0 2px 3px rgba(78,43,7,.18);
+    }
+
+    .typing-keyboard .key.active{
+        animation:none;
+        transform:none;
+        box-shadow:
+            inset 0 1px 0 rgba(255,255,255,.75),
+            0 0 0 2px rgba(255,221,103,.55),
+            0 0 12px rgba(255,215,110,.4);
+        background:linear-gradient(180deg, #fff1c1, #e6c16a);
+    }
+
+    .typing-keyboard .key.pressed{
+        transform:scale(0.96);
+        box-shadow:inset 0 2px 4px rgba(0,0,0,.22);
+        filter:none;
     }
 }
 
@@ -605,6 +878,101 @@
         border-radius:7px;
         background:linear-gradient(145deg, #fff1c9, #e4b865);
         box-shadow:inset 0 1px 0 rgba(255,255,255,.85), 0 2px 4px rgba(77,43,8,.2);
+    }
+}
+
+
+/* =========================================================
+   6c. TYPING.HTML – FESTES VIEWPORT-LAYOUT (kein Scrollen,
+       Tastatur immer an fester Position)
+   ---------------------------------------------------------
+   Ursachenanalyse "springende Tastatur"/Scrollen:
+   #typingFenster hatte nur eine min-height und ist damit exakt
+   so hoch wie sein Inhalt. Sobald sich der Inhalt ändert -
+   Deutsch ein/ausblenden (settingsGermanToggle), unterschiedlich
+   lange Thai-Zeilen oder auch nur einzelne Zeichen mit oberen/
+   unteren Markierungen (่ ้ ิ ื ุ, andere Zeilenhöhe je nach
+   Schriftmetrik) - ändert sich seine Höhe. Da alles darunter
+   (Tastatur) im normalen Dokumentfluss steht, wandert die
+   Tastatur dadurch nach oben/unten, und auf kurzen Screens kam
+   es zusätzlich zu Scrollen.
+   Fix: #typingBereich (aktiv, sobald js/typing.js phase="thai"
+   setzt display:block - hier per !important als Flex-Spalte
+   überschrieben) bekommt eine feste Höhe (100dvh abzüglich
+   Titel), #typingFenster wird darin zum flexiblen Mittelteil
+   (flex:1, overflow:hidden, weiterhin vertikal zentriert per
+   bestehendem display:grid + align-content:center) - seine
+   Höhe wird also vom Layout vorgegeben statt vom Inhalt. Kopf-
+   zeile, Trenner und Tastatur behalten ihre eigene, vom Inhalt
+   unabhängige Größe (flex:0 0 auto) und bewegen sich dadurch
+   nie. Ergebnis: konstante Zeilenhöhen/Containerhöhen, keine
+   automatische Verschiebung, kein Scrollen - unabhängig vom
+   Deutsch-Umschalter oder den getippten Zeichen.
+   Betrifft ausschließlich die Typing-Seite: über
+   body:has(#typingBereich) auf index.html/achievements.html
+   ohne Wirkung, da dort kein #typingBereich existiert. */
+@media (max-width:900px){
+
+    body:has(#typingBereich){
+        height:100dvh;
+        overflow:hidden;
+        display:flex;
+        flex-direction:column;
+    }
+
+    body:has(#typingBereich) > h1{
+        flex:0 0 auto;
+        margin:6px 0 2px;
+        font-size:1.05rem;
+        text-align:center;
+    }
+
+    /* Lese-Karten (Auftrag/Deutsch) dürfen wie bisher für sich
+       scrollen, falls eine Quest ungewöhnlich viel Text hat -
+       das "kein Scrollen"-Ziel gilt gemäß Auftrag nur für den
+       eigentlichen Typing-Modus, nicht für die Lesephase. */
+    body:has(#typingBereich) #auftrag,
+    body:has(#typingBereich) #deutsch{
+        flex:1 1 auto;
+        min-height:0;
+        overflow-y:auto;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    /* Wichtig: js/typing.js schaltet die drei Phasen-Container
+       (#auftrag/#deutsch/#typingBereich) über style.display
+       "none"/"block" gegenseitig aus (siehe zeigePhase()). Ein
+       pauschales "!important" auf display:flex würde das
+       "none" ebenfalls überschreiben und #typingBereich in JEDER
+       Phase sichtbar lassen - das würde die Spiellogik/Phasen
+       sichtbar kaputt machen. Daher nur dann zu Flex machen,
+       wenn das Inline-Style NICHT "none" enthält (also wenn
+       js/typing.js aktiv "block" gesetzt hat). */
+    #typingBereich:not([style*="none"]){
+        display:flex !important;
+        flex-direction:column;
+        flex:1 1 auto;
+        min-height:0;
+    }
+
+    .typing-header{
+        flex:0 0 auto;
+    }
+
+    .typing-divider{
+        flex:0 0 auto;
+    }
+
+    /* Nimmt jede verbleibende Höhe auf - wächst/schrumpft, ohne
+       dass Kopfzeile, Trenner oder Tastatur sich mitbewegen. */
+    #typingFenster{
+        flex:1 1 auto;
+        min-height:64px;
+        overflow:hidden;
+    }
+
+    #thaiKeyboard{
+        flex:0 0 auto;
     }
 }
 
