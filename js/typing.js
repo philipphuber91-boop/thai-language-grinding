@@ -12,10 +12,9 @@ const eingabe = document.getElementById("eingabe");
 const aktuelleQuest = localStorage.getItem("aktuelleQuest");
 const questMode = localStorage.getItem("questMode") || "campaign";
 
-// Der Keyboard Tutor unterstützt seit seiner Einführung alle
-// Tastaturlayouts (Deutsch, Englisch, ...) korrekt - ein Abschalten
-// ist daher nicht mehr sinnvoll/nötig. Der frühere Umschalt-Button
-// und seine localStorage-Einstellung ("keyboardTutorMode") entfallen.
+// Die Übersetzung physischer Tasten bleibt für Desktop und die
+// mobile Spiel-Tastatur aktiv. Der mobile Systemtastatur-Modus
+// verarbeitet stattdessen die nativen input-Events direkt.
 const keyboardTutorModeEnabled = true;
 
 const contentMode =
@@ -53,8 +52,15 @@ function clampTastenhilfeSekunden(value) {
     return Math.min(TASTENHILFE_MAX_SEKUNDEN, Math.max(TASTENHILFE_MIN_SEKUNDEN, Math.round(zahl)));
 }
 
-let tastenhilfeEnabled =
+let gameTastenhilfeEnabled =
     localStorage.getItem("tastenhilfeAktiviert") !== "false";
+let tastenhilfeEnabled = gameTastenhilfeEnabled;
+
+const MOBILE_INPUT_METHOD_KEY = "mobileInputMethod";
+let mobileInputMethod =
+    localStorage.getItem(MOBILE_INPUT_METHOD_KEY) === "system"
+        ? "system"
+        : "game";
 
 let tastenhilfeVerzoegerungSekunden = clampTastenhilfeSekunden(
     localStorage.getItem("tastenhilfeVerzoegerung") ?? TASTENHILFE_STANDARD_SEKUNDEN
@@ -447,7 +453,7 @@ function aktualisiereGermanToggle() {
     settingsGermanToggle.checked = germanVisible;
 
     settingsGermanToggle.disabled =
-        startZeit !== null;
+        startZeit !== null && !isMobileViewport();
 
 }
 
@@ -534,6 +540,8 @@ function aktualisiereQuestFortschrittUI() {
     if (typingProgressText) {
         typingProgressText.textContent =
             gesamtZeichen + " / " + gesamtZeichenQuest + " Zeichen (" + prozent + "%)";
+        typingProgressText.dataset.mobileText =
+            gesamtZeichen + " / " + gesamtZeichenQuest;
     }
 
 }
@@ -813,7 +821,7 @@ eingabe.addEventListener("input", function () {
 
     console.log("INPUT", eingabe.value);
 
-    const eingegeben = keyboardTutorModeEnabled
+    const eingegeben = keyboardTutorModeEnabled && !isSystemKeyboardMode()
         ? pendingTutorInput
         : eingabe.value;
     pendingTutorInput = null;
@@ -885,6 +893,12 @@ const settingsCloseButton = document.getElementById("settingsCloseButton");
 const settingsTastenhilfeToggle = document.getElementById("settingsTastenhilfeToggle");
 const settingsDelaySlider = document.getElementById("settingsDelaySlider");
 const settingsDelayValue = document.getElementById("settingsDelayValue");
+const mobileBackButton = document.getElementById("mobileBackButton");
+const mobileInputGame = document.getElementById("mobileInputGame");
+const mobileInputSystem = document.getElementById("mobileInputSystem");
+const settingsTutorRow = document.getElementById("settingsTutorRow");
+const settingsDelayRow = settingsDelaySlider?.closest(".settings-row");
+const systemKeyboardTutorHint = document.getElementById("systemKeyboardTutorHint");
 const leaveQuestButton = document.getElementById("leaveQuestButton");
 const questBarLeaveButton = document.getElementById("questBarLeaveButton");
 const leaveQuestOverlay = document.getElementById("leaveQuestOverlay");
@@ -910,15 +924,27 @@ function formatiereTastenhilfeSekunden(sekunden) {
     return sekunden === 1 ? "1 Sekunde" : `${sekunden} Sekunden`;
 }
 
+function isMobileViewport() {
+    return typeof window.matchMedia === "function" &&
+        window.matchMedia("(max-width: 900px)").matches;
+}
+
+function isSystemKeyboardMode() {
+    return isMobileViewport() && mobileInputMethod === "system";
+}
+
 function aktualisiereTastenhilfeUI() {
+
+    const systemKeyboardActive = isSystemKeyboardMode();
 
     if (settingsTastenhilfeToggle) {
         settingsTastenhilfeToggle.checked = tastenhilfeEnabled;
+        settingsTastenhilfeToggle.disabled = systemKeyboardActive;
     }
 
     if (settingsDelaySlider) {
         settingsDelaySlider.value = String(tastenhilfeVerzoegerungSekunden);
-        settingsDelaySlider.disabled = !tastenhilfeEnabled;
+        settingsDelaySlider.disabled = !tastenhilfeEnabled || systemKeyboardActive;
     }
 
     if (settingsDelayValue) {
@@ -926,6 +952,39 @@ function aktualisiereTastenhilfeUI() {
             formatiereTastenhilfeSekunden(tastenhilfeVerzoegerungSekunden);
     }
 
+    settingsTutorRow?.classList.toggle("disabled", systemKeyboardActive);
+    settingsDelayRow?.classList.toggle("disabled", systemKeyboardActive);
+    systemKeyboardTutorHint?.classList.toggle("visible", systemKeyboardActive);
+
+}
+
+function applyMobileInputMethod() {
+    const systemKeyboardActive = isSystemKeyboardMode();
+
+    document.body.classList.toggle("system-keyboard-mode", systemKeyboardActive);
+    eingabe.readOnly = isMobileViewport() && !systemKeyboardActive;
+
+    if (mobileInputGame) {
+        mobileInputGame.checked = mobileInputMethod === "game";
+    }
+
+    if (mobileInputSystem) {
+        mobileInputSystem.checked = mobileInputMethod === "system";
+    }
+
+    tastenhilfeEnabled = systemKeyboardActive
+        ? false
+        : gameTastenhilfeEnabled;
+
+    aktualisiereTastenhilfeUI();
+    syncKeyboardHighlight();
+}
+
+function setMobileInputMethod(method) {
+    mobileInputMethod = method === "system" ? "system" : "game";
+    localStorage.setItem(MOBILE_INPUT_METHOD_KEY, mobileInputMethod);
+    eingabe.blur();
+    applyMobileInputMethod();
 }
 
 function openSettingsPanel() {
@@ -990,12 +1049,25 @@ settingsGermanToggle?.addEventListener("change", function () {
 settingsTastenhilfeToggle?.addEventListener("change", function () {
 
     tastenhilfeEnabled = settingsTastenhilfeToggle.checked;
+    gameTastenhilfeEnabled = tastenhilfeEnabled;
 
     localStorage.setItem("tastenhilfeAktiviert", String(tastenhilfeEnabled));
 
     aktualisiereTastenhilfeUI();
     syncKeyboardHighlight();
 
+});
+
+mobileInputGame?.addEventListener("change", function () {
+    if (mobileInputGame.checked) {
+        setMobileInputMethod("game");
+    }
+});
+
+mobileInputSystem?.addEventListener("change", function () {
+    if (mobileInputSystem.checked) {
+        setMobileInputMethod("system");
+    }
 });
 
 settingsDelaySlider?.addEventListener("input", function () {
@@ -1020,6 +1092,7 @@ function oeffneLeaveQuestBestaetigung() {
 
 leaveQuestButton?.addEventListener("click", oeffneLeaveQuestBestaetigung);
 questBarLeaveButton?.addEventListener("click", oeffneLeaveQuestBestaetigung);
+mobileBackButton?.addEventListener("click", oeffneLeaveQuestBestaetigung);
 
 cancelLeaveQuestButton?.addEventListener("click", function () {
 
@@ -1071,6 +1144,8 @@ document
 
     });
 
+applyMobileInputMethod();
+
 if (questMode === "challenge") {
 
     phase = "typing";
@@ -1080,9 +1155,7 @@ if (questMode === "challenge") {
     eingabe.focus();
 
 }
-
 aktualisiereGermanToggle();
-aktualisiereTastenhilfeUI();
 
 zeigePhase();
 
@@ -1214,6 +1287,10 @@ document.addEventListener("keydown", function (event) {
    // offen ist, sollen Tastendrücke nicht als Spieleingabe in
    // #eingabe interpretiert werden.
    if (isEingabeGesperrt()) {
+       return;
+   }
+
+   if (isSystemKeyboardMode()) {
        return;
    }
 

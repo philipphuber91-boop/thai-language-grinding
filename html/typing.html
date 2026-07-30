@@ -76,8 +76,11 @@
 <div id="typingBereich" class="quest-card">
 
     <div class="typing-header">
+
+    <button id="mobileBackButton" type="button" class="mobile-typing-back"
+        aria-label="Zurück zur Weltkarte">←</button>
  
-    <h2>⌨️ Thai schreiben</h2>
+    <h2><span class="typing-title-icon">⌨️</span> Thai schreiben</h2>
  
 <!-- Nur Desktop sichtbar: auf Mobile bleibt der Fokus aufs Tippen,
      siehe css/mobile.css (.desktop-only-stat) -->
@@ -130,7 +133,8 @@
 
 </div>
 
-<textarea id="eingabe"></textarea>
+<textarea id="eingabe" lang="th" inputmode="text" autocomplete="off"
+    autocapitalize="none" autocorrect="off" spellcheck="false" readonly></textarea>
 
 <div id="thaiKeyboard" class="typing-keyboard" aria-label="Virtuelle Thai-Tastatur">
 
@@ -243,11 +247,9 @@
 <!-- =========================================================
      EINSTELLUNGSMENÜ (Zahnrad, siehe .typing-status weiter oben)
      ---------------------------------------------------------
-     Ersetzt die früheren Buttons "Tutor EIN/AUS" (Keyboard Tutor
-     ist jetzt dauerhaft aktiv, siehe js/typing.js) und
-     "Deutsch EIN/AUS" (jetzt hier unter SPRACHE).
-     Identisches Menü für Desktop und Mobile - nur die Darstellung
-     unterscheidet sich responsiv (siehe css/mobile.css).
+     Ersetzt die früheren Buttons "Tutor EIN/AUS" und
+     "Deutsch EIN/AUS" (jetzt hier unter SPRACHE). Die mobile
+     Eingabemethode wird zusätzlich nur auf kleinen Viewports gezeigt.
 ========================================================= -->
 <div id="settingsBackdrop" class="settings-backdrop"></div>
 
@@ -256,6 +258,29 @@
     <div class="settings-panel-header">
         <h2 id="settingsPanelTitle">Einstellungen</h2>
         <button id="settingsCloseButton" type="button" class="settings-close-button" aria-label="Einstellungen schließen">✕</button>
+    </div>
+
+    <div class="settings-section mobile-input-method-settings">
+
+        <h3 class="settings-section-title">Eingabemethode</h3>
+
+        <div class="mobile-input-method-options" role="radiogroup" aria-label="Eingabemethode">
+            <label class="mobile-input-method-option">
+                <input type="radio" name="mobileInputMethod" id="mobileInputGame" value="game" checked>
+                <span>
+                    <strong>Spiel-Tastatur</strong>
+                    <small>Mit eigener Tastenhilfe</small>
+                </span>
+            </label>
+            <label class="mobile-input-method-option">
+                <input type="radio" name="mobileInputMethod" id="mobileInputSystem" value="system">
+                <span>
+                    <strong>iPhone-Systemtastatur</strong>
+                    <small>Originale Gerätetastatur</small>
+                </span>
+            </label>
+        </div>
+
     </div>
 
     <div class="settings-section">
@@ -276,13 +301,17 @@
 
         <h3 class="settings-section-title">Lernhilfen</h3>
 
-        <div class="settings-row">
+        <div class="settings-row" id="settingsTutorRow">
             <span class="settings-row-label">⌨️ Tastenhilfe</span>
             <label class="settings-switch">
                 <input type="checkbox" id="settingsTastenhilfeToggle" checked>
                 <span class="settings-switch-track"><span class="settings-switch-thumb"></span></span>
             </label>
         </div>
+
+        <p id="systemKeyboardTutorHint" class="system-keyboard-tutor-hint">
+            Tastenhilfe nur mit Spiel-Tastatur verfügbar
+        </p>
 
         <div class="settings-row settings-row-slider">
             <div class="settings-row-slider-header">
