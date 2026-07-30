@@ -200,7 +200,8 @@
 
 .mobile-typing-back,
 .mobile-input-method-settings,
-.system-keyboard-tutor-hint{
+.system-keyboard-tutor-hint,
+.mobile-delay-zero{
     display:none;
 }
 
@@ -1638,12 +1639,33 @@
         box-shadow:none;
     }
 
+    .learning-text{
+        font-size:calc(clamp(.68rem, 2.8vw, .88rem) + 0.2px);
+    }
+
     #zeile1{
         flex-basis:auto !important;
+        display:block;
+        width:100%;
+        min-height:clamp(70px, 12.5dvh, 108px);
+        max-height:clamp(70px, 12.5dvh, 108px);
+        padding:0 2px;
+        overflow:hidden;
+        white-space:normal;
+        text-align:center;
+        line-height:1.28;
+        overflow-wrap:anywhere;
+        word-break:break-word;
     }
 
     #zeile2{
         display:none;
+    }
+
+    #zeile1 .geschrieben,
+    #zeile1 .aktuell,
+    #zeile1 .rest{
+        display:inline;
     }
 
     .aktuell{
@@ -1655,7 +1677,7 @@
         width:100%;
         margin-right:0;
         margin-left:0;
-        padding:10px 2px 12px;
+        padding:10px 0 12px;
         border-right:0;
         border-left:0;
         background:#f5dfad;
@@ -1685,14 +1707,16 @@
 
     .typing-keyboard .keyboard-row.row-2{
         grid-template-columns:repeat(13, minmax(0, 1fr));
+        gap:1px;
     }
 
     .typing-keyboard .keyboard-row.row-3{
         grid-template-columns:repeat(11, minmax(0, 1fr));
+        gap:1px;
     }
 
     .typing-keyboard .keyboard-row.row-4{
-        grid-template-columns:minmax(0, 1.8fr) repeat(10, minmax(0, 1fr)) minmax(0, 1.8fr);
+        grid-template-columns:minmax(0, 1.5fr) repeat(10, minmax(0, 1fr)) minmax(0, 1.5fr);
     }
 
     .typing-keyboard .keyboard-row.row-5{
@@ -1755,6 +1779,10 @@
 
     .typing-keyboard .key[data-shift-key]::after{
         display:none;
+    }
+
+    .mobile-delay-zero{
+        display:inline;
     }
 
     body.system-keyboard-mode #eingabe{

@@ -41,15 +41,19 @@ let pendingTutorInput = null;
 // virtuellen Tastatur hervorgehoben wird. Gilt einheitlich für Lern-
 // und Prüfungsphase, siehe syncKeyboardHighlight().
 const TASTENHILFE_MIN_SEKUNDEN = 1;
+const TASTENHILFE_MIN_SEKUNDEN_MOBILE = 0;
 const TASTENHILFE_MAX_SEKUNDEN = 5;
 const TASTENHILFE_STANDARD_SEKUNDEN = 2;
 
-function clampTastenhilfeSekunden(value) {
+function clampTastenhilfeSekunden(value, minSekunden = TASTENHILFE_MIN_SEKUNDEN) {
     const zahl = Number(value);
     if (!Number.isFinite(zahl)) {
         return TASTENHILFE_STANDARD_SEKUNDEN;
     }
-    return Math.min(TASTENHILFE_MAX_SEKUNDEN, Math.max(TASTENHILFE_MIN_SEKUNDEN, Math.round(zahl)));
+    return Math.min(
+        TASTENHILFE_MAX_SEKUNDEN,
+        Math.max(minSekunden, Math.round(zahl))
+    );
 }
 
 let gameTastenhilfeEnabled =
@@ -63,7 +67,8 @@ let mobileInputMethod =
         : "game";
 
 let tastenhilfeVerzoegerungSekunden = clampTastenhilfeSekunden(
-    localStorage.getItem("tastenhilfeVerzoegerung") ?? TASTENHILFE_STANDARD_SEKUNDEN
+    localStorage.getItem("tastenhilfeVerzoegerung") ?? TASTENHILFE_STANDARD_SEKUNDEN,
+    TASTENHILFE_MIN_SEKUNDEN_MOBILE
 );
 
 const keyPressAnimationDurationMs = 130;
@@ -148,6 +153,11 @@ function syncKeyboardHighlight() {
 
     const currentRequestId = ++tastenhilfeRequestId;
     const verzoegerungMs = tastenhilfeVerzoegerungSekunden * 1000;
+
+    if (verzoegerungMs <= 0) {
+        applyKeyboardHighlight(expectedCharacter);
+        return;
+    }
 
     tastenhilfeTimer = setTimeout(() => {
         if (currentRequestId !== tastenhilfeRequestId) {
@@ -922,12 +932,21 @@ function isEingabeGesperrt() {
 }
 
 function formatiereTastenhilfeSekunden(sekunden) {
+    if (sekunden === 0) {
+        return "0 Sekunden (dauerhaft)";
+    }
     return sekunden === 1 ? "1 Sekunde" : `${sekunden} Sekunden`;
 }
 
 function isMobileViewport() {
     return typeof window.matchMedia === "function" &&
         window.matchMedia("(max-width: 900px)").matches;
+}
+
+function getTastenhilfeMinSekunden() {
+    return isMobileViewport()
+        ? TASTENHILFE_MIN_SEKUNDEN_MOBILE
+        : TASTENHILFE_MIN_SEKUNDEN;
 }
 
 function isSystemKeyboardMode() {
@@ -942,7 +961,7 @@ function focusEingabeWithoutScroll() {
     try {
         eingabe.focus({ preventScroll: true });
     } catch (_error) {
-        focusEingabeWithoutScroll();
+        eingabe.focus();
     }
 
     if (isMobileViewport()) {
@@ -1031,6 +1050,16 @@ function aktualisiereTastenhilfeUI() {
     }
 
     if (settingsDelaySlider) {
+        const minSekunden = getTastenhilfeMinSekunden();
+        if (tastenhilfeVerzoegerungSekunden < minSekunden) {
+            tastenhilfeVerzoegerungSekunden = minSekunden;
+            localStorage.setItem(
+                "tastenhilfeVerzoegerung",
+                String(tastenhilfeVerzoegerungSekunden)
+            );
+        }
+
+        settingsDelaySlider.min = String(minSekunden);
         settingsDelaySlider.value = String(tastenhilfeVerzoegerungSekunden);
         settingsDelaySlider.disabled = !tastenhilfeEnabled || systemKeyboardActive;
     }
@@ -1163,7 +1192,10 @@ mobileInputSystem?.addEventListener("change", function () {
 
 settingsDelaySlider?.addEventListener("input", function () {
 
-    tastenhilfeVerzoegerungSekunden = clampTastenhilfeSekunden(settingsDelaySlider.value);
+    tastenhilfeVerzoegerungSekunden = clampTastenhilfeSekunden(
+        settingsDelaySlider.value,
+        getTastenhilfeMinSekunden()
+    );
 
     localStorage.setItem("tastenhilfeVerzoegerung", String(tastenhilfeVerzoegerungSekunden));
 
@@ -1575,6 +1607,8 @@ if (window.visualViewport) {
 window.addEventListener("resize", function () {
     applyMobileKeyboardStructure();
     updateMobileViewportHeightVar();
+    aktualisiereTastenhilfeUI();
+    syncKeyboardHighlight();
 });
 eingabe.addEventListener("focus", function () {
     updateMobileViewportHeightVar();
