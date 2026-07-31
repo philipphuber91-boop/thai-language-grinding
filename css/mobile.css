@@ -1808,15 +1808,20 @@
         flex-basis:auto !important;
         display:block;
         width:100%;
-        min-height:clamp(70px, 12.5dvh, 108px);
-        max-height:clamp(70px, 12.5dvh, 108px);
+        min-height:clamp(80px, 14dvh, 120px);
+        max-height:clamp(80px, 14dvh, 120px);
+        margin-top:14px;
         padding:0 12px;
         overflow:hidden;
         white-space:normal;
         text-align:center;
-        line-height:1.08;
-        overflow-wrap:anywhere;
-        word-break:break-word;
+        /* Thailändische Ton-/Vokalzeichen brauchen ausreichend Zeilenhöhe, sonst
+           überlappen sie benachbarte Zeilen. word-break:normal statt break-word
+           verhindert zudem, dass der Browser mitten in einem Zeichen samt seinen
+           kombinierenden Zeichen umbricht (das erzeugte das "kaputte Kästchen"). */
+        line-height:1.55;
+        overflow-wrap:normal;
+        word-break:normal;
     }
 
     #zeile2{
