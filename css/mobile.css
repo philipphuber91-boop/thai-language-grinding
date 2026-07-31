@@ -1801,7 +1801,7 @@
     }
 
     .learning-text{
-        font-size:calc(clamp(.68rem, 2.8vw, .88rem) + 0.2px);
+        font-size:calc(clamp(1.3rem, 2.8vw, .88rem) + 0.2px);
     }
 
     #zeile1{
@@ -1867,7 +1867,7 @@
     }
 
     .typing-keyboard .keyboard-row.row-2{
-        grid-template-columns:repeat(13, minmax(0, 1fr));
+        grid-template-columns:repeat(12, minmax(0, 1fr));
         gap:1px;
     }
 
@@ -1877,7 +1877,7 @@
     }
 
     .typing-keyboard .keyboard-row.row-4{
-        grid-template-columns:minmax(0, 2.5fr) repeat(10, minmax(0, 1.9fr)) minmax(0, 1fr);
+        grid-template-columns:minmax(0, 2.5fr) repeat(10, minmax(0, 1.9fr)) minmax(0, 0fr);
     }
 
     .typing-keyboard .keyboard-row.row-5{
