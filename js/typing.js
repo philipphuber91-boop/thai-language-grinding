@@ -672,11 +672,22 @@ function zeigeFehler() {
 
     clearTimeout(fehlerTimeout);
 
+    // Ensure combining marks are grouped with their base character when
+    // showing the 'fehler' highlight - otherwise a detached combining mark
+    // can render as a broken glyph.
+    let hervorhebungStart = position;
+    while (
+        hervorhebungStart > 0 &&
+        istThailaendischesKombinationszeichen(text[hervorhebungStart])
+    ) {
+        hervorhebungStart--;
+    }
+
     let geschrieben =
-        text.substring(0, position);
+        text.substring(0, hervorhebungStart);
 
     let aktuell =
-        text[position] || "";
+        text.substring(hervorhebungStart, position + 1) || "";
 
     let rest =
         text.substring(position + 1);
