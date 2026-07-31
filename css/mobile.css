@@ -1777,6 +1777,10 @@
         min-height:var(--mobile-vh, 100dvh);
         padding-right:max(0px, env(safe-area-inset-right));
         padding-left:max(0px, env(safe-area-inset-left));
+        /* Zusätzliche Absicherung gegen Doppeltipp-/Pinch-Zoom auf diesem
+           Bildschirm (die Haupt-Absicherung ist maximum-scale/user-scalable
+           im viewport-Meta-Tag, siehe html/typing.html). */
+        touch-action:manipulation;
     }
 
     #typingBereich.quest-card:not([style*="none"]){
@@ -1810,6 +1814,7 @@
         width:100%;
         min-height:clamp(70px, 12.5dvh, 108px);
         max-height:clamp(70px, 12.5dvh, 108px);
+        margin-top:10px;
         padding:0 2px;
         overflow:hidden;
         white-space:normal;
