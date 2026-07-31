@@ -531,13 +531,54 @@
         line-height:1;
         text-shadow:none;
         box-shadow:0 2px 4px rgba(91,55,17,.16);
-    }
+            /* Improve touch responsiveness and prevent tap highlight/jitter on mobile */
+            touch-action: manipulation;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
 
+    /* Reduce action-key dominance so normal keys can be wider when
+       some keys are hidden on mobile. */
     .typing-keyboard .key.key-backspace,
     .typing-keyboard .key.key-enter,
     .typing-keyboard .key.key-shift{
-        flex:1.7 1 0;
+        flex:1.3 1 0;
         font-size:clamp(.68rem, 3vw, 1rem);
+    }
+
+    /* Mobile-only keyboard layout tweaks requested by the user:
+       - Hide the first key of row-1 (ๅ) on mobile so the row uses full width
+       - Hide the backspace key on mobile to free up space for other keys
+       - Reduce horizontal paddings on rows 2 and 3 so keys become wider
+       - Slightly reduce inter-key gap to use extra space
+    */
+    #thaiKeyboard .keyboard-row.row-1 .key[data-key="ๅ"]{
+        display:none;
+    }
+
+    /* Center the first row over the rows below by matching paddings
+       and centering its content on mobile viewports. */
+    .typing-keyboard .keyboard-row.row-1{
+        padding-right:1% !important;
+        padding-left:1% !important;
+        justify-content:center;
+    }
+
+    #thaiKeyboard .key.key-backspace{
+        display:none !important;
+    }
+
+    .typing-keyboard .keyboard-row.row-2,
+    .typing-keyboard .keyboard-row.row-3{
+        padding-right:1% !important;
+        padding-left:1% !important;
+    }
+
+    .typing-keyboard .keyboard-row,
+    .typing-keyboard .keyboard-row.row-5{
+        gap:3px;
     }
 
     .typing-keyboard .key.key-action{
