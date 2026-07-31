@@ -1611,19 +1611,13 @@ if (isTouchDevice && keyboardElement) {
     // Use pointerdown instead of click for faster response on touch devices
     // and prevent the subsequent click event (no double-firing). Passive is
     // false so preventDefault can be used if needed by the platform.
+    // Zoom on rapid double-taps is prevented at the browser level via the
+    // viewport meta tag (maximum-scale=1, user-scalable=no, see typing.html)
+    // and touch-action: manipulation (see mobile.css) - no artificial delay
+    // or tap-suppression is needed here, so fast repeated taps of the same
+    // key register immediately.
     keyboardElement.querySelectorAll(".key").forEach(keyElement => {
         keyElement.addEventListener("pointerdown", function (ev) {
-            // Suppress double-tap zoom and accidental rapid double-activation:
-            // ignore a second tap on the same key within 350ms.
-            const now = Date.now();
-            const last = keyElement.__lastTapTime || 0;
-            if (now - last < 350) {
-                if (ev && typeof ev.preventDefault === "function") ev.preventDefault();
-                if (ev && typeof ev.stopPropagation === "function") ev.stopPropagation();
-                return;
-            }
-            keyElement.__lastTapTime = now;
-
             // Prevent default to avoid delayed click or focus-scroll behavior
             // on some mobile browsers. This only runs on touch-capable devices
             // because of the outer isTouchDevice check.
