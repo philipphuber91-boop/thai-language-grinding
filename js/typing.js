@@ -1608,10 +1608,17 @@ function handleVirtualKeyTap(keyElement) {
 if (isTouchDevice && keyboardElement) {
     initializeVirtualKeyboardLabels();
     renderVirtualKeyboardLabels();
+    // Use pointerdown instead of click for faster response on touch devices
+    // and prevent the subsequent click event (no double-firing). Passive is
+    // false so preventDefault can be used if needed by the platform.
     keyboardElement.querySelectorAll(".key").forEach(keyElement => {
-        keyElement.addEventListener("click", function () {
+        keyElement.addEventListener("pointerdown", function (ev) {
+            // Prevent default to avoid delayed click or focus-scroll behavior
+            // on some mobile browsers. This only runs on touch-capable devices
+            // because of the outer isTouchDevice check.
+            if (ev && typeof ev.preventDefault === "function") ev.preventDefault();
             handleVirtualKeyTap(keyElement);
-        });
+        }, { passive: false });
     });
 }
 
