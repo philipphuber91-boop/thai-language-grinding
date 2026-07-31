@@ -560,7 +560,14 @@
        - Reduce horizontal paddings on rows 2 and 3 so keys become wider
        - Slightly reduce inter-key gap to use extra space
     */
+    /* Hide the first key of row-1 on mobile (requested earlier) */
     #thaiKeyboard .keyboard-row.row-1 .key[data-key="ๅ"]{
+        display:none;
+    }
+
+    /* Additionally hide the ฃ/ฅ key in row-2 on mobile as requested, and
+       make row-2 keys wider so the row matches the width of other rows. */
+    #thaiKeyboard .keyboard-row.row-2 .key[data-key="ฃ"]{
         display:none;
     }
 
@@ -589,6 +596,11 @@
 
     #thaiKeyboard .key.key-backspace{
         display:none !important;
+    }
+
+    /* Make row-2 keys wider to match row-3 and row-4 */
+    .typing-keyboard .keyboard-row.row-2 .key{
+        flex:1.2 1 0;
     }
 
     .typing-keyboard .keyboard-row.row-2,
@@ -1789,7 +1801,7 @@
     }
 
     .learning-text{
-        font-size:calc(clamp(.68rem, 2.8vw, .88rem) + 0.2px);
+        font-size:calc(clamp(1.3rem, 2.8vw, .88rem) + 0.2px);
     }
 
     #zeile1{
@@ -1851,11 +1863,11 @@
     }
 
     .typing-keyboard .keyboard-row.row-1{
-        grid-template-columns:repeat(12, minmax(0, 1fr));
+        grid-template-columns:repeat(11, minmax(0, 1fr));
     }
 
     .typing-keyboard .keyboard-row.row-2{
-        grid-template-columns:repeat(13, minmax(0, 1fr));
+        grid-template-columns:repeat(12, minmax(0, 1fr));
         gap:1px;
     }
 
@@ -1865,7 +1877,7 @@
     }
 
     .typing-keyboard .keyboard-row.row-4{
-        grid-template-columns:minmax(0, 1.5fr) repeat(10, minmax(0, 1fr)) minmax(0, 1.5fr);
+        grid-template-columns:minmax(0, 2.5fr) repeat(10, minmax(0, 1.9fr)) minmax(0, 0fr);
     }
 
     .typing-keyboard .keyboard-row.row-5{
