@@ -1758,12 +1758,12 @@
 
     .learning-title,
     .learning-text{
-        font-size:.58rem;
+        font-size:calc(.58rem - 0.2px);
         line-height:1.15;
     }
 
     .typing-zeile{
-        font-size:1.05rem;
+        font-size:calc(1.05rem + 0.2px);
         line-height:1.35;
     }
 }
@@ -1773,10 +1773,13 @@
 @media (max-width:900px){
 
     body:has(#typingBereich){
+        /* Prevent the whole page from moving while in the typing screen on mobile */
         height:var(--mobile-vh, 100dvh);
         min-height:var(--mobile-vh, 100dvh);
         padding-right:max(0px, env(safe-area-inset-right));
         padding-left:max(0px, env(safe-area-inset-left));
+        overflow:hidden; /* disallow native scrolling */
+        overscroll-behavior:none; /* prevent bounce/scroll chaining */
     }
 
     #typingBereich.quest-card:not([style*="none"]){
@@ -1798,10 +1801,12 @@
         border-radius:8px;
         background:#fff4d8;
         box-shadow:none;
+        /* Move typing content a bit lower than center on mobile */
+        padding-top:12vh;
     }
 
     .learning-text{
-        font-size:calc(clamp(1.3rem, 2.8vw, .88rem) + 0.2px);
+        font-size: calc(1.2rem - 0.2px);
     }
 
     #zeile1{
@@ -1810,7 +1815,7 @@
         width:100%;
         min-height:clamp(80px, 14dvh, 120px);
         max-height:clamp(80px, 14dvh, 120px);
-        margin-top:14px;
+        margin-top:8px;
         padding:0 12px;
         overflow:hidden;
         white-space:normal;
@@ -1857,6 +1862,21 @@
         margin-bottom:5px;
         padding-right:0;
         padding-left:0;
+    }
+
+    /* Disable hover visual effects on mobile to avoid layout shifts */
+    .typing-keyboard .key:hover,
+    .typing-keyboard .key.key-action:hover{
+        transform:none !important;
+        background:inherit !important;
+        box-shadow:none !important;
+    }
+
+    /* Prevent any accidental scroll/overscroll inside the typing area */
+    #typingFenster, #thaiKeyboard, .typing-keyboard{
+        overscroll-behavior:none;
+        -webkit-overflow-scrolling: auto;
+    }
         gap:2px;
     }
 
