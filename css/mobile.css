@@ -527,25 +527,31 @@
         border-radius:8px;
         background:linear-gradient(180deg, #fff2ce, #f7dca3);
         color:#563414;
-        font-size:clamp(.86rem, 4.5vw, 1.4rem);
+        /* Ensure minimum font-size >= 16px on mobile to avoid iOS auto-zoom on double-tap */
+        font-size:clamp(1rem, 4.5vw, 1.6rem);
         line-height:1;
         text-shadow:none;
         box-shadow:0 2px 4px rgba(91,55,17,.16);
-            /* Improve touch responsiveness and prevent tap highlight/jitter on mobile */
-            touch-action: manipulation;
-            -webkit-tap-highlight-color: transparent;
-            -webkit-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
+        /* Improve touch responsiveness and prevent tap highlight/jitter on mobile */
+        touch-action: manipulation;
+        -webkit-touch-callout: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
 
     /* Reduce action-key dominance so normal keys can be wider when
-       some keys are hidden on mobile. */
+       some keys are hidden on mobile. Increase shift size slightly. */
     .typing-keyboard .key.key-backspace,
-    .typing-keyboard .key.key-enter,
+    .typing-keyboard .key.key-enter{
+        flex:1.1 1 0;
+        font-size:clamp(.9rem, 3vw, 1rem);
+    }
+
     .typing-keyboard .key.key-shift{
-        flex:1.3 1 0;
-        font-size:clamp(.68rem, 3vw, 1rem);
+        flex:1.6 1 0;
+        font-size:clamp(.9rem, 3vw, 1rem);
     }
 
     /* Mobile-only keyboard layout tweaks requested by the user:
@@ -559,11 +565,26 @@
     }
 
     /* Center the first row over the rows below by matching paddings
-       and centering its content on mobile viewports. */
+       and centering its content on mobile viewports. Make its keys wider. */
     .typing-keyboard .keyboard-row.row-1{
         padding-right:1% !important;
         padding-left:1% !important;
-        justify-content:center;
+        justify-content:center !important;
+    }
+
+    .typing-keyboard .keyboard-row.row-1 .key{
+        flex:1.2 1 0;
+    }
+
+    /* Center and widen row-4 (including making shift wider) */
+    .typing-keyboard .keyboard-row.row-4{
+        justify-content:center !important;
+        padding-right:1% !important;
+        padding-left:1% !important;
+    }
+
+    .typing-keyboard .keyboard-row.row-4 .key{
+        flex:1.2 1 0;
     }
 
     #thaiKeyboard .key.key-backspace{
@@ -619,6 +640,14 @@
         transform:scale(.96);
         filter:none;
         box-shadow:inset 0 1px 3px rgba(72,43,15,.2);
+    }
+
+    /* Ensure the keyboard container also uses manipulation touch-action to
+       reduce browser gesture handling (double-tap zoom, etc.) */
+    #thaiKeyboard,
+    .typing-keyboard{
+        touch-action: manipulation;
+        -webkit-touch-callout: none;
     }
 }
 
