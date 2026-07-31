@@ -570,15 +570,38 @@ function aktualisiereDeutsch() {
 
 }
 
+// Thailändische Ton- und Vokalzeichen (nicht abstandshaltende
+// Kombinationszeichen) verbinden sich optisch mit dem vorherigen Zeichen.
+// Landet die aktuelle Tippposition genau auf so einem Zeichen, darf es nicht
+// allein in der farbig hervorgehobenen "aktuell"-Box stehen: ohne sein
+// Basiszeichen im selben Textlauf kann der Browser es nicht korrekt
+// platzieren und zeigt stattdessen ein abgetrenntes, kaputt wirkendes
+// Kästchen an. Siehe zeigeZeilen().
+const THAI_COMBINING_MARKS = /[\u0E31\u0E34-\u0E3A\u0E47-\u0E4E]/;
+
+function istThailaendischesKombinationszeichen(zeichen) {
+    return !!zeichen && THAI_COMBINING_MARKS.test(zeichen);
+}
+
 function zeigeZeilen() {
 
     aktualisiereDeutsch();
 
+    // Basiszeichen mit in die Hervorhebung aufnehmen, falls das aktuelle
+    // Zeichen selbst ein Kombinationszeichen ist.
+    let hervorhebungStart = position;
+    while (
+        hervorhebungStart > 0 &&
+        istThailaendischesKombinationszeichen(text[hervorhebungStart])
+    ) {
+        hervorhebungStart--;
+    }
+
     let geschrieben =
-        text.substring(0, position);
+        text.substring(0, hervorhebungStart);
 
     let aktuell =
-        text[position] || "";
+        text.substring(hervorhebungStart, position + 1);
 
     let rest =
         text.substring(position + 1);
@@ -988,6 +1011,18 @@ function focusEingabeWithoutScroll() {
 
 function updateMobileViewportHeightVar() {
     if (!isMobileViewport()) {
+        return;
+    }
+
+    // Nur im System-Tastatur-Modus wird wirklich eine per JS berechnete Höhe
+    // gebraucht (damit Platz für die native Tastatur bleibt). Im normalen
+    // Spiel-Modus (eigene virtuelle Tastatur) sorgt das Fixieren auf einen
+    // px-Wert dafür, dass die Seite kurz nach Tippbeginn "springt", sobald
+    // der Browser seine Adressleiste einklappt und visualViewport.height
+    // dadurch wächst. Dort reicht das native, sich weich anpassende 100dvh
+    // (Fallback unten in der CSS-Variable) völlig aus.
+    if (!isSystemKeyboardMode()) {
+        document.documentElement.style.removeProperty("--mobile-vh");
         return;
     }
 
