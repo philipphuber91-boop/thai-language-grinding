@@ -1877,8 +1877,6 @@
         overscroll-behavior:none;
         -webkit-overflow-scrolling: auto;
     }
-        gap:2px;
-    }
 
     .typing-keyboard .keyboard-row.row-1,
     .typing-keyboard .keyboard-row.row-2,
