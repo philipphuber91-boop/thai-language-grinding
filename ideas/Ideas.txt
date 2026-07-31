@@ -4,15 +4,17 @@ Prompt für die Bilderstellung
 
 Für alle zukünftigen Quests würde ich einen kleinen Style Guide verwenden:
 
-erstelle mir ein Bild zum Thema Am Strand wo sich ein Thai mädchen und ein junge unterhalten.
-Perspektive: leicht cineastisch, leicht erhöht
-Licht: warmes Golden-Hour-Licht
-Farben: goldene und braune Töne wie jetzt
-stil: semi-realistisch, gemalt (nicht fotorealistisch)
-Keine Schrift
-Keine Logos
-Quadratisches PNG 
+erstelle mir ein Bild zum Thema Lumphini park
 
+Perspektive: leicht cineastisch, leicht erhöht
+
+stil: semi-realistisch, gemalt (nicht fotorealistisch)
+
+Keine Schrift
+
+Keine Logos
+
+Quadratisches PNG Transpoarenter Hintergrund
 REGEL NR. 1
 
 Das Spiel bleibt jederzeit spielbar.
