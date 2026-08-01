@@ -1,0 +1,179 @@
+Vision von Thai Language Grinding
+
+Das Ziel ist nicht einfach, eine weitere Sprachlern-App zu bauen, sondern ein System zu erschaffen, das für jeden Spieler automatisch den perfekten Lernweg findet.
+
+Die Grundidee:
+
+Jeder Mensch lernt anders, hat andere Interessen und einen anderen Wortschatz. Deshalb soll jeder Spieler seine eigene, individuelle Reise durch die Sprache erleben.
+
+1. Das Herzstück: Der Typing-Bildschirm
+
+Du hast mehrere Tage ausschließlich in die Tastatur und den Typing-Bildschirm investiert, weil das der wichtigste Teil der gesamten Plattform ist.
+
+Optimiert wurden:
+
+Platzhalter für Tonzeichen und Vokale
+kein Springen zwischen den Zeilen
+ergonomische Anordnung von Thai, Deutsch und Tastatur
+geschätzte Questzeit
+Gesamtwörter
+einzigartige Wörter
+Rekorde und Genauigkeit
+maximaler Flow beim Tippen
+
+Das Ziel ist, dass der Spieler möglichst lange im Flow bleibt und niemals aus der Konzentration gerissen wird.
+
+2. Neue Statistik: „Einzigartige Wörter“
+
+Zusätzlich zur Gesamtzahl aller getippten Wörter soll es eine neue Statistik geben:
+
+📚 Gesamtwörter: 12.847
+🧠 Einzigartige Wörter: 1.932
+
+Diese Statistik zeigt nicht, wie viel ein Spieler trainiert hat, sondern wie groß sein tatsächlicher aktiver Wortschatz bereits ist.
+
+3. Questabschluss erweitern
+
+Im Questabschluss sollen zusätzliche Werte angezeigt werden:
+
+🏆 Quest abgeschlossen
+
+⏱️ Zeit: 3:42
+🎯 Genauigkeit: 96,8 %
+
+📚 Gesamtwörter: 143
+🧠 Einzigartige Wörter: 67
+✨ Neue Wörter: 12
+
+Die Idee dahinter:
+
+Der Spieler soll nach jeder Quest sofort sehen, was er Neues gelernt hat.
+
+4. Das Problem „gemeisterte Wörter“
+
+Wir haben diskutiert, ab wann ein Wort wirklich als „gemeistert“ gilt.
+
+Mögliche Kriterien:
+
+wie oft wurde das Wort gesehen?
+wie oft wurde es korrekt getippt?
+in wie vielen Quests kam es vor?
+wann wurde es zuletzt gesehen?
+wurde es über mehrere Tage hinweg wiederholt?
+
+Wichtig: Das muss nicht sofort implementiert werden. Zunächst reicht eine gute Datenstruktur.
+
+5. Drei Stufen der Wortentwicklung
+
+Mögliche Entwicklung eines Wortes:
+
+👀 Gesehen
+✍️ Geübt
+🧠 Gemeistert
+🏆 Meister
+
+Beispiel:
+
+gesehen: mindestens einmal
+geübt: mindestens fünfmal
+gemeistert: mindestens zehnmal
+Meister: mindestens fünfundzwanzigmal
+6. Die technische Grundlage existiert bereits
+
+Du hast bereits:
+
+Intl.Segmenter("th")
+
+implementiert.
+
+Dadurch kann das System:
+
+alle Wörter erkennen
+einzigartige Wörter zählen
+Häufigkeiten berechnen
+Quests analysieren
+neue Wörter erkennen
+
+Das Fundament für das gesamte zukünftige Sprachsystem ist also bereits vorhanden.
+
+7. Automatische Wortdatenbank
+
+Dein KI-Agent könnte später automatisch aus allen Missionen eine Datenbank erzeugen:
+
+{
+    "ไป": {
+        vorkommen: 847,
+        quests: 56
+    },
+
+    "กิน": {
+        vorkommen: 391,
+        quests: 28
+    }
+}
+
+Später könnten zusätzliche Daten hinzukommen:
+
+Schwierigkeit
+Status
+letzte Begegnung
+Beherrschungsgrad
+8. Die eigentliche Vision
+
+Der wichtigste Gedanke kam am Ende:
+
+Du hast früher unglaublich viel Zeit verschwendet, um Texte zu finden, die genau die richtige Schwierigkeit hatten.
+
+Dein Ziel war immer:
+
+80–85 % bekannte Wörter und 15–20 % neue Wörter.
+
+Genau diesen Sweet Spot möchtest du automatisieren.
+
+9. Das personalisierte Lernsystem
+
+Das System analysiert für jeden Spieler:
+
+Welche Wörter kennt er?
+Welche Themen interessieren ihn?
+Welche Wörter fehlen noch?
+Welche Geschichte ist als Nächstes am sinnvollsten?
+
+Beispiel:
+
+Quest A:
+
+85 % bekannte Wörter
+15 % neue Wörter
+
+→ Perfekt
+Quest B:
+
+50 % bekannte Wörter
+50 % neue Wörter
+
+→ Zu schwer
+Quest C:
+
+98 % bekannte Wörter
+2 % neue Wörter
+
+→ Zu einfach
+10. Die endgültige Philosophie von Thai Language Grinding
+
+Die Plattform soll niemanden in eine bestimmte Richtung zwingen.
+
+Stattdessen soll sie erkennen:
+
+welche Interessen der Spieler hat,
+welche Wörter er bereits beherrscht,
+wie schnell er lernt,
+welche Inhalte ihm Spaß machen,
+
+und daraus automatisch seinen persönlichen Lernpfad erstellen.
+
+Der Kernsatz der Vision lautet:
+
+„Die beste Geschichte ist weder die einfachste noch die schwerste, sondern die Geschichte mit der perfekten Balance zwischen Bekanntem und Neuem.“
+
+Und genau darüber solltest du jetzt mit deinem KI-Agenten sprechen: Welche Daten müssen gespeichert werden, damit dieses System in sechs Monaten überhaupt möglich ist? Denn die Vision steht bereits – jetzt geht es nur noch um die Architektur. 😄

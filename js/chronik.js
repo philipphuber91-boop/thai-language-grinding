@@ -630,7 +630,7 @@ function renderChronikStats(){
         </div>
         <div class="stat-image-card">
 
-            <img src="../assets/icons/achievements/book.png">
+            <img src="../assets/ui/chronik/stat-characters.png">
 
             <h3>
                 Einzigartige Wörter
