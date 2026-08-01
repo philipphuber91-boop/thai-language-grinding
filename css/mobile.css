@@ -411,6 +411,32 @@
         transition:opacity .12s ease;
     }
 
+    #zeile1.mobile-thai-lines{
+        display:grid;
+        grid-template-rows:repeat(3, minmax(0, 1fr));
+        align-items:center;
+        justify-items:center;
+        height:calc(3 * clamp(38px, 7dvh, 60px));
+        min-height:calc(3 * clamp(38px, 7dvh, 60px));
+        max-height:calc(3 * clamp(38px, 7dvh, 60px));
+        overflow:hidden;
+    }
+
+    #zeile1.mobile-thai-lines .mobile-thai-line{
+        display:block;
+        width:100%;
+        min-width:0;
+        overflow:hidden;
+        text-align:center;
+        white-space:nowrap;
+        line-height:1.45;
+        text-overflow:clip;
+    }
+
+    #zeile1.mobile-thai-lines .mobile-thai-line > span{
+        white-space:nowrap;
+    }
+
     .aktuell{
         padding:0 3px;
         border-radius:6px;

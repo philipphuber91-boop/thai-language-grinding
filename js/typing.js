@@ -255,6 +255,7 @@ function zeigePhase() {
 case "typing":
  
     typingBereich.style.display = "block";
+    zeigeZeilen();
  
     setTimeout(function () {
  
@@ -503,6 +504,12 @@ let aktuelleZeile = 0;
 let fehlerTimeout = null;
 let gesamtZeichen = 0;
 
+const MOBILE_THAI_LINE_BUFFER_CLUSTERS = 4;
+const MOBILE_THAI_ACTIVE_PADDING = 6;
+let mobileThaiGraphemeSegmenter = null;
+let mobileThaiWordSegmenter = null;
+let mobileThaiMeasureCanvas = null;
+
 // --- Quest-Infoleiste (rein optische Anzeige, siehe html/typing.html) ---
 // Diese Elemente spiegeln nur den bereits vorhandenen Spielzustand
 // (gesamtZeichen, thaiZeilen) und greifen an keiner Stelle in die
@@ -576,6 +583,214 @@ function aktualisiereDeutsch() {
 
 }
 
+function getMobileThaiGraphemes(value) {
+    if (!value) {
+        return [];
+    }
+
+    if (typeof Intl !== "undefined" && typeof Intl.Segmenter === "function") {
+        if (!mobileThaiGraphemeSegmenter) {
+            mobileThaiGraphemeSegmenter =
+                new Intl.Segmenter("th", { granularity: "grapheme" });
+        }
+
+        return Array.from(
+            mobileThaiGraphemeSegmenter.segment(value),
+            segment => ({
+                text: segment.segment,
+                start: segment.index,
+                end: segment.index + segment.segment.length
+            })
+        );
+    }
+
+    const graphemes = [];
+
+    for (const character of value) {
+        const previous = graphemes[graphemes.length - 1];
+
+        if (previous && istThailaendischesKombinationszeichen(character)) {
+            previous.text += character;
+            previous.end += character.length;
+        } else {
+            const start = previous ? previous.end : 0;
+            graphemes.push({
+                text: character,
+                start,
+                end: start + character.length
+            });
+        }
+    }
+
+    return graphemes;
+}
+
+function getMobileThaiPreferredBreaks(value) {
+    if (
+        !value ||
+        typeof Intl === "undefined" ||
+        typeof Intl.Segmenter !== "function"
+    ) {
+        return new Set();
+    }
+
+    if (!mobileThaiWordSegmenter) {
+        mobileThaiWordSegmenter =
+            new Intl.Segmenter("th", { granularity: "word" });
+    }
+
+    const breakEnds = new Set();
+
+    for (const segment of mobileThaiWordSegmenter.segment(value)) {
+        breakEnds.add(segment.index + segment.segment.length);
+    }
+
+    return breakEnds;
+}
+
+function getMobileThaiMeasureContext() {
+    if (!mobileThaiMeasureCanvas) {
+        mobileThaiMeasureCanvas = document.createElement("canvas");
+    }
+
+    return mobileThaiMeasureCanvas.getContext("2d");
+}
+
+function measureMobileThaiText(value) {
+    const style = getComputedStyle(zeile1);
+    const fontSize = parseFloat(style.fontSize) || 20;
+    const context = getMobileThaiMeasureContext();
+
+    if (!context) {
+        return Math.max(fontSize * 0.8, value.length * fontSize * 0.9);
+    }
+
+    context.font =
+        `${style.fontStyle} ${style.fontWeight} ${style.fontSize} ${style.fontFamily}`;
+
+    return context.measureText(value).width;
+}
+
+function getMobileThaiLineWidth() {
+    const style = getComputedStyle(zeile1);
+    const horizontalPadding =
+        (parseFloat(style.paddingLeft) || 0) +
+        (parseFloat(style.paddingRight) || 0);
+    const elementWidth = zeile1.clientWidth - horizontalPadding;
+
+    if (elementWidth > 0) {
+        return elementWidth;
+    }
+
+    const windowStyle = getComputedStyle(typingFenster);
+    const windowPadding =
+        (parseFloat(windowStyle.paddingLeft) || 0) +
+        (parseFloat(windowStyle.paddingRight) || 0);
+
+    return Math.max(160, typingFenster.clientWidth - windowPadding);
+}
+
+function getMobileThaiLineLayout(value) {
+    const graphemes = getMobileThaiGraphemes(value);
+
+    if (graphemes.length === 0) {
+        return [];
+    }
+
+    const lineWidth = getMobileThaiLineWidth();
+    const bufferWidth =
+        MOBILE_THAI_LINE_BUFFER_CLUSTERS * measureMobileThaiText("ก");
+    const safeWidth = Math.max(
+        1,
+        lineWidth - bufferWidth - MOBILE_THAI_ACTIVE_PADDING
+    );
+    const widths = graphemes.map(grapheme =>
+        measureMobileThaiText(grapheme.text)
+    );
+    const preferredBreaks = getMobileThaiPreferredBreaks(value);
+    const lines = [];
+    let lineStart = 0;
+
+    while (lineStart < graphemes.length) {
+        let lineEnd = lineStart;
+        let lineUsedWidth = 0;
+        let preferredLineEnd = lineStart;
+
+        while (lineEnd < graphemes.length) {
+            const nextWidth = widths[lineEnd];
+
+            if (
+                lineEnd > lineStart &&
+                lineUsedWidth + nextWidth > safeWidth
+            ) {
+                break;
+            }
+
+            lineUsedWidth += nextWidth;
+            lineEnd++;
+
+            if (preferredBreaks.has(graphemes[lineEnd - 1].end)) {
+                preferredLineEnd = lineEnd;
+            }
+        }
+
+        if (lineEnd === lineStart) {
+            lineEnd++;
+        }
+
+        if (
+            lineEnd < graphemes.length &&
+            preferredLineEnd > lineStart
+        ) {
+            lineEnd = preferredLineEnd;
+        }
+
+        lines.push({
+            start: graphemes[lineStart].start,
+            end: graphemes[lineEnd - 1].end
+        });
+        lineStart = lineEnd;
+    }
+
+    return lines;
+}
+
+function escapeMobileThaiHtml(value) {
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
+
+function renderMobileThaiLines(highlightClass = "aktuell") {
+    const lines = getMobileThaiLineLayout(text);
+    const currentLineIndex = lines.findIndex(line =>
+        position >= line.start && position < line.end
+    );
+
+    zeile1.innerHTML = lines.map((line, lineIndex) => {
+        const lineText = text.slice(line.start, line.end);
+
+        if (lineIndex < currentLineIndex) {
+            return `<span class="mobile-thai-line"><span class="geschrieben">${escapeMobileThaiHtml(lineText)}</span></span>`;
+        }
+
+        if (lineIndex > currentLineIndex) {
+            return `<span class="mobile-thai-line"><span class="rest">${escapeMobileThaiHtml(lineText)}</span></span>`;
+        }
+
+        const geschrieben = text.slice(line.start, position);
+        const aktuell = text[position] || "";
+        const rest = text.slice(position + 1, line.end);
+
+        return `<span class="mobile-thai-line"><span class="geschrieben">${escapeMobileThaiHtml(geschrieben)}</span><span class="${highlightClass}">${escapeMobileThaiHtml(aktuell)}</span><span class="rest">${escapeMobileThaiHtml(rest)}</span></span>`;
+    }).join("");
+
+    zeile1.classList.add("mobile-thai-lines");
+}
+
 // Thailändische Ton- und Vokalzeichen (nicht abstandshaltende
 // Kombinationszeichen) verbinden sich optisch mit dem vorherigen Zeichen.
 // Landet die aktuelle Tippposition genau auf so einem Zeichen, darf es nicht
@@ -593,33 +808,32 @@ function zeigeZeilen() {
 
     aktualisiereDeutsch();
 
+    if (isMobileViewport()) {
+        renderMobileThaiLines();
+        zeile2.textContent = "";
+        return;
+    }
+
     let geschrieben, aktuell, rest;
 
-    if (isMobileViewport()) {
-        // Auf Mobilgeräten: ursprüngliche pro-Zeichen-Placeholder-Mechanik
-        geschrieben = text.substring(0, position);
-        aktuell = text[position] || "";
-        rest = text.substring(position + 1);
-    } else {
-        // Basiszeichen mit in die Hervorhebung aufnehmen, falls das aktuelle
-        // Zeichen selbst ein Kombinationszeichen ist.
-        let hervorhebungStart = position;
-        while (
-            hervorhebungStart > 0 &&
-            istThailaendischesKombinationszeichen(text[hervorhebungStart])
-        ) {
-            hervorhebungStart--;
-        }
-
-        geschrieben =
-            text.substring(0, hervorhebungStart);
-
-        aktuell =
-            text.substring(hervorhebungStart, position + 1);
-
-        rest =
-            text.substring(position + 1);
+    // Basiszeichen mit in die Hervorhebung aufnehmen, falls das aktuelle
+    // Zeichen selbst ein Kombinationszeichen ist.
+    let hervorhebungStart = position;
+    while (
+        hervorhebungStart > 0 &&
+        istThailaendischesKombinationszeichen(text[hervorhebungStart])
+    ) {
+        hervorhebungStart--;
     }
+
+    geschrieben =
+        text.substring(0, hervorhebungStart);
+
+    aktuell =
+        text.substring(hervorhebungStart, position + 1);
+
+    rest =
+        text.substring(position + 1);
 
     zeile1.innerHTML =
         "<span class='geschrieben'>" +
@@ -687,34 +901,36 @@ function zeigeFehler() {
 
     clearTimeout(fehlerTimeout);
 
+    if (isMobileViewport()) {
+        renderMobileThaiLines("fehler");
+        zeile2.textContent = "";
+        fehlerTimeout = setTimeout(function () {
+            zeigeZeilen();
+        }, 150);
+        return;
+    }
+
     let geschrieben, aktuell, rest;
 
-    if (isMobileViewport()) {
-        // Auf Mobilgeräten: ursprüngliche pro-Zeichen-Placeholder-Mechanik
-        geschrieben = text.substring(0, position);
-        aktuell = text[position] || "";
-        rest = text.substring(position + 1);
-    } else {
-        // Ensure combining marks are grouped with their base character when
-        // showing the 'fehler' highlight - otherwise a detached combining mark
-        // can render as a broken glyph.
-        let hervorhebungStart = position;
-        while (
-            hervorhebungStart > 0 &&
-            istThailaendischesKombinationszeichen(text[hervorhebungStart])
-        ) {
-            hervorhebungStart--;
-        }
-
-        geschrieben =
-            text.substring(0, hervorhebungStart);
-
-        aktuell =
-            text.substring(hervorhebungStart, position + 1) || "";
-
-        rest =
-            text.substring(position + 1);
+    // Ensure combining marks are grouped with their base character when
+    // showing the 'fehler' highlight - otherwise a detached combining mark
+    // can render as a broken glyph.
+    let hervorhebungStart = position;
+    while (
+        hervorhebungStart > 0 &&
+        istThailaendischesKombinationszeichen(text[hervorhebungStart])
+    ) {
+        hervorhebungStart--;
     }
+
+    geschrieben =
+        text.substring(0, hervorhebungStart);
+
+    aktuell =
+        text.substring(hervorhebungStart, position + 1) || "";
+
+    rest =
+        text.substring(position + 1);
 
     zeile1.innerHTML =
 
@@ -1711,6 +1927,9 @@ window.addEventListener("resize", function () {
     applyMobileKeyboardStructure();
     updateMobileViewportHeightVar();
     aktualisiereTastenhilfeUI();
+    if (phase === "typing") {
+        zeigeZeilen();
+    }
     syncKeyboardHighlight();
 });
 eingabe.addEventListener("focus", function () {
