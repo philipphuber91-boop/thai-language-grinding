@@ -587,24 +587,33 @@ function zeigeZeilen() {
 
     aktualisiereDeutsch();
 
-    // Basiszeichen mit in die Hervorhebung aufnehmen, falls das aktuelle
-    // Zeichen selbst ein Kombinationszeichen ist.
-    let hervorhebungStart = position;
-    while (
-        hervorhebungStart > 0 &&
-        istThailaendischesKombinationszeichen(text[hervorhebungStart])
-    ) {
-        hervorhebungStart--;
+    let geschrieben, aktuell, rest;
+
+    if (isMobileViewport()) {
+        // Auf Mobilgeräten: ursprüngliche pro-Zeichen-Placeholder-Mechanik
+        geschrieben = text.substring(0, position);
+        aktuell = text[position] || "";
+        rest = text.substring(position + 1);
+    } else {
+        // Basiszeichen mit in die Hervorhebung aufnehmen, falls das aktuelle
+        // Zeichen selbst ein Kombinationszeichen ist.
+        let hervorhebungStart = position;
+        while (
+            hervorhebungStart > 0 &&
+            istThailaendischesKombinationszeichen(text[hervorhebungStart])
+        ) {
+            hervorhebungStart--;
+        }
+
+        geschrieben =
+            text.substring(0, hervorhebungStart);
+
+        aktuell =
+            text.substring(hervorhebungStart, position + 1);
+
+        rest =
+            text.substring(position + 1);
     }
-
-    let geschrieben =
-        text.substring(0, hervorhebungStart);
-
-    let aktuell =
-        text.substring(hervorhebungStart, position + 1);
-
-    let rest =
-        text.substring(position + 1);
 
     zeile1.innerHTML =
         "<span class='geschrieben'>" +
@@ -672,25 +681,34 @@ function zeigeFehler() {
 
     clearTimeout(fehlerTimeout);
 
-    // Ensure combining marks are grouped with their base character when
-    // showing the 'fehler' highlight - otherwise a detached combining mark
-    // can render as a broken glyph.
-    let hervorhebungStart = position;
-    while (
-        hervorhebungStart > 0 &&
-        istThailaendischesKombinationszeichen(text[hervorhebungStart])
-    ) {
-        hervorhebungStart--;
+    let geschrieben, aktuell, rest;
+
+    if (isMobileViewport()) {
+        // Auf Mobilgeräten: ursprüngliche pro-Zeichen-Placeholder-Mechanik
+        geschrieben = text.substring(0, position);
+        aktuell = text[position] || "";
+        rest = text.substring(position + 1);
+    } else {
+        // Ensure combining marks are grouped with their base character when
+        // showing the 'fehler' highlight - otherwise a detached combining mark
+        // can render as a broken glyph.
+        let hervorhebungStart = position;
+        while (
+            hervorhebungStart > 0 &&
+            istThailaendischesKombinationszeichen(text[hervorhebungStart])
+        ) {
+            hervorhebungStart--;
+        }
+
+        geschrieben =
+            text.substring(0, hervorhebungStart);
+
+        aktuell =
+            text.substring(hervorhebungStart, position + 1) || "";
+
+        rest =
+            text.substring(position + 1);
     }
-
-    let geschrieben =
-        text.substring(0, hervorhebungStart);
-
-    let aktuell =
-        text.substring(hervorhebungStart, position + 1) || "";
-
-    let rest =
-        text.substring(position + 1);
 
     zeile1.innerHTML =
 
