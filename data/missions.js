@@ -13,7 +13,6 @@ const missions = {
 
         xp: 50,
 
-        woerter: 165,
 
         story:
 `Diese Mission enthält häufige Alltagssätze.
@@ -144,7 +143,6 @@ Danach kannst du dein Thai im Typing-Spiel trainieren.`,
 
         xp: 50,
 
-        woerter: 480,
 
         story:
 `In dieser Mission lernst du, nach dem Weg zu fragen und Wegbeschreibungen zu verstehen.
@@ -265,7 +263,6 @@ Danach kannst du dein Thai im Typing-Spiel trainieren.`,
 
     xp: 75,
 
-    woerter: 406,
 
     story:
 `In dieser Mission lernst du, Wegbeschreibungen mit Bussen, Straßenseiten und Richtungen zu verstehen.`,
@@ -440,8 +437,6 @@ Danach kannst du dein Thai im Typing-Spiel trainieren.`,
     schwierigkeit: "B1",
 
     xp: 50,
-
-    woerter: 338,
 
     story:
 `In dieser Mission fährst du mit Kan nachts durch Bangkok und versuchst, einen Nachtmarkt zu finden. Doch schon bald merkt ihr, dass Karten allein nicht immer reichen.`,
@@ -827,7 +822,6 @@ Danach kannst du dein Thai im Typing-Spiel trainieren.`,
 
     xp: 75,
 
-    woerter: 406,
 
     story:
 `In dieser Mission reist du mit Kan in eine kleine Stadt im Norden Thailands.
@@ -990,7 +984,6 @@ Lies die Geschichte aufmerksam durch und trainiere anschließend dein Thai im Ty
 
     xp: 75,
 
-    woerter: 418,
 
     story:
 `In dieser Mission setzt du deine Reise durch die kleine Stadt fort.
@@ -1127,7 +1120,6 @@ Lies die Geschichte aufmerksam durch und trainiere anschließend dein Thai im Ty
 
     xp: 75,
 
-    woerter: 431,
 
     story:
 `In dieser Mission triffst du Kan im Lumphini-Park in Bangkok. Gemeinsam beobachtet ihr die Menschen, sprecht über die Stadt und über das Lernen der thailändischen Sprache.`,
@@ -1357,7 +1349,6 @@ Lies die Geschichte aufmerksam durch und trainiere anschließend dein Thai im Ty
 
     xp: 75,
 
-    woerter: 419,
 
     story:
 `In dieser Mission spazierst du weiter mit Kan durch den Lumphini-Park. Gemeinsam sprecht ihr über Bangkok, Essen und darüber, warum manchmal der Weg wichtiger ist als das Ziel.`,
@@ -1500,7 +1491,6 @@ Lies die Geschichte aufmerksam durch und trainiere anschließend dein Thai im Ty
 
     xp: 75,
 
-    woerter: 428,
 
     story:
 `In dieser Mission verabredest du dich mit Kan in Ari. Doch kurz vor dem Treffen beginnt ein typischer Regenschauer in Bangkok und ihr müsst eure Pläne spontan ändern.`,
@@ -1698,7 +1688,6 @@ Lies die Geschichte aufmerksam durch und trainiere anschließend dein Thai im Ty
 
     xp: 75,
 
-    woerter: 421,
 
     story:
 `In dieser Mission sitzt du mit Kan in einem kleinen Café in Ari. Während draußen der Regen fällt, sprecht ihr über Arbeit, das Leben und darüber, warum manche Menschen Cafés nicht nur wegen des Kaffees mögen.`,
@@ -1866,7 +1855,6 @@ Lies die Geschichte aufmerksam durch und trainiere anschließend dein Thai im Ty
 
     xp: 75,
 
-    woerter: 436,
 
     story:
 `In dieser Mission lernst du eine Freundin von Kan kennen. Gemeinsam trefft ihr euch in Ari, sprecht über Deutschland, Thailand und über deine Zukunftspläne mit einem kleinen Resort voller Katzen.`,
@@ -2150,7 +2138,6 @@ Lies die Geschichte aufmerksam durch und trainiere anschließend dein Thai im Ty
 
     xp: 75,
 
-    woerter: 417,
 
     story:
 `In dieser Mission spazierst du mit Kan und May durch Bangkok bei Nacht. Dabei sprecht ihr über das Leben in Thailand, über deine Zukunftspläne und darüber, was es eigentlich bedeutet, eine Sprache wirklich zu beherrschen.`,
