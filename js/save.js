@@ -67,6 +67,7 @@ function loadQuestStats() {
     }
 
     migrateUniqueThaiWordsFromCompletedQuests();
+    migrateTotalThaiWordsFromCompletedQuests();
 
 }
 

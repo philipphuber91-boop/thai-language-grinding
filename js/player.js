@@ -14,6 +14,8 @@ stats: {
 
     // Schreiben
     totalCharacters: 0,
+    totalThaiWords: 0,
+    totalThaiWordsInitialized: false,
     uniqueThaiWords: [],
     totalTime: 0,
     averageTime: 0,
@@ -171,6 +173,87 @@ function getStoredUniqueThaiWords() {
     ];
 
     return new Set(player.stats.uniqueThaiWords);
+}
+
+function getStoredTotalThaiWords() {
+
+    const totalThaiWords = Number(player.stats.totalThaiWords);
+
+    if (!Number.isFinite(totalThaiWords) || totalThaiWords < 0) {
+        player.stats.totalThaiWords = 0;
+    }
+
+    return player.stats.totalThaiWords;
+}
+
+function getCompletedQuestWordTotal() {
+
+    let totalThaiWords = 0;
+
+    for (const questId in questStats) {
+
+        const stats = questStats[questId];
+        const quest = getQuestDataFromStatsId(questId);
+
+        if (
+            !stats?.completed ||
+            !quest ||
+            (
+                stats.version !== undefined &&
+                quest.version !== undefined &&
+                stats.version !== quest.version
+            )
+        ) {
+            continue;
+        }
+
+        const wordList = getThaiWordList(quest.thaiZeilen);
+
+        if (!wordList.supported) {
+            continue;
+        }
+
+        const attempts = Number(stats.attempts);
+        const successfulAttempts =
+            Number.isFinite(attempts) && attempts > 0
+                ? attempts
+                : 1;
+
+        totalThaiWords += wordList.words.length * successfulAttempts;
+    }
+
+    return totalThaiWords;
+}
+
+function migrateTotalThaiWordsFromCompletedQuests() {
+
+    if (player.stats.totalThaiWordsInitialized) {
+        return;
+    }
+
+    const totalThaiWords = getCompletedQuestWordTotal();
+
+    player.stats.totalThaiWords = totalThaiWords;
+    player.stats.totalThaiWordsInitialized = true;
+    savePlayer();
+}
+
+function addCompletedQuestWordsToTotal(questId) {
+
+    const quest = getQuestDataFromStatsId(questId);
+
+    if (!quest) {
+        return;
+    }
+
+    const wordList = getThaiWordList(quest.thaiZeilen);
+
+    if (!wordList.supported) {
+        return;
+    }
+
+    player.stats.totalThaiWords =
+        getStoredTotalThaiWords() + wordList.words.length;
 }
 
 function addQuestWordsToUniqueCollection(questId) {
@@ -852,6 +935,8 @@ function completeQuest(questId, zeit, cpm, accuracy, zeichen, currentVersion) {
     const newUniqueWords = firstCompletion
         ? addQuestWordsToUniqueCollection(questId)
         : 0;
+
+    addCompletedQuestWordsToTotal(questId);
 
     stats.records.lastTime = zeit;
     stats.records.lastCPM = cpm;

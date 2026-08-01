@@ -513,6 +513,23 @@ function renderChronikStats(){
             <img src="../assets/ui/chronik/stat-characters.png">
 
             <h3>
+                Getippte Wörter
+            </h3>
+
+            <div class="stat-overlay-value">
+
+                ${player.stats.totalThaiWords}
+
+            </div>
+
+        </div>
+
+
+        <div class="stat-image-card">
+
+            <img src="../assets/ui/chronik/stat-characters.png">
+
+            <h3>
                 Getippte Zeichen
             </h3>
 
