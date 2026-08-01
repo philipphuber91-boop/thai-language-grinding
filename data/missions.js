@@ -839,7 +839,7 @@ Lies die Geschichte aufmerksam durch und trainiere anschließend dein Thai im Ty
         "Nach der Nacht in Bangkok",
         "wurden wir plötzlich viel selbstbewusster.",
         "Es fühlte sich an, als hätten wir das erste Trainingslevel abgeschlossen.",
-        "Kan sagte sogar,", 
+        "Kan sagte sogar,",
         "dass wir uns jetzt bestimmt nicht mehr so leicht verlaufen würden.",
         "Ich antwortete nicht und lächelte nur.",
         "Denn solche Sätze",
@@ -2232,4 +2232,3 @@ Lies die Geschichte aufmerksam durch und trainiere anschließend dein Thai im Ty
 }
 
 };
-
