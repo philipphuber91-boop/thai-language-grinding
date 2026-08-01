@@ -447,6 +447,10 @@ const deutschAktuell =
     document.getElementById("deutschAktuell");
 const settingsGermanToggle =
     document.getElementById("settingsGermanToggle");
+const learningContainer =
+    document.getElementById("learningContainer");
+const typingFenster =
+    document.getElementById("typingFenster");
 
     const deutschTitel =
     document.getElementById("deutschTitel");
@@ -562,6 +566,8 @@ function aktualisiereDeutsch() {
 
     deutschTitel.style.display =
         germanVisible ? "block" : "none";
+    learningContainer?.classList.toggle("is-hidden", !germanVisible);
+    typingFenster?.classList.toggle("german-hidden", !germanVisible);
 
     deutschAktuell.textContent =
         germanVisible

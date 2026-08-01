@@ -1058,7 +1058,7 @@
    ---------------------------------------------------------
    Mobile bekommt bewusst eine reduzierte, aufs Tippen
    fokussierte Oberfläche (native App-Gefühl):
-   Titel -> (Zahnrad) -> Deutsch (falls aktiviert) -> Thai-Text
+   Titel -> (Zahnrad) -> Thai-Text -> Deutsch (falls aktiviert)
    -> Tastatur. Zeit/BpM/Genauigkeit/Aktivitätsstatus sowie die
    Quest-Infoleiste (Badge/Fortschritt/"Quest beenden") werden
    ausgeblendet - dieselbe Engine (js/typing.js) bleibt
@@ -1801,25 +1801,68 @@
         border-radius:8px;
         background:#fff4d8;
         box-shadow:none;
-        /* Move typing content a bit lower than center on mobile */
-        padding-top:12vh;
+        min-height:clamp(190px, 36dvh, 270px);
+        padding:clamp(12px, 3vh, 24px) 0 4px;
+        display:flex !important;
+        flex-direction:column;
+        justify-content:flex-start;
+        align-items:center;
+        overflow:visible;
+    }
+
+    #learningContainer{
+        position:static;
+        order:2;
+        flex:0 0 auto;
+        width:100%;
+        min-height:clamp(3.75rem, 15vw, 5rem);
+        margin: auto 0 0;
+        padding:0 12px;
+        overflow:visible;
+        text-align:center;
+        align-self:end;
+    }
+
+    #learningContainer.is-hidden{
+        display:none;
+    }
+
+    #typingFenster.german-hidden{
+        justify-content:center !important;
+    }
+
+    #typingFenster.german-hidden #zeile1{
+        margin-top:0 !important;
+    }
+
+    .learning-title{
+        display:block;
+        margin:0 0 2px;
+        font-size:clamp(.72rem, 2.8vw, .95rem);
+        line-height:1.2;
     }
 
     .learning-text{
-        font-size: calc(1.2rem - 0.2px);
+        display:block;
+        margin:0;
+        font-size:clamp(.78rem, 3.4vw, 1.2rem);
+        line-height:1.25;
+        overflow-wrap:anywhere;
     }
 
     #zeile1{
+        order:1;
         flex-basis:auto !important;
         display:block;
         width:100%;
-        min-height:clamp(80px, 14dvh, 120px);
-        max-height:clamp(80px, 14dvh, 120px);
-        margin-top:8px;
+        min-height:0;
+        max-height:none;
+        margin: auto 0 0;
         padding:0 12px;
-        overflow:hidden;
+        overflow:visible;
         white-space:normal;
         text-align:center;
+        align-self:center;
         /* Thailändische Ton-/Vokalzeichen brauchen ausreichend Zeilenhöhe, sonst
            überlappen sie benachbarte Zeilen. word-break:normal statt break-word
            verhindert zudem, dass der Browser mitten in einem Zeichen samt seinen
