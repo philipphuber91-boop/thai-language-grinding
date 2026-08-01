@@ -769,12 +769,12 @@
    Ursache des Mobile-Bugs: #questCompleteOverlay ist per
    ID-Selektor in style.css fest auf align-items:center und
    .quest-complete-window per @media(max-width:700px) fest auf
-   height:calc(100vh - 20px) + overflow:hidden gestellt. Die 3
+   height:calc(100vh - 20px) + overflow:hidden gestellt. Die
    Statistik-Icons (.complete-stats .icon) bleiben dabei immer
-   150x150px groß, wodurch die 3-spaltige Stats-Grid auf
-   schmalen Screens breiter wird als das Fenster - die dritte
-   Karte ("Genauigkeit") sowie der Vergleichsbereich werden vom
-   overflow:hidden abgeschnitten und sind nicht erreichbar.
+   150x150px groß, wodurch eine mehrspaltige Stats-Grid auf
+   schmalen Screens breiter wird als das Fenster. Die vier
+   Abschlusskarten werden deshalb mobil als 2x2-Grid dargestellt.
+   Der Vergleichsbereich bleibt vollständig erreichbar.
    Fix: Fenster schrumpft mit dem Inhalt (height:auto), das
    Overlay darf bei Bedarf vertikal scrollen (wie beim Start-
    Overlay oben), und alle Elemente werden für schmale Screens
@@ -824,14 +824,14 @@
     }
 
     .complete-stats{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
         margin:0 0 18px;
         gap:8px;
     }
 
     /* Die generische .stat-Regel (auch anderswo genutzt, siehe
        style.css) setzt min-width:190px - auf schmalen Screens
-       sprengt das die 3-spaltige Grid und schneidet die dritte
-       Karte ("Genauigkeit") ab. Muss hier auf 0 zurückgesetzt
+       sprengt das die 2x2-Grid. Muss hier auf 0 zurückgesetzt
        werden, damit die Spalten wirklich 1fr breit werden. */
     .complete-stats .stat{
         min-width:0;

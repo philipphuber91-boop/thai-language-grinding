@@ -66,6 +66,8 @@ function loadQuestStats() {
 
     }
 
+    migrateUniqueThaiWordsFromCompletedQuests();
+
 }
 
 function saveQuestStats() {

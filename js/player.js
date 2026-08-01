@@ -14,6 +14,7 @@ stats: {
 
     // Schreiben
     totalCharacters: 0,
+    uniqueThaiWords: [],
     totalTime: 0,
     averageTime: 0,
 
@@ -133,6 +134,122 @@ function getQuestStats(questId, currentVersion) {
 
     return questStats[questId];
 
+}
+
+function getQuestDataFromStatsId(questId) {
+
+    const separatorIndex = String(questId).indexOf(":");
+
+    if (separatorIndex < 0) {
+        return null;
+    }
+
+    const contentType = questId.slice(0, separatorIndex);
+    const questNumber = questId.slice(separatorIndex + 1);
+    const daten =
+        contentType === "campaign"
+            ? quests
+            : contentType === "missions"
+                ? missions
+                : null;
+
+    return daten ? daten[questNumber] ?? null : null;
+}
+
+function getStoredUniqueThaiWords() {
+
+    if (!Array.isArray(player.stats.uniqueThaiWords)) {
+        player.stats.uniqueThaiWords = [];
+    }
+
+    player.stats.uniqueThaiWords = [
+        ...new Set(
+            player.stats.uniqueThaiWords
+                .map(word => String(word))
+                .filter(Boolean)
+        )
+    ];
+
+    return new Set(player.stats.uniqueThaiWords);
+}
+
+function addQuestWordsToUniqueCollection(questId) {
+
+    const quest = getQuestDataFromStatsId(questId);
+
+    if (!quest) {
+        return 0;
+    }
+
+    const wordList = getThaiWordList(quest.thaiZeilen);
+
+    if (!wordList.supported) {
+        return 0;
+    }
+
+    const uniqueThaiWords = getStoredUniqueThaiWords();
+    let newWords = 0;
+
+    for (const word of new Set(wordList.words)) {
+
+        if (uniqueThaiWords.has(word)) {
+            continue;
+        }
+
+        uniqueThaiWords.add(word);
+        newWords++;
+    }
+
+    player.stats.uniqueThaiWords = [...uniqueThaiWords];
+
+    return newWords;
+}
+
+function migrateUniqueThaiWordsFromCompletedQuests() {
+
+    const uniqueThaiWords = getStoredUniqueThaiWords();
+    let changed = false;
+
+    for (const questId in questStats) {
+
+        const stats = questStats[questId];
+        const quest = getQuestDataFromStatsId(questId);
+
+        if (
+            !stats?.completed ||
+            !quest ||
+            (
+                stats.version !== undefined &&
+                quest.version !== undefined &&
+                stats.version !== quest.version
+            )
+        ) {
+            continue;
+        }
+
+        const wordList = getThaiWordList(quest.thaiZeilen);
+
+        if (!wordList.supported) {
+            continue;
+        }
+
+        for (const word of wordList.words) {
+
+            if (uniqueThaiWords.has(word)) {
+                continue;
+            }
+
+            uniqueThaiWords.add(word);
+            changed = true;
+        }
+    }
+
+    if (!changed) {
+        return;
+    }
+
+    player.stats.uniqueThaiWords = [...uniqueThaiWords];
+    savePlayer();
 }
 
 function getOrCreateDailyHistoryEntry(dateString) {
@@ -729,10 +846,12 @@ function completeQuest(questId, zeit, cpm, accuracy, zeichen, currentVersion) {
     stats.completed = true;
 
     if (firstCompletion) {
-
         player.stats.completedQuests++;
-
     }
+
+    const newUniqueWords = firstCompletion
+        ? addQuestWordsToUniqueCollection(questId)
+        : 0;
 
     stats.records.lastTime = zeit;
     stats.records.lastCPM = cpm;
@@ -801,6 +920,7 @@ console.log("Komplette questStats:", structuredClone(questStats));
   
 return {
 
+    firstCompletion,
     newBestTime,
     newBestCPM,
     newBestAccuracy,
@@ -811,7 +931,8 @@ return {
 
     newTime: zeit,
     newCPM: cpm,
-    newAccuracy: accuracy
+    newAccuracy: accuracy,
+    newUniqueWords
 
 };
 

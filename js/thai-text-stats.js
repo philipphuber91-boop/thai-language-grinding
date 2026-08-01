@@ -17,7 +17,7 @@ function getThaiWordSegmenter() {
     return thaiWordSegmenter;
 }
 
-function getThaiWordStatistics(thaiZeilen) {
+function getThaiWordList(thaiZeilen) {
 
     const segmenter = getThaiWordSegmenter();
 
@@ -27,14 +27,12 @@ function getThaiWordStatistics(thaiZeilen) {
         );
 
         return {
-            total: 0,
-            unique: 0,
+            words: [],
             supported: false
         };
     }
 
-    const uniqueWords = new Set();
-    let total = 0;
+    const words = [];
 
     for (const zeile of Array.isArray(thaiZeilen) ? thaiZeilen : []) {
 
@@ -46,14 +44,31 @@ function getThaiWordStatistics(thaiZeilen) {
 
             const normalizedWord = segment.segment.normalize("NFC");
 
-            total++;
-            uniqueWords.add(normalizedWord);
+            words.push(normalizedWord);
         }
     }
 
     return {
-        total,
-        unique: uniqueWords.size,
+        words,
+        supported: true
+    };
+}
+
+function getThaiWordStatistics(thaiZeilen) {
+
+    const wordList = getThaiWordList(thaiZeilen);
+
+    if (!wordList.supported) {
+        return {
+            total: 0,
+            unique: 0,
+            supported: false
+        };
+    }
+
+    return {
+        total: wordList.words.length,
+        unique: new Set(wordList.words).size,
         supported: true
     };
 }

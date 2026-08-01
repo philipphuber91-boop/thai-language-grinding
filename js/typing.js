@@ -288,6 +288,8 @@ const popupKapitel =
     document.getElementById("popupKapitel");
 
 const popupAccuracy = document.getElementById("popupAccuracy");
+const popupNewWords = document.getElementById("popupNewWords");
+const popupNewWordsStat = document.getElementById("popupNewWordsStat");
 
 const weiterButton = document.getElementById("weiterButton");
 
@@ -1047,6 +1049,7 @@ function beendePruefung() {
     popupZeit.textContent = "00:00";
     popupCPM.textContent = "0";
     popupAccuracy.textContent = "0%";
+    popupNewWords.textContent = "0";
 
     const newRecords = completeQuest(
         questStatsId,
@@ -1058,6 +1061,8 @@ function beendePruefung() {
     );
 
     showRecordSummary(newRecords);
+    popupNewWords.textContent = newRecords.newUniqueWords;
+    popupNewWordsStat.hidden = !newRecords.firstCompletion;
     hideCompletionSections();
     popup.classList.add("active");
 
@@ -1069,6 +1074,7 @@ function beendePruefung() {
             animateTimeValue(popupZeit, 0, sekunden, 1300),
             animateNumber(popupCPM, 0, Number(cpm), 1300, value => value.toFixed(1)),
             animateNumber(popupAccuracy, 0, Number(accuracy), 1300, value => `${value.toFixed(1)}%`),
+            animateNumber(popupNewWords, 0, newRecords.newUniqueWords),
         ]);
 
         await revealElement(comparisonSection);

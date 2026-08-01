@@ -492,7 +492,6 @@ function renderChronikStats(){
 
 
     <div class="main-stat-grid">
-
        <div class="stat-image-card">
 
             <img src="../assets/ui/chronik/stat-time.png">
@@ -508,7 +507,6 @@ function renderChronikStats(){
             </div>
 
         </div>
-
 
         <div class="stat-image-card">
 
@@ -598,7 +596,6 @@ function renderChronikStats(){
 
         </div>
 
-        
         <div class="stat-image-card">
 
             <img src="../assets/ui/chronik/stat-quests.png">
@@ -610,6 +607,23 @@ function renderChronikStats(){
             <div class="stat-overlay-value">
 
                 ${player.stats.completedQuests}
+
+            </div>
+
+        </div>
+        <div class="stat-image-card">
+
+            <img src="../assets/icons/achievements/book.png">
+
+            <h3>
+                Einzigartige Wörter
+            </h3>
+
+            <div class="stat-overlay-value">
+
+                ${Array.isArray(player.stats.uniqueThaiWords)
+                    ? player.stats.uniqueThaiWords.length
+                    : 0}
 
             </div>
 
