@@ -1138,6 +1138,104 @@ box-shadow:
 
 }
 
+.quest-familiarity{
+
+    margin-top:3px;
+
+    font-size:.95rem;
+
+    color:#2c7a74;
+
+    width:100%;
+
+    text-align:left;
+
+}
+
+.familiarity-button{
+
+    border:1px solid currentColor;
+
+    border-radius:999px;
+
+    padding:4px 10px;
+
+    font:inherit;
+
+    font-size:.8rem;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+    white-space:nowrap;
+
+    opacity:1;
+
+}
+
+.familiarity-button:disabled{
+
+    color:inherit;
+
+    cursor:default;
+
+    opacity:1;
+
+}
+
+.start-quest-stats .familiarity-button{
+
+    padding:8px 14px;
+
+    font-size:18px;
+
+}
+
+.quest-main .familiarity-button{
+
+    align-self:center;
+
+    margin-top:6px;
+
+}
+
+.familiarity-too-easy{
+
+    color:#1e7a3a;
+    background:transparent;
+
+}
+
+.familiarity-perfect-flow{
+
+    color:#806b00;
+    background:transparent;
+
+}
+
+.familiarity-challenging{
+
+    color:#a95000;
+    background:transparent;
+
+}
+
+.familiarity-too-difficult{
+
+    color:#a32626;
+    background:transparent;
+
+}
+
+.familiarity-unavailable{
+
+    color:#5f6368;
+
+    background:#eceff1;
+
+}
+
 
 /* =========================================================
    DIFFICULTY

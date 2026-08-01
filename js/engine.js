@@ -15,6 +15,13 @@ function ladeKarten() {
 
         const quest = daten[nummer];
         const thaiWordStats = getThaiWordStatistics(quest.thaiZeilen);
+        const familiarityStats =
+            getThaiWordFamiliarityStatistics(
+                quest.thaiZeilen,
+                player.stats.uniqueThaiWords
+            );
+        const familiarityCategory =
+            getThaiWordFamiliarityCategory(familiarityStats);
 
 
 
@@ -129,6 +136,18 @@ karte.innerHTML = `
             📖 ${formatThaiWordStatistics(thaiWordStats)}
         </p>
 
+        <p class="quest-familiarity">
+            🧠 ${formatThaiWordFamiliarityStatistics(familiarityStats)}
+        </p>
+
+        <button
+            type="button"
+            class="familiarity-button familiarity-${familiarityCategory.key}"
+            disabled
+            title="${familiarityCategory.range} Bekanntheitsgrad">
+            ${familiarityCategory.emoji} ${familiarityCategory.label}
+        </button>
+
     </div>
 
     <div class="quest-progress">
@@ -214,6 +233,13 @@ function starteQuest(questNummer) {
 
     const quest = daten[questNummer];
     const thaiWordStats = getThaiWordStatistics(quest.thaiZeilen);
+    const familiarityStats =
+        getThaiWordFamiliarityStatistics(
+            quest.thaiZeilen,
+            player.stats.uniqueThaiWords
+        );
+    const familiarityCategory =
+        getThaiWordFamiliarityCategory(familiarityStats);
     const thaiCharacterCount = getThaiCharacterCount(quest.thaiZeilen);
 
     // Titel des Fensters
@@ -231,6 +257,12 @@ function starteQuest(questNummer) {
 
     document.getElementById("startQuestWords").textContent =
         "📖 " + formatThaiWordStatistics(thaiWordStats);
+    document.getElementById("startQuestFamiliarity").className =
+        "familiarity-button familiarity-" + familiarityCategory.key;
+    document.getElementById("startQuestFamiliarity").textContent =
+        familiarityCategory.emoji + " " + familiarityCategory.label;
+    document.getElementById("startQuestFamiliarity").title =
+        familiarityCategory.range + " Bekanntheitsgrad";
 
     // Questbild
     document.getElementById("startQuestImage").src =
