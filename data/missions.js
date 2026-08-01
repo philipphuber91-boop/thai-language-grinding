@@ -3,7 +3,7 @@ const missions = {
 
         version: 1,
 
-        titel: "Neue Herausforderungen",
+        titel: "Alltagssätze - ประโยคในชีวิตประจำวัน",
 
         bild: "alltag",
 
@@ -134,7 +134,7 @@ Danach kannst du dein Thai im Typing-Spiel trainieren.`,
 
         version: 1,
 
-        titel: "สถานีรถไฟกับคำว่าตรงไป",
+        titel: "Der Bahnhof und das Wort geradeaus - สถานีรถไฟกับคำว่าตรงไป",
 
         bild: "bahnhof",
 
@@ -255,7 +255,7 @@ Danach kannst du dein Thai im Typing-Spiel trainieren.`,
 
     version: 1,
 
-    titel: "รถบัสสาย๒๕และฝั่งที่ผิด",
+    titel: "Die Buslinie 25 und die falsche Straßenseite - รถบัสสาย๒๕และฝั่งที่ผิด",
 
     bild: "bus",
 
@@ -273,7 +273,7 @@ Lies die Geschichte zuerst aufmerksam durch.
 Danach kannst du dein Thai im Typing-Spiel trainieren.`,
 
     deutschZeilen: [
-        "Kapitel zwei Die Buslinie fünfundzwanzig und die falsche Straßenseite.",
+        "Kapitel zwei Die Buslinie 25 und die falsche Straßenseite.",
         "Eine Woche später verabredeten wir uns auf einer Messe außerhalb der Stadt.",
         "Kan sagte voller Selbstvertrauen dass es ganz einfach sei.",
         "Nimm einfach den Bus der Linie fünfundzwanzig und steig an der dritten Haltestelle aus.",
@@ -315,9 +315,11 @@ Danach kannst du dein Thai im Typing-Spiel trainieren.`,
         "Siehst du wenn du nicht auf der falschen Seite eingestiegen wärst",
         "hätten wir dieses Abenteuer nicht erlebt.",
         "Ich lachte.",
-        "Zumindest wissen wir jetzt welche Seite in die Stadt führt und welche aus der Stadt hinausführt.",
+        "Zumindest wissen wir jetzt welche Seite in die Stadt führt",
+        "und welche aus der Stadt hinausführt.",
         "Unsere Geschichten scheinen voller Irrwege zu sein.",
-        "Aber jedes Mal wenn jemand sagt geh zuerst geradeaus oder biege an der Kreuzung links ab sind das nicht nur einfache Wegbeschreibungen.",
+        "Aber jedes Mal wenn jemand sagt geh zuerst geradeaus oder biege an der Kreuzung links ab",
+        "sind das nicht nur einfache Wegbeschreibungen.",
         "Es sind Geduld Lachen und Vertrauen die auf dem Weg entstehen.",
         "Und ich beginne zu denken, dass",
         "sich zu verlaufen vielleicht gar nicht so schlimm ist.",
@@ -387,7 +389,7 @@ Danach kannst du dein Thai im Typing-Spiel trainieren.`,
 
     version: 1,
 
-    titel: "กรุงเทพฯตอนกลางคืน",
+    titel: "Bangkok bei Nacht - กรุงเทพฯตอนกลางคืน",
 
     bild: "bangkok_night",
 
@@ -658,7 +660,7 @@ Danach kannst du dein Thai im Typing-Spiel trainieren.`,
 
     version: 1,
 
-    titel: "เมืองเล็กที่ไม่มีภาษาอังกฤษ ตอนที่๑",
+    titel: "Die kleine Stadt ohne Englisch 1/2 - เมืองเล็กที่ไม่มีภาษาอังกฤษ ตอนที่๑",
 
     bild: "small_town",
 
@@ -821,7 +823,7 @@ Lies die Geschichte aufmerksam durch und trainiere anschließend dein Thai im Ty
 
     version: 1,
 
-    titel: "เมืองเล็กที่ไม่มีภาษาอังกฤษ ตอนที่๒",
+    titel: "Die kleine Stadt ohne Englisch 2/2 - เมืองเล็กที่ไม่มีภาษาอังกฤษ ตอนที่๒",
 
     bild: "small_town",
 
@@ -963,7 +965,7 @@ Lies die Geschichte aufmerksam durch und trainiere anschließend dein Thai im Ty
 
     version: 1,
 
-    titel: "สวนลุมตอนเย็น ตอนที่๑",
+    titel: "Lumphini-Park am Abend 1/2 - สวนลุมตอนเย็น ตอนที่๑",
 
     bild: "lumphini_park",
 
@@ -1193,7 +1195,7 @@ Lies die Geschichte aufmerksam durch und trainiere anschließend dein Thai im Ty
 
     version: 1,
 
-    titel: "สวนลุมตอนเย็น ตอนที่๒",
+    titel: "Lumphini-Park am Abend 2/2 - สวนลุมตอนเย็น ตอนที่๒",
 
     bild: "lumphini_park",
 
@@ -1336,7 +1338,7 @@ Lies die Geschichte aufmerksam durch und trainiere anschließend dein Thai im Ty
 
     version: 1,
 
-    titel: "ฝนตกตอนหกโมงเย็น ตอนที่๑",
+    titel: "Regen um sechs Uhr abends 1/2 - ฝนตกตอนหกโมงเย็น ตอนที่๑",
 
     bild: "rainy_bangkok",
 
@@ -1534,7 +1536,7 @@ Lies die Geschichte aufmerksam durch und trainiere anschließend dein Thai im Ty
 
     version: 1,
 
-    titel: "ฝนตกตอนหกโมงเย็น ตอนที่๒",
+    titel: "Regen um sechs Uhr abends 2/2 - ฝนตกตอนหกโมงเย็น ตอนที่๒",
 
     bild: "rainy_bangkok",
 
@@ -1702,7 +1704,7 @@ Lies die Geschichte aufmerksam durch und trainiere anschließend dein Thai im Ty
 
     version: 1,
 
-    titel: "เพื่อนของเพื่อน ตอนที่๑",
+    titel: "Freund eines Freundes 1/2 - เพื่อนของเพื่อน ตอนที่๑",
 
     bild: "friends",
 
@@ -1986,7 +1988,7 @@ Lies die Geschichte aufmerksam durch und trainiere anschließend dein Thai im Ty
 
     version: 1,
 
-    titel: "เพื่อนของเพื่อน ตอนที่๒",
+    titel: "Freund eines Freundes 2/2 - เพื่อนของเพื่อน ตอนที่๒",
 
     bild: "friends",
 
