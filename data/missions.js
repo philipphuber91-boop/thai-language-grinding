@@ -641,8 +641,6 @@ Danach kannst du dein Thai im Typing-Spiel trainieren.`,
 
     xp: 50,
 
-    woerter: 325,
-
     story:
 `In dieser Mission findet ihr endlich den Nachtmarkt. Dort erkennt ihr, dass eine gute Wegbeschreibung nicht nur aus Wörtern besteht, sondern auch aus Aufmerksamkeit.`,
 
