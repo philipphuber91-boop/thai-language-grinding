@@ -1871,7 +1871,7 @@
     .learning-text{
         display:block;
         margin:0;
-        font-size:clamp(.78rem, 3.4vw, 1.2rem);
+        font-size:clamp(1.2rem, 3.4vw, 1.2rem);
         line-height:1.25;
         overflow-wrap:anywhere;
     }
