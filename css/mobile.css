@@ -346,13 +346,20 @@
         display:flex;
         flex:1 1 auto;
         flex-direction:column;
-        justify-content:center;
+        /* justify-content greift hier nicht mehr, da sowohl .typing-zeile
+           als auch #learningContainer margin-top:auto bekommen (siehe dort)
+           - das verteilt den freien Platz automatisch: etwas Raum vor Thai
+           (Thai landet dadurch mehr Richtung Fenstermitte statt ganz oben),
+           dann Thai, dann der Rest des freien Platzes bis Deutsch, das so
+           immer unten am Fensterrand bleibt (Blickverlauf weiterhin
+           Thai -> Deutsch -> Tastatur, nur tiefer im Fenster positioniert). */
+        justify-content:flex-start;
         width:100%;
         max-width:none;
         min-width:0;
         min-height:116px;
         margin:0 0 6px;
-        padding:36px clamp(8px, 3vw, 20px) 10px;
+        padding:14px clamp(8px, 3vw, 20px) 10px;
         overflow:hidden;
         border:1px solid #e1c48d;
         border-radius:10px;
@@ -360,15 +367,23 @@
         box-shadow:none;
     }
 
+    /* Deutsch steht im Markup vor Thai, wird hier aber per flex "order"
+       NACH den Thai-Zeilen (.typing-zeile, order:1 weiter unten) einsortiert
+       - kein DOM-Umbau nötig. Vorher: position:absolute als kleines
+       Eck-Badge über der Thai-Box, das widersprach dem gewünschten
+       Blickverlauf Thai -> Deutsch -> Tastatur.
+       margin-top:auto (zusammen mit .typing-zeile margin-top:auto weiter
+       unten) verteilt den freien Platz in #typingFenster automatisch auf
+       "vor Thai" und "zwischen Thai und Deutsch" - Deutsch bleibt dadurch
+       immer unten am Fensterrand kleben, unabhängig von Bildschirmhöhe. */
     #learningContainer{
-        position:absolute;
-        top:9px;
-        right:10px;
-        left:10px;
+        position:static;
+        order:2;
+        width:100%;
         min-height:0;
-        margin:0;
+        margin:auto 0 0;
         overflow:hidden;
-        text-align:left;
+        text-align:center;
     }
 
     #learningContainer:empty{
@@ -379,15 +394,15 @@
         display:inline;
         margin:0 6px 0 0;
         color:#6e4925;
-        font-size:.7rem;
-        line-height:1.2;
+        font-size:clamp(.72rem, 2.6vw, .85rem);
+        line-height:1.3;
     }
 
     .learning-text{
         display:inline;
         color:#60462d;
-        font-size:clamp(.68rem, 2.8vw, .88rem);
-        line-height:1.25;
+        font-size:clamp(.85rem, 3.4vw, 1.05rem);
+        line-height:1.35;
     }
 
     .thai-title{
@@ -395,13 +410,18 @@
     }
 
     .typing-zeile{
+        order:1;
         display:flex;
         align-items:center;
         justify-content:center;
         flex:0 0 auto;
         width:100%;
         min-height:clamp(38px, 7dvh, 60px);
-        margin:0;
+        /* responsive top offset: ersetzt margin-top:auto um Thai sichtbar weiter
+           nach unten zu bringen (näher an Deutsch). Der German-Container behält
+           margin-top:auto und bleibt so bottom-flush; clamp(dvh) sorgt für
+           genug Raum für bis zu 3 Thai-Zeilen ohne Umbruch-Sprünge. */
+        margin-top: clamp(18dvh, 26dvh, 34dvh);
         overflow:visible;
         color:#3d2b1d;
         font-size:clamp(1.4rem, 7.2vw, 2.5rem);
@@ -411,12 +431,9 @@
         transition:opacity .12s ease;
     }
 
-    .aktuell{
-        padding:0 3px;
-        border-radius:6px;
-        background:#ffd257;
-        box-shadow:none;
-    }
+    /* .aktuell bewusst nicht hier erneut definiert - einheitlicher Stil aus
+       style.css, damit sich die Zeilenbreite nicht je Breakpoint anders
+       verhält (siehe Kommentar dort). */
 
     .typing-quest-bar.desktop-only-stat{
         order:3;
@@ -680,12 +697,14 @@
     #typingFenster{
         min-height:108px;
         margin-bottom:4px;
-        padding-top:28px;
+        padding-top:10px;
         padding-bottom:5px;
     }
 
     #learningContainer{
-        top:5px;
+        /* auto beibehalten (siehe Basis-Regel) - auf kurzen Screens bleibt
+           Deutsch trotzdem unten am Fensterrand, nur mit weniger Puffer. */
+        margin-top:auto;
     }
 
     .typing-quest-bar.desktop-only-stat{
@@ -1058,8 +1077,11 @@
    ---------------------------------------------------------
    Mobile bekommt bewusst eine reduzierte, aufs Tippen
    fokussierte Oberfläche (native App-Gefühl):
-   Titel -> (Zahnrad) -> Deutsch (falls aktiviert) -> Thai-Text
-   -> Tastatur. Zeit/BpM/Genauigkeit/Aktivitätsstatus sowie die
+   Titel -> (Zahnrad) -> Thai-Text -> Deutsch (falls aktiviert)
+   -> Tastatur. Blickverlauf von oben nach unten: erst Thai,
+   dann die Übersetzung direkt darunter, dann die Tastatur (siehe
+   #typingFenster/.typing-zeile/#learningContainer order weiter
+   unten). Zeit/BpM/Genauigkeit/Aktivitätsstatus sowie die
    Quest-Infoleiste (Badge/Fortschritt/"Quest beenden") werden
    ausgeblendet - dieselbe Engine (js/typing.js) bleibt
    unverändert, es wird nur die Darstellung reduziert.
@@ -1104,19 +1126,21 @@
         width:100%;
     }
 
-    .typing-zeile{
-        font-size:1.5rem;
-    }
+    /* font-size hier bewusst NICHT mehr gesetzt (früher fest 1.5rem) -
+       überschrieb sonst still den responsiven clamp() weiter unten und
+       verhinderte, dass die Thai-Zeile auf sehr schmalen/breiten Mobile-
+       Viewports unterschiedlich skaliert. Maßgeblich ist jetzt allein der
+       finale "Final flat mobile typing theme"-Block ganz unten. */
 
     #deutscherText,
     #thaiText{
         font-size:1.3rem;
     }
 
-    .learning-title{
-        font-size:.95rem;
-        margin-bottom:6px;
-    }
+    /* .learning-title font-size hier bewusst nicht mehr gesetzt (früher
+       fest .95rem, überschrieb den responsiven clamp() weiter oben;
+       margin-bottom war zudem wirkungslos, da .learning-title inline
+       ist). Einheitliche Größe kommt jetzt allein aus dem Basis-Block. */
 }
 
 /* =========================================================
@@ -1362,7 +1386,7 @@
         max-width:100%;
         min-height:208px;
         margin:0 auto 12px;
-        padding:24px 12px;
+        padding:12px 12px;
         display:grid;
         align-content:center;
         border:1px solid #b77b2c;
@@ -1398,12 +1422,8 @@
         opacity:1;
     }
 
-    .aktuell{
-        padding:1px 4px;
-        border-radius:5px;
-        background:linear-gradient(180deg, #ffdb64, #efb83d);
-        box-shadow:inset 0 1px 0 rgba(255,250,193,.8);
-    }
+    /* .aktuell bewusst nicht hier erneut definiert - einheitlicher Stil aus
+       style.css (siehe Kommentar dort). */
 
     .typing-keyboard{
         margin:0;
@@ -1496,8 +1516,11 @@
    setzt display:block - hier per !important als Flex-Spalte
    überschrieben) bekommt eine feste Höhe (100dvh abzüglich
    Titel), #typingFenster wird darin zum flexiblen Mittelteil
-   (flex:1, overflow:hidden, weiterhin vertikal zentriert per
-   bestehendem display:grid + align-content:center) - seine
+   (flex:1, overflow:hidden). Der Inhalt wird NICHT mehr vertikal
+   zentriert, sondern bewusst an den oberen Rand ausgerichtet
+   (display:flex, flex-direction:column, justify-content:flex-start
+   - siehe Ergonomie-Ziel "Thai höher auf dem Bildschirm, Blick-
+   verlauf Thai -> Deutsch -> Tastatur") - seine
    Höhe wird also vom Layout vorgegeben statt vom Inhalt. Kopf-
    zeile, Trenner und Tastatur behalten ihre eigene, vom Inhalt
    unabhängige Größe (flex:0 0 auto) und bewegen sich dadurch
@@ -1801,8 +1824,17 @@
         border-radius:8px;
         background:#fff4d8;
         box-shadow:none;
-        /* Move typing content a bit lower than center on mobile */
-        padding-top:12vh;
+        /* Legacy "goldrahmen" Theme-Block weiter oben setzt versehentlich
+           display:grid + align-content:center (übrig aus einer älteren
+           Iteration) - hier verbindlich auf flex + Ausrichtung nach oben
+           zurückgesetzt, damit Thai höher im Bildschirm sitzt statt
+           vertikal zentriert (Ergonomie-Ziel), analog zum Kommentar oben
+           ("Kept last so legacy mobile rules cannot restore..."). */
+        display:flex;
+        flex-direction:column;
+        justify-content:flex-start;
+        align-content:normal;
+        padding-top:80px;
     }
 
     .learning-text{
@@ -1813,10 +1845,16 @@
         flex-basis:auto !important;
         display:block;
         width:100%;
-        min-height:clamp(80px, 14dvh, 120px);
-        max-height:clamp(80px, 14dvh, 120px);
-        margin-top:8px;
-        padding:0 12px;
+        /* Genug Platz für 3-4 physische Zeilen bei längeren Sätzen, statt wie
+           vorher nur 1-2 Zeilen (der Rest wurde durch overflow:hidden
+           abgeschnitten, was den Eindruck eines "Sprungs" noch verstärkte). */
+        min-height:clamp(130px, 26dvh, 210px);
+        max-height:clamp(130px, 26dvh, 210px);
+        margin-top:17px;
+        /* Etwas mehr seitliches Padding als nötig: bewusst kürzere Zeilen als
+           Puffer, damit kleine Breitenschwankungen (siehe .aktuell) seltener
+           an die Umbruchkante geraten. */
+        padding:0 40px;
         overflow:hidden;
         white-space:normal;
         text-align:center;
@@ -1824,7 +1862,7 @@
            überlappen sie benachbarte Zeilen. word-break:normal statt break-word
            verhindert zudem, dass der Browser mitten in einem Zeichen samt seinen
            kombinierenden Zeichen umbricht (das erzeugte das "kaputte Kästchen"). */
-        line-height:1.55;
+        line-height:2.55;
         overflow-wrap:normal;
         word-break:normal;
     }
@@ -1839,10 +1877,8 @@
         display:inline;
     }
 
-    .aktuell{
-        background:#ffcd45;
-        box-shadow:none;
-    }
+    /* .aktuell bewusst nicht hier erneut definiert - einheitlicher Stil aus
+       style.css (siehe Kommentar dort). */
 
     #thaiKeyboard{
         width:100%;
