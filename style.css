@@ -1467,21 +1467,17 @@ box-shadow:
 
 }
 
-/* Einheitlicher Stil für alle Breakpoints (Desktop + Mobile), bewusst NICHT
-   in @media-Blöcken erneut überschrieben (siehe css/mobile.css) - ein
-   wechselndes Padding je Bildschirmbreite ließ die Zeilenbreite bei jedem
-   Tastendruck minimal unterschiedlich stark springen. */
 .aktuell{
 
     background:#ffd95a;
 
     color:black;
 
-    border-radius:5px;
+    border-radius:6px;
 
-    padding:1px 4px;
+    padding:2px 4px;
 
-    box-shadow:none;
+    
 
 }
 
@@ -5698,10 +5694,12 @@ padding:28px 34px;
         text-shadow:0 1px 0 rgba(255,255,255,.54);
     }
 
-    /* .aktuell-Padding/Farbe bewusst NICHT hier erneut definiert - einheitlicher
-       Stil kommt aus der einen Basisregel weiter oben (siehe dortigen
-       Kommentar), damit sich die Zeilenbreite nicht je Breakpoint anders
-       verhält. */
+    .aktuell{
+        border-radius:6px;
+        padding:2px 6px;
+        background:linear-gradient(180deg, #ffdb64, #efb83d);
+        box-shadow:inset 0 1px 0 rgba(255,250,193,.8);
+    }
 
     .typing-keyboard{
         width:min(100%, 1080px);
