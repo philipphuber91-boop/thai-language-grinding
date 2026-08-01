@@ -513,6 +513,24 @@ function renderChronikStats(){
             <img src="../assets/ui/chronik/stat-characters.png">
 
             <h3>
+                Getippte Zeichen
+            </h3>
+
+            <div class="stat-overlay-value">
+
+                ${player.stats.totalCharacters}
+
+            </div>
+
+        </div>
+
+
+
+        <div class="stat-image-card">
+
+            <img src="../assets/ui/chronik/stat-characters.png">
+
+            <h3>
                 Getippte Wörter
             </h3>
 
@@ -530,12 +548,14 @@ function renderChronikStats(){
             <img src="../assets/ui/chronik/stat-characters.png">
 
             <h3>
-                Getippte Zeichen
+                Einzigartige Wörter
             </h3>
 
             <div class="stat-overlay-value">
 
-                ${player.stats.totalCharacters}
+                ${Array.isArray(player.stats.uniqueThaiWords)
+                    ? player.stats.uniqueThaiWords.length
+                    : 0}
 
             </div>
 
@@ -628,29 +648,6 @@ function renderChronikStats(){
             </div>
 
         </div>
-        <div class="stat-image-card">
-
-            <img src="../assets/ui/chronik/stat-characters.png">
-
-            <h3>
-                Einzigartige Wörter
-            </h3>
-
-            <div class="stat-overlay-value">
-
-                ${Array.isArray(player.stats.uniqueThaiWords)
-                    ? player.stats.uniqueThaiWords.length
-                    : 0}
-
-            </div>
-
-        </div>
-
-
-
- 
-
-
 
     </div>
 
