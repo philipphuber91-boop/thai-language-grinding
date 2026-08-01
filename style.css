@@ -2206,9 +2206,89 @@ box-shadow:
 
 }
 
+.quest-analysis{
+
+    color:#3b2818;
+
+}
+
+.quest-analysis h3{
+
+    margin:0 0 18px;
+
+    text-align:center;
+
+    font-size:1.25rem;
+
+    color:#4b2b12;
+
+}
+
+.quest-analysis-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4, minmax(0, 1fr));
+
+    gap:10px;
+
+    text-align:center;
+
+    font-size:1rem;
+
+}
+
+.quest-analysis-summary{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    gap:8px 24px;
+
+    margin-top:18px;
+
+    text-align:center;
+
+    font-size:1rem;
+
+}
+
+.quest-analysis-flow{
+
+    color:#8a5a12;
+
+    font-weight:700;
+
+}
+
+.quest-analysis-unavailable{
+
+    text-align:center;
+
+    color:#5f6368;
+
+}
+
+.quest-detail-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4, minmax(0, 1fr));
+
+    gap:10px;
+
+    margin-top:24px;
+
+    text-align:center;
+
+}
+
 .quest-card.expanded .quest-details{
 
-    max-height:500px;
+    max-height:800px;
 
     margin-top:35px;
 

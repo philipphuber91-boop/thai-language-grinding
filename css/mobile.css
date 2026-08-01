@@ -176,6 +176,11 @@
         text-align:center;
     }
 
+    .quest-analysis-grid,
+    .quest-detail-grid{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+    }
+
     .quest-actions{
         justify-content:center;
         align-self:stretch;

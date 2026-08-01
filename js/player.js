@@ -17,6 +17,8 @@ stats: {
     totalThaiWords: 0,
     totalThaiWordsInitialized: false,
     uniqueThaiWords: [],
+    wordStats: {},
+    wordStatsInitialized: false,
     totalTime: 0,
     averageTime: 0,
 
@@ -186,6 +188,52 @@ function getStoredTotalThaiWords() {
     return player.stats.totalThaiWords;
 }
 
+function getStoredThaiWordStats() {
+
+    if (
+        !player.stats.wordStats ||
+        typeof player.stats.wordStats !== "object" ||
+        Array.isArray(player.stats.wordStats)
+    ) {
+        player.stats.wordStats = {};
+    }
+
+    const normalizedWordStats = {};
+
+    for (const [word, count] of Object.entries(player.stats.wordStats)) {
+
+        const normalizedWord = String(word).normalize("NFC");
+        const normalizedCount = Math.floor(Number(count));
+
+        if (
+            !normalizedWord ||
+            !Number.isFinite(normalizedCount) ||
+            normalizedCount < 1
+        ) {
+            continue;
+        }
+
+        normalizedWordStats[normalizedWord] = Math.max(
+            normalizedWordStats[normalizedWord] ?? 0,
+            normalizedCount
+        );
+
+    }
+
+    player.stats.wordStats = normalizedWordStats;
+
+    return normalizedWordStats;
+}
+
+function getSuccessfulQuestAttempts(stats) {
+
+    const attempts = Number(stats?.attempts);
+
+    return Number.isFinite(attempts) && attempts > 0
+        ? Math.floor(attempts)
+        : 1;
+}
+
 function getCompletedQuestWordTotal() {
 
     let totalThaiWords = 0;
@@ -213,13 +261,8 @@ function getCompletedQuestWordTotal() {
             continue;
         }
 
-        const attempts = Number(stats.attempts);
-        const successfulAttempts =
-            Number.isFinite(attempts) && attempts > 0
-                ? attempts
-                : 1;
-
-        totalThaiWords += wordList.words.length * successfulAttempts;
+        totalThaiWords +=
+            wordList.words.length * getSuccessfulQuestAttempts(stats);
     }
 
     return totalThaiWords;
@@ -235,6 +278,55 @@ function migrateTotalThaiWordsFromCompletedQuests() {
 
     player.stats.totalThaiWords = totalThaiWords;
     player.stats.totalThaiWordsInitialized = true;
+    savePlayer();
+}
+
+function migrateThaiWordStatsFromCompletedQuests() {
+
+    if (player.stats.wordStatsInitialized) {
+        return;
+    }
+
+    const wordStats = getStoredThaiWordStats();
+
+    for (const questId in questStats) {
+
+        const stats = questStats[questId];
+        const quest = getQuestDataFromStatsId(questId);
+
+        if (
+            !stats?.completed ||
+            !quest ||
+            (
+                stats.version !== undefined &&
+                quest.version !== undefined &&
+                stats.version !== quest.version
+            )
+        ) {
+            continue;
+        }
+
+        const wordList = getThaiWordList(quest.thaiZeilen);
+
+        if (!wordList.supported) {
+            continue;
+        }
+
+        const successfulAttempts = getSuccessfulQuestAttempts(stats);
+
+        for (const word of wordList.words) {
+            wordStats[word] =
+                (wordStats[word] ?? 0) + successfulAttempts;
+        }
+
+    }
+
+    for (const word of getStoredUniqueThaiWords()) {
+        wordStats[word] = Math.max(wordStats[word] ?? 0, 1);
+    }
+
+    player.stats.wordStats = wordStats;
+    player.stats.wordStatsInitialized = true;
     savePlayer();
 }
 
@@ -254,6 +346,30 @@ function addCompletedQuestWordsToTotal(questId) {
 
     player.stats.totalThaiWords =
         getStoredTotalThaiWords() + wordList.words.length;
+}
+
+function addQuestWordsToWordStats(questId) {
+
+    const quest = getQuestDataFromStatsId(questId);
+
+    if (!quest) {
+        return;
+    }
+
+    const wordList = getThaiWordList(quest.thaiZeilen);
+
+    if (!wordList.supported) {
+        return;
+    }
+
+    const wordStats = getStoredThaiWordStats();
+
+    for (const word of wordList.words) {
+        wordStats[word] = (wordStats[word] ?? 0) + 1;
+    }
+
+    player.stats.wordStats = wordStats;
+    player.stats.wordStatsInitialized = true;
 }
 
 function addQuestWordsToUniqueCollection(questId) {
@@ -936,6 +1052,7 @@ function completeQuest(questId, zeit, cpm, accuracy, zeichen, currentVersion) {
         ? addQuestWordsToUniqueCollection(questId)
         : 0;
 
+    addQuestWordsToWordStats(questId);
     addCompletedQuestWordsToTotal(questId);
 
     stats.records.lastTime = zeit;
