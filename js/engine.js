@@ -14,6 +14,7 @@ function ladeKarten() {
     for (const nummer in daten) {
 
         const quest = daten[nummer];
+        const thaiWordStats = getThaiWordStatistics(quest.thaiZeilen);
 
 
 
@@ -125,9 +126,7 @@ karte.innerHTML = `
         </p>
 
         <p class="quest-words">
-
-            📖 ${quest.woerter} Wörter
-
+            📖 ${formatThaiWordStatistics(thaiWordStats)}
         </p>
 
     </div>
@@ -214,6 +213,8 @@ function starteQuest(questNummer) {
             : missions;
 
     const quest = daten[questNummer];
+    const thaiWordStats = getThaiWordStatistics(quest.thaiZeilen);
+    const thaiCharacterCount = getThaiCharacterCount(quest.thaiZeilen);
 
     // Titel des Fensters
     document.getElementById("startOverlayTitle").textContent =
@@ -229,26 +230,40 @@ function starteQuest(questNummer) {
         "🏅 " + quest.schwierigkeit;
 
     document.getElementById("startQuestWords").textContent =
-        "📖 " + quest.woerter + " Wörter";
+        "📖 " + formatThaiWordStatistics(thaiWordStats);
 
     // Questbild
     document.getElementById("startQuestImage").src =
         "../assets/quest/" + quest.bild + ".png";
 
-    // Zeit berechnen
-    const cpm = 20;
-
+    // Zeit anhand der Quest-Wortzahl, der Quest-eigenen durchschnittlichen
+    // Zeichenanzahl pro Wort und der persönlichen CPM schätzen.
+    const gespeicherteCPM = Number(player?.stats?.averageCPM);
+    const cpm =
+        Number.isFinite(gespeicherteCPM) && gespeicherteCPM > 0
+            ? gespeicherteCPM
+            : 20;
+    const durchschnittlicheZeichenProWort =
+        thaiWordStats.total > 0
+            ? thaiCharacterCount / thaiWordStats.total
+            : 0;
+    const geschaetzteZeichen =
+        thaiWordStats.total * durchschnittlicheZeichenProWort;
     const gesamtSekunden =
-        Math.ceil((quest.woerter / cpm) * 60);
+        thaiWordStats.supported && geschaetzteZeichen > 0
+            ? Math.ceil((geschaetzteZeichen / cpm) * 60)
+            : null;
 
-    const minuten =
-        Math.floor(gesamtSekunden / 60);
+    if (gesamtSekunden === null) {
+        document.getElementById("startQuestTime").textContent = "⏱ --:--";
+    } else {
+        const minuten = Math.floor(gesamtSekunden / 60);
+        const sekunden =
+            String(gesamtSekunden % 60).padStart(2, "0");
 
-    const sekunden =
-        String(gesamtSekunden % 60).padStart(2, "0");
-
-    document.getElementById("startQuestTime").textContent =
-        `⏱ ${minuten}:${sekunden}`;
+        document.getElementById("startQuestTime").textContent =
+            `⏱ ${minuten}:${sekunden}`;
+    }
 
         // Platzhalter für spätere Statistik
 

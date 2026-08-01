@@ -16,7 +16,6 @@ const quests = {
 
     xp: 50,
 
-    woerter: 53,
 
     story:
 `Lies zuerst den Text.
@@ -106,7 +105,6 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 
     xp: 50,
 
-    woerter: 72,
 
     story:
 `Lies zuerst den Text.
@@ -199,7 +197,6 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 
     xp: 50,
 
-    woerter: 72,
 
     story:
 `Lies zuerst den Text.
@@ -272,7 +269,6 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 
     xp: 50,
 
-    woerter: 79,
 
     story:
 `Lies zuerst den Text.
@@ -351,7 +347,6 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 
     xp: 50,
 
-    woerter: 74,
 
     story:
 `Lies zuerst den Text.
@@ -428,7 +423,6 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 
     xp: 50,
 
-    woerter: 79,
 
     story:
 `Lies zuerst den Text.
