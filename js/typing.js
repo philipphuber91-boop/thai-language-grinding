@@ -583,37 +583,51 @@ function istThailaendischesKombinationszeichen(zeichen) {
     return !!zeichen && THAI_COMBINING_MARKS.test(zeichen);
 }
 
+// Ermittelt den Start- und End-Index (End exklusiv) des Textlaufs, der die
+// aktuelle Tippposition umschließen muss, damit ein Basiszeichen NIE von
+// seinen eigenen Ton-/Vokalzeichen getrennt wird - egal ob diese bereits
+// getippt sind (liegen vor "position"), gerade dran sind ("position" selbst)
+// oder noch offen sind (liegen nach "position" in "rest"). Ohne diese
+// beidseitige Gruppierung rendert der Browser ein isoliertes
+// Kombinationszeichen als abgetrenntes, kaputt wirkendes Kästchen (siehe
+// Kommentar oben) - und zwar in BEIDE Richtungen, nicht nur rückwärts.
+// Gilt einheitlich für Desktop und Mobile (siehe zeigeZeilen()/zeigeFehler()).
+function ermittleHervorhebungsbereich(text, position) {
+
+    let start = position;
+    while (
+        start > 0 &&
+        istThailaendischesKombinationszeichen(text[start])
+    ) {
+        start--;
+    }
+
+    let ende = position + 1;
+    while (
+        ende < text.length &&
+        istThailaendischesKombinationszeichen(text[ende])
+    ) {
+        ende++;
+    }
+
+    return { start, ende };
+}
+
 function zeigeZeilen() {
 
     aktualisiereDeutsch();
 
-    let geschrieben, aktuell, rest;
+    const { start: hervorhebungStart, ende: hervorhebungEnde } =
+        ermittleHervorhebungsbereich(text, position);
 
-    if (isMobileViewport()) {
-        // Auf Mobilgeräten: ursprüngliche pro-Zeichen-Placeholder-Mechanik
-        geschrieben = text.substring(0, position);
-        aktuell = text[position] || "";
-        rest = text.substring(position + 1);
-    } else {
-        // Basiszeichen mit in die Hervorhebung aufnehmen, falls das aktuelle
-        // Zeichen selbst ein Kombinationszeichen ist.
-        let hervorhebungStart = position;
-        while (
-            hervorhebungStart > 0 &&
-            istThailaendischesKombinationszeichen(text[hervorhebungStart])
-        ) {
-            hervorhebungStart--;
-        }
+    const geschrieben =
+        text.substring(0, hervorhebungStart);
 
-        geschrieben =
-            text.substring(0, hervorhebungStart);
+    const aktuell =
+        text.substring(hervorhebungStart, hervorhebungEnde);
 
-        aktuell =
-            text.substring(hervorhebungStart, position + 1);
-
-        rest =
-            text.substring(position + 1);
-    }
+    const rest =
+        text.substring(hervorhebungEnde);
 
     zeile1.innerHTML =
         "<span class='geschrieben'>" +
@@ -681,34 +695,17 @@ function zeigeFehler() {
 
     clearTimeout(fehlerTimeout);
 
-    let geschrieben, aktuell, rest;
+    const { start: hervorhebungStart, ende: hervorhebungEnde } =
+        ermittleHervorhebungsbereich(text, position);
 
-    if (isMobileViewport()) {
-        // Auf Mobilgeräten: ursprüngliche pro-Zeichen-Placeholder-Mechanik
-        geschrieben = text.substring(0, position);
-        aktuell = text[position] || "";
-        rest = text.substring(position + 1);
-    } else {
-        // Ensure combining marks are grouped with their base character when
-        // showing the 'fehler' highlight - otherwise a detached combining mark
-        // can render as a broken glyph.
-        let hervorhebungStart = position;
-        while (
-            hervorhebungStart > 0 &&
-            istThailaendischesKombinationszeichen(text[hervorhebungStart])
-        ) {
-            hervorhebungStart--;
-        }
+    const geschrieben =
+        text.substring(0, hervorhebungStart);
 
-        geschrieben =
-            text.substring(0, hervorhebungStart);
+    const aktuell =
+        text.substring(hervorhebungStart, hervorhebungEnde) || "";
 
-        aktuell =
-            text.substring(hervorhebungStart, position + 1) || "";
-
-        rest =
-            text.substring(position + 1);
-    }
+    const rest =
+        text.substring(hervorhebungEnde);
 
     zeile1.innerHTML =
 
