@@ -2,6 +2,57 @@ const questListe = document.getElementById("questListe");
 
 let contentMode = "campaign";
 
+function formatQuestMasteryDetails(statistics, category) {
+
+    if (!statistics.supported) {
+        return `
+            <div class="quest-analysis-unavailable">
+                Sprachanalyse nicht verfügbar
+            </div>
+        `;
+    }
+
+    return `
+        <div class="quest-analysis">
+
+            <h3>📊 Sprachanalyse</h3>
+
+            <div class="quest-analysis-grid">
+
+                <div>❓ ${statistics.percentages.unseen}% ungesehen</div>
+                <div>👀 ${statistics.percentages.known}% bekannt</div>
+                <div>🧠 ${statistics.percentages.learned}% gelernt</div>
+                <div>🏆 ${statistics.percentages.mastered}% gemeistert</div>
+
+            </div>
+
+            <div class="quest-analysis-summary">
+
+                <div>
+                    📖 Leseverständnis:
+                    ${statistics.readingComprehensionPercentage}%
+                </div>
+
+                <div>
+                    🧠 Wortschatzabdeckung:
+                    ${statistics.vocabularyCoveragePercentage}%
+                </div>
+
+                <div>
+                    ❓ Neu:
+                    ${statistics.percentages.unseen}%
+                </div>
+
+                <div class="quest-analysis-flow">
+                    🎯 Flow-Zone: ${category.label}
+                </div>
+
+            </div>
+
+        </div>
+    `;
+}
+
 function ladeKarten() {
 
     questListe.innerHTML = "";
@@ -18,7 +69,7 @@ function ladeKarten() {
         const familiarityStats =
             getThaiWordFamiliarityStatistics(
                 quest.thaiZeilen,
-                player.stats.uniqueThaiWords
+                player.stats.wordStats
             );
         const familiarityCategory =
             getThaiWordFamiliarityCategory(familiarityStats);
@@ -144,7 +195,7 @@ karte.innerHTML = `
             type="button"
             class="familiarity-button familiarity-${familiarityCategory.key}"
             disabled
-            title="${familiarityCategory.range} Bekanntheitsgrad">
+            title="${familiarityCategory.range} Beherrschungsgrad">
             ${familiarityCategory.emoji} ${familiarityCategory.label}
         </button>
 
@@ -187,6 +238,8 @@ karte.innerHTML = `
 </div>
 
 <div class="quest-details">
+
+    ${formatQuestMasteryDetails(familiarityStats, familiarityCategory)}
 
     <div class="quest-detail-grid">
 
@@ -236,7 +289,7 @@ function starteQuest(questNummer) {
     const familiarityStats =
         getThaiWordFamiliarityStatistics(
             quest.thaiZeilen,
-            player.stats.uniqueThaiWords
+            player.stats.wordStats
         );
     const familiarityCategory =
         getThaiWordFamiliarityCategory(familiarityStats);
@@ -262,7 +315,7 @@ function starteQuest(questNummer) {
     document.getElementById("startQuestFamiliarity").textContent =
         familiarityCategory.emoji + " " + familiarityCategory.label;
     document.getElementById("startQuestFamiliarity").title =
-        familiarityCategory.range + " Bekanntheitsgrad";
+        familiarityCategory.range + " Beherrschungsgrad";
 
     // Questbild
     document.getElementById("startQuestImage").src =

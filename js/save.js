@@ -68,6 +68,7 @@ function loadQuestStats() {
 
     migrateUniqueThaiWordsFromCompletedQuests();
     migrateTotalThaiWordsFromCompletedQuests();
+    migrateThaiWordStatsFromCompletedQuests();
 
 }
 

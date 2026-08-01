@@ -73,39 +73,144 @@ function getThaiWordStatistics(thaiZeilen) {
     };
 }
 
-function getThaiWordFamiliarityStatistics(thaiZeilen, knownWords) {
+function getThaiWordMasteryCount(wordStats, word) {
+
+    if (wordStats instanceof Map) {
+        return Math.max(0, Number(wordStats.get(word) ?? 0));
+    }
+
+    if (wordStats instanceof Set) {
+        return wordStats.has(word) ? 1 : 0;
+    }
+
+    if (Array.isArray(wordStats)) {
+        return wordStats.includes(word) ? 1 : 0;
+    }
+
+    if (!wordStats || typeof wordStats !== "object") {
+        return 0;
+    }
+
+    return Math.max(0, Number(wordStats[word] ?? 0));
+}
+
+function getThaiWordMasteryLevel(count) {
+
+    if (count >= 25) {
+        return "mastered";
+    }
+
+    if (count >= 10) {
+        return "learned";
+    }
+
+    if (count >= 1) {
+        return "known";
+    }
+
+    return "unseen";
+}
+
+function getPercentage(value, total) {
+
+    return total > 0
+        ? Math.round((value / total) * 100)
+        : 0;
+}
+
+function getThaiWordFamiliarityStatistics(thaiZeilen, wordStats) {
 
     const wordList = getThaiWordList(thaiZeilen);
 
     if (!wordList.supported) {
         return {
             total: 0,
+            unique: 0,
             known: 0,
             unknown: 0,
             unknownUnique: 0,
             knownPercentage: 0,
+            masteryPercentage: 0,
+            readingComprehensionPercentage: 0,
+            vocabularyCoveragePercentage: 0,
+            occurrences: {
+                unseen: 0,
+                known: 0,
+                learned: 0,
+                mastered: 0
+            },
+            uniqueWordTypes: {
+                unseen: 0,
+                known: 0,
+                learned: 0,
+                mastered: 0
+            },
+            percentages: {
+                unseen: 0,
+                known: 0,
+                learned: 0,
+                mastered: 0
+            },
             supported: false
         };
     }
 
-    const knownWordSet =
-        knownWords instanceof Set
-            ? knownWords
-            : new Set(Array.isArray(knownWords) ? knownWords : []);
-    const unknownWords = wordList.words.filter(
-        word => !knownWordSet.has(word)
-    );
-    const known = wordList.words.length - unknownWords.length;
+    const occurrences = {
+        unseen: 0,
+        known: 0,
+        learned: 0,
+        mastered: 0
+    };
+    const uniqueWordCounts = new Map();
+
+    for (const word of wordList.words) {
+
+        const count = getThaiWordMasteryCount(wordStats, word);
+        const level = getThaiWordMasteryLevel(count);
+
+        occurrences[level]++;
+        uniqueWordCounts.set(word, count);
+
+    }
+
+    const uniqueWordTypes = {
+        unseen: 0,
+        known: 0,
+        learned: 0,
+        mastered: 0
+    };
+
+    for (const count of uniqueWordCounts.values()) {
+        uniqueWordTypes[getThaiWordMasteryLevel(count)]++;
+    }
+
+    const total = wordList.words.length;
+    const unique = uniqueWordCounts.size;
+    const known = total - occurrences.unseen;
+    const masteryCount =
+        occurrences.learned + occurrences.mastered;
 
     return {
-        total: wordList.words.length,
+        total,
+        unique,
         known,
-        unknown: unknownWords.length,
-        unknownUnique: new Set(unknownWords).size,
-        knownPercentage:
-            wordList.words.length > 0
-                ? Math.round((known / wordList.words.length) * 100)
-                : 0,
+        unknown: occurrences.unseen,
+        unknownUnique: uniqueWordTypes.unseen,
+        knownPercentage: getPercentage(known, total),
+        masteryPercentage: getPercentage(masteryCount, total),
+        readingComprehensionPercentage: getPercentage(known, total),
+        vocabularyCoveragePercentage: getPercentage(
+            uniqueWordTypes.learned + uniqueWordTypes.mastered,
+            unique
+        ),
+        occurrences,
+        uniqueWordTypes,
+        percentages: {
+            unseen: getPercentage(uniqueWordTypes.unseen, unique),
+            known: getPercentage(uniqueWordTypes.known, unique),
+            learned: getPercentage(uniqueWordTypes.learned, unique),
+            mastered: getPercentage(uniqueWordTypes.mastered, unique)
+        },
         supported: true
     };
 }
@@ -135,30 +240,30 @@ function getThaiWordFamiliarityCategory(statistics) {
         };
     }
 
-    if (statistics.knownPercentage >= 90) {
+    if (statistics.masteryPercentage >= 85) {
         return {
             key: "too-easy",
             emoji: "🟢",
             label: "Leicht",
-            range: "90–100 %"
+            range: "85–100 %"
         };
     }
 
-    if (statistics.knownPercentage >= 80) {
+    if (statistics.masteryPercentage >= 70) {
         return {
             key: "perfect-flow",
             emoji: "🟡",
             label: "Perfekter Flow",
-            range: "80–89 %"
+            range: "70–84 %"
         };
     }
 
-    if (statistics.knownPercentage >= 65) {
+    if (statistics.masteryPercentage >= 50) {
         return {
             key: "challenging",
             emoji: "🟠",
             label: "Anspruchsvoll",
-            range: "65–79 %"
+            range: "50–69 %"
         };
     }
 
@@ -166,7 +271,7 @@ function getThaiWordFamiliarityCategory(statistics) {
         key: "too-difficult",
         emoji: "🔴",
         label: "Schwer",
-        range: "0–64 %"
+        range: "0–49 %"
     };
 }
 
