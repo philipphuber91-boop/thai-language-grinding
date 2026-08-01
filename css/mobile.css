@@ -412,10 +412,10 @@
     }
 
     #zeile1.mobile-thai-lines{
-        display:grid;
-        grid-template-rows:repeat(3, minmax(0, 1fr));
+        display:flex;
+        flex-direction:column;
         align-items:center;
-        justify-items:center;
+        justify-content:flex-end;
         height:calc(3 * clamp(38px, 7dvh, 60px));
         min-height:calc(3 * clamp(38px, 7dvh, 60px));
         max-height:calc(3 * clamp(38px, 7dvh, 60px));
@@ -423,7 +423,10 @@
     }
 
     #zeile1.mobile-thai-lines .mobile-thai-line{
-        display:block;
+        display:flex;
+        flex:0 0 clamp(38px, 7dvh, 60px);
+        align-items:center;
+        justify-content:center;
         width:100%;
         min-width:0;
         overflow:hidden;
@@ -1844,6 +1847,9 @@
         min-height:clamp(3.75rem, 15vw, 5rem);
         margin: auto 0 0;
         padding:0 12px;
+        display:flex;
+        flex-direction:column;
+        justify-content:flex-end;
         overflow:visible;
         text-align:center;
         align-self:end;
@@ -1871,7 +1877,7 @@
     .learning-text{
         display:block;
         margin:0;
-        font-size:clamp(.78rem, 3.4vw, 1.2rem);
+        font-size:clamp(.88rem, 4.2vw, 1.05rem);
         line-height:1.25;
         overflow-wrap:anywhere;
     }
