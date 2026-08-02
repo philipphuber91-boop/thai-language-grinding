@@ -82,10 +82,6 @@ function formatQuestMasteryDetails(
 
                 </div>
 
-                <p class="quest-detail-note">
-                    Basierend auf allen Wortvorkommen in dieser Quest.
-                </p>
-
             </section>
 
             <section class="quest-detail-panel quest-understanding">
@@ -110,6 +106,15 @@ function formatQuestMasteryDetails(
                             <strong>${statistics.vocabularyCoveragePercentage}%</strong>
                         </div>
                         <span>Wortschatzabdeckung</span>
+                    </div>
+
+                    <div class="quest-understanding-meter">
+                        <div
+                            class="quest-meter quest-meter-mastery"
+                            style="--meter-value:${statistics.masteryPercentage}%">
+                            <strong>${statistics.masteryPercentage}%</strong>
+                        </div>
+                        <span>Beherrschungsgrad</span>
                     </div>
 
                 </div>
