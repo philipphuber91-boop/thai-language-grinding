@@ -6824,7 +6824,7 @@ padding:28px 34px;
     .quest-card{
         width:min(1500px, 93%);
         padding:4px 18px;
-        --image-size:125px;
+        --image-size:118px;
     }
 
     .quest-header{
@@ -6856,7 +6856,7 @@ padding:28px 34px;
     .quest-main h2{
         position:absolute;
         left:50%;
-        top:0;
+        top:4px;
         width:min(50%, 620px);
         z-index:1;
         margin:0;
