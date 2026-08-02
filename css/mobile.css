@@ -170,10 +170,14 @@
         transform:none;
     }
 
-    .quest-meta,
+    .quest-meta{
+        text-align:center;
+    }
+
     .quest-words,
     .quest-familiarity{
-        text-align:center;
+        justify-content:flex-start;
+        text-align:left;
     }
 
     .quest-main .familiarity-button{
