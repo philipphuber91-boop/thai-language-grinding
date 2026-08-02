@@ -20,7 +20,8 @@ function formatQuestMasteryDetails(statistics, category) {
             <div class="quest-analysis-grid">
 
                 <div>❓ ${statistics.percentages.unseen}% ungesehen</div>
-                <div>👀 ${statistics.percentages.known}% bekannt</div>
+                <div>👀 ${statistics.percentages.seen}% gesehen</div>
+                <div>📖 ${statistics.percentages.known}% bekannt</div>
                 <div>🧠 ${statistics.percentages.learned}% gelernt</div>
                 <div>🏆 ${statistics.percentages.mastered}% gemeistert</div>
 
@@ -29,7 +30,7 @@ function formatQuestMasteryDetails(statistics, category) {
             <div class="quest-analysis-summary">
 
                 <div>
-                    📖 Leseverständnis:
+                    📖 Leseverständnis (ab bekannt):
                     ${statistics.readingComprehensionPercentage}%
                 </div>
 

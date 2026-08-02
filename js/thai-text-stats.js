@@ -104,8 +104,12 @@ function getThaiWordMasteryLevel(count) {
         return "learned";
     }
 
-    if (count >= 1) {
+    if (count >= 5) {
         return "known";
+    }
+
+    if (count >= 1) {
+        return "seen";
     }
 
     return "unseen";
@@ -135,18 +139,21 @@ function getThaiWordFamiliarityStatistics(thaiZeilen, wordStats) {
             vocabularyCoveragePercentage: 0,
             occurrences: {
                 unseen: 0,
+                seen: 0,
                 known: 0,
                 learned: 0,
                 mastered: 0
             },
             uniqueWordTypes: {
                 unseen: 0,
+                seen: 0,
                 known: 0,
                 learned: 0,
                 mastered: 0
             },
             percentages: {
                 unseen: 0,
+                seen: 0,
                 known: 0,
                 learned: 0,
                 mastered: 0
@@ -157,6 +164,7 @@ function getThaiWordFamiliarityStatistics(thaiZeilen, wordStats) {
 
     const occurrences = {
         unseen: 0,
+        seen: 0,
         known: 0,
         learned: 0,
         mastered: 0
@@ -175,6 +183,7 @@ function getThaiWordFamiliarityStatistics(thaiZeilen, wordStats) {
 
     const uniqueWordTypes = {
         unseen: 0,
+        seen: 0,
         known: 0,
         learned: 0,
         mastered: 0
@@ -186,7 +195,13 @@ function getThaiWordFamiliarityStatistics(thaiZeilen, wordStats) {
 
     const total = wordList.words.length;
     const unique = uniqueWordCounts.size;
-    const known = total - occurrences.unseen;
+    const known =
+        occurrences.known +
+        occurrences.learned +
+        occurrences.mastered;
+    const unknown = occurrences.unseen + occurrences.seen;
+    const unknownUnique =
+        uniqueWordTypes.unseen + uniqueWordTypes.seen;
     const masteryCount =
         occurrences.learned + occurrences.mastered;
 
@@ -194,8 +209,8 @@ function getThaiWordFamiliarityStatistics(thaiZeilen, wordStats) {
         total,
         unique,
         known,
-        unknown: occurrences.unseen,
-        unknownUnique: uniqueWordTypes.unseen,
+        unknown,
+        unknownUnique,
         knownPercentage: getPercentage(known, total),
         masteryPercentage: getPercentage(masteryCount, total),
         readingComprehensionPercentage: getPercentage(known, total),
@@ -207,6 +222,7 @@ function getThaiWordFamiliarityStatistics(thaiZeilen, wordStats) {
         uniqueWordTypes,
         percentages: {
             unseen: getPercentage(uniqueWordTypes.unseen, unique),
+            seen: getPercentage(uniqueWordTypes.seen, unique),
             known: getPercentage(uniqueWordTypes.known, unique),
             learned: getPercentage(uniqueWordTypes.learned, unique),
             mastered: getPercentage(uniqueWordTypes.mastered, unique)
