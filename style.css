@@ -1194,6 +1194,8 @@ box-shadow:
 
 .quest-main .familiarity-button{
 
+    display:none;
+
     align-self:center;
 
     margin-top:6px;
@@ -2373,22 +2375,12 @@ box-shadow:
 
 }
 
-.quest-detail-note{
-
-    margin:18px 0 0;
-    color:#5a4024;
-    font-size:.82rem;
-    line-height:1.35;
-    text-align:center;
-
-}
-
 .quest-understanding-meters{
 
-    display:flex;
-    align-items:flex-start;
-    justify-content:center;
-    gap:22px;
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    align-items:start;
+    gap:8px;
 
 }
 
@@ -2398,9 +2390,9 @@ box-shadow:
     flex-direction:column;
     align-items:center;
     gap:8px;
-    max-width:125px;
+    min-width:0;
     color:#4b2b12;
-    font-size:.78rem;
+    font-size:.74rem;
     line-height:1.25;
     text-align:center;
 
@@ -2414,8 +2406,8 @@ box-shadow:
     align-items:center;
     justify-content:center;
 
-    width:88px;
-    height:88px;
+    width:64px;
+    height:64px;
 
     border-radius:50%;
     background:conic-gradient(
@@ -2434,12 +2426,21 @@ box-shadow:
 
 }
 
+.quest-meter-mastery{
+
+    background:conic-gradient(
+        #bd5c65 0 var(--meter-value),
+        #ead4a9 var(--meter-value) 100%
+    );
+
+}
+
 .quest-meter::before{
 
     content:"";
 
     position:absolute;
-    inset:9px;
+    inset:7px;
 
     border-radius:50%;
     background:#f4dfb4;
@@ -2454,19 +2455,17 @@ box-shadow:
 
     color:#4b2b12;
     font-family:Georgia, "Times New Roman", serif;
-    font-size:1.35rem;
+    font-size:1.05rem;
 
 }
 
 .quest-understanding-callout{
 
-    margin:20px 0 0;
-    padding:10px 12px;
-
-    border:1px solid rgba(160,112,44,.4);
-    border-radius:8px;
-    color:#4b2b12;
-    font-size:.82rem;
+    margin:14px 0 0;
+    padding:0;
+    color:rgba(75,43,18,.68);
+    font-size:.74rem;
+    font-weight:400;
     line-height:1.35;
     text-align:center;
 
