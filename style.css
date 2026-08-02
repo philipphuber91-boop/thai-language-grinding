@@ -6817,3 +6817,125 @@ padding:28px 34px;
         color:#593a1c;
     }
 }
+
+/* Desktop quest cards stay compact and aligned to the quest artwork.
+   Mobile keeps its dedicated stacked layout in mobile.css. */
+@media (min-width:901px){
+
+    .quest-card{
+        width:min(1250px, 94%);
+        padding:8px 14px;
+    }
+
+    .quest-header{
+        grid-template-columns:125px minmax(420px, 1fr) 140px 145px;
+        gap:12px;
+        align-items:center;
+    }
+
+    .quest-main{
+        display:grid;
+        grid-template-columns:minmax(180px, .9fr) minmax(260px, 1.4fr);
+        grid-template-rows:repeat(3, 1fr);
+        column-gap:16px;
+        align-items:center;
+        height:108px;
+        min-width:0;
+    }
+
+    .quest-main h2{
+        grid-column:2;
+        grid-row:1;
+        align-self:end;
+        margin:0 0 4px;
+        transform:none;
+        font-size:1.25rem;
+        line-height:1.15;
+    }
+
+    .quest-audio-card{
+        grid-column:2;
+        grid-row:2 / 4;
+        align-self:center;
+        transform:none;
+        width:min(100%, 220px);
+        margin:0 auto 4px;
+        padding:1px 2px;
+        gap:4px;
+    }
+
+    .quest-meta{
+        grid-column:1;
+        grid-row:1;
+        align-self:start;
+        margin:1px 0;
+        font-size:.78rem;
+        line-height:1.15;
+        text-align:left;
+    }
+
+    .quest-card .quest-meta{
+        font-size:.78rem;
+        line-height:1.15;
+    }
+
+    .quest-card .quest-words,
+    .quest-card .quest-familiarity{
+        grid-column:1;
+        width:100%;
+        justify-content:flex-start;
+        margin:1px 0;
+        font-size:.72rem;
+        line-height:1.15;
+        text-align:left;
+        transform:none;
+    }
+
+    .quest-card .quest-words{
+        grid-row:2;
+        align-self:center;
+    }
+
+    .quest-card .quest-familiarity{
+        grid-row:3;
+        align-self:center;
+    }
+
+    .quest-card .quest-summary-icon{
+        width:1.25em;
+        height:1.25em;
+    }
+
+    .quest-card .quest-audio-play-button{
+        flex-basis:24px;
+        width:24px;
+        height:24px;
+        font-size:.7rem;
+    }
+
+    .quest-card .quest-audio-speed{
+        gap:4px;
+        font-size:.62rem;
+    }
+
+    .quest-card .quest-audio-speed-slider{
+        width:70px;
+    }
+
+    .quest-card .quest-audio-speed-value{
+        min-width:23px;
+    }
+
+    .quest-card .quest-start-button img{
+        width:130px;
+    }
+
+    .quest-progress{
+        width:auto;
+    }
+
+    .quest-actions{
+        justify-content:center;
+    }
+
+}
