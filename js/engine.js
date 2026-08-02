@@ -186,7 +186,7 @@ function formatQuestMasteryDetails(
                     <span>Verständnis</span>
                     ${formatQuestInfoHint(
                         "Verständnis erklären",
-                        "Leseverständnis zählt alle Wortvorkommen ab bekannt (5+ Begegnungen). Wortschatzabdeckung zählt einzigartige Wörter ab gelernt (10+ Begegnungen). Der Beherrschungsgrad zählt Wortvorkommen ab gelernt und bestimmt die Einstufung: 0–49 % schwer, 50–69 % anspruchsvoll, 70–84 % perfekter Flow und ab 85 % leicht.",
+                        "Leseverständnis zählt alle Wortvorkommen ab bekannt (5+ Begegnungen). Wortschatz zählt einzigartige Wörter ab gelernt (10+ Begegnungen). Der Beherrschungsgrad zählt Wortvorkommen ab gelernt und bestimmt die Einstufung: 0–49 % schwer, 50–69 % anspruchsvoll, 70–84 % perfekter Flow und ab 85 % leicht.",
                         "",
                         "quest-panel-help"
                     )}
@@ -209,7 +209,7 @@ function formatQuestMasteryDetails(
                             style="--meter-value:${statistics.vocabularyCoveragePercentage}%">
                             <strong>${statistics.vocabularyCoveragePercentage}%</strong>
                         </div>
-                        <span>Wortschatzabdeckung</span>
+                        <span>Wortschatz</span>
                     </div>
 
                     <div class="quest-understanding-meter">

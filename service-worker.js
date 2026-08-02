@@ -67,6 +67,11 @@ const PRECACHE_ASSETS = [
     'assets/audio/typing-drop.mp3',
     'assets/audio/typing-iphone.mp3',
     'assets/audio/typing-iphone2.mp3',
+    'assets/audio/typing-robot-laser-01.mp3',
+    'assets/audio/typing-robot-laser-02.mp3',
+    'assets/audio/typing-robot-laser-03.mp3',
+    'assets/audio/typing-robot-laser-04.mp3',
+    'assets/audio/typing-robot-laser-05.mp3',
 
     'assets/quest/bahnhof.png',
     'assets/quest/frühstück.png',
