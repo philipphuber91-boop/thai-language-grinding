@@ -254,6 +254,7 @@ function zeigePhase() {
     deutsch.style.display = "none";
     typingBereich.style.display = "none";
     popup.classList.remove("active");
+    stopQuestCompletionAudio();
 
     switch (phase) {
  
@@ -305,6 +306,50 @@ const popupNewWords = document.getElementById("popupNewWords");
 const popupNewWordsStat = document.getElementById("popupNewWordsStat");
 
 const weiterButton = document.getElementById("weiterButton");
+
+const QUEST_COMPLETION_AUDIO_START_SECONDS = 58;
+const questCompletionAudio = new Audio("../assets/audio/quest-complete.mp3");
+questCompletionAudio.preload = "metadata";
+let questCompletionAudioMetadataHandler = null;
+
+function stopQuestCompletionAudio() {
+    if (questCompletionAudioMetadataHandler) {
+        questCompletionAudio.removeEventListener(
+            "loadedmetadata",
+            questCompletionAudioMetadataHandler
+        );
+        questCompletionAudioMetadataHandler = null;
+    }
+
+    questCompletionAudio.pause();
+    questCompletionAudio.currentTime = 0;
+}
+
+function playQuestCompletionAudio() {
+    stopQuestCompletionAudio();
+
+    const seekToStart = () => {
+        questCompletionAudioMetadataHandler = null;
+        questCompletionAudio.currentTime = QUEST_COMPLETION_AUDIO_START_SECONDS;
+    };
+
+    if (questCompletionAudio.readyState >= HTMLMediaElement.HAVE_METADATA) {
+        seekToStart();
+    } else {
+        questCompletionAudioMetadataHandler = seekToStart;
+        questCompletionAudio.addEventListener(
+            "loadedmetadata",
+            seekToStart,
+            { once: true }
+        );
+        questCompletionAudio.load();
+    }
+
+    const playback = questCompletionAudio.play();
+    playback.catch(error => {
+        console.warn("Quest-Abschlussaudio konnte nicht gestartet werden.", error);
+    });
+}
 
 const activityStatusElement = document.getElementById("activityStatus");
 const afkOverlay = document.getElementById("afkOverlay");
@@ -381,6 +426,7 @@ function hideAfkOverlay() {
 function handleAutoAbort() {
     hideAfkOverlay();
     ActivityManager.stopPlaying();
+    stopQuestCompletionAudio();
     popup.classList.remove("active");
     window.location.href = "index.html";
 }
@@ -1105,6 +1151,7 @@ function beendePruefung() {
     popupNewWordsStat.hidden = !newRecords.firstCompletion;
     hideCompletionSections();
     popup.classList.add("active");
+    playQuestCompletionAudio();
 
     const completionAnimation = async () => {
         await revealElement(completeInfo);
@@ -1629,6 +1676,7 @@ cancelLeaveQuestButton?.addEventListener("click", function () {
 confirmLeaveQuestButton?.addEventListener("click", function () {
 
     ActivityManager.stopPlaying();
+    stopQuestCompletionAudio();
 
     leaveQuestOverlay?.classList.remove("active");
 
@@ -1639,6 +1687,7 @@ confirmLeaveQuestButton?.addEventListener("click", function () {
 weiterButton.addEventListener("click", function () {
  
     ActivityManager.stopPlaying();
+    stopQuestCompletionAudio();
  
     popup.classList.remove("active");
  
