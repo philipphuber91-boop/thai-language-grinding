@@ -2206,6 +2206,311 @@ box-shadow:
 
 }
 
+.quest-detail-panels{
+
+    display:grid;
+
+    grid-template-columns:
+        minmax(280px, 1.1fr)
+        minmax(260px, 1fr)
+        minmax(240px, .9fr);
+
+    border:1px solid rgba(160,112,44,.35);
+    border-radius:12px;
+    overflow:hidden;
+    background:rgba(255,247,222,.28);
+
+}
+
+.quest-detail-panel{
+
+    min-width:0;
+    padding:22px 20px;
+
+}
+
+.quest-detail-panel + .quest-detail-panel{
+
+    border-left:1px solid rgba(160,112,44,.28);
+
+}
+
+.quest-detail-panel h3{
+
+    margin:0 0 18px;
+
+    color:#4b2b12;
+    font-size:1rem;
+    letter-spacing:.04em;
+    text-align:center;
+    text-transform:uppercase;
+
+}
+
+.quest-word-statistics-content{
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:22px;
+
+}
+
+.quest-word-ring{
+
+    position:relative;
+
+    display:flex;
+    flex:0 0 118px;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    width:118px;
+    height:118px;
+
+    border-radius:50%;
+    background:conic-gradient(
+        #bd5c65 0 var(--unseen),
+        #6e83c4 var(--unseen) calc(var(--unseen) + var(--seen)),
+        #4ca56c calc(var(--unseen) + var(--seen))
+            calc(var(--unseen) + var(--seen) + var(--known)),
+        #e2a42e calc(var(--unseen) + var(--seen) + var(--known))
+            calc(var(--unseen) + var(--seen) + var(--known) + var(--learned)),
+        #8a5aba calc(var(--unseen) + var(--seen) + var(--known) + var(--learned)) 100%
+    );
+
+}
+
+.quest-word-ring::before{
+
+    content:"";
+
+    position:absolute;
+    inset:14px;
+
+    border-radius:50%;
+    background:#f4dfb4;
+    box-shadow:inset 0 1px 3px rgba(90,55,20,.2);
+
+}
+
+.quest-word-ring strong,
+.quest-word-ring span{
+
+    position:relative;
+    z-index:1;
+
+}
+
+.quest-word-ring strong{
+
+    color:#4b2b12;
+    font-size:1.65rem;
+    line-height:1;
+
+}
+
+.quest-word-ring span{
+
+    margin-top:4px;
+    color:#4b2b12;
+    font-size:.78rem;
+
+}
+
+.quest-word-legend{
+
+    display:grid;
+    gap:7px;
+    min-width:130px;
+
+}
+
+.quest-word-legend > div{
+
+    display:grid;
+    grid-template-columns:12px minmax(0, 1fr) auto;
+    align-items:center;
+    gap:7px;
+
+    color:#4b2b12;
+    font-size:.88rem;
+
+}
+
+.quest-legend-color{
+
+    width:10px;
+    height:10px;
+    border-radius:50%;
+
+}
+
+.quest-legend-color.unseen{
+    background:#bd5c65;
+}
+
+.quest-legend-color.seen{
+    background:#6e83c4;
+}
+
+.quest-legend-color.known{
+    background:#4ca56c;
+}
+
+.quest-legend-color.learned{
+    background:#e2a42e;
+}
+
+.quest-legend-color.mastered{
+    background:#8a5aba;
+}
+
+.quest-word-legend strong{
+
+    font-weight:700;
+
+}
+
+.quest-detail-note{
+
+    margin:18px 0 0;
+    color:#5a4024;
+    font-size:.82rem;
+    line-height:1.35;
+    text-align:center;
+
+}
+
+.quest-understanding-meters{
+
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    gap:22px;
+
+}
+
+.quest-understanding-meter{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    max-width:125px;
+    color:#4b2b12;
+    font-size:.78rem;
+    line-height:1.25;
+    text-align:center;
+
+}
+
+.quest-meter{
+
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    width:88px;
+    height:88px;
+
+    border-radius:50%;
+    background:conic-gradient(
+        #50a97d 0 var(--meter-value),
+        #ead4a9 var(--meter-value) 100%
+    );
+
+}
+
+.quest-meter-vocabulary{
+
+    background:conic-gradient(
+        #e2a42e 0 var(--meter-value),
+        #ead4a9 var(--meter-value) 100%
+    );
+
+}
+
+.quest-meter::before{
+
+    content:"";
+
+    position:absolute;
+    inset:9px;
+
+    border-radius:50%;
+    background:#f4dfb4;
+    box-shadow:inset 0 1px 3px rgba(90,55,20,.2);
+
+}
+
+.quest-meter strong{
+
+    position:relative;
+    z-index:1;
+
+    color:#4b2b12;
+    font-family:Georgia, "Times New Roman", serif;
+    font-size:1.35rem;
+
+}
+
+.quest-understanding-callout{
+
+    margin:20px 0 0;
+    padding:10px 12px;
+
+    border:1px solid rgba(160,112,44,.4);
+    border-radius:8px;
+    color:#4b2b12;
+    font-size:.82rem;
+    line-height:1.35;
+    text-align:center;
+
+}
+
+.quest-more-info dl{
+
+    display:grid;
+    gap:13px;
+    margin:0;
+
+}
+
+.quest-more-info dl > div{
+
+    display:grid;
+    grid-template-columns:minmax(0, 1fr) auto;
+    align-items:center;
+    gap:12px;
+
+}
+
+.quest-more-info dt,
+.quest-more-info dd{
+
+    margin:0;
+    color:#4b2b12;
+    font-size:.88rem;
+
+}
+
+.quest-more-info dd{
+
+    font-weight:700;
+    text-align:right;
+
+}
+
+.quest-info-category{
+
+    white-space:nowrap;
+
+}
+
 .quest-analysis{
 
     color:#3b2818;

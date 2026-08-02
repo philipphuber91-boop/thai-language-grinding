@@ -181,6 +181,27 @@
         grid-template-columns:repeat(2, minmax(0, 1fr));
     }
 
+    .quest-detail-panels{
+        grid-template-columns:1fr;
+    }
+
+    .quest-details{
+        transition:none;
+    }
+
+    .quest-card.expanded .quest-details{
+        max-height:1100px;
+    }
+
+    .quest-detail-panel + .quest-detail-panel{
+        border-top:1px solid rgba(160,112,44,.28);
+        border-left:0;
+    }
+
+    .quest-detail-panel{
+        padding:18px 14px;
+    }
+
     .quest-actions{
         justify-content:center;
         align-self:stretch;
@@ -215,6 +236,24 @@
 @media (max-width:520px){
     .quest-card{
         padding:12px;
+    }
+
+    .quest-word-statistics-content{
+        gap:14px;
+    }
+
+    .quest-word-ring{
+        flex-basis:100px;
+        width:100px;
+        height:100px;
+    }
+
+    .quest-word-ring::before{
+        inset:12px;
+    }
+
+    .quest-word-legend > div{
+        font-size:.8rem;
     }
 
     .start-quest-window{
