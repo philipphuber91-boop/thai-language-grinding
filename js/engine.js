@@ -411,7 +411,7 @@ karte.innerHTML = `
                 `
                     <img
                         class="quest-summary-icon"
-                        src="../assets/icons/achievements/brain-questkarte.png"
+                        src="../assets/icons/achievements/wörter-questkarte.png"
                         alt="">
                     ${formatThaiWordFamiliarityStatistics(familiarityStats)}
                 `,
