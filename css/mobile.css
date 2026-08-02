@@ -32,6 +32,8 @@
     z-index:1001;
     width:46px;
     height:46px;
+    padding:0;
+    box-sizing:border-box;
     border-radius:12px;
     border:2px solid var(--gold, #c89b3c);
     background:linear-gradient(180deg, #352517, #25180f);
@@ -41,6 +43,12 @@
     align-items:center;
     justify-content:center;
     cursor:pointer;
+}
+
+@media (min-width:901px){
+    .hamburger-button{
+        display:flex;
+    }
 }
 
 /* Abdunkelung hinter der aufgeklappten Sidebar (Mobile-Drawer) */

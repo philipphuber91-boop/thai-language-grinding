@@ -6465,11 +6465,10 @@ padding:28px 34px;
 
 /* Typing-Screen: ruhige, fein gerahmte RPG-Oberflächen. */
 @media (min-width:901px){
-
     #typingBereich.quest-card{
         width:min(1540px, 97%);
-        margin:10px auto;
-        padding:16px 20px 18px;
+        margin:14px auto;
+        padding:18px 22px 20px;
         overflow:hidden;
         border:2px solid #a96f24;
         border-radius:10px;
@@ -6515,7 +6514,7 @@ padding:28px 34px;
 
     .typing-header h2{
         color:#4a2c12;
-        font-size:2rem;
+        font-size:2.2rem;
         letter-spacing:.01em;
         text-shadow:0 1px 0 rgba(255,255,255,.68);
     }
@@ -6574,11 +6573,11 @@ padding:28px 34px;
     }
 
     #typingFenster{
-        width:min(100%, 1080px);
+        width:min(100%, 1180px);
         max-width:100%;
-        min-height:256px;
+        min-height:282px;
         margin:0 auto 18px;
-        padding:34px 42px;
+        padding:38px 46px;
         display:grid;
         align-content:center;
         border:1px solid #b77b2c;
@@ -6594,7 +6593,7 @@ padding:28px 34px;
     .typing-zeile{
         min-height:0;
         color:#43270f;
-        font-size:2rem;
+        font-size:2.2rem;
         line-height:1.55;
         text-shadow:0 1px 0 rgba(255,255,255,.54);
     }
@@ -6607,9 +6606,9 @@ padding:28px 34px;
     }
 
     .typing-keyboard{
-        width:min(100%, 1080px);
+        width:min(100%, 1180px);
         margin:0 auto;
-        padding:17px 24px 14px;
+        padding:19px 26px 16px;
         border:1px solid #ae7025;
         border-radius:8px;
         background:
@@ -6630,8 +6629,8 @@ padding:28px 34px;
     }
 
     .typing-keyboard .keyboard-row{
-        gap:9px;
-        margin-bottom:8px;
+        gap:10px;
+        margin-bottom:9px;
     }
 
     .typing-keyboard .keyboard-row.row-5{
@@ -6639,7 +6638,7 @@ padding:28px 34px;
     }
 
     .typing-keyboard .key{
-        min-height:56px;
+        min-height:62px;
         border:1px solid #b98037;
         border-radius:8px;
         background:linear-gradient(145deg, #fff0c8 0%, #f5d28c 58%, #d89f4f 100%);
@@ -6648,7 +6647,7 @@ padding:28px 34px;
             inset 0 -1px 0 rgba(120,70,15,.17),
             0 2px 4px rgba(78,43,7,.2);
         color:#4b2e12;
-        font-size:1.65rem;
+        font-size:1.8rem;
     }
 
     .typing-keyboard .key:hover{
@@ -6823,13 +6822,13 @@ padding:28px 34px;
 @media (min-width:901px){
 
     .quest-card{
-        width:min(1250px, 94%);
-        padding:8px 14px;
+        width:min(1450px, 96%);
+        padding:12px 20px;
     }
 
     .quest-header{
-        grid-template-columns:125px minmax(420px, 1fr) 140px 145px;
-        gap:12px;
+        grid-template-columns:145px minmax(520px, 1fr) 155px 160px;
+        gap:16px;
         align-items:center;
     }
 
@@ -6837,9 +6836,9 @@ padding:28px 34px;
         display:grid;
         grid-template-columns:minmax(180px, .9fr) minmax(260px, 1.4fr);
         grid-template-rows:repeat(3, 1fr);
-        column-gap:16px;
+        column-gap:20px;
         align-items:center;
-        height:108px;
+        height:124px;
         min-width:0;
     }
 
@@ -6849,7 +6848,7 @@ padding:28px 34px;
         align-self:end;
         margin:0 0 4px;
         transform:none;
-        font-size:1.25rem;
+        font-size:1.4rem;
         line-height:1.15;
     }
 
@@ -6858,10 +6857,10 @@ padding:28px 34px;
         grid-row:2 / 4;
         align-self:center;
         transform:none;
-        width:min(100%, 220px);
+        width:min(100%, 250px);
         margin:0 auto 4px;
-        padding:1px 2px;
-        gap:4px;
+        padding:2px 3px;
+        gap:5px;
     }
 
     .quest-meta{
@@ -6869,13 +6868,13 @@ padding:28px 34px;
         grid-row:1;
         align-self:start;
         margin:1px 0;
-        font-size:.78rem;
+        font-size:.88rem;
         line-height:1.15;
         text-align:left;
     }
 
     .quest-card .quest-meta{
-        font-size:.78rem;
+        font-size:.88rem;
         line-height:1.15;
     }
 
@@ -6885,7 +6884,7 @@ padding:28px 34px;
         width:100%;
         justify-content:flex-start;
         margin:1px 0;
-        font-size:.72rem;
+        font-size:.82rem;
         line-height:1.15;
         text-align:left;
         transform:none;
@@ -6902,32 +6901,32 @@ padding:28px 34px;
     }
 
     .quest-card .quest-summary-icon{
-        width:1.25em;
-        height:1.25em;
+        width:1.35em;
+        height:1.35em;
     }
 
     .quest-card .quest-audio-play-button{
-        flex-basis:24px;
-        width:24px;
-        height:24px;
-        font-size:.7rem;
+        flex-basis:28px;
+        width:28px;
+        height:28px;
+        font-size:.78rem;
     }
 
     .quest-card .quest-audio-speed{
         gap:4px;
-        font-size:.62rem;
+        font-size:.7rem;
     }
 
     .quest-card .quest-audio-speed-slider{
-        width:70px;
+        width:82px;
     }
 
     .quest-card .quest-audio-speed-value{
-        min-width:23px;
+        min-width:27px;
     }
 
     .quest-card .quest-start-button img{
-        width:130px;
+        width:145px;
     }
 
     .quest-progress{
@@ -6936,6 +6935,71 @@ padding:28px 34px;
 
     .quest-actions{
         justify-content:center;
+    }
+
+}
+
+/* Desktop drawer navigation. The existing mobile toggle logic is shared,
+   while the fixed sidebar offset is removed so cards can use the full width. */
+@media (min-width:901px){
+
+    html,
+    body{
+        overflow-x:hidden;
+    }
+
+    body.drawer-open{
+        overflow:hidden;
+    }
+
+    .hamburger-button{
+        display:flex;
+        position:fixed;
+        top:20px;
+        left:20px;
+        z-index:1001;
+    }
+
+    .sidebar-backdrop{
+        display:none;
+        position:fixed;
+        inset:0;
+        z-index:998;
+    }
+
+    .sidebar{
+        position:fixed;
+        top:0;
+        left:0;
+        width:min(320px, 82vw);
+        max-width:320px;
+        height:100vh;
+        padding:88px 20px 24px;
+        overflow-y:auto;
+        background:#1a120d;
+        z-index:999;
+        transform:translateX(-100%);
+        transition:transform .25s ease;
+        box-shadow:0 0 30px rgba(0,0,0,.5);
+    }
+
+    .sidebar.mobile-open{
+        transform:translateX(0);
+    }
+
+    .layout{
+        display:block;
+        width:100%;
+        padding:28px 34px 40px;
+    }
+
+    .content{
+        width:100%;
+        margin-left:0;
+    }
+
+    #questListe{
+        width:100%;
     }
 
 }
