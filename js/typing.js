@@ -1405,7 +1405,7 @@ function aktualisiereTastenhilfeUI() {
 
         if (settingsSoundPreset) {
             settingsSoundPreset.value =
-                window.typingFeedback?.getSoundPreset() || "soft-click";
+                window.typingFeedback?.getSoundPreset() || "recorded-click";
             settingsSoundPreset.disabled = !soundEnabled;
         }
 

@@ -16,7 +16,7 @@
  * müssen den Cache in Safari nicht manuell löschen.
  */
 
-const CACHE_VERSION = 'v3';
+const CACHE_VERSION = 'v4';
 const CACHE_NAME = `thai-language-grinding-${CACHE_VERSION}`;
 
 // App-Shell: alles, was für Start und Offline-Betrieb gebraucht wird.
@@ -41,6 +41,7 @@ const PRECACHE_ASSETS = [
     'js/achievementRenderer.js',
     'js/engine.js',
     'js/keyboard.js',
+    'js/typing-feedback.js',
     'js/typing.js',
     'js/pwa-register.js',
 
@@ -61,6 +62,11 @@ const PRECACHE_ASSETS = [
     'assets/ui/chronik/stat-characters.png',
     'assets/ui/chronik/stat-quests.png',
     'assets/ui/chronik/stat-time.png',
+
+    'assets/audio/typing-click.mp3',
+    'assets/audio/typing-drop.mp3',
+    'assets/audio/typing-iphone.mp3',
+    'assets/audio/typing-iphone2.mp3',
 
     'assets/quest/bahnhof.png',
     'assets/quest/frühstück.png',
