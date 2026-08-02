@@ -380,13 +380,13 @@ karte.innerHTML = `
 
     <div class="quest-main">
 
+        <h2>${quest.titel}</h2>
+
         ${window.questAudio.renderQuestAudioPlayer({
             contentMode,
             questNumber: nummer,
             className: "quest-audio-card"
         })}
-
-        <h2>${quest.titel}</h2>
 
         <p class="quest-meta">
 
