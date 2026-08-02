@@ -1207,6 +1207,10 @@ const settingsCloseButton = document.getElementById("settingsCloseButton");
 const settingsTastenhilfeToggle = document.getElementById("settingsTastenhilfeToggle");
 const settingsDelaySlider = document.getElementById("settingsDelaySlider");
 const settingsDelayValue = document.getElementById("settingsDelayValue");
+const settingsVibrationToggle = document.getElementById("settingsVibrationToggle");
+const settingsSoundToggle = document.getElementById("settingsSoundToggle");
+const settingsVibrationRow = document.getElementById("settingsVibrationRow");
+const settingsVibrationHint = document.getElementById("settingsVibrationHint");
 const mobileBackButton = document.getElementById("mobileBackButton");
 const mobileInputGame = document.getElementById("mobileInputGame");
 const mobileInputSystem = document.getElementById("mobileInputSystem");
@@ -1352,6 +1356,7 @@ function applyMobileKeyboardStructure() {
 function aktualisiereTastenhilfeUI() {
 
     const systemKeyboardActive = isSystemKeyboardMode();
+    const vibrationSupported = window.typingFeedback?.supportsVibration() === true;
 
     if (settingsTastenhilfeToggle) {
         settingsTastenhilfeToggle.checked = tastenhilfeEnabled;
@@ -1381,6 +1386,20 @@ function aktualisiereTastenhilfeUI() {
     settingsTutorRow?.classList.toggle("disabled", systemKeyboardActive);
     settingsDelayRow?.classList.toggle("disabled", systemKeyboardActive);
     systemKeyboardTutorHint?.classList.toggle("visible", systemKeyboardActive);
+
+    if (settingsVibrationToggle) {
+        settingsVibrationToggle.checked =
+            vibrationSupported && window.typingFeedback.isVibrationEnabled();
+        settingsVibrationToggle.disabled = !vibrationSupported;
+    }
+
+    if (settingsSoundToggle) {
+        settingsSoundToggle.checked =
+            window.typingFeedback?.isSoundEnabled() === true;
+    }
+
+    settingsVibrationRow?.classList.toggle("disabled", !vibrationSupported);
+    settingsVibrationHint?.classList.toggle("visible", !vibrationSupported);
 
 }
 
@@ -1485,6 +1504,16 @@ settingsTastenhilfeToggle?.addEventListener("change", function () {
     aktualisiereTastenhilfeUI();
     syncKeyboardHighlight();
 
+});
+
+settingsVibrationToggle?.addEventListener("change", function () {
+    window.typingFeedback?.setVibrationEnabled(settingsVibrationToggle.checked);
+    aktualisiereTastenhilfeUI();
+});
+
+settingsSoundToggle?.addEventListener("change", function () {
+    window.typingFeedback?.setSoundEnabled(settingsSoundToggle.checked);
+    aktualisiereTastenhilfeUI();
 });
 
 mobileInputGame?.addEventListener("change", function () {
@@ -1863,9 +1892,12 @@ function typeCharacterFromVirtualKey(character) {
 }
 
 function handleVirtualKeyTap(keyElement) {
-    if (!keyElement || phase !== "typing") {
+    if (!keyElement || phase !== "typing" ||
+        !isMobileViewport() || mobileInputMethod !== "game") {
         return;
     }
+
+    window.typingFeedback?.trigger();
 
     if (keyElement.classList.contains("key-shift")) {
         pressKey("Shift");
