@@ -2,7 +2,12 @@ const questListe = document.getElementById("questListe");
 
 let contentMode = "campaign";
 
-function formatQuestMasteryDetails(statistics, category) {
+function formatQuestMasteryDetails(
+    statistics,
+    category,
+    questStats,
+    averageWordLength
+) {
 
     if (!statistics.supported) {
         return `
@@ -12,43 +17,135 @@ function formatQuestMasteryDetails(statistics, category) {
         `;
     }
 
+    const attempts = Number(questStats?.attempts);
+    const totalAttempts =
+        Number.isFinite(attempts) && attempts >= 0
+            ? Math.floor(attempts)
+            : 0;
+    const wordStatisticsStyle = [
+        `--unseen:${statistics.percentages.unseen}%`,
+        `--seen:${statistics.percentages.seen}%`,
+        `--known:${statistics.percentages.known}%`,
+        `--learned:${statistics.percentages.learned}%`,
+        `--mastered:${statistics.percentages.mastered}%`
+    ].join(";");
+
     return `
-        <div class="quest-analysis">
+        <div class="quest-detail-panels">
 
-            <h3>📊 Sprachanalyse</h3>
+            <section class="quest-detail-panel quest-word-statistics">
 
-            <div class="quest-analysis-grid">
+                <h3>Wortstatistik</h3>
 
-                <div>❓ ${statistics.percentages.unseen}% ungesehen</div>
-                <div>👀 ${statistics.percentages.seen}% gesehen</div>
-                <div>📖 ${statistics.percentages.known}% bekannt</div>
-                <div>🧠 ${statistics.percentages.learned}% gelernt</div>
-                <div>🏆 ${statistics.percentages.mastered}% gemeistert</div>
+                <div class="quest-word-statistics-content">
 
-            </div>
+                    <div
+                        class="quest-word-ring"
+                        style="${wordStatisticsStyle}">
+                        <strong>${statistics.unique}</strong>
+                        <span>einzigartig</span>
+                    </div>
 
-            <div class="quest-analysis-summary">
+                    <div class="quest-word-legend">
 
-                <div>
-                    📖 Leseverständnis (ab bekannt):
-                    ${statistics.readingComprehensionPercentage}%
+                        <div>
+                            <span class="quest-legend-color unseen"></span>
+                            <span>Ungesehen</span>
+                            <strong>${statistics.percentages.unseen}%</strong>
+                        </div>
+
+                        <div>
+                            <span class="quest-legend-color seen"></span>
+                            <span>Gesehen</span>
+                            <strong>${statistics.percentages.seen}%</strong>
+                        </div>
+
+                        <div>
+                            <span class="quest-legend-color known"></span>
+                            <span>Bekannt</span>
+                            <strong>${statistics.percentages.known}%</strong>
+                        </div>
+
+                        <div>
+                            <span class="quest-legend-color learned"></span>
+                            <span>Gelernt</span>
+                            <strong>${statistics.percentages.learned}%</strong>
+                        </div>
+
+                        <div>
+                            <span class="quest-legend-color mastered"></span>
+                            <span>Gemeistert</span>
+                            <strong>${statistics.percentages.mastered}%</strong>
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div>
-                    🧠 Wortschatzabdeckung:
-                    ${statistics.vocabularyCoveragePercentage}%
+                <p class="quest-detail-note">
+                    Basierend auf allen Wortvorkommen in dieser Quest.
+                </p>
+
+            </section>
+
+            <section class="quest-detail-panel quest-understanding">
+
+                <h3>Verständnis</h3>
+
+                <div class="quest-understanding-meters">
+
+                    <div class="quest-understanding-meter">
+                        <div
+                            class="quest-meter"
+                            style="--meter-value:${statistics.readingComprehensionPercentage}%">
+                            <strong>${statistics.readingComprehensionPercentage}%</strong>
+                        </div>
+                        <span>Leseverständnis</span>
+                    </div>
+
+                    <div class="quest-understanding-meter">
+                        <div
+                            class="quest-meter quest-meter-vocabulary"
+                            style="--meter-value:${statistics.vocabularyCoveragePercentage}%">
+                            <strong>${statistics.vocabularyCoveragePercentage}%</strong>
+                        </div>
+                        <span>Wortschatzabdeckung</span>
+                    </div>
+
                 </div>
 
-                <div>
-                    ❓ Neu:
-                    ${statistics.percentages.unseen}%
-                </div>
+                <p class="quest-understanding-callout">
+                    ⭐ ${category.label} für dich.
+                </p>
 
-                <div class="quest-analysis-flow">
-                    🎯 Flow-Zone: ${category.label}
-                </div>
+            </section>
 
-            </div>
+            <section class="quest-detail-panel quest-more-info">
+
+                <h3>Weitere Infos</h3>
+
+                <dl>
+
+                    <div>
+                        <dt>↻ Versuche insgesamt</dt>
+                        <dd>${totalAttempts}</dd>
+                    </div>
+
+                    <div>
+                        <dt>↔ Durchschnittliche Wortlänge</dt>
+                        <dd>${averageWordLength}</dd>
+                    </div>
+
+                    <div>
+                        <dt>📊 Schwierigkeitsbewertung</dt>
+                        <dd class="quest-info-category familiarity-${category.key}">
+                            ${category.emoji} ${category.label}
+                        </dd>
+                    </div>
+
+                </dl>
+
+            </section>
 
         </div>
     `;
@@ -74,6 +171,12 @@ function ladeKarten() {
             );
         const familiarityCategory =
             getThaiWordFamiliarityCategory(familiarityStats);
+        const averageWordLength =
+            thaiWordStats.total > 0
+                ? getThaiAverageWordLength(quest.thaiZeilen)
+                    .toFixed(1)
+                    .replace(".", ",")
+                : "–";
 
 
 
@@ -240,19 +343,12 @@ karte.innerHTML = `
 
 <div class="quest-details">
 
-    ${formatQuestMasteryDetails(familiarityStats, familiarityCategory)}
-
-    <div class="quest-detail-grid">
-
-        <div>🏆 Bester Lauf</div>
-
-        <div>📌 Letzter Lauf</div>
-
-        <div>🔁 Wiederholung</div>
-
-        <div>⭐ Belohnung</div>
-
-    </div>
+    ${formatQuestMasteryDetails(
+        familiarityStats,
+        familiarityCategory,
+        stats,
+        averageWordLength
+    )}
 
 </div>
 

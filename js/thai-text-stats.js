@@ -303,6 +303,22 @@ function getThaiCharacterCount(thaiZeilen) {
     );
 }
 
+function getThaiAverageWordLength(thaiZeilen) {
+
+    const wordList = getThaiWordList(thaiZeilen);
+
+    if (!wordList.supported || wordList.words.length === 0) {
+        return 0;
+    }
+
+    const totalCharacters = wordList.words.reduce(
+        (total, word) => total + Array.from(word).length,
+        0
+    );
+
+    return totalCharacters / wordList.words.length;
+}
+
 function formatThaiWordStatistics(statistics) {
 
     if (!statistics.supported) {
