@@ -164,6 +164,12 @@
         justify-items:center;
         text-align:center;
         gap:10px;
+        min-width:0;
+    }
+
+    .quest-main{
+        min-width:0;
+        width:100%;
     }
 
     .quest-main h2{
@@ -174,18 +180,32 @@
         text-align:center;
     }
 
+    .quest-difficulty-mobile{
+        display:inline-block;
+    }
+
+    .quest-level-desktop{
+        display:none;
+    }
+
     .quest-words,
     .quest-familiarity{
-        justify-content:flex-start;
+        justify-content:center;
         font-size:clamp(.78rem, 4.8vw, .95rem);
         white-space:nowrap;
-        text-align:left;
+        text-align:center;
     }
 
     .quest-summary-help,
     .quest-summary-help .quest-help-value{
         min-width:0;
         white-space:nowrap;
+    }
+
+    .quest-help-tooltip{
+        max-width:calc(100vw - 32px);
+        white-space:normal;
+        overflow-wrap:anywhere;
     }
 
     .quest-main .familiarity-button{
@@ -2236,4 +2256,35 @@
     .typing-keyboard .key.key-space{
         font-size:clamp(.68rem, 4.1vw, .9rem);
     }
+}
+
+@media (max-width:900px){
+
+    .quest-audio-player{
+        flex-wrap:wrap;
+        gap:6px 8px;
+        width:min(100%, 330px);
+        padding:5px 7px;
+    }
+
+    .quest-audio-card{
+        transform:none;
+        margin:0 auto 8px;
+    }
+
+    .quest-audio-speed-slider{
+        width:96px;
+    }
+
+    .quest-audio-status{
+        flex-basis:100%;
+        text-align:center;
+    }
+
+    .typing-audio-container{
+        flex:0 0 auto;
+        margin:-4px auto 8px;
+        padding:0 2px;
+    }
+
 }
