@@ -7055,7 +7055,7 @@ padding:28px 34px;
         display:flex !important;
         flex-direction:column;
         align-items:stretch;
-        width:100%;
+        width:100vw;
         max-width:none;
         height:100dvh;
         min-height:100dvh;
@@ -7066,6 +7066,15 @@ padding:28px 34px;
         border-radius:0;
         background:#fbefcf;
         box-shadow:none;
+    }
+
+    #typingBereich.quest-card::before,
+    #typingBereich.quest-card::after{
+        display:none;
+    }
+
+    #typingBereich.quest-card:hover{
+        transform:none;
     }
 
     .typing-audio-container{
@@ -7210,11 +7219,40 @@ padding:28px 34px;
         padding:0 12px;
         overflow:visible;
         color:#3d2b1d;
-        font-size:clamp(2rem, 3vw, 2.6rem);
+        font-size:clamp(1.7rem, 2.5vw, 2.25rem);
         line-height:1.55;
         text-align:center;
         overflow-wrap:normal;
         word-break:normal;
+    }
+
+    #zeile1.mobile-thai-lines{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        justify-content:flex-end;
+        height:calc(3 * clamp(30px, 5dvh, 48px));
+        min-height:calc(3 * clamp(30px, 5dvh, 48px));
+        max-height:calc(3 * clamp(30px, 5dvh, 48px));
+        overflow:hidden;
+    }
+
+    #zeile1.mobile-thai-lines .mobile-thai-line{
+        display:flex;
+        flex:0 0 clamp(30px, 5dvh, 48px);
+        align-items:center;
+        justify-content:center;
+        width:100%;
+        min-width:0;
+        overflow:hidden;
+        text-align:center;
+        white-space:nowrap;
+        line-height:1.45;
+        text-overflow:clip;
+    }
+
+    #zeile1.mobile-thai-lines .mobile-thai-line > span{
+        white-space:nowrap;
     }
 
     #zeile2{
@@ -7225,10 +7263,10 @@ padding:28px 34px;
         order:3;
         display:block !important;
         flex:0 0 auto;
-        width:100%;
+        width:min(52%, 760px);
         min-height:30px;
-        margin:0 0 6px;
-        padding:3px 10%;
+        margin:0 auto 6px;
+        padding:3px 0;
         border:0;
         background:transparent;
         box-shadow:none;
@@ -7247,7 +7285,7 @@ padding:28px 34px;
     }
 
     .typing-quest-progress .progress-bar{
-        height:5px;
+        height:6px;
         margin:0 0 3px;
         overflow:hidden;
         border:0;
@@ -7263,17 +7301,17 @@ padding:28px 34px;
 
     #typingProgressText{
         margin:0;
-        height:14px;
+        height:16px;
         font-size:0 !important;
         color:#4f3823;
-        line-height:14px;
+        line-height:16px;
         text-align:center;
         white-space:nowrap;
     }
 
     #typingProgressText::after{
         content:attr(data-mobile-text);
-        font-size:.68rem;
+        font-size:.78rem;
     }
 
     #thaiKeyboard{
