@@ -479,11 +479,34 @@ questTitel.textContent =
 storyText.textContent =
     daten[aktuelleQuest].story;
 
-deutscherText.innerHTML =
-    daten[aktuelleQuest].deutschZeilen.join("<br><br>");
+function renderBuchZeilen(deutschZeilen, thaiZeilen) {
+    deutscherText.replaceChildren();
+    thaiText.replaceChildren();
 
-thaiText.innerHTML =
-    daten[aktuelleQuest].thaiZeilen.join("<br><br>");
+    const anzahlZeilen =
+        Math.max(deutschZeilen.length, thaiZeilen.length);
+
+    for (let index = 0; index < anzahlZeilen; index += 1) {
+        const gridZeile = String(index + 2);
+        const deutschSatz = document.createElement("div");
+        const thaiSatz = document.createElement("div");
+
+        deutschSatz.className = "buch-satz";
+        thaiSatz.className = "buch-satz";
+        deutschSatz.style.gridRow = gridZeile;
+        thaiSatz.style.gridRow = gridZeile;
+        deutschSatz.textContent = deutschZeilen[index] || "";
+        thaiSatz.textContent = thaiZeilen[index] || "";
+
+        deutscherText.appendChild(deutschSatz);
+        thaiText.appendChild(thaiSatz);
+    }
+}
+
+renderBuchZeilen(
+    daten[aktuelleQuest].deutschZeilen,
+    daten[aktuelleQuest].thaiZeilen
+);
 const auftrag = document.getElementById("auftrag");
 const deutsch = document.getElementById("deutsch");
 const typingBereich =
