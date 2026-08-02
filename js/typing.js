@@ -904,6 +904,10 @@ function zeigeFehler() {
     clearTimeout(fehlerTimeout);
 
     if (isMobileViewport()) {
+        if (mobileInputMethod === "game") {
+            window.typingFeedback?.triggerError();
+        }
+
         renderMobileThaiLines("fehler");
         zeile2.textContent = "";
         fehlerTimeout = setTimeout(function () {
@@ -1209,6 +1213,8 @@ const settingsDelaySlider = document.getElementById("settingsDelaySlider");
 const settingsDelayValue = document.getElementById("settingsDelayValue");
 const settingsVibrationToggle = document.getElementById("settingsVibrationToggle");
 const settingsSoundToggle = document.getElementById("settingsSoundToggle");
+const settingsSoundPreset = document.getElementById("settingsSoundPreset");
+const settingsSoundPresetRow = document.getElementById("settingsSoundPresetRow");
 const settingsVibrationRow = document.getElementById("settingsVibrationRow");
 const settingsVibrationHint = document.getElementById("settingsVibrationHint");
 const mobileBackButton = document.getElementById("mobileBackButton");
@@ -1394,8 +1400,16 @@ function aktualisiereTastenhilfeUI() {
     }
 
     if (settingsSoundToggle) {
-        settingsSoundToggle.checked =
-            window.typingFeedback?.isSoundEnabled() === true;
+        const soundEnabled = window.typingFeedback?.isSoundEnabled() === true;
+        settingsSoundToggle.checked = soundEnabled;
+
+        if (settingsSoundPreset) {
+            settingsSoundPreset.value =
+                window.typingFeedback?.getSoundPreset() || "soft-click";
+            settingsSoundPreset.disabled = !soundEnabled;
+        }
+
+        settingsSoundPresetRow?.classList.toggle("visible", soundEnabled);
     }
 
     settingsVibrationRow?.classList.toggle("disabled", !vibrationSupported);
@@ -1513,6 +1527,11 @@ settingsVibrationToggle?.addEventListener("change", function () {
 
 settingsSoundToggle?.addEventListener("change", function () {
     window.typingFeedback?.setSoundEnabled(settingsSoundToggle.checked);
+    aktualisiereTastenhilfeUI();
+});
+
+settingsSoundPreset?.addEventListener("change", function () {
+    window.typingFeedback?.setSoundPreset(settingsSoundPreset.value);
     aktualisiereTastenhilfeUI();
 });
 
@@ -1897,9 +1916,8 @@ function handleVirtualKeyTap(keyElement) {
         return;
     }
 
-    window.typingFeedback?.trigger();
-
     if (keyElement.classList.contains("key-shift")) {
+        window.typingFeedback?.trigger();
         pressKey("Shift");
         virtualShiftActive = !virtualShiftActive;
         updateVirtualShiftVisual();
@@ -1911,6 +1929,7 @@ function handleVirtualKeyTap(keyElement) {
     // "input"-Listener von #eingabe weiter oben) - nur visuelles
     // Feedback, kein Verhalten wird hinzuerfunden.
     if (keyElement.classList.contains("key-action")) {
+        window.typingFeedback?.trigger();
         pressKey(keyElement.getAttribute("data-key"));
         return;
     }
@@ -1919,6 +1938,12 @@ function handleVirtualKeyTap(keyElement) {
     const character = virtualShiftActive && shiftCharacter
         ? shiftCharacter
         : keyElement.getAttribute("data-key");
+
+    const isExpectedCharacter = text[position] === character;
+
+    if (isExpectedCharacter) {
+        window.typingFeedback?.trigger();
+    }
 
     pressKey(character);
     typeCharacterFromVirtualKey(character);
