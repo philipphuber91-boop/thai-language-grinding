@@ -2,6 +2,94 @@ const questListe = document.getElementById("questListe");
 
 let contentMode = "campaign";
 
+function formatQuestInfoHint(
+    label,
+    description,
+    content,
+    modifierClass = "",
+    triggerContent = "?"
+) {
+
+    const ariaLabel = label.endsWith("erklären")
+        ? label
+        : `${label} erklären`;
+
+    return `
+        <span class="quest-help ${modifierClass}">
+            <span class="quest-help-value">${content}</span>
+            <button
+                type="button"
+                class="quest-help-trigger"
+                aria-label="${ariaLabel}"
+                aria-expanded="false">
+                ${triggerContent}
+            </button>
+            <span class="quest-help-tooltip" role="tooltip">
+                ${description}
+            </span>
+        </span>
+    `;
+}
+
+function closeQuestInfoHints(except = null) {
+
+    document.querySelectorAll(".quest-help.is-open").forEach(help => {
+
+        if (help === except) {
+            return;
+        }
+
+        help.classList.remove("is-open");
+        help.querySelector(".quest-help-trigger")?.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    });
+}
+
+function setupQuestInfoHints(container) {
+
+    container.querySelectorAll(".quest-help-trigger").forEach(trigger => {
+
+        trigger.addEventListener("click", event => {
+
+            event.stopPropagation();
+
+            const help = trigger.closest(".quest-help");
+            const shouldOpen = !help.classList.contains("is-open");
+
+            closeQuestInfoHints(help);
+            help.classList.toggle("is-open", shouldOpen);
+            trigger.setAttribute(
+                "aria-expanded",
+                String(shouldOpen)
+            );
+
+        });
+
+    });
+}
+
+document.addEventListener("click", event => {
+
+    if (
+        !(event.target instanceof Element) ||
+        !event.target.closest(".quest-help")
+    ) {
+        closeQuestInfoHints();
+    }
+
+});
+
+document.addEventListener("keydown", event => {
+
+    if (event.key === "Escape") {
+        closeQuestInfoHints();
+    }
+
+});
+
 function formatQuestMasteryDetails(
     statistics,
     category,
@@ -35,7 +123,15 @@ function formatQuestMasteryDetails(
 
             <section class="quest-detail-panel quest-word-statistics">
 
-                <h3>Wortstatistik</h3>
+                <h3>
+                    <span>Wortstatistik</span>
+                    ${formatQuestInfoHint(
+                        "Wortstatistik erklären",
+                        "Diese Übersicht zeigt die einzigartigen Wörter nach Lernstufe: ungesehen (0×), gesehen (1–4×), bekannt (5–9×), gelernt (10–24×) und gemeistert (25×+). Die Prozentwerte beziehen sich auf die einzigartigen Wörter.",
+                        "",
+                        "quest-panel-help"
+                    )}
+                </h3>
 
                 <div class="quest-word-statistics-content">
 
@@ -86,7 +182,15 @@ function formatQuestMasteryDetails(
 
             <section class="quest-detail-panel quest-understanding">
 
-                <h3>Verständnis</h3>
+                <h3>
+                    <span>Verständnis</span>
+                    ${formatQuestInfoHint(
+                        "Verständnis erklären",
+                        "Leseverständnis zählt alle Wortvorkommen ab bekannt (5+ Begegnungen). Wortschatzabdeckung zählt einzigartige Wörter ab gelernt (10+ Begegnungen). Der Beherrschungsgrad zählt Wortvorkommen ab gelernt und bestimmt die Einstufung: 0–49 % schwer, 50–69 % anspruchsvoll, 70–84 % perfekter Flow und ab 85 % leicht.",
+                        "",
+                        "quest-panel-help"
+                    )}
+                </h3>
 
                 <div class="quest-understanding-meters">
 
@@ -293,11 +397,26 @@ karte.innerHTML = `
         </p>
 
         <p class="quest-words">
-            📖 ${formatThaiWordStatistics(thaiWordStats)}
+            <img
+                class="quest-summary-icon"
+                src="../assets/icons/achievements/brain-questkarte.png"
+                alt="">
+            ${formatThaiWordStatistics(thaiWordStats)}
         </p>
 
         <p class="quest-familiarity">
-            🧠 ${formatThaiWordFamiliarityStatistics(familiarityStats)}
+            ${formatQuestInfoHint(
+                "Bekanntheitsgrad erklären",
+                "Bekannt zählt ab 5 erfolgreichen Begegnungen. Unbekannt umfasst einzigartige Wörter mit 0–4 erfolgreichen Begegnungen.",
+                `
+                    <img
+                        class="quest-summary-icon"
+                        src="../assets/icons/achievements/brain-questkarte.png"
+                        alt="">
+                    ${formatThaiWordFamiliarityStatistics(familiarityStats)}
+                `,
+                "quest-summary-help"
+            )}
         </p>
 
         <button
@@ -361,9 +480,9 @@ karte.innerHTML = `
 `;
 
         questListe.appendChild(karte);
+setupQuestInfoHints(karte);
 
     }
-
 }
 
 if (questListe) {
