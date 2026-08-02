@@ -6824,6 +6824,7 @@ padding:28px 34px;
     .quest-card{
         width:min(1595px, 96%);
         padding:14px 22px;
+        --image-size:125px;
     }
 
     .quest-header{
@@ -6861,12 +6862,13 @@ padding:28px 34px;
     }
 
     .quest-audio-card{
-        grid-column:2;
-        grid-row:2 / 4;
-        align-self:center;
-        transform:none;
+        position:absolute;
+        left:50%;
+        top:66px;
+        z-index:1;
+        transform:translateX(-50%);
         width:min(100%, 270px);
-        margin:0 auto;
+        margin:0;
         padding:2px 3px;
         gap:5px;
     }
@@ -6934,13 +6936,13 @@ padding:28px 34px;
     }
 
     .quest-card .quest-start-button img{
-        width:125px;
+        width:135px;
     }
 
     .quest-progress{
         width:100%;
         max-width:145px;
-        transform:translateX(10px);
+        transform:translateX(105px);
     }
 
     .quest-progress .progress-text{
