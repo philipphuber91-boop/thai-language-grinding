@@ -2,60 +2,24 @@ const TYPING_VIBRATION_KEY = "typingVibrationEnabled";
 const TYPING_SOUND_KEY = "typingSoundEnabled";
 const TYPING_SOUND_PRESET_KEY = "typingSoundPreset";
 const TYPING_VIBRATION_DURATION_MS = 10;
-const DEFAULT_TYPING_SOUND_PRESET = "soft-click";
+const DEFAULT_TYPING_SOUND_PRESET = "recorded-click";
 
 const TYPING_SOUND_PRESETS = Object.freeze({
-    "soft-click": {
-        label: "Sanfter Klick",
-        tones: [
-            {
-                type: "square",
-                frequency: 1850,
-                endFrequency: 900,
-                duration: 0.035,
-                volume: 0.045
-            }
-        ]
+    "recorded-click": {
+        label: "Klick (Aufnahme)",
+        audioSources: ["../assets/audio/typing-click.mp3"]
     },
-    "water-drop": {
-        label: "Wassertropfen",
-        tones: [
-            {
-                type: "sine",
-                frequency: 1450,
-                endFrequency: 720,
-                duration: 0.16,
-                volume: 0.07
-            },
-            {
-                type: "sine",
-                frequency: 2200,
-                endFrequency: 1250,
-                duration: 0.11,
-                delay: 0.025,
-                volume: 0.035
-            }
-        ]
+    "recorded-drop": {
+        label: "Wassertropfen (Aufnahme)",
+        audioSources: ["../assets/audio/typing-drop.mp3"]
     },
-    wood: {
-        label: "Holz",
-        tones: [
-            {
-                type: "triangle",
-                frequency: 260,
-                endFrequency: 130,
-                duration: 0.055,
-                volume: 0.06
-            },
-            {
-                type: "square",
-                frequency: 110,
-                endFrequency: 75,
-                duration: 0.08,
-                delay: 0.006,
-                volume: 0.035
-            }
-        ]
+    "recorded-iphone": {
+        label: "iPhone-Klick (Aufnahme)",
+        audioSources: ["../assets/audio/typing-iphone.mp3"]
+    },
+    "recorded-iphone2": {
+        label: "iPhone-Ton (Aufnahme)",
+        audioSources: ["../assets/audio/typing-iphone2.mp3"]
     },
     bell: {
         label: "Glocke",
@@ -98,6 +62,8 @@ const TYPING_ERROR_TONES = [
 ];
 
 let typingAudioContext = null;
+const typingAudioPools = new Map();
+const TYPING_AUDIO_POOL_SIZE = 4;
 
 function supportsTypingVibration() {
     return typeof navigator !== "undefined" &&
@@ -175,6 +141,53 @@ function getTypingAudioContext() {
     return typingAudioContext;
 }
 
+function playTypingAudio(sources) {
+    if (typeof Audio !== "function" || !Array.isArray(sources) || sources.length === 0) {
+        return;
+    }
+
+    const source = sources[Math.floor(Math.random() * sources.length)];
+    let pool = typingAudioPools.get(source);
+
+    if (!pool) {
+        pool = [];
+        typingAudioPools.set(source, pool);
+    }
+
+    let audio = pool.find(candidate => candidate.paused || candidate.ended);
+
+    if (!audio) {
+        audio = pool.length < TYPING_AUDIO_POOL_SIZE
+            ? new Audio(source)
+            : pool[0];
+
+        audio.preload = "auto";
+
+        if (!pool.includes(audio)) {
+            pool.push(audio);
+        }
+    }
+
+    audio.currentTime = 0;
+    audio.volume = 0.45;
+    const playback = audio.play();
+
+    if (playback && typeof playback.catch === "function") {
+        playback.catch(error => {
+            console.warn("Aufgenommener Tipp-Ton konnte nicht abgespielt werden.", error);
+        });
+    }
+}
+
+function playTypingPreset(preset) {
+    if (Array.isArray(preset.audioSources)) {
+        playTypingAudio(preset.audioSources);
+        return;
+    }
+
+    playTypingSequence(preset.tones);
+}
+
 function playTypingSequence(tones) {
     const audioContext = getTypingAudioContext();
 
@@ -227,7 +240,7 @@ function triggerTypingFeedback() {
     }
 
     if (isTypingSoundEnabled()) {
-        playTypingSequence(TYPING_SOUND_PRESETS[getTypingSoundPreset()].tones);
+        playTypingPreset(TYPING_SOUND_PRESETS[getTypingSoundPreset()]);
     }
 }
 
