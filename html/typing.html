@@ -341,6 +341,32 @@
 
     </div>
 
+    <div class="settings-section mobile-keyboard-feedback-settings">
+
+        <h3 class="settings-section-title">Tastaturfeedback</h3>
+
+        <div class="settings-row" id="settingsVibrationRow">
+            <span class="settings-row-label">📳 Vibration</span>
+            <label class="settings-switch">
+                <input type="checkbox" id="settingsVibrationToggle" aria-describedby="settingsVibrationHint">
+                <span class="settings-switch-track"><span class="settings-switch-thumb"></span></span>
+            </label>
+        </div>
+
+        <p id="settingsVibrationHint" class="typing-feedback-hint">
+            Vibration wird von diesem Browser oder Gerät nicht unterstützt.
+        </p>
+
+        <div class="settings-row">
+            <span class="settings-row-label">🔊 Tippgeräusch</span>
+            <label class="settings-switch">
+                <input type="checkbox" id="settingsSoundToggle">
+                <span class="settings-switch-track"><span class="settings-switch-thumb"></span></span>
+            </label>
+        </div>
+
+    </div>
+
     <p class="settings-hint">💡 Die Tastenhilfe zeigt dir nach der gewählten Verzögerung die richtige Taste an.</p>
 
 </div>
@@ -527,6 +553,7 @@ loadQuestStats();
 </script>
 
 <script src="../js/keyboard.js"></script>
+<script src="../js/typing-feedback.js"></script>
 <script src="../js/typing.js"></script>
 
 <!-- PWA: registriert den Service Worker, verändert keine Spiellogik -->

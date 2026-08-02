@@ -1640,6 +1640,10 @@
         display:block;
     }
 
+    .mobile-keyboard-feedback-settings{
+        display:block;
+    }
+
     .mobile-input-method-options{
         display:grid;
         grid-template-columns:1fr;
@@ -1699,6 +1703,18 @@
         color:#77542e;
         font-size:.72rem;
         line-height:1.35;
+    }
+
+    .typing-feedback-hint{
+        display:none;
+        margin:8px 0 0;
+        color:#77542e;
+        font-size:.72rem;
+        line-height:1.35;
+    }
+
+    .typing-feedback-hint.visible{
+        display:block;
     }
 
     .settings-panel{

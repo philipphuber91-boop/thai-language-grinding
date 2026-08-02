@@ -5062,6 +5062,12 @@ padding:28px 34px;
 
 }
 
+.mobile-keyboard-feedback-settings{
+
+    display:none;
+
+}
+
 .settings-section:first-of-type{
 
     border-top:none;
