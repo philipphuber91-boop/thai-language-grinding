@@ -9,29 +9,129 @@ const TYPING_SOUND_PRESETS = Object.freeze({
         label: "Klick (Aufnahme)",
         audioSources: ["../assets/audio/typing-click.mp3"]
     },
+    "synth-click": {
+        label: "Klick (Oszillator)",
+        tones: [
+            {
+                type: "square",
+                frequency: 2600,
+                endFrequency: 1600,
+                duration: 0.045,
+                volume: 0.018
+            },
+            {
+                type: "sine",
+                frequency: 5200,
+                endFrequency: 2800,
+                duration: 0.025,
+                delay: 0.001,
+                volume: 0.012
+            }
+        ]
+    },
     "recorded-drop": {
         label: "Wassertropfen (Aufnahme)",
         audioSources: ["../assets/audio/typing-drop.mp3"]
+    },
+    "synth-drop": {
+        label: "Wassertropfen (Oszillator)",
+        tones: [
+            {
+                type: "sine",
+                frequency: 1100,
+                endFrequency: 420,
+                duration: 0.12,
+                volume: 0.035
+            },
+            {
+                type: "triangle",
+                frequency: 1750,
+                endFrequency: 700,
+                duration: 0.09,
+                delay: 0.003,
+                volume: 0.016
+            }
+        ]
     },
     "recorded-iphone": {
         label: "iPhone-Klick (Aufnahme)",
         audioSources: ["../assets/audio/typing-iphone.mp3"]
     },
+    "synth-iphone": {
+        label: "iPhone-Klick (Oszillator)",
+        tones: [
+            {
+                type: "sine",
+                frequency: 1800,
+                endFrequency: 1200,
+                duration: 0.07,
+                volume: 0.03
+            },
+            {
+                type: "triangle",
+                frequency: 2900,
+                endFrequency: 1800,
+                duration: 0.045,
+                delay: 0.002,
+                volume: 0.012
+            }
+        ]
+    },
     "recorded-iphone2": {
         label: "iPhone-Ton (Aufnahme)",
         audioSources: ["../assets/audio/typing-iphone2.mp3"]
     },
-    "recorded-robot-laser": {
-        label: "Robot-Laser-Kollabo (3 Töne)",
-        audioSources: [
-            "../assets/audio/typing-robot-laser-01.mp3",
-            "../assets/audio/typing-robot-laser-02.mp3",
-            "../assets/audio/typing-robot-laser-03.mp3"
+    "synth-iphone2": {
+        label: "iPhone-Ton (Oszillator)",
+        tones: [
+            {
+                type: "sine",
+                frequency: 1200,
+                endFrequency: 850,
+                duration: 0.1,
+                volume: 0.035
+            },
+            {
+                type: "triangle",
+                frequency: 2100,
+                endFrequency: 1400,
+                duration: 0.08,
+                delay: 0.003,
+                volume: 0.02
+            },
+            {
+                type: "sine",
+                frequency: 2800,
+                endFrequency: 1900,
+                duration: 0.05,
+                delay: 0.006,
+                volume: 0.01
+            }
         ]
     },
     "recorded-robot-laser-01": {
         label: "Robot-/Laser-Ton 1",
         audioSources: ["../assets/audio/typing-robot-laser-01.mp3"]
+    },
+    "synth-robot-laser-01": {
+        label: "Robot-/Laser-Ton 1 (Oszillator)",
+        tones: [
+            {
+                type: "sawtooth",
+                frequency: 300,
+                endFrequency: 760,
+                duration: 0.065,
+                volume: 0.03
+            },
+            {
+                type: "square",
+                frequency: 900,
+                endFrequency: 1800,
+                duration: 0.05,
+                delay: 0.002,
+                volume: 0.013
+            }
+        ]
     },
     "recorded-robot-laser-02": {
         label: "Robot-/Laser-Ton 2",
@@ -77,13 +177,73 @@ const TYPING_SOUND_PRESETS = Object.freeze({
         label: "Robot-/Laser-Ton 3",
         audioSources: ["../assets/audio/typing-robot-laser-03.mp3"]
     },
+    "synth-robot-laser-03": {
+        label: "Robot-/Laser-Ton 3 (Oszillator)",
+        tones: [
+            {
+                type: "triangle",
+                frequency: 520,
+                endFrequency: 1700,
+                duration: 0.065,
+                volume: 0.03
+            },
+            {
+                type: "sine",
+                frequency: 1300,
+                endFrequency: 3200,
+                duration: 0.05,
+                delay: 0.002,
+                volume: 0.014
+            }
+        ]
+    },
     "recorded-robot-laser-04": {
         label: "Robot-/Laser-Ton 4",
         audioSources: ["../assets/audio/typing-robot-laser-04.mp3"]
     },
+    "synth-robot-laser-04": {
+        label: "Robot-/Laser-Ton 4 (Oszillator)",
+        tones: [
+            {
+                type: "square",
+                frequency: 2400,
+                endFrequency: 700,
+                duration: 0.06,
+                volume: 0.025
+            },
+            {
+                type: "sawtooth",
+                frequency: 600,
+                endFrequency: 260,
+                duration: 0.066,
+                delay: 0.001,
+                volume: 0.018
+            }
+        ]
+    },
     "recorded-robot-laser-05": {
         label: "Robot-/Laser-Ton 5",
         audioSources: ["../assets/audio/typing-robot-laser-05.mp3"]
+    },
+    "synth-robot-laser-05": {
+        label: "Robot-/Laser-Ton 5 (Oszillator)",
+        tones: [
+            {
+                type: "sawtooth",
+                frequency: 900,
+                endFrequency: 280,
+                duration: 0.066,
+                volume: 0.03
+            },
+            {
+                type: "triangle",
+                frequency: 1900,
+                endFrequency: 700,
+                duration: 0.055,
+                delay: 0.003,
+                volume: 0.015
+            }
+        ]
     },
     bell: {
         label: "Glocke",
