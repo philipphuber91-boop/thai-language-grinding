@@ -892,7 +892,7 @@ function zeigeZeilen() {
 
     aktualisiereDeutsch();
 
-    if (isMobileViewport()) {
+    if (usesStableThaiLines()) {
         renderMobileThaiLines();
         zeile2.textContent = "";
         return;
@@ -985,8 +985,8 @@ function zeigeFehler() {
 
     clearTimeout(fehlerTimeout);
 
-    if (isMobileViewport()) {
-        if (mobileInputMethod === "game") {
+    if (usesStableThaiLines()) {
+        if (isMobileViewport() && mobileInputMethod === "game") {
             window.typingFeedback?.triggerError();
         }
 
@@ -1343,6 +1343,16 @@ function formatiereTastenhilfeSekunden(sekunden) {
 function isMobileViewport() {
     return typeof window.matchMedia === "function" &&
         window.matchMedia("(max-width: 900px)").matches;
+}
+
+function isDesktopTypingViewport() {
+    return Boolean(typingBereich) &&
+        typeof window.matchMedia === "function" &&
+        window.matchMedia("(min-width: 901px)").matches;
+}
+
+function usesStableThaiLines() {
+    return isMobileViewport() || isDesktopTypingViewport();
 }
 
 function isSystemKeyboardMode() {
