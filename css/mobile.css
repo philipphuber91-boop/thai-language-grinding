@@ -180,6 +180,32 @@
         display:inline-block;
     }
 
+    .quest-help-trigger{
+        display:inline-flex;
+    }
+
+    .quest-help:hover .quest-help-tooltip{
+        visibility:hidden;
+        opacity:0;
+        transform:translate(-50%, -4px);
+    }
+
+    .quest-help.is-open .quest-help-tooltip,
+    .quest-help:focus-within .quest-help-tooltip{
+        visibility:visible;
+        opacity:1;
+        transform:translate(-50%, 0);
+    }
+
+    .quest-panel-help .quest-help-tooltip{
+        transform:translateY(4px);
+    }
+
+    .quest-panel-help.is-open .quest-help-tooltip,
+    .quest-panel-help:focus-within .quest-help-tooltip{
+        transform:translateY(0);
+    }
+
     .quest-analysis-grid,
     .quest-detail-grid{
         grid-template-columns:repeat(2, minmax(0, 1fr));

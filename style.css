@@ -817,6 +817,14 @@ box-shadow:
 
      position:relative;
 
+    font-family:"Times New Roman", Times, serif;
+
+}
+
+.quest-card button{
+
+    font-family:inherit;
+
 }
 
 .buch-card{
@@ -2208,6 +2216,81 @@ box-shadow:
 
 }
 
+.quest-help{
+
+    position:relative;
+
+}
+
+.quest-help-value{
+
+    display:inline-flex;
+    align-items:center;
+
+}
+
+.quest-help-trigger{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    width:16px;
+    height:16px;
+    margin-left:5px;
+    padding:0;
+
+    border:1px solid rgba(75,43,18,.55);
+    border-radius:50%;
+    background:rgba(255,247,222,.7);
+    color:#4b2b12;
+    cursor:pointer;
+    font:700 .68rem/1 Arial, sans-serif;
+
+}
+
+.quest-help-tooltip{
+
+    position:absolute;
+    z-index:50;
+    top:calc(100% + 8px);
+    left:50%;
+
+    width:240px;
+    max-width:calc(100vw - 32px);
+    padding:9px 11px;
+
+    border:1px solid rgba(160,112,44,.5);
+    border-radius:8px;
+    background:#fff7e2;
+    box-shadow:0 5px 14px rgba(75,43,18,.2);
+    color:#4b2b12;
+    font-family:inherit;
+    font-size:.78rem;
+    font-weight:400;
+    line-height:1.35;
+    letter-spacing:normal;
+    text-align:left;
+    text-transform:none;
+    visibility:hidden;
+    opacity:0;
+    pointer-events:none;
+    transform:translate(-50%, -4px);
+    transition:opacity .15s ease, transform .15s ease, visibility .15s ease;
+
+}
+
+.quest-help:hover .quest-help-tooltip,
+.quest-help:focus-within .quest-help-tooltip,
+.quest-help.is-open .quest-help-tooltip{
+
+    visibility:visible;
+    opacity:1;
+    transform:translate(-50%, 0);
+
+}
+
 .quest-detail-panels{
 
     display:grid;
@@ -2219,7 +2302,7 @@ box-shadow:
 
     border:1px solid rgba(160,112,44,.35);
     border-radius:12px;
-    overflow:hidden;
+    overflow:visible;
     background:rgba(255,247,222,.28);
 
 }
@@ -2239,6 +2322,12 @@ box-shadow:
 
 .quest-detail-panel h3{
 
+    position:relative;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
     margin:0 0 18px;
 
     color:#4b2b12;
@@ -2246,6 +2335,53 @@ box-shadow:
     letter-spacing:.04em;
     text-align:center;
     text-transform:uppercase;
+
+}
+
+.quest-panel-help{
+
+    position:absolute;
+    z-index:40;
+    top:50%;
+    right:0;
+
+    transform:translateY(-50%);
+
+}
+
+.quest-panel-help .quest-help-value{
+
+    display:none;
+
+}
+
+.quest-panel-help .quest-help-trigger{
+
+    width:24px;
+    height:24px;
+    margin:0;
+    padding:2px;
+
+    border:0;
+    background:transparent;
+
+}
+
+.quest-panel-help .quest-help-tooltip{
+
+    top:auto;
+    bottom:calc(100% + 8px);
+    right:0;
+    left:auto;
+    transform:translateY(4px);
+
+}
+
+.quest-panel-help:hover .quest-help-tooltip,
+.quest-panel-help:focus-within .quest-help-tooltip,
+.quest-panel-help.is-open .quest-help-tooltip{
+
+    transform:translateY(0);
 
 }
 
@@ -2372,6 +2508,41 @@ box-shadow:
 .quest-word-legend strong{
 
     font-weight:700;
+
+}
+
+.quest-summary-icon{
+
+    display:inline-block;
+
+    width:1.05em;
+    height:1.05em;
+    margin-right:4px;
+
+    object-fit:contain;
+    vertical-align:-.18em;
+
+}
+
+.quest-summary-help{
+
+    display:inline-flex;
+
+}
+
+.quest-card:not(.expanded) .quest-summary-help .quest-help-tooltip{
+
+    top:auto;
+    bottom:calc(100% + 8px);
+    transform:translate(-50%, 4px);
+
+}
+
+.quest-card:not(.expanded) .quest-summary-help:hover .quest-help-tooltip,
+.quest-card:not(.expanded) .quest-summary-help:focus-within .quest-help-tooltip,
+.quest-card:not(.expanded) .quest-summary-help.is-open .quest-help-tooltip{
+
+    transform:translate(-50%, 0);
 
 }
 
@@ -2593,6 +2764,7 @@ box-shadow:
 .quest-card.expanded .quest-details{
 
     max-height:800px;
+    overflow:visible;
 
     margin-top:35px;
 
