@@ -37,6 +37,42 @@ const TYPING_SOUND_PRESETS = Object.freeze({
         label: "Robot-/Laser-Ton 2",
         audioSources: ["../assets/audio/typing-robot-laser-02.mp3"]
     },
+    "synth-robot-laser-02": {
+        label: "Robot-/Laser-Ton 2 (Oszillator)",
+        tones: [
+            {
+                type: "sawtooth",
+                frequency: 680,
+                endFrequency: 250,
+                duration: 0.09,
+                volume: 0.035
+            },
+            {
+                type: "triangle",
+                frequency: 1450,
+                endFrequency: 530,
+                duration: 0.084,
+                delay: 0.002,
+                volume: 0.022
+            },
+            {
+                type: "square",
+                frequency: 2800,
+                endFrequency: 900,
+                duration: 0.07,
+                delay: 0.004,
+                volume: 0.012
+            },
+            {
+                type: "sine",
+                frequency: 420,
+                endFrequency: 180,
+                duration: 0.095,
+                delay: 0.001,
+                volume: 0.018
+            }
+        ]
+    },
     "recorded-robot-laser-03": {
         label: "Robot-/Laser-Ton 3",
         audioSources: ["../assets/audio/typing-robot-laser-03.mp3"]
