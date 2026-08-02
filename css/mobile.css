@@ -177,7 +177,15 @@
     .quest-words,
     .quest-familiarity{
         justify-content:flex-start;
+        font-size:clamp(.78rem, 4.8vw, .95rem);
+        white-space:nowrap;
         text-align:left;
+    }
+
+    .quest-summary-help,
+    .quest-summary-help .quest-help-value{
+        min-width:0;
+        white-space:nowrap;
     }
 
     .quest-main .familiarity-button{

@@ -21,6 +21,34 @@ const TYPING_SOUND_PRESETS = Object.freeze({
         label: "iPhone-Ton (Aufnahme)",
         audioSources: ["../assets/audio/typing-iphone2.mp3"]
     },
+    "recorded-robot-laser": {
+        label: "Robot-Laser-Kollabo (3 Töne)",
+        audioSources: [
+            "../assets/audio/typing-robot-laser-01.mp3",
+            "../assets/audio/typing-robot-laser-02.mp3",
+            "../assets/audio/typing-robot-laser-03.mp3"
+        ]
+    },
+    "recorded-robot-laser-01": {
+        label: "Robot-/Laser-Ton 1",
+        audioSources: ["../assets/audio/typing-robot-laser-01.mp3"]
+    },
+    "recorded-robot-laser-02": {
+        label: "Robot-/Laser-Ton 2",
+        audioSources: ["../assets/audio/typing-robot-laser-02.mp3"]
+    },
+    "recorded-robot-laser-03": {
+        label: "Robot-/Laser-Ton 3",
+        audioSources: ["../assets/audio/typing-robot-laser-03.mp3"]
+    },
+    "recorded-robot-laser-04": {
+        label: "Robot-/Laser-Ton 4",
+        audioSources: ["../assets/audio/typing-robot-laser-04.mp3"]
+    },
+    "recorded-robot-laser-05": {
+        label: "Robot-/Laser-Ton 5",
+        audioSources: ["../assets/audio/typing-robot-laser-05.mp3"]
+    },
     bell: {
         label: "Glocke",
         tones: [
