@@ -844,20 +844,17 @@ if (chronikButton) {
 
 
 /* =========================================================
-   MOBILE: Sidebar als Hamburger-Menü
+   SIDEBAR: Hamburger-Menü für Mobile und Desktop
    ---------------------------------------------------------
-   Rein additiv – betrifft nur die neuen Elemente
-   (#sidebarToggleButton, #sidebarBackdrop) und die
-   Sichtbarkeits-Klasse "mobile-open" auf der Sidebar.
-   Auf Desktop bleibt die Sidebar wie bisher fixiert sichtbar,
-   diese Funktionen werden dort schlicht nicht benötigt.
+   Beide Ansichten verwenden dieselbe Drawer-Logik. Die
+   jeweilige CSS-Media-Query entscheidet nur über die Darstellung.
 ========================================================= */
 
 const sidebarToggleButton = document.getElementById("sidebarToggleButton");
 const mainSidebar = document.getElementById("mainSidebar");
 const sidebarBackdrop = document.getElementById("sidebarBackdrop");
 
-function openMobileSidebar() {
+function openSidebar() {
 
     if (!mainSidebar) {
         return;
@@ -866,10 +863,12 @@ function openMobileSidebar() {
     mainSidebar.classList.add("mobile-open");
     sidebarBackdrop?.classList.add("active");
     sidebarToggleButton?.setAttribute("aria-expanded", "true");
+    sidebarToggleButton?.setAttribute("aria-label", "Menü schließen");
+    document.body.classList.add("drawer-open");
 
 }
 
-function closeMobileSidebar() {
+function closeSidebar() {
 
     if (!mainSidebar) {
         return;
@@ -878,6 +877,8 @@ function closeMobileSidebar() {
     mainSidebar.classList.remove("mobile-open");
     sidebarBackdrop?.classList.remove("active");
     sidebarToggleButton?.setAttribute("aria-expanded", "false");
+    sidebarToggleButton?.setAttribute("aria-label", "Menü öffnen");
+    document.body.classList.remove("drawer-open");
 
 }
 
@@ -885,21 +886,27 @@ if (sidebarToggleButton) {
 
     sidebarToggleButton.onclick = function () {
 
-        if (mainSidebar.classList.contains("mobile-open")) {
-            closeMobileSidebar();
+        if (mainSidebar?.classList.contains("mobile-open")) {
+            closeSidebar();
         } else {
-            openMobileSidebar();
+            openSidebar();
         }
 
     };
 
 }
 
-sidebarBackdrop?.addEventListener("click", closeMobileSidebar);
+sidebarBackdrop?.addEventListener("click", closeSidebar);
+
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape" && mainSidebar?.classList.contains("mobile-open")) {
+        closeSidebar();
+    }
+});
 
 // Nach Auswahl eines Menüpunkts soll sich die mobile Sidebar
 // automatisch schließen (bestehende onclick-Handler der
 // einzelnen Buttons bleiben davon unberührt).
 mainSidebar?.querySelectorAll(".menu-card button").forEach(button => {
-    button.addEventListener("click", closeMobileSidebar);
+    button.addEventListener("click", closeSidebar);
 });
