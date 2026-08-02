@@ -7085,6 +7085,7 @@ padding:28px 34px;
 
     .typing-header{
         order:1;
+        position:relative;
         display:grid;
         grid-template-columns:60px minmax(0, 1fr) auto;
         align-items:center;
@@ -7098,8 +7099,11 @@ padding:28px 34px;
     }
 
     .typing-header h2{
-        grid-column:2;
+        grid-column:1 / -1;
+        position:absolute;
+        left:50%;
         margin:0;
+        transform:translateX(-50%);
         color:#4a2d12;
         font-family:Georgia, "Times New Roman", serif;
         font-size:clamp(1.25rem, 5.7vw, 2rem);
@@ -7188,8 +7192,13 @@ padding:28px 34px;
         display:none;
     }
 
+    #typingFenster.german-hidden #learningContainer.is-hidden{
+        display:flex !important;
+        visibility:hidden;
+    }
+
     #typingFenster.german-hidden{
-        justify-content:center;
+        justify-content:flex-start;
     }
 
     .learning-title{
@@ -7265,7 +7274,7 @@ padding:28px 34px;
         flex:0 0 auto;
         width:min(52%, 760px);
         min-height:30px;
-        margin:0 auto 6px;
+        margin:4px auto 6px;
         padding:3px 0;
         border:0;
         background:transparent;
