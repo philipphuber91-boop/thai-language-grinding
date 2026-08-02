@@ -426,7 +426,7 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
 
 6: {
 
-    version: 1,
+    version: 2,
 
 titel: "In der Stadt verirrt - หลงทางในเมือง",
 
