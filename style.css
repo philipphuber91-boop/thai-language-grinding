@@ -5560,6 +5560,54 @@ padding:28px 34px;
 
 }
 
+@media (min-width:901px){
+
+    .mobile-input-method-settings{
+        display:none !important;
+    }
+
+    .system-keyboard-tutor-hint{
+        display:none !important;
+    }
+
+    .mobile-keyboard-feedback-settings{
+        display:block;
+    }
+
+    .mobile-keyboard-feedback-settings #settingsVibrationRow,
+    .mobile-keyboard-feedback-settings .typing-feedback-hint{
+        display:none;
+    }
+
+    .mobile-keyboard-feedback-settings .typing-sound-preset{
+        display:none;
+        flex-direction:column;
+        gap:8px;
+        padding:8px 0 2px;
+    }
+
+    .mobile-keyboard-feedback-settings .typing-sound-preset.visible{
+        display:flex;
+    }
+
+    .mobile-keyboard-feedback-settings .typing-sound-preset label{
+        color:#513117;
+        font-size:13px;
+    }
+
+    .mobile-keyboard-feedback-settings .typing-sound-preset select{
+        width:100%;
+        min-height:38px;
+        padding:6px 9px;
+        border:1px solid #b47a2d;
+        border-radius:7px;
+        background:#fff7e2;
+        color:#4a3018;
+        font:inherit;
+    }
+
+}
+
 .settings-section:first-of-type{
 
     border-top:none;

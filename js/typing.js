@@ -1166,6 +1166,10 @@ eingabe.addEventListener("input", function () {
 
 if (eingegeben === erwartet) {
 
+    if (!isMobileViewport()) {
+        window.typingFeedback?.trigger();
+    }
+
     verarbeiteRichtigenBuchstaben();
 
 }
@@ -1173,9 +1177,11 @@ if (eingegeben === erwartet) {
 else {
 
     if (mode === "exam") {
-
         fehler++;
+    }
 
+    if (!isMobileViewport()) {
+        window.typingFeedback?.triggerError();
     }
 
     zeigeFehler();
