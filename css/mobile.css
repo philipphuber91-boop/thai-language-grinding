@@ -1185,11 +1185,42 @@
 
     /* Deutsch/Thai nebeneinander -> gestapelt */
     .buch{
+        display:flex;
         flex-direction:column;
+        padding-bottom:0;
+    }
+
+    .buch::before,
+    .buch::after{
+        display:none;
+    }
+
+    /* Die dekorative Quest-Kartenlinie scrollte mit der Lese-Karte
+       und erschien dadurch als fremder Rahmen mitten im Text. */
+    #deutsch.buch-card::before{
+        display:none;
     }
 
     .buch-seite{
+        display:block;
         width:100%;
+        background:#fdf6e3;
+        border:2px solid #c79d4b;
+        border-radius:15px;
+        padding:30px;
+        min-height:500px;
+        box-shadow:0 5px 15px rgba(0,0,0,.2);
+    }
+
+    #deutscherText,
+    #thaiText{
+        display:block;
+    }
+
+    .buch-satz{
+        position:static;
+        margin:0 0 24px;
+        padding:0;
     }
 
     /* Nur Titel + Zahnrad sichtbar - passt weiterhin in eine Zeile,
