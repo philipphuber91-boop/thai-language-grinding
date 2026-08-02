@@ -1336,10 +1336,9 @@
     .typing-keyboard .key{
         flex:1 1 0%;
         min-width:0;
-        /* Werte bewusst größer gewählt als der sichtbare Zieltreffer
-           (~46px), da body{zoom:.8} (siehe style.css) die gesamte
-           Seite inkl. Tastatur auf 80% herunterskaliert - erst nach
-           dem Zoom ergibt sich ein wirklich daumenfreundliches Maß.
+        /* Werte bewusst größer gewählt als der sichtbare Zieltreffer,
+           damit die Tastatur auch bei unterschiedlichen mobilen
+           Viewport-Höhen daumenfreundlich bleibt.
            Durch das feste Viewport-Layout (siehe 6c.) steht mehr
            Höhe zur Verfügung, die Tastatur wird deutlich größer
            dargestellt als zuvor. Der dvh-Anteil begrenzt die Höhe
