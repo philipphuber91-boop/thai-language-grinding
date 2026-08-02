@@ -1717,6 +1717,37 @@
         display:block;
     }
 
+    .typing-sound-preset{
+        display:none;
+        flex-direction:column;
+        gap:6px;
+        padding:8px 0 2px;
+    }
+
+    .typing-sound-preset.visible{
+        display:flex;
+    }
+
+    .typing-sound-preset label{
+        color:#513117;
+        font-size:.78rem;
+    }
+
+    .typing-sound-preset select{
+        width:100%;
+        min-height:38px;
+        padding:6px 9px;
+        border:1px solid #b47a2d;
+        border-radius:8px;
+        background:#fff7e2;
+        color:#4a3018;
+        font:inherit;
+    }
+
+    .typing-sound-preset select:disabled{
+        cursor:default;
+    }
+
     .settings-panel{
         top:auto;
         bottom:0;
