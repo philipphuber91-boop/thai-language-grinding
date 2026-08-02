@@ -25,6 +25,19 @@ const daten =
         ? quests
         : missions;
 
+const typingAudioContainer =
+    document.getElementById("typingAudioContainer");
+
+if (typingAudioContainer && window.questAudio) {
+    typingAudioContainer.innerHTML =
+        window.questAudio.renderQuestAudioPlayer({
+            contentMode,
+            questNumber: aktuelleQuest,
+            className: "typing-audio-player"
+        });
+    window.questAudio.initializeQuestAudioPlayers(typingAudioContainer);
+}
+
 // Separate IDs prevent a campaign quest and a mission with the same number
 // from sharing progress, records, and review dates.
 const questStatsId = `${contentMode}:${aktuelleQuest}`;

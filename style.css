@@ -50,6 +50,108 @@
 
 }
 
+/* =========================================================
+   QUEST-AUDIO-PLAYER
+   ---------------------------------------------------------
+   Gemeinsame kompakte Steuerung für Questkarten und
+   Typing-Bildschirm.
+========================================================= */
+
+.quest-audio-player{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-sizing:border-box;
+    gap:9px;
+    width:min(100%, 360px);
+    min-width:0;
+    margin:0 auto 9px;
+    padding:5px 8px;
+    border:0;
+    background:transparent;
+    box-shadow:none;
+    color:#5a3514;
+}
+
+.quest-audio-card{
+    transform:translateX(135px);
+}
+
+.quest-audio-play-button{
+    display:inline-flex;
+    flex:0 0 31px;
+    align-items:center;
+    justify-content:center;
+    width:31px;
+    height:31px;
+    padding:0;
+    border:1px solid #a66d23;
+    border-radius:50%;
+    background:linear-gradient(145deg, #f7d47d, #b87824);
+    color:#4d2b0d;
+    cursor:pointer;
+    font-size:.85rem;
+    line-height:1;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.68),
+        0 2px 4px rgba(83,45,8,.22);
+}
+
+.quest-audio-play-button:hover{
+    filter:brightness(1.06);
+}
+
+.quest-audio-play-button:disabled{
+    cursor:not-allowed;
+    filter:grayscale(.65);
+    opacity:.55;
+}
+
+.quest-audio-speed{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    min-width:0;
+    color:#6a421a;
+    font-size:.72rem;
+    font-weight:bold;
+    white-space:nowrap;
+}
+
+.quest-audio-speed-slider{
+    width:105px;
+    accent-color:#a66d23;
+    cursor:pointer;
+}
+
+.quest-audio-speed-value{
+    min-width:29px;
+    font-variant-numeric:tabular-nums;
+    text-align:right;
+}
+
+.quest-audio-status{
+    min-width:0;
+    color:#9c3e25;
+    font-size:.68rem;
+    line-height:1.1;
+}
+
+.quest-audio-native{
+    display:none;
+}
+
+.typing-audio-container{
+    display:flex;
+    justify-content:center;
+    width:100%;
+    margin:-10px auto 12px;
+}
+
+.typing-audio-player{
+    margin-bottom:0;
+}
+
 @media (min-width:901px){
 
     body:has(#typingBereich) #typingBereich,
@@ -1276,6 +1378,34 @@ box-shadow:
     font-size:16px;
 
     font-weight:bold;
+
+}
+
+.quest-difficulty-mobile{
+
+    display:none;
+
+}
+
+.quest-level-desktop{
+
+    display:inline-block;
+
+    margin-left:12px;
+
+    padding:4px 10px;
+
+    border:1px solid currentColor;
+
+    border-radius:999px;
+
+    font-size:.8rem;
+
+    font-weight:700;
+
+    line-height:1.2;
+
+    white-space:nowrap;
 
 }
 

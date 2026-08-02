@@ -380,6 +380,12 @@ karte.innerHTML = `
 
     <div class="quest-main">
 
+        ${window.questAudio.renderQuestAudioPlayer({
+            contentMode,
+            questNumber: nummer,
+            className: "quest-audio-card"
+        })}
+
         <h2>${quest.titel}</h2>
 
         <p class="quest-meta">
@@ -388,10 +394,16 @@ karte.innerHTML = `
 
             •
 
-            <span class="difficulty">
+            <span class="difficulty quest-difficulty-mobile">
 
                 ${quest.schwierigkeit}
 
+            </span>
+
+            <span
+                class="quest-level-desktop familiarity-${familiarityCategory.key}"
+                title="${familiarityCategory.range} Beherrschungsgrad">
+                ${familiarityCategory.emoji} ${familiarityCategory.label}
             </span>
 
         </p>
@@ -481,6 +493,7 @@ karte.innerHTML = `
 
         questListe.appendChild(karte);
 setupQuestInfoHints(karte);
+        window.questAudio.initializeQuestAudioPlayers(karte);
 
     }
 }
