@@ -7180,7 +7180,7 @@ padding:28px 34px;
         display:none;
     }
 
-    #typingBereich.quest-card{
+    #typingBereich.quest-card:not([style*="none"]){
         display:flex !important;
         flex-direction:column;
         align-items:stretch;
@@ -7369,23 +7369,23 @@ padding:28px 34px;
         flex-direction:column;
         align-items:center;
         justify-content:flex-end;
-        height:calc(3 * clamp(30px, 5dvh, 48px));
-        min-height:calc(3 * clamp(30px, 5dvh, 48px));
-        max-height:calc(3 * clamp(30px, 5dvh, 48px));
-        overflow:hidden;
+        height:calc(3 * clamp(50px, 6dvh, 56px));
+        min-height:calc(3 * clamp(50px, 6dvh, 56px));
+        max-height:calc(3 * clamp(50px, 6dvh, 56px));
+        overflow:visible;
     }
 
     #zeile1.mobile-thai-lines .mobile-thai-line{
         display:flex;
-        flex:0 0 clamp(30px, 5dvh, 48px);
+        flex:0 0 clamp(50px, 6dvh, 56px);
         align-items:center;
         justify-content:center;
         width:100%;
         min-width:0;
-        overflow:hidden;
+        overflow:visible;
         text-align:center;
         white-space:nowrap;
-        line-height:1.45;
+        line-height:1.35;
         text-overflow:clip;
     }
 

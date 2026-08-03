@@ -544,12 +544,12 @@
         justify-content:center;
         width:100%;
         min-width:0;
+        min-height:0;
         box-sizing:border-box;
-        padding-top:clamp(4px, 1vw, 8px);
         overflow:visible;
         text-align:center;
         white-space:nowrap;
-        line-height:1.45;
+        line-height:1.35;
         text-overflow:clip;
     }
 
@@ -2507,14 +2507,13 @@
     }
 
     body:has(#typingBereich) #zeile1.mobile-thai-lines{
-        height:calc(3 * clamp(26px, 5.4dvh, 38px));
-        min-height:calc(3 * clamp(26px, 5.4dvh, 38px));
-        max-height:calc(3 * clamp(26px, 5.4dvh, 38px));
+        height:calc(3 * clamp(36px, 5.4dvh, 42px));
+        min-height:calc(3 * clamp(36px, 5.4dvh, 42px));
+        max-height:calc(3 * clamp(36px, 5.4dvh, 42px));
     }
 
     body:has(#typingBereich) #zeile1.mobile-thai-lines .mobile-thai-line{
-        flex-basis:clamp(26px, 5.4dvh, 38px);
-        padding-top:clamp(3px, .9vw, 5px);
+        flex-basis:clamp(36px, 5.4dvh, 42px);
         line-height:1.35;
     }
 
