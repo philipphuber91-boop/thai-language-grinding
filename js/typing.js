@@ -897,6 +897,15 @@ function escapeMobileThaiHtml(value) {
         .replace(/'/g, "&#39;");
 }
 
+function getThaiHighlightRange(lineStart, lineEnd) {
+    const highlightStart = Math.max(lineStart, Math.min(position, lineEnd - 1));
+
+    return {
+        start: highlightStart,
+        end: Math.min(lineEnd, highlightStart + 1)
+    };
+}
+
 function renderMobileThaiLines(highlightClass = "aktuell") {
     const lines = getMobileThaiLineLayout(text);
     const currentLineIndex = lines.findIndex(line =>
@@ -914,9 +923,10 @@ function renderMobileThaiLines(highlightClass = "aktuell") {
             return `<span class="mobile-thai-line"><span class="rest">${escapeMobileThaiHtml(lineText)}</span></span>`;
         }
 
-        const geschrieben = text.slice(line.start, position);
-        const aktuell = text[position] || "";
-        const rest = text.slice(position + 1, line.end);
+        const highlightRange = getThaiHighlightRange(line.start, line.end);
+        const geschrieben = text.slice(line.start, highlightRange.start);
+        const aktuell = text.slice(highlightRange.start, highlightRange.end);
+        const rest = text.slice(highlightRange.end, line.end);
 
         return `<span class="mobile-thai-line"><span class="geschrieben">${escapeMobileThaiHtml(geschrieben)}</span><span class="${highlightClass}">${escapeMobileThaiHtml(aktuell)}</span><span class="rest">${escapeMobileThaiHtml(rest)}</span></span>`;
     }).join("");
