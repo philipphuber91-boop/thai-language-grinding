@@ -2315,7 +2315,7 @@
         grid-template-rows:
             48px
             minmax(0, 1fr)
-            24px
+            30px
             minmax(150px, clamp(150px, 42dvh, 350px));
         align-content:stretch;
         overflow:hidden;
@@ -2388,21 +2388,45 @@
         grid-row:2;
         grid-column:1;
         order:initial;
+        display:grid !important;
+        grid-template-columns:minmax(0, 1fr);
+        grid-template-rows:minmax(0, 1fr) auto minmax(0, 1fr);
+        align-items:center;
+        justify-items:center;
+        row-gap:4px;
         flex:none;
         min-height:0 !important;
         height:auto;
         margin:0;
         padding:28px clamp(8px, 3vw, 20px) 6px;
-        justify-content:center;
         overflow:hidden;
     }
 
     body:has(#typingBereich) #learningContainer{
-        order:2;
-        min-height:0;
+        grid-row:3;
+        order:initial;
+        align-self:end;
+        width:100%;
+        min-height:clamp(4rem, 18vw, 5.5rem);
         margin:0;
         padding:0 8px;
-        overflow:hidden;
+        display:flex;
+        flex-direction:column;
+        justify-content:flex-end;
+        row-gap:4px;
+        overflow:visible;
+        text-align:center;
+    }
+
+    body:has(#typingBereich) #learningContainer.is-hidden{
+        display:none;
+    }
+
+    body:has(#typingBereich) #zeile1{
+        grid-row:2;
+        order:initial;
+        align-self:center;
+        margin:0;
     }
 
     body:has(#typingBereich) .typing-quest-bar.desktop-only-stat{
@@ -2410,8 +2434,9 @@
         grid-column:1;
         order:initial;
         min-height:0;
-        height:24px;
+        height:30px;
         margin:0;
+        padding:6px 10% 0;
     }
 
     body:has(#typingBereich) #thaiKeyboard{
@@ -2431,27 +2456,33 @@
 
     body:has(#typingBereich) #typingFenster{
         padding:8px 8px 4px;
+        grid-template-rows:minmax(0, 1fr) auto minmax(56px, 1fr);
+    }
+
+    body:has(#typingBereich) #learningContainer{
+        min-height:clamp(3.5rem, 16vw, 4.5rem);
     }
 
     body:has(#typingBereich) #zeile1.mobile-thai-lines{
-        height:calc(3 * clamp(30px, 6dvh, 44px));
-        min-height:calc(3 * clamp(30px, 6dvh, 44px));
-        max-height:calc(3 * clamp(30px, 6dvh, 44px));
+        height:calc(3 * clamp(26px, 5.4dvh, 38px));
+        min-height:calc(3 * clamp(26px, 5.4dvh, 38px));
+        max-height:calc(3 * clamp(26px, 5.4dvh, 38px));
     }
 
     body:has(#typingBereich) #zeile1.mobile-thai-lines .mobile-thai-line{
-        flex-basis:clamp(30px, 6dvh, 44px);
-        line-height:1.3;
+        flex-basis:clamp(26px, 5.4dvh, 38px);
+        line-height:1.2;
     }
 
     body:has(#typingBereich) .learning-title{
-        font-size:.62rem;
-        line-height:1.1;
+        margin:0;
+        font-size:clamp(.72rem, 3.2vw, .85rem);
+        line-height:1.2;
     }
 
     body:has(#typingBereich) .learning-text{
-        font-size:.72rem;
-        line-height:1.15;
+        font-size:clamp(.95rem, 4.6vw, 1.15rem);
+        line-height:1.25;
     }
 
 }
