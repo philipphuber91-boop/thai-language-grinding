@@ -189,6 +189,7 @@
                 audio.addEventListener("ended", () => {
                     activePlayers.delete(audio);
                     updateButton();
+                    window.dispatchEvent(new Event("questaudio:ended"));
                 });
 
                 audio.addEventListener("error", () => {

@@ -613,10 +613,11 @@
     #thaiKeyboard{
         order:4;
         display:flex;
-        flex:0 0 clamp(286px, 40dvh, 350px);
+        flex:0 1 clamp(286px, 40dvh, 350px);
         flex-direction:column;
         width:100%;
         min-width:0;
+        min-height:0;
         height:clamp(286px, 40dvh, 350px);
         margin:0;
         padding:13px 14px 16px;
@@ -645,7 +646,7 @@
     .typing-keyboard .keyboard-row.row-5{
         flex:.9 1 0;
         margin-bottom:0;
-        padding:0 20.5%;
+        padding:0 1%;
     }
 
     .typing-keyboard .keyboard-row.row-2{
@@ -767,6 +768,7 @@
     }
 
     .typing-keyboard .key.key-space{
+        flex:4 1 0;
         border-radius:9px;
         font-family:Georgia, "Times New Roman", serif;
         font-size:clamp(.9rem, 4vw, 1.25rem);
@@ -840,7 +842,7 @@
     }
 
     #thaiKeyboard{
-        flex-basis:clamp(218px, 46dvh, 286px);
+        flex:0 1 clamp(218px, 46dvh, 286px);
         height:clamp(218px, 46dvh, 286px);
         padding:7px 8px 9px;
     }
@@ -866,8 +868,8 @@
 
     .typing-keyboard .keyboard-row.row-5{
         margin-bottom:0;
-        padding-right:17%;
-        padding-left:17%;
+        padding-right:1%;
+        padding-left:1%;
     }
 
     .typing-keyboard .key,
@@ -1742,7 +1744,7 @@
     }
 
     #thaiKeyboard{
-        flex:0 0 auto;
+        flex:0 1 auto;
     }
 }
 

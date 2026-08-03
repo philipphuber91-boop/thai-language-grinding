@@ -392,6 +392,10 @@ function playTypingAudio(sources) {
         }
     }
 
+    if (audio.error) {
+        audio.load();
+    }
+
     audio.currentTime = 0;
     audio.volume = 0.45;
     const playback = audio.play();
@@ -401,6 +405,16 @@ function playTypingAudio(sources) {
             console.warn("Aufgenommener Tipp-Ton konnte nicht abgespielt werden.", error);
         });
     }
+}
+
+function resetTypingAudioPool() {
+    typingAudioPools.forEach(pool => {
+        pool.forEach(audio => {
+            audio.pause();
+            audio.currentTime = 0;
+            audio.load();
+        });
+    });
 }
 
 function playTypingPreset(preset) {
@@ -425,11 +439,27 @@ function playTypingSequence(tones) {
 
     if (audioContext.state === "suspended") {
         const resumePromise = audioContext.resume();
-        resumePromise?.catch(error => {
-            console.warn("Tippgeräusch konnte nicht aktiviert werden.", error);
-        });
+        if (resumePromise && typeof resumePromise.then === "function") {
+            resumePromise
+                .then(() => {
+                    if (
+                        typingAudioContext === audioContext &&
+                        audioContext.state !== "closed"
+                    ) {
+                        scheduleTypingSequence(audioContext, tones);
+                    }
+                })
+                .catch(error => {
+                    console.warn("Tippgeräusch konnte nicht aktiviert werden.", error);
+                });
+            return;
+        }
     }
 
+    scheduleTypingSequence(audioContext, tones);
+}
+
+function scheduleTypingSequence(audioContext, tones) {
     tones.forEach(tone => {
         const oscillator = audioContext.createOscillator();
         const gain = audioContext.createGain();
@@ -457,6 +487,8 @@ function playTypingSequence(tones) {
         oscillator.stop(endTime);
     });
 }
+
+window.addEventListener("questaudio:ended", resetTypingAudioPool);
 
 function triggerTypingFeedback() {
     if (isTypingVibrationEnabled()) {
