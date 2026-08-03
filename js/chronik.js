@@ -487,6 +487,32 @@ function renderChronikStats(){
         return;
     }
 
+    const currentContentThaiLines = [
+        ...Object.values(
+            typeof quests === "object" && quests !== null ? quests : {}
+        ),
+        ...Object.values(
+            typeof missions === "object" && missions !== null ? missions : {}
+        )
+    ].flatMap(content =>
+        Array.isArray(content?.thaiZeilen) ? content.thaiZeilen : []
+    );
+    const currentContentWordStatistics =
+        typeof getThaiWordStatistics === "function"
+            ? getThaiWordStatistics(currentContentThaiLines)
+            : { unique: 0, supported: false };
+    const uniqueWordsLearned =
+        typeof getStoredUniqueThaiWords === "function"
+            ? getStoredUniqueThaiWords().size
+            : new Set(
+                Array.isArray(player.stats.uniqueThaiWords)
+                    ? player.stats.uniqueThaiWords
+                    : []
+            ).size;
+    const uniqueWordsInCurrentContent =
+        currentContentWordStatistics.supported
+            ? currentContentWordStatistics.unique
+            : 0;
 
     container.innerHTML = `
 
@@ -638,9 +664,7 @@ function renderChronikStats(){
 
             <div class="stat-overlay-value">
 
-                ${Array.isArray(player.stats.uniqueThaiWords)
-                    ? player.stats.uniqueThaiWords.length
-                    : 0}
+                ${uniqueWordsLearned}/${uniqueWordsInCurrentContent} Wörter
 
             </div>
 
