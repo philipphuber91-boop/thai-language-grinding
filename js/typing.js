@@ -509,6 +509,10 @@ const deutschAktuell =
     document.getElementById("deutschAktuell");
 const settingsGermanToggle =
     document.getElementById("settingsGermanToggle");
+const settingsThaiFontSelect =
+    document.getElementById("settingsThaiFontSelect");
+const storyThaiFontSelect =
+    document.getElementById("storyThaiFontSelect");
 const learningContainer =
     document.getElementById("learningContainer");
 const typingFenster =
@@ -518,6 +522,51 @@ const typingFenster =
     document.getElementById("deutschTitel");
 
 let germanVisible = true;
+
+const THAI_FONT_STORAGE_KEY = "thaiFontFamily";
+const THAI_FONT_OPTIONS = [
+    "standard",
+    "noto-sans-thai",
+    "sarabun",
+    "prompt",
+    "kanit"
+];
+
+function normalizeThaiFontSelection(value) {
+    const selection = String(value ?? "");
+    return THAI_FONT_OPTIONS.includes(selection)
+        ? selection
+        : "standard";
+}
+
+function applyThaiFontSelection(value) {
+    const selection = normalizeThaiFontSelection(value);
+    const fontClasses = THAI_FONT_OPTIONS.map(
+        option => `thai-font-${option}`
+    );
+
+    document.body.classList.remove(...fontClasses);
+    document.body.classList.add(`thai-font-${selection}`);
+
+    if (settingsThaiFontSelect) {
+        settingsThaiFontSelect.value = selection;
+    }
+
+    if (storyThaiFontSelect) {
+        storyThaiFontSelect.value = selection;
+    }
+
+    return selection;
+}
+
+function setThaiFontSelection(value) {
+    const selection = applyThaiFontSelection(value);
+    localStorage.setItem(THAI_FONT_STORAGE_KEY, selection);
+}
+
+applyThaiFontSelection(
+    localStorage.getItem(THAI_FONT_STORAGE_KEY) || "standard"
+);
 
 function aktualisiereGermanToggle() {
 
@@ -1605,6 +1654,14 @@ settingsGermanToggle?.addEventListener("change", function () {
 
     zeigeZeilen();
 
+});
+
+settingsThaiFontSelect?.addEventListener("change", function () {
+    setThaiFontSelection(settingsThaiFontSelect.value);
+});
+
+storyThaiFontSelect?.addEventListener("change", function () {
+    setThaiFontSelection(storyThaiFontSelect.value);
 });
 
 settingsTastenhilfeToggle?.addEventListener("change", function () {

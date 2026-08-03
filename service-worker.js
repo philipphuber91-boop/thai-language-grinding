@@ -16,7 +16,7 @@
  * müssen den Cache in Safari nicht manuell löschen.
  */
 
-const CACHE_VERSION = 'v14';
+const CACHE_VERSION = 'v15';
 const CACHE_NAME = `thai-language-grinding-${CACHE_VERSION}`;
 
 // App-Shell: alles, was für Start und Offline-Betrieb gebraucht wird.
@@ -30,6 +30,14 @@ const PRECACHE_ASSETS = [
 
     'style.css',
     'css/mobile.css',
+    'assets/fonts/noto-sans-thai-400.woff2',
+    'assets/fonts/noto-sans-thai-500.woff2',
+    'assets/fonts/sarabun-400.woff2',
+    'assets/fonts/sarabun-500.woff2',
+    'assets/fonts/prompt-400.woff2',
+    'assets/fonts/prompt-500.woff2',
+    'assets/fonts/kanit-400.woff2',
+    'assets/fonts/kanit-500.woff2',
 
     'data/quests.js',
     'data/missions.js',
