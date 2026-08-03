@@ -544,7 +544,9 @@
         justify-content:center;
         width:100%;
         min-width:0;
-        overflow:hidden;
+        box-sizing:border-box;
+        padding-top:clamp(4px, 1vw, 8px);
+        overflow:visible;
         text-align:center;
         white-space:nowrap;
         line-height:1.45;
@@ -2471,7 +2473,8 @@
 
     body:has(#typingBereich) #zeile1.mobile-thai-lines .mobile-thai-line{
         flex-basis:clamp(26px, 5.4dvh, 38px);
-        line-height:1.2;
+        padding-top:clamp(3px, .9vw, 5px);
+        line-height:1.35;
     }
 
     body:has(#typingBereich) .learning-title{
