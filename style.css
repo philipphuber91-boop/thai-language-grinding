@@ -50,6 +50,98 @@
 
 }
 
+@font-face{
+    font-family:"Noto Sans Thai";
+    font-style:normal;
+    font-weight:400;
+    font-display:swap;
+    src:url("./assets/fonts/noto-sans-thai-400.woff2") format("woff2");
+}
+
+@font-face{
+    font-family:"Noto Sans Thai";
+    font-style:normal;
+    font-weight:500;
+    font-display:swap;
+    src:url("./assets/fonts/noto-sans-thai-500.woff2") format("woff2");
+}
+
+@font-face{
+    font-family:"Sarabun";
+    font-style:normal;
+    font-weight:400;
+    font-display:swap;
+    src:url("./assets/fonts/sarabun-400.woff2") format("woff2");
+}
+
+@font-face{
+    font-family:"Sarabun";
+    font-style:normal;
+    font-weight:500;
+    font-display:swap;
+    src:url("./assets/fonts/sarabun-500.woff2") format("woff2");
+}
+
+@font-face{
+    font-family:"Prompt";
+    font-style:normal;
+    font-weight:400;
+    font-display:swap;
+    src:url("./assets/fonts/prompt-400.woff2") format("woff2");
+}
+
+@font-face{
+    font-family:"Prompt";
+    font-style:normal;
+    font-weight:500;
+    font-display:swap;
+    src:url("./assets/fonts/prompt-500.woff2") format("woff2");
+}
+
+@font-face{
+    font-family:"Kanit";
+    font-style:normal;
+    font-weight:400;
+    font-display:swap;
+    src:url("./assets/fonts/kanit-400.woff2") format("woff2");
+}
+
+@font-face{
+    font-family:"Kanit";
+    font-style:normal;
+    font-weight:500;
+    font-display:swap;
+    src:url("./assets/fonts/kanit-500.woff2") format("woff2");
+}
+
+body.thai-font-noto-sans-thai #zeile1,
+body.thai-font-noto-sans-thai #zeile2,
+body.thai-font-noto-sans-thai #thaiKeyboard .key,
+body.thai-font-noto-sans-thai #thaiText{
+    font-family:"Noto Sans Thai", sans-serif;
+}
+
+body.thai-font-sarabun #zeile1,
+body.thai-font-sarabun #zeile2,
+body.thai-font-sarabun #thaiKeyboard .key,
+body.thai-font-sarabun #thaiText{
+    font-family:"Sarabun", sans-serif;
+}
+
+body.thai-font-prompt #zeile1,
+body.thai-font-prompt #zeile2,
+body.thai-font-prompt #thaiKeyboard .key,
+body.thai-font-prompt #thaiText{
+    font-family:"Prompt", sans-serif;
+}
+
+body.thai-font-kanit #zeile1,
+body.thai-font-kanit #zeile2,
+body.thai-font-kanit #thaiKeyboard .key,
+body.thai-font-kanit #thaiText{
+    font-family:"Kanit", sans-serif;
+}
+
 /* =========================================================
    QUEST-AUDIO-PLAYER
    ---------------------------------------------------------
@@ -5822,6 +5914,43 @@ padding:28px 34px;
 
     padding:6px 0;
 
+}
+
+.settings-row-select{
+    align-items:center;
+}
+
+.settings-select,
+.story-thai-font-selector select{
+    min-height:34px;
+    padding:5px 9px;
+    border:1px solid #b47a2d;
+    border-radius:7px;
+    background:#fff7e2;
+    color:#4a3018;
+    font:inherit;
+}
+
+.settings-select{
+    max-width:190px;
+}
+
+.story-thai-font-selector{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:10px;
+    margin:0 30px 18px;
+    color:#5d3b14;
+    font-size:.9rem;
+}
+
+.story-thai-font-selector label{
+    font-weight:700;
+}
+
+.story-thai-font-selector select{
+    max-width:190px;
 }
 
 .settings-row-label{

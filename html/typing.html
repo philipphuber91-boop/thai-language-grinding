@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="../style.css">
     <!-- Nur additive Anpassungen für schmale Viewports, ändert keine bestehende Desktop-Regel -->
-    <link rel="stylesheet" href="../css/mobile.css?v=14">
+    <link rel="stylesheet" href="../css/mobile.css?v=15">
 
     <!-- PWA: Installierbarkeit & Offline-Support, ohne bestehende Optik/Logik zu verändern -->
     <link rel="manifest" href="../manifest.json">
@@ -49,6 +49,17 @@
 
 
     <h2 id="questTitel"></h2>
+
+    <div class="story-thai-font-selector">
+        <label for="storyThaiFontSelect">Thai-Schrift</label>
+        <select id="storyThaiFontSelect" aria-label="Thai-Schrift im Storytext">
+            <option value="standard">Standard</option>
+            <option value="noto-sans-thai">Noto Sans Thai</option>
+            <option value="sarabun">Sarabun</option>
+            <option value="prompt">Prompt</option>
+            <option value="kanit">Kanit</option>
+        </select>
+    </div>
 
     <div class="buch">
 
@@ -291,6 +302,17 @@
     <div class="settings-section">
 
         <h3 class="settings-section-title">Sprache</h3>
+
+        <div class="settings-row settings-row-select">
+            <label class="settings-row-label" for="settingsThaiFontSelect">Thai-Schrift</label>
+            <select id="settingsThaiFontSelect" class="settings-select" aria-label="Thai-Schrift auswählen">
+                <option value="standard">Standard</option>
+                <option value="noto-sans-thai">Noto Sans Thai</option>
+                <option value="sarabun">Sarabun</option>
+                <option value="prompt">Prompt</option>
+                <option value="kanit">Kanit</option>
+            </select>
+        </div>
 
         <div class="settings-row">
             <span class="settings-row-label">🇩🇪 Deutsche Übersetzung</span>

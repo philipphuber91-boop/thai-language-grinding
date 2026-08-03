@@ -2301,6 +2301,47 @@
 
 }
 
+@media (max-width:900px){
+
+    .story-thai-font-selector{
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:6px 8px;
+        margin:0 0 18px;
+        font-size:.85rem;
+    }
+
+    .story-thai-font-selector select{
+        max-width:calc(100vw - 150px);
+        min-height:32px;
+        padding:4px 7px;
+    }
+
+    .settings-row-select{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:7px;
+    }
+
+    .settings-row-select .settings-select{
+        width:100%;
+        max-width:none;
+    }
+
+    #deutsch.buch-card .buch-satz{
+        line-height:1.55;
+        margin-bottom:30px;
+    }
+
+    #deutsch.buch-card #thaiText .buch-satz{
+        line-height:1.7;
+        padding-top:.1em;
+        padding-bottom:.1em;
+        overflow:visible;
+    }
+
+}
+
 /* =========================================================
    3c. MOBILE TYPING VIEWPORT – audio/header and full keyboard
    ---------------------------------------------------------
