@@ -463,6 +463,54 @@ const achievementDefinitions = [
 },
 
 {
+    id: "mobileSpeedHunter80",
+    title: "Tempojäger",
+    description: "Erreiche 80 CPM in einer Runde.",
+    icon: "blitz",
+    rarity: "common",
+    category: "typing",
+    questScoped: true,
+    mobileOnly: true,
+    stat: "bestCPM",
+    goal: 80,
+    runType: "cpm",
+    runGoal: 80,
+    bonusXp: 5
+},
+
+{
+    id: "mobileLightningFingers100",
+    title: "Blitzfinger",
+    description: "Erreiche 100 CPM in einer Runde.",
+    icon: "blitz",
+    rarity: "rare",
+    category: "typing",
+    questScoped: true,
+    mobileOnly: true,
+    stat: "bestCPM",
+    goal: 100,
+    runType: "cpm",
+    runGoal: 100,
+    bonusXp: 10
+},
+
+{
+    id: "mobileLightSpeed120",
+    title: "Lichtgeschwindigkeit",
+    description: "Erreiche 120 CPM in einer Runde.",
+    icon: "blitz",
+    rarity: "epic",
+    category: "typing",
+    questScoped: true,
+    mobileOnly: true,
+    stat: "bestCPM",
+    goal: 120,
+    runType: "cpm",
+    runGoal: 120,
+    bonusXp: 15
+},
+
+{
     id: "speedHunter120",
     title: "Tempojäger",
     description: "Erreiche 120 CPM in einer Runde.",
@@ -470,6 +518,7 @@ const achievementDefinitions = [
     rarity: "common",
     category: "typing",
     questScoped: true,
+    desktopOnly: true,
     stat: "bestCPM",
     goal: 120,
     runType: "cpm",
@@ -485,6 +534,7 @@ const achievementDefinitions = [
     rarity: "epic",
     category: "typing",
     questScoped: true,
+    desktopOnly: true,
     stat: "bestCPM",
     goal: 150,
     runType: "cpm",
@@ -523,6 +573,22 @@ const achievementDefinitions = [
 },
 
 {
+    id: "precisionNoHelp98",
+    title: "Präzisionsmodus",
+    description: "Erreiche 98% Genauigkeit ohne Tastenhilfe.",
+    icon: "scharfschütze",
+    rarity: "epic",
+    category: "typing",
+    questScoped: true,
+    requiresNoTastenhilfe: true,
+    stat: "bestAccuracy",
+    goal: 98,
+    runType: "accuracy",
+    runGoal: 98,
+    bonusXp: 15
+},
+
+{
     id: "masterWriterQuest",
     title: "Meisterschreiber",
     description: "Schließe eine Quest ohne Fehler ab.",
@@ -538,25 +604,24 @@ const achievementDefinitions = [
 },
 
 {
-    id: "knowledgeThirst5",
-    title: "Wissensdurst",
-    description: "Entdecke 5 neue Wörter in einer Runde.",
+    id: "masteredUniqueWords2",
+    title: "Wortmeister",
+    description: "Meistere 2 einzigartige Wörter in dieser Quest.",
     icon: "book",
-    rarity: "common",
+    rarity: "epic",
     category: "typing",
     questScoped: true,
-    stat: "uniqueThaiWords",
-    progressType: "uniqueWords",
-    goal: 5,
-    runType: "newWords",
-    runGoal: 5,
-    bonusXp: 5
+    stat: "masteredThaiWords",
+    goal: 2,
+    runType: "masteredWords",
+    runGoal: 2,
+    bonusXp: 15
 },
 
 {
     id: "explorerMasteredWord",
     title: "Entdecker",
-    description: "Meistere ein neues Wort.",
+    description: "Meistere ein einzigartiges Wort.",
     icon: "book",
     rarity: "rare",
     category: "typing",
@@ -566,6 +631,54 @@ const achievementDefinitions = [
     runType: "masteredWords",
     runGoal: 1,
     bonusXp: 10
+},
+
+{
+    id: "masterWriterNoHelp",
+    title: "Freihand-Meister",
+    description: "Schließe eine Quest fehlerfrei ohne Tastenhilfe ab.",
+    icon: "krone",
+    rarity: "legendary",
+    category: "typing",
+    questScoped: true,
+    requiresNoTastenhilfe: true,
+    stat: "perfectQuests",
+    goal: 1,
+    runType: "perfectQuest",
+    runGoal: 1,
+    bonusXp: 20
+},
+
+{
+    id: "cpm100NoHelp",
+    title: "Freihandtempo",
+    description: "Erreiche 100 CPM ohne Tastenhilfe.",
+    icon: "blitz",
+    rarity: "rare",
+    category: "typing",
+    questScoped: true,
+    requiresNoTastenhilfe: true,
+    stat: "bestCPM",
+    goal: 100,
+    runType: "cpm",
+    runGoal: 100,
+    bonusXp: 10
+},
+
+{
+    id: "cpm120NoHelp",
+    title: "Freihand-Blitz",
+    description: "Erreiche 120 CPM ohne Tastenhilfe.",
+    icon: "blitz",
+    rarity: "epic",
+    category: "typing",
+    questScoped: true,
+    requiresNoTastenhilfe: true,
+    stat: "bestCPM",
+    goal: 120,
+    runType: "cpm",
+    runGoal: 120,
+    bonusXp: 15
 },
 
 {
@@ -769,9 +882,34 @@ showNextAchievement();
 return true;
 }
 
+function isMobileTypingAwardContext() {
+    if (typeof isMobileViewport === "function") {
+        return isMobileViewport();
+    }
+
+    return typeof window !== "undefined" &&
+        typeof window.matchMedia === "function" &&
+        window.matchMedia("(max-width: 900px)").matches;
+}
+
+function isTypingAwardAvailable(definition) {
+    if (definition.mobileOnly) {
+        return isMobileTypingAwardContext();
+    }
+
+    if (definition.desktopOnly) {
+        return !isMobileTypingAwardContext();
+    }
+
+    return true;
+}
+
 function getTypingAwardDefinitions() {
     return achievementDefinitions.filter(
-        definition => definition.questScoped && definition.runType
+        definition =>
+            definition.questScoped &&
+            definition.runType &&
+            isTypingAwardAvailable(definition)
     );
 }
 
@@ -879,6 +1017,11 @@ function getQuestAchievementRunValue(definition, run) {
     ) || 0;
 }
 
+function isTypingAwardEligible(definition, run) {
+    return !definition.requiresNoTastenhilfe ||
+        run?.tastenhilfeEnabled === false;
+}
+
 function isQuestAchievementCumulative(definition) {
     return [
         "cleanWords",
@@ -900,6 +1043,13 @@ function getQuestAchievementProgress(definition, questId, run = null) {
         );
     }
 
+    if (!isTypingAwardEligible(definition, run)) {
+        return Math.min(
+            getQuestAchievementGoal(definition, questId),
+            baseValue
+        );
+    }
+
     const runValue = getQuestAchievementRunValue(definition, run);
     const candidate = isQuestAchievementCumulative(definition)
         ? baseValue + Math.max(0, runValue)
@@ -912,6 +1062,10 @@ function getQuestAchievementProgress(definition, questId, run = null) {
 }
 
 function meetsTypingAwardCondition(definition, run) {
+    if (!isTypingAwardEligible(definition, run)) {
+        return false;
+    }
+
     const goal = getQuestAchievementGoal(definition, run.questId);
     const value = getQuestAchievementRunValue(definition, run);
     const state = getQuestAchievementState(run.questId, definition.id);
@@ -1001,6 +1155,10 @@ function finalizeQuestAchievementProgress(questId, run) {
     const stats = getQuestStats(questId);
 
     for (const definition of getTypingAwardDefinitions()) {
+        if (!isTypingAwardEligible(definition, run)) {
+            continue;
+        }
+
         const state = getQuestAchievementState(
             questId,
             definition.id
