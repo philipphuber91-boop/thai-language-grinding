@@ -117,28 +117,32 @@
 body.thai-font-noto-sans-thai #zeile1,
 body.thai-font-noto-sans-thai #zeile2,
 body.thai-font-noto-sans-thai #thaiKeyboard .key,
-body.thai-font-noto-sans-thai #thaiText{
+body.thai-font-noto-sans-thai #thaiText,
+body.thai-font-noto-sans-thai .mastered-word{
     font-family:"Noto Sans Thai", sans-serif;
 }
 
 body.thai-font-sarabun #zeile1,
 body.thai-font-sarabun #zeile2,
 body.thai-font-sarabun #thaiKeyboard .key,
-body.thai-font-sarabun #thaiText{
+body.thai-font-sarabun #thaiText,
+body.thai-font-sarabun .mastered-word{
     font-family:"Sarabun", sans-serif;
 }
 
 body.thai-font-prompt #zeile1,
 body.thai-font-prompt #zeile2,
 body.thai-font-prompt #thaiKeyboard .key,
-body.thai-font-prompt #thaiText{
+body.thai-font-prompt #thaiText,
+body.thai-font-prompt .mastered-word{
     font-family:"Prompt", sans-serif;
 }
 
 body.thai-font-kanit #zeile1,
 body.thai-font-kanit #zeile2,
 body.thai-font-kanit #thaiKeyboard .key,
-body.thai-font-kanit #thaiText{
+body.thai-font-kanit #thaiText,
+body.thai-font-kanit .mastered-word{
     font-family:"Kanit", sans-serif;
 }
 
@@ -4171,6 +4175,50 @@ padding:28px 34px;
 
 }
 
+.mastered-words-summary{
+    width:100%;
+    box-sizing:border-box;
+    padding:14px 18px;
+    margin:16px 0;
+    border:2px solid rgba(255,215,120,.18);
+    border-radius:16px;
+    background:rgba(255,255,255,.035);
+    opacity:0;
+    transform:translateY(15px);
+}
+
+.mastered-words-summary h3{
+    margin:0 0 6px;
+    text-align:center;
+    color:#ffd56f;
+}
+
+.mastered-words-summary p{
+    margin:0 0 12px;
+    color:#d9c29a;
+    text-align:center;
+}
+
+.mastered-word-list{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
+}
+
+.mastered-word{
+    display:inline-flex;
+    align-items:center;
+    min-height:42px;
+    padding:5px 14px;
+    border:1px solid rgba(214,173,85,.55);
+    border-radius:12px;
+    background:rgba(87,59,25,.7);
+    color:#fff0b8;
+    font-size:clamp(1.35rem, 2.8vw, 2rem);
+    line-height:1.3;
+}
+
 .typing-run-summary{
     width:100%;
     box-sizing:border-box;
@@ -4299,6 +4347,7 @@ padding:28px 34px;
 
 .complete-info,
 .complete-stats,
+.mastered-words-summary,
 .comparison-section{
 
     opacity:0;
@@ -4650,6 +4699,8 @@ padding:28px 34px;
     .complete-quest-image{ width:76px; height:76px; }
     .complete-stats{ margin:10px 0 20px; gap:10px; }
     .complete-stats .stat{ min-height:135px; }
+    .mastered-words-summary{ padding:12px 10px; }
+    .mastered-words-summary p{ font-size:.9rem; }
     .compare-table{ grid-template-columns:105px 1fr 1fr 1fr; }
     .record-row{ grid-template-columns:105px repeat(3, 1fr); }
     .record-label,

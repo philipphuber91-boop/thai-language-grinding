@@ -112,6 +112,10 @@
 
     <!-- Öffnet das neue Einstellungsmenü (ersetzt den alten Tutor-Button
          sowie den Deutsch-Umschalter, siehe #settingsPanel weiter unten) -->
+    <button id="typingMobileAwardsButton" type="button" class="mobile-typing-awards-button"
+        aria-haspopup="dialog" aria-controls="typingQuestAwardsOverview" aria-expanded="false"
+        aria-label="Quest-Auszeichnungen öffnen">🏆</button>
+
     <button id="settingsButton" type="button" class="settings-gear-button"
         aria-haspopup="true" aria-controls="settingsPanel" aria-expanded="false"
         aria-label="Einstellungen öffnen">⚙️</button>
@@ -584,6 +588,12 @@
             </div>
 
         </div>
+
+        <section id="popupMasteredWordsSection" class="mastered-words-summary" hidden aria-labelledby="popupMasteredWordsTitle">
+            <h3 id="popupMasteredWordsTitle">🧠 Neue Wörter gemeistert</h3>
+            <p>Diese Wörter hast du in dieser Quest vollständig gemeistert:</p>
+            <div id="popupMasteredWords" class="mastered-word-list"></div>
+        </section>
 
         <div class="window-divider"></div>
 

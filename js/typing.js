@@ -404,29 +404,43 @@ function renderTypingAwardsOverview() {
 }
 
 function initializeTypingAwardsOverview() {
-    const button = document.getElementById("typingQuestAwardsButton");
+    const buttons = [
+        document.getElementById("typingQuestAwardsButton"),
+        document.getElementById("typingMobileAwardsButton")
+    ].filter(Boolean);
     const overlay = document.getElementById("typingQuestAwardsOverview");
     const closeButton = document.getElementById(
         "typingQuestAwardsOverviewClose"
     );
 
-    if (!button || !overlay || !closeButton) {
+    if (buttons.length === 0 || !overlay || !closeButton) {
         return;
     }
+
+    let openingButton = buttons[0];
+
+    const setButtonsExpanded = expanded => {
+        buttons.forEach(button => {
+            button.setAttribute("aria-expanded", String(expanded));
+        });
+    };
 
     const closeOverview = () => {
         overlay.classList.remove("is-open");
         overlay.hidden = true;
-        button.setAttribute("aria-expanded", "false");
-        button.focus();
+        setButtonsExpanded(false);
+        openingButton.focus();
     };
 
-    button.addEventListener("click", () => {
-        renderTypingAwardsOverview();
-        overlay.hidden = false;
-        overlay.classList.add("is-open");
-        button.setAttribute("aria-expanded", "true");
-        closeButton.focus();
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            openingButton = button;
+            renderTypingAwardsOverview();
+            overlay.hidden = false;
+            overlay.classList.add("is-open");
+            setButtonsExpanded(true);
+            closeButton.focus();
+        });
     });
 
     closeButton.addEventListener("click", closeOverview);
@@ -786,6 +800,13 @@ const popupKapitel =
 const popupAccuracy = document.getElementById("popupAccuracy");
 const popupNewWords = document.getElementById("popupNewWords");
 const popupNewWordsStat = document.getElementById("popupNewWordsStat");
+const popupMasteredWordsSection = document.getElementById(
+    "popupMasteredWordsSection"
+);
+const popupMasteredWordsTitle = document.getElementById(
+    "popupMasteredWordsTitle"
+);
+const popupMasteredWords = document.getElementById("popupMasteredWords");
 
 const weiterButton = document.getElementById("weiterButton");
 
@@ -800,6 +821,34 @@ function openQuestCompletionOverlay() {
     const completionWindow = popup.querySelector(".quest-complete-window");
     if (completionWindow) {
         completionWindow.scrollTop = 0;
+    }
+}
+
+function renderMasteredWordsSummary(words) {
+    if (!popupMasteredWordsSection || !popupMasteredWords) {
+        return;
+    }
+
+    const masteredWords = Array.isArray(words)
+        ? words.filter(word => String(word).trim().length > 0)
+        : [];
+
+    popupMasteredWords.replaceChildren();
+    popupMasteredWordsSection.hidden = masteredWords.length === 0;
+
+    if (popupMasteredWordsTitle) {
+        popupMasteredWordsTitle.textContent =
+            masteredWords.length === 1
+                ? "🧠 Neues Wort gemeistert"
+                : "🧠 Neue Wörter gemeistert";
+    }
+
+    for (const word of masteredWords) {
+        const wordElement = document.createElement("span");
+        wordElement.className = "mastered-word";
+        wordElement.lang = "th";
+        wordElement.textContent = word;
+        popupMasteredWords.appendChild(wordElement);
     }
 }
 
@@ -854,6 +903,7 @@ const resumeAfkButton = document.getElementById("resumeAfkButton");
 
 const completeInfo = document.querySelector(".complete-info");
 const completeStats = document.querySelector(".complete-stats");
+const masteredWordsSummary = document.querySelector(".mastered-words-summary");
 const typingRunSummary = document.querySelector(".typing-run-summary");
 const comparisonSection = document.querySelector(".comparison-section");
 
@@ -978,7 +1028,13 @@ function waitForTransition(element, propertyName = "opacity", timeout = 600) {
 }
 
 function hideCompletionSections() {
-    [completeInfo, completeStats, typingRunSummary, comparisonSection].forEach(el => {
+    [
+        completeInfo,
+        completeStats,
+        masteredWordsSummary,
+        typingRunSummary,
+        comparisonSection
+    ].forEach(el => {
         if (!el) return;
         el.classList.remove("animated-visible");
     });
@@ -1792,7 +1848,8 @@ function beendePruefung() {
 
     showRecordSummary(newRecords);
     popupNewWords.textContent = newRecords.newUniqueWords;
-    popupNewWordsStat.hidden = !newRecords.firstCompletion;
+    popupNewWordsStat.hidden = newRecords.newUniqueWords <= 0;
+    renderMasteredWordsSummary(newRecords.newlyMasteredWords);
     renderTypingRunSummary(getPlayerXpSummary());
     hideCompletionSections();
     openQuestCompletionOverlay();
@@ -1801,6 +1858,7 @@ function beendePruefung() {
     const completionAnimation = async () => {
         await revealElement(completeInfo);
         await revealElement(completeStats);
+        await revealElement(masteredWordsSummary);
 
         await Promise.all([
             animateTimeValue(popupZeit, 0, sekunden, 1300),

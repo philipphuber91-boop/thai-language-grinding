@@ -339,11 +339,16 @@
    bleibt durch den max-width-Breakpoint vollständig unverändert.
 ========================================================= */
 
+.mobile-typing-awards-button,
 .mobile-typing-back,
 .mobile-input-method-settings,
 .system-keyboard-tutor-hint,
 .mobile-delay-zero{
     display:inline;
+}
+
+.mobile-typing-awards-button{
+    display:none;
 }
 
 @media (max-width:900px){
@@ -394,7 +399,7 @@
     .typing-header{
         order:1;
         display:grid;
-        grid-template-columns:44px minmax(0, 1fr) 44px;
+        grid-template-columns:44px minmax(0, 1fr) auto;
         align-items:center;
         flex:0 0 56px;
         width:100%;
@@ -420,10 +425,14 @@
     }
 
     .typing-status{
+        display:flex;
+        align-items:center;
+        gap:4px;
         grid-column:3;
         justify-self:end;
     }
 
+    .mobile-typing-awards-button,
     .mobile-typing-back,
     .settings-gear-button{
         display:inline-flex;
@@ -439,6 +448,13 @@
         font-size:1.65rem;
         line-height:1;
         box-shadow:0 2px 5px rgba(91,55,17,.15);
+    }
+
+    .mobile-typing-awards-button{
+        width:38px;
+        height:38px;
+        font-size:1.35rem;
+        cursor:pointer;
     }
 
     .mobile-typing-back{
@@ -815,7 +831,7 @@
 
     .typing-header{
         flex-basis:48px;
-        grid-template-columns:38px minmax(0, 1fr) 38px;
+        grid-template-columns:38px minmax(0, 1fr) auto;
         padding-bottom:5px;
     }
 
@@ -851,6 +867,7 @@
             font-size:.9rem;
         }
 
+    .mobile-typing-awards-button,
     .mobile-typing-back,
     .settings-gear-button{
         width:36px;

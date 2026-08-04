@@ -476,23 +476,36 @@ function addQuestWordsToWordStats(questId) {
     const quest = getQuestDataFromStatsId(questId);
 
     if (!quest) {
-        return;
+        return [];
     }
 
     const wordList = getThaiWordList(quest.thaiZeilen);
 
     if (!wordList.supported) {
-        return;
+        return [];
     }
 
     const wordStats = getStoredThaiWordStats();
+    const newlyMasteredWords = new Set();
 
     for (const word of wordList.words) {
-        wordStats[word] = (wordStats[word] ?? 0) + 1;
+        const previousCount = Number(wordStats[word] ?? 0);
+        const nextCount = previousCount + 1;
+
+        wordStats[word] = nextCount;
+
+        if (
+            getThaiWordMasteryLevel(previousCount) !== "mastered" &&
+            getThaiWordMasteryLevel(nextCount) === "mastered"
+        ) {
+            newlyMasteredWords.add(word);
+        }
     }
 
     player.stats.wordStats = wordStats;
     player.stats.wordStatsInitialized = true;
+
+    return [...newlyMasteredWords];
 }
 
 function updateMasteredThaiWordCount() {
@@ -1183,14 +1196,10 @@ function completeQuest(questId, zeit, cpm, accuracy, zeichen, currentVersion) {
         ? addQuestWordsToUniqueCollection(questId)
         : 0;
 
-    const oldMasteredWords = player.stats.masteredThaiWords;
-    addQuestWordsToWordStats(questId);
+    const newlyMasteredWords = addQuestWordsToWordStats(questId);
     addCompletedQuestWordsToTotal(questId);
     updateMasteredThaiWordCount();
-    const newMasteredWords = Math.max(
-        0,
-        player.stats.masteredThaiWords - oldMasteredWords
-    );
+    const newMasteredWords = newlyMasteredWords.length;
 
     stats.records.lastTime = zeit;
     stats.records.lastCPM = cpm;
@@ -1280,8 +1289,8 @@ return {
     newCPM: cpm,
     newAccuracy: accuracy,
     newUniqueWords,
-    newMasteredWords
-
+    newMasteredWords,
+    newlyMasteredWords
 };
 
 }
