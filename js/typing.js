@@ -6,6 +6,17 @@ let mode = "learning";
 let startZeit = null;
 let endZeit = null;
 let fehler = 0;
+let currentSentenceHasError = false;
+let cleanSentenceStreak = 0;
+let maxCleanSentenceStreak = 0;
+let runCleanWords = 0;
+let runNewWords = 0;
+let runMasteredWords = 0;
+let runXpEarned = 0;
+let runAwards = [];
+let runAwardIds = new Set();
+const typingAwardToastQueue = [];
+let activeTypingAwardToasts = 0;
 const zeile1 = document.getElementById("zeile1");
 const zeile2 = document.getElementById("zeile2");
 const eingabe = document.getElementById("eingabe");
@@ -48,6 +59,477 @@ let highlightedKeyElements = [];
 let tastenhilfeTimer = null;
 let tastenhilfeRequestId = 0;
 let pendingTutorInput = null;
+
+function getCurrentTypingCpm() {
+    const activeTime = ActivityManager.getActiveTimeMs();
+
+    if (activeTime <= 0) {
+        return 0;
+    }
+
+    return gesamtZeichen / (activeTime / 60000);
+}
+
+function getCurrentTypingAccuracy() {
+    return gesamtZeichen + fehler > 0
+        ? (gesamtZeichen / (gesamtZeichen + fehler)) * 100
+        : 100;
+}
+
+function updateTypingXpUi() {
+    const xpSummary = getPlayerXpSummary();
+    const xpValue = document.getElementById("typingXpValue");
+    const comboValue = document.getElementById("typingComboValue");
+
+    if (xpValue) {
+        xpValue.textContent = `${xpSummary.totalXp} XP`;
+    }
+
+    if (comboValue) {
+        const multiplier = cleanSentenceStreak >= 10
+            ? 3
+            : cleanSentenceStreak >= 5
+                ? 2
+                : 1;
+
+        comboValue.textContent = `🔥 ${cleanSentenceStreak} · x${multiplier}`;
+    }
+
+    renderQuestAchievementPanel();
+
+    const awardsOverview = document.getElementById(
+        "typingQuestAwardsOverview"
+    );
+
+    if (awardsOverview && !awardsOverview.hidden) {
+        renderTypingAwardsOverview();
+    }
+}
+
+function resetTypingAwardRun() {
+    currentSentenceHasError = false;
+    cleanSentenceStreak = 0;
+    maxCleanSentenceStreak = 0;
+    runCleanWords = 0;
+    runNewWords = 0;
+    runMasteredWords = 0;
+    runXpEarned = 0;
+    runAwards = [];
+    runAwardIds = new Set();
+    updateTypingXpUi();
+}
+
+function enqueueTypingAwardToast(award) {
+    typingAwardToastQueue.push(award);
+    showNextTypingAwardToast();
+}
+
+function showNextTypingAwardToast() {
+    if (
+        activeTypingAwardToasts >= 3 ||
+        typingAwardToastQueue.length === 0
+    ) {
+        return;
+    }
+
+    const award = typingAwardToastQueue.shift();
+    const container = document.getElementById("typingAwardContainer");
+
+    if (!container) {
+        return;
+    }
+
+    activeTypingAwardToasts++;
+
+    const toast = document.createElement("div");
+    toast.className = `typing-award-toast rarity-${award.rarity}`;
+    toast.setAttribute("role", "status");
+
+    const icon = document.createElement("img");
+    icon.src = `../assets/icons/achievements/${award.icon}.png`;
+    icon.alt = "";
+
+    const text = document.createElement("div");
+    text.className = "typing-award-toast-text";
+
+    const title = document.createElement("strong");
+    title.textContent = award.title;
+
+    const reward = document.createElement("span");
+    reward.textContent = `+${award.xpAwarded} XP`;
+
+    text.append(title, reward);
+    toast.append(icon, text);
+    container.appendChild(toast);
+
+    requestAnimationFrame(() => {
+        toast.classList.add("is-visible");
+    });
+
+    setTimeout(() => {
+        toast.classList.remove("is-visible");
+
+        setTimeout(() => {
+            toast.remove();
+            activeTypingAwardToasts--;
+            showNextTypingAwardToast();
+        }, 280);
+    }, 2200);
+
+    showNextTypingAwardToast();
+}
+
+function evaluateCurrentTypingAwards(extra = {}) {
+    const awards = evaluateTypingRunAwards({
+        questId: questStatsId,
+        cpm: getCurrentTypingCpm(),
+        accuracy: getCurrentTypingAccuracy(),
+        cleanWords: runCleanWords,
+        newWords: runNewWords,
+        masteredWords: runMasteredWords,
+        cleanSentenceStreak,
+        perfectQuest: extra.perfectQuest || 0,
+        newRecord: extra.newRecord || 0,
+        awardIds: runAwardIds
+    });
+
+    if (awards.length === 0) {
+        return;
+    }
+
+    runAwards.push(...awards);
+    runXpEarned += awards.reduce(
+        (total, award) => total + award.xpAwarded,
+        0
+    );
+    awards.forEach(enqueueTypingAwardToast);
+    updateTypingXpUi();
+}
+
+function renderQuestAchievementPanel() {
+    const container = document.getElementById("typingQuestAchievements");
+
+    if (
+        !container ||
+        typeof getQuestAchievementCards !== "function"
+    ) {
+        return;
+    }
+
+    const cards = getQuestAchievementCards(questStatsId, {
+        cpm: getCurrentTypingCpm(),
+        accuracy: getCurrentTypingAccuracy(),
+        cleanWords: runCleanWords,
+        newWords: runNewWords,
+        masteredWords: runMasteredWords,
+        cleanSentenceStreak,
+        perfectQuest: 0,
+        newRecord: 0
+    });
+
+    const unlockedCards = cards.filter(card => card.unlocked);
+    container.innerHTML = "";
+
+    if (unlockedCards.length === 0) {
+        const emptyState = document.createElement("p");
+        emptyState.className = "typing-quest-achievement-empty";
+        emptyState.textContent = "Noch keine Auszeichnung erreicht";
+        container.appendChild(emptyState);
+        return;
+    }
+
+    const cardsById = new Map(
+        unlockedCards.map(card => [card.id, card])
+    );
+    const currentRunCards = runAwards
+        .map(award => cardsById.get(award.id))
+        .filter(Boolean);
+    const currentRunIds = new Set(currentRunCards.map(card => card.id));
+    const olderCards = unlockedCards.filter(card => !currentRunIds.has(card.id));
+    const visibleCards = [...olderCards, ...currentRunCards].slice(-5);
+
+    for (const card of visibleCards) {
+        const item = document.createElement("article");
+        item.className = "typing-quest-achievement is-unlocked";
+
+        const icon = document.createElement("img");
+        icon.src = `../assets/icons/achievements/${card.icon}.png`;
+        icon.alt = "";
+
+        const body = document.createElement("div");
+        body.className = "typing-quest-achievement-body";
+
+        const title = document.createElement("strong");
+        title.textContent = card.title;
+
+        const description = document.createElement("span");
+        description.textContent = card.repeatCount > 0
+            ? `Erreicht · ${card.repeatCount}× wiederholt`
+            : "Erreicht in dieser Quest";
+
+        body.append(title, description);
+
+        const reward = document.createElement("em");
+        reward.textContent = card.unlocked
+            ? `✓ +${card.bonusXp} XP`
+            : `+${card.bonusXp} XP`;
+
+        item.append(icon, body, reward);
+        container.appendChild(item);
+    }
+}
+
+function getQuestAchievementUnit(card) {
+    if (card.runType === "cpm") {
+        return "CPM";
+    }
+
+    if (card.runType === "accuracy") {
+        return "%";
+    }
+
+    if (card.runType === "cleanStreak") {
+        return "Sätze";
+    }
+
+    if (card.runType === "perfectQuest") {
+        return "Quest";
+    }
+
+    return "Ziel";
+}
+
+function getTypingAchievementRequirement(card) {
+    const goal = card.goal;
+
+    if (card.runType === "cpm") {
+        return `Erreiche ${goal} CPM in einer Runde.`;
+    }
+
+    if (card.runType === "accuracy") {
+        return `Erreiche ${goal}% Genauigkeit.`;
+    }
+
+    if (card.runType === "cleanWords") {
+        return `Tippe ${goal} Wörter fehlerfrei.`;
+    }
+
+    if (card.runType === "newWords") {
+        return `Entdecke ${goal} neue Wörter in einer Runde.`;
+    }
+
+    if (card.runType === "masteredWords") {
+        return `Meistere ${goal} neues Wort${goal === 1 ? "" : "e"}.`;
+    }
+
+    if (card.runType === "perfectQuest") {
+        return "Schließe diese Quest ohne Fehler ab.";
+    }
+
+    if (card.runType === "newRecord") {
+        return "Stelle eine persönliche Bestleistung auf.";
+    }
+
+    if (card.runType === "cleanStreak") {
+        return `Tippe ${goal} Sätze fehlerfrei hintereinander.`;
+    }
+
+    return card.description;
+}
+
+function renderTypingAwardsOverview() {
+    const list = document.getElementById(
+        "typingQuestAwardsOverviewList"
+    );
+    const summary = document.getElementById(
+        "typingQuestAwardsOverviewSummary"
+    );
+
+    if (
+        !list ||
+        !summary ||
+        typeof getQuestAchievementCards !== "function"
+    ) {
+        return;
+    }
+
+    const cards = getQuestAchievementCards(questStatsId);
+    const unlockedCount = cards.filter(card => card.unlocked).length;
+
+    summary.textContent =
+        `${unlockedCount} / ${cards.length} Auszeichnungen gesammelt`;
+    list.innerHTML = "";
+
+    for (const card of cards) {
+        const item = document.createElement("article");
+        item.className =
+            `typing-award-overview-card ${card.unlocked ? "is-unlocked" : ""}`;
+
+        const icon = document.createElement("img");
+        icon.src = `../assets/icons/achievements/${card.icon}.png`;
+        icon.alt = "";
+
+        const content = document.createElement("div");
+        content.className = "typing-award-overview-content";
+
+        const title = document.createElement("strong");
+        title.textContent = card.title;
+
+        const requirement = document.createElement("p");
+        requirement.textContent = getTypingAchievementRequirement(card);
+
+        const progressText = document.createElement("small");
+        progressText.textContent = card.unlocked
+            ? `✓ Gesammelt${card.repeatCount > 0
+                ? ` · ${card.repeatCount}× wiederholt`
+                : ""}`
+            : `${card.progress} / ${card.goal} ${getQuestAchievementUnit(card)}`;
+
+        const track = document.createElement("div");
+        track.className = "typing-award-overview-track";
+
+        const fill = document.createElement("div");
+        fill.className = "typing-award-overview-fill";
+        fill.style.width = `${card.percent}%`;
+        track.appendChild(fill);
+
+        content.append(title, requirement, progressText, track);
+
+        const reward = document.createElement("em");
+        reward.textContent = `+${card.bonusXp} XP`;
+
+        item.append(icon, content, reward);
+        list.appendChild(item);
+    }
+}
+
+function initializeTypingAwardsOverview() {
+    const button = document.getElementById("typingQuestAwardsButton");
+    const overlay = document.getElementById("typingQuestAwardsOverview");
+    const closeButton = document.getElementById(
+        "typingQuestAwardsOverviewClose"
+    );
+
+    if (!button || !overlay || !closeButton) {
+        return;
+    }
+
+    const closeOverview = () => {
+        overlay.classList.remove("is-open");
+        overlay.hidden = true;
+        button.setAttribute("aria-expanded", "false");
+        button.focus();
+    };
+
+    button.addEventListener("click", () => {
+        renderTypingAwardsOverview();
+        overlay.hidden = false;
+        overlay.classList.add("is-open");
+        button.setAttribute("aria-expanded", "true");
+        closeButton.focus();
+    });
+
+    closeButton.addEventListener("click", closeOverview);
+
+    overlay.addEventListener("click", event => {
+        if (event.target === overlay) {
+            closeOverview();
+        }
+    });
+
+    document.addEventListener("keydown", event => {
+        if (
+            event.key === "Escape" &&
+            !overlay.hidden
+        ) {
+            closeOverview();
+        }
+    });
+}
+
+initializeTypingAwardsOverview();
+
+function registerCompletedTypingSentence() {
+    const sentenceWords = getThaiWordList([text]).words.length;
+    const cleanSentence = !currentSentenceHasError;
+
+    if (cleanSentence) {
+        cleanSentenceStreak++;
+        maxCleanSentenceStreak = Math.max(
+            maxCleanSentenceStreak,
+            cleanSentenceStreak
+        );
+        runCleanWords += sentenceWords;
+
+        registerCleanTypingSentence(
+            sentenceWords,
+            cleanSentenceStreak
+        );
+
+        const multiplier = cleanSentenceStreak >= 10
+            ? 3
+            : cleanSentenceStreak >= 5
+                ? 2
+                : 1;
+        const xpResult = awardPlayerXp(
+            XP_PER_CLEAN_SENTENCE * multiplier
+        );
+
+        runXpEarned += xpResult.awardedXp;
+    } else {
+        cleanSentenceStreak = 0;
+    }
+
+    evaluateCurrentTypingAwards();
+    currentSentenceHasError = false;
+    updateTypingXpUi();
+}
+
+function renderTypingRunSummary(xpSummary) {
+    const awardsContainer = document.getElementById("typingRunAwards");
+    const xpValue = document.getElementById("typingRunXp");
+    const levelValue = document.getElementById("typingRunLevel");
+    const levelProgress = document.getElementById("typingRunLevelProgress");
+    const comboValue = document.getElementById("typingRunCombo");
+
+    if (awardsContainer) {
+        awardsContainer.innerHTML = "";
+
+        if (runAwards.length === 0) {
+            const empty = document.createElement("p");
+            empty.className = "typing-run-awards-empty";
+            empty.textContent = "Diesmal keine neue Auszeichnung.";
+            awardsContainer.appendChild(empty);
+        } else {
+            runAwards.forEach(award => {
+                const item = document.createElement("div");
+                item.className = `typing-run-award rarity-${award.rarity}`;
+                item.innerHTML = `
+                    <img src="../assets/icons/achievements/${award.icon}.png" alt="">
+                    <span>${award.title}</span>
+                    <strong>+${award.xpAwarded} XP</strong>
+                `;
+                awardsContainer.appendChild(item);
+            });
+        }
+    }
+
+    if (xpValue) {
+        xpValue.textContent = `+${runXpEarned} XP`;
+    }
+
+    if (levelValue) {
+        levelValue.textContent = `Level ${xpSummary.level}`;
+    }
+
+    if (levelProgress) {
+        levelProgress.style.width = `${xpSummary.percent}%`;
+    }
+
+    if (comboValue) {
+        comboValue.textContent = `🔥 Beste Combo: ${maxCleanSentenceStreak} Sätze`;
+    }
+}
 
 // Tastenhilfe (Lernhilfen-Einstellung): steuert, ob und nach welcher
 // Verzögerung die Taste des als nächstes erwarteten Zeichens auf der
@@ -307,6 +789,20 @@ const popupNewWordsStat = document.getElementById("popupNewWordsStat");
 
 const weiterButton = document.getElementById("weiterButton");
 
+function openQuestCompletionOverlay() {
+    if (!popup) {
+        return;
+    }
+
+    popup.classList.add("active");
+    popup.scrollTop = 0;
+
+    const completionWindow = popup.querySelector(".quest-complete-window");
+    if (completionWindow) {
+        completionWindow.scrollTop = 0;
+    }
+}
+
 const QUEST_COMPLETION_AUDIO_START_SECONDS = 58;
 const questCompletionAudio = new Audio("../assets/audio/quest-complete.mp3");
 questCompletionAudio.preload = "metadata";
@@ -358,6 +854,7 @@ const resumeAfkButton = document.getElementById("resumeAfkButton");
 
 const completeInfo = document.querySelector(".complete-info");
 const completeStats = document.querySelector(".complete-stats");
+const typingRunSummary = document.querySelector(".typing-run-summary");
 const comparisonSection = document.querySelector(".comparison-section");
 
 ActivityManager.onStatusChange = updateActivityStatus;
@@ -481,7 +978,7 @@ function waitForTransition(element, propertyName = "opacity", timeout = 600) {
 }
 
 function hideCompletionSections() {
-    [completeInfo, completeStats, comparisonSection].forEach(el => {
+    [completeInfo, completeStats, typingRunSummary, comparisonSection].forEach(el => {
         if (!el) return;
         el.classList.remove("animated-visible");
     });
@@ -653,6 +1150,13 @@ const typingQuestKapitel = document.getElementById("typingQuestKapitel");
 const typingQuestSchwierigkeit = document.getElementById("typingQuestSchwierigkeit");
 const typingProgressFill = document.getElementById("typingProgressFill");
 const typingProgressText = document.getElementById("typingProgressText");
+const desktopTypingCpm = document.getElementById("desktopTypingCpm");
+const desktopTypingAccuracy = document.getElementById("desktopTypingAccuracy");
+const desktopTypingTarget = document.getElementById("desktopTypingTarget");
+const desktopTypingProgressFill = document.getElementById("desktopTypingProgressFill");
+const desktopTypingWords = document.getElementById("desktopTypingWords");
+const desktopTypingLines = document.getElementById("desktopTypingLines");
+const desktopTypingErrors = document.getElementById("desktopTypingErrors");
 
 const gesamtZeichenQuest = thaiZeilen.reduce(
     (summe, zeile) => summe + zeile.length,
@@ -697,6 +1201,61 @@ function aktualisiereQuestFortschrittUI() {
             gesamtZeichen + " / " + gesamtZeichenQuest;
     }
 
+    const activeTime = ActivityManager.getActiveTimeMs();
+    const currentCpm = activeTime > 0
+        ? gesamtZeichen / (activeTime / 60000)
+        : 0;
+    const currentAccuracy = gesamtZeichen + fehler > 0
+        ? (gesamtZeichen / (gesamtZeichen + fehler)) * 100
+        : 100;
+    const totalWords = getThaiWordList(thaiZeilen).words.length;
+    const typedWords = getThaiWordList(
+        thaiZeilen.slice(0, aktuelleZeile)
+    ).words.length;
+    const targetCpm = Math.max(
+        1,
+        Number(player.stats.averageCPM) > 0
+            ? Number(player.stats.averageCPM)
+            : 20
+    );
+    const targetMinutes = Math.max(
+        1,
+        Math.ceil(gesamtZeichenQuest / targetCpm)
+    );
+
+    if (desktopTypingCpm) {
+        desktopTypingCpm.textContent = Math.round(currentCpm);
+    }
+
+    if (desktopTypingAccuracy) {
+        desktopTypingAccuracy.textContent =
+            `${Math.round(currentAccuracy)}%`;
+    }
+
+    if (desktopTypingTarget) {
+        desktopTypingTarget.textContent = `${targetMinutes} MIN`;
+    }
+
+    if (desktopTypingProgressFill) {
+        desktopTypingProgressFill.style.width = `${prozent}%`;
+    }
+
+    if (desktopTypingWords) {
+        desktopTypingWords.innerHTML =
+            `Buchstaben<br><strong>${gesamtZeichen} / ${gesamtZeichenQuest}</strong>`;
+    }
+
+    if (desktopTypingLines) {
+        desktopTypingLines.innerHTML =
+            `Zeilen<br><strong>${Math.min(aktuelleZeile, thaiZeilen.length)} / ${thaiZeilen.length}</strong>`;
+    }
+
+    if (desktopTypingErrors) {
+        desktopTypingErrors.innerHTML =
+            `Fehler<br><strong>${fehler}</strong>`;
+    }
+
+    renderQuestAchievementPanel();
 }
 
 aktualisiereQuestInfoleiste();
@@ -1119,6 +1678,8 @@ function verarbeiteRichtigenBuchstaben() {
  
     // Zeile fertig?
     if (position >= text.length) {
+
+        registerCompletedTypingSentence();
  
         aktuelleZeile++;
  
@@ -1205,11 +1766,36 @@ function beendePruefung() {
         daten[aktuelleQuest].version ?? 1
     );
 
+    runNewWords = newRecords.newUniqueWords;
+    runMasteredWords = newRecords.newMasteredWords;
+    evaluateCurrentTypingAwards({
+        perfectQuest: accuracy >= 100 ? 1 : 0,
+        newRecord:
+            newRecords.newBestTime || newRecords.newBestCPM
+                ? 1
+                : 0
+    });
+    finalizeQuestAchievementProgress(questStatsId, {
+        cpm: Number(cpm),
+        accuracy: Number(accuracy),
+        cleanWords: runCleanWords,
+        newWords: runNewWords,
+        masteredWords: runMasteredWords,
+        cleanSentenceStreak: maxCleanSentenceStreak,
+        perfectQuest: accuracy >= 100 ? 1 : 0,
+        newRecord:
+            newRecords.newBestTime || newRecords.newBestCPM
+                ? 1
+                : 0
+    });
+    renderQuestAchievementPanel();
+
     showRecordSummary(newRecords);
     popupNewWords.textContent = newRecords.newUniqueWords;
     popupNewWordsStat.hidden = !newRecords.firstCompletion;
+    renderTypingRunSummary(getPlayerXpSummary());
     hideCompletionSections();
-    popup.classList.add("active");
+    openQuestCompletionOverlay();
     playQuestCompletionAudio();
 
     const completionAnimation = async () => {
@@ -1223,6 +1809,7 @@ function beendePruefung() {
             animateNumber(popupNewWords, 0, newRecords.newUniqueWords),
         ]);
 
+        await revealElement(typingRunSummary);
         await revealElement(comparisonSection);
         await animateRecordSummary(newRecords);
     };
@@ -1256,6 +1843,7 @@ function bereitePruefungVor() {
 
     fehler = 0;
     gesamtZeichen = 0;
+    resetTypingAwardRun();
 
     aktualisiereQuestFortschrittUI();
 
@@ -1318,8 +1906,10 @@ if (eingegeben === erwartet) {
 
 else {
 
-    if (mode === "exam") {
-        fehler++;
+currentSentenceHasError = true;
+
+if (mode === "exam") {
+    fehler++;
     }
 
     if (!isMobileViewport()) {
@@ -1344,6 +1934,7 @@ startDeutschButton.addEventListener("click", function () {
 
 startThaiButton.addEventListener("click", function () {
 
+    resetTypingAwardRun();
     phase = "typing";
 
     zeigePhase();
@@ -1803,6 +2394,7 @@ if (questMode === "challenge") {
     phase = "typing";
     mode = "exam";
     germanVisible = false;
+resetTypingAwardRun();
 
     focusEingabeWithoutScroll();
 

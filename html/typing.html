@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="../style.css">
     <!-- Nur additive Anpassungen für schmale Viewports, ändert keine bestehende Desktop-Regel -->
-    <link rel="stylesheet" href="../css/mobile.css?v=16">
+    <link rel="stylesheet" href="../css/mobile.css?v=18">
 
     <!-- PWA: Installierbarkeit & Offline-Support, ohne bestehende Optik/Logik zu verändern -->
     <link rel="manifest" href="../manifest.json">
@@ -120,6 +120,8 @@
          Mobile ausgeblendet (siehe css/mobile.css), Mobile bleibt auf
          das Tippen fokussiert. -->
     <span id="activityStatus" class="desktop-only-stat">🟢 Aktiv</span>
+    <span id="typingXpValue" class="typing-xp-status desktop-only-stat">0 XP</span>
+    <span id="typingComboValue" class="typing-combo-status desktop-only-stat">🔥 0 · x1</span>
 
 </div>
 
@@ -129,98 +131,160 @@
 
 <div class="typing-divider"></div>
 
-<div id="typingFenster">
+<div id="typingAwardContainer" class="typing-award-container" aria-live="polite" aria-atomic="false"></div>
 
-    <div id="learningContainer">
+<div class="desktop-typing-layout">
 
-<div id="deutschTitel" class="learning-title">
-    🇩🇪 Deutsch
+    <aside class="desktop-typing-metrics" aria-label="Rundenstatistik">
+        <div class="desktop-metric-orb metric-speed">
+            <strong id="desktopTypingCpm">0</strong>
+            <span>CPM</span>
+        </div>
+        <p class="desktop-metric-caption">⚡ TOP SPEED!</p>
+
+        <div class="desktop-metric-orb metric-accuracy">
+            <strong id="desktopTypingAccuracy">100%</strong>
+            <span>GENAUIGKEIT</span>
+        </div>
+        <p class="desktop-metric-caption">🎯 TOP GENAUIGKEIT!</p>
+
+        <div class="desktop-target-card">
+            <strong>⚑ ZIEL DIESER RUNDE</strong>
+            <span id="desktopTypingTarget">0 MIN</span>
+            <small>So schnell wie möglich fehlerfrei tippen</small>
+        </div>
+    </aside>
+
+    <main class="desktop-typing-center">
+        <div id="typingFenster">
+
+            <div id="learningContainer">
+
+                <div id="deutschTitel" class="learning-title">
+                    🇩🇪 Deutsch
+                </div>
+
+                <div id="deutschAktuell" class="learning-text"></div>
+
+                <div class="thai-title"></div>
+
+            </div>
+
+            <div id="zeile1" class="typing-zeile"></div>
+
+            <div id="zeile2" class="typing-zeile"></div>
+
+        </div>
+
+        <div class="desktop-typing-progress">
+            <div class="desktop-typing-progress-bar">
+                <div id="desktopTypingProgressFill"></div>
+            </div>
+            <div class="desktop-typing-progress-meta">
+                <span id="desktopTypingWords">Buchstaben<br><strong>0 / 0</strong></span>
+                <span id="desktopTypingLines">Zeilen<br><strong>0 / 0</strong></span>
+                <span id="desktopTypingErrors">Fehler<br><strong>0</strong></span>
+            </div>
+        </div>
+
+        <div id="thaiKeyboard" class="typing-keyboard" aria-label="Virtuelle Thai-Tastatur">
+
+            <div class="keyboard-row row-1">
+                <div class="key" data-key="ๅ" data-shift-key="">ๅ</div>
+                <div class="key" data-key="/" data-shift-key="๑">/</div>
+                <div class="key" data-key="-" data-shift-key="๒">-</div>
+                <div class="key" data-key="ภ" data-shift-key="๓">ภ</div>
+                <div class="key" data-key="ถ" data-shift-key="๔">ถ</div>
+                <div class="key" data-key="ุ" data-shift-key="ู">ุ</div>
+                <div class="key" data-key="ึ">ึ</div>
+                <div class="key" data-key="ค" data-shift-key="๕">ค</div>
+                <div class="key" data-key="ต" data-shift-key="๖">ต</div>
+                <div class="key" data-key="จ" data-shift-key="๗">จ</div>
+                <div class="key" data-key="ข" data-shift-key="๘">ข</div>
+                <div class="key" data-key="ช" data-shift-key="๙">ช</div>
+                <div class="key key-action key-backspace" data-key="Backspace">⌫</div>
+            </div>
+
+            <div class="keyboard-row row-2">
+                <div class="key" data-key="ๆ" data-shift-key="๐">ๆ</div>
+                <div class="key" data-key="ไ">ไ</div>
+                <div class="key" data-key="ำ" data-shift-key="ฎ">ำ</div>
+                <div class="key" data-key="พ" data-shift-key="ฑ">พ</div>
+                <div class="key" data-key="ะ" data-shift-key="ธ">ะ</div>
+                <div class="key" data-key="ั" data-shift-key="ํ">ั</div>
+                <div class="key" data-key="ี" data-shift-key="๊">ี</div>
+                <div class="key" data-key="ร" data-shift-key="ณ">ร</div>
+                <div class="key" data-key="น" data-shift-key="ฯ">น</div>
+                <div class="key" data-key="ย" data-shift-key="ญ">ย</div>
+                <div class="key" data-key="บ" data-shift-key="ฐ">บ</div>
+                <div class="key" data-key="ล">ล</div>
+                <div class="key" data-key="ฃ" data-shift-key="ฅ">ฃ</div>
+            </div>
+
+            <div class="keyboard-row row-3">
+                <div class="key" data-key="ฟ" data-shift-key="ฤ">ฟ</div>
+                <div class="key" data-key="ห" data-shift-key="ฆ">ห</div>
+                <div class="key" data-key="ก" data-shift-key="ฏ">ก</div>
+                <div class="key" data-key="ด" data-shift-key="โ">ด</div>
+                <div class="key" data-key="เ" data-shift-key="ฌ">เ</div>
+                <div class="key" data-key="้" data-shift-key="็">้</div>
+                <div class="key" data-key="่" data-shift-key="๋">่</div>
+                <div class="key" data-key="า" data-shift-key="ษ">า</div>
+                <div class="key" data-key="ส" data-shift-key="ศ">ส</div>
+                <div class="key" data-key="ว" data-shift-key="ซ">ว</div>
+                <div class="key" data-key="ง">ง</div>
+                <div class="key key-action key-enter" data-key="Enter">⏎</div>
+            </div>
+
+            <div class="keyboard-row row-4">
+                <div class="key key-action key-shift" data-key="Shift">Shift</div>
+                <div class="key" data-key="ผ">ผ</div>
+                <div class="key" data-key="ป">ป</div>
+                <div class="key" data-key="แ" data-shift-key="ฉ">แ</div>
+                <div class="key" data-key="อ" data-shift-key="ฮ">อ</div>
+                <div class="key" data-key="ิ">ิ</div>
+                <div class="key" data-key="ื" data-shift-key="์">ื</div>
+                <div class="key" data-key="ท">ท</div>
+                <div class="key" data-key="ม" data-shift-key="ฒ">ม</div>
+                <div class="key" data-key="ใ" data-shift-key="ฬ">ใ</div>
+                <div class="key" data-key="ฝ" data-shift-key="ฦ">ฝ</div>
+                <div class="key key-action key-shift" data-key="Shift">Shift</div>
+            </div>
+
+            <div class="keyboard-row row-5">
+                <div class="key key-space" data-key=" ">Space</div>
+            </div>
+
+        </div>
+    </main>
+
+    <aside class="desktop-typing-awards" aria-labelledby="desktopTypingAwardsTitle">
+        <h3 id="desktopTypingAwardsTitle">✧ LIVE AUSZEICHNUNGEN</h3>
+        <div id="typingQuestAchievements"></div>
+        <button id="typingQuestAwardsButton" class="typing-quest-awards-button desktop-only-stat"
+            type="button" aria-haspopup="dialog" aria-controls="typingQuestAwardsOverview"
+            aria-expanded="false">🏆 Alle Auszeichnungen</button>
+    </aside>
+
 </div>
 
-        <div id="deutschAktuell" class="learning-text"></div>
-
-        <div class="thai-title"></div>
-
-    </div>
-
-    <div id="zeile1" class="typing-zeile"></div>
-
-    <div id="zeile2" class="typing-zeile"></div>
-
+<div id="typingQuestAwardsOverview" class="typing-award-overview-overlay" hidden>
+    <section class="typing-award-overview" role="dialog" aria-modal="true"
+        aria-labelledby="typingQuestAwardsOverviewTitle">
+        <div class="typing-award-overview-header">
+            <div>
+                <h2 id="typingQuestAwardsOverviewTitle">🏆 Quest-Auszeichnungen</h2>
+                <p id="typingQuestAwardsOverviewSummary"></p>
+            </div>
+            <button id="typingQuestAwardsOverviewClose" type="button"
+                aria-label="Auszeichnungsübersicht schließen">✕</button>
+        </div>
+        <div id="typingQuestAwardsOverviewList" class="typing-award-overview-list"></div>
+    </section>
 </div>
 
 <textarea id="eingabe" lang="th" inputmode="text" autocomplete="off"
     autocapitalize="none" autocorrect="off" spellcheck="false" readonly></textarea>
-
-<div id="thaiKeyboard" class="typing-keyboard" aria-label="Virtuelle Thai-Tastatur">
-
-    <div class="keyboard-row row-1">
-        <div class="key" data-key="ๅ" data-shift-key="">ๅ</div>
-        <div class="key" data-key="/" data-shift-key="๑">/</div>
-        <div class="key" data-key="-" data-shift-key="๒">-</div>
-        <div class="key" data-key="ภ" data-shift-key="๓">ภ</div>
-        <div class="key" data-key="ถ" data-shift-key="๔">ถ</div>
-        <div class="key" data-key="ุ" data-shift-key="ู">ุ</div>
-        <div class="key" data-key="ึ">ึ</div>
-        <div class="key" data-key="ค" data-shift-key="๕">ค</div>
-        <div class="key" data-key="ต" data-shift-key="๖">ต</div>
-        <div class="key" data-key="จ" data-shift-key="๗">จ</div>
-        <div class="key" data-key="ข" data-shift-key="๘">ข</div>
-        <div class="key" data-key="ช" data-shift-key="๙">ช</div>
-        <div class="key key-action key-backspace" data-key="Backspace">⌫</div>
-    </div>
-
-    <div class="keyboard-row row-2">
-        <div class="key" data-key="ๆ" data-shift-key="๐">ๆ</div>
-        <div class="key" data-key="ไ">ไ</div>
-        <div class="key" data-key="ำ" data-shift-key="ฎ">ำ</div>
-        <div class="key" data-key="พ" data-shift-key="ฑ">พ</div>
-        <div class="key" data-key="ะ" data-shift-key="ธ">ะ</div>
-        <div class="key" data-key="ั" data-shift-key="ํ">ั</div>
-        <div class="key" data-key="ี" data-shift-key="๊">ี</div>
-        <div class="key" data-key="ร" data-shift-key="ณ">ร</div>
-        <div class="key" data-key="น" data-shift-key="ฯ">น</div>
-        <div class="key" data-key="ย" data-shift-key="ญ">ย</div>
-        <div class="key" data-key="บ" data-shift-key="ฐ">บ</div>
-        <div class="key" data-key="ล">ล</div>
-        <div class="key" data-key="ฃ" data-shift-key="ฅ">ฃ</div>
-    </div>
-
-    <div class="keyboard-row row-3">
-        <div class="key" data-key="ฟ" data-shift-key="ฤ">ฟ</div>
-        <div class="key" data-key="ห" data-shift-key="ฆ">ห</div>
-        <div class="key" data-key="ก" data-shift-key="ฏ">ก</div>
-        <div class="key" data-key="ด" data-shift-key="โ">ด</div>
-        <div class="key" data-key="เ" data-shift-key="ฌ">เ</div>
-        <div class="key" data-key="้" data-shift-key="็">้</div>
-        <div class="key" data-key="่" data-shift-key="๋">่</div>
-        <div class="key" data-key="า" data-shift-key="ษ">า</div>
-        <div class="key" data-key="ส" data-shift-key="ศ">ส</div>
-        <div class="key" data-key="ว" data-shift-key="ซ">ว</div>
-        <div class="key" data-key="ง">ง</div>
-        <div class="key key-action key-enter" data-key="Enter">⏎</div>
-    </div>
-
-    <div class="keyboard-row row-4">
-        <div class="key key-action key-shift" data-key="Shift">Shift</div>
-        <div class="key" data-key="ผ">ผ</div>
-        <div class="key" data-key="ป">ป</div>
-        <div class="key" data-key="แ" data-shift-key="ฉ">แ</div>
-        <div class="key" data-key="อ" data-shift-key="ฮ">อ</div>
-        <div class="key" data-key="ิ">ิ</div>
-        <div class="key" data-key="ื" data-shift-key="์">ื</div>
-        <div class="key" data-key="ท">ท</div>
-        <div class="key" data-key="ม" data-shift-key="ฒ">ม</div>
-        <div class="key" data-key="ใ" data-shift-key="ฬ">ใ</div>
-        <div class="key" data-key="ฝ" data-shift-key="ฦ">ฝ</div>
-        <div class="key key-action key-shift" data-key="Shift">Shift</div>
-    </div>
-
-    <div class="keyboard-row row-5">
-        <div class="key key-space" data-key=" ">Space</div>
-    </div>
-
-</div>
 
 <!-- Quest-Infoleiste: Badge/Bild, Titel, Kapitel, Fortschritt und
      Schnellzugriff "Quest beenden". Nur Desktop sichtbar (siehe
@@ -520,6 +584,21 @@
             </div>
 
         </div>
+
+        <div class="window-divider"></div>
+
+        <section class="typing-run-summary" aria-labelledby="typingRunSummaryTitle">
+            <h3 id="typingRunSummaryTitle">🏅 Auszeichnungen dieser Runde</h3>
+            <div id="typingRunAwards" class="typing-run-awards"></div>
+            <div class="typing-run-xp-row">
+                <strong id="typingRunXp">+0 XP</strong>
+                <span id="typingRunLevel">Level 1</span>
+            </div>
+            <div class="typing-run-level-track">
+                <div id="typingRunLevelProgress" class="typing-run-level-progress"></div>
+            </div>
+            <p id="typingRunCombo">🔥 Beste Combo: 0 Sätze</p>
+        </section>
 
         <div class="window-divider"></div>
 
