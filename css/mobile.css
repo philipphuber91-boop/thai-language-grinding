@@ -2603,3 +2603,145 @@
         display:contents !important;
     }
 }
+
+@media (max-width:900px){
+    .typing-award-overview-overlay{
+        position:fixed;
+        inset:0;
+        z-index:100001;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        box-sizing:border-box;
+        padding:
+            max(12px, env(safe-area-inset-top))
+            max(12px, env(safe-area-inset-right))
+            max(12px, env(safe-area-inset-bottom))
+            max(12px, env(safe-area-inset-left));
+        background:rgba(45,28,8,.62);
+        backdrop-filter:blur(3px);
+    }
+
+    .typing-award-overview-overlay[hidden]{
+        display:none;
+    }
+
+    .typing-award-overview-overlay.is-open{
+        display:flex !important;
+    }
+
+    .typing-award-overview{
+        width:100%;
+        max-height:calc(100dvh - 24px);
+        box-sizing:border-box;
+        overflow:auto;
+        padding:16px 12px;
+        border:2px solid #ad7423;
+        border-radius:12px;
+        background:
+            linear-gradient(135deg, rgba(255,251,232,.96), rgba(238,201,126,.72)),
+            #f2d59c;
+        box-shadow:
+            inset 0 0 0 3px rgba(255,248,219,.8),
+            0 18px 45px rgba(51,27,4,.4);
+    }
+
+    .typing-award-overview-header{
+        display:flex;
+        align-items:flex-start;
+        justify-content:space-between;
+        gap:10px;
+        margin-bottom:12px;
+        padding-bottom:10px;
+        border-bottom:1px solid rgba(139,84,20,.35);
+    }
+
+    .typing-award-overview-header h2{
+        margin:0;
+        color:#5a3210;
+        font-size:1.2rem;
+    }
+
+    .typing-award-overview-header p{
+        margin:4px 0 0;
+        color:#7b511f;
+        font-size:.75rem;
+    }
+
+    #typingQuestAwardsOverviewClose{
+        width:34px;
+        height:34px;
+        flex:0 0 auto;
+        border:1px solid #a86e23;
+        border-radius:7px;
+        color:#633b12;
+        background:#f8dfac;
+        font-size:1.1rem;
+        cursor:pointer;
+    }
+
+    .typing-award-overview-list{
+        display:grid;
+        grid-template-columns:minmax(0, 1fr);
+        gap:8px;
+    }
+
+    .typing-award-overview-card{
+        display:grid;
+        grid-template-columns:48px minmax(0, 1fr) auto;
+        align-items:center;
+        gap:8px;
+        min-width:0;
+        padding:8px;
+        border:1px solid rgba(131,80,19,.28);
+        border-left:4px solid #9c9c9c;
+        border-radius:9px;
+        background:rgba(255,247,213,.72);
+        color:#603810;
+    }
+
+    .typing-award-overview-card.is-unlocked{
+        border-left-color:#4d8e1d;
+        background:rgba(255,229,142,.78);
+    }
+
+    .typing-award-overview-card img{
+        width:44px;
+        height:44px;
+        object-fit:contain;
+    }
+
+    .typing-award-overview-content{
+        min-width:0;
+    }
+
+    .typing-award-overview-content strong,
+    .typing-award-overview-content p,
+    .typing-award-overview-content small{
+        display:block;
+        overflow-wrap:anywhere;
+    }
+
+    .typing-award-overview-content strong{
+        font-size:.86rem;
+    }
+
+    .typing-award-overview-content p{
+        margin:3px 0 5px;
+        color:#7b511f;
+        font-size:.72rem;
+        line-height:1.3;
+    }
+
+    .typing-award-overview-content small{
+        color:#6d491d;
+        font-size:.68rem;
+    }
+
+    .typing-award-overview-reward{
+        color:#8a5d26;
+        font-size:.68rem;
+        font-weight:700;
+        white-space:nowrap;
+    }
+}
