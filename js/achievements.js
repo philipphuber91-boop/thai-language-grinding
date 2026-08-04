@@ -444,6 +444,7 @@ const achievementDefinitions = [
 },
 
 {
+
     id: "playtime250h",
 
     title: "Sprachmeister",
@@ -459,6 +460,172 @@ const achievementDefinitions = [
     stat: "totalTime",
 
     goal: 900000
+},
+
+{
+    id: "speedHunter120",
+    title: "Tempojäger",
+    description: "Erreiche 120 CPM in einer Runde.",
+    icon: "blitz",
+    rarity: "common",
+    category: "typing",
+    questScoped: true,
+    stat: "bestCPM",
+    goal: 120,
+    runType: "cpm",
+    runGoal: 120,
+    bonusXp: 5
+},
+
+{
+    id: "lightningFingers150",
+    title: "Blitzfinger",
+    description: "Erreiche 150 CPM in einer Runde.",
+    icon: "blitz",
+    rarity: "epic",
+    category: "typing",
+    questScoped: true,
+    stat: "bestCPM",
+    goal: 150,
+    runType: "cpm",
+    runGoal: 150,
+    bonusXp: 10
+},
+
+{
+    id: "precisionWords20",
+    title: "Präzision",
+    description: "Tippe 20 Wörter fehlerfrei.",
+    icon: "scharfschütze",
+    rarity: "common",
+    category: "typing",
+    questScoped: true,
+    stat: "totalCleanWords",
+    goal: 20,
+    runType: "cleanWords",
+    runGoal: 20,
+    bonusXp: 5
+},
+
+{
+    id: "perfectionist98",
+    title: "Perfektionist",
+    description: "Erreiche 98% Genauigkeit.",
+    icon: "scharfschütze",
+    rarity: "rare",
+    category: "typing",
+    questScoped: true,
+    stat: "bestAccuracy",
+    goal: 98,
+    runType: "accuracy",
+    runGoal: 98,
+    bonusXp: 10
+},
+
+{
+    id: "masterWriterQuest",
+    title: "Meisterschreiber",
+    description: "Schließe eine Quest ohne Fehler ab.",
+    icon: "krone",
+    rarity: "legendary",
+    category: "typing",
+    questScoped: true,
+    stat: "perfectQuests",
+    goal: 1,
+    runType: "perfectQuest",
+    runGoal: 1,
+    bonusXp: 15
+},
+
+{
+    id: "knowledgeThirst5",
+    title: "Wissensdurst",
+    description: "Entdecke 5 neue Wörter in einer Runde.",
+    icon: "book",
+    rarity: "common",
+    category: "typing",
+    questScoped: true,
+    stat: "uniqueThaiWords",
+    progressType: "uniqueWords",
+    goal: 5,
+    runType: "newWords",
+    runGoal: 5,
+    bonusXp: 5
+},
+
+{
+    id: "explorerMasteredWord",
+    title: "Entdecker",
+    description: "Meistere ein neues Wort.",
+    icon: "book",
+    rarity: "rare",
+    category: "typing",
+    questScoped: true,
+    stat: "masteredThaiWords",
+    goal: 1,
+    runType: "masteredWords",
+    runGoal: 1,
+    bonusXp: 10
+},
+
+{
+    id: "personalTypingRecord",
+    title: "Neuer Rekord",
+    description: "Stelle eine persönliche Bestleistung auf.",
+    icon: "krone",
+    rarity: "epic",
+    category: "typing",
+    questScoped: true,
+    stat: "newRecordCount",
+    goal: 1,
+    runType: "newRecord",
+    runGoal: 1,
+    bonusXp: 15
+},
+
+{
+    id: "cleanSentenceStreak10",
+    title: "Feuerstreak",
+    description: "Tippe 10 Sätze fehlerfrei hintereinander.",
+    icon: "blitz",
+    rarity: "common",
+    category: "typing",
+    questScoped: true,
+    stat: "bestCleanSentenceStreak",
+    goal: 10,
+    runType: "cleanStreak",
+    runGoal: 10,
+    bonusXp: 5
+},
+
+{
+    id: "cleanSentenceStreak25",
+    title: "Flammenstreak",
+    description: "Tippe 25 Sätze fehlerfrei hintereinander.",
+    icon: "blitz",
+    rarity: "rare",
+    category: "typing",
+    questScoped: true,
+    stat: "bestCleanSentenceStreak",
+    goal: 25,
+    runType: "cleanStreak",
+    runGoal: 25,
+    bonusXp: 10
+},
+
+{
+    id: "cleanSentenceStreak50",
+    title: "Unaufhaltsamer Flow",
+    description: "Tippe 50 Sätze fehlerfrei hintereinander.",
+    icon: "blitz",
+    rarity: "epic",
+    category: "typing",
+    questScoped: true,
+    stat: "bestCleanSentenceStreak",
+    goal: 50,
+    runType: "cleanStreak",
+    runGoal: 50,
+    bonusXp: 15
 },
 
 ];
@@ -495,7 +662,7 @@ function saveAchievements() {
 
 function initializeAchievements() {
 
-    for (const achievement of achievementDefinitions) {
+    for (const achievement of getGlobalAchievementDefinitions()) {
 
         if (!achievements[achievement.id]) {
 
@@ -511,6 +678,12 @@ function initializeAchievements() {
 
     }
 
+    for (const definition of achievementDefinitions) {
+        if (definition.questScoped) {
+            delete achievements[definition.id];
+        }
+    }
+
     saveAchievements();
 
     renderAchievements();
@@ -521,19 +694,23 @@ loadAchievements();
 
 initializeAchievements();
 
-function getAchievementProgress(definition) {
-
-if (!player) {
-
-    return 0;
-
+function getGlobalAchievementDefinitions() {
+    return achievementDefinitions.filter(
+        definition => !definition.questScoped
+    );
 }
 
+function getAchievementProgress(definition) {
 
-return Math.min(
-    player.stats[definition.stat] || 0,
-    definition.goal
-);
+    if (!player) {
+        return 0;
+    }
+
+    const rawProgress = definition.progressType === "uniqueWords"
+        ? player.stats.uniqueThaiWords.length
+        : player.stats[definition.stat] || 0;
+
+    return Math.min(rawProgress, definition.goal);
 
 }
 
@@ -590,12 +767,289 @@ achievementQueue.push(definition);
 showNextAchievement();
 
 return true;
+}
 
+function getTypingAwardDefinitions() {
+    return achievementDefinitions.filter(
+        definition => definition.questScoped && definition.runType
+    );
+}
+
+function getQuestAchievementGoal(definition, questId) {
+    const quest = typeof getQuestDataFromStatsId === "function"
+        ? getQuestDataFromStatsId(questId)
+        : null;
+
+    if (!quest) {
+        return definition.runGoal;
+    }
+
+    const lineCount = Array.isArray(quest.thaiZeilen)
+        ? quest.thaiZeilen.length
+        : 0;
+    const wordCount = typeof getThaiWordList === "function"
+        ? getThaiWordList(quest.thaiZeilen).words.length
+        : 0;
+
+    if (definition.runType === "cleanWords") {
+        return Math.max(
+            5,
+            Math.min(definition.runGoal, Math.ceil(wordCount * 0.2))
+        );
+    }
+
+    if (definition.runType === "newWords") {
+        return Math.max(
+            3,
+            Math.min(definition.runGoal, Math.ceil(wordCount * 0.1))
+        );
+    }
+
+    if (definition.runType === "cleanStreak") {
+        const ratio = definition.runGoal === 10
+            ? 0.25
+            : definition.runGoal === 25
+                ? 0.5
+                : 1;
+
+        return Math.max(
+            definition.runGoal === 10 ? 3 : 5,
+            Math.min(definition.runGoal, Math.ceil(lineCount * ratio))
+        );
+    }
+
+    return definition.runGoal;
+}
+
+function createQuestAchievementState() {
+    return {
+        unlocked: false,
+        unlockedAt: null,
+        totalValue: 0,
+        bestValue: 0,
+        repeatCount: 0
+    };
+}
+
+function getQuestAchievementState(questId, definitionId) {
+    if (
+        typeof getQuestStats !== "function" ||
+        !questId
+    ) {
+        return createQuestAchievementState();
+    }
+
+    const stats = getQuestStats(questId);
+
+    if (
+        !stats.questAchievements ||
+        typeof stats.questAchievements !== "object" ||
+        Array.isArray(stats.questAchievements)
+    ) {
+        stats.questAchievements = {};
+    }
+
+    if (!stats.questAchievements[definitionId]) {
+        stats.questAchievements[definitionId] =
+            createQuestAchievementState();
+    }
+
+    return stats.questAchievements[definitionId];
+}
+
+function getQuestAchievementRunValue(definition, run) {
+    return Number(
+        definition.runType === "cpm"
+            ? run.cpm
+            : definition.runType === "accuracy"
+                ? run.accuracy
+                : definition.runType === "cleanWords"
+                    ? run.cleanWords
+                    : definition.runType === "newWords"
+                        ? run.newWords
+                        : definition.runType === "masteredWords"
+                            ? run.masteredWords
+                            : definition.runType === "cleanStreak"
+                                ? run.cleanSentenceStreak
+                                : definition.runType === "perfectQuest"
+                                    ? run.perfectQuest
+                                    : definition.runType === "newRecord"
+                                        ? run.newRecord
+                                        : 0
+    ) || 0;
+}
+
+function isQuestAchievementCumulative(definition) {
+    return [
+        "cleanWords",
+        "newWords",
+        "masteredWords"
+    ].includes(definition.runType);
+}
+
+function getQuestAchievementProgress(definition, questId, run = null) {
+    const state = getQuestAchievementState(questId, definition.id);
+    const baseValue = isQuestAchievementCumulative(definition)
+        ? state.totalValue
+        : state.bestValue;
+
+    if (!run) {
+        return Math.min(
+            getQuestAchievementGoal(definition, questId),
+            baseValue
+        );
+    }
+
+    const runValue = getQuestAchievementRunValue(definition, run);
+    const candidate = isQuestAchievementCumulative(definition)
+        ? baseValue + Math.max(0, runValue)
+        : Math.max(baseValue, runValue);
+
+    return Math.min(
+        getQuestAchievementGoal(definition, questId),
+        candidate
+    );
+}
+
+function meetsTypingAwardCondition(definition, run) {
+    const goal = getQuestAchievementGoal(definition, run.questId);
+    const value = getQuestAchievementRunValue(definition, run);
+    const state = getQuestAchievementState(run.questId, definition.id);
+    const progress = getQuestAchievementProgress(
+        definition,
+        run.questId,
+        run
+    );
+
+    if (isQuestAchievementCumulative(definition)) {
+        return progress >= goal && (
+            !state.unlocked ||
+            value >= goal
+        );
+    }
+
+    return value >= goal;
+}
+
+function evaluateTypingRunAwards(run) {
+    const awarded = [];
+    const awardIds = run.awardIds instanceof Set
+        ? run.awardIds
+        : new Set();
+
+    run.awardIds = awardIds;
+
+    for (const definition of getTypingAwardDefinitions()) {
+        if (
+            awardIds.has(definition.id) ||
+            !meetsTypingAwardCondition(definition, run)
+        ) {
+            continue;
+        }
+
+        awardIds.add(definition.id);
+
+        const state = getQuestAchievementState(
+            run.questId,
+            definition.id
+        );
+        const firstUnlock = !state.unlocked;
+        const baseXp = Number(definition.bonusXp) || 0;
+        const xpAmount = firstUnlock
+            ? baseXp
+            : Math.max(1, Math.floor(baseXp * 0.2));
+
+        if (firstUnlock) {
+            state.unlocked = true;
+            state.unlockedAt = Date.now();
+        } else {
+            state.repeatCount++;
+        }
+
+        const xpResult = awardPlayerXp(xpAmount);
+
+        awarded.push({
+            ...definition,
+            goal: getQuestAchievementGoal(definition, run.questId),
+            progress: getQuestAchievementProgress(
+                definition,
+                run.questId,
+                run
+            ),
+            xpAwarded: xpResult.awardedXp,
+            firstUnlock,
+            repeatBonus: !firstUnlock,
+            leveledUp: xpResult.leveledUp
+        });
+    }
+
+    if (awarded.length > 0 && typeof saveQuestStats === "function") {
+        saveQuestStats();
+    }
+
+    return awarded;
+}
+
+function finalizeQuestAchievementProgress(questId, run) {
+    if (
+        !questId ||
+        typeof getQuestStats !== "function"
+    ) {
+        return;
+    }
+
+    const stats = getQuestStats(questId);
+
+    for (const definition of getTypingAwardDefinitions()) {
+        const state = getQuestAchievementState(
+            questId,
+            definition.id
+        );
+        const value = Math.max(
+            0,
+            getQuestAchievementRunValue(definition, run)
+        );
+
+        if (isQuestAchievementCumulative(definition)) {
+            state.totalValue += value;
+        } else {
+            state.bestValue = Math.max(state.bestValue, value);
+        }
+    }
+
+    saveQuestStats();
+    return stats.questAchievements;
+}
+
+function getQuestAchievementCards(questId, run = null) {
+    return getTypingAwardDefinitions().map(definition => {
+        const state = getQuestAchievementState(
+            questId,
+            definition.id
+        );
+        const goal = getQuestAchievementGoal(definition, questId);
+        const progress = getQuestAchievementProgress(
+            definition,
+            questId,
+            run
+        );
+
+        return {
+            ...definition,
+            goal,
+            progress,
+            percent: goal > 0
+                ? Math.min(100, Math.round((progress / goal) * 100))
+                : 0,
+            unlocked: state.unlocked,
+            repeatCount: state.repeatCount
+        };
+    });
 }
 
 function updateAchievements() {
 
-    for (const definition of achievementDefinitions) {
+    for (const definition of getGlobalAchievementDefinitions()) {
 
         const state = achievements[definition.id];
 
@@ -654,7 +1108,7 @@ function showNextAchievement() {
 
 function getAchievement(id) {
 
-    return achievementDefinitions.find(
+    return getGlobalAchievementDefinitions().find(
 
         achievement => achievement.id === id
 
@@ -670,7 +1124,7 @@ function getAchievementState(id) {
 
 function getAllAchievements() {
 
-    return achievementDefinitions.map(definition => {
+    return getGlobalAchievementDefinitions().map(definition => {
 
         return {
 
@@ -692,11 +1146,12 @@ function getAllAchievements() {
 
 function getAchievementSummary() {
 
-    const total = achievementDefinitions.length;
+    const definitions = getGlobalAchievementDefinitions();
+    const total = definitions.length;
 
     let unlocked = 0;
 
-    for (const achievement of achievementDefinitions) {
+    for (const achievement of definitions) {
 
         if (isAchievementUnlocked(achievement)) {
 
@@ -736,7 +1191,7 @@ function getAchievementRarityCounts() {
 
     };
 
-    for (const achievement of achievementDefinitions) {
+    for (const achievement of getGlobalAchievementDefinitions()) {
 
         counts[achievement.rarity]++;
 
@@ -825,4 +1280,3 @@ function getRarityCount(rarity){
     ).length;
 
 }
-

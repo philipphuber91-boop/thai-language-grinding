@@ -819,6 +819,38 @@
         padding-bottom:5px;
     }
 
+    .typing-award-container{
+            top:8px;
+            right:8px;
+            width:min(250px, calc(100vw - 16px));
+        }
+
+        .typing-status .typing-xp-status,
+        .typing-status .typing-combo-status{
+            display:none !important;
+        }
+
+        .typing-award-toast{
+            padding:8px 10px;
+        }
+
+        .typing-award-toast img{
+            width:26px;
+            height:26px;
+        }
+
+        .typing-run-summary{
+            padding:12px;
+        }
+
+        .typing-run-awards{
+            grid-template-columns:1fr;
+        }
+
+        .typing-run-xp-row{
+            font-size:.9rem;
+        }
+
     .mobile-typing-back,
     .settings-gear-button{
         width:36px;
@@ -852,6 +884,24 @@
     .typing-keyboard .keyboard-row,
     .typing-keyboard .keyboard-row.row-5{
         margin-bottom:4px;
+    }
+}
+
+@media (max-width:900px){
+    body:has(#typingBereich) .desktop-typing-layout{
+        display:block !important;
+        width:100%;
+        margin:0;
+    }
+
+    body:has(#typingBereich) .desktop-typing-metrics,
+    body:has(#typingBereich) .desktop-typing-awards,
+    body:has(#typingBereich) .desktop-typing-progress{
+        display:none !important;
+    }
+
+    .desktop-typing-center{
+        width:100%;
     }
 }
 
@@ -2528,4 +2578,11 @@
         line-height:1.25;
     }
 
+}
+
+@media (max-width:900px){
+    body:has(#typingBereich) .desktop-typing-layout,
+    body:has(#typingBereich) .desktop-typing-center{
+        display:contents !important;
+    }
 }

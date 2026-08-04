@@ -7,6 +7,11 @@ stats: {
     // Allgemein
     xp: 0,
     level: 1,
+    bestCleanSentenceStreak: 0,
+    totalCleanWords: 0,
+    perfectQuests: 0,
+    newRecordCount: 0,
+    masteredThaiWords: 0,
 
     // Quests
     completedQuests: 0,
@@ -60,6 +65,113 @@ const repetitionIntervals = [
 
 let questStats = structuredClone(defaultQuestStats);
 
+const XP_PER_CLEAN_SENTENCE = 10;
+
+function getXpRequiredForLevel(level) {
+    const normalizedLevel = Math.max(1, Math.floor(Number(level) || 1));
+
+    if (normalizedLevel === 1) {
+        return 0;
+    }
+
+    return Math.round(
+        100 * Math.pow(normalizedLevel - 1, 1.35)
+    );
+}
+
+function getLevelForXp(xp) {
+    const normalizedXp = Math.max(0, Number(xp) || 0);
+    let level = 1;
+
+    while (
+        level < 1000 &&
+        normalizedXp >= getXpRequiredForLevel(level + 1)
+    ) {
+        level++;
+    }
+
+    return level;
+}
+
+function getPlayerXpSummary() {
+    const totalXp = Math.max(0, Number(player.stats.xp) || 0);
+    const level = getLevelForXp(totalXp);
+    const currentLevelXp = getXpRequiredForLevel(level);
+    const nextLevelXp = getXpRequiredForLevel(level + 1);
+
+    return {
+        totalXp,
+        level,
+        currentLevelXp,
+        nextLevelXp,
+        progressXp: totalXp - currentLevelXp,
+        requiredXp: nextLevelXp - currentLevelXp,
+        percent: Math.min(
+            100,
+            Math.round(
+                ((totalXp - currentLevelXp) /
+                    (nextLevelXp - currentLevelXp)) *
+                    100
+            )
+        )
+    };
+}
+
+function normalizePlayerProgress() {
+    const xp = Number(player.stats.xp);
+
+    player.stats.xp = Number.isFinite(xp) && xp >= 0 ? xp : 0;
+    player.stats.level = getLevelForXp(player.stats.xp);
+
+    for (const key of [
+        "bestCleanSentenceStreak",
+        "totalCleanWords",
+        "perfectQuests",
+        "newRecordCount",
+        "masteredThaiWords"
+    ]) {
+        const value = Number(player.stats[key]);
+        player.stats[key] = Number.isFinite(value) && value >= 0
+            ? Math.floor(value)
+            : 0;
+    }
+}
+
+function awardPlayerXp(amount) {
+    const normalizedAmount = Number(amount);
+
+    if (!Number.isFinite(normalizedAmount) || normalizedAmount <= 0) {
+        return {
+            awardedXp: 0,
+            leveledUp: false,
+            ...getPlayerXpSummary()
+        };
+    }
+
+    const previousLevel = getLevelForXp(player.stats.xp);
+    player.stats.xp += Math.round(normalizedAmount);
+    player.stats.level = getLevelForXp(player.stats.xp);
+    savePlayer();
+
+    return {
+        awardedXp: Math.round(normalizedAmount),
+        leveledUp: player.stats.level > previousLevel,
+        ...getPlayerXpSummary()
+    };
+}
+
+function registerCleanTypingSentence(wordCount, streak) {
+    const normalizedWordCount = Math.max(0, Math.floor(Number(wordCount) || 0));
+    const normalizedStreak = Math.max(0, Math.floor(Number(streak) || 0));
+
+    player.stats.totalCleanWords += normalizedWordCount;
+    player.stats.bestCleanSentenceStreak = Math.max(
+        player.stats.bestCleanSentenceStreak,
+        normalizedStreak
+    );
+    savePlayer();
+}
+
 function createQuestStats(version) {
 
     return {
@@ -81,6 +193,8 @@ function createQuestStats(version) {
             lastAccuracy: null
 
         },
+
+        questAchievements: {},
 
         repetition: {
 
@@ -134,6 +248,15 @@ function getQuestStats(questId, currentVersion) {
 
         saveQuestStats();
 
+    }
+
+    if (
+        !existingStats.questAchievements ||
+        typeof existingStats.questAchievements !== "object" ||
+        Array.isArray(existingStats.questAchievements)
+    ) {
+        existingStats.questAchievements = {};
+        saveQuestStats();
     }
 
     return questStats[questId];
@@ -370,6 +493,14 @@ function addQuestWordsToWordStats(questId) {
 
     player.stats.wordStats = wordStats;
     player.stats.wordStatsInitialized = true;
+}
+
+function updateMasteredThaiWordCount() {
+    const wordStats = getStoredThaiWordStats();
+
+    player.stats.masteredThaiWords = Object.values(wordStats)
+        .filter(count => getThaiWordMasteryLevel(count) === "mastered")
+        .length;
 }
 
 function addQuestWordsToUniqueCollection(questId) {
@@ -1052,8 +1183,14 @@ function completeQuest(questId, zeit, cpm, accuracy, zeichen, currentVersion) {
         ? addQuestWordsToUniqueCollection(questId)
         : 0;
 
+    const oldMasteredWords = player.stats.masteredThaiWords;
     addQuestWordsToWordStats(questId);
     addCompletedQuestWordsToTotal(questId);
+    updateMasteredThaiWordCount();
+    const newMasteredWords = Math.max(
+        0,
+        player.stats.masteredThaiWords - oldMasteredWords
+    );
 
     stats.records.lastTime = zeit;
     stats.records.lastCPM = cpm;
@@ -1097,6 +1234,14 @@ const oldBestAccuracy = stats.records.bestAccuracy;
 
     }
 
+    if (accuracy >= 100) {
+        player.stats.perfectQuests++;
+    }
+
+    if (newBestTime || newBestCPM) {
+        player.stats.newRecordCount++;
+    }
+
     updateRepetition(stats);
 
     console.log("Quest-ID:", questId);
@@ -1134,7 +1279,8 @@ return {
     newTime: zeit,
     newCPM: cpm,
     newAccuracy: accuracy,
-    newUniqueWords
+    newUniqueWords,
+    newMasteredWords
 
 };
 

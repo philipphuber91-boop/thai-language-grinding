@@ -18,6 +18,8 @@ function loadPlayer() {
 
     };
 
+    normalizePlayerProgress();
+
     if (!player.stats.history || Array.isArray(player.stats.history)) {
 
         player.stats.history = { daily: Array.isArray(player.stats.history) ? player.stats.history : [] };
