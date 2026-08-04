@@ -190,6 +190,7 @@ function evaluateCurrentTypingAwards(extra = {}) {
         cleanSentenceStreak,
         perfectQuest: extra.perfectQuest || 0,
         newRecord: extra.newRecord || 0,
+        tastenhilfeEnabled,
         awardIds: runAwardIds
     });
 
@@ -224,7 +225,8 @@ function renderQuestAchievementPanel() {
         masteredWords: runMasteredWords,
         cleanSentenceStreak,
         perfectQuest: 0,
-        newRecord: 0
+        newRecord: 0,
+        tastenhilfeEnabled
     });
 
     const unlockedCards = cards.filter(card => card.unlocked);
@@ -301,13 +303,16 @@ function getQuestAchievementUnit(card) {
 
 function getTypingAchievementRequirement(card) {
     const goal = card.goal;
+    const noHelpSuffix = card.requiresNoTastenhilfe
+        ? " ohne Tastenhilfe"
+        : "";
 
     if (card.runType === "cpm") {
-        return `Erreiche ${goal} CPM in einer Runde.`;
+        return `Erreiche ${goal} CPM${noHelpSuffix} in einer Runde.`;
     }
 
     if (card.runType === "accuracy") {
-        return `Erreiche ${goal}% Genauigkeit.`;
+        return `Erreiche ${goal}% Genauigkeit${noHelpSuffix}.`;
     }
 
     if (card.runType === "cleanWords") {
@@ -319,11 +324,15 @@ function getTypingAchievementRequirement(card) {
     }
 
     if (card.runType === "masteredWords") {
-        return `Meistere ${goal} neues Wort${goal === 1 ? "" : "e"}.`;
+        return goal === 1
+            ? "Meistere 1 einzigartiges Wort."
+            : `Meistere ${goal} einzigartige Wörter.`;
     }
 
     if (card.runType === "perfectQuest") {
-        return "Schließe diese Quest ohne Fehler ab.";
+        return card.requiresNoTastenhilfe
+            ? "Schließe diese Quest fehlerfrei ohne Tastenhilfe ab."
+            : "Schließe diese Quest ohne Fehler ab.";
     }
 
     if (card.runType === "newRecord") {
@@ -1829,7 +1838,8 @@ function beendePruefung() {
         newRecord:
             newRecords.newBestTime || newRecords.newBestCPM
                 ? 1
-                : 0
+                : 0,
+        tastenhilfeEnabled
     });
     finalizeQuestAchievementProgress(questStatsId, {
         cpm: Number(cpm),
@@ -1842,7 +1852,8 @@ function beendePruefung() {
         newRecord:
             newRecords.newBestTime || newRecords.newBestCPM
                 ? 1
-                : 0
+                : 0,
+        tastenhilfeEnabled
     });
     renderQuestAchievementPanel();
 
