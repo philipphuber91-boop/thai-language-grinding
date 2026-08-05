@@ -741,6 +741,48 @@ const achievementDefinitions = [
     bonusXp: 15
 },
 
+{
+    id: "audioListened1",
+    title: "Audio-Einstieg",
+    description: "Höre das Questaudio 1-mal vollständig.",
+    icon: "book",
+    rarity: "common",
+    category: "typing",
+    questScoped: true,
+    campaignOnly: true,
+    runType: "audioListens",
+    runGoal: 1,
+    bonusXp: 5
+},
+
+{
+    id: "audioListened3",
+    title: "Audio-Lerner",
+    description: "Höre das Questaudio 3-mal vollständig.",
+    icon: "book",
+    rarity: "rare",
+    category: "typing",
+    questScoped: true,
+    campaignOnly: true,
+    runType: "audioListens",
+    runGoal: 3,
+    bonusXp: 10
+},
+
+{
+    id: "audioListened5",
+    title: "Audio-Meister",
+    description: "Höre das Questaudio 5-mal vollständig.",
+    icon: "book",
+    rarity: "epic",
+    category: "typing",
+    questScoped: true,
+    campaignOnly: true,
+    runType: "audioListens",
+    runGoal: 5,
+    bonusXp: 15
+},
+
 ];
 
 let achievements = {};
@@ -893,6 +935,13 @@ function isMobileTypingAwardContext() {
 }
 
 function isTypingAwardAvailable(definition) {
+    if (
+        definition.campaignOnly &&
+        localStorage.getItem("contentMode") !== "campaign"
+    ) {
+        return false;
+    }
+
     if (definition.mobileOnly) {
         return isMobileTypingAwardContext();
     }
@@ -1013,6 +1062,8 @@ function getQuestAchievementRunValue(definition, run) {
                                     ? run.perfectQuest
                                     : definition.runType === "newRecord"
                                         ? run.newRecord
+                                        : definition.runType === "audioListens"
+                                            ? run.audioListens
                                         : 0
     ) || 0;
 }
@@ -1026,7 +1077,8 @@ function isQuestAchievementCumulative(definition) {
     return [
         "cleanWords",
         "newWords",
-        "masteredWords"
+        "masteredWords",
+        "audioListens"
     ].includes(definition.runType);
 }
 
@@ -1141,6 +1193,62 @@ function evaluateTypingRunAwards(run) {
         saveQuestStats();
     }
 
+    return awarded;
+}
+
+function registerQuestAudioListen(questId) {
+    if (
+        !questId ||
+        typeof getQuestStats !== "function"
+    ) {
+        return [];
+    }
+
+    const audioDefinitions = getTypingAwardDefinitions().filter(
+        definition => definition.runType === "audioListens"
+    );
+    const awarded = [];
+
+    for (const definition of audioDefinitions) {
+        const state = getQuestAchievementState(
+            questId,
+            definition.id
+        );
+        const goal = getQuestAchievementGoal(definition, questId);
+        const previousValue = state.totalValue;
+
+        state.totalValue += 1;
+
+        if (
+            state.unlocked ||
+            previousValue >= goal ||
+            state.totalValue < goal
+        ) {
+            continue;
+        }
+
+        state.unlocked = true;
+        state.unlockedAt = Date.now();
+
+        const xpResult = awardPlayerXp(
+            Number(definition.bonusXp) || 0
+        );
+
+        awarded.push({
+            ...definition,
+            goal,
+            progress: getQuestAchievementProgress(
+                definition,
+                questId
+            ),
+            xpAwarded: xpResult.awardedXp,
+            firstUnlock: true,
+            repeatBonus: false,
+            leveledUp: xpResult.leveledUp
+        });
+    }
+
+    saveQuestStats();
     return awarded;
 }
 

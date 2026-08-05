@@ -52,7 +52,9 @@
             <div
                 class="quest-audio-player ${className}"
                 data-quest-audio-player
-                data-audio-source="${source}">
+                data-audio-source="${source}"
+                data-content-mode="${contentMode}"
+                data-quest-number="${Number(questNumber)}">
                 <button
                     type="button"
                     class="quest-audio-play-button"
@@ -189,7 +191,15 @@
                 audio.addEventListener("ended", () => {
                     activePlayers.delete(audio);
                     updateButton();
-                    window.dispatchEvent(new Event("questaudio:ended"));
+                    window.dispatchEvent(
+                        new CustomEvent("questaudio:ended", {
+                            detail: {
+                            source: audio.currentSrc || audio.src,
+                            contentMode: playerElement.dataset.contentMode,
+                            questNumber: playerElement.dataset.questNumber
+                            }
+                        })
+                    );
                 });
 
                 audio.addEventListener("error", () => {

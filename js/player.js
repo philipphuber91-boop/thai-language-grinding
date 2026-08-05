@@ -7,6 +7,7 @@ stats: {
     // Allgemein
     xp: 0,
     level: 1,
+    xpMigrationVersion: 0,
     bestCleanSentenceStreak: 0,
     totalCleanWords: 0,
     perfectQuests: 0,
@@ -66,6 +67,17 @@ const repetitionIntervals = [
 let questStats = structuredClone(defaultQuestStats);
 
 const XP_PER_CLEAN_SENTENCE = 10;
+const QUEST_XP_MIGRATION_VERSION = 1;
+const QUEST_REPEAT_XP_BONUS = 5;
+const QUEST_REPEAT_XP_BONUS_CAP = 25;
+const QUEST_CPM_BONUS_THRESHOLDS = [
+    { threshold: 80, xp: 5 },
+    { threshold: 120, xp: 5 }
+];
+const QUEST_ACCURACY_BONUS_THRESHOLDS = [
+    { threshold: 98, xp: 5 },
+    { threshold: 100, xp: 5 }
+];
 
 function getXpRequiredForLevel(level) {
     const normalizedLevel = Math.max(1, Math.floor(Number(level) || 1));
@@ -75,7 +87,7 @@ function getXpRequiredForLevel(level) {
     }
 
     return Math.round(
-        100 * Math.pow(normalizedLevel - 1, 1.35)
+        250 * Math.pow(normalizedLevel - 1, 1.5)
     );
 }
 
@@ -147,7 +159,6 @@ function awardPlayerXp(amount) {
             ...getPlayerXpSummary()
         };
     }
-
     const previousLevel = getLevelForXp(player.stats.xp);
     player.stats.xp += Math.round(normalizedAmount);
     player.stats.level = getLevelForXp(player.stats.xp);
@@ -157,6 +168,131 @@ function awardPlayerXp(amount) {
         awardedXp: Math.round(normalizedAmount),
         leveledUp: player.stats.level > previousLevel,
         ...getPlayerXpSummary()
+    };
+}
+
+function getQuestPerformanceXp(cpm, accuracy) {
+    const normalizedCpm = Number(cpm);
+    const normalizedAccuracy = Number(accuracy);
+    let bonusXp = 0;
+
+    for (const threshold of QUEST_CPM_BONUS_THRESHOLDS) {
+        if (Number.isFinite(normalizedCpm) && normalizedCpm >= threshold.threshold) {
+            bonusXp += threshold.xp;
+        }
+    }
+
+    for (const threshold of QUEST_ACCURACY_BONUS_THRESHOLDS) {
+        if (
+            Number.isFinite(normalizedAccuracy) &&
+            normalizedAccuracy >= threshold.threshold
+        ) {
+            bonusXp += threshold.xp;
+        }
+    }
+
+    return bonusXp;
+}
+
+function calculateQuestCompletionXp(quest, stats, cpm, accuracy) {
+    const baseXp = Math.max(0, Math.floor(Number(quest?.xp) || 0));
+    const attempts = Math.max(1, Math.floor(Number(stats?.attempts) || 1));
+    const repeatBonus = Math.min(
+        Math.max(0, attempts - 1) * QUEST_REPEAT_XP_BONUS,
+        QUEST_REPEAT_XP_BONUS_CAP
+    );
+
+    return baseXp + repeatBonus + getQuestPerformanceXp(cpm, accuracy);
+}
+
+function awardQuestCompletionXp(
+    questId,
+    stats,
+    quest,
+    cpm,
+    accuracy,
+    { retroactive = false } = {}
+) {
+    if (!quest || !stats) {
+        return {
+            awardedXp: 0,
+            breakdown: {
+                baseXp: 0,
+                repeatBonus: 0,
+                performanceBonus: 0
+            }
+        };
+    }
+
+    const baseXp = Math.max(0, Math.floor(Number(quest.xp) || 0));
+    const attempts = Math.max(1, Math.floor(Number(stats.attempts) || 1));
+    const repeatBonus = Math.min(
+        Math.max(0, attempts - 1) * QUEST_REPEAT_XP_BONUS,
+        QUEST_REPEAT_XP_BONUS_CAP
+    );
+    const performanceBonus = getQuestPerformanceXp(cpm, accuracy);
+    const totalXp = calculateQuestCompletionXp(quest, stats, cpm, accuracy);
+    const xpResult = awardPlayerXp(totalXp);
+
+    return {
+        ...xpResult,
+        questId,
+        awardedXp: xpResult.awardedXp,
+        breakdown: {
+            baseXp,
+            repeatBonus,
+            performanceBonus,
+            totalXp,
+            retroactive
+        }
+    };
+}
+
+function migrateRetroactiveQuestXp() {
+    const migrationVersion = Number(player.stats.xpMigrationVersion) || 0;
+
+    if (migrationVersion >= QUEST_XP_MIGRATION_VERSION) {
+        return {
+            migrated: false,
+            awardedXp: 0
+        };
+    }
+
+    let awardedXp = 0;
+
+    for (const questId in questStats) {
+        const stats = questStats[questId];
+        const quest = getQuestDataFromStatsId(questId);
+
+        if (
+            !stats?.completed ||
+            !quest ||
+            Number(stats.xpMigrationVersion) >= QUEST_XP_MIGRATION_VERSION
+        ) {
+            continue;
+        }
+
+        const migrationResult = awardQuestCompletionXp(
+            questId,
+            stats,
+            quest,
+            stats.records?.bestCPM,
+            stats.records?.bestAccuracy,
+            { retroactive: true }
+        );
+
+        stats.xpMigrationVersion = QUEST_XP_MIGRATION_VERSION;
+        stats.xpMigrationAwarded = migrationResult.awardedXp;
+        awardedXp += migrationResult.awardedXp;
+    }
+
+    player.stats.xpMigrationVersion = QUEST_XP_MIGRATION_VERSION;
+    saveQuestStats();
+    savePlayer();
+
+    return {
+        migrated: true,
+        awardedXp
     };
 }
 
@@ -1181,6 +1317,7 @@ function getDueQuests() {
 function completeQuest(questId, zeit, cpm, accuracy, zeichen, currentVersion) {
 
     const stats = getQuestStats(questId, currentVersion);
+    const quest = getQuestDataFromStatsId(questId);
 
     stats.attempts++;
 
@@ -1273,6 +1410,14 @@ console.log("Komplette questStats:", structuredClone(questStats));
 
     );
 
+    const questXpResult = awardQuestCompletionXp(
+        questId,
+        stats,
+        quest,
+        cpm,
+        accuracy
+    );
+
   
 return {
 
@@ -1290,7 +1435,9 @@ return {
     newAccuracy: accuracy,
     newUniqueWords,
     newMasteredWords,
-    newlyMasteredWords
+    newlyMasteredWords,
+    questXpAwarded: questXpResult.awardedXp,
+    questXpBreakdown: questXpResult.breakdown
 };
 
 }

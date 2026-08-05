@@ -12,6 +12,7 @@ let maxCleanSentenceStreak = 0;
 let runCleanWords = 0;
 let runNewWords = 0;
 let runMasteredWords = 0;
+let runAudioListens = 0;
 let runXpEarned = 0;
 let runAwards = [];
 let runAwardIds = new Set();
@@ -48,6 +49,12 @@ if (typingAudioContainer && window.questAudio) {
         });
     window.questAudio.initializeQuestAudioPlayers(typingAudioContainer);
 }
+
+window.addEventListener("questaudio:ended", () => {
+    runAudioListens++;
+    evaluateCurrentTypingAwards();
+    renderQuestAchievementPanel();
+});
 
 // Separate IDs prevent a campaign quest and a mission with the same number
 // from sharing progress, records, and review dates.
@@ -187,6 +194,7 @@ function evaluateCurrentTypingAwards(extra = {}) {
         cleanWords: runCleanWords,
         newWords: runNewWords,
         masteredWords: runMasteredWords,
+        audioListens: runAudioListens,
         cleanSentenceStreak,
         perfectQuest: extra.perfectQuest || 0,
         newRecord: extra.newRecord || 0,
@@ -223,6 +231,7 @@ function renderQuestAchievementPanel() {
         cleanWords: runCleanWords,
         newWords: runNewWords,
         masteredWords: runMasteredWords,
+        audioListens: runAudioListens,
         cleanSentenceStreak,
         perfectQuest: 0,
         newRecord: 0,
@@ -1833,6 +1842,7 @@ function beendePruefung() {
 
     runNewWords = newRecords.newUniqueWords;
     runMasteredWords = newRecords.newMasteredWords;
+    runXpEarned += newRecords.questXpAwarded || 0;
     evaluateCurrentTypingAwards({
         perfectQuest: accuracy >= 100 ? 1 : 0,
         newRecord:
@@ -1847,6 +1857,7 @@ function beendePruefung() {
         cleanWords: runCleanWords,
         newWords: runNewWords,
         masteredWords: runMasteredWords,
+        audioListens: runAudioListens,
         cleanSentenceStreak: maxCleanSentenceStreak,
         perfectQuest: accuracy >= 100 ? 1 : 0,
         newRecord:
