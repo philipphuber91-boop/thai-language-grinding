@@ -28,94 +28,149 @@
 
 <body>
 
-<!-- Mobile: öffnet/schließt die Sidebar (siehe css/mobile.css und js/engine.js) -->
-<button id="sidebarToggleButton" class="hamburger-button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mainSidebar">☰</button>
-
-<!-- Mobile: abgedunkelter Hintergrund hinter der geöffneten Sidebar -->
-<div id="sidebarBackdrop" class="sidebar-backdrop"></div>
-
 <header class="topbar">
+    <a class="brand-lockup" href="#weltkarte" aria-label="Thai Language Grinding Startseite">
+        <span class="brand-mark">⌁</span>
+        <span class="brand-title">THAI LANGUAGE GRINDING</span>
+        <span class="brand-mark">⌁</span>
+    </a>
 
-    <h1>THAI</h1>
-
-    <h2>LANGUAGE GRINDING</h2>
-
+    <nav class="top-navigation" aria-label="Hauptnavigation">
+        <button id="worldMapMenuButton" class="top-navigation-button is-active" type="button">
+            <span aria-hidden="true">🗺</span>
+            Weltkarte
+        </button>
+        <button id="campaignMenuButton" class="top-navigation-button" type="button">
+            <span aria-hidden="true">📜</span>
+            Quests
+        </button>
+        <button id="achievementButton" class="top-navigation-button" type="button">
+            <span aria-hidden="true">📖</span>
+            Errungenschaften
+        </button>
+        <button id="chronikButton" class="top-navigation-button" type="button">
+            <span class="chronik-navigation-lockup" aria-hidden="true">
+                <span class="chronik-navigation-book"></span>
+                <span class="chronik-navigation-word"></span>
+            </span>
+            <span class="sr-only">Chronik</span>
+        </button>
+        <button id="settingsMenuButton" class="top-navigation-button top-navigation-settings" type="button" disabled>
+            <span aria-hidden="true">⚙</span>
+            <span class="sr-only">Einstellungen</span>
+        </button>
+    </nav>
 </header>
 
-    <div class="layout">
+<main class="app-shell">
+    <section id="worldmapHome" class="worldmap-home" aria-labelledby="worldmapTitle">
+        <aside class="home-column home-column-left">
+            <section class="profile-panel parchment-panel">
+                <div class="profile-header">
+                    <div class="profile-avatar" aria-hidden="true">🧑🏻</div>
+                    <div>
+                        <p class="eyebrow">Sprachkrieger</p>
+                        <h1>TH Flipu <span aria-hidden="true">✎</span></h1>
+                        <p id="homeLevelLabel">Level 1</p>
+                    </div>
+                    <span id="homeLevelBadge" class="level-badge">1</span>
+                </div>
+                <div class="home-xp-row">
+                    <div class="xp-bar"><div id="homeXpFill" class="xp-fill"></div></div>
+                    <strong id="homeXpLabel">0 / 250 XP</strong>
+                </div>
+            </section>
 
-<aside class="sidebar" id="mainSidebar">
+            <section class="daily-quests-panel parchment-panel">
+                <div class="section-heading">
+                    <span aria-hidden="true">✦</span>
+                    <h2>Tägliche Quests</h2>
+                    <span aria-hidden="true">✦</span>
+                </div>
+                <div id="dailyQuestList" class="daily-quest-list"></div>
+                <button id="dailyQuestDetailsButton" class="dark-action-button" type="button">
+                    Alle täglichen Quests anzeigen <span aria-hidden="true">›</span>
+                </button>
+            </section>
+        </aside>
 
-    <div class="player-card">
+        <section class="home-column home-column-center">
+            <section class="quote-panel parchment-panel">
+                <p aria-hidden="true">“</p>
+                <blockquote>Jeden Tag ein bisschen besser,<br>morgen ein Stück weiter.</blockquote>
+                <p aria-hidden="true">”</p>
+            </section>
 
-        <h2>🇹🇭 Flipu</h2>
+            <section class="journey-panel parchment-panel">
+                <div class="section-heading">
+                    <span aria-hidden="true">⌁</span>
+                    <h2 id="worldmapTitle">Deine Reise</h2>
+                    <span aria-hidden="true">⌁</span>
+                </div>
+                <div id="worldMap" class="world-map" role="group" aria-label="Karte der Kampagnenquests"></div>
+            </section>
+        </section>
 
-        <p>Level 1</p>
+        <aside class="home-column home-column-right">
+            <section class="recommendations-panel parchment-panel">
+                <div class="recommendation-intro">
+                    <div class="recommendation-icon" aria-hidden="true">◉</div>
+                    <div>
+                        <p class="eyebrow">Goldener Pfad – im Flow</p>
+                        <h2>Deine nächsten Schritte</h2>
+                        <p>Diese Quests passen perfekt zu deinem aktuellen Lernstand.</p>
+                    </div>
+                </div>
+                <div id="campaignRecommendations" class="campaign-recommendations"></div>
+                <button id="recommendationStartButton" class="dark-action-button" type="button">
+                    Empfohlene Quest starten <span aria-hidden="true">›</span>
+                </button>
+            </section>
 
-        <div class="xp-bar">
+            <section class="home-statistics-panel parchment-panel">
+                <div class="section-heading">
+                    <span aria-hidden="true">✦</span>
+                    <h2>Deine Statistiken</h2>
+                    <span aria-hidden="true">✦</span>
+                </div>
+                <div id="homeStatistics" class="home-statistics-grid"></div>
+                <button id="homeStatisticsButton" class="dark-action-button" type="button">
+                    Chronik öffnen <span aria-hidden="true">›</span>
+                </button>
+            </section>
+        </aside>
+    </section>
 
-            <div class="xp-fill"></div>
-
+    <section id="questView" class="secondary-view" hidden>
+        <div class="secondary-view-header">
+            <div>
+                <p class="eyebrow">Deine Lernpfade</p>
+                <h1>Quests</h1>
+            </div>
+            <div class="content-switcher" aria-label="Quest-Kategorie">
+                <button id="campaignListButton" class="content-switcher-button is-active" type="button" aria-pressed="true">Kampagne</button>
+                <button id="missionsMenuButton" class="content-switcher-button" type="button" aria-pressed="false">Missionen</button>
+            </div>
         </div>
+        <div id="questListe"></div>
+    </section>
 
-        <p>XP 0 / 100</p>
-
-    </div>
-
-    <div class="menu-card">
-
-        <button>🗺 Weltkarte</button>
-
-        <button id="campaignMenuButton">
-
-    📖 Kampagne
-
-</button>
-
-<button id="missionsMenuButton">
-
-    🎯 Missionen
-
-</button>
-
-<button id="chronikButton">
-
-    📜 Chronik
-
-</button>
-
-    
-
-        <button id="achievementButton">
-
-    🏆 Errungenschaften
-
-</button>
-
-        <button>⚙ Einstellungen</button>
-
-    </div>
-
-</aside>
-
-<main class="content">
-
-    <div id="questListe"></div>
-
-    <div id="chronikContainer" style="display:none;">
-        
-
+    <div id="chronikContainer" class="secondary-view" style="display:none;">
         <div id="chronikProfile"></div>
-
         <div id="chronikStats"></div>
-
         <div id="chronikRecords"></div>
-
     </div>
 
-    <div id="achievementContainer" style="display:none;"></div>
-
+    <div id="achievementContainer" class="secondary-view" style="display:none;"></div>
 </main>
+
+<footer class="status-bar" aria-label="Spielerfortschritt">
+    <div class="status-bar-item"><span class="status-bar-icon" aria-hidden="true">🔥</span><strong id="homeStreakValue">0</strong><span>Tage in Folge</span></div>
+    <div class="status-bar-item"><span class="status-bar-icon" aria-hidden="true">✪</span><strong id="homeQuestCountValue">0</strong><span>Quests abgeschlossen</span></div>
+    <div class="status-bar-item"><span class="status-bar-icon" aria-hidden="true">✦</span><strong id="homeXpValue">0</strong><span>Gesamt XP</span></div>
+    <div class="status-bar-item"><span class="status-bar-icon" aria-hidden="true">◈</span><strong>Sprachkrieger</strong><span>Aktueller Rang</span></div>
+    <button id="shopButton" class="shop-button" type="button" disabled>🛍 Zum Shop</button>
+</footer>
 
 <div id="startQuestOverlay" class="start-quest-overlay">
 
@@ -338,6 +393,8 @@ loadQuestStats();
 <script src="../js/achievementRenderer.js"></script>
 <script src="../js/quest-audio.js"></script>
 <script src="../js/engine.js"></script>
+<script src="../js/daily-quests.js"></script>
+<script src="../js/worldmap.js"></script>
 
 <!-- PWA: registriert den Service Worker, verändert keine Spiellogik -->
 <script src="../js/pwa-register.js"></script>

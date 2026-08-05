@@ -2769,3 +2769,209 @@
         white-space:nowrap;
     }
 }
+
+/* =========================================================
+   MOCKUP-STARTSEITE – RESPONSIVE
+========================================================= */
+
+@media (max-width:900px){
+    body:has(#worldmapHome) .topbar{
+        display:block;
+        padding:9px 10px 0;
+    }
+
+    body:has(#worldmapHome) .brand-lockup{
+        justify-content:center;
+        font-size:.92rem;
+    }
+
+    body:has(#worldmapHome) .brand-mark{
+        font-size:1.45em;
+    }
+
+    body:has(#worldmapHome) .top-navigation{
+        justify-content:center;
+        gap:2px;
+        margin-top:7px;
+        overflow-x:auto;
+        padding-bottom:7px;
+        scrollbar-width:none;
+    }
+
+    body:has(#worldmapHome) .top-navigation::-webkit-scrollbar{
+        display:none;
+    }
+
+    body:has(#worldmapHome) .top-navigation-button{
+        min-height:36px;
+        padding:6px 9px;
+        font-size:.7rem;
+        white-space:nowrap;
+    }
+
+    body:has(#worldmapHome) .top-navigation-settings{
+        display:none;
+    }
+
+    body:has(#worldmapHome) .chronik-navigation-lockup{
+        height:23px;
+    }
+
+    body:has(#worldmapHome) .chronik-navigation-book{
+        width:22px;
+        height:23px;
+        background-size:auto 26px;
+    }
+
+    body:has(#worldmapHome) .chronik-navigation-word{
+        width:50px;
+        height:13px;
+        background-size:auto 26px;
+        background-position:-25px -5px;
+    }
+
+    body:has(#worldmapHome) .app-shell{
+        padding:8px 6px 12px;
+    }
+
+    body:has(#worldmapHome) .worldmap-home{
+        display:flex;
+        flex-direction:column;
+        gap:6px;
+    }
+
+    body:has(#worldmapHome) .home-column{
+        display:flex;
+        padding:6px;
+        border:0;
+    }
+
+    body:has(#worldmapHome) .home-column-center{
+        order:-1;
+    }
+
+    body:has(#worldmapHome) .profile-panel{
+        min-height:0;
+    }
+
+    body:has(#worldmapHome) .journey-panel{
+        min-height:450px;
+    }
+
+    body:has(#worldmapHome) .world-map{
+        min-height:420px;
+    }
+
+    body:has(#worldmapHome) .home-column-right{
+        display:flex;
+    }
+
+    body:has(#worldmapHome) .status-bar{
+        display:grid;
+        grid-template-columns:1fr 1fr;
+        gap:0;
+        padding:8px;
+    }
+
+    body:has(#worldmapHome) .status-bar-item{
+        min-width:0;
+        padding:7px 8px;
+    }
+
+    body:has(#worldmapHome) .status-bar-item:nth-of-type(2){
+        border-right:0;
+    }
+
+    body:has(#worldmapHome) .status-bar-item:nth-of-type(n+3){
+        display:none;
+    }
+
+    body:has(#worldmapHome) .shop-button{
+        display:none;
+    }
+
+    body:has(#worldmapHome) .secondary-view{
+        padding:10px;
+    }
+
+    body:has(#worldmapHome) .secondary-view-header{
+        align-items:flex-start;
+        flex-direction:column;
+    }
+}
+
+@media (max-width:520px){
+    body:has(#worldmapHome) .brand-lockup{
+        font-size:.76rem;
+    }
+
+    body:has(#worldmapHome) .profile-header{
+        grid-template-columns:59px minmax(0, 1fr) 35px;
+        gap:8px;
+    }
+
+    body:has(#worldmapHome) .profile-avatar{
+        width:56px;
+        height:56px;
+        font-size:2rem;
+    }
+
+    body:has(#worldmapHome) .level-badge{
+        width:34px;
+        height:40px;
+    }
+
+    body:has(#worldmapHome) .quote-panel{
+        min-height:125px;
+    }
+
+    body:has(#worldmapHome) .quote-panel blockquote{
+        font-size:.94rem;
+    }
+
+    body:has(#worldmapHome) .quote-panel > p{
+        padding:0 3px;
+        font-size:1.6rem;
+    }
+
+    body:has(#worldmapHome) .journey-panel{
+        min-height:410px;
+        padding:8px;
+    }
+
+    body:has(#worldmapHome) .world-map{
+        min-height:365px;
+    }
+
+    body:has(#worldmapHome) .world-map-node{
+        width:58px;
+    }
+
+    body:has(#worldmapHome) .world-map-node-orb{
+        width:32px;
+        height:32px;
+        font-size:.8rem;
+    }
+
+    body:has(#worldmapHome) .world-map-node-label{
+        max-width:62px;
+        font-size:.52rem;
+    }
+
+    body:has(#worldmapHome) .world-map-legend{
+        right:4px;
+        bottom:4px;
+        gap:4px;
+        font-size:.5rem;
+    }
+
+    body:has(#worldmapHome) .daily-quest-heading{
+        align-items:flex-start;
+        flex-direction:column;
+        gap:1px;
+    }
+
+    body:has(#worldmapHome) .home-statistics-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}

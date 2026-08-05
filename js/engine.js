@@ -1043,72 +1043,97 @@ function switchContent(mode) {
 
     contentMode = mode;
 
-    switch (mode) {
+   const worldmapHome = document.getElementById("worldmapHome");
+   const questView = document.getElementById("questView");
+   const statusBar = document.querySelector(".status-bar");
+   const topNavigationButtons = document.querySelectorAll(
+       ".top-navigation-button[data-content-mode]"
+   );
 
+   const showSecondaryView = () => {
+       worldmapHome?.setAttribute("hidden", "");
+       questView?.setAttribute("hidden", "");
+       statusBar?.setAttribute("hidden", "");
+       document.getElementById("questListe").style.display = "none";
+       document.getElementById("chronikContainer").style.display = "none";
+       document.getElementById("achievementContainer").style.display = "none";
+   };
+
+   const activeNavigationMode =
+       mode === "campaign" || mode === "missions"
+           ? "quests"
+           : mode;
+
+   topNavigationButtons.forEach(button => {
+       button.classList.toggle(
+           "is-active",
+           button.dataset.contentMode === activeNavigationMode
+       );
+   });
+
+   [
+       [campaignListButton, "campaign"],
+       [missionsMenuButton, "missions"]
+   ].forEach(([button, buttonMode]) => {
+       if (!button) {
+           return;
+       }
+
+       const isActive = buttonMode === mode;
+       button.classList.toggle("is-active", isActive);
+       button.setAttribute("aria-pressed", String(isActive));
+   });
+
+   switch (mode) {
+
+       case "worldmap":
+           document.body.classList.remove("mobile-chronik-mode");
+           worldmapHome?.removeAttribute("hidden");
+           questView?.setAttribute("hidden", "");
+           statusBar?.removeAttribute("hidden");
+           document.getElementById("questListe").style.display = "none";
+           document.getElementById("chronikContainer").style.display = "none";
+           document.getElementById("achievementContainer").style.display = "none";
+
+           if (typeof renderWorldMapHome === "function") {
+               renderWorldMapHome();
+           }
+           break;
 
         case "campaign":
-
-            document.body.classList.remove("mobile-chronik-mode");
-            document.getElementById("achievementContainer").style.display = "none";
-
-            document.getElementById("questListe").style.display = "block";
-
-            document.getElementById("chronikContainer").style.display = "none";
-
-            ladeKarten();
-
-            break;
+           document.body.classList.remove("mobile-chronik-mode");
+           showSecondaryView();
+           questView?.removeAttribute("hidden");
+           document.getElementById("questListe").style.display = "block";
+           ladeKarten();
+           break;
 
 
-        case "missions":
+       case "missions":
+           document.body.classList.remove("mobile-chronik-mode");
+           showSecondaryView();
+           questView?.removeAttribute("hidden");
+           document.getElementById("questListe").style.display = "block";
+           ladeKarten();
+           break;
 
-            document.body.classList.remove("mobile-chronik-mode");
-            document.getElementById("achievementContainer").style.display = "none";
+       case "achievements":
+           document.body.classList.remove("mobile-chronik-mode");
+           showSecondaryView();
+           document.getElementById("achievementContainer").style.display = "block";
+           renderAchievements();
+           break;
 
-            document.getElementById("questListe").style.display = "block";
+       case "chronik":
+           if (window.matchMedia("(max-width: 900px)").matches) {
+               document.body.classList.add("mobile-chronik-mode");
+           }
+           showSecondaryView();
+           document.getElementById("chronikContainer").style.display = "block";
+           renderChronik();
+           break;
 
-            document.getElementById("chronikContainer").style.display = "none";
-
-            ladeKarten();
-
-            break;
-
-case "achievements":
-
-    document.body.classList.remove("mobile-chronik-mode");
-    document.getElementById("questListe").style.display = "none";
-
-    document.getElementById("chronikContainer").style.display = "none";
-
-    document.getElementById("achievementContainer").style.display = "block";
-
-
-    console.log("Achievements werden gerendert");
-
-    renderAchievements();
-
-    break;       
-
-
-
-case "chronik":
-
-    if (window.matchMedia("(max-width: 900px)").matches) {
-        document.body.classList.add("mobile-chronik-mode");
-    }
-
-    document.getElementById("questListe").style.display = "none";
-
-    document.getElementById("achievementContainer").style.display = "none";
-
-    document.getElementById("chronikContainer").style.display = "block";
-
-    renderChronik();
-
-    break;
-
-    }
-
+   }
 }
 
 
@@ -1123,6 +1148,14 @@ campaignMenuButton.onclick = function () {
 
 };
 
+}
+
+const campaignListButton = document.getElementById("campaignListButton");
+
+if (campaignListButton) {
+    campaignListButton.onclick = function () {
+        switchContent("campaign");
+    };
 }
 
 const missionsMenuButton =
@@ -1165,71 +1198,23 @@ if (chronikButton) {
 
 }
 
+const worldMapMenuButton = document.getElementById("worldMapMenuButton");
 
-/* =========================================================
-   SIDEBAR: Hamburger-Menü für Mobile und Desktop
-   ---------------------------------------------------------
-   Beide Ansichten verwenden dieselbe Drawer-Logik. Die
-   jeweilige CSS-Media-Query entscheidet nur über die Darstellung.
-========================================================= */
-
-const sidebarToggleButton = document.getElementById("sidebarToggleButton");
-const mainSidebar = document.getElementById("mainSidebar");
-const sidebarBackdrop = document.getElementById("sidebarBackdrop");
-
-function openSidebar() {
-
-    if (!mainSidebar) {
-        return;
-    }
-
-    mainSidebar.classList.add("mobile-open");
-    sidebarBackdrop?.classList.add("active");
-    sidebarToggleButton?.setAttribute("aria-expanded", "true");
-    sidebarToggleButton?.setAttribute("aria-label", "Menü schließen");
-    document.body.classList.add("drawer-open");
-
-}
-
-function closeSidebar() {
-
-    if (!mainSidebar) {
-        return;
-    }
-
-    mainSidebar.classList.remove("mobile-open");
-    sidebarBackdrop?.classList.remove("active");
-    sidebarToggleButton?.setAttribute("aria-expanded", "false");
-    sidebarToggleButton?.setAttribute("aria-label", "Menü öffnen");
-    document.body.classList.remove("drawer-open");
-
-}
-
-if (sidebarToggleButton) {
-
-    sidebarToggleButton.onclick = function () {
-
-        if (mainSidebar?.classList.contains("mobile-open")) {
-            closeSidebar();
-        } else {
-            openSidebar();
-        }
-
+if (worldMapMenuButton) {
+    worldMapMenuButton.dataset.contentMode = "worldmap";
+    worldMapMenuButton.onclick = function () {
+        switchContent("worldmap");
     };
-
 }
 
-sidebarBackdrop?.addEventListener("click", closeSidebar);
+if (campaignMenuButton) {
+    campaignMenuButton.dataset.contentMode = "quests";
+}
 
-document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" && mainSidebar?.classList.contains("mobile-open")) {
-        closeSidebar();
-    }
-});
+if (achievementButton) {
+    achievementButton.dataset.contentMode = "achievements";
+}
 
-// Nach Auswahl eines Menüpunkts soll sich die mobile Sidebar
-// automatisch schließen (bestehende onclick-Handler der
-// einzelnen Buttons bleiben davon unberührt).
-mainSidebar?.querySelectorAll(".menu-card button").forEach(button => {
-    button.addEventListener("click", closeSidebar);
-});
+if (chronikButton) {
+    chronikButton.dataset.contentMode = "chronik";
+}
