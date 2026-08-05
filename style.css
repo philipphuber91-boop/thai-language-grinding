@@ -1330,6 +1330,14 @@ box-shadow:
 
 }
 
+.quest-card.quest-locked{
+    opacity:.82;
+}
+
+.quest-card.quest-locked .quest-start-button{
+    filter:grayscale(.65);
+}
+
 .quest-words{
 
     display:flex;
@@ -1519,11 +1527,298 @@ box-shadow:
 
     align-items:center;
 
+    gap:10px;
+
     align-self:center;
 
     width:auto;
 
     flex:none;
+
+}
+
+.quest-achievement-overview-button{
+
+    width:42px;
+
+    height:42px;
+
+    padding:0;
+
+    border:1px solid #a86e23;
+
+    border-radius:9px;
+
+    color:#5f3810;
+
+    background:linear-gradient(180deg, #ffe8aa, #dca64f);
+
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.7);
+
+    font-size:1.35rem;
+
+    line-height:1;
+
+    cursor:pointer;
+
+}
+
+.quest-achievement-overview-button:hover,
+.quest-achievement-overview-button:focus-visible{
+
+    background:linear-gradient(180deg, #fff2c3, #e5b563);
+
+    outline:2px solid rgba(113,72,15,.35);
+
+    outline-offset:2px;
+
+}
+
+.quest-achievement-overview-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:10000;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:24px;
+
+    box-sizing:border-box;
+
+    background:rgba(45,28,8,.58);
+
+    backdrop-filter:blur(3px);
+
+}
+
+.quest-achievement-overview-overlay[hidden]{
+
+    display:none;
+
+}
+
+.quest-achievement-overview{
+
+    width:min(820px, 100%);
+
+    max-height:calc(100dvh - 48px);
+
+    overflow:auto;
+
+    padding:20px;
+
+    border:2px solid #ad7423;
+
+    border-radius:12px;
+
+    background:
+        linear-gradient(135deg, rgba(255,251,232,.95), rgba(238,201,126,.75)),
+        #f2d59c;
+
+    box-shadow:
+        inset 0 0 0 3px rgba(255,248,219,.8),
+        0 18px 45px rgba(51,27,4,.4);
+
+}
+
+.quest-achievement-overview-header{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+
+    gap:16px;
+
+    margin-bottom:14px;
+
+    padding-bottom:10px;
+
+    border-bottom:1px solid rgba(139,84,20,.35);
+
+}
+
+.quest-achievement-overview-header h2{
+
+    margin:0;
+
+    color:#5a3210;
+
+    font-size:1.35rem;
+
+}
+
+.quest-achievement-overview-header p{
+
+    margin:4px 0 0;
+
+    color:#7b511f;
+
+    font-size:.78rem;
+
+}
+
+#questAchievementOverviewClose{
+
+    width:34px;
+
+    height:34px;
+
+    flex:0 0 auto;
+
+    border:1px solid #a86e23;
+
+    border-radius:7px;
+
+    color:#633b12;
+
+    background:#f8dfac;
+
+    font-size:1.1rem;
+
+    cursor:pointer;
+
+}
+
+.quest-achievement-overview-list{
+
+    display:grid;
+
+    grid-template-columns:repeat(2, minmax(0, 1fr));
+
+    gap:10px;
+
+}
+
+.quest-achievement-overview-card{
+
+    display:grid;
+
+    grid-template-columns:58px minmax(0, 1fr) auto;
+
+    align-items:center;
+
+    gap:10px;
+
+    min-width:0;
+
+    padding:10px;
+
+    border:1px solid rgba(131,80,19,.28);
+
+    border-left:4px solid #9c9c9c;
+
+    border-radius:9px;
+
+    background:rgba(255,247,213,.65);
+
+    color:#603810;
+
+}
+
+.quest-achievement-overview-card.is-unlocked{
+
+    border-left-color:#4d8e1d;
+
+    background:rgba(255,229,142,.72);
+
+}
+
+.quest-achievement-overview-card img{
+
+    width:54px;
+
+    height:54px;
+
+    object-fit:contain;
+
+}
+
+.quest-achievement-overview-content{
+
+    min-width:0;
+
+}
+
+.quest-achievement-overview-content strong{
+
+    display:block;
+
+    color:#4e2b0b;
+
+    font-size:.84rem;
+
+}
+
+.quest-achievement-overview-content p{
+
+    margin:3px 0 4px;
+
+    color:#704719;
+
+    font-size:.7rem;
+
+    line-height:1.3;
+
+}
+
+.quest-achievement-overview-content small{
+
+    display:block;
+
+    color:#7e5728;
+
+    font-size:.65rem;
+
+}
+
+.quest-achievement-overview-track{
+
+    height:5px;
+
+    margin-top:5px;
+
+    overflow:hidden;
+
+    border-radius:999px;
+
+    background:#d5b87b;
+
+}
+
+.quest-achievement-overview-fill{
+
+    width:0;
+
+    height:100%;
+
+    border-radius:inherit;
+
+    background:linear-gradient(90deg, #b57b1c, #4d8e1d);
+
+}
+
+.quest-achievement-overview-card em{
+
+    align-self:start;
+
+    color:#347419;
+
+    font-size:.68rem;
+
+    font-style:normal;
+
+    font-weight:700;
+
+    white-space:nowrap;
 
 }
 
@@ -3318,6 +3613,39 @@ box-shadow:
 
     margin-top:30px;
 
+}
+
+.start-quest-unlock-notice{
+    margin:20px auto 0;
+    padding:10px 14px;
+    border:1px solid rgba(255,213,111,.35);
+    border-radius:10px;
+    color:#f5d98a;
+    text-align:center;
+    font-size:15px;
+}
+
+.start-quest-unlock-notice.is-locked{
+    border-color:rgba(255,120,100,.55);
+    color:#ffb0a3;
+}
+
+.quest-unlock-bypass-button{
+    display:block;
+    margin:12px auto 0;
+    border:1px solid #c89a35;
+    border-radius:8px;
+    background:#4b3a22;
+    color:#ffe4a2;
+}
+
+.quest-unlock-bypass-button:hover{
+    background:#624a28;
+}
+
+.mode-card button:disabled{
+    cursor:not-allowed;
+    opacity:.45;
 }
 
 
@@ -7613,6 +7941,11 @@ padding:28px 34px;
 
     body.drawer-open{
         overflow:hidden;
+    }
+
+    .quest-achievement-overview-button{
+        position:relative;
+        left:-14px;
     }
 
     .hamburger-button{

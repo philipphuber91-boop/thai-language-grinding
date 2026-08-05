@@ -262,6 +262,21 @@
 
         </div>
 
+        <div
+            id="startQuestUnlockNotice"
+            class="start-quest-unlock-notice"
+            role="status">
+            🔓 Diese Quest ist freigeschaltet.
+        </div>
+
+        <button
+            id="questUnlockBypassButton"
+            class="quest-unlock-bypass-button"
+            type="button"
+            hidden>
+            🔧 Trotzdem testen
+        </button>
+
         <button id="cancelQuestButton">
 
             Abbrechen
@@ -270,6 +285,33 @@
 
     </div>
 
+</div>
+
+<div
+    id="questAchievementOverview"
+    class="quest-achievement-overview-overlay"
+    hidden>
+    <section
+        class="quest-achievement-overview"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="questAchievementOverviewTitle">
+        <div class="quest-achievement-overview-header">
+            <div>
+                <h2 id="questAchievementOverviewTitle">
+                    🏆 Quest-Auszeichnungen
+                </h2>
+                <p id="questAchievementOverviewSummary"></p>
+            </div>
+            <button
+                id="questAchievementOverviewClose"
+                type="button"
+                aria-label="Auszeichnungsübersicht schließen">
+                ✕
+            </button>
+        </div>
+        <div id="questAchievementOverviewList" class="quest-achievement-overview-list"></div>
+    </section>
 </div>
 
 <script src="../js/save.js"></script>

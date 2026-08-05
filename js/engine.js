@@ -1,6 +1,230 @@
 const questListe = document.getElementById("questListe");
 
 let contentMode = "campaign";
+const questUnlockBypassEnabled = true;
+const QUEST_UNLOCK_ACHIEVEMENT_GOAL = 7;
+
+window.addEventListener("questaudio:ended", event => {
+    const detail = event.detail || {};
+    const audioContentMode = detail.contentMode || contentMode;
+    const questNumber = Number(detail.questNumber);
+
+    if (
+        audioContentMode !== "campaign" ||
+        !Number.isInteger(questNumber) ||
+        questNumber < 1 ||
+        typeof registerQuestAudioListen !== "function"
+    ) {
+        return;
+    }
+
+    registerQuestAudioListen(
+        `${audioContentMode}:${questNumber}`
+    );
+});
+
+function getQuestAchievementCount(questId) {
+    const stats = getQuestStats(questId);
+
+    if (!stats.completed) {
+        return 0;
+    }
+
+    return Object.values(stats.questAchievements || {}).filter(
+        achievement => achievement?.unlocked
+    ).length;
+}
+
+function getQuestUnlockRequirements(quest, questNumber) {
+    const index = Math.max(1, Math.floor(Number(questNumber) || 1));
+    const configuredLevel = Number(quest?.requiredLevel);
+    const requiredLevel = Math.max(
+        1,
+        Number.isFinite(configuredLevel)
+            ? Math.floor(configuredLevel)
+            : Math.ceil(index / 2)
+    );
+    const previousQuestNumber = index - 1;
+    const previousQuestAchievementCount = previousQuestNumber > 0
+        ? getQuestAchievementCount(
+            `${contentMode}:${previousQuestNumber}`
+        )
+        : QUEST_UNLOCK_ACHIEVEMENT_GOAL;
+
+    return {
+        requiredLevel,
+        previousQuestNumber,
+        previousQuestAchievementCount,
+        requiredAchievements: QUEST_UNLOCK_ACHIEVEMENT_GOAL
+    };
+}
+
+function getQuestUnlockState(quest, questNumber) {
+    const requirements = getQuestUnlockRequirements(quest, questNumber);
+    const xpSummary = getPlayerXpSummary();
+    const unlocked =
+        xpSummary.level >= requirements.requiredLevel &&
+        (
+            requirements.previousQuestNumber === 0 ||
+            requirements.previousQuestAchievementCount >=
+                requirements.requiredAchievements
+        );
+
+    return {
+        ...requirements,
+        unlocked,
+        bypassAvailable: !unlocked && questUnlockBypassEnabled,
+        requirementText:
+            requirements.previousQuestNumber === 0
+                ? `Benötigt: Level ${requirements.requiredLevel}`
+                : `Benötigt: Level ${requirements.requiredLevel} und mindestens ${requirements.requiredAchievements} Auszeichnungen in Quest ${requirements.previousQuestNumber} (${requirements.previousQuestAchievementCount}/${requirements.requiredAchievements})`
+    };
+}
+
+function getQuestAchievementUnitForOverview(card) {
+    if (card.runType === "cpm") {
+        return "CPM";
+    }
+
+    if (card.runType === "accuracy") {
+        return "%";
+    }
+
+    if (card.runType === "cleanStreak") {
+        return "Sätze";
+    }
+
+    if (card.runType === "perfectQuest") {
+        return "Quest";
+    }
+
+    return "Ziel";
+}
+
+function getQuestAchievementRequirementForOverview(card) {
+    const noHelpSuffix = card.requiresNoTastenhilfe
+        ? " ohne Tastenhilfe"
+        : "";
+
+    if (card.runType === "cpm") {
+        return `Erreiche ${card.goal} CPM${noHelpSuffix} in einer Runde.`;
+    }
+
+    if (card.runType === "accuracy") {
+        return `Erreiche ${card.goal}% Genauigkeit${noHelpSuffix}.`;
+    }
+
+    if (card.runType === "cleanWords") {
+        return `Tippe ${card.goal} Wörter fehlerfrei.`;
+    }
+
+    if (card.runType === "masteredWords") {
+        return card.goal === 1
+            ? "Meistere 1 einzigartiges Wort."
+            : `Meistere ${card.goal} einzigartige Wörter.`;
+    }
+
+    if (card.runType === "perfectQuest") {
+        return card.requiresNoTastenhilfe
+            ? "Schließe diese Quest fehlerfrei ohne Tastenhilfe ab."
+            : "Schließe diese Quest ohne Fehler ab.";
+    }
+
+    if (card.runType === "newRecord") {
+        return "Stelle eine persönliche Bestleistung auf.";
+    }
+
+    if (card.runType === "cleanStreak") {
+        return `Tippe ${card.goal} Sätze fehlerfrei hintereinander.`;
+    }
+
+    if (card.runType === "audioListens") {
+        return `Höre das Questaudio ${card.goal}-mal vollständig.`;
+    }
+
+    return card.description;
+}
+
+function openQuestAchievementOverview(questNumber) {
+    const overlay = document.getElementById("questAchievementOverview");
+    const list = document.getElementById("questAchievementOverviewList");
+    const summary = document.getElementById(
+        "questAchievementOverviewSummary"
+    );
+
+    if (
+        !overlay ||
+        !list ||
+        !summary ||
+        typeof getQuestAchievementCards !== "function"
+    ) {
+        return;
+    }
+
+    const questId = `${contentMode}:${questNumber}`;
+    const cards = getQuestAchievementCards(questId);
+    const unlockedCount = cards.filter(card => card.unlocked).length;
+
+    summary.textContent =
+        `${unlockedCount} / ${cards.length} Auszeichnungen gesammelt`;
+    list.innerHTML = "";
+
+    for (const card of cards) {
+        const item = document.createElement("article");
+        item.className =
+            `quest-achievement-overview-card${card.unlocked ? " is-unlocked" : ""}`;
+
+        const icon = document.createElement("img");
+        icon.src = `../assets/icons/achievements/${card.icon}.png`;
+        icon.alt = "";
+
+        const content = document.createElement("div");
+        content.className = "quest-achievement-overview-content";
+
+        const title = document.createElement("strong");
+        title.textContent = card.title;
+
+        const requirement = document.createElement("p");
+        requirement.textContent =
+            getQuestAchievementRequirementForOverview(card);
+
+        const progress = document.createElement("small");
+        progress.textContent = card.unlocked
+            ? "✓ Gesammelt"
+            : `${card.progress} / ${card.goal} ${getQuestAchievementUnitForOverview(card)}`;
+
+        const track = document.createElement("div");
+        track.className = "quest-achievement-overview-track";
+
+        const fill = document.createElement("div");
+        fill.className = "quest-achievement-overview-fill";
+        fill.style.width = `${card.percent}%`;
+        track.appendChild(fill);
+
+        content.append(title, requirement, progress, track);
+
+        const reward = document.createElement("em");
+        reward.textContent = `+${card.bonusXp} XP`;
+
+        item.append(icon, content, reward);
+        list.appendChild(item);
+    }
+
+    overlay.hidden = false;
+    overlay.classList.add("is-open");
+    document.getElementById("questAchievementOverviewClose")?.focus();
+}
+
+function closeQuestAchievementOverview() {
+    const overlay = document.getElementById("questAchievementOverview");
+
+    if (!overlay) {
+        return;
+    }
+
+    overlay.classList.remove("is-open");
+    overlay.hidden = true;
+}
 
 function formatQuestInfoHint(
     label,
@@ -86,6 +310,7 @@ document.addEventListener("keydown", event => {
 
     if (event.key === "Escape") {
         closeQuestInfoHints();
+        closeQuestAchievementOverview();
     }
 
 });
@@ -308,6 +533,7 @@ const stats = getQuestStats(
     `${contentMode}:${nummer}`,
     daten[nummer].version ?? 1
 );
+const unlockState = getQuestUnlockState(quest, nummer);
 
 const statusLabel = statusIcons[status] || "";
 
@@ -329,7 +555,7 @@ if (stats.completed) {
 
 const karte = document.createElement("div");
 
-karte.className = "quest-card";
+karte.className = `quest-card${unlockState.unlocked ? "" : " quest-locked"}`;
 
         karte.id = "quest-" + nummer;
 
@@ -463,7 +689,17 @@ karte.innerHTML = `
 
     <div class="quest-actions">
 
+<button
+        type="button"
+        class="quest-achievement-overview-button"
+        aria-label="Quest-Auszeichnungen anzeigen"
+        title="Quest-Auszeichnungen anzeigen"
+        onclick="event.stopPropagation(); openQuestAchievementOverview(${nummer})">
+    🏆
+</button>
+
 <button class="quest-start-button"
+        ${unlockState.unlocked ? "" : "aria-label=\"Gesperrte Quest öffnen\""}
         onclick="event.stopPropagation(); starteQuest(${nummer})">
 
     <img
@@ -507,6 +743,7 @@ if (questListe) {
 
 // Quest starten
 let ausgewaehlteQuest = null;
+let questStartBypassActive = false;
 
 // Quest starten
 function starteQuest(questNummer) {
@@ -519,6 +756,8 @@ function starteQuest(questNummer) {
             : missions;
 
     const quest = daten[questNummer];
+    const unlockState = getQuestUnlockState(quest, questNummer);
+    questStartBypassActive = false;
     const thaiWordStats = getThaiWordStatistics(quest.thaiZeilen);
     const familiarityStats =
         getThaiWordFamiliarityStatistics(
@@ -541,6 +780,24 @@ function starteQuest(questNummer) {
 
     document.getElementById("startQuestDifficulty").textContent =
         "🏅 " + quest.schwierigkeit;
+
+    const unlockNotice = document.getElementById("startQuestUnlockNotice");
+    if (unlockNotice) {
+        unlockNotice.textContent = unlockState.unlocked
+            ? "🔓 Diese Quest ist freigeschaltet."
+            : `🔒 ${unlockState.requirementText}`;
+        unlockNotice.classList.toggle("is-locked", !unlockState.unlocked);
+    }
+
+    const bypassButton = document.getElementById("questUnlockBypassButton");
+    if (bypassButton) {
+        bypassButton.hidden = !unlockState.bypassAvailable;
+    }
+    [campaignButton, challengeButton].forEach(button => {
+        if (button) {
+            button.disabled = !unlockState.unlocked;
+        }
+    });
 
     document.getElementById("startQuestWords").textContent =
         "📖 " + formatThaiWordStatistics(thaiWordStats);
@@ -629,6 +886,27 @@ if (questStats.records.bestAccuracy !== null) {
 const cancelQuestButton =
     document.getElementById("cancelQuestButton");
 
+const questAchievementOverviewClose = document.getElementById(
+    "questAchievementOverviewClose"
+);
+
+if (questAchievementOverviewClose) {
+    questAchievementOverviewClose.onclick =
+        closeQuestAchievementOverview;
+}
+
+const questAchievementOverview = document.getElementById(
+    "questAchievementOverview"
+);
+
+if (questAchievementOverview) {
+    questAchievementOverview.addEventListener("click", event => {
+        if (event.target === questAchievementOverview) {
+            closeQuestAchievementOverview();
+        }
+    });
+}
+
 if (cancelQuestButton) {
 
     cancelQuestButton.onclick = function () {
@@ -648,6 +926,14 @@ const campaignButton =
 if (campaignButton) {
 
     campaignButton.onclick = function () {
+        if (!questStartBypassActive && !getQuestUnlockState(
+            (contentMode === "campaign" ? quests : missions)[
+                ausgewaehlteQuest
+            ],
+            ausgewaehlteQuest
+        ).unlocked) {
+            return;
+        }
 
         localStorage.setItem("aktuelleQuest", ausgewaehlteQuest);
 
@@ -667,6 +953,14 @@ const challengeButton =
 if (challengeButton) {
 
     challengeButton.onclick = function () {
+        if (!questStartBypassActive && !getQuestUnlockState(
+            (contentMode === "campaign" ? quests : missions)[
+                ausgewaehlteQuest
+            ],
+            ausgewaehlteQuest
+        ).unlocked) {
+            return;
+        }
 
         localStorage.setItem("aktuelleQuest", ausgewaehlteQuest);
 
@@ -678,6 +972,35 @@ if (challengeButton) {
 
     };
 
+}
+
+const questUnlockBypassButton = document.getElementById(
+    "questUnlockBypassButton"
+);
+
+if (questUnlockBypassButton) {
+    questUnlockBypassButton.onclick = function () {
+        if (!questUnlockBypassEnabled) {
+            return;
+        }
+
+        questStartBypassActive = true;
+        [campaignButton, challengeButton].forEach(button => {
+            if (button) {
+                button.disabled = false;
+            }
+        });
+        questUnlockBypassButton.hidden = true;
+
+        const unlockNotice = document.getElementById(
+            "startQuestUnlockNotice"
+        );
+        if (unlockNotice) {
+            unlockNotice.textContent =
+                "🔧 Testmodus aktiv: Die Quest wird ohne Freischaltung geöffnet.";
+            unlockNotice.classList.remove("is-locked");
+        }
+    };
 }
 
 function openChronik(){
