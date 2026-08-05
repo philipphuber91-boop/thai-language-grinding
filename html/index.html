@@ -28,38 +28,29 @@
 
 <body>
 
-<header class="topbar">
-    <a class="brand-lockup" href="#weltkarte" aria-label="Thai Language Grinding Startseite">
-        <span class="brand-mark">⌁</span>
-        <span class="brand-title">THAI LANGUAGE GRINDING</span>
-        <span class="brand-mark">⌁</span>
-    </a>
+<button
+    id="sidebarToggleButton"
+    class="hamburger-button"
+    type="button"
+    aria-label="Menü öffnen"
+    aria-expanded="false"
+    aria-controls="mainSidebar">☰</button>
 
-    <nav class="top-navigation" aria-label="Hauptnavigation">
-        <button id="worldMapMenuButton" class="top-navigation-button is-active" type="button">
-            <span aria-hidden="true">🗺</span>
-            Weltkarte
-        </button>
-        <button id="campaignMenuButton" class="top-navigation-button" type="button">
-            <span aria-hidden="true">📜</span>
-            Quests
-        </button>
-        <button id="achievementButton" class="top-navigation-button" type="button">
-            <span aria-hidden="true">📖</span>
-            Errungenschaften
-        </button>
-        <button id="chronikButton" class="top-navigation-button" type="button">
-            <span class="chronik-navigation-lockup" aria-hidden="true">
-                <span class="chronik-navigation-book"></span>
-                <span class="chronik-navigation-word"></span>
-            </span>
-            <span class="sr-only">Chronik</span>
-        </button>
-        <button id="settingsMenuButton" class="top-navigation-button top-navigation-settings" type="button" disabled>
-            <span aria-hidden="true">⚙</span>
-            <span class="sr-only">Einstellungen</span>
-        </button>
-    </nav>
+<div id="sidebarBackdrop" class="sidebar-backdrop"></div>
+
+<aside id="mainSidebar" class="sidebar" aria-label="Mobile Navigation">
+    <div class="menu-card">
+        <button class="mobile-menu-button" type="button" data-content-mode="worldmap">🗺 Weltkarte</button>
+        <button class="mobile-menu-button" type="button" data-content-mode="quests">📜 Quests</button>
+        <button class="mobile-menu-button" type="button" data-content-mode="missions">🧭 Missionen</button>
+        <button class="mobile-menu-button" type="button" data-content-mode="achievements">🏆 Erfolge</button>
+        <button class="mobile-menu-button" type="button" data-content-mode="chronik">📖 Chronik</button>
+    </div>
+</aside>
+
+<header class="topbar">
+    <h1>THAI</h1>
+    <h2>LANGUAGE GRINDING</h2>
 </header>
 
 <main class="app-shell">

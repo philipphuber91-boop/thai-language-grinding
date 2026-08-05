@@ -4,6 +4,42 @@ let contentMode = "campaign";
 const questUnlockBypassEnabled = true;
 const QUEST_UNLOCK_ACHIEVEMENT_GOAL = 7;
 
+const sidebarToggleButton = document.getElementById("sidebarToggleButton");
+const mainSidebar = document.getElementById("mainSidebar");
+const sidebarBackdrop = document.getElementById("sidebarBackdrop");
+
+function closeMobileSidebar() {
+    mainSidebar?.classList.remove("mobile-open");
+    sidebarBackdrop?.classList.remove("active");
+    sidebarToggleButton?.setAttribute("aria-expanded", "false");
+    sidebarToggleButton?.setAttribute("aria-label", "Menü öffnen");
+    document.body.classList.remove("drawer-open");
+}
+
+function openMobileSidebar() {
+    mainSidebar?.classList.add("mobile-open");
+    sidebarBackdrop?.classList.add("active");
+    sidebarToggleButton?.setAttribute("aria-expanded", "true");
+    sidebarToggleButton?.setAttribute("aria-label", "Menü schließen");
+    document.body.classList.add("drawer-open");
+}
+
+sidebarToggleButton?.addEventListener("click", () => {
+    if (mainSidebar?.classList.contains("mobile-open")) {
+        closeMobileSidebar();
+    } else {
+        openMobileSidebar();
+    }
+});
+
+sidebarBackdrop?.addEventListener("click", closeMobileSidebar);
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+        closeMobileSidebar();
+    }
+});
+
 window.addEventListener("questaudio:ended", event => {
     const detail = event.detail || {};
     const audioContentMode = detail.contentMode || contentMode;
@@ -1042,6 +1078,14 @@ function switchContent(mode) {
     console.log("switchContent:", mode);
 
     contentMode = mode;
+    document.body.classList.toggle(
+        "worldmap-view-mode",
+        mode === "worldmap"
+    );
+    document.body.classList.toggle(
+        "achievements-view-mode",
+        mode === "achievements"
+    );
 
    const worldmapHome = document.getElementById("worldmapHome");
    const questView = document.getElementById("questView");
@@ -1070,6 +1114,19 @@ function switchContent(mode) {
            button.dataset.contentMode === activeNavigationMode
        );
    });
+
+   document.querySelectorAll(".mobile-menu-button").forEach(button => {
+       button.classList.toggle(
+           "is-active",
+           button.dataset.contentMode === mode ||
+           (
+               button.dataset.contentMode === "quests" &&
+               mode === "campaign"
+           )
+       );
+   });
+
+   closeMobileSidebar();
 
    [
        [campaignListButton, "campaign"],
@@ -1206,6 +1263,19 @@ if (worldMapMenuButton) {
         switchContent("worldmap");
     };
 }
+
+document.querySelectorAll(".mobile-menu-button").forEach(button => {
+    button.addEventListener("click", () => {
+        const mode = button.dataset.contentMode;
+
+        if (mode === "quests") {
+            switchContent("campaign");
+            return;
+        }
+
+        switchContent(mode);
+    });
+});
 
 if (campaignMenuButton) {
     campaignMenuButton.dataset.contentMode = "quests";

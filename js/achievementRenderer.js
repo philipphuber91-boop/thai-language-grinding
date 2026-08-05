@@ -262,7 +262,6 @@ function renderAchievementHeader() {
 function renderAchievementSummary() {
 
     const summary = getAchievementSummary();
-    const xp = getPlayerXpSummary();
 
 document.getElementById("achievementSummary").innerHTML = `
 
@@ -314,15 +313,6 @@ document.getElementById("achievementSummary").innerHTML = `
 
         ${summary.percent}%
 
-    </div>
-
-    <div class="achievementXpSummary">
-        <strong>Level ${xp.level}</strong>
-        <span>${xp.totalXp} XP gesamt</span>
-        <div class="progressBar xp-progress-bar">
-            <div class="progressFill" style="width:${xp.percent}%"></div>
-        </div>
-        <small>${xp.progressXp} / ${xp.requiredXp} XP bis Level ${xp.level + 1}</small>
     </div>
 
 </div>

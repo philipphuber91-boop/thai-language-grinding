@@ -22,8 +22,7 @@
    1. BASIS
 ========================================================= */
 
-/* Hamburger-Button existiert nur im Markup für Mobile-Zugriff
-   auf die Sidebar. Auf Desktop bleibt er unsichtbar. */
+/* Der Hamburger öffnet die Sidebar auf Mobile und Desktop. */
 .hamburger-button{
     display:none;
     position:fixed;
@@ -43,6 +42,10 @@
     align-items:center;
     justify-content:center;
     cursor:pointer;
+}
+
+.mobile-page-heading{
+    display:none;
 }
 
 @media (min-width:901px){
@@ -1125,18 +1128,95 @@
     }
 
     #achievementSummary{
-        grid-template-columns:1fr;
+        grid-template-columns:minmax(0, 1fr);
         text-align:center;
         gap:14px;
+        min-width:0;
+        overflow:hidden;
+        padding:14px;
+    }
+
+    #achievementSummary > *{
+        width:100%;
+        min-width:0;
+        box-sizing:border-box;
+    }
+
+    .achievementSummaryLeft{
+        justify-content:center;
+        gap:10px;
+    }
+
+    .summaryTrophyImage{
+        width:86px;
+        height:86px;
+    }
+
+    .summaryNumbers{
+        font-size:30px;
+    }
+
+    .summaryText{
+        font-size:14px;
+    }
+
+    .achievementSummaryCenter .progressBar{
+        width:100%;
+        max-width:100%;
     }
 
     .achievementSummaryRight{
-        grid-template-columns:1fr 1fr;
+        width:100%;
+        min-width:0;
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap:8px 10px;
+    }
+
+    .rarityBox{
+        min-width:0;
+        gap:4px;
+        padding-left:6px;
+    }
+
+    .rarityBox img{
+        width:22px;
+        height:22px;
+    }
+
+    .rarityBox span{
+        min-width:0;
+        font-size:12px;
+        white-space:nowrap;
+    }
+
+    .rarityBox strong{
+        font-size:16px;
     }
 
     .achievementCard{
         grid-template-columns:56px 1fr 70px;
-        padding:14px;
+        gap:8px;
+        padding:10px;
+    }
+
+    .achievementIcon{
+        width:46px;
+        height:46px;
+    }
+
+    .achievementCardTitle{
+        font-size:17px;
+        line-height:1.15;
+    }
+
+    .achievementCardDescription{
+        margin-top:5px;
+        font-size:12px;
+        line-height:1.2;
+    }
+
+    .achievementCardStatus{
+        font-size:22px;
     }
 }
 
@@ -1226,6 +1306,12 @@
         gap:12px;
     }
 
+    .chronik-title-image{
+        width:100%;
+        max-width:100%;
+        height:auto;
+    }
+
     /* ---------------------------------------------------------
        Statistikkarten (7 Bild-Karten: Spielzeit/Zeichen/Tempo/…):
        Im Original bestimmt allein die Bildbreite (100%) die
@@ -1240,12 +1326,12 @@
         width:100%;
         max-width:100%;
         min-width:0;
-        grid-template-columns:repeat(2, minmax(0, 1fr));
-        gap:10px;
+        grid-template-columns:repeat(3, minmax(0, 1fr));
+        gap:6px;
     }
 
     .stat-image-card{
-        aspect-ratio:1 / 1.08;
+        aspect-ratio:310 / 456;
         overflow:hidden;
         border-radius:10px;
         min-width:0;
@@ -1261,33 +1347,30 @@
 
     .stat-image-card h3{
         top:6px;
-        font-size:10px;
+        font-size:clamp(7px, 2.2vw, 10px);
         line-height:1.15;
         padding:0 4px;
     }
 
     .stat-overlay-value{
-        bottom:7px;
-        font-size:14px;
+        bottom:8px;
+        font-size:clamp(10px, 3vw, 14px);
     }
 }
 
 @media (max-width:520px){
-    /* Auch auf sehr schmalen Screens bleiben 2 Spalten erhalten,
-       damit weiterhin ca. 4 Karten pro Bildschirm sichtbar sind
-       (1 Spalte würde das erneut auf ~1-2 Karten reduzieren). */
     .main-stat-grid{
-        grid-template-columns:repeat(2, minmax(0, 1fr));
-        gap:8px;
+        grid-template-columns:repeat(3, minmax(0, 1fr));
+        gap:5px;
     }
 
     .stat-image-card h3{
-        font-size:9px;
+        font-size:clamp(6px, 2.1vw, 9px);
     }
 
     .stat-overlay-value{
-        font-size:12px;
-        bottom:5px;
+        font-size:clamp(9px, 2.8vw, 12px);
+        bottom:6px;
     }
 }
 
@@ -2777,7 +2860,8 @@
 @media (max-width:900px){
     body:has(#worldmapHome) .topbar{
         display:block;
-        padding:9px 10px 0;
+        padding:25px 10px 46px;
+        text-align:center;
     }
 
     body:has(#worldmapHome) .brand-lockup{
@@ -2803,7 +2887,7 @@
     }
 
     body:has(#worldmapHome) .top-navigation-button{
-        min-height:36px;
+        min-height:47px;
         padding:6px 9px;
         font-size:.7rem;
         white-space:nowrap;
@@ -2814,20 +2898,20 @@
     }
 
     body:has(#worldmapHome) .chronik-navigation-lockup{
-        height:23px;
+        height:33px;
     }
 
     body:has(#worldmapHome) .chronik-navigation-book{
-        width:22px;
-        height:23px;
-        background-size:auto 26px;
+        width:30px;
+        height:33px;
+        background-size:auto 35px;
     }
 
     body:has(#worldmapHome) .chronik-navigation-word{
-        width:50px;
-        height:13px;
-        background-size:auto 26px;
-        background-position:-25px -5px;
+        width:70px;
+        height:17px;
+        background-size:auto 35px;
+        background-position:-34px -7px;
     }
 
     body:has(#worldmapHome) .app-shell{
@@ -2897,6 +2981,52 @@
     body:has(#worldmapHome) .secondary-view-header{
         align-items:flex-start;
         flex-direction:column;
+    }
+
+    body:not(.worldmap-view-mode):has(#worldmapHome) .topbar{
+        display:block;
+        padding:25px 10px 46px;
+        text-align:center;
+    }
+
+    body:not(.worldmap-view-mode) .brand-lockup,
+    body:not(.worldmap-view-mode) .top-navigation{
+        display:none;
+    }
+
+    body:not(.worldmap-view-mode) .mobile-page-heading{
+        display:block;
+        text-align:center;
+    }
+
+    body:not(.worldmap-view-mode) .hamburger-button{
+        display:flex;
+    }
+
+    .mobile-menu-button{
+        display:block;
+    }
+
+    .mobile-page-heading h1{
+        margin:0;
+        font-size:44px;
+        color:#e8c46b;
+        letter-spacing:6px;
+        text-transform:uppercase;
+        text-shadow:0 0 10px rgba(255,220,120,.3);
+    }
+
+    .mobile-page-heading h2{
+        margin:6px 0 0;
+        color:#d6b25f;
+        font-size:22px;
+        letter-spacing:5px;
+        font-weight:normal;
+    }
+
+    .mobile-menu-button.is-active{
+        border-color:var(--gold-light, #e1b955);
+        color:#fff0bd;
     }
 }
 
