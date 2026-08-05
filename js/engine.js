@@ -1086,6 +1086,10 @@ function switchContent(mode) {
         "achievements-view-mode",
         mode === "achievements"
     );
+    document.body.classList.toggle(
+        "profile-view-mode",
+        mode === "profile"
+    );
 
    const worldmapHome = document.getElementById("worldmapHome");
    const questView = document.getElementById("questView");
@@ -1101,6 +1105,7 @@ function switchContent(mode) {
        document.getElementById("questListe").style.display = "none";
        document.getElementById("chronikContainer").style.display = "none";
        document.getElementById("achievementContainer").style.display = "none";
+       document.getElementById("profileContainer").style.display = "none";
    };
 
    const activeNavigationMode =
@@ -1151,6 +1156,7 @@ function switchContent(mode) {
            document.getElementById("questListe").style.display = "none";
            document.getElementById("chronikContainer").style.display = "none";
            document.getElementById("achievementContainer").style.display = "none";
+           document.getElementById("profileContainer").style.display = "none";
 
            if (typeof renderWorldMapHome === "function") {
                renderWorldMapHome();
@@ -1188,6 +1194,13 @@ function switchContent(mode) {
            showSecondaryView();
            document.getElementById("chronikContainer").style.display = "block";
            renderChronik();
+           break;
+
+       case "profile":
+           document.body.classList.remove("mobile-chronik-mode");
+           showSecondaryView();
+           document.getElementById("profileContainer").style.display = "block";
+           renderProfile();
            break;
 
    }

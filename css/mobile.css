@@ -76,6 +76,108 @@
 }
 
 @media (max-width:900px){
+    #profileContainer{
+        padding:10px 8px 22px;
+    }
+
+    .profile-header-panel{
+        grid-template-columns:1fr;
+        gap:14px;
+        padding:14px;
+    }
+
+    .profile-avatar{
+        width:82px;
+        height:82px;
+        font-size:3rem;
+    }
+
+    .profile-identity h1{
+        font-size:1.8rem;
+    }
+
+    .profile-panel{
+        padding:14px;
+    }
+
+    .profile-rank-card{
+        grid-template-columns:62px minmax(0, 1fr);
+        gap:10px;
+        padding:12px;
+    }
+
+    .profile-rank-emblem{
+        width:58px;
+        height:66px;
+        font-size:1.8rem;
+    }
+
+    .profile-rank-copy h2{
+        font-size:1.2rem;
+    }
+
+    .profile-rank-toggle{
+        grid-column:1 / -1;
+        width:100%;
+    }
+
+    .profile-rank-overview{
+        grid-template-columns:1fr;
+        max-height:460px;
+        padding:8px;
+    }
+
+    .profile-badges-intro{
+        margin-left:0;
+    }
+
+    .profile-badge-categories{
+        grid-template-columns:1fr 1fr;
+        gap:8px;
+    }
+
+    .profile-badge-category{
+        min-height:126px;
+        padding:8px 5px;
+    }
+
+    .profile-badge-category img{
+        width:40px;
+        height:40px;
+    }
+
+    .profile-badge-category h3{
+        font-size:.76rem;
+    }
+
+    .profile-badge-category p{
+        font-size:.67rem;
+    }
+
+    .profile-badge-category > strong{
+        font-size:1.25rem;
+    }
+
+    .profile-mentor{
+        grid-template-columns:72px minmax(0, 1fr);
+        gap:8px;
+        padding:12px;
+    }
+
+    .profile-mentor-art{
+        font-size:3.8rem;
+    }
+
+    .profile-mentor h2{
+        font-size:1rem;
+    }
+
+    .profile-mentor p:last-child{
+        font-size:.72rem;
+    }
+}
+
+@media (max-width:900px){
     body:has(#chronikContainer){
         box-sizing:border-box;
         width:100%;
@@ -1346,14 +1448,14 @@
     }
 
     .stat-image-card h3{
-        top:6px;
+        top:14px;
         font-size:clamp(7px, 2.2vw, 10px);
         line-height:1.15;
         padding:0 4px;
     }
 
     .stat-overlay-value{
-        bottom:8px;
+        bottom:18px;
         font-size:clamp(10px, 3vw, 14px);
     }
 }
@@ -1370,7 +1472,7 @@
 
     .stat-overlay-value{
         font-size:clamp(9px, 2.8vw, 12px);
-        bottom:6px;
+        bottom:18px;
     }
 }
 
