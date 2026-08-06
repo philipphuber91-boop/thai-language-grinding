@@ -7,6 +7,9 @@ let startZeit = null;
 let endZeit = null;
 let fehler = 0;
 let currentSentenceHasError = false;
+let currentSentenceErrors = 0;
+let sentenceStartActiveTimeMs = null;
+let sentenceMetrics = [];
 let cleanSentenceStreak = 0;
 let maxCleanSentenceStreak = 0;
 let runCleanWords = 0;
@@ -115,6 +118,9 @@ function updateTypingXpUi() {
 
 function resetTypingAwardRun() {
     currentSentenceHasError = false;
+    currentSentenceErrors = 0;
+    sentenceStartActiveTimeMs = null;
+    sentenceMetrics = [];
     cleanSentenceStreak = 0;
     maxCleanSentenceStreak = 0;
     runCleanWords = 0;
@@ -198,6 +204,9 @@ function evaluateCurrentTypingAwards(extra = {}) {
         cleanSentenceStreak,
         perfectQuest: extra.perfectQuest || 0,
         newRecord: extra.newRecord || 0,
+        sentenceMetrics,
+        examRun: extra.examRun || false,
+        questCompleted: extra.questCompleted || false,
         tastenhilfeEnabled,
         awardIds: runAwardIds
     });
@@ -235,6 +244,8 @@ function renderQuestAchievementPanel() {
         cleanSentenceStreak,
         perfectQuest: 0,
         newRecord: 0,
+        sentenceMetrics,
+        examRun: mode === "exam",
         tastenhilfeEnabled
     });
 
@@ -295,6 +306,10 @@ function getQuestAchievementUnit(card) {
         return "CPM";
     }
 
+    if (card.runType === "sentenceChallenge") {
+        return "Challenge";
+    }
+
     if (card.runType === "accuracy") {
         return "%";
     }
@@ -318,6 +333,10 @@ function getTypingAchievementRequirement(card) {
 
     if (card.runType === "cpm") {
         return `Erreiche ${goal} CPM${noHelpSuffix} in einer Runde.`;
+    }
+
+    if (card.runType === "sentenceChallenge") {
+        return card.description;
     }
 
     if (card.runType === "accuracy") {
@@ -484,6 +503,21 @@ initializeTypingAwardsOverview();
 function registerCompletedTypingSentence() {
     const sentenceWords = getThaiWordList([text]).words.length;
     const cleanSentence = !currentSentenceHasError;
+    const activeTime = ActivityManager.getActiveTimeMs();
+    const sentenceDurationMs = sentenceStartActiveTimeMs === null
+        ? activeTime
+        : Math.max(0, activeTime - sentenceStartActiveTimeMs);
+    const sentenceCpm = sentenceDurationMs > 0
+        ? text.length / (sentenceDurationMs / 60000)
+        : 0;
+    const sentenceAccuracy = text.length + currentSentenceErrors > 0
+        ? (text.length / (text.length + currentSentenceErrors)) * 100
+        : 100;
+
+    sentenceMetrics[aktuelleZeile] = {
+        cpm: sentenceCpm,
+        accuracy: sentenceAccuracy
+    };
 
     if (cleanSentence) {
         cleanSentenceStreak++;
@@ -512,8 +546,13 @@ function registerCompletedTypingSentence() {
         cleanSentenceStreak = 0;
     }
 
-    evaluateCurrentTypingAwards();
+    evaluateCurrentTypingAwards({
+        sentenceMetrics,
+        examRun: mode === "exam"
+    });
     currentSentenceHasError = false;
+    currentSentenceErrors = 0;
+    sentenceStartActiveTimeMs = null;
     updateTypingXpUi();
 }
 
@@ -1849,6 +1888,9 @@ function beendePruefung() {
             newRecords.newBestTime || newRecords.newBestCPM
                 ? 1
                 : 0,
+        sentenceMetrics,
+        examRun: true,
+        questCompleted: true,
         tastenhilfeEnabled
     });
     finalizeQuestAchievementProgress(questStatsId, {
@@ -1864,6 +1906,9 @@ function beendePruefung() {
             newRecords.newBestTime || newRecords.newBestCPM
                 ? 1
                 : 0,
+        sentenceMetrics,
+        examRun: true,
+        questCompleted: true,
         tastenhilfeEnabled
     });
     renderQuestAchievementPanel();
@@ -1965,6 +2010,9 @@ eingabe.addEventListener("input", function () {
     }
 
     ActivityManager.registerActivity();
+    if (sentenceStartActiveTimeMs === null) {
+        sentenceStartActiveTimeMs = ActivityManager.getActiveTimeMs();
+    }
 
     if (mode === "exam") {
         // Erster Tastendruck startet nur den Questmodus
@@ -1990,6 +2038,7 @@ currentSentenceHasError = true;
 
 if (mode === "exam") {
     fehler++;
+    currentSentenceErrors++;
     }
 
     if (!isMobileViewport()) {

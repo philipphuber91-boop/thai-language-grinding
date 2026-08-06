@@ -189,8 +189,12 @@ function renderCampaignRecommendations() {
         const quest = quests[questNumber];
         const stats = getCampaignQuestStats(questNumber);
         const unlockState = getCampaignUnlockState(questNumber);
-        const progress = stats.completed
-            ? Math.min(100, Math.round(((stats.repetition.level + 1) / 8) * 100))
+        const familiarityStats = getThaiWordFamiliarityStatistics(
+            quest.thaiZeilen,
+            player.stats.wordStats
+        );
+        const mastery = familiarityStats.supported
+            ? familiarityStats.masteryPercentage
             : 0;
 
         return `
@@ -201,9 +205,9 @@ function renderCampaignRecommendations() {
                 <span class="campaign-recommendation-content">
                     <strong>${quest.beschreibung}</strong>
                     <small>${quest.kapitel} · ${quest.schwierigkeit} · ${quest.xp} XP</small>
-                    <span class="recommendation-progress"><i style="width:${progress}%"></i></span>
+                    <span class="recommendation-progress" aria-label="${mastery}% Beherrschungsgrad"><i style="width:${mastery}%"></i></span>
                 </span>
-                <span class="campaign-recommendation-percent">${stats.completed ? `${progress}%` : "Neu"}</span>
+                <span class="campaign-recommendation-percent">${mastery}%</span>
             </button>
         `;
     }).join("");
@@ -226,8 +230,8 @@ function renderCampaignRecommendations() {
 }
 
 function renderWorldMapHome() {
-    renderHomePlayer();
     renderDailyQuests();
+    renderHomePlayer();
     renderWorldMap();
     renderCampaignRecommendations();
     renderHomeStatistics();

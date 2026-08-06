@@ -320,25 +320,49 @@ function getProfileQuestBadgeCategories() {
             category.matches.map(runType => [runType, category])
         )
     );
+    const categoriesById = new Map(
+        categories.map(category => [category.id, category])
+    );
 
     categoryDefinitions.forEach(definition => {
-        const category = categoriesByRunType.get(definition.runType);
+        const category = definition.runType === "sentenceChallenge"
+            ? categoriesById.get(
+                definition.challengeMetric === "accuracy"
+                    ? "precision"
+                    : "speed"
+            )
+            : categoriesByRunType.get(definition.runType);
 
         if (category) {
             category.available++;
         }
     });
 
-    Object.values(questStats || {}).forEach(stats => {
+    Object.entries(questStats || {}).forEach(([questId, stats]) => {
         const awards = stats?.questAchievements;
 
         if (!awards || typeof awards !== "object") {
             return;
         }
 
+        const questDefinitions = typeof getTypingAwardDefinitions === "function"
+            ? getTypingAwardDefinitions(questId)
+            : categoryDefinitions;
+        const definitionsByQuestId = new Map(
+            questDefinitions.map(definition => [definition.id, definition])
+        );
+
         Object.entries(awards).forEach(([definitionId, award]) => {
-            const definition = definitionsById.get(definitionId);
-            const category = categoriesByRunType.get(definition?.runType);
+            const definition =
+                definitionsByQuestId.get(definitionId) ||
+                definitionsById.get(definitionId);
+            const category = definition?.runType === "sentenceChallenge"
+                ? categoriesById.get(
+                    definition.challengeMetric === "accuracy"
+                        ? "precision"
+                        : "speed"
+                )
+                : categoriesByRunType.get(definition?.runType);
 
             if (!category || !award?.unlocked) {
                 return;

@@ -953,13 +953,151 @@ function isTypingAwardAvailable(definition) {
     return true;
 }
 
-function getTypingAwardDefinitions() {
-    return achievementDefinitions.filter(
+function shuffleTypingChallengeItems(items) {
+    return [...items].sort(() => Math.random() - 0.5);
+}
+
+function createSentenceChallengeDefinition(
+    questId,
+    sentenceIndexes,
+    challengeMetric,
+    challengeShape,
+    slot
+) {
+    const isCpm = challengeMetric === "cpm";
+    const challengeGoal = isCpm
+        ? 130 + Math.floor(Math.random() * 4) * 10
+        : Math.random() < 0.5
+            ? 98
+            : 100;
+    const sentenceLabel = sentenceIndexes.length === 1
+        ? `Satz ${sentenceIndexes[0] + 1}`
+        : `Sätze ${sentenceIndexes.map(index => index + 1).join(" und ")}`;
+    const shapeLabel = challengeShape === "series"
+        ? "in direkter Folge"
+        : "in einem einzelnen Satz";
+
+    return {
+        id: `sentenceChallenge:${questId}:${slot}`,
+        title: isCpm ? "Satztempo-Challenge" : "Satzpräzisions-Challenge",
+        description: isCpm
+            ? `Tippe ${sentenceLabel} ${shapeLabel} mit mindestens ${challengeGoal} CPM.`
+            : `Beende ${sentenceLabel} ${shapeLabel} mit mindestens ${challengeGoal}% Genauigkeit.`,
+        icon: isCpm ? "blitz" : "scharfschütze",
+        rarity: challengeShape === "series" ? "epic" : "rare",
+        category: "typing",
+        questScoped: true,
+        runType: "sentenceChallenge",
+        runGoal: 1,
+        bonusXp: challengeShape === "series" ? 15 : 10,
+        challengeMetric,
+        challengeGoal,
+        challengeShape,
+        sentenceIndexes
+    };
+}
+
+function getSentenceChallengeDefinitions(questId) {
+    if (
+        !questId ||
+        typeof getQuestStats !== "function" ||
+        typeof getQuestDataFromStatsId !== "function"
+    ) {
+        return [];
+    }
+
+    const quest = getQuestDataFromStatsId(questId);
+    const stats = getQuestStats(questId, quest?.version ?? 1);
+    const lineCount = Array.isArray(quest?.thaiZeilen)
+        ? quest.thaiZeilen.length
+        : 0;
+
+    if (
+        Array.isArray(stats.sentenceChallenges) &&
+        stats.sentenceChallengesVersion === (quest?.version ?? 1)
+    ) {
+        return stats.sentenceChallenges;
+    }
+
+    const candidates = [];
+
+    for (let index = 0; index < lineCount; index++) {
+        candidates.push({
+            sentenceIndexes: [index],
+            challengeShape: "single"
+        });
+    }
+
+    for (let index = 0; index < lineCount - 1; index++) {
+        candidates.push({
+            sentenceIndexes: [index, index + 1],
+            challengeShape: "series"
+        });
+    }
+
+    const singleCandidates = candidates.filter(
+        candidate => candidate.challengeShape === "single"
+    );
+    const seriesCandidates = candidates.filter(
+        candidate => candidate.challengeShape === "series"
+    );
+    const selectedCandidates = [];
+
+    if (singleCandidates.length > 0 && seriesCandidates.length > 0) {
+        selectedCandidates.push(
+            shuffleTypingChallengeItems(singleCandidates)[0],
+            shuffleTypingChallengeItems(seriesCandidates)[0]
+        );
+    }
+
+    const selectedKeys = new Set(
+        selectedCandidates.map(candidate =>
+            candidate.sentenceIndexes.join("-")
+        )
+    );
+    const remainingCandidates = shuffleTypingChallengeItems(candidates)
+        .filter(candidate =>
+            !selectedKeys.has(candidate.sentenceIndexes.join("-"))
+        );
+    selectedCandidates.push(
+        ...remainingCandidates.slice(0, Math.max(0, 3 - selectedCandidates.length))
+    );
+
+    const challenges = selectedCandidates.map((candidate, index) => {
+        const challengeMetric = index % 2 === 0 ? "cpm" : "accuracy";
+
+        return createSentenceChallengeDefinition(
+            questId,
+            candidate.sentenceIndexes,
+            challengeMetric,
+            candidate.challengeShape,
+            index + 1
+        );
+    });
+
+    stats.sentenceChallenges = challenges;
+    stats.sentenceChallengesVersion = quest?.version ?? 1;
+    saveQuestStats();
+
+    return challenges;
+}
+
+function getTypingAwardDefinitions(questId = null) {
+    const definitions = achievementDefinitions.filter(
         definition =>
             definition.questScoped &&
             definition.runType &&
             isTypingAwardAvailable(definition)
-    );
+    ).map(definition => ({
+        ...definition,
+        completionOnly:
+            definition.completionOnly ||
+            ["cpm", "accuracy"].includes(definition.runType)
+    }));
+
+    return questId
+        ? [...definitions, ...getSentenceChallengeDefinitions(questId)]
+        : definitions;
 }
 
 function getQuestAchievementGoal(definition, questId) {
@@ -1045,6 +1183,18 @@ function getQuestAchievementState(questId, definitionId) {
 }
 
 function getQuestAchievementRunValue(definition, run) {
+    if (definition.runType === "sentenceChallenge") {
+        return Array.isArray(run?.sentenceMetrics) &&
+            definition.sentenceIndexes.every(index => {
+                const metric = run.sentenceMetrics[index];
+                return metric &&
+                    Number(metric[definition.challengeMetric]) >=
+                        definition.challengeGoal;
+            })
+            ? 1
+            : 0;
+    }
+
     return Number(
         definition.runType === "cpm"
             ? run.cpm
@@ -1114,6 +1264,14 @@ function getQuestAchievementProgress(definition, questId, run = null) {
 }
 
 function meetsTypingAwardCondition(definition, run) {
+    if (definition.completionOnly && !run.questCompleted) {
+        return false;
+    }
+
+    if (definition.runType === "sentenceChallenge" && !run.examRun) {
+        return false;
+    }
+
     if (!isTypingAwardEligible(definition, run)) {
         return false;
     }
@@ -1145,7 +1303,7 @@ function evaluateTypingRunAwards(run) {
 
     run.awardIds = awardIds;
 
-    for (const definition of getTypingAwardDefinitions()) {
+    for (const definition of getTypingAwardDefinitions(run.questId)) {
         if (
             awardIds.has(definition.id) ||
             !meetsTypingAwardCondition(definition, run)
@@ -1262,7 +1420,7 @@ function finalizeQuestAchievementProgress(questId, run) {
 
     const stats = getQuestStats(questId);
 
-    for (const definition of getTypingAwardDefinitions()) {
+    for (const definition of getTypingAwardDefinitions(questId)) {
         if (!isTypingAwardEligible(definition, run)) {
             continue;
         }
@@ -1288,7 +1446,7 @@ function finalizeQuestAchievementProgress(questId, run) {
 }
 
 function getQuestAchievementCards(questId, run = null) {
-    return getTypingAwardDefinitions().map(definition => {
+    return getTypingAwardDefinitions(questId).map(definition => {
         const state = getQuestAchievementState(
             questId,
             definition.id

@@ -1,4 +1,5 @@
 const DAILY_QUESTS_STORAGE_KEY = "dailyQuests";
+const DAILY_QUEST_REWARD_XP = 50;
 
 const dailyQuestDefinitions = [
     {
@@ -78,6 +79,7 @@ function createDailyQuestState(date = getDailyQuestDate()) {
     return {
         date,
         questIds: shuffledIds,
+        rewardedQuestIds: [],
         baseline: {
             masteredThaiWords: Number(player.stats.masteredThaiWords || 0),
             totalCleanWords: Number(player.stats.totalCleanWords || 0)
@@ -103,6 +105,9 @@ function getDailyQuestState() {
 
     if (!validIds || state.date !== today) {
         state = createDailyQuestState(today);
+        localStorage.setItem(DAILY_QUESTS_STORAGE_KEY, JSON.stringify(state));
+    } else if (!Array.isArray(state.rewardedQuestIds)) {
+        state.rewardedQuestIds = [];
         localStorage.setItem(DAILY_QUESTS_STORAGE_KEY, JSON.stringify(state));
     }
 
@@ -136,6 +141,32 @@ function getDailyQuestCards() {
         });
 }
 
+function claimDailyQuestRewards(state, cards) {
+    const rewardedQuestIds = new Set(
+        Array.isArray(state.rewardedQuestIds)
+            ? state.rewardedQuestIds
+            : []
+    );
+    let stateChanged = false;
+
+    cards.forEach(quest => {
+        if (!quest.completed || rewardedQuestIds.has(quest.id)) {
+            return;
+        }
+
+        awardPlayerXp(DAILY_QUEST_REWARD_XP);
+        rewardedQuestIds.add(quest.id);
+        stateChanged = true;
+    });
+
+    if (!stateChanged) {
+        return;
+    }
+
+    state.rewardedQuestIds = [...rewardedQuestIds];
+    localStorage.setItem(DAILY_QUESTS_STORAGE_KEY, JSON.stringify(state));
+}
+
 function renderDailyQuests() {
     const container = document.getElementById("dailyQuestList");
 
@@ -143,7 +174,11 @@ function renderDailyQuests() {
         return;
     }
 
-    container.innerHTML = getDailyQuestCards()
+    const state = getDailyQuestState();
+    const cards = getDailyQuestCards();
+    claimDailyQuestRewards(state, cards);
+
+    container.innerHTML = cards
         .map(quest => `
             <article class="daily-quest-card${quest.completed ? " is-complete" : ""}">
                 <div class="daily-quest-icon">

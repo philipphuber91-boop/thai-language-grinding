@@ -122,6 +122,10 @@ function getQuestAchievementUnitForOverview(card) {
         return "CPM";
     }
 
+    if (card.runType === "sentenceChallenge") {
+        return "Challenge";
+    }
+
     if (card.runType === "accuracy") {
         return "%";
     }
@@ -144,6 +148,10 @@ function getQuestAchievementRequirementForOverview(card) {
 
     if (card.runType === "cpm") {
         return `Erreiche ${card.goal} CPM${noHelpSuffix} in einer Runde.`;
+    }
+
+    if (card.runType === "sentenceChallenge") {
+        return card.description;
     }
 
     if (card.runType === "accuracy") {
