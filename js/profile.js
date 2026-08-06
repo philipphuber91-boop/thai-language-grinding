@@ -298,6 +298,43 @@ function profileIsDefinitionAvailable(definition) {
     return true;
 }
 
+function getProfileHeaderMarkup(xp, rank, idPrefix = "") {
+    const titleId = idPrefix
+        ? `${idPrefix}ProfileTitle`
+        : "profileTitle";
+
+    return `
+        <div class="profile-identity">
+            <div class="profile-avatar" aria-hidden="true">
+                <span class="profile-avatar-character">🧑🏻‍🎓</span>
+                <img class="profile-avatar-frame" src="../assets/ui/quest-frame.png" alt="">
+                <span class="profile-level-badge">
+                    <img src="../assets/ui/quest-badge.png" alt="">
+                    <strong>${profileFormatNumber(xp.level)}</strong>
+                </span>
+            </div>
+            <div>
+                <h1 id="${titleId}">TH Flipu</h1>
+                <p class="profile-rank">${rank.name}</p>
+            </div>
+        </div>
+        <div class="profile-level-card">
+            <div class="profile-level-heading">
+                <span>Level ${profileFormatNumber(xp.level)}</span>
+                <strong>${profileFormatNumber(xp.totalXp)} XP</strong>
+            </div>
+            <div class="profile-xp-track" role="progressbar"
+                 aria-label="Level-Fortschritt"
+                 aria-valuenow="${xp.percent}"
+                 aria-valuemin="0"
+                 aria-valuemax="100">
+                 <span style="width:${xp.percent}%"></span>
+            </div>
+            <p>${profileFormatNumber(xp.progressXp)} / ${profileFormatNumber(xp.requiredXp)} XP bis zum nächsten Level (${profileFormatPercent(xp.percent)})</p>
+        </div>
+    `;
+}
+
 function getProfileQuestBadgeCategories() {
     const categoryDefinitions =
         typeof achievementDefinitions === "object"
@@ -407,28 +444,7 @@ function renderProfile() {
     container.innerHTML = `
         <main class="profile-page" aria-labelledby="profileTitle">
             <section class="profile-header-panel">
-                <div class="profile-identity">
-                    <div class="profile-avatar" aria-hidden="true">🧑🏻‍🎓</div>
-                    <div>
-                        <p class="profile-eyebrow">Dein Profil</p>
-                        <h1 id="profileTitle">TH Flipu</h1>
-                        <p class="profile-rank">${rank.name}</p>
-                    </div>
-                </div>
-                <div class="profile-level-card">
-                    <div class="profile-level-heading">
-                        <span>Level ${profileFormatNumber(xp.level)}</span>
-                        <strong>${profileFormatNumber(xp.totalXp)} XP</strong>
-                    </div>
-                    <div class="profile-xp-track" role="progressbar"
-                         aria-label="Level-Fortschritt"
-                         aria-valuenow="${xp.percent}"
-                         aria-valuemin="0"
-                         aria-valuemax="100">
-                         <span style="width:${xp.percent}%"></span>
-                    </div>
-                    <p>${profileFormatNumber(xp.progressXp)} / ${profileFormatNumber(xp.requiredXp)} XP bis zum nächsten Level (${profileFormatPercent(xp.percent)})</p>
-                </div>
+                ${getProfileHeaderMarkup(xp, rank)}
             </section>
 
             <section class="profile-rank-panel" aria-labelledby="profileRankTitle">

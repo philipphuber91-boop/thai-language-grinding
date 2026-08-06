@@ -193,6 +193,9 @@ function renderDailyQuests() {
                     <div class="daily-quest-track" aria-label="${quest.progress} von ${quest.goal} erreicht">
                         <div class="daily-quest-fill" style="width:${quest.percent}%"></div>
                     </div>
+                    <div class="daily-quest-reward">
+                        Belohnung: +${DAILY_QUEST_REWARD_XP} XP
+                    </div>
                 </div>
                 <span class="daily-quest-status" aria-label="${quest.completed ? "Abgeschlossen" : "Offen"}">
                     ${quest.completed ? "✓" : ""}
