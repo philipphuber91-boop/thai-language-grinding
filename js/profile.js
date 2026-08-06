@@ -489,11 +489,13 @@ function renderProfile() {
             </section>
 
             <aside class="profile-mentor">
-                <div class="profile-mentor-art" aria-hidden="true">🧘🏻‍♂️</div>
+                <div class="profile-mentor-art" aria-hidden="true">
+                    <img src="../assets/ui/monk-mentor.png" alt="">
+                </div>
                 <div>
                     <p class="profile-eyebrow">Dein Begleiter</p>
-                    <h2>Jede Quest bringt dich weiter.</h2>
-                    <p>Übe regelmäßig, sammle Auszeichnungen und werde Schritt für Schritt sicherer im Thai.</p>
+                    <h2>Dein Weg ist stetig wie ein Fluss.</h2>
+                    <p>Übung macht den Meister. Bleib dran und werde Schritt für Schritt sicherer im Thai.</p>
                 </div>
             </aside>
         </main>

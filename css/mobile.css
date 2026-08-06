@@ -184,7 +184,12 @@
     }
 
     .profile-mentor-art{
-        font-size:3.8rem;
+        height:78px;
+    }
+
+    .profile-mentor-art img{
+        width:72px;
+        height:84px;
     }
 
     .profile-mentor h2{
@@ -3326,6 +3331,24 @@
         align-items:flex-start;
         flex-direction:column;
         gap:1px;
+    }
+
+    body:has(#worldmapHome) .daily-mentor{
+        grid-template-columns:72px minmax(0, 1fr);
+        gap:5px;
+        min-height:76px;
+        padding:0;
+    }
+
+    body:has(#worldmapHome) .daily-mentor img{
+        width:72px;
+        height:82px;
+    }
+
+    body:has(#worldmapHome) .daily-mentor p{
+        margin-bottom:5px;
+        padding:7px 8px;
+        font-size:.62rem;
     }
 
     body:has(#worldmapHome) .home-statistics-grid{

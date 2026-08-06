@@ -9092,6 +9092,51 @@ body:has(#worldmapHome) .topbar{
     flex:1;
 }
 
+.daily-mentor{
+    display:grid;
+    grid-template-columns:96px minmax(0, 1fr);
+    align-items:end;
+    gap:8px;
+    min-height:100px;
+    margin:0 0 8px;
+    padding:0 5px;
+}
+
+.daily-mentor img{
+    display:block;
+    width:96px;
+    height:104px;
+    object-fit:contain;
+    object-position:center bottom;
+}
+
+.daily-mentor p{
+    position:relative;
+    align-self:center;
+    margin:0 0 10px;
+    padding:10px 12px;
+    border:1px solid #c39b5a;
+    border-radius:4px;
+    color:#4c3218;
+    background:linear-gradient(135deg, rgba(255,248,224,.94), rgba(239,214,164,.94));
+    box-shadow:0 2px 4px rgba(93,55,12,.12);
+    font-size:.72rem;
+    line-height:1.35;
+}
+
+.daily-mentor p::before{
+    position:absolute;
+    left:-8px;
+    top:50%;
+    width:14px;
+    height:14px;
+    border-left:1px solid #c39b5a;
+    border-bottom:1px solid #c39b5a;
+    background:#f4dfb0;
+    content:"";
+    transform:translateY(-50%) rotate(45deg);
+}
+
 .section-heading{
     display:flex;
     align-items:center;
@@ -10150,9 +10195,17 @@ body:has(#worldmapHome) .topbar{
 
 .profile-mentor-art{
     align-self:end;
-    font-size:5.7rem;
-    line-height:.85;
+    height:112px;
     text-align:center;
+}
+
+.profile-mentor-art img{
+    display:block;
+    width:108px;
+    height:118px;
+    margin:0 auto;
+    object-fit:contain;
+    object-position:center bottom;
 }
 
 .profile-mentor h2{
