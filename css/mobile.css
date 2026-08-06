@@ -100,8 +100,8 @@
     }
 
     .profile-avatar-character{
-        width:118%;
-        height:118%;
+        width:100%;
+        height:100%;
     }
 
     .profile-level-badge{
@@ -213,8 +213,8 @@
     }
 
     .worldmap-home .profile-avatar-character{
-        width:118%;
-        height:118%;
+        width:100%;
+        height:100%;
     }
 
     .worldmap-home .profile-level-badge{
@@ -240,8 +240,8 @@
     }
 
     .profile-avatar-character{
-        width:118%;
-        height:118%;
+        width:100%;
+        height:100%;
     }
 
     .profile-level-badge{
@@ -3242,8 +3242,8 @@
     }
 
     body:has(#worldmapHome) .profile-avatar-character{
-        width:118%;
-        height:118%;
+        width:100%;
+        height:100%;
     }
 
     body:has(#worldmapHome) .profile-level-badge{

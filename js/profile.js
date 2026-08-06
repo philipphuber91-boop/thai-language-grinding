@@ -306,8 +306,7 @@ function getProfileHeaderMarkup(xp, rank, idPrefix = "") {
     return `
         <div class="profile-identity">
             <div class="profile-avatar" aria-hidden="true">
-                <img class="profile-avatar-character" src="../assets/ui/profile-avatar-portrait.png" alt="">
-                <span class="profile-avatar-frame"></span>
+                <img class="profile-avatar-character" src="../assets/ui/profile-avatar.png" alt="">
                 <span class="profile-level-badge">
                     <img src="../assets/ui/quest-badge.png" alt="">
                     <strong>${profileFormatNumber(xp.level)}</strong>
