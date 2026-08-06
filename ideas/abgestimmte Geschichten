@@ -13,17 +13,16 @@ Dann analysiert dein System automatisch jede Geschichte:
 Geschichte A:
 85 % bekannte Wörter
 15 % neue Wörter
-
 → Perfekt für den Flow
+
 Geschichte B:
 50 % bekannte Wörter
 50 % neue Wörter
-
 → Zu frustrierend
+
 Geschichte C:
 98 % bekannte Wörter
 2 % neue Wörter
-
 → Zu langweilig
 
 Und dein Algorithmus sagt:
