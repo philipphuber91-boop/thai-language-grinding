@@ -9754,6 +9754,10 @@ body:has(#worldmapHome) .topbar{
     width:115px;
     height:108px;
     margin-left:18px;
+    border:0;
+    border-radius:0;
+    background:transparent;
+    box-shadow:none;
     font-size:4.1rem;
 }
 
