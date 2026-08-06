@@ -256,12 +256,12 @@ function getThaiWordFamiliarityCategory(statistics) {
         };
     }
 
-    if (statistics.masteryPercentage >= 85) {
+    if (statistics.masteryPercentage >= 90) {
         return {
             key: "too-easy",
             emoji: "🟢",
             label: "Leicht",
-            range: "85–100 %"
+            range: "90–100 %"
         };
     }
 
@@ -270,7 +270,7 @@ function getThaiWordFamiliarityCategory(statistics) {
             key: "perfect-flow",
             emoji: "🟡",
             label: "Perfekter Flow",
-            range: "70–84 %"
+            range: "70–89 %"
         };
     }
 

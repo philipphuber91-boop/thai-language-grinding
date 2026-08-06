@@ -1,12 +1,61 @@
-function getWorldMapNodePosition(index) {
-    const column = Math.floor(index / 3);
-    const lane = index % 3;
-
-    return {
-        x: 7 + (column % 14) * 6.6,
-        y: 22 + lane * 27 + (Math.floor(column / 14) * 7)
-    };
-}
+const WORLD_MAP_PAGE_SIZE = 5;
+const WORLD_MAP_PAGE_LAYOUTS = [
+    {
+        backgroundPosition: "left center",
+        path: "M 12 72 C 22 66, 28 53, 38 57 S 48 76, 58 65 S 70 35, 86 45",
+        positions: [
+            { x: 12, y: 72 },
+            { x: 28, y: 53 },
+            { x: 48, y: 76 },
+            { x: 70, y: 35 },
+            { x: 86, y: 45 }
+        ]
+    },
+    {
+        backgroundPosition: "28% center",
+        path: "M 13 42 C 24 55, 28 72, 42 64 S 55 30, 67 42 S 76 70, 88 57",
+        positions: [
+            { x: 13, y: 42 },
+            { x: 28, y: 72 },
+            { x: 55, y: 30 },
+            { x: 76, y: 70 },
+            { x: 88, y: 57 }
+        ]
+    },
+    {
+        backgroundPosition: "52% center",
+        path: "M 12 67 C 22 50, 29 43, 40 52 S 50 78, 62 62 S 74 30, 88 39",
+        positions: [
+            { x: 12, y: 67 },
+            { x: 29, y: 43 },
+            { x: 50, y: 78 },
+            { x: 74, y: 30 },
+            { x: 88, y: 39 }
+        ]
+    },
+    {
+        backgroundPosition: "76% center",
+        path: "M 12 38 C 23 48, 26 70, 39 62 S 51 27, 63 39 S 77 66, 89 51",
+        positions: [
+            { x: 12, y: 38 },
+            { x: 26, y: 70 },
+            { x: 51, y: 27 },
+            { x: 77, y: 66 },
+            { x: 89, y: 51 }
+        ]
+    },
+    {
+        backgroundPosition: "right center",
+        path: "M 12 67 C 22 56, 30 36, 42 47 S 52 73, 64 61 S 76 34, 88 42",
+        positions: [
+            { x: 12, y: 67 },
+            { x: 30, y: 36 },
+            { x: 52, y: 73 },
+            { x: 76, y: 34 },
+            { x: 88, y: 42 }
+        ]
+    }
+];
 
 function getCampaignQuestIds() {
     return Object.keys(quests)
@@ -31,9 +80,47 @@ function getCampaignQuestStats(questNumber) {
     );
 }
 
+function getCampaignQuestFamiliarityCategory(questNumber) {
+    const quest = quests[questNumber];
+    const familiarityStats = getThaiWordFamiliarityStatistics(
+        quest.thaiZeilen,
+        player.stats.wordStats
+    );
+
+    return {
+        familiarityStats,
+        category: getThaiWordFamiliarityCategory(familiarityStats)
+    };
+}
+
 function openCampaignQuestFromMap(questNumber) {
     contentMode = "campaign";
     starteQuest(questNumber);
+}
+
+function getWorldMapPages(questIds) {
+    const pages = [];
+
+    for (let index = 0; index < questIds.length; index += WORLD_MAP_PAGE_SIZE) {
+        pages.push(questIds.slice(index, index + WORLD_MAP_PAGE_SIZE));
+    }
+
+    return pages;
+}
+
+function getWorldMapStartPage(questIds, pages) {
+    let highestUnlockedIndex = 0;
+
+    questIds.forEach((questNumber, index) => {
+        if (getCampaignUnlockState(questNumber).unlocked) {
+            highestUnlockedIndex = index;
+        }
+    });
+
+    return Math.min(
+        pages.length - 1,
+        Math.floor(highestUnlockedIndex / WORLD_MAP_PAGE_SIZE)
+    );
 }
 
 function renderWorldMap() {
@@ -44,59 +131,164 @@ function renderWorldMap() {
     }
 
     const questIds = getCampaignQuestIds();
-    const path = `
-        <svg class="world-map-route" viewBox="0 0 100 100" aria-hidden="true">
-            <path d="M 12 76 C 18 68, 19 66, 25 62 S 34 66, 38 70 S 45 56, 51 50 S 60 56, 64 58 S 70 42, 75 38 S 81 42, 84 46 S 76 28, 68 23 S 58 17, 50 18 S 41 20, 34 30"></path>
-        </svg>
-    `;
+    const pages = getWorldMapPages(questIds);
+    const startPage = getWorldMapStartPage(questIds, pages);
 
     map.innerHTML = `
-        <div class="world-map-image" aria-hidden="true"></div>
-        <div class="world-map-overlay" aria-hidden="true"></div>
-        ${path}
-        <div class="world-map-nodes"></div>
+        <div class="world-map-viewport" tabindex="0" aria-label="Weltkartenabschnitte">
+            <div class="world-map-pages"></div>
+        </div>
+        <button class="world-map-arrow world-map-arrow-previous" type="button"
+                aria-label="Vorherigen Kartenabschnitt anzeigen">‹</button>
+        <button class="world-map-arrow world-map-arrow-next" type="button"
+                aria-label="Nächsten Kartenabschnitt anzeigen">›</button>
+        <div class="world-map-pagination" aria-label="Kartenabschnitt auswählen"></div>
         <div class="world-map-legend">
             <span><i class="legend-dot legend-dot-current"></i>Aktueller Flow</span>
             <span><i class="legend-dot legend-dot-locked">⌕</i>Gesperrt</span>
         </div>
     `;
 
-    const nodes = map.querySelector(".world-map-nodes");
+    const pagesContainer = map.querySelector(".world-map-pages");
+    const pagination = map.querySelector(".world-map-pagination");
+    const viewport = map.querySelector(".world-map-viewport");
+    const previousButton = map.querySelector(".world-map-arrow-previous");
+    const nextButton = map.querySelector(".world-map-arrow-next");
 
-    questIds.forEach((questNumber, index) => {
-        const quest = quests[questNumber];
-        const stats = getCampaignQuestStats(questNumber);
-        const unlockState = getCampaignUnlockState(questNumber);
-        const position = getWorldMapNodePosition(index);
-        const node = document.createElement("button");
-        const isCompleted = Boolean(stats.completed);
-        const isCurrent = unlockState.unlocked && !isCompleted;
+    pages.forEach((pageQuestIds, pageIndex) => {
+        const layout = WORLD_MAP_PAGE_LAYOUTS[
+            pageIndex % WORLD_MAP_PAGE_LAYOUTS.length
+        ];
+        const page = document.createElement("section");
+        const pageNodes = document.createElement("div");
 
-        node.type = "button";
-        node.className = [
-            "world-map-node",
-            isCompleted ? "is-complete" : "",
-            isCurrent ? "is-current" : "",
-            unlockState.unlocked ? "" : "is-locked"
-        ].filter(Boolean).join(" ");
-        node.style.left = `${position.x}%`;
-        node.style.top = `${position.y}%`;
-        node.setAttribute(
-            "aria-label",
-            `${quest.titel}${unlockState.unlocked
-                ? " öffnen"
-                : ` gesperrt: ${unlockState.requirementText}`}`
+        page.className = "world-map-page";
+        page.dataset.pageIndex = String(pageIndex);
+        page.style.setProperty(
+            "--world-map-background-position",
+            layout.backgroundPosition
         );
-        node.innerHTML = `
-            <span class="world-map-node-orb" aria-hidden="true">
-                ${unlockState.unlocked ? (isCompleted ? "✓" : questNumber) : "🔒"}
-            </span>
-            <span class="world-map-node-label">${quest.beschreibung}</span>
+        page.setAttribute(
+            "aria-label",
+            `Kartenabschnitt ${pageIndex + 1} von ${pages.length}`
+        );
+        page.innerHTML = `
+            <div class="world-map-image" aria-hidden="true"></div>
+            <div class="world-map-overlay" aria-hidden="true"></div>
+            <svg class="world-map-route" viewBox="0 0 100 100" aria-hidden="true">
+                <path d="${layout.path}"></path>
+            </svg>
         `;
-        node.addEventListener("click", () => {
-            openCampaignQuestFromMap(questNumber);
+        pageNodes.className = "world-map-nodes";
+
+        pageQuestIds.forEach((questNumber, nodeIndex) => {
+            const quest = quests[questNumber];
+            const stats = getCampaignQuestStats(questNumber);
+            const unlockState = getCampaignUnlockState(questNumber);
+            const position = layout.positions[nodeIndex];
+            const node = document.createElement("button");
+            const isCompleted = Boolean(stats.completed);
+            const isCurrent = unlockState.unlocked && !isCompleted;
+
+            node.type = "button";
+            node.className = [
+                "world-map-node",
+                isCompleted ? "is-complete" : "",
+                isCurrent ? "is-current" : "",
+                unlockState.unlocked ? "" : "is-locked"
+            ].filter(Boolean).join(" ");
+            node.style.left = `${position.x}%`;
+            node.style.top = `${position.y}%`;
+            node.setAttribute(
+                "aria-label",
+                `${quest.titel}${unlockState.unlocked
+                    ? " öffnen"
+                    : ` gesperrt: ${unlockState.requirementText}`}`
+            );
+            node.innerHTML = `
+                <span class="world-map-node-orb" aria-hidden="true">
+                    ${unlockState.unlocked ? (isCompleted ? "✓" : questNumber) : "🔒"}
+                </span>
+                <span class="world-map-node-label">${quest.beschreibung}</span>
+            `;
+            node.addEventListener("click", () => {
+                openCampaignQuestFromMap(questNumber);
+            });
+            pageNodes.appendChild(node);
         });
-        nodes.appendChild(node);
+
+        page.appendChild(pageNodes);
+        pagesContainer.appendChild(page);
+
+        const pageButton = document.createElement("button");
+        pageButton.type = "button";
+        pageButton.className = "world-map-page-dot";
+        pageButton.dataset.pageIndex = String(pageIndex);
+        pageButton.setAttribute(
+            "aria-label",
+            `Kartenabschnitt ${pageIndex + 1} anzeigen`
+        );
+        pageButton.addEventListener("click", () => {
+            scrollToWorldMapPage(viewport, pageIndex);
+        });
+        pagination.appendChild(pageButton);
+    });
+
+    const updateNavigation = () => {
+        const pageWidth = viewport.clientWidth || 1;
+        const activePage = Math.max(
+            0,
+            Math.min(
+                pages.length - 1,
+                Math.round(viewport.scrollLeft / pageWidth)
+            )
+        );
+
+        map.dataset.activePage = String(activePage);
+        previousButton.disabled = activePage === 0;
+        nextButton.disabled = activePage === pages.length - 1;
+        pagination.querySelectorAll(".world-map-page-dot").forEach(
+            (button, index) => {
+                const isActive = index === activePage;
+                button.classList.toggle("is-active", isActive);
+                button.setAttribute("aria-current", isActive ? "page" : "false");
+            }
+        );
+    };
+
+    viewport.addEventListener("scroll", updateNavigation, { passive: true });
+    previousButton.addEventListener("click", () => {
+        scrollToWorldMapPage(
+            viewport,
+            Math.max(0, Number(map.dataset.activePage || startPage) - 1)
+        );
+    });
+    nextButton.addEventListener("click", () => {
+        scrollToWorldMapPage(
+            viewport,
+            Math.min(pages.length - 1, Number(map.dataset.activePage || startPage) + 1)
+        );
+    });
+    viewport.addEventListener("keydown", event => {
+        if (event.key === "ArrowLeft") {
+            event.preventDefault();
+            previousButton.click();
+        } else if (event.key === "ArrowRight") {
+            event.preventDefault();
+            nextButton.click();
+        }
+    });
+
+    requestAnimationFrame(() => {
+        scrollToWorldMapPage(viewport, startPage, false);
+        updateNavigation();
+    });
+}
+
+function scrollToWorldMapPage(viewport, pageIndex, smooth = true) {
+    viewport.scrollTo({
+        left: viewport.clientWidth * pageIndex,
+        behavior: smooth ? "smooth" : "auto"
     });
 }
 
@@ -105,14 +297,22 @@ function getDailyStreak() {
         ? player.stats.history.daily
         : [];
     const dates = new Set(entries.map(entry => entry.date));
-    let streak = 0;
-    let date = new Date();
+    const today = getToday();
+    const yesterday = addDays(today, -1);
+    let streakStart = dates.has(today)
+        ? today
+        : dates.has(yesterday)
+            ? yesterday
+            : null;
 
-    while (dates.has(
-        `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`
-    )) {
+    if (!streakStart) {
+        return 0;
+    }
+
+    let streak = 0;
+    while (dates.has(streakStart)) {
         streak++;
-        date.setDate(date.getDate() - 1);
+        streakStart = addDays(streakStart, -1);
     }
 
     return streak;
@@ -120,24 +320,22 @@ function getDailyStreak() {
 
 function renderHomePlayer() {
     const xpSummary = getPlayerXpSummary();
-    const xpFill = document.getElementById("homeXpFill");
+    const profileCard = document.getElementById("homeProfileCard");
 
-    document.getElementById("homeLevelLabel").textContent =
-        `Level ${xpSummary.level}`;
-    document.getElementById("homeLevelBadge").textContent =
-        String(xpSummary.level);
-    document.getElementById("homeXpLabel").textContent =
-        `${xpSummary.progressXp} / ${xpSummary.requiredXp} XP`;
+    if (profileCard && typeof getProfileHeaderMarkup === "function") {
+        profileCard.innerHTML = getProfileHeaderMarkup(
+            xpSummary,
+            getProfileRankSummary(xpSummary.level),
+            "home"
+        );
+    }
+
     document.getElementById("homeXpValue").textContent =
         xpSummary.totalXp.toLocaleString("de-DE");
     document.getElementById("homeQuestCountValue").textContent =
         String(player.stats.completedQuests || 0);
     document.getElementById("homeStreakValue").textContent =
         String(getDailyStreak());
-
-    if (xpFill) {
-        xpFill.style.width = `${xpSummary.percent}%`;
-    }
 }
 
 function renderHomeStatistics() {
@@ -167,14 +365,30 @@ function renderHomeStatistics() {
 
 function getCampaignRecommendations() {
     const questIds = getCampaignQuestIds();
-    const recommendations = questIds.filter(questNumber => {
+    const availableQuests = questIds.filter(questNumber => {
         const stats = getCampaignQuestStats(questNumber);
         const unlockState = getCampaignUnlockState(questNumber);
         return unlockState.unlocked && (!stats.completed ||
             getQuestStatus(`campaign:${questNumber}`, quests[questNumber].version ?? 1) === "due");
     });
 
-    return (recommendations.length > 0 ? recommendations : questIds).slice(0, 3);
+    const flowQuests = availableQuests.filter(questNumber =>
+        getCampaignQuestFamiliarityCategory(questNumber).category.key === "perfect-flow"
+    );
+
+    if (flowQuests.length > 0) {
+        return flowQuests.slice(0, 3);
+    }
+
+    const challengingQuests = availableQuests.filter(questNumber =>
+        getCampaignQuestFamiliarityCategory(questNumber).category.key === "challenging"
+    );
+
+    if (challengingQuests.length > 0) {
+        return challengingQuests.slice(0, 3);
+    }
+
+    return availableQuests.slice(0, 3);
 }
 
 function renderCampaignRecommendations() {
@@ -187,12 +401,9 @@ function renderCampaignRecommendations() {
     const recommendationIds = getCampaignRecommendations();
     container.innerHTML = recommendationIds.map(questNumber => {
         const quest = quests[questNumber];
-        const stats = getCampaignQuestStats(questNumber);
         const unlockState = getCampaignUnlockState(questNumber);
-        const familiarityStats = getThaiWordFamiliarityStatistics(
-            quest.thaiZeilen,
-            player.stats.wordStats
-        );
+        const { familiarityStats, category } =
+            getCampaignQuestFamiliarityCategory(questNumber);
         const mastery = familiarityStats.supported
             ? familiarityStats.masteryPercentage
             : 0;
@@ -204,7 +415,7 @@ function renderCampaignRecommendations() {
                 </span>
                 <span class="campaign-recommendation-content">
                     <strong>${quest.beschreibung}</strong>
-                    <small>${quest.kapitel} · ${quest.schwierigkeit} · ${quest.xp} XP</small>
+                    <small>${category.label} · ${mastery}% Beherrschung · ${quest.xp} XP</small>
                     <span class="recommendation-progress" aria-label="${mastery}% Beherrschungsgrad"><i style="width:${mastery}%"></i></span>
                 </span>
                 <span class="campaign-recommendation-percent">${mastery}%</span>

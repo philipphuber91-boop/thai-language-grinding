@@ -3190,9 +3190,34 @@
         font-size:.52rem;
     }
 
+    body:has(#worldmapHome) .world-map-arrow{
+        width:30px;
+        height:44px;
+        font-size:1.65rem;
+    }
+
+    body:has(#worldmapHome) .world-map-arrow-previous{
+        left:4px;
+    }
+
+    body:has(#worldmapHome) .world-map-arrow-next{
+        right:4px;
+    }
+
+    body:has(#worldmapHome) .world-map-pagination{
+        bottom:6px;
+        gap:5px;
+        padding:4px 7px;
+    }
+
+    body:has(#worldmapHome) .world-map-page-dot{
+        width:8px;
+        height:8px;
+    }
+
     body:has(#worldmapHome) .world-map-legend{
         right:4px;
-        bottom:4px;
+        bottom:34px;
         gap:4px;
         font-size:.5rem;
     }
