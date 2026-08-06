@@ -8974,15 +8974,15 @@ body:has(#worldmapHome) .topbar{
 }
 
 .worldmap-home .profile-header-panel{
-    grid-template-columns:1fr;
-    gap:14px;
+    grid-template-columns:150px minmax(0, 1fr);
+    gap:16px;
     padding:18px;
 }
 
 .worldmap-home .profile-avatar{
-    width:82px;
-    height:82px;
-    font-size:3rem;
+    width:115px;
+    height:108px;
+    margin-left:18px;
 }
 
 .home-column-center{
@@ -9735,26 +9735,25 @@ body:has(#worldmapHome) .topbar{
 
 .profile-header-panel{
     display:grid;
-    grid-template-columns:minmax(280px, 1fr) minmax(280px, 1.15fr);
+    grid-template-columns:150px minmax(0, 1fr);
     align-items:center;
-    gap:24px;
-    padding:20px 24px;
+    gap:16px;
+    padding:18px 20px;
 }
 
 .profile-identity{
-    display:flex;
-    align-items:center;
-    gap:16px;
+    display:contents;
 }
 
 .profile-avatar{
     position:relative;
-    display:grid;
-    place-items:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     flex:0 0 auto;
-    width:108px;
+    width:115px;
     height:108px;
-    border-radius:50%;
+    margin-left:18px;
     font-size:4.1rem;
 }
 
@@ -9763,8 +9762,8 @@ body:has(#worldmapHome) .topbar{
     z-index:1;
     display:grid;
     place-items:center;
-    width:76%;
-    height:76%;
+    width:90px;
+    height:90px;
     overflow:hidden;
     border-radius:50%;
     background:radial-gradient(circle at 35% 25%, #fff0bd, #c68d3c 75%);
@@ -9774,9 +9773,11 @@ body:has(#worldmapHome) .topbar{
 .profile-avatar-frame{
     position:absolute;
     z-index:2;
-    inset:-8%;
-    width:116%;
-    height:116%;
+    left:50%;
+    top:50%;
+    width:165%;
+    height:165%;
+    transform:translate(-50%, -50%);
     object-fit:contain;
     pointer-events:none;
 }
@@ -9784,14 +9785,17 @@ body:has(#worldmapHome) .topbar{
 .profile-level-badge{
     position:absolute;
     z-index:3;
-    right:-7px;
-    bottom:-8px;
+    left:-34px;
+    top:50%;
+    transform:translateY(-50%);
     display:grid;
     place-items:center;
-    width:42px;
-    height:48px;
+    width:64px;
+    height:74px;
     color:#fff1b0;
-    font-size:.9rem;
+    font-family:'Cinzel', serif;
+    font-size:1.35rem;
+    font-weight:700;
     text-shadow:0 1px 2px #241303;
 }
 
@@ -9806,6 +9810,12 @@ body:has(#worldmapHome) .topbar{
 .profile-level-badge strong{
     position:relative;
     z-index:1;
+}
+
+.profile-identity > div:last-child{
+    position:relative;
+    z-index:4;
+    min-width:0;
 }
 
 .profile-eyebrow{
@@ -9831,6 +9841,10 @@ body:has(#worldmapHome) .topbar{
 }
 
 .profile-level-card{
+    grid-column:1 / -1;
+    width:100%;
+    box-sizing:border-box;
+    margin-top:1px;
     padding:14px 16px;
     border:1px solid rgba(133,87,25,.55);
     border-radius:4px;
