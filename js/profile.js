@@ -315,7 +315,7 @@ function getProfileHeaderMarkup(xp, rank, idPrefix = "") {
             <div class="profile-identity-info">
                 <h1 id="${titleId}">TH Flipu <span class="profile-name-edit" aria-hidden="true">✎</span></h1>
                 <p class="profile-rank">
-                    <img class="profile-rank-icon" src="../assets/ui/quest-badge.png" alt="">
+                    <img class="profile-rank-icon" src="../assets/ui/profile-rank-emblem.png" alt="">
                     ${rank.name}
                 </p>
                 <p class="profile-level-text">Level ${profileFormatNumber(xp.level)}</p>
@@ -446,7 +446,7 @@ function renderProfile() {
 
             <section class="profile-rank-panel" aria-labelledby="profileRankTitle">
                 <div class="profile-rank-card">
-                    <div class="profile-rank-emblem" aria-hidden="true">★</div>
+                    <img class="profile-rank-emblem" src="../assets/ui/profile-rank-emblem.png" alt="">
                     <div class="profile-rank-copy">
                         <p class="profile-eyebrow">Aktueller Rang</p>
                         <h2 id="profileRankTitle">${rank.name}</h2>
