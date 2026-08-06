@@ -937,7 +937,7 @@ function isMobileTypingAwardContext() {
 function isTypingAwardAvailable(definition) {
     if (
         definition.campaignOnly &&
-        localStorage.getItem("contentMode") !== "campaign"
+        (localStorage.getItem("contentMode") || "campaign") !== "campaign"
     ) {
         return false;
     }
