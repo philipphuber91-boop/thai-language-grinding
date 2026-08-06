@@ -313,24 +313,22 @@ function getProfileHeaderMarkup(xp, rank, idPrefix = "") {
                     <strong>${profileFormatNumber(xp.level)}</strong>
                 </span>
             </div>
-            <div>
-                <h1 id="${titleId}">TH Flipu</h1>
-                <p class="profile-rank">${rank.name}</p>
+            <div class="profile-identity-info">
+                <h1 id="${titleId}">TH Flipu <span class="profile-name-edit" aria-hidden="true">✎</span></h1>
+                <p class="profile-rank">
+                    <img class="profile-rank-icon" src="../assets/ui/quest-badge.png" alt="">
+                    ${rank.name}
+                </p>
+                <p class="profile-level-text">Level ${profileFormatNumber(xp.level)}</p>
+                <div class="profile-xp-track" role="progressbar"
+                     aria-label="Level-Fortschritt"
+                     aria-valuenow="${xp.percent}"
+                     aria-valuemin="0"
+                     aria-valuemax="100">
+                     <span style="width:${xp.percent}%"></span>
+                </div>
+                <p class="profile-xp-numbers">${profileFormatNumber(xp.progressXp)} / ${profileFormatNumber(xp.requiredXp)} XP</p>
             </div>
-        </div>
-        <div class="profile-level-card">
-            <div class="profile-level-heading">
-                <span>Level ${profileFormatNumber(xp.level)}</span>
-                <strong>${profileFormatNumber(xp.totalXp)} XP</strong>
-            </div>
-            <div class="profile-xp-track" role="progressbar"
-                 aria-label="Level-Fortschritt"
-                 aria-valuenow="${xp.percent}"
-                 aria-valuemin="0"
-                 aria-valuemax="100">
-                 <span style="width:${xp.percent}%"></span>
-            </div>
-            <p>${profileFormatNumber(xp.progressXp)} / ${profileFormatNumber(xp.requiredXp)} XP bis zum nächsten Level (${profileFormatPercent(xp.percent)})</p>
         </div>
     `;
 }

@@ -8974,9 +8974,11 @@ body:has(#worldmapHome) .topbar{
 }
 
 .worldmap-home .profile-header-panel{
-    grid-template-columns:150px minmax(0, 1fr);
-    gap:16px;
     padding:18px;
+}
+
+.worldmap-home .profile-identity{
+    gap:18px;
 }
 
 .worldmap-home .profile-avatar{
@@ -9734,15 +9736,13 @@ body:has(#worldmapHome) .topbar{
 }
 
 .profile-header-panel{
-    display:grid;
-    grid-template-columns:150px minmax(0, 1fr);
-    align-items:center;
-    gap:16px;
-    padding:18px 20px;
+    padding:18px 22px;
 }
 
 .profile-identity{
-    display:contents;
+    display:flex;
+    align-items:center;
+    gap:24px;
 }
 
 .profile-avatar{
@@ -9788,16 +9788,15 @@ body:has(#worldmapHome) .topbar{
 .profile-level-badge{
     position:absolute;
     z-index:3;
-    left:-34px;
-    top:50%;
-    transform:translateY(-50%);
+    left:-14px;
+    bottom:-8px;
     display:grid;
     place-items:center;
-    width:64px;
-    height:74px;
+    width:58px;
+    height:67px;
     color:#fff1b0;
     font-family:'Cinzel', serif;
-    font-size:1.35rem;
+    font-size:1.3rem;
     font-weight:700;
     text-shadow:0 1px 2px #241303;
 }
@@ -9815,9 +9814,10 @@ body:has(#worldmapHome) .topbar{
     z-index:1;
 }
 
-.profile-identity > div:last-child{
+.profile-identity-info{
     position:relative;
     z-index:4;
+    flex:1;
     min-width:0;
 }
 
@@ -9831,54 +9831,60 @@ body:has(#worldmapHome) .topbar{
 }
 
 .profile-identity h1{
+    display:flex;
+    align-items:center;
+    gap:10px;
     margin:0;
     color:#3e260f;
-    font-size:clamp(1.8rem, 3vw, 2.6rem);
+    font-size:clamp(1.6rem, 2.6vw, 2.2rem);
+}
+
+.profile-name-edit{
+    color:#8a5a1e;
+    font-size:.55em;
 }
 
 .profile-rank{
-    margin:5px 0 0;
-    color:#7a511d;
-    font-size:1rem;
-    font-weight:700;
-}
-
-.profile-level-card{
-    grid-column:1 / -1;
-    width:100%;
-    box-sizing:border-box;
-    margin-top:1px;
-    padding:14px 16px;
-    border:1px solid rgba(133,87,25,.55);
-    border-radius:4px;
-    background:rgba(255,238,178,.35);
-}
-
-.profile-level-heading{
     display:flex;
-    justify-content:space-between;
-    gap:10px;
-    color:#5d3a13;
-    font-size:1rem;
+    align-items:center;
+    gap:8px;
+    margin:4px 0 0;
+    color:#8a6a2f;
+    font-size:1.05rem;
     font-weight:700;
 }
 
-.profile-level-heading strong{
-    color:#a35f18;
+.profile-rank-icon{
+    width:20px;
+    height:20px;
+    object-fit:contain;
+}
+
+.profile-level-text{
+    margin:12px 0 0;
+    color:#3e260f;
+    font-size:1.1rem;
+    font-weight:700;
 }
 
 .profile-xp-track,
 .profile-progress-track{
-    height:10px;
-    margin-top:10px;
+    height:12px;
+    margin-top:6px;
     overflow:hidden;
-    border:1px solid #986725;
+    border:1px solid #4d3312;
     border-radius:99px;
-    background:#6b481e;
+    background:#5b3d1a;
     box-shadow:inset 0 1px 3px rgba(24,12,2,.4);
 }
 
-.profile-xp-track span,
+.profile-xp-track span{
+    display:block;
+    height:100%;
+    border-radius:inherit;
+    background:linear-gradient(90deg, #1fb5a9, #63e6d8);
+}
+
 .profile-progress-track span{
     display:block;
     height:100%;
@@ -9886,10 +9892,12 @@ body:has(#worldmapHome) .topbar{
     background:linear-gradient(90deg, #a75a17, #e6bd4e);
 }
 
-.profile-level-card p{
-    margin:7px 0 0;
-    color:#73501e;
-    font-size:.72rem;
+.profile-xp-numbers{
+    margin:5px 0 0;
+    color:#3e260f;
+    font-size:.9rem;
+    font-weight:600;
+    text-align:right;
 }
 
 .profile-rank-panel{

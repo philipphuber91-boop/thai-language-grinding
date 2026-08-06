@@ -81,15 +81,15 @@
     }
 
     .worldmap-home .profile-header-panel{
-        grid-template-columns:106px minmax(0, 1fr);
-        gap:10px;
         padding:14px 12px;
     }
 
     .profile-header-panel{
-        grid-template-columns:106px minmax(0, 1fr);
-        gap:10px;
         padding:14px 12px;
+    }
+
+    .profile-identity{
+        gap:14px;
     }
 
     .profile-avatar{
@@ -105,10 +105,11 @@
     }
 
     .profile-level-badge{
-        left:-28px;
-        width:56px;
-        height:65px;
-        font-size:1.15rem;
+        left:-12px;
+        bottom:-6px;
+        width:50px;
+        height:58px;
+        font-size:1.1rem;
     }
 
     .profile-identity h1{
@@ -198,9 +199,11 @@
 
 @media (max-width:520px){
     .worldmap-home .profile-header-panel{
-        grid-template-columns:88px minmax(0, 1fr);
-        gap:8px;
         padding:12px 10px;
+    }
+
+    .worldmap-home .profile-identity{
+        gap:10px;
     }
 
     .worldmap-home .profile-avatar{
@@ -215,16 +218,19 @@
     }
 
     .worldmap-home .profile-level-badge{
-        left:-24px;
-        width:50px;
-        height:58px;
-        font-size:1rem;
+        left:-10px;
+        bottom:-5px;
+        width:44px;
+        height:51px;
+        font-size:.95rem;
     }
 
     .profile-header-panel{
-        grid-template-columns:88px minmax(0, 1fr);
-        gap:8px;
         padding:12px 10px;
+    }
+
+    .profile-identity{
+        gap:10px;
     }
 
     .profile-avatar{
@@ -239,14 +245,28 @@
     }
 
     .profile-level-badge{
-        left:-24px;
-        width:50px;
-        height:58px;
-        font-size:1rem;
+        left:-10px;
+        bottom:-5px;
+        width:44px;
+        height:51px;
+        font-size:.95rem;
     }
 
-    .profile-level-card{
-        padding:12px;
+    .profile-identity h1{
+        font-size:1.4rem;
+    }
+
+    .profile-rank{
+        font-size:.9rem;
+    }
+
+    .profile-level-text{
+        margin-top:8px;
+        font-size:.95rem;
+    }
+
+    .profile-xp-numbers{
+        font-size:.78rem;
     }
 }
 
@@ -3227,10 +3247,11 @@
     }
 
     body:has(#worldmapHome) .profile-level-badge{
-        left:-24px;
-        width:50px;
-        height:58px;
-        font-size:1rem;
+        left:-10px;
+        bottom:-5px;
+        width:44px;
+        height:51px;
+        font-size:.95rem;
     }
 
     body:has(#worldmapHome) .quote-panel{
