@@ -93,23 +93,23 @@
     }
 
     .profile-avatar{
-        width:96px;
-        height:92px;
-        margin-left:10px;
+        width:88px;
+        height:88px;
+        margin-left:14px;
         font-size:3rem;
     }
 
     .profile-avatar-character{
-        width:74px;
-        height:74px;
+        width:88px;
+        height:88px;
     }
 
     .profile-level-badge{
-        left:-12px;
-        bottom:-6px;
-        width:50px;
-        height:58px;
-        font-size:1.1rem;
+        left:-10px;
+        bottom:-4px;
+        width:42px;
+        height:49px;
+        font-size:1rem;
     }
 
     .profile-identity h1{
@@ -207,22 +207,22 @@
     }
 
     .worldmap-home .profile-avatar{
-        width:82px;
-        height:82px;
-        margin-left:8px;
+        width:76px;
+        height:76px;
+        margin-left:12px;
     }
 
     .worldmap-home .profile-avatar-character{
-        width:64px;
-        height:64px;
+        width:76px;
+        height:76px;
     }
 
     .worldmap-home .profile-level-badge{
-        left:-10px;
-        bottom:-5px;
-        width:44px;
-        height:51px;
-        font-size:.95rem;
+        left:-8px;
+        bottom:-3px;
+        width:38px;
+        height:44px;
+        font-size:.85rem;
     }
 
     .profile-header-panel{
@@ -234,22 +234,22 @@
     }
 
     .profile-avatar{
-        width:82px;
-        height:82px;
-        margin-left:8px;
+        width:76px;
+        height:76px;
+        margin-left:16px;
     }
 
     .profile-avatar-character{
-        width:64px;
-        height:64px;
+        width:76px;
+        height:76px;
     }
 
     .profile-level-badge{
-        left:-10px;
-        bottom:-5px;
-        width:44px;
-        height:51px;
-        font-size:.95rem;
+        left:-14px;
+        bottom:-3px;
+        width:40px;
+        height:46px;
+        font-size:.9rem;
     }
 
     .profile-identity h1{
@@ -3236,22 +3236,22 @@
     }
 
     body:has(#worldmapHome) .profile-avatar{
-        width:82px;
-        height:82px;
-        margin-left:8px;
+        width:76px;
+        height:76px;
+        margin-left:16px;
     }
 
     body:has(#worldmapHome) .profile-avatar-character{
-        width:64px;
-        height:64px;
+        width:76px;
+        height:76px;
     }
 
     body:has(#worldmapHome) .profile-level-badge{
-        left:-10px;
-        bottom:-5px;
-        width:44px;
-        height:51px;
-        font-size:.95rem;
+        left:-14px;
+        bottom:-3px;
+        width:40px;
+        height:46px;
+        font-size:.9rem;
     }
 
     body:has(#worldmapHome) .quote-panel{

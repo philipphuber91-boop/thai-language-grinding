@@ -8982,9 +8982,9 @@ body:has(#worldmapHome) .topbar{
 }
 
 .worldmap-home .profile-avatar{
-    width:115px;
-    height:108px;
-    margin-left:18px;
+    width:104px;
+    height:104px;
+    margin-left:24px;
 }
 
 .home-column-center{
@@ -9751,9 +9751,9 @@ body:has(#worldmapHome) .topbar{
     align-items:center;
     justify-content:center;
     flex:0 0 auto;
-    width:115px;
-    height:108px;
-    margin-left:18px;
+    width:104px;
+    height:104px;
+    margin-left:24px;
     border:0;
     border-radius:0;
     background:transparent;
@@ -9765,38 +9765,26 @@ body:has(#worldmapHome) .topbar{
     position:relative;
     z-index:1;
     display:block;
-    width:90px;
-    height:90px;
+    width:104px;
+    height:104px;
     overflow:hidden;
     border-radius:50%;
     object-fit:cover;
     box-shadow:0 2px 5px rgba(60,34,9,.3);
 }
 
-.profile-avatar-frame{
-    position:absolute;
-    z-index:2;
-    left:50%;
-    top:50%;
-    width:165%;
-    height:165%;
-    transform:translate(-50%, -50%);
-    object-fit:contain;
-    pointer-events:none;
-}
-
 .profile-level-badge{
     position:absolute;
     z-index:3;
-    left:-14px;
-    bottom:-8px;
+    left:-18px;
+    bottom:-4px;
     display:grid;
     place-items:center;
-    width:58px;
-    height:67px;
+    width:52px;
+    height:60px;
     color:#fff1b0;
     font-family:'Cinzel', serif;
-    font-size:1.3rem;
+    font-size:1.25rem;
     font-weight:700;
     text-shadow:0 1px 2px #241303;
 }
