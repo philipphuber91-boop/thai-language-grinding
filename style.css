@@ -9760,13 +9760,12 @@ body:has(#worldmapHome) .topbar{
 .profile-avatar-character{
     position:relative;
     z-index:1;
-    display:grid;
-    place-items:center;
+    display:block;
     width:90px;
     height:90px;
     overflow:hidden;
     border-radius:50%;
-    background:radial-gradient(circle at 35% 25%, #fff0bd, #c68d3c 75%);
+    object-fit:cover;
     box-shadow:0 2px 5px rgba(60,34,9,.3);
 }
 
