@@ -19,6 +19,8 @@ let runAudioListens = 0;
 let runXpEarned = 0;
 let runAwards = [];
 let runAwardIds = new Set();
+let runThaiFontSelection = null;
+let runThaiFontSelectionChanged = false;
 const typingAwardToastQueue = [];
 let activeTypingAwardToasts = 0;
 const zeile1 = document.getElementById("zeile1");
@@ -129,6 +131,8 @@ function resetTypingAwardRun() {
     runXpEarned = 0;
     runAwards = [];
     runAwardIds = new Set();
+    runThaiFontSelection = null;
+    runThaiFontSelectionChanged = false;
     updateTypingXpUi();
 }
 
@@ -208,6 +212,8 @@ function evaluateCurrentTypingAwards(extra = {}) {
         examRun: extra.examRun || false,
         questCompleted: extra.questCompleted || false,
         tastenhilfeEnabled,
+        thaiFontSelection: runThaiFontSelection,
+        thaiFontSelectionChanged: runThaiFontSelectionChanged,
         awardIds: runAwardIds
     });
 
@@ -246,7 +252,9 @@ function renderQuestAchievementPanel() {
         newRecord: 0,
         sentenceMetrics,
         examRun: mode === "exam",
-        tastenhilfeEnabled
+        tastenhilfeEnabled,
+        thaiFontSelection: runThaiFontSelection,
+        thaiFontSelectionChanged: runThaiFontSelectionChanged
     });
 
     const unlockedCards = cards.filter(card => card.unlocked);
@@ -1142,6 +1150,18 @@ const THAI_FONT_OPTIONS = [
     "kanit"
 ];
 
+function captureThaiFontSelectionForRun() {
+    if (runThaiFontSelection !== null) {
+        return;
+    }
+
+    runThaiFontSelection = normalizeThaiFontSelection(
+        localStorage.getItem(THAI_FONT_STORAGE_KEY) ||
+        storyThaiFontSelect?.value ||
+        "standard"
+    );
+}
+
 function normalizeThaiFontSelection(value) {
     const selection = String(value ?? "");
     return THAI_FONT_OPTIONS.includes(selection)
@@ -1170,7 +1190,16 @@ function applyThaiFontSelection(value) {
 }
 
 function setThaiFontSelection(value) {
-    const selection = applyThaiFontSelection(value);
+    const selection = normalizeThaiFontSelection(value);
+
+    if (
+        runThaiFontSelection !== null &&
+        selection !== runThaiFontSelection
+    ) {
+        runThaiFontSelectionChanged = true;
+    }
+
+    applyThaiFontSelection(selection);
     localStorage.setItem(THAI_FONT_STORAGE_KEY, selection);
 }
 
@@ -1891,7 +1920,9 @@ function beendePruefung() {
         sentenceMetrics,
         examRun: true,
         questCompleted: true,
-        tastenhilfeEnabled
+        tastenhilfeEnabled,
+        thaiFontSelection: runThaiFontSelection,
+        thaiFontSelectionChanged: runThaiFontSelectionChanged
     });
     finalizeQuestAchievementProgress(questStatsId, {
         cpm: Number(cpm),
@@ -1909,7 +1940,9 @@ function beendePruefung() {
         sentenceMetrics,
         examRun: true,
         questCompleted: true,
-        tastenhilfeEnabled
+        tastenhilfeEnabled,
+        thaiFontSelection: runThaiFontSelection,
+        thaiFontSelectionChanged: runThaiFontSelectionChanged
     });
     renderQuestAchievementPanel();
 
@@ -2003,6 +2036,8 @@ eingabe.addEventListener("input", function () {
     if (!eingegeben || eingegeben.length === 0) {
         return;
     }
+
+    captureThaiFontSelectionForRun();
 
     // Gesamtspielzeit erfassen in beiden Modi
     if (ActivityManager.status !== "PLAYING") {

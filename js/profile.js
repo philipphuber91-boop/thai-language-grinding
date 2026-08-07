@@ -277,6 +277,12 @@ const profileTypingBadgeCategories = [
         title: "Audio",
         icon: "book",
         matches: ["audioListens"]
+    },
+    {
+        id: "fonts",
+        title: "Schriftarten",
+        icon: "keyboard",
+        matches: ["fontChallenge"]
     }
 ];
 
@@ -443,7 +449,7 @@ function getProfileQuestBadgeCategories() {
     const categories = profileTypingBadgeCategories.map(category => ({
         ...category,
         count: 0,
-        available: 0
+        available: category.id === "fonts" ? 1 : 0
     }));
     const categoriesByRunType = new Map(
         categories.flatMap(category =>
@@ -478,6 +484,18 @@ function getProfileQuestBadgeCategories() {
         const questDefinitions = typeof getTypingAwardDefinitions === "function"
             ? getTypingAwardDefinitions(questId)
             : categoryDefinitions;
+        questDefinitions.forEach(definition => {
+            if (definitionsById.has(definition.id)) {
+                return;
+            }
+
+            definitionsById.set(definition.id, definition);
+            const category = categoriesByRunType.get(definition.runType);
+
+            if (category) {
+                category.available++;
+            }
+        });
         const definitionsByQuestId = new Map(
             questDefinitions.map(definition => [definition.id, definition])
         );

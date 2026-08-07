@@ -957,6 +957,89 @@ function shuffleTypingChallengeItems(items) {
     return [...items].sort(() => Math.random() - 0.5);
 }
 
+const fontChallengeOptions = [
+    { id: "standard", label: "Standard" },
+    { id: "noto-sans-thai", label: "Noto Sans Thai" },
+    { id: "sarabun", label: "Sarabun" },
+    { id: "prompt", label: "Prompt" },
+    { id: "kanit", label: "Kanit" }
+];
+
+function getFontChallengeDefinitions(questId) {
+    if (
+        !questId ||
+        typeof getQuestStats !== "function" ||
+        typeof getQuestDataFromStatsId !== "function"
+    ) {
+        return [];
+    }
+
+    const quest = getQuestDataFromStatsId(questId);
+    const stats = getQuestStats(questId, quest?.version ?? 1);
+    const version = quest?.version ?? 1;
+
+    if (
+        Array.isArray(stats.fontChallenges) &&
+        stats.fontChallengesVersion === version
+    ) {
+        return stats.fontChallenges;
+    }
+
+    const challengeCount = Math.random() < 0.5 ? 1 : 2;
+    const challenges = [];
+
+    for (let index = 0; index < challengeCount; index++) {
+        const isVarietyChallenge = Math.random() < 0.45;
+
+        if (isVarietyChallenge) {
+            const requiredCount = Math.random() < 0.5 ? 2 : 3;
+
+            challenges.push({
+                id: `fontChallenge:${questId}:${index + 1}`,
+                title: `${requiredCount}-Schriften-Sammler`,
+                description:
+                    `Schließe diese Quest mit ${requiredCount} verschiedenen Schriftarten ab. ` +
+                    "Wähle die Schrift vor dem ersten Buchstaben; ein Wechsel ist erlaubt, macht diesen Versuch aber für die Auszeichnung ungültig.",
+                icon: "keyboard",
+                rarity: requiredCount === 3 ? "epic" : "rare",
+                category: "typing",
+                questScoped: true,
+                runType: "fontChallenge",
+                runGoal: requiredCount,
+                bonusXp: requiredCount === 3 ? 15 : 10,
+                fontChallengeType: "variety",
+                requiredFontCount: requiredCount
+            });
+            continue;
+        }
+
+        const font = shuffleTypingChallengeItems(fontChallengeOptions)[0];
+
+        challenges.push({
+            id: `fontChallenge:${questId}:${index + 1}`,
+            title: `${font.label}-Kenner`,
+            description:
+                `Schließe diese Quest vollständig in ${font.label} ab. ` +
+                "Wähle die Schrift vor dem ersten Buchstaben; ein Wechsel ist erlaubt, macht diesen Versuch aber für die Auszeichnung ungültig.",
+            icon: "keyboard",
+            rarity: "common",
+            category: "typing",
+            questScoped: true,
+            runType: "fontChallenge",
+            runGoal: 1,
+            bonusXp: 10,
+            fontChallengeType: "single",
+            requiredFont: font.id
+        });
+    }
+
+    stats.fontChallenges = challenges;
+    stats.fontChallengesVersion = version;
+    saveQuestStats();
+
+    return challenges;
+}
+
 function createSentenceChallengeDefinition(
     questId,
     sentenceIndexes,
@@ -1096,7 +1179,11 @@ function getTypingAwardDefinitions(questId = null) {
     }));
 
     return questId
-        ? [...definitions, ...getSentenceChallengeDefinitions(questId)]
+        ? [
+            ...definitions,
+            ...getSentenceChallengeDefinitions(questId),
+            ...getFontChallengeDefinitions(questId)
+        ]
         : definitions;
 }
 
@@ -1152,7 +1239,8 @@ function createQuestAchievementState() {
         unlockedAt: null,
         totalValue: 0,
         bestValue: 0,
-        repeatCount: 0
+        repeatCount: 0,
+        fontSelections: []
     };
 }
 
@@ -1195,6 +1283,16 @@ function getQuestAchievementRunValue(definition, run) {
             : 0;
     }
 
+    if (definition.runType === "fontChallenge") {
+        if (!run?.thaiFontSelection) {
+            return 0;
+        }
+
+        return definition.fontChallengeType === "single"
+            ? Number(run.thaiFontSelection === definition.requiredFont)
+            : 1;
+    }
+
     return Number(
         definition.runType === "cpm"
             ? run.cpm
@@ -1218,7 +1316,52 @@ function getQuestAchievementRunValue(definition, run) {
     ) || 0;
 }
 
+function getFontChallengeSelections(state) {
+    if (!Array.isArray(state.fontSelections)) {
+        state.fontSelections = [];
+    }
+
+    return state.fontSelections.filter(selection =>
+        fontChallengeOptions.some(option => option.id === selection)
+    );
+}
+
+function getFontChallengeProgress(definition, questId, run = null) {
+    const state = getQuestAchievementState(questId, definition.id);
+
+    if (definition.fontChallengeType === "single") {
+        return state.unlocked ||
+            !run?.thaiFontSelectionChanged &&
+            run?.questCompleted &&
+            run.thaiFontSelection === definition.requiredFont
+            ? 1
+            : 0;
+    }
+
+    const selections = new Set(getFontChallengeSelections(state));
+
+    if (
+        !run?.thaiFontSelectionChanged &&
+        run?.questCompleted &&
+        fontChallengeOptions.some(option => option.id === run.thaiFontSelection)
+    ) {
+        selections.add(run.thaiFontSelection);
+    }
+
+    return Math.min(
+        definition.requiredFontCount,
+        selections.size
+    );
+}
+
 function isTypingAwardEligible(definition, run) {
+    if (
+        definition.runType === "fontChallenge" &&
+        run?.thaiFontSelectionChanged
+    ) {
+        return false;
+    }
+
     return !definition.requiresNoTastenhilfe ||
         run?.tastenhilfeEnabled === false;
 }
@@ -1233,6 +1376,10 @@ function isQuestAchievementCumulative(definition) {
 }
 
 function getQuestAchievementProgress(definition, questId, run = null) {
+    if (definition.runType === "fontChallenge") {
+        return getFontChallengeProgress(definition, questId, run);
+    }
+
     const state = getQuestAchievementState(questId, definition.id);
     const baseValue = isQuestAchievementCumulative(definition)
         ? state.totalValue
@@ -1269,6 +1416,18 @@ function meetsTypingAwardCondition(definition, run) {
     }
 
     if (definition.runType === "sentenceChallenge" && !run.examRun) {
+        return false;
+    }
+
+    if (
+        definition.runType === "fontChallenge" &&
+        (
+            !run.questCompleted ||
+            !fontChallengeOptions.some(
+                option => option.id === run.thaiFontSelection
+            )
+        )
+    ) {
         return false;
     }
 
@@ -1429,6 +1588,31 @@ function finalizeQuestAchievementProgress(questId, run) {
             questId,
             definition.id
         );
+
+        if (definition.runType === "fontChallenge") {
+            if (
+                run.questCompleted &&
+                fontChallengeOptions.some(
+                    option => option.id === run.thaiFontSelection
+                )
+            ) {
+                if (definition.fontChallengeType === "single") {
+                    if (run.thaiFontSelection === definition.requiredFont) {
+                        state.bestValue = 1;
+                    }
+                } else {
+                    const selections = getFontChallengeSelections(state);
+
+                    if (!selections.includes(run.thaiFontSelection)) {
+                        selections.push(run.thaiFontSelection);
+                        state.fontSelections = selections;
+                    }
+                }
+            }
+
+            continue;
+        }
+
         const value = Math.max(
             0,
             getQuestAchievementRunValue(definition, run)

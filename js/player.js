@@ -332,6 +332,9 @@ function createQuestStats(version) {
 
         questAchievements: {},
 
+        fontChallenges: [],
+        fontChallengesVersion: null,
+
         repetition: {
 
             level: 0,

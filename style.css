@@ -9163,7 +9163,7 @@ body:has(#worldmapHome) .topbar{
 
 .daily-quest-card{
     display:grid;
-    grid-template-columns:35px minmax(0, 1fr) 19px;
+    grid-template-columns:52px minmax(0, 1fr) 19px;
     align-items:center;
     gap:9px;
     padding:8px 7px;
@@ -9173,14 +9173,14 @@ body:has(#worldmapHome) .topbar{
 .daily-quest-icon{
     display:grid;
     place-items:center;
-    width:31px;
-    height:31px;
+    width:48px;
+    height:48px;
 }
 
 .daily-quest-icon img{
     display:block;
-    width:31px;
-    height:31px;
+    width:48px;
+    height:48px;
     object-fit:contain;
 }
 
@@ -10470,6 +10470,14 @@ body:has(#worldmapHome) .topbar{
     .recommendations-panel,
     .home-statistics-panel{
         min-width:0;
+    }
+}
+
+@media (max-width:900px){
+    .campaign-recommendation{
+        box-sizing:border-box;
+        padding-right:8px;
+        padding-left:8px;
     }
 }
 
