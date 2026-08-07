@@ -605,7 +605,9 @@ function renderProfile() {
 
             <section class="profile-panel profile-badges-panel" aria-labelledby="profileBadgesTitle">
                 <div class="profile-panel-heading">
-                    <span class="profile-panel-icon">🏅</span>
+                    <span class="profile-panel-icon profile-badge-panel-icon">
+                        <img src="../assets/ui/profile-badge-emblem.png" alt="">
+                    </span>
                     <div>
                         <p class="profile-eyebrow">Deine Sammlung</p>
                         <h2 id="profileBadgesTitle">Abzeichen</h2>

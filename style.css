@@ -10028,7 +10028,7 @@ body:has(#worldmapHome) .topbar{
 
 .profile-rank-card{
     display:grid;
-    grid-template-columns:86px minmax(0, 1fr) auto;
+    grid-template-columns:112px minmax(0, 1fr) auto;
     align-items:center;
     gap:15px;
     padding:14px 18px;
@@ -10040,8 +10040,8 @@ body:has(#worldmapHome) .topbar{
 
 .profile-rank-emblem{
     display:block;
-    width:86px;
-    height:86px;
+    width:112px;
+    height:112px;
     object-fit:contain;
 }
 
@@ -10217,6 +10217,12 @@ body:has(#worldmapHome) .topbar{
     border-radius:4px;
     background:rgba(255,240,182,.55);
     font-size:1.35rem;
+}
+
+.profile-badge-panel-icon img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
 }
 
 .profile-badges-panel{
