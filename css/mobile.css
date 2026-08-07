@@ -3159,15 +3159,15 @@
     }
 
     body:has(#worldmapHome) .home-column-center{
-        order:-1;
+        order:1;
     }
 
     body:has(#worldmapHome) .home-column-right{
-        order:0;
+        order:2;
     }
 
     body:has(#worldmapHome) .home-column-left{
-        order:1;
+        order:0;
     }
 
     body:has(#worldmapHome) .profile-level-badge{
