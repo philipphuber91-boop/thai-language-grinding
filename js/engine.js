@@ -578,6 +578,14 @@ const stats = getQuestStats(
     daten[nummer].version ?? 1
 );
 const unlockState = getQuestUnlockState(quest, nummer);
+const questAchievementCards =
+    typeof getQuestAchievementCards === "function"
+        ? getQuestAchievementCards(`${contentMode}:${nummer}`)
+        : [];
+const unlockedQuestAchievementCount =
+    questAchievementCards.filter(card => card.unlocked).length;
+const questAchievementCountLabel =
+    `${unlockedQuestAchievementCount}/${questAchievementCards.length}`;
 
 const statusLabel = statusIcons[status] || "";
 
@@ -732,6 +740,12 @@ karte.innerHTML = `
     </div>
 
     <div class="quest-actions">
+
+<span
+        class="quest-achievement-count"
+        aria-label="${unlockedQuestAchievementCount} von ${questAchievementCards.length} Quest-Auszeichnungen erledigt">
+    ${questAchievementCountLabel}
+</span>
 
 <button
         type="button"

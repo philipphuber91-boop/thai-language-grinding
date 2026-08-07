@@ -522,6 +522,16 @@
         transform:translateY(-50%);
     }
 
+    .quest-achievement-count{
+        position:absolute;
+        top:50%;
+        left:calc(50% + 145px);
+        transform:translateY(-50%);
+        min-width:0;
+        margin-right:0;
+        font-size:.72rem;
+    }
+
     .quest-achievement-overview-overlay{
         align-items:flex-start;
         overflow-y:auto;

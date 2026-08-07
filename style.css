@@ -1563,6 +1563,19 @@ box-shadow:
 
 }
 
+.quest-achievement-count{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-width:38px;
+    margin-right:8px;
+    color:#704b1b;
+    font-size:.75rem;
+    font-weight:700;
+    line-height:1;
+    white-space:nowrap;
+}
+
 .quest-achievement-overview-button:hover,
 .quest-achievement-overview-button:focus-visible{
 
