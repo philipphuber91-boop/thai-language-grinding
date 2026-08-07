@@ -3190,6 +3190,10 @@
         min-height:420px;
     }
 
+    body:has(#worldmapHome) .world-map-arrow{
+        display:none;
+    }
+
     body:has(#worldmapHome) .home-column-right{
         display:flex;
     }
@@ -3341,17 +3345,7 @@
     }
 
     body:has(#worldmapHome) .world-map-arrow{
-        width:30px;
-        height:44px;
-        font-size:1.65rem;
-    }
-
-    body:has(#worldmapHome) .world-map-arrow-previous{
-        left:4px;
-    }
-
-    body:has(#worldmapHome) .world-map-arrow-next{
-        right:4px;
+        display:none;
     }
 
     body:has(#worldmapHome) .world-map-pagination{
@@ -3363,13 +3357,6 @@
     body:has(#worldmapHome) .world-map-page-dot{
         width:8px;
         height:8px;
-    }
-
-    body:has(#worldmapHome) .world-map-legend{
-        right:4px;
-        bottom:34px;
-        gap:4px;
-        font-size:.5rem;
     }
 
     body:has(#worldmapHome) .daily-quest-heading{

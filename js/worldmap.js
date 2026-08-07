@@ -143,10 +143,6 @@ function renderWorldMap() {
         <button class="world-map-arrow world-map-arrow-next" type="button"
                 aria-label="Nächsten Kartenabschnitt anzeigen">›</button>
         <div class="world-map-pagination" aria-label="Kartenabschnitt auswählen"></div>
-        <div class="world-map-legend">
-            <span><i class="legend-dot legend-dot-current"></i>Aktueller Flow</span>
-            <span><i class="legend-dot legend-dot-locked">⌕</i>Gesperrt</span>
-        </div>
     `;
 
     const pagesContainer = map.querySelector(".world-map-pages");
