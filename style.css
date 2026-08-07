@@ -9804,6 +9804,19 @@ body:has(#worldmapHome) .topbar{
     font-size:4.1rem;
 }
 
+.profile-avatar-selector{
+    display:flex;
+    flex:0 0 auto;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    margin-left:24px;
+}
+
+.profile-avatar-selector .profile-avatar{
+    margin-left:0;
+}
+
 .profile-avatar-character{
     position:relative;
     z-index:1;
@@ -9812,6 +9825,115 @@ body:has(#worldmapHome) .topbar{
     height:100%;
     object-fit:contain;
     box-shadow:none;
+}
+
+.profile-avatar-change-button{
+    padding:4px 10px;
+    border:1px solid #a87529;
+    border-radius:4px;
+    background:linear-gradient(#f7e7b7, #d5ad61);
+    color:#4b3016;
+    font:600 .72rem Georgia, "Times New Roman", serif;
+    cursor:pointer;
+    box-shadow:0 1px 2px rgba(74,46,13,.2);
+}
+
+.profile-avatar-change-button:hover{
+    filter:brightness(1.06);
+}
+
+.profile-avatar-change-button:focus-visible,
+.profile-avatar-option:focus-visible,
+.profile-avatar-picker-close:focus-visible{
+    outline:2px solid #5b3b13;
+    outline-offset:2px;
+}
+
+.profile-avatar-picker{
+    position:fixed;
+    z-index:1200;
+    inset:0;
+    display:grid;
+    place-items:center;
+    padding:20px;
+    background:rgba(28,17,8,.72);
+}
+
+.profile-avatar-picker[hidden]{
+    display:none;
+}
+
+.profile-avatar-picker-dialog{
+    width:min(620px, 100%);
+    max-height:min(720px, 100%);
+    overflow:auto;
+    padding:20px;
+    border:1px solid #a87529;
+    border-radius:8px;
+    background:linear-gradient(rgba(239,216,164,.99), rgba(223,191,129,.99));
+    box-shadow:0 10px 30px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,244,194,.6);
+}
+
+.profile-avatar-picker-heading{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:14px;
+}
+
+.profile-avatar-picker-heading h2{
+    margin:0;
+    color:#3e260f;
+    font-size:1.5rem;
+}
+
+.profile-avatar-picker-close{
+    width:32px;
+    height:32px;
+    padding:0;
+    border:1px solid #a87529;
+    border-radius:50%;
+    background:#f0d99e;
+    color:#4b3016;
+    cursor:pointer;
+    font-size:1rem;
+    line-height:1;
+}
+
+.profile-avatar-options{
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0, 1fr));
+    gap:12px;
+}
+
+.profile-avatar-option{
+    display:grid;
+    place-items:center;
+    min-width:0;
+    padding:5px;
+    border:2px solid transparent;
+    border-radius:8px;
+    background:rgba(255,244,194,.38);
+    cursor:pointer;
+}
+
+.profile-avatar-option:hover{
+    border-color:#c89b3c;
+    background:rgba(255,244,194,.75);
+}
+
+.profile-avatar-option.is-selected{
+    border-color:#6d4516;
+    background:#f7e4ad;
+    box-shadow:0 0 0 2px rgba(200,155,60,.4);
+}
+
+.profile-avatar-option img{
+    display:block;
+    width:100%;
+    aspect-ratio:1;
+    object-fit:contain;
 }
 
 .profile-level-badge{

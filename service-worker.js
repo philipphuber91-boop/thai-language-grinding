@@ -16,7 +16,7 @@
  * müssen den Cache in Safari nicht manuell löschen.
  */
 
-const CACHE_VERSION = 'v37';
+const CACHE_VERSION = 'v38';
 const CACHE_NAME = `thai-language-grinding-${CACHE_VERSION}`;
 
 // App-Shell: alles, was für Start und Offline-Betrieb gebraucht wird.
@@ -47,6 +47,7 @@ const PRECACHE_ASSETS = [
     'js/achievements.js',
     'js/chronik.js',
     'js/achievementRenderer.js',
+    'js/profile.js',
     'js/engine.js',
     'js/keyboard.js',
     'js/typing-feedback.js',
@@ -65,6 +66,17 @@ const PRECACHE_ASSETS = [
     'assets/ui/profile-avatar.png',
     'assets/ui/profile-rank-emblem.png',
     'assets/ui/monk-mentor.png',
+    'assets/ui/avatars/avatar1.png',
+    'assets/ui/avatars/avatar2.png',
+    'assets/ui/avatars/avatar3.png',
+    'assets/ui/avatars/avatar4.png',
+    'assets/ui/avatars/avatar5.png',
+    'assets/ui/avatars/avatar6.png',
+    'assets/ui/avatars/avatar7.png',
+    'assets/ui/avatars/avatar8.png',
+    'assets/ui/avatars/avatar9.png',
+    'assets/ui/avatars/avatar10.png',
+    'assets/ui/avatars/avatar11.png',
     'assets/ui/chronik/chronik-title.png',
     'assets/ui/chronik/chronik-title1.png',
     'assets/ui/chronik/stat-accuracy.png',

@@ -280,6 +280,34 @@ const profileTypingBadgeCategories = [
     }
 ];
 
+const PROFILE_AVATAR_STORAGE_KEY = "profileAvatar";
+const profileAvatarOptions = [
+    { id: "avatar1", label: "Avatar 1" },
+    { id: "avatar2", label: "Avatar 2" },
+    { id: "avatar3", label: "Avatar 3" },
+    { id: "avatar4", label: "Avatar 4" },
+    { id: "avatar5", label: "Avatar 5" },
+    { id: "avatar6", label: "Avatar 6" },
+    { id: "avatar7", label: "Avatar 7" },
+    { id: "avatar8", label: "Avatar 8" },
+    { id: "avatar9", label: "Avatar 9" },
+    { id: "avatar10", label: "Avatar 10" },
+    { id: "avatar11", label: "Avatar 11" }
+];
+
+function getProfileAvatarOption(avatarId) {
+    return profileAvatarOptions.find(option => option.id === avatarId) ||
+        profileAvatarOptions.find(option => option.id === "avatar10");
+}
+
+function getSelectedProfileAvatar() {
+    return getProfileAvatarOption(localStorage.getItem(PROFILE_AVATAR_STORAGE_KEY));
+}
+
+function getProfileAvatarPath(avatarId = getSelectedProfileAvatar().id) {
+    return `../assets/ui/avatars/${getProfileAvatarOption(avatarId).id}.png`;
+}
+
 function profileIsMobileViewport() {
     return typeof window !== "undefined" &&
         typeof window.matchMedia === "function" &&
@@ -298,20 +326,44 @@ function profileIsDefinitionAvailable(definition) {
     return true;
 }
 
-function getProfileHeaderMarkup(xp, rank, idPrefix = "") {
+function getProfileHeaderMarkup(
+    xp,
+    rank,
+    idPrefix = "",
+    { showAvatarSelector = false } = {}
+) {
     const titleId = idPrefix
         ? `${idPrefix}ProfileTitle`
         : "profileTitle";
+    const selectedAvatar = getSelectedProfileAvatar();
+    const avatarMarkup = `
+        <div class="profile-avatar" aria-hidden="true">
+            <img
+                class="profile-avatar-character"
+                src="${getProfileAvatarPath(selectedAvatar.id)}"
+                alt="">
+            <span class="profile-level-badge">
+                <img src="../assets/ui/quest-badge.png" alt="">
+                <strong>${profileFormatNumber(xp.level)}</strong>
+            </span>
+        </div>
+    `;
 
     return `
         <div class="profile-identity">
-            <div class="profile-avatar" aria-hidden="true">
-                <img class="profile-avatar-character" src="../assets/ui/profile-avatar.png" alt="">
-                <span class="profile-level-badge">
-                    <img src="../assets/ui/quest-badge.png" alt="">
-                    <strong>${profileFormatNumber(xp.level)}</strong>
-                </span>
-            </div>
+            ${showAvatarSelector
+                ? `
+                    <div class="profile-avatar-selector">
+                        ${avatarMarkup}
+                        <button
+                            class="profile-avatar-change-button"
+                            type="button"
+                            aria-controls="profileAvatarPicker">
+                            Avatar ändern
+                        </button>
+                    </div>
+                `
+                : avatarMarkup}
             <div class="profile-identity-info">
                 <h1 id="${titleId}">TH Flipu <span class="profile-name-edit" aria-hidden="true">✎</span></h1>
                 <p class="profile-rank">
@@ -330,6 +382,50 @@ function getProfileHeaderMarkup(xp, rank, idPrefix = "") {
             </div>
         </div>
     `;
+}
+
+function renderProfileAvatarPicker(container) {
+    const picker = container.querySelector("#profileAvatarPicker");
+    const openButton = container.querySelector(".profile-avatar-change-button");
+    const closeButton = container.querySelector(".profile-avatar-picker-close");
+    const avatarImage = container.querySelector(".profile-avatar-character");
+
+    if (!picker || !openButton || !avatarImage) {
+        return;
+    }
+
+    const setPickerVisibility = isVisible => {
+        picker.hidden = !isVisible;
+        openButton.setAttribute("aria-expanded", String(isVisible));
+    };
+
+    openButton.setAttribute("aria-expanded", "false");
+    openButton.addEventListener("click", () => setPickerVisibility(true));
+    closeButton?.addEventListener("click", () => {
+        setPickerVisibility(false);
+        openButton.focus();
+    });
+
+    picker.querySelectorAll("[data-avatar-id]").forEach(button => {
+        button.addEventListener("click", () => {
+            const selectedAvatar = getProfileAvatarOption(button.dataset.avatarId);
+
+            localStorage.setItem(
+                PROFILE_AVATAR_STORAGE_KEY,
+                selectedAvatar.id
+            );
+            avatarImage.src = getProfileAvatarPath(selectedAvatar.id);
+
+            picker.querySelectorAll("[data-avatar-id]").forEach(option => {
+                const isSelected = option.dataset.avatarId === selectedAvatar.id;
+                option.classList.toggle("is-selected", isSelected);
+                option.setAttribute("aria-pressed", String(isSelected));
+            });
+
+            setPickerVisibility(false);
+            openButton.focus();
+        });
+    });
 }
 
 function getProfileQuestBadgeCategories() {
@@ -441,8 +537,51 @@ function renderProfile() {
     container.innerHTML = `
         <main class="profile-page" aria-labelledby="profileTitle">
             <section class="profile-header-panel">
-                ${getProfileHeaderMarkup(xp, rank)}
+                ${getProfileHeaderMarkup(xp, rank, "", {
+                    showAvatarSelector: true
+                })}
             </section>
+
+            <div
+                id="profileAvatarPicker"
+                class="profile-avatar-picker"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="profileAvatarPickerTitle"
+                hidden>
+                <section class="profile-avatar-picker-dialog">
+                    <div class="profile-avatar-picker-heading">
+                        <div>
+                            <p class="profile-eyebrow">Dein Profilbild</p>
+                            <h2 id="profileAvatarPickerTitle">Avatar wählen</h2>
+                        </div>
+                        <button
+                            class="profile-avatar-picker-close"
+                            type="button"
+                            aria-label="Avatar-Auswahl schließen">
+                            ✕
+                        </button>
+                    </div>
+                    <div class="profile-avatar-options">
+                        ${profileAvatarOptions.map(avatar => {
+                            const isSelected = avatar.id === getSelectedProfileAvatar().id;
+
+                            return `
+                                <button
+                                    class="profile-avatar-option${isSelected ? " is-selected" : ""}"
+                                    type="button"
+                                    data-avatar-id="${avatar.id}"
+                                    aria-label="${avatar.label} auswählen"
+                                    aria-pressed="${isSelected}">
+                                    <img
+                                        src="${getProfileAvatarPath(avatar.id)}"
+                                        alt="${avatar.label}">
+                                </button>
+                            `;
+                        }).join("")}
+                    </div>
+                </section>
+            </div>
 
             <section class="profile-rank-panel" aria-labelledby="profileRankTitle">
                 <div class="profile-rank-card">
@@ -509,4 +648,6 @@ function renderProfile() {
         rankToggle.setAttribute("aria-expanded", String(!isExpanded));
         rankOverview.hidden = isExpanded;
     });
+
+    renderProfileAvatarPicker(container);
 }
