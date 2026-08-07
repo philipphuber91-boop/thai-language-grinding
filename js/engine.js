@@ -78,7 +78,7 @@ function getQuestUnlockRequirements(quest, questNumber) {
         1,
         Number.isFinite(configuredLevel)
             ? Math.floor(configuredLevel)
-            : Math.ceil(index / 2)
+            : index
     );
     const previousQuestNumber = index - 1;
     const previousQuestAchievementCount = previousQuestNumber > 0
