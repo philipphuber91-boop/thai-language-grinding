@@ -381,12 +381,9 @@ function renderHomeStatistics() {
 
 function getCampaignRecommendations() {
     const questIds = getCampaignQuestIds();
-    const availableQuests = questIds.filter(questNumber => {
-        const stats = getCampaignQuestStats(questNumber);
-        const unlockState = getCampaignUnlockState(questNumber);
-        return unlockState.unlocked && (!stats.completed ||
-            getQuestStatus(`campaign:${questNumber}`, quests[questNumber].version ?? 1) === "due");
-    });
+    const availableQuests = questIds.filter(questNumber =>
+        getCampaignUnlockState(questNumber).unlocked
+    );
 
     const priority = [
         "perfect-flow",
