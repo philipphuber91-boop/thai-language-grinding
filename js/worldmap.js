@@ -346,10 +346,30 @@ function renderHomeStatistics() {
     }
 
     const statistics = [
-        ["book", "Neue Wörter", Number(player.stats.totalThaiWords || 0), "Wörter gelernt"],
-        ["brain", "Gemeisterte Wörter", Number(player.stats.masteredThaiWords || 0), "Wörter gemeistert"],
-        ["blitz", "Bestes Tempo", Number(player.stats.bestCPM || 0), "CPM Rekord"],
-        ["scharfschütze", "Beste Genauigkeit", `${Number(player.stats.bestAccuracy || 0).toFixed(1)} %`, "Genauigkeit"]
+        [
+            "sanduhr",
+            "Gesamtspielzeit",
+            formatTime(Number(player.stats.totalTime || 0)),
+            "Gesamtspielzeit"
+        ],
+        [
+            "keyboard",
+            "Getippte Zeichen",
+            Number(player.stats.totalCharacters || 0).toLocaleString("de-DE"),
+            "Getippte Zeichen"
+        ],
+        [
+            "blitz",
+            "Durchschnittliches Tempo",
+            `${Number(player.stats.averageCPM || 0).toFixed(1)} CPM`,
+            "Durchschnittliches Tempo"
+        ],
+        [
+            "scharfschütze",
+            "Durchschnittliche Genauigkeit",
+            `${Number(player.stats.averageAccuracy || 0).toFixed(1)} %`,
+            "Durchschnittliche Genauigkeit"
+        ]
     ];
 
     container.innerHTML = statistics.map(([icon, iconAlt, value, label]) => `
