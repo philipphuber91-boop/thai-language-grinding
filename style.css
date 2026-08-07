@@ -9977,8 +9977,8 @@ body:has(#worldmapHome) .topbar{
 }
 
 .profile-rank-icon{
-    width:24px;
-    height:24px;
+    width:60px;
+    height:60px;
     object-fit:contain;
 }
 
@@ -10223,6 +10223,15 @@ body:has(#worldmapHome) .topbar{
     width:100%;
     height:100%;
     object-fit:contain;
+}
+
+.profile-badge-panel-icon{
+    flex:0 0 112px;
+    width:112px;
+    height:112px;
+    border:0;
+    border-radius:0;
+    background:transparent;
 }
 
 .profile-badges-panel{
