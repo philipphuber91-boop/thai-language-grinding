@@ -3162,6 +3162,22 @@
         order:-1;
     }
 
+    body:has(#worldmapHome) .home-column-right{
+        order:0;
+    }
+
+    body:has(#worldmapHome) .home-column-left{
+        order:1;
+    }
+
+    body:has(#worldmapHome) .profile-level-badge{
+        left:-12px;
+        bottom:-5px;
+        width:48px;
+        height:56px;
+        font-size:1.12rem;
+    }
+
     body:has(#worldmapHome) .profile-panel{
         min-height:0;
     }
@@ -3280,11 +3296,11 @@
     }
 
     body:has(#worldmapHome) .profile-level-badge{
-        left:-14px;
-        bottom:-3px;
-        width:40px;
-        height:46px;
-        font-size:.9rem;
+        left:-16px;
+        bottom:-5px;
+        width:48px;
+        height:56px;
+        font-size:1.12rem;
     }
 
     body:has(#worldmapHome) .quote-panel{

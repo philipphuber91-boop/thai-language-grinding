@@ -372,23 +372,34 @@ function getCampaignRecommendations() {
             getQuestStatus(`campaign:${questNumber}`, quests[questNumber].version ?? 1) === "due");
     });
 
-    const flowQuests = availableQuests.filter(questNumber =>
-        getCampaignQuestFamiliarityCategory(questNumber).category.key === "perfect-flow"
+    const priority = [
+        "perfect-flow",
+        "challenging",
+        "too-easy",
+        "too-difficult"
+    ];
+    const groupedQuests = new Map(
+        priority.map(categoryKey => [categoryKey, []])
     );
 
-    if (flowQuests.length > 0) {
-        return flowQuests.slice(0, 3);
-    }
+    availableQuests.forEach(questNumber => {
+        const categoryKey =
+            getCampaignQuestFamiliarityCategory(questNumber).category.key;
+        const categoryQuests = groupedQuests.get(categoryKey);
 
-    const challengingQuests = availableQuests.filter(questNumber =>
-        getCampaignQuestFamiliarityCategory(questNumber).category.key === "challenging"
+        if (categoryQuests) {
+            categoryQuests.push(questNumber);
+        }
+    });
+
+    const prioritizedQuests = priority.flatMap(
+        categoryKey => groupedQuests.get(categoryKey)
     );
 
-    if (challengingQuests.length > 0) {
-        return challengingQuests.slice(0, 3);
-    }
-
-    return availableQuests.slice(0, 3);
+    return (prioritizedQuests.length > 0
+        ? prioritizedQuests
+        : availableQuests
+    ).slice(0, 3);
 }
 
 function renderCampaignRecommendations() {
@@ -399,6 +410,20 @@ function renderCampaignRecommendations() {
     }
 
     const recommendationIds = getCampaignRecommendations();
+    const startButton = document.getElementById("recommendationStartButton");
+
+    if (recommendationIds.length === 0) {
+        container.innerHTML = `
+            <p class="campaign-recommendations-empty" role="status">
+                Noch ist keine weitere Quest freigeschaltet.
+            </p>
+        `;
+        if (startButton) {
+            startButton.disabled = true;
+        }
+        return;
+    }
+
     container.innerHTML = recommendationIds.map(questNumber => {
         const quest = quests[questNumber];
         const unlockState = getCampaignUnlockState(questNumber);
@@ -429,8 +454,8 @@ function renderCampaignRecommendations() {
         });
     });
 
-    const startButton = document.getElementById("recommendationStartButton");
     if (startButton) {
+        startButton.disabled = false;
         startButton.onclick = () => {
             const firstRecommendation = recommendationIds[0];
             if (firstRecommendation) {

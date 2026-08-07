@@ -9599,6 +9599,14 @@ body:has(#worldmapHome) .topbar{
     flex-direction:column;
 }
 
+.campaign-recommendations-empty{
+    margin:12px 0;
+    color:#765323;
+    font-size:.78rem;
+    line-height:1.4;
+    text-align:center;
+}
+
 .campaign-recommendation{
     display:grid;
     grid-template-columns:44px minmax(0, 1fr) auto;
