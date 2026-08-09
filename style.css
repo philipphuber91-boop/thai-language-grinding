@@ -10509,3 +10509,39 @@ body:has(#worldmapHome) .topbar{
 .world-map-page .world-map-node-label{
     opacity:1;
 }
+
+.quest-comedy-subtitle{
+    margin: -8px 0 10px;
+    color:#8d652b;
+    font: italic 500 .95rem Georgia, "Times New Roman", serif;
+}
+
+.comedy-speaker{
+    position:absolute;
+    top:10px;
+    left:16px;
+    z-index:1;
+    display:flex;
+    align-items:flex-start;
+    justify-content:flex-start;
+    width:clamp(96px, 12vw, 140px);
+    height:clamp(140px, 20vh, 190px);
+    overflow:hidden;
+}
+
+.comedy-speaker-portrait{
+    display:block;
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    object-position:top left;
+}
+
+@media (max-width:900px){
+    .comedy-speaker{
+        top:8px;
+        left:10px;
+        width:clamp(78px, 26vw, 112px);
+        height:clamp(112px, 27vw, 152px);
+    }
+}

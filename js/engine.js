@@ -73,6 +73,24 @@ function getQuestAchievementCount(questId) {
 
 function getQuestUnlockRequirements(quest, questNumber) {
     const index = Math.max(1, Math.floor(Number(questNumber) || 1));
+    if (contentMode === "comedy") {
+        const previousQuestNumber = index - 1;
+        const previousQuestStats = previousQuestNumber > 0
+            ? getQuestStats(
+                `comedy:${previousQuestNumber}`,
+                comedyEpisodes[previousQuestNumber]?.version ?? 1
+            )
+            : null;
+
+        return {
+            requiredLevel: 1,
+            previousQuestNumber,
+            previousQuestAchievementCount: 0,
+            previousQuestCompleted: Boolean(previousQuestStats?.completed),
+            requiredAchievements: 0
+        };
+    }
+
     const configuredLevel = Number(quest?.requiredLevel);
     const requiredLevel = Math.max(
         1,
@@ -98,20 +116,28 @@ function getQuestUnlockRequirements(quest, questNumber) {
 function getQuestUnlockState(quest, questNumber) {
     const requirements = getQuestUnlockRequirements(quest, questNumber);
     const xpSummary = getPlayerXpSummary();
-    const unlocked =
-        xpSummary.level >= requirements.requiredLevel &&
-        (
-            requirements.previousQuestNumber === 0 ||
-            requirements.previousQuestAchievementCount >=
-                requirements.requiredAchievements
-        );
+    const unlocked = contentMode === "comedy"
+        ? requirements.previousQuestNumber === 0 ||
+            requirements.previousQuestCompleted
+        : xpSummary.level >= requirements.requiredLevel &&
+            (
+                requirements.previousQuestNumber === 0 ||
+                requirements.previousQuestAchievementCount >=
+                    requirements.requiredAchievements
+            );
 
     return {
         ...requirements,
         unlocked,
-        bypassAvailable: !unlocked && questUnlockBypassEnabled,
+        bypassAvailable:
+            !unlocked &&
+            questUnlockBypassEnabled,
         requirementText:
-            requirements.previousQuestNumber === 0
+            contentMode === "comedy"
+                ? requirements.previousQuestNumber === 0
+                    ? "Episode 1 ist freigeschaltet."
+                    : `Benötigt: Abschluss von Episode ${requirements.previousQuestNumber}`
+                : requirements.previousQuestNumber === 0
                 ? `Benötigt: Level ${requirements.requiredLevel}`
                 : `Benötigt: Level ${requirements.requiredLevel} und mindestens ${requirements.requiredAchievements} Auszeichnungen in Quest ${requirements.previousQuestNumber} (${requirements.previousQuestAchievementCount}/${requirements.requiredAchievements})`
     };
@@ -536,7 +562,9 @@ function ladeKarten() {
     const daten =
         contentMode === "campaign"
             ? quests
-            : missions;
+            : contentMode === "comedy"
+                ? comedyEpisodes
+                : missions;
 
     for (const nummer in daten) {
 
@@ -659,6 +687,10 @@ karte.innerHTML = `
     <div class="quest-main">
 
         <h2>${quest.titel}</h2>
+
+        ${contentMode === "comedy"
+            ? `<p class="quest-comedy-subtitle">${quest.beschreibung}</p>`
+            : ""}
 
         ${window.questAudio.renderQuestAudioPlayer({
             contentMode,
@@ -811,7 +843,9 @@ function starteQuest(questNummer) {
     const daten =
         contentMode === "campaign"
             ? quests
-            : missions;
+            : contentMode === "comedy"
+                ? comedyEpisodes
+                : missions;
 
     const quest = daten[questNummer];
     const unlockState = getQuestUnlockState(quest, questNummer);
@@ -830,6 +864,8 @@ function starteQuest(questNummer) {
     document.getElementById("startOverlayTitle").textContent =
         contentMode === "campaign"
             ? "📖 Kampagne starten"
+            : contentMode === "comedy"
+                ? "😂 Komödie starten"
             : "🎯 Mission starten";
 
     // Questdaten
@@ -985,7 +1021,13 @@ if (campaignButton) {
 
     campaignButton.onclick = function () {
         if (!questStartBypassActive && !getQuestUnlockState(
-            (contentMode === "campaign" ? quests : missions)[
+            (
+                contentMode === "campaign"
+                    ? quests
+                    : contentMode === "comedy"
+                        ? comedyEpisodes
+                        : missions
+            )[
                 ausgewaehlteQuest
             ],
             ausgewaehlteQuest
@@ -1012,7 +1054,13 @@ if (challengeButton) {
 
     challengeButton.onclick = function () {
         if (!questStartBypassActive && !getQuestUnlockState(
-            (contentMode === "campaign" ? quests : missions)[
+            (
+                contentMode === "campaign"
+                    ? quests
+                    : contentMode === "comedy"
+                        ? comedyEpisodes
+                        : missions
+            )[
                 ausgewaehlteQuest
             ],
             ausgewaehlteQuest
@@ -1131,7 +1179,7 @@ function switchContent(mode) {
    };
 
    const activeNavigationMode =
-       mode === "campaign" || mode === "missions"
+       mode === "campaign" || mode === "missions" || mode === "comedy"
            ? "quests"
            : mode;
 
@@ -1157,6 +1205,7 @@ function switchContent(mode) {
 
    [
        [campaignListButton, "campaign"],
+       [comedyListButton, "comedy"],
        [missionsMenuButton, "missions"]
    ].forEach(([button, buttonMode]) => {
        if (!button) {
@@ -1190,15 +1239,31 @@ function switchContent(mode) {
            showSecondaryView();
            questView?.removeAttribute("hidden");
            document.getElementById("questListe").style.display = "block";
+           document.getElementById("questViewEyebrow").textContent =
+               "Deine Lernpfade";
+           document.getElementById("questViewTitle").textContent = "Quests";
            ladeKarten();
            break;
 
+       case "comedy":
+           document.body.classList.remove("mobile-chronik-mode");
+           showSecondaryView();
+           questView?.removeAttribute("hidden");
+           document.getElementById("questListe").style.display = "block";
+           document.getElementById("questViewEyebrow").textContent =
+               "Eine fortlaufende Serie";
+           document.getElementById("questViewTitle").textContent = "😂 Komödie";
+           ladeKarten();
+           break;
 
        case "missions":
            document.body.classList.remove("mobile-chronik-mode");
            showSecondaryView();
            questView?.removeAttribute("hidden");
            document.getElementById("questListe").style.display = "block";
+           document.getElementById("questViewEyebrow").textContent =
+               "Deine Lernpfade";
+           document.getElementById("questViewTitle").textContent = "Missionen";
            ladeKarten();
            break;
 
@@ -1243,10 +1308,17 @@ campaignMenuButton.onclick = function () {
 }
 
 const campaignListButton = document.getElementById("campaignListButton");
+const comedyListButton = document.getElementById("comedyListButton");
 
 if (campaignListButton) {
     campaignListButton.onclick = function () {
         switchContent("campaign");
+    };
+}
+
+if (comedyListButton) {
+    comedyListButton.onclick = function () {
+        switchContent("comedy");
     };
 }
 

@@ -42,6 +42,7 @@
     <div class="menu-card">
         <button class="mobile-menu-button" type="button" data-content-mode="worldmap">🗺 Weltkarte</button>
         <button class="mobile-menu-button" type="button" data-content-mode="quests">📜 Quests</button>
+        <button class="mobile-menu-button" type="button" data-content-mode="comedy">😂 Komödie</button>
         <button class="mobile-menu-button" type="button" data-content-mode="missions">🧭 Missionen</button>
         <button class="mobile-menu-button" type="button" data-content-mode="achievements">🏆 Erfolge</button>
         <button class="mobile-menu-button" type="button" data-content-mode="chronik">📖 Chronik</button>
@@ -126,11 +127,12 @@
     <section id="questView" class="secondary-view" hidden>
         <div class="secondary-view-header">
             <div>
-                <p class="eyebrow">Deine Lernpfade</p>
-                <h1>Quests</h1>
+                <p id="questViewEyebrow" class="eyebrow">Deine Lernpfade</p>
+                <h1 id="questViewTitle">Quests</h1>
             </div>
             <div class="content-switcher" aria-label="Quest-Kategorie">
                 <button id="campaignListButton" class="content-switcher-button is-active" type="button" aria-pressed="true">Kampagne</button>
+                <button id="comedyListButton" class="content-switcher-button" type="button" aria-pressed="false">😂 Komödie</button>
                 <button id="missionsMenuButton" class="content-switcher-button" type="button" aria-pressed="false">Missionen</button>
             </div>
         </div>
@@ -357,6 +359,8 @@
 <script src="../data/quests.js"></script>
 
 <script src="../data/missions.js"></script>
+
+<script src="../data/comedy.js"></script>
 
 <script src="../js/thai-text-stats.js"></script>
 <script src="../js/player.js"></script>

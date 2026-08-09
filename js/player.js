@@ -415,6 +415,9 @@ function getQuestDataFromStatsId(questId) {
     const daten =
         contentType === "campaign"
             ? quests
+            : contentType === "comedy" &&
+                typeof comedyEpisodes !== "undefined"
+                ? comedyEpisodes
             : contentType === "missions"
                 ? missions
                 : null;

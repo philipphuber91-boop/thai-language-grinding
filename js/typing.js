@@ -40,6 +40,8 @@ const contentMode =
 const daten =
     contentMode === "campaign"
         ? quests
+        : contentMode === "comedy"
+            ? comedyEpisodes
         : missions;
 
 const typingAudioContainer =
@@ -1269,6 +1271,13 @@ const thaiZeilen =
 
 const deutschZeilen =
     daten[aktuelleQuest].deutschZeilen;
+const comedySpeaker = document.getElementById("comedySpeaker");
+const comedySpeakerPortrait = document.getElementById(
+    "comedySpeakerPortrait"
+);
+const comedyDialogue = Array.isArray(daten[aktuelleQuest].dialogue)
+    ? daten[aktuelleQuest].dialogue
+    : [];
 let text = thaiZeilen[0];
 
 let position = 0;
@@ -1415,6 +1424,25 @@ function aktualisiereDeutsch() {
             ? deutschZeilen[aktuelleZeile] || ""
             : "";
 
+}
+
+function aktualisiereComedyPortrait() {
+    if (!comedySpeaker || !comedySpeakerPortrait) {
+        return;
+    }
+
+    const line = comedyDialogue[aktuelleZeile];
+    const portrait = line?.portrait;
+    const isComedy = contentMode === "comedy" && Boolean(portrait);
+
+    comedySpeaker.hidden = !isComedy;
+    if (!isComedy) {
+        comedySpeakerPortrait.removeAttribute("src");
+        return;
+    }
+
+    comedySpeakerPortrait.src = `../assets/comedy/portraits/${portrait}.png`;
+    comedySpeakerPortrait.alt = `${line.speaker} Portrait`;
 }
 
 function getMobileThaiGraphemes(value) {
@@ -1650,6 +1678,7 @@ function istThailaendischesKombinationszeichen(zeichen) {
 
 function zeigeZeilen() {
 
+    aktualisiereComedyPortrait();
     aktualisiereDeutsch();
 
     if (usesStableThaiLines()) {

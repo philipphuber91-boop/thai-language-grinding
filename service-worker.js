@@ -16,7 +16,7 @@
  * müssen den Cache in Safari nicht manuell löschen.
  */
 
-const CACHE_VERSION = 'v47';
+const CACHE_VERSION = 'v51';
 const CACHE_NAME = `thai-language-grinding-${CACHE_VERSION}`;
 
 // App-Shell: alles, was für Start und Offline-Betrieb gebraucht wird.
@@ -41,6 +41,7 @@ const PRECACHE_ASSETS = [
 
     'data/quests.js',
     'data/missions.js',
+    'data/comedy.js',
 
     'js/save.js',
     'js/player.js',
@@ -111,6 +112,12 @@ const PRECACHE_ASSETS = [
     'assets/quest/lumphini_park.png',
     'assets/quest/rainy_bangkok.png',
     'assets/quest/small_town.png',
+    'assets/comedy/portraits/Soda.png',
+    'assets/comedy/portraits/Bong.png',
+    'assets/comedy/portraits/King.png',
+    'assets/comedy/portraits/Luukdaan.png',
+    'assets/comedy/portraits/Ton.png',
+    'assets/comedy/portraits/Mitarbeiterin.png',
 
     'assets/backgrounds/thaiworld.png',
     'assets/backgrounds/thaiworld1.png',
