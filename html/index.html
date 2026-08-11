@@ -172,6 +172,13 @@
                     <input id="youtubeLessonTranslate" name="translate" type="checkbox">
                     Deutsche Übersetzung automatisch erstellen (OpenAI-Guthaben erforderlich)
                 </label>
+                <label for="youtubeLessonTranscript">Thai-Transkript (kostenloser Fallback)</label>
+                <textarea id="youtubeLessonTranscript" name="transcript" rows="5"
+                    placeholder="YouTube: Transkript anzeigen → Text kopieren → hier einfügen"></textarea>
+                <p class="youtube-lesson-help">
+                    Wenn YouTube die Untertitel nicht automatisch bereitstellt, kopiere das Transkript
+                    aus YouTube hier hinein. Jede Zeile wird als Lernzeile übernommen.
+                </p>
             </form>
             <p id="youtubeLessonStatus" class="youtube-lesson-status" role="status" aria-live="polite"></p>
             <section id="youtubeLessonPreview" class="youtube-lesson-preview" hidden
