@@ -10475,20 +10475,6 @@ body:has(#worldmapHome) .topbar{
     white-space:nowrap;
 }
 
-.youtube-lesson-translation-option{
-    display:flex;
-    align-items:center;
-    gap:7px;
-    margin-top:9px;
-    color:#714512;
-    font-size:.85rem;
-}
-
-.youtube-lesson-translation-option input{
-    margin:0;
-    accent-color:#8b5f1f;
-}
-
 .youtube-lesson-form > textarea{
     display:block;
     width:100%;

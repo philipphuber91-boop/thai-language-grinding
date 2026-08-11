@@ -1,5 +1,20 @@
 const MAX_SEGMENTS = 80;
 const MAX_TRANSCRIPT_CHARACTERS = 12000;
+const THAI_DIGIT_REPLACEMENTS = {
+    "0": "๐",
+    "1": "๑",
+    "2": "๒",
+    "3": "๓",
+    "4": "๔",
+    "5": "๕",
+    "6": "๖",
+    "7": "๗",
+    "8": "๘",
+    "9": "๙"
+};
+const THAI_KEYBOARD_CHARACTERS = new Set(
+    Array.from("ฃๅ/-ภถุูึคตจขชๆไำพะรัํีนยญบฐลฤฆกฏดโเฌ้็่๋าษสศวซงผปแฉอฮิื์ทมฒใฬฝฦ๐๑๒๓๔๕๖๗๘๙ฯฅ ")
+);
 
 function setCorsHeaders(response) {
     const origin = process.env.YOUTUBE_LESSON_ALLOWED_ORIGIN || "*";
@@ -56,6 +71,27 @@ function decodeXml(value) {
         .trim();
 }
 
+function normalizeThaiText(value) {
+    const normalized = String(value || "")
+        .normalize("NFC")
+        .replace(/[0-9]/g, digit => THAI_DIGIT_REPLACEMENTS[digit]);
+
+    return Array.from(normalized)
+        .filter(character => THAI_KEYBOARD_CHARACTERS.has(character))
+        .join("")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+
+function normalizeTranscriptSegments(segments) {
+    return segments
+        .map(segment => ({
+            ...segment,
+            thai: normalizeThaiText(segment?.thai)
+        }))
+        .filter(segment => segment.thai);
+}
+
 function parseCaptionAttributes(value) {
     const attributes = {};
     const attributePattern = /([\w-]+)="([^"]*)"/g;
@@ -75,7 +111,7 @@ function parseTranscriptXml(xml) {
 
     while ((match = captionPattern.exec(String(xml || ""))) !== null) {
         const attributes = parseCaptionAttributes(match[1]);
-        const thai = decodeXml(match[2]);
+        const thai = normalizeThaiText(decodeXml(match[2]));
 
         if (!thai) {
             continue;
@@ -308,6 +344,26 @@ async function handler(request, response) {
                     "Die Anfrage enthält kein gültiges JSON."
                 );
             }
+        }
+
+        if (body?.translate === true && Array.isArray(body?.segments)) {
+            const segments = normalizeTranscriptSegments(body.segments);
+            const limitedTranscript = limitTranscript(segments);
+            const translationResult = await translateSegments(
+                limitedTranscript.segments,
+                true
+            );
+
+            response.status(200).json({
+                translationPending: false,
+                segments: limitedTranscript.segments.map((segment, index) => ({
+                    thai: segment.thai,
+                    deutsch: translationResult.translations[index],
+                    start: Number(segment.start) || 0,
+                    duration: Number(segment.duration) || 0
+                }))
+            });
+            return;
         }
 
         const videoId = getYoutubeVideoId(body?.url);

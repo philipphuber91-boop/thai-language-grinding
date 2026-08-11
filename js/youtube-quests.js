@@ -88,6 +88,8 @@ function createYoutubeQuest(lesson) {
         story: String(
             lesson.sourceType === "automatic"
                 ? "Diese Lektion basiert auf automatisch erzeugten YouTube-Untertiteln. Prüfe unbekannte Wörter sorgfältig."
+                : lesson.sourceType === "pasted"
+                    ? "Diese Lektion basiert auf einem manuell eingefügten Thai-Transkript."
                 : "Diese Lektion basiert auf dem Untertitel des verlinkten YouTube-Videos."
         ),
         deutschZeilen,

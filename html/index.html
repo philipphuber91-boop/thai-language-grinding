@@ -168,10 +168,6 @@
                         placeholder="https://www.youtube.com/watch?v=..." autocomplete="url">
                     <button class="dark-action-button" type="submit">Lektion erstellen</button>
                 </div>
-                <label class="youtube-lesson-translation-option">
-                    <input id="youtubeLessonTranslate" name="translate" type="checkbox">
-                    Deutsche Übersetzung automatisch erstellen (OpenAI-Guthaben erforderlich)
-                </label>
                 <label for="youtubeLessonTranscript">Thai-Transkript (kostenloser Fallback)</label>
                 <textarea id="youtubeLessonTranscript" name="transcript" rows="5"
                     placeholder="YouTube: Transkript anzeigen → Text kopieren → hier einfügen"></textarea>
@@ -197,6 +193,7 @@
                 <div id="youtubeLessonSegments" class="youtube-lesson-segments"></div>
                 <div class="youtube-lesson-preview-actions">
                     <button id="youtubeLessonCancelButton" class="secondary-action-button" type="button">Verwerfen</button>
+                    <button id="youtubeLessonTranslateButton" class="secondary-action-button" type="button">Deutsch übersetzen (OpenAI)</button>
                     <button id="youtubeLessonConfirmButton" class="dark-action-button" type="button">Als Quest speichern</button>
                 </div>
             </section>
