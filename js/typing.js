@@ -1252,6 +1252,14 @@ function renderBuchZeilen(deutschZeilen, thaiZeilen) {
         deutscherText.appendChild(deutschSatz);
         thaiText.appendChild(thaiSatz);
     }
+
+    if (!deutschZeilen.some(line => String(line || "").trim())) {
+        const hinweis = document.createElement("div");
+        hinweis.className = "buch-satz";
+        hinweis.style.gridRow = "2";
+        hinweis.textContent = "Keine deutsche Übersetzung vorhanden.";
+        deutscherText.appendChild(hinweis);
+    }
 }
 
 renderBuchZeilen(
@@ -1273,10 +1281,6 @@ const thaiZeilen =
 
 const deutschZeilen =
     daten[aktuelleQuest].deutschZeilen;
-if (!deutschZeilen.some(line => String(line || "").trim())) {
-    startDeutschButton.disabled = true;
-    startDeutschButton.title = "Für den Deutschmodus müssen deutsche Zeilen vorhanden sein.";
-}
 const comedySpeaker = document.getElementById("comedySpeaker");
 const comedySpeakerPortrait = document.getElementById(
     "comedySpeakerPortrait"
