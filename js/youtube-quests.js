@@ -76,6 +76,7 @@ function createYoutubeQuest(lesson) {
     }
 
     const quest = {
+        videoId,
         version: lesson.version || getLessonVersion({
             videoId,
             thaiZeilen,

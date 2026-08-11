@@ -1537,6 +1537,28 @@ box-shadow:
 
 }
 
+.youtube-quest-manage-button{
+    padding:7px 9px;
+    border:1px solid #a86e23;
+    border-radius:6px;
+    color:#5f3810;
+    background:#f3d48c;
+    font:700 .75rem Georgia, "Times New Roman", serif;
+    cursor:pointer;
+}
+
+.youtube-quest-manage-button:hover,
+.youtube-quest-manage-button:focus-visible{
+    background:#ffe8aa;
+    outline:2px solid rgba(113,72,15,.35);
+    outline-offset:2px;
+}
+
+.youtube-quest-delete-button{
+    color:#7b2f24;
+    background:#f1c5a8;
+}
+
 .quest-achievement-overview-button{
 
     width:42px;

@@ -44,6 +44,7 @@
         preview.hidden = true;
         previewTitle.textContent = "";
         sourceLink.removeAttribute("href");
+        sourceLink.hidden = true;
         sourceBadge.textContent = "";
         truncatedNotice.hidden = true;
         translationNotice.hidden = true;
@@ -54,7 +55,12 @@
     function renderPreview(lesson) {
         pendingLesson = lesson;
         previewTitle.textContent = lesson.title;
-        sourceLink.href = lesson.sourceUrl;
+        sourceLink.hidden = !lesson.sourceUrl;
+        if (lesson.sourceUrl) {
+            sourceLink.href = lesson.sourceUrl;
+        } else {
+            sourceLink.removeAttribute("href");
+        }
         const subtitleLabel = lesson.sourceType === "automatic"
             ? "Automatische Untertitel"
             : lesson.sourceType === "pasted"
@@ -211,10 +217,15 @@
     }
 
     function getYoutubeVideoId(value) {
+        const trimmedValue = String(value || "").trim();
+        if (!trimmedValue) {
+            return null;
+        }
+
         let url;
 
         try {
-            url = new URL(String(value || "").trim());
+            url = new URL(trimmedValue);
         } catch (error) {
             throw new Error("Bitte gib eine gültige YouTube-URL ein.");
         }
@@ -263,9 +274,24 @@
             .trim();
     }
 
+    function createTextLessonId(text) {
+        let hash = 2166136261;
+        const input = String(text || "");
+
+        for (let index = 0; index < input.length; index += 1) {
+            hash ^= input.charCodeAt(index);
+            hash = Math.imul(hash, 16777619);
+        }
+
+        return `text:${Math.abs(hash >>> 0).toString(36)}`;
+    }
+
     function createPastedLesson(url, text) {
-        const videoId = getYoutubeVideoId(url);
-        if (!videoId || !/^[\w-]{6,20}$/.test(videoId)) {
+        const trimmedUrl = String(url || "").trim();
+        const videoId = trimmedUrl
+            ? getYoutubeVideoId(trimmedUrl)
+            : createTextLessonId(text);
+        if (trimmedUrl && (!videoId || !/^[\w-]{6,20}$/.test(videoId))) {
             throw new Error("Die YouTube-URL enthält keine gültige Video-ID.");
         }
 
@@ -296,9 +322,15 @@
 
         return {
             videoId,
-            sourceUrl: `https://www.youtube.com/watch?v=${videoId}`,
-            title: `YouTube-Video ${videoId}`,
-            thumbnailUrl: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+            sourceUrl: trimmedUrl
+                ? `https://www.youtube.com/watch?v=${videoId}`
+                : "",
+            title: trimmedUrl
+                ? `YouTube-Video ${videoId}`
+                : "Eigene Thai-Lektion",
+            thumbnailUrl: trimmedUrl
+                ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
+                : "",
             sourceType: "pasted",
             truncated: limitedLines.length < lines.length,
             translationPending: true,
@@ -333,22 +365,23 @@
         clearPreview();
 
         const url = urlInput.value.trim();
-        if (!url) {
-            setStatus("Bitte füge eine YouTube-URL ein.", "error");
+        const transcript = transcriptInput.value.trim();
+        if (!url && !transcript) {
+            setStatus("Bitte füge eine YouTube-URL oder ein Thai-Transkript ein.", "error");
             return;
         }
 
         form.querySelector("button[type='submit']").disabled = true;
         setStatus(
-            transcriptInput.value.trim()
+            transcript
                 ? "Eingefügtes Transkript wird vorbereitet …"
                 : "Untertitel werden geladen …",
             "loading"
         );
 
         try {
-            const lesson = transcriptInput.value.trim()
-                ? createPastedLesson(url, transcriptInput.value)
+            const lesson = transcript
+                ? createPastedLesson(url, transcript)
                 : await requestLesson(url);
             renderPreview(lesson);
             setStatus(
@@ -450,4 +483,35 @@
             setStatus(error.message, "error");
         }
     });
+
+    window.editYoutubeQuest = function (questId) {
+        const quest = getYoutubeQuests()?.[questId];
+        if (!quest) {
+            setStatus("Diese Videoquest wurde nicht gefunden.", "error");
+            return;
+        }
+
+        if (typeof switchContent === "function") {
+            switchContent("youtube");
+        }
+
+        urlInput.value = quest.sourceUrl || "";
+        transcriptInput.value = (quest.thaiZeilen || []).join("\n");
+        renderPreview({
+            videoId: quest.videoId || questId,
+            sourceUrl: quest.sourceUrl || "",
+            title: quest.titel || "Eigene Thai-Lektion",
+            thumbnailUrl: quest.thumbnailUrl || "",
+            sourceType: quest.sourceType || "pasted",
+            translationPending: !(quest.deutschZeilen || []).some(Boolean),
+            truncated: false,
+            segments: (quest.thaiZeilen || []).map((thai, index) => ({
+                thai,
+                deutsch: quest.deutschZeilen?.[index] || "",
+                start: 0,
+                duration: 0
+            }))
+        });
+        setStatus("Lektion geöffnet. Bearbeite die Zeilen und speichere sie erneut.", "success");
+    };
 })();

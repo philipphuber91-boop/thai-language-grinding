@@ -162,18 +162,18 @@
                 angezeigt und können korrigiert oder manuell übersetzt werden.
             </p>
             <form id="youtubeLessonForm" class="youtube-lesson-form">
-                <label for="youtubeLessonUrl">YouTube-URL</label>
+                <label for="youtubeLessonUrl">YouTube-URL (optional)</label>
                 <div class="youtube-lesson-form-row">
-                    <input id="youtubeLessonUrl" name="url" type="url" required
-                        placeholder="https://www.youtube.com/watch?v=..." autocomplete="url">
+                    <input id="youtubeLessonUrl" name="url" type="url"
+                        placeholder="Optional: https://www.youtube.com/watch?v=..." autocomplete="url">
                     <button class="dark-action-button" type="submit">Lektion erstellen</button>
                 </div>
                 <label for="youtubeLessonTranscript">Thai-Transkript (kostenloser Fallback)</label>
                 <textarea id="youtubeLessonTranscript" name="transcript" rows="5"
                     placeholder="YouTube: Transkript anzeigen → Text kopieren → hier einfügen"></textarea>
                 <p class="youtube-lesson-help">
-                    Wenn YouTube die Untertitel nicht automatisch bereitstellt, kopiere das Transkript
-                    aus YouTube hier hinein. Jede Zeile wird als Lernzeile übernommen.
+                    Du kannst auch nur einen eigenen Thai-Text einfügen und ohne YouTube-URL eine
+                    eigene Lektion erstellen.
                 </p>
             </form>
             <p id="youtubeLessonStatus" class="youtube-lesson-status" role="status" aria-live="polite"></p>

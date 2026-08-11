@@ -842,6 +842,24 @@ karte.innerHTML = `
     🏆
 </button>
 
+${contentMode === "youtube"
+    ? `
+<button
+        type="button"
+        class="youtube-quest-manage-button"
+        onclick="event.stopPropagation(); editYoutubeQuest('${escapeHtml(nummer)}')">
+    Bearbeiten
+</button>
+
+<button
+        type="button"
+        class="youtube-quest-manage-button youtube-quest-delete-button"
+        onclick="event.stopPropagation(); deleteYoutubeQuestFromCard('${escapeHtml(nummer)}')">
+    Löschen
+</button>
+`
+    : ""}
+
 <button class="quest-start-button"
         ${unlockState.unlocked ? "" : "aria-label=\"Gesperrte Quest öffnen\""}
         onclick="event.stopPropagation(); starteQuest('${escapeHtml(nummer)}')">
@@ -1180,6 +1198,21 @@ function toggleQuest(questId) {
 
     karte.classList.toggle("expanded");
 
+}
+
+function deleteYoutubeQuestFromCard(questId) {
+    const quest = getYoutubeQuests()?.[questId];
+    if (!quest) {
+        return;
+    }
+
+    if (!window.confirm(`„${quest.titel}“ wirklich löschen?`)) {
+        return;
+    }
+
+    if (deleteYoutubeQuest(questId)) {
+        ladeKarten();
+    }
 }
 
 function switchContent(mode) {
