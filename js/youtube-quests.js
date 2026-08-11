@@ -85,16 +85,16 @@ function createYoutubeQuest(lesson) {
         titel: String(lesson.title || `YouTube-Video ${videoId}`).trim(),
         bild: "alltag",
         thumbnailUrl: String(lesson.thumbnailUrl || "").trim(),
-        beschreibung: "Automatisch erstellte Video-Lektion",
-        kapitel: "Video-Lektion",
-        schwierigkeit: "Individuell",
+        beschreibung: String(
+            lesson.description || "Eigene Thai-Textlektion"
+        ).trim(),
+        kapitel: String(lesson.chapter || "Eigene Lektion").trim(),
+        schwierigkeit: String(lesson.difficulty || "Individuell").trim(),
         xp: 50,
         story: String(
-            lesson.sourceType === "automatic"
-                ? "Diese Lektion basiert auf automatisch erzeugten YouTube-Untertiteln. Prüfe unbekannte Wörter sorgfältig."
-                : lesson.sourceType === "pasted"
-                    ? "Diese Lektion basiert auf einem manuell eingefügten Thai-Transkript."
-                : "Diese Lektion basiert auf dem Untertitel des verlinkten YouTube-Videos."
+            lesson.sourceType === "text"
+                ? "Diese Lektion wurde aus einem eigenen Thai-Text erstellt."
+                : "Diese Lektion basiert auf einem manuell eingefügten Thai-Transkript."
         ),
         deutschZeilen,
         thaiZeilen,

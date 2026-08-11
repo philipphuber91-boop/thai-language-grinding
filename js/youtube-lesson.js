@@ -1,34 +1,32 @@
 (function () {
     const form = document.getElementById("youtubeLessonForm");
-    const urlInput = document.getElementById("youtubeLessonUrl");
+    const titleInput = document.getElementById("youtubeLessonTitle");
+    const difficultyInput = document.getElementById("youtubeLessonDifficulty");
+    const chapterInput = document.getElementById("youtubeLessonChapter");
     const transcriptInput = document.getElementById("youtubeLessonTranscript");
     const status = document.getElementById("youtubeLessonStatus");
     const preview = document.getElementById("youtubeLessonPreview");
     const previewTitle = document.getElementById("youtubeLessonPreviewTitle");
-    const sourceLink = document.getElementById("youtubeLessonSourceLink");
     const sourceBadge = document.getElementById("youtubeLessonSourceBadge");
     const truncatedNotice = document.getElementById("youtubeLessonTruncatedNotice");
-    const translationNotice = document.getElementById("youtubeLessonTranslationNotice");
     const segmentsContainer = document.getElementById("youtubeLessonSegments");
     const confirmButton = document.getElementById("youtubeLessonConfirmButton");
-    const translateButton = document.getElementById("youtubeLessonTranslateButton");
     const cancelButton = document.getElementById("youtubeLessonCancelButton");
     let pendingLesson = null;
 
     if (
         !form ||
-        !urlInput ||
+        !titleInput ||
+        !difficultyInput ||
+        !chapterInput ||
         !transcriptInput ||
         !status ||
         !preview ||
         !previewTitle ||
-        !sourceLink ||
         !sourceBadge ||
         !truncatedNotice ||
-        !translationNotice ||
         !segmentsContainer ||
         !confirmButton ||
-        !translateButton ||
         !cancelButton
     ) {
         return;
@@ -43,39 +41,18 @@
         pendingLesson = null;
         preview.hidden = true;
         previewTitle.textContent = "";
-        sourceLink.removeAttribute("href");
-        sourceLink.hidden = true;
         sourceBadge.textContent = "";
         truncatedNotice.hidden = true;
-        translationNotice.hidden = true;
-        translateButton.hidden = true;
         segmentsContainer.replaceChildren();
     }
 
     function renderPreview(lesson) {
         pendingLesson = lesson;
         previewTitle.textContent = lesson.title;
-        sourceLink.hidden = !lesson.sourceUrl;
-        if (lesson.sourceUrl) {
-            sourceLink.href = lesson.sourceUrl;
-        } else {
-            sourceLink.removeAttribute("href");
-        }
-        const subtitleLabel = lesson.sourceType === "automatic"
-            ? "Automatische Untertitel"
-            : lesson.sourceType === "pasted"
-                ? "Manuell eingefügtes Transkript"
-                : "Untertitel";
-        sourceBadge.textContent = lesson.translationPending
-            ? `${subtitleLabel} · Deutsch manuell`
-            : subtitleLabel;
-        translateButton.hidden = !lesson.translationPending;
+        sourceBadge.textContent = "Eigener Thai-Text";
         truncatedNotice.hidden = !lesson.truncated;
         truncatedNotice.textContent =
             "Das Video ist länger als die MVP-Grenze. Nur der erste Abschnitt wurde als Lektion übernommen.";
-        translationNotice.hidden = !lesson.translationPending;
-        translationNotice.textContent =
-            "Keine automatische Übersetzung verwendet. Du kannst die Thai-only-Quest direkt speichern oder die deutschen Zeilen per Knopfdruck ergänzen.";
         segmentsContainer.replaceChildren();
 
         lesson.segments.forEach((segment, index) => {
@@ -112,141 +89,6 @@
 
         preview.hidden = false;
         preview.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-
-    async function requestLesson(url) {
-        const endpoint =
-            window.YOUTUBE_LESSON_API_URL || "/api/youtube-lesson";
-        let response;
-
-        try {
-            response = await fetch(endpoint, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({ url })
-            });
-        } catch (error) {
-            throw new Error(
-                "Der Video-Service ist nicht erreichbar. Prüfe die Backend-Konfiguration."
-            );
-        }
-
-        const responseText = await response.text();
-        let payload;
-
-        try {
-            payload = JSON.parse(responseText);
-        } catch (error) {
-            const statusText = response.status
-                ? ` (HTTP ${response.status})`
-                : "";
-            throw new Error(
-                `Der Video-Service ist nicht korrekt eingerichtet${statusText}. ` +
-                "Auf GitHub Pages werden API-Routen nicht ausgeführt; deploye das Backend " +
-                "separat und setze YOUTUBE_LESSON_API_URL."
-            );
-        }
-
-        if (!response.ok) {
-            throw new Error(
-                payload?.error?.message ||
-                "Die Video-Lektion konnte nicht erstellt werden."
-            );
-        }
-
-        if (
-            !payload.videoId ||
-            !Array.isArray(payload.segments) ||
-            payload.segments.length === 0
-        ) {
-            throw new Error("Die Antwort enthält keine nutzbaren Lektionsegmente.");
-        }
-
-        return payload;
-    }
-
-    async function requestTranslation(lesson) {
-        const endpoint =
-            window.YOUTUBE_LESSON_API_URL || "/api/youtube-lesson";
-        let response;
-
-        try {
-            response = await fetch(endpoint, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    translate: true,
-                    segments: lesson.segments.map(segment => ({
-                        thai: segment.thai,
-                        start: segment.start,
-                        duration: segment.duration
-                    }))
-                })
-            });
-        } catch (error) {
-            throw new Error(
-                "Der Übersetzungsdienst ist nicht erreichbar. Prüfe die Backend-Konfiguration."
-            );
-        }
-
-        const responseText = await response.text();
-        let payload;
-
-        try {
-            payload = JSON.parse(responseText);
-        } catch (error) {
-            throw new Error("Der Übersetzungsdienst hat eine ungültige Antwort geliefert.");
-        }
-
-        if (!response.ok) {
-            throw new Error(
-                payload?.error?.message ||
-                "Die Übersetzung konnte nicht erstellt werden."
-            );
-        }
-
-        if (!Array.isArray(payload.segments) || payload.segments.length !== lesson.segments.length) {
-            throw new Error("Die Übersetzung enthält nicht für jede Thai-Zeile ein Ergebnis.");
-        }
-
-        return payload;
-    }
-
-    function getYoutubeVideoId(value) {
-        const trimmedValue = String(value || "").trim();
-        if (!trimmedValue) {
-            return null;
-        }
-
-        let url;
-
-        try {
-            url = new URL(trimmedValue);
-        } catch (error) {
-            throw new Error("Bitte gib eine gültige YouTube-URL ein.");
-        }
-
-        const hostname = url.hostname.toLowerCase().replace(/^www\./, "");
-        if (hostname === "youtu.be") {
-            return url.pathname.slice(1).split("/")[0] || null;
-        }
-
-        if (hostname !== "youtube.com" && hostname !== "m.youtube.com") {
-            return null;
-        }
-
-        if (url.pathname === "/watch") {
-            return url.searchParams.get("v");
-        }
-
-        const pathParts = url.pathname.split("/").filter(Boolean);
-        return ["shorts", "embed", "live"].includes(pathParts[0])
-            ? pathParts[1] || null
-            : null;
     }
 
     const thaiDigitReplacements = {
@@ -286,15 +128,7 @@
         return `text:${Math.abs(hash >>> 0).toString(36)}`;
     }
 
-    function createPastedLesson(url, text) {
-        const trimmedUrl = String(url || "").trim();
-        const videoId = trimmedUrl
-            ? getYoutubeVideoId(trimmedUrl)
-            : createTextLessonId(text);
-        if (trimmedUrl && (!videoId || !/^[\w-]{6,20}$/.test(videoId))) {
-            throw new Error("Die YouTube-URL enthält keine gültige Video-ID.");
-        }
-
+    function createTextLesson(text, metadata) {
         const lines = String(text)
             .split(/\r?\n/)
             .map(line => line.trim())
@@ -321,19 +155,16 @@
         }
 
         return {
-            videoId,
-            sourceUrl: trimmedUrl
-                ? `https://www.youtube.com/watch?v=${videoId}`
-                : "",
-            title: trimmedUrl
-                ? `YouTube-Video ${videoId}`
-                : "Eigene Thai-Lektion",
-            thumbnailUrl: trimmedUrl
-                ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
-                : "",
-            sourceType: "pasted",
+            videoId: createTextLessonId(
+                [metadata.title, metadata.difficulty, metadata.chapter, ...limitedLines].join("\n")
+            ),
+            sourceUrl: "",
+            title: metadata.title,
+            difficulty: metadata.difficulty,
+            chapter: metadata.chapter,
+            thumbnailUrl: "",
+            sourceType: "text",
             truncated: limitedLines.length < lines.length,
-            translationPending: true,
             segments: limitedLines.map(thai => ({
                 thai,
                 deutsch: "",
@@ -364,80 +195,30 @@
         event.preventDefault();
         clearPreview();
 
-        const url = urlInput.value.trim();
         const transcript = transcriptInput.value.trim();
-        if (!url && !transcript) {
-            setStatus("Bitte füge eine YouTube-URL oder ein Thai-Transkript ein.", "error");
+        if (!transcript) {
+            setStatus("Bitte füge einen Thai-Text ein.", "error");
             return;
         }
 
         form.querySelector("button[type='submit']").disabled = true;
-        setStatus(
-            transcript
-                ? "Eingefügtes Transkript wird vorbereitet …"
-                : "Untertitel werden geladen …",
-            "loading"
-        );
+        setStatus("Eigene Thai-Lektion wird vorbereitet …", "loading");
 
         try {
-            const lesson = transcript
-                ? createPastedLesson(url, transcript)
-                : await requestLesson(url);
+            const lesson = createTextLesson(transcript, {
+                title: titleInput.value.trim(),
+                difficulty: difficultyInput.value.trim(),
+                chapter: chapterInput.value.trim()
+            });
             renderPreview(lesson);
             setStatus(
-                lesson.sourceType === "pasted"
-                    ? "Transkript übernommen. Ergänze jetzt die deutschen Zeilen."
-                    : lesson.translationPending
-                    ? "Thai-Untertitel geladen. Ergänze jetzt die deutschen Zeilen."
-                    : "Prüfe jetzt jede Zeile. Erst danach wird die Videoquest gespeichert.",
+                "Text übernommen. Prüfe jetzt die Zeilen und speichere die Quest.",
                 "success"
             );
         } catch (error) {
             setStatus(error.message, "error");
         } finally {
             form.querySelector("button[type='submit']").disabled = false;
-        }
-    });
-
-    translateButton.addEventListener("click", async () => {
-        if (!pendingLesson) {
-            setStatus("Es gibt keine Lektion zur Übersetzung.", "error");
-            return;
-        }
-
-        const { thaiZeilen, deutschZeilen } = readPreviewFields();
-        if (thaiZeilen.some(line => !line)) {
-            setStatus("Jede Thai-Zeile muss mindestens ein Thai-Zeichen enthalten.", "error");
-            return;
-        }
-
-        pendingLesson = {
-            ...pendingLesson,
-            segments: pendingLesson.segments.map((segment, index) => ({
-                ...segment,
-                thai: thaiZeilen[index],
-                deutsch: deutschZeilen[index] || ""
-            }))
-        };
-        translateButton.disabled = true;
-        setStatus("Deutsche Übersetzung wird erstellt …", "loading");
-
-        try {
-            const translated = await requestTranslation(pendingLesson);
-            pendingLesson = {
-                ...pendingLesson,
-                translationPending: false,
-                segments: translated.segments
-            };
-            renderPreview(pendingLesson);
-            setStatus(
-                "Übersetzung erstellt. Prüfe jetzt jede Zeile und speichere die Quest.",
-                "success"
-            );
-        } catch (error) {
-            setStatus(error.message, "error");
-        } finally {
-            translateButton.disabled = false;
         }
     });
 
@@ -462,16 +243,19 @@
         try {
             const saved = createYoutubeQuest({
                 ...pendingLesson,
+                title: titleInput.value.trim(),
+                difficulty: difficultyInput.value.trim(),
+                chapter: chapterInput.value.trim(),
                 thaiZeilen,
                 deutschZeilen
             });
             clearPreview();
-            urlInput.value = "";
+            titleInput.value = "";
+            difficultyInput.value = "";
+            chapterInput.value = "";
             transcriptInput.value = "";
             setStatus(
-                deutschZeilen.some(Boolean)
-                    ? "Videoquest gespeichert. Du kannst sie jetzt starten."
-                    : "Thai-only-Videoquest gespeichert. Du kannst die Thai-Zeilen jetzt üben.",
+                "Lektion gespeichert. Du kannst sie jetzt starten.",
                 "success"
             );
             ladeKarten();
@@ -495,15 +279,16 @@
             switchContent("youtube");
         }
 
-        urlInput.value = quest.sourceUrl || "";
+        titleInput.value = quest.titel || "";
+        difficultyInput.value = quest.schwierigkeit || "";
+        chapterInput.value = quest.kapitel || "";
         transcriptInput.value = (quest.thaiZeilen || []).join("\n");
         renderPreview({
             videoId: quest.videoId || questId,
-            sourceUrl: quest.sourceUrl || "",
             title: quest.titel || "Eigene Thai-Lektion",
-            thumbnailUrl: quest.thumbnailUrl || "",
-            sourceType: quest.sourceType || "pasted",
-            translationPending: !(quest.deutschZeilen || []).some(Boolean),
+            difficulty: quest.schwierigkeit || "",
+            chapter: quest.kapitel || "",
+            sourceType: "text",
             truncated: false,
             segments: (quest.thaiZeilen || []).map((thai, index) => ({
                 thai,

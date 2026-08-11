@@ -182,7 +182,7 @@ function getQuestUnlockState(quest, questNumber) {
             questUnlockBypassEnabled,
         requirementText:
             contentMode === "youtube"
-                ? "Videoquests sind sofort freigeschaltet."
+                ? "Eigene Lektionen sind sofort freigeschaltet."
                 : contentMode === "comedy"
                 ? requirements.previousQuestNumber === 0
                     ? "Episode 1 ist freigeschaltet."
@@ -615,7 +615,7 @@ function ladeKarten() {
         const emptyState = document.createElement("p");
         emptyState.className = "youtube-lesson-empty";
         emptyState.textContent =
-            "Noch keine Videoquests gespeichert. Erstelle oben deine erste Lektion.";
+            "Noch keine eigenen Lektionen gespeichert. Erstelle oben deine erste Lektion.";
         questListe.appendChild(emptyState);
         return;
     }
@@ -934,7 +934,7 @@ function starteQuest(questNummer) {
             : contentMode === "comedy"
                 ? "😂 Komödie starten"
                 : contentMode === "youtube"
-                    ? "🎥 Videoquest starten"
+                    ? "📚 Eigene Lektion starten"
                     : "🎯 Mission starten";
 
     // Questdaten
@@ -1341,7 +1341,7 @@ function switchContent(mode) {
            document.getElementById("youtubeLessonCreator")?.removeAttribute("hidden");
            document.getElementById("questViewEyebrow").textContent =
                "Lerne aus deinen Lieblingsvideos";
-           document.getElementById("questViewTitle").textContent = "🎥 Videoquests";
+           document.getElementById("questViewTitle").textContent = "📚 Eigene Lektionen";
            ladeKarten();
            break;
 
