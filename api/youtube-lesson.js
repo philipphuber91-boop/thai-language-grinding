@@ -191,7 +191,14 @@ function parseTranslationResponse(value, expectedLength) {
     return translations.map(translation => translation.trim());
 }
 
-async function translateSegments(segments) {
+async function translateSegments(segments, shouldTranslate) {
+    if (!shouldTranslate) {
+        return {
+            translations: segments.map(() => ""),
+            translationPending: true
+        };
+    }
+
     const apiKey = String(process.env.OPENAI_API_KEY || "").trim();
     if (!apiKey) {
         throw createApiError(
@@ -241,10 +248,13 @@ async function translateSegments(segments) {
     }
 
     const payload = await response.json();
-    return parseTranslationResponse(
-        payload?.choices?.[0]?.message?.content,
-        segments.length
-    );
+    return {
+        translations: parseTranslationResponse(
+            payload?.choices?.[0]?.message?.content,
+            segments.length
+        ),
+        translationPending: false
+    };
 }
 
 async function getVideoTitle(videoId) {
@@ -311,7 +321,10 @@ async function handler(request, response) {
 
         const transcript = await fetchTranscript(videoId);
         const limitedTranscript = limitTranscript(transcript.segments);
-        const translations = await translateSegments(limitedTranscript.segments);
+        const translationResult = await translateSegments(
+            limitedTranscript.segments,
+            body?.translate === true
+        );
         const title = await getVideoTitle(videoId);
 
         response.status(200).json({
@@ -321,9 +334,10 @@ async function handler(request, response) {
             thumbnailUrl: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
             sourceType: transcript.sourceType,
             truncated: limitedTranscript.truncated,
+            translationPending: translationResult.translationPending,
             segments: limitedTranscript.segments.map((segment, index) => ({
                 thai: segment.thai,
-                deutsch: translations[index],
+                deutsch: translationResult.translations[index],
                 start: segment.start,
                 duration: segment.duration
             }))

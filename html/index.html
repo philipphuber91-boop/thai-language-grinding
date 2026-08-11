@@ -158,8 +158,8 @@
                 <span aria-hidden="true">✦</span>
             </div>
             <p class="youtube-lesson-intro">
-                Füge ein Thai-YouTube-Video ein. Die Untertitel und Übersetzung werden vor dem
-                Erstellen der Quest angezeigt und können korrigiert werden.
+                Füge ein Thai-YouTube-Video ein. Die Untertitel werden vor dem Erstellen der Quest
+                angezeigt und können korrigiert oder manuell übersetzt werden.
             </p>
             <form id="youtubeLessonForm" class="youtube-lesson-form">
                 <label for="youtubeLessonUrl">YouTube-URL</label>
@@ -168,6 +168,10 @@
                         placeholder="https://www.youtube.com/watch?v=..." autocomplete="url">
                     <button class="dark-action-button" type="submit">Lektion erstellen</button>
                 </div>
+                <label class="youtube-lesson-translation-option">
+                    <input id="youtubeLessonTranslate" name="translate" type="checkbox">
+                    Deutsche Übersetzung automatisch erstellen (OpenAI-Guthaben erforderlich)
+                </label>
             </form>
             <p id="youtubeLessonStatus" class="youtube-lesson-status" role="status" aria-live="polite"></p>
             <section id="youtubeLessonPreview" class="youtube-lesson-preview" hidden
@@ -182,6 +186,7 @@
                     <span id="youtubeLessonSourceBadge" class="youtube-lesson-source-badge"></span>
                 </div>
                 <p id="youtubeLessonTruncatedNotice" class="youtube-lesson-warning" hidden></p>
+                <p id="youtubeLessonTranslationNotice" class="youtube-lesson-warning" hidden></p>
                 <div id="youtubeLessonSegments" class="youtube-lesson-segments"></div>
                 <div class="youtube-lesson-preview-actions">
                     <button id="youtubeLessonCancelButton" class="secondary-action-button" type="button">Verwerfen</button>

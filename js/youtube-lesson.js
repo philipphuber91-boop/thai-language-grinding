@@ -1,12 +1,14 @@
 (function () {
     const form = document.getElementById("youtubeLessonForm");
     const urlInput = document.getElementById("youtubeLessonUrl");
+    const translateInput = document.getElementById("youtubeLessonTranslate");
     const status = document.getElementById("youtubeLessonStatus");
     const preview = document.getElementById("youtubeLessonPreview");
     const previewTitle = document.getElementById("youtubeLessonPreviewTitle");
     const sourceLink = document.getElementById("youtubeLessonSourceLink");
     const sourceBadge = document.getElementById("youtubeLessonSourceBadge");
     const truncatedNotice = document.getElementById("youtubeLessonTruncatedNotice");
+    const translationNotice = document.getElementById("youtubeLessonTranslationNotice");
     const segmentsContainer = document.getElementById("youtubeLessonSegments");
     const confirmButton = document.getElementById("youtubeLessonConfirmButton");
     const cancelButton = document.getElementById("youtubeLessonCancelButton");
@@ -15,12 +17,14 @@
     if (
         !form ||
         !urlInput ||
+        !translateInput ||
         !status ||
         !preview ||
         !previewTitle ||
         !sourceLink ||
         !sourceBadge ||
         !truncatedNotice ||
+        !translationNotice ||
         !segmentsContainer ||
         !confirmButton ||
         !cancelButton
@@ -40,6 +44,7 @@
         sourceLink.removeAttribute("href");
         sourceBadge.textContent = "";
         truncatedNotice.hidden = true;
+        translationNotice.hidden = true;
         segmentsContainer.replaceChildren();
     }
 
@@ -47,13 +52,19 @@
         pendingLesson = lesson;
         previewTitle.textContent = lesson.title;
         sourceLink.href = lesson.sourceUrl;
-        sourceBadge.textContent =
+        const subtitleLabel =
             lesson.sourceType === "automatic"
                 ? "Automatische Untertitel"
                 : "Untertitel";
+        sourceBadge.textContent = lesson.translationPending
+            ? `${subtitleLabel} · Deutsch manuell`
+            : subtitleLabel;
         truncatedNotice.hidden = !lesson.truncated;
         truncatedNotice.textContent =
             "Das Video ist länger als die MVP-Grenze. Nur der erste Abschnitt wurde als Lektion übernommen.";
+        translationNotice.hidden = !lesson.translationPending;
+        translationNotice.textContent =
+            "Keine automatische Übersetzung verwendet. Ergänze bitte die deutschen Zeilen manuell, bevor du die Quest speicherst.";
         segmentsContainer.replaceChildren();
 
         lesson.segments.forEach((segment, index) => {
@@ -92,7 +103,7 @@
         preview.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
-    async function requestLesson(url) {
+    async function requestLesson(url, translate) {
         const endpoint =
             window.YOUTUBE_LESSON_API_URL || "/api/youtube-lesson";
         let response;
@@ -103,7 +114,7 @@
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ url })
+                body: JSON.stringify({ url, translate })
             });
         } catch (error) {
             throw new Error(
@@ -156,13 +167,21 @@
         }
 
         form.querySelector("button[type='submit']").disabled = true;
-        setStatus("Untertitel werden geladen und übersetzt …", "loading");
+        const translate = translateInput.checked;
+        setStatus(
+            translate
+                ? "Untertitel werden geladen und übersetzt …"
+                : "Untertitel werden geladen …",
+            "loading"
+        );
 
         try {
-            const lesson = await requestLesson(url);
+            const lesson = await requestLesson(url, translate);
             renderPreview(lesson);
             setStatus(
-                "Prüfe jetzt jede Zeile. Erst danach wird die Videoquest gespeichert.",
+                lesson.translationPending
+                    ? "Thai-Untertitel geladen. Ergänze jetzt die deutschen Zeilen."
+                    : "Prüfe jetzt jede Zeile. Erst danach wird die Videoquest gespeichert.",
                 "success"
             );
         } catch (error) {
