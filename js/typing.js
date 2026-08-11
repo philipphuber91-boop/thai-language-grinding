@@ -42,7 +42,9 @@ const daten =
         ? quests
         : contentMode === "comedy"
             ? comedyEpisodes
-        : missions;
+        : contentMode === "missions"
+            ? missions
+            : getYoutubeQuests();
 
 const typingAudioContainer =
     document.getElementById("typingAudioContainer");

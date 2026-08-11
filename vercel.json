@@ -1,0 +1,7 @@
+{
+    "functions": {
+        "api/youtube-lesson.js": {
+            "maxDuration": 60
+        }
+    }
+}

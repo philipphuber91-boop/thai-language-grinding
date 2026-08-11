@@ -10402,6 +10402,7 @@ body:has(#worldmapHome) .topbar{
 
 .content-switcher{
     display:flex;
+    flex-wrap:wrap;
     gap:6px;
 }
 
@@ -10420,6 +10421,226 @@ body:has(#worldmapHome) .topbar{
     color:#fff1bf;
     background:#4f3518;
     outline:none;
+}
+
+.youtube-lesson-creator{
+    margin-bottom:18px;
+    color:#5c3d1a;
+}
+
+.youtube-lesson-home-panel{
+    color:#5c3d1a;
+}
+
+.youtube-lesson-home-panel .recommendation-intro{
+    margin-bottom:0;
+}
+
+.youtube-lesson-intro{
+    max-width:760px;
+    margin:0 0 14px;
+    line-height:1.5;
+}
+
+.youtube-lesson-form{
+    max-width:900px;
+}
+
+.youtube-lesson-form > label{
+    display:block;
+    margin-bottom:5px;
+    font-weight:700;
+}
+
+.youtube-lesson-form-row{
+    display:flex;
+    align-items:stretch;
+    gap:8px;
+}
+
+.youtube-lesson-form-row input{
+    flex:1;
+    min-width:0;
+    padding:10px 12px;
+    border:1px solid #a9792e;
+    border-radius:3px;
+    color:#3d2914;
+    background:#fff8e5;
+    font:inherit;
+}
+
+.youtube-lesson-form-row .dark-action-button{
+    width:auto;
+    margin-top:0;
+    white-space:nowrap;
+}
+
+.youtube-lesson-status{
+    min-height:1.4em;
+    margin:10px 0 0;
+    font-size:.9rem;
+}
+
+.youtube-lesson-status.is-loading{
+    color:#8b5f1f;
+}
+
+.youtube-lesson-status.is-success{
+    color:#33753c;
+}
+
+.youtube-lesson-status.is-error{
+    color:#9b3b2f;
+}
+
+.youtube-lesson-preview{
+    margin-top:18px;
+    padding-top:16px;
+    border-top:1px solid rgba(126,84,24,.35);
+}
+
+.youtube-lesson-preview-header{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap:16px;
+}
+
+.youtube-lesson-preview-header h3{
+    margin:0;
+    color:#4b3012;
+    font:700 1.25rem Georgia, "Times New Roman", serif;
+}
+
+.youtube-lesson-source-link{
+    display:inline-block;
+    margin-top:5px;
+    color:#8b5f1f;
+    font-size:.8rem;
+}
+
+.youtube-lesson-source-badge{
+    padding:5px 8px;
+    border:1px solid #b88a43;
+    border-radius:3px;
+    color:#6f4b1d;
+    background:rgba(255,248,220,.7);
+    font-size:.75rem;
+    font-weight:700;
+    white-space:nowrap;
+}
+
+.youtube-lesson-warning{
+    margin:12px 0;
+    padding:9px 11px;
+    border-left:3px solid #bc7c25;
+    color:#714512;
+    background:rgba(251,226,157,.45);
+}
+
+.youtube-lesson-segments{
+    display:grid;
+    gap:9px;
+    margin-top:14px;
+}
+
+.youtube-lesson-segment{
+    display:grid;
+    grid-template-columns:auto minmax(0, 1fr) minmax(0, 1fr);
+    align-items:start;
+    gap:9px;
+    padding:10px;
+    border:1px solid rgba(126,84,24,.25);
+    border-radius:4px;
+    background:rgba(255,249,228,.62);
+}
+
+.youtube-lesson-segment-number{
+    padding-top:22px;
+    color:#9b6b27;
+    font-weight:700;
+}
+
+.youtube-lesson-segment label{
+    display:grid;
+    gap:4px;
+    color:#714512;
+    font-size:.75rem;
+    font-weight:700;
+}
+
+.youtube-lesson-segment textarea{
+    width:100%;
+    box-sizing:border-box;
+    resize:vertical;
+    padding:7px 8px;
+    border:1px solid #c39b56;
+    border-radius:3px;
+    color:#342313;
+    background:#fffdf4;
+    font:1rem/1.45 "Noto Sans Thai", "Segoe UI", sans-serif;
+}
+
+.youtube-lesson-preview-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+    margin-top:14px;
+}
+
+.youtube-lesson-preview-actions button{
+    width:auto;
+    margin-top:0;
+}
+
+.secondary-action-button{
+    padding:9px 12px;
+    border:1px solid #9a6b2c;
+    border-radius:3px;
+    color:#6a4619;
+    background:rgba(255,248,225,.8);
+    font:600 .8rem Georgia, "Times New Roman", serif;
+    cursor:pointer;
+}
+
+.secondary-action-button:hover,
+.secondary-action-button:focus-visible{
+    border-color:#d49a3b;
+    outline:2px solid rgba(229,187,83,.25);
+}
+
+.youtube-lesson-empty{
+    padding:22px;
+    color:#bd9856;
+    text-align:center;
+}
+
+@media (max-width:700px){
+    .youtube-lesson-form-row{
+        flex-direction:column;
+    }
+
+    .youtube-lesson-form-row .dark-action-button{
+        width:100%;
+    }
+
+    .youtube-lesson-segment{
+        grid-template-columns:1fr;
+    }
+
+    .youtube-lesson-segment-number{
+        padding-top:0;
+    }
+
+    .youtube-lesson-preview-header,
+    .youtube-lesson-preview-actions{
+        align-items:stretch;
+        flex-direction:column;
+    }
+
+    .youtube-lesson-preview-actions button{
+        width:100%;
+    }
 }
 
 @media (min-width:1101px){

@@ -420,6 +420,9 @@ function getQuestDataFromStatsId(questId) {
                 ? comedyEpisodes
             : contentType === "missions"
                 ? missions
+            : contentType === "youtube" &&
+                typeof getYoutubeQuests === "function"
+                ? getYoutubeQuests()
                 : null;
 
     return daten ? daten[questNumber] ?? null : null;

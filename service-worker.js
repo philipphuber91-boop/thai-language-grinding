@@ -16,7 +16,7 @@
  * müssen den Cache in Safari nicht manuell löschen.
  */
 
-const CACHE_VERSION = 'v51';
+const CACHE_VERSION = 'v52';
 const CACHE_NAME = `thai-language-grinding-${CACHE_VERSION}`;
 
 // App-Shell: alles, was für Start und Offline-Betrieb gebraucht wird.
@@ -53,6 +53,8 @@ const PRECACHE_ASSETS = [
     'js/keyboard.js',
     'js/typing-feedback.js',
     'js/quest-audio.js',
+    'js/youtube-quests.js',
+    'js/youtube-lesson.js',
     'js/typing.js',
     'js/pwa-register.js',
 

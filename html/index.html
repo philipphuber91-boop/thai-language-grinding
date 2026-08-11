@@ -42,6 +42,7 @@
     <div class="menu-card">
         <button class="mobile-menu-button" type="button" data-content-mode="worldmap">🗺 Weltkarte</button>
         <button class="mobile-menu-button" type="button" data-content-mode="quests">📜 Quests</button>
+        <button class="mobile-menu-button" type="button" data-content-mode="youtube">🎥 Videoquests</button>
         <button class="mobile-menu-button" type="button" data-content-mode="comedy">😂 Komödie</button>
         <button class="mobile-menu-button" type="button" data-content-mode="missions">🧭 Missionen</button>
         <button class="mobile-menu-button" type="button" data-content-mode="achievements">🏆 Erfolge</button>
@@ -96,6 +97,19 @@
         </section>
 
         <aside class="home-column home-column-right">
+            <section class="youtube-lesson-home-panel parchment-panel">
+                <div class="recommendation-intro">
+                    <div class="recommendation-icon" aria-hidden="true">🎥</div>
+                    <div>
+                        <h2>Dein Lieblingsvideo</h2>
+                        <p>Mach aus einem Thai-YouTube-Video deine nächste Lernquest.</p>
+                    </div>
+                </div>
+                <button id="openYoutubeLessonButton" class="dark-action-button" type="button">
+                    Videoquest erstellen <span aria-hidden="true">›</span>
+                </button>
+            </section>
+
             <section class="recommendations-panel parchment-panel">
                 <div class="recommendation-intro">
                     <div class="recommendation-icon" aria-hidden="true">◉</div>
@@ -132,10 +146,49 @@
             </div>
             <div class="content-switcher" aria-label="Quest-Kategorie">
                 <button id="campaignListButton" class="content-switcher-button is-active" type="button" aria-pressed="true">Kampagne</button>
+                <button id="youtubeListButton" class="content-switcher-button" type="button" aria-pressed="false">🎥 Videoquests</button>
                 <button id="comedyListButton" class="content-switcher-button" type="button" aria-pressed="false">😂 Komödie</button>
                 <button id="missionsMenuButton" class="content-switcher-button" type="button" aria-pressed="false">Missionen</button>
             </div>
         </div>
+        <section id="youtubeLessonCreator" class="youtube-lesson-creator parchment-panel" hidden>
+            <div class="section-heading">
+                <span aria-hidden="true">✦</span>
+                <h2>Neue Videoquest</h2>
+                <span aria-hidden="true">✦</span>
+            </div>
+            <p class="youtube-lesson-intro">
+                Füge ein Thai-YouTube-Video ein. Die Untertitel und Übersetzung werden vor dem
+                Erstellen der Quest angezeigt und können korrigiert werden.
+            </p>
+            <form id="youtubeLessonForm" class="youtube-lesson-form">
+                <label for="youtubeLessonUrl">YouTube-URL</label>
+                <div class="youtube-lesson-form-row">
+                    <input id="youtubeLessonUrl" name="url" type="url" required
+                        placeholder="https://www.youtube.com/watch?v=..." autocomplete="url">
+                    <button class="dark-action-button" type="submit">Lektion erstellen</button>
+                </div>
+            </form>
+            <p id="youtubeLessonStatus" class="youtube-lesson-status" role="status" aria-live="polite"></p>
+            <section id="youtubeLessonPreview" class="youtube-lesson-preview" hidden
+                aria-labelledby="youtubeLessonPreviewTitle">
+                <div class="youtube-lesson-preview-header">
+                    <div>
+                        <p class="eyebrow">Vorschau</p>
+                        <h3 id="youtubeLessonPreviewTitle"></h3>
+                        <a id="youtubeLessonSourceLink" class="youtube-lesson-source-link"
+                            target="_blank" rel="noopener noreferrer">Original auf YouTube öffnen</a>
+                    </div>
+                    <span id="youtubeLessonSourceBadge" class="youtube-lesson-source-badge"></span>
+                </div>
+                <p id="youtubeLessonTruncatedNotice" class="youtube-lesson-warning" hidden></p>
+                <div id="youtubeLessonSegments" class="youtube-lesson-segments"></div>
+                <div class="youtube-lesson-preview-actions">
+                    <button id="youtubeLessonCancelButton" class="secondary-action-button" type="button">Verwerfen</button>
+                    <button id="youtubeLessonConfirmButton" class="dark-action-button" type="button">Als Quest speichern</button>
+                </div>
+            </section>
+        </section>
         <div id="questListe"></div>
     </section>
 
@@ -363,6 +416,7 @@
 <script src="../data/comedy.js"></script>
 
 <script src="../js/thai-text-stats.js"></script>
+<script src="../js/youtube-quests.js"></script>
 <script src="../js/player.js"></script>
 
 <script>
@@ -381,6 +435,7 @@ loadQuestStats();
 <script src="../js/quest-audio.js"></script>
 <script src="../js/profile.js"></script>
 <script src="../js/engine.js"></script>
+<script src="../js/youtube-lesson.js"></script>
 <script src="../js/daily-quests.js"></script>
 <script src="../js/worldmap.js"></script>
 

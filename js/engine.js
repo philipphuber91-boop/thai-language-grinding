@@ -4,6 +4,43 @@ let contentMode = "campaign";
 const questUnlockBypassEnabled = true;
 const QUEST_UNLOCK_ACHIEVEMENT_GOAL = 7;
 
+function getQuestCollection(mode = contentMode) {
+    if (mode === "campaign") {
+        return quests;
+    }
+
+    if (mode === "comedy") {
+        return comedyEpisodes;
+    }
+
+    if (mode === "missions") {
+        return missions;
+    }
+
+    if (mode === "youtube" && typeof getYoutubeQuests === "function") {
+        return getYoutubeQuests();
+    }
+
+    return {};
+}
+
+function escapeHtml(value) {
+    return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+}
+
+function getQuestImageUrl(quest) {
+    if (contentMode === "youtube" && quest?.thumbnailUrl) {
+        return quest.thumbnailUrl;
+    }
+
+    return `../assets/quest/${quest?.bild || "alltag"}.png`;
+}
+
 const sidebarToggleButton = document.getElementById("sidebarToggleButton");
 const mainSidebar = document.getElementById("mainSidebar");
 const sidebarBackdrop = document.getElementById("sidebarBackdrop");
@@ -73,6 +110,15 @@ function getQuestAchievementCount(questId) {
 
 function getQuestUnlockRequirements(quest, questNumber) {
     const index = Math.max(1, Math.floor(Number(questNumber) || 1));
+    if (contentMode === "youtube") {
+        return {
+            requiredLevel: 1,
+            previousQuestNumber: 0,
+            previousQuestAchievementCount: 0,
+            requiredAchievements: 0
+        };
+    }
+
     if (contentMode === "comedy") {
         const previousQuestNumber = index - 1;
         const previousQuestStats = previousQuestNumber > 0
@@ -116,7 +162,9 @@ function getQuestUnlockRequirements(quest, questNumber) {
 function getQuestUnlockState(quest, questNumber) {
     const requirements = getQuestUnlockRequirements(quest, questNumber);
     const xpSummary = getPlayerXpSummary();
-    const unlocked = contentMode === "comedy"
+    const unlocked = contentMode === "youtube"
+        ? true
+        : contentMode === "comedy"
         ? requirements.previousQuestNumber === 0 ||
             requirements.previousQuestCompleted
         : xpSummary.level >= requirements.requiredLevel &&
@@ -133,7 +181,9 @@ function getQuestUnlockState(quest, questNumber) {
             !unlocked &&
             questUnlockBypassEnabled,
         requirementText:
-            contentMode === "comedy"
+            contentMode === "youtube"
+                ? "Videoquests sind sofort freigeschaltet."
+                : contentMode === "comedy"
                 ? requirements.previousQuestNumber === 0
                     ? "Episode 1 ist freigeschaltet."
                     : `Benötigt: Abschluss von Episode ${requirements.previousQuestNumber}`
@@ -559,12 +609,16 @@ function ladeKarten() {
 
     questListe.innerHTML = "";
 
-    const daten =
-        contentMode === "campaign"
-            ? quests
-            : contentMode === "comedy"
-                ? comedyEpisodes
-                : missions;
+    const daten = getQuestCollection();
+
+    if (contentMode === "youtube" && Object.keys(daten).length === 0) {
+        const emptyState = document.createElement("p");
+        emptyState.className = "youtube-lesson-empty";
+        emptyState.textContent =
+            "Noch keine Videoquests gespeichert. Erstelle oben deine erste Lektion.";
+        questListe.appendChild(emptyState);
+        return;
+    }
 
     for (const nummer in daten) {
 
@@ -671,8 +725,8 @@ karte.innerHTML = `
 <div class="quest-image">
 
     <img
-        src="../assets/quest/${quest.bild}.png"
-        alt="${quest.titel}"
+    src="${escapeHtml(getQuestImageUrl(quest))}"
+    alt="${escapeHtml(quest.titel)}"
         class="quest-image-content">
 
     <img
@@ -686,10 +740,10 @@ karte.innerHTML = `
 
     <div class="quest-main">
 
-        <h2>${quest.titel}</h2>
+        <h2>${escapeHtml(quest.titel)}</h2>
 
         ${contentMode === "comedy"
-            ? `<p class="quest-comedy-subtitle">${quest.beschreibung}</p>`
+            ? `<p class="quest-comedy-subtitle">${escapeHtml(quest.beschreibung)}</p>`
             : ""}
 
         ${window.questAudio.renderQuestAudioPlayer({
@@ -700,13 +754,13 @@ karte.innerHTML = `
 
         <p class="quest-meta">
 
-            ${quest.kapitel}
+            ${escapeHtml(quest.kapitel)}
 
             •
 
             <span class="difficulty quest-difficulty-mobile">
 
-                ${quest.schwierigkeit}
+                ${escapeHtml(quest.schwierigkeit)}
 
             </span>
 
@@ -784,13 +838,13 @@ karte.innerHTML = `
         class="quest-achievement-overview-button"
         aria-label="Quest-Auszeichnungen anzeigen"
         title="Quest-Auszeichnungen anzeigen"
-        onclick="event.stopPropagation(); openQuestAchievementOverview(${nummer})">
+        onclick="event.stopPropagation(); openQuestAchievementOverview('${escapeHtml(nummer)}')">
     🏆
 </button>
 
 <button class="quest-start-button"
         ${unlockState.unlocked ? "" : "aria-label=\"Gesperrte Quest öffnen\""}
-        onclick="event.stopPropagation(); starteQuest(${nummer})">
+        onclick="event.stopPropagation(); starteQuest('${escapeHtml(nummer)}')">
 
     <img
         src="../assets/ui/button-start.png"
@@ -840,12 +894,7 @@ function starteQuest(questNummer) {
 
     ausgewaehlteQuest = questNummer;
 
-    const daten =
-        contentMode === "campaign"
-            ? quests
-            : contentMode === "comedy"
-                ? comedyEpisodes
-                : missions;
+    const daten = getQuestCollection();
 
     const quest = daten[questNummer];
     const unlockState = getQuestUnlockState(quest, questNummer);
@@ -866,7 +915,9 @@ function starteQuest(questNummer) {
             ? "📖 Kampagne starten"
             : contentMode === "comedy"
                 ? "😂 Komödie starten"
-            : "🎯 Mission starten";
+                : contentMode === "youtube"
+                    ? "🎥 Videoquest starten"
+                    : "🎯 Mission starten";
 
     // Questdaten
     document.getElementById("startQuestName").textContent =
@@ -904,7 +955,7 @@ function starteQuest(questNummer) {
 
     // Questbild
     document.getElementById("startQuestImage").src =
-        "../assets/quest/" + quest.bild + ".png";
+        getQuestImageUrl(quest);
 
     // Zeit anhand der Quest-Wortzahl, der Quest-eigenen durchschnittlichen
     // Zeichenanzahl pro Wort und der persönlichen CPM schätzen.
@@ -1021,13 +1072,7 @@ if (campaignButton) {
 
     campaignButton.onclick = function () {
         if (!questStartBypassActive && !getQuestUnlockState(
-            (
-                contentMode === "campaign"
-                    ? quests
-                    : contentMode === "comedy"
-                        ? comedyEpisodes
-                        : missions
-            )[
+            getQuestCollection()[
                 ausgewaehlteQuest
             ],
             ausgewaehlteQuest
@@ -1054,13 +1099,7 @@ if (challengeButton) {
 
     challengeButton.onclick = function () {
         if (!questStartBypassActive && !getQuestUnlockState(
-            (
-                contentMode === "campaign"
-                    ? quests
-                    : contentMode === "comedy"
-                        ? comedyEpisodes
-                        : missions
-            )[
+            getQuestCollection()[
                 ausgewaehlteQuest
             ],
             ausgewaehlteQuest
@@ -1176,10 +1215,14 @@ function switchContent(mode) {
        document.getElementById("chronikContainer").style.display = "none";
        document.getElementById("achievementContainer").style.display = "none";
        document.getElementById("profileContainer").style.display = "none";
+       document.getElementById("youtubeLessonCreator")?.setAttribute("hidden", "");
    };
 
    const activeNavigationMode =
-       mode === "campaign" || mode === "missions" || mode === "comedy"
+       mode === "campaign" ||
+       mode === "missions" ||
+       mode === "comedy" ||
+       mode === "youtube"
            ? "quests"
            : mode;
 
@@ -1205,6 +1248,7 @@ function switchContent(mode) {
 
    [
        [campaignListButton, "campaign"],
+       [youtubeListButton, "youtube"],
        [comedyListButton, "comedy"],
        [missionsMenuButton, "missions"]
    ].forEach(([button, buttonMode]) => {
@@ -1256,6 +1300,18 @@ function switchContent(mode) {
            ladeKarten();
            break;
 
+       case "youtube":
+           document.body.classList.remove("mobile-chronik-mode");
+           showSecondaryView();
+           questView?.removeAttribute("hidden");
+           document.getElementById("questListe").style.display = "block";
+           document.getElementById("youtubeLessonCreator")?.removeAttribute("hidden");
+           document.getElementById("questViewEyebrow").textContent =
+               "Lerne aus deinen Lieblingsvideos";
+           document.getElementById("questViewTitle").textContent = "🎥 Videoquests";
+           ladeKarten();
+           break;
+
        case "missions":
            document.body.classList.remove("mobile-chronik-mode");
            showSecondaryView();
@@ -1296,6 +1352,14 @@ function switchContent(mode) {
 
 const campaignMenuButton =
     document.getElementById("campaignMenuButton");
+const openYoutubeLessonButton =
+    document.getElementById("openYoutubeLessonButton");
+
+if (openYoutubeLessonButton) {
+    openYoutubeLessonButton.onclick = function () {
+        switchContent("youtube");
+    };
+}
 
 if (campaignMenuButton) {
 
@@ -1308,11 +1372,18 @@ campaignMenuButton.onclick = function () {
 }
 
 const campaignListButton = document.getElementById("campaignListButton");
+const youtubeListButton = document.getElementById("youtubeListButton");
 const comedyListButton = document.getElementById("comedyListButton");
 
 if (campaignListButton) {
     campaignListButton.onclick = function () {
         switchContent("campaign");
+    };
+}
+
+if (youtubeListButton) {
+    youtubeListButton.onclick = function () {
+        switchContent("youtube");
     };
 }
 
