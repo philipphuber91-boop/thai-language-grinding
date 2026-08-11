@@ -73,7 +73,7 @@ function parseTranscriptXml(xml) {
     const captionPattern = /<text\b([^>]*)>([\s\S]*?)<\/text>/gi;
     let match;
 
-    while ((match = captionPattern.exec(String(xml || "")) !== null) {
+    while ((match = captionPattern.exec(String(xml || ""))) !== null) {
         const attributes = parseCaptionAttributes(match[1]);
         const thai = decodeXml(match[2]);
 
