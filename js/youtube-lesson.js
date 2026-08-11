@@ -69,7 +69,7 @@
             "Das Video ist länger als die MVP-Grenze. Nur der erste Abschnitt wurde als Lektion übernommen.";
         translationNotice.hidden = !lesson.translationPending;
         translationNotice.textContent =
-            "Keine automatische Übersetzung verwendet. Ergänze bitte die deutschen Zeilen manuell, bevor du die Quest speicherst.";
+            "Keine automatische Übersetzung verwendet. Du kannst die Thai-only-Quest direkt speichern oder die deutschen Zeilen per Knopfdruck ergänzen.";
         segmentsContainer.replaceChildren();
 
         lesson.segments.forEach((segment, index) => {
@@ -421,12 +421,8 @@
 
         const { thaiZeilen, deutschZeilen } = readPreviewFields();
 
-        if (
-            thaiZeilen.some(line => !line) ||
-            deutschZeilen.some(line => !line) ||
-            thaiZeilen.length !== deutschZeilen.length
-        ) {
-            setStatus("Jede Thai-Zeile braucht eine passende deutsche Übersetzung.", "error");
+        if (thaiZeilen.some(line => !line)) {
+            setStatus("Jede Thai-Zeile muss mindestens ein Thai-Zeichen enthalten.", "error");
             return;
         }
 
@@ -439,7 +435,12 @@
             clearPreview();
             urlInput.value = "";
             transcriptInput.value = "";
-            setStatus("Videoquest gespeichert. Du kannst sie jetzt starten.", "success");
+            setStatus(
+                deutschZeilen.some(Boolean)
+                    ? "Videoquest gespeichert. Du kannst sie jetzt starten."
+                    : "Thai-only-Videoquest gespeichert. Du kannst die Thai-Zeilen jetzt üben.",
+                "success"
+            );
             ladeKarten();
             document.getElementById(`quest-${saved.id}`)?.scrollIntoView({
                 behavior: "smooth",

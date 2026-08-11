@@ -64,12 +64,15 @@ function createYoutubeQuest(lesson) {
     const thaiZeilen = Array.isArray(lesson?.thaiZeilen)
         ? lesson.thaiZeilen.map(line => String(line).trim()).filter(Boolean)
         : [];
-    const deutschZeilen = Array.isArray(lesson?.deutschZeilen)
+    const rawDeutschZeilen = Array.isArray(lesson?.deutschZeilen)
         ? lesson.deutschZeilen.map(line => String(line).trim())
         : [];
+    const deutschZeilen = thaiZeilen.map(
+        (_, index) => rawDeutschZeilen[index] || ""
+    );
 
-    if (!videoId || thaiZeilen.length === 0 || thaiZeilen.length !== deutschZeilen.length) {
-        throw new Error("Die Video-Lektion enthält keine gültigen, gepaarten Zeilen.");
+    if (!videoId || thaiZeilen.length === 0) {
+        throw new Error("Die Video-Lektion enthält keine gültigen Thai-Zeilen.");
     }
 
     const quest = {

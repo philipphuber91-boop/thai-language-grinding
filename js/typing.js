@@ -1273,6 +1273,10 @@ const thaiZeilen =
 
 const deutschZeilen =
     daten[aktuelleQuest].deutschZeilen;
+if (!deutschZeilen.some(line => String(line || "").trim())) {
+    startDeutschButton.disabled = true;
+    startDeutschButton.title = "Für den Deutschmodus müssen deutsche Zeilen vorhanden sein.";
+}
 const comedySpeaker = document.getElementById("comedySpeaker");
 const comedySpeakerPortrait = document.getElementById(
     "comedySpeakerPortrait"
