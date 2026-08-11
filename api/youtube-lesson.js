@@ -13,7 +13,7 @@ const THAI_DIGIT_REPLACEMENTS = {
     "9": "๙"
 };
 const THAI_KEYBOARD_CHARACTERS = new Set(
-    Array.from("ฃๅ/-ภถุูึคตจขชๆไำพะรัํีนยญบฐลฤฆกฏดโเฌ้็่๋าษสศวซงผปแฉอฮิื์ทมฒใฬฝฦ๐๑๒๓๔๕๖๗๘๙ฯฅ ")
+    Array.from("ฃ๊ๅ/๑-๒ภ๓ถ๔ุูึค๕ต๖จ๗ข๘ช๙ๆ๐ไำฎพฑะธัํีรณนฯยญบฐลฅฟฤหฆกฏดโเฌ้็่๋าษสศวซงผปแฉอฮิื์ทมฒใฬฝฦ ")
 );
 
 function setCorsHeaders(response) {
