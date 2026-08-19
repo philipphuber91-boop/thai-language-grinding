@@ -2,6 +2,9 @@
     "use strict";
 
     const STORAGE_KEY = "japaneseGigaDrill:v1";
+    const PLAYER_MENU_POSITION_KEY = "japaneseGigaDrill:playerMenuPosition:v2";
+    const PLAYER_MENU_SIZE_KEY = "japaneseGigaDrill:playerMenuSize:v1";
+    const DESKTOP_BREAKPOINT = 901;
     const DEFAULT_PLAYBACK_RATE = 0.85;
     const MIN_PLAYBACK_RATE = 0.5;
     const MAX_PLAYBACK_RATE = 1.5;
@@ -13,6 +16,7 @@
         sidebar: document.getElementById("japaneseSidebar"),
         sidebarBackdrop: document.getElementById("japaneseSidebarBackdrop"),
         sidebarToggle: document.getElementById("japaneseSidebarToggle"),
+        playerToggle: document.getElementById("japanesePlayerToggle"),
         chapterNav: document.getElementById("japaneseChapterNav"),
         foreword: document.getElementById("japaneseForeword"),
         forewordButton: document.getElementById("japaneseForewordButton"),
@@ -49,6 +53,8 @@
     let draggedPlaylistIndex = null;
     let pointerDragState = null;
     let suppressPlaylistClickUntil = 0;
+    let playerMenuPosition = null;
+    let playerMenuSize = null;
     const playerState = {
         playlist: [],
         currentIndex: 0,
@@ -79,6 +85,221 @@
 
     function formatPlaybackRate(rate) {
         return `${normalizePlaybackRate(rate).toFixed(2).replace(".", ",")}×`;
+    }
+
+    function isDesktopLayout() {
+        return window.matchMedia(`(min-width: ${DESKTOP_BREAKPOINT}px)`).matches;
+    }
+
+    function readPlayerMenuPosition() {
+        try {
+            const rawPosition = localStorage.getItem(PLAYER_MENU_POSITION_KEY);
+            const position = rawPosition ? JSON.parse(rawPosition) : {};
+            return {
+                left: Number.isFinite(position.left) ? position.left : null,
+                top: Number.isFinite(position.top) ? position.top : 16
+            };
+        } catch (error) {
+            console.warn("Die Position des japanischen Player-Menüs konnte nicht gelesen werden.", error);
+            return { left: null, top: 16 };
+        }
+    }
+
+    function savePlayerMenuPosition() {
+        if (!playerMenuPosition) {
+            return;
+        }
+
+        try {
+            localStorage.setItem(PLAYER_MENU_POSITION_KEY, JSON.stringify(playerMenuPosition));
+        } catch (error) {
+            console.warn("Die Position des japanischen Player-Menüs konnte nicht gespeichert werden.", error);
+        }
+    }
+
+    function readPlayerMenuSize() {
+        try {
+            const rawSize = localStorage.getItem(PLAYER_MENU_SIZE_KEY);
+            const size = rawSize ? JSON.parse(rawSize) : {};
+            return {
+                width: Number.isFinite(size.width)
+                    ? Math.max(280, Math.min(560, size.width))
+                    : 350,
+                height: Number.isFinite(size.height)
+                    ? Math.max(260, Math.min(window.innerHeight - 48, size.height))
+                    : null
+            };
+        } catch (error) {
+            console.warn("Die Größe des japanischen Player-Menüs konnte nicht gelesen werden.", error);
+            return { width: 350, height: null };
+        }
+    }
+
+    function savePlayerMenuSize() {
+        if (!playerMenuSize) {
+            return;
+        }
+
+        try {
+            localStorage.setItem(PLAYER_MENU_SIZE_KEY, JSON.stringify(playerMenuSize));
+        } catch (error) {
+            console.warn("Die Größe des japanischen Player-Menüs konnte nicht gespeichert werden.", error);
+        }
+    }
+
+    function applyPlayerMenuSize() {
+        if (!elements.player) {
+            return;
+        }
+
+        if (!isDesktopLayout()) {
+            elements.player.style.removeProperty("width");
+            elements.player.style.removeProperty("height");
+            return;
+        }
+
+        playerMenuSize = playerMenuSize || readPlayerMenuSize();
+        elements.player.style.width = `${playerMenuSize.width}px`;
+        if (Number.isFinite(playerMenuSize.height)) {
+            elements.player.style.height = `${playerMenuSize.height}px`;
+        } else {
+            elements.player.style.removeProperty("height");
+        }
+    }
+
+    function applyPlayerMenuPosition() {
+        if (!elements.playerToggle || !elements.player) {
+            return;
+        }
+
+        if (!isDesktopLayout()) {
+            applyPlayerMenuSize();
+            elements.player.classList.remove("is-desktop-collapsed");
+            elements.playerToggle.style.removeProperty("left");
+            elements.playerToggle.style.removeProperty("top");
+            elements.playerToggle.style.removeProperty("right");
+            elements.player.style.removeProperty("left");
+            elements.player.style.removeProperty("top");
+            elements.player.style.removeProperty("right");
+            elements.player.style.removeProperty("transform");
+            return;
+        }
+
+        playerMenuPosition = playerMenuPosition || readPlayerMenuPosition();
+        applyPlayerMenuSize();
+        const toggleWidth = elements.playerToggle.offsetWidth || 44;
+        const toggleHeight = elements.playerToggle.offsetHeight || 44;
+        const playerWidth = playerMenuSize.width;
+        const contentWidth = Math.min(1200, window.innerWidth - 96);
+        const contentGutter = Math.max(48, (window.innerWidth - contentWidth) / 2);
+        const left = Number.isFinite(playerMenuPosition.left)
+            ? playerMenuPosition.left
+            : window.innerWidth - contentGutter - toggleWidth;
+        const boundedLeft = Math.max(12, Math.min(window.innerWidth - toggleWidth - 12, left));
+        const boundedTop = Math.max(12, Math.min(window.innerHeight - toggleHeight - 12, playerMenuPosition.top));
+        const playerLeft = Math.max(12, boundedLeft + toggleWidth - playerWidth);
+
+        playerMenuPosition.left = boundedLeft;
+        playerMenuPosition.top = boundedTop;
+        elements.playerToggle.style.left = `${boundedLeft}px`;
+        elements.playerToggle.style.top = `${boundedTop}px`;
+        elements.playerToggle.style.right = "auto";
+        elements.player.style.left = `${playerLeft}px`;
+        elements.player.style.top = `${boundedTop + toggleHeight + 12}px`;
+        elements.player.style.right = "auto";
+        elements.player.style.transform = "none";
+        savePlayerMenuPosition();
+    }
+
+    function initializeDesktopPlayerMenu() {
+        if (!elements.playerToggle || !elements.player) {
+            return;
+        }
+
+        playerMenuPosition = readPlayerMenuPosition();
+        playerMenuSize = readPlayerMenuSize();
+        elements.player.classList.add("is-desktop-collapsed");
+        applyPlayerMenuSize();
+        applyPlayerMenuPosition();
+
+        elements.playerToggle.addEventListener("click", () => {
+            if (elements.playerToggle.dataset.dragged === "true") {
+                delete elements.playerToggle.dataset.dragged;
+                return;
+            }
+
+            const isOpen = !elements.player.classList.contains("is-desktop-collapsed");
+            elements.player.classList.toggle("is-desktop-collapsed", isOpen);
+            elements.playerToggle.setAttribute("aria-expanded", String(!isOpen));
+            elements.playerToggle.setAttribute(
+                "aria-label",
+                isOpen ? "Audio-Player öffnen" : "Audio-Player schließen"
+            );
+        });
+
+        elements.playerToggle.addEventListener("pointerdown", event => {
+            if (!isDesktopLayout() || event.button !== 0) {
+                return;
+            }
+
+            const toggleRect = elements.playerToggle.getBoundingClientRect();
+            const offsetX = event.clientX - toggleRect.left;
+            const offsetY = event.clientY - toggleRect.top;
+            let moved = false;
+            elements.playerToggle.setPointerCapture(event.pointerId);
+
+            const moveToggle = moveEvent => {
+                const nextLeft = Math.max(
+                    12,
+                    Math.min(window.innerWidth - toggleRect.width - 12, moveEvent.clientX - offsetX)
+                );
+                const nextTop = Math.max(
+                    12,
+                    Math.min(window.innerHeight - toggleRect.height - 12, moveEvent.clientY - offsetY)
+                );
+                if (Math.abs(nextLeft - toggleRect.left) > 3 || Math.abs(nextTop - toggleRect.top) > 3) {
+                    moved = true;
+                }
+                playerMenuPosition.left = nextLeft;
+                playerMenuPosition.top = nextTop;
+                applyPlayerMenuPosition();
+            };
+            const stopMoving = stopEvent => {
+                if (elements.playerToggle.hasPointerCapture(stopEvent.pointerId)) {
+                    elements.playerToggle.releasePointerCapture(stopEvent.pointerId);
+                }
+                elements.playerToggle.removeEventListener("pointermove", moveToggle);
+                elements.playerToggle.removeEventListener("pointerup", stopMoving);
+                elements.playerToggle.removeEventListener("pointercancel", stopMoving);
+                if (moved) {
+                    elements.playerToggle.dataset.dragged = "true";
+                    savePlayerMenuPosition();
+                }
+            };
+
+            elements.playerToggle.addEventListener("pointermove", moveToggle);
+            elements.playerToggle.addEventListener("pointerup", stopMoving);
+            elements.playerToggle.addEventListener("pointercancel", stopMoving);
+        });
+
+        if (window.ResizeObserver) {
+            new ResizeObserver(entries => {
+                if (!isDesktopLayout() || !entries[0] || elements.player.classList.contains("is-desktop-collapsed")) {
+                    return;
+                }
+
+                const rect = entries[0].contentRect;
+                playerMenuSize.width = Math.max(280, Math.min(560, rect.width));
+                playerMenuSize.height = Math.max(
+                    260,
+                    Math.min(window.innerHeight - 48, rect.height)
+                );
+                applyPlayerMenuSize();
+                savePlayerMenuSize();
+            }).observe(elements.player);
+        }
+
+        window.addEventListener("resize", applyPlayerMenuPosition);
     }
 
     function readProgress() {
@@ -830,17 +1051,26 @@
     }
 
     function markCurrentSentence(number, shouldScroll) {
+        let sentenceToScroll = null;
         document.querySelectorAll(".japanese-sentence").forEach(sentenceElement => {
             const isCurrent = Number(sentenceElement.dataset.sentenceNumber) === number;
             sentenceElement.classList.toggle("is-current", isCurrent);
 
             if (isCurrent && shouldScroll) {
-                sentenceElement.scrollIntoView({
+                sentenceElement.closest(".japanese-block")?.setAttribute("open", "");
+                sentenceElement.closest(".japanese-level")?.setAttribute("open", "");
+                sentenceToScroll = sentenceElement;
+            }
+        });
+
+        if (sentenceToScroll) {
+            window.requestAnimationFrame(() => {
+                sentenceToScroll.scrollIntoView({
                     behavior: "smooth",
                     block: "center"
                 });
-            }
-        });
+            });
+        }
 
         if (currentBoss) {
             saveProgress(currentBoss.id, number);
@@ -1469,6 +1699,7 @@
     elements.addAllButton?.addEventListener("click", addAllSentences);
     elements.clearPlaylistButton?.addEventListener("click", clearPlaylist);
 
+    initializeDesktopPlayerMenu();
     window.addEventListener("beforeunload", stopSpeaking);
 
     if (bosses.length === 0) {
