@@ -2,8 +2,8 @@
     "use strict";
 
     const STORAGE_KEY = "japaneseGigaDrill:v1";
-    const PLAYER_MENU_POSITION_KEY = "japaneseGigaDrill:playerMenuPosition:v2";
-    const PLAYER_MENU_SIZE_KEY = "japaneseGigaDrill:playerMenuSize:v1";
+    const PLAYER_MENU_POSITION_KEY = "japaneseGigaDrill:playerMenuPosition:v4";
+    const PLAYER_MENU_SIZE_KEY = "japaneseGigaDrill:playerMenuSize:v5";
     const DESKTOP_BREAKPOINT = 901;
     const DEFAULT_PLAYBACK_RATE = 0.85;
     const MIN_PLAYBACK_RATE = 0.5;
@@ -97,11 +97,12 @@
             const position = rawPosition ? JSON.parse(rawPosition) : {};
             return {
                 left: Number.isFinite(position.left) ? position.left : null,
-                top: Number.isFinite(position.top) ? position.top : 16
+                top: Number.isFinite(position.top) ? position.top : 100,
+                playerLeft: Number.isFinite(position.playerLeft) ? position.playerLeft : null
             };
         } catch (error) {
             console.warn("Die Position des japanischen Player-Menüs konnte nicht gelesen werden.", error);
-            return { left: null, top: 16 };
+            return { left: null, top: 100, playerLeft: null };
         }
     }
 
@@ -121,17 +122,18 @@
         try {
             const rawSize = localStorage.getItem(PLAYER_MENU_SIZE_KEY);
             const size = rawSize ? JSON.parse(rawSize) : {};
+            const maxHeight = Math.max(260, window.innerHeight - 48);
             return {
                 width: Number.isFinite(size.width)
                     ? Math.max(280, Math.min(560, size.width))
-                    : 350,
+                    : 320,
                 height: Number.isFinite(size.height)
-                    ? Math.max(260, Math.min(window.innerHeight - 48, size.height))
-                    : null
+                    ? Math.max(260, Math.min(maxHeight, size.height))
+                    : 445
             };
         } catch (error) {
             console.warn("Die Größe des japanischen Player-Menüs konnte nicht gelesen werden.", error);
-            return { width: 350, height: null };
+            return { width: 320, height: 445 };
         }
     }
 
@@ -187,25 +189,31 @@
 
         playerMenuPosition = playerMenuPosition || readPlayerMenuPosition();
         applyPlayerMenuSize();
-        const toggleWidth = elements.playerToggle.offsetWidth || 44;
-        const toggleHeight = elements.playerToggle.offsetHeight || 44;
+        const toggleWidth = elements.playerToggle.offsetWidth || 36;
+        const toggleHeight = elements.playerToggle.offsetHeight || 36;
         const playerWidth = playerMenuSize.width;
-        const contentWidth = Math.min(1200, window.innerWidth - 96);
-        const contentGutter = Math.max(48, (window.innerWidth - contentWidth) / 2);
+        const defaultToggleLeft =
+            window.innerWidth - 12 - playerWidth + (playerWidth - toggleWidth) / 2;
         const left = Number.isFinite(playerMenuPosition.left)
             ? playerMenuPosition.left
-            : window.innerWidth - contentGutter - toggleWidth;
+            : defaultToggleLeft;
         const boundedLeft = Math.max(12, Math.min(window.innerWidth - toggleWidth - 12, left));
         const boundedTop = Math.max(12, Math.min(window.innerHeight - toggleHeight - 12, playerMenuPosition.top));
-        const playerLeft = Math.max(12, boundedLeft + toggleWidth - playerWidth);
+        const defaultPlayerLeft = boundedLeft - (playerWidth - toggleWidth) / 2;
+        const playerLeft = Number.isFinite(playerMenuPosition.playerLeft)
+            ? playerMenuPosition.playerLeft
+            : defaultPlayerLeft;
+        const maxPlayerLeft = Math.max(12, window.innerWidth - playerWidth - 12);
+        const boundedPlayerLeft = Math.max(12, Math.min(maxPlayerLeft, playerLeft));
 
         playerMenuPosition.left = boundedLeft;
         playerMenuPosition.top = boundedTop;
+        playerMenuPosition.playerLeft = boundedPlayerLeft;
         elements.playerToggle.style.left = `${boundedLeft}px`;
         elements.playerToggle.style.top = `${boundedTop}px`;
         elements.playerToggle.style.right = "auto";
-        elements.player.style.left = `${playerLeft}px`;
-        elements.player.style.top = `${boundedTop + toggleHeight + 12}px`;
+        elements.player.style.left = `${boundedPlayerLeft}px`;
+        elements.player.style.top = `${boundedTop + toggleHeight + 8}px`;
         elements.player.style.right = "auto";
         elements.player.style.transform = "none";
         savePlayerMenuPosition();
@@ -222,6 +230,35 @@
         applyPlayerMenuSize();
         applyPlayerMenuPosition();
 
+        let playerResizeObserver = null;
+        const observePlayerSize = () => {
+            if (playerResizeObserver || !window.ResizeObserver) {
+                return;
+            }
+
+            playerResizeObserver = new ResizeObserver(entries => {
+                if (!isDesktopLayout() || !entries[0]) {
+                    return;
+                }
+
+                const rect = elements.player.getBoundingClientRect();
+                if (rect.width <= 0 || rect.height <= 0) {
+                    return;
+                }
+
+                playerMenuSize.width = Math.max(280, Math.min(560, rect.width));
+                playerMenuSize.height = Math.max(
+                    260,
+                    Math.min(Math.max(260, window.innerHeight - 48), rect.height)
+                );
+                playerMenuPosition.playerLeft = rect.left;
+                applyPlayerMenuSize();
+                savePlayerMenuSize();
+                savePlayerMenuPosition();
+            });
+            playerResizeObserver.observe(elements.player);
+        };
+
         elements.playerToggle.addEventListener("click", () => {
             if (elements.playerToggle.dataset.dragged === "true") {
                 delete elements.playerToggle.dataset.dragged;
@@ -230,6 +267,9 @@
 
             const isOpen = !elements.player.classList.contains("is-desktop-collapsed");
             elements.player.classList.toggle("is-desktop-collapsed", isOpen);
+            if (!isOpen) {
+                observePlayerSize();
+            }
             elements.playerToggle.setAttribute("aria-expanded", String(!isOpen));
             elements.playerToggle.setAttribute(
                 "aria-label",
@@ -243,6 +283,11 @@
             }
 
             const toggleRect = elements.playerToggle.getBoundingClientRect();
+            const playerRect = elements.player.getBoundingClientRect();
+            const initialPlayerLeft = playerRect.width > 0
+                ? playerRect.left
+                : playerMenuPosition.playerLeft ??
+                    toggleRect.left - (playerMenuSize.width - toggleRect.width) / 2;
             const offsetX = event.clientX - toggleRect.left;
             const offsetY = event.clientY - toggleRect.top;
             let moved = false;
@@ -262,6 +307,8 @@
                 }
                 playerMenuPosition.left = nextLeft;
                 playerMenuPosition.top = nextTop;
+                playerMenuPosition.playerLeft =
+                    initialPlayerLeft + nextLeft - toggleRect.left;
                 applyPlayerMenuPosition();
             };
             const stopMoving = stopEvent => {
@@ -281,23 +328,6 @@
             elements.playerToggle.addEventListener("pointerup", stopMoving);
             elements.playerToggle.addEventListener("pointercancel", stopMoving);
         });
-
-        if (window.ResizeObserver) {
-            new ResizeObserver(entries => {
-                if (!isDesktopLayout() || !entries[0] || elements.player.classList.contains("is-desktop-collapsed")) {
-                    return;
-                }
-
-                const rect = entries[0].contentRect;
-                playerMenuSize.width = Math.max(280, Math.min(560, rect.width));
-                playerMenuSize.height = Math.max(
-                    260,
-                    Math.min(window.innerHeight - 48, rect.height)
-                );
-                applyPlayerMenuSize();
-                savePlayerMenuSize();
-            }).observe(elements.player);
-        }
 
         window.addEventListener("resize", applyPlayerMenuPosition);
     }

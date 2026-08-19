@@ -546,19 +546,23 @@ body.japanese-drill-page {
 
     .japanese-player {
         position: fixed;
-        top: 76px;
+        top: 144px;
         right: 24px;
         bottom: auto;
         left: auto;
         z-index: 8;
-        width: var(--jp-player-width, 350px);
+        width: var(--jp-player-width, 320px);
         min-width: 280px;
         max-width: min(560px, calc(100vw - 48px));
         min-height: 260px;
+        height: 445px;
         max-height: calc(100vh - 48px);
         margin: 0;
-        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
         resize: both;
+        direction: rtl;
         scrollbar-width: none;
         -ms-overflow-style: none;
         background: var(--jp-panel);
@@ -576,15 +580,15 @@ body.japanese-drill-page {
         right: 24px;
         z-index: 40;
         place-items: center;
-        width: 44px;
-        height: 44px;
+        width: 36px;
+        height: 36px;
         border: 1px solid var(--jp-gold);
         border-radius: 10px;
         color: var(--jp-gold);
         background: var(--jp-panel);
         box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
         cursor: grab;
-        font-size: 1.25rem;
+        font-size: 1.1rem;
     }
 
     .japanese-player-toggle:active {
@@ -597,6 +601,14 @@ body.japanese-drill-page {
 
     .japanese-player-header {
         cursor: default;
+    }
+
+    .japanese-player > :not(.japanese-playlist) {
+        flex-shrink: 0;
+    }
+
+    .japanese-player > * {
+        direction: ltr;
     }
 
     .japanese-reader {
@@ -1300,6 +1312,53 @@ body.japanese-drill-page {
 }
 
 @media (min-width: 901px) {
+    .japanese-player {
+        padding: 14px;
+    }
+
+    .japanese-player-header h3 {
+        font-size: 1.05rem;
+    }
+
+    .japanese-player-controls {
+        flex-wrap: nowrap;
+        gap: 5px;
+    }
+
+    .japanese-player-button {
+        padding: 5px 7px;
+        font-size: .75rem;
+    }
+
+    .japanese-player-modes {
+        gap: 2px;
+        font-size: .75rem;
+    }
+
+    .japanese-player-speed {
+        grid-template-columns: auto minmax(70px, 1fr) auto;
+        gap: 5px;
+        font-size: .75rem;
+    }
+
+    .japanese-player-actions {
+        flex-wrap: nowrap;
+        gap: 5px;
+        margin-top: 8px;
+    }
+
+    .japanese-player-actions .japanese-secondary-button {
+        padding: 5px 7px;
+        font-size: .72rem;
+    }
+
+    .japanese-playlist {
+        flex: 1 1 auto;
+        min-height: 0;
+        max-height: none;
+        margin-top: 10px;
+    }
+
     .japanese-block {
         padding: 0 18px 18px;
         border: 1px solid rgba(141, 106, 159, .7);
