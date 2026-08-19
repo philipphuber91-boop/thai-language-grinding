@@ -31,7 +31,7 @@ body.japanese-drill-page {
 }
 
 .japanese-topbar {
-    padding: 32px 32px 30px 370px;
+    padding: 32px;
     border-bottom: 1px solid rgba(240, 199, 110, .3);
     text-align: center;
 }
@@ -215,7 +215,7 @@ body.japanese-drill-page {
 }
 
 .japanese-main {
-    width: min(1100px, calc(100% - 48px));
+    width: calc(100% - 96px);
     margin: 0 auto;
     padding: 38px 0 70px;
 }
@@ -537,19 +537,53 @@ body.japanese-drill-page {
 
 @media (min-width: 901px) {
     .japanese-main {
-        padding-right: 380px;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .japanese-player {
         position: fixed;
+        top: 50%;
         right: 24px;
-        bottom: 24px;
+        bottom: auto;
+        left: auto;
         z-index: 8;
-        width: min(350px, calc(100vw - 48px));
+        width: var(--jp-desktop-player-width, 350px);
+        min-width: 280px;
+        max-width: min(560px, calc(100vw - 48px));
+        min-height: 260px;
         max-height: calc(100vh - 48px);
         margin: 0;
         overflow-y: auto;
+        resize: both;
+        direction: rtl;
+        transform: translateY(-50%);
         box-shadow: 0 18px 45px rgba(0, 0, 0, .38);
+    }
+
+    .japanese-player > * {
+        direction: ltr;
+    }
+
+    .japanese-player.is-dragging {
+        cursor: grabbing;
+        user-select: none;
+    }
+
+    .japanese-player-header {
+        cursor: grab;
+    }
+
+    .japanese-reader {
+        width: var(--jp-desktop-player-width, 350px);
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    .japanese-block-list {
+        width: min(820px, calc(100% - var(--jp-desktop-player-width, 350px) - 48px));
+        margin-left: auto;
+        margin-right: auto;
     }
 }
 

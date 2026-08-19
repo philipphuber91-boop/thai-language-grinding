@@ -2,6 +2,8 @@
     "use strict";
 
     const STORAGE_KEY = "japaneseGigaDrill:v1";
+    const PLAYER_LAYOUT_KEY = "japaneseGigaDrill:playerLayout:v1";
+    const DESKTOP_BREAKPOINT = 901;
     const DEFAULT_PLAYBACK_RATE = 0.85;
     const MIN_PLAYBACK_RATE = 0.5;
     const MAX_PLAYBACK_RATE = 1.5;
@@ -49,6 +51,7 @@
     let draggedPlaylistIndex = null;
     let pointerDragState = null;
     let suppressPlaylistClickUntil = 0;
+    let playerLayoutState = null;
     const playerState = {
         playlist: [],
         currentIndex: 0,
@@ -134,6 +137,146 @@
             console.warn("Japanischer Lesefortschritt konnte nicht gespeichert werden.", error);
             setAudioStatus("Der lokale japanische Lesefortschritt konnte nicht gespeichert werden.");
         }
+    }
+
+    function readPlayerLayout() {
+            try {
+                const rawLayout = localStorage.getItem(PLAYER_LAYOUT_KEY);
+                const layout = rawLayout ? JSON.parse(rawLayout) : {};
+                return {
+                    width: Number.isFinite(layout.width) ? layout.width : 350,
+                    height: Number.isFinite(layout.height) ? layout.height : null,
+                    left: Number.isFinite(layout.left) ? layout.left : null,
+                    top: Number.isFinite(layout.top) ? layout.top : null
+                };
+            } catch (error) {
+                console.warn("Das japanische Player-Layout konnte nicht gelesen werden.", error);
+                return { width: 350, height: null, left: null, top: null };
+            }
+        }
+
+    function savePlayerLayout() {
+            if (!playerLayoutState) {
+                return;
+            }
+
+            try {
+                localStorage.setItem(PLAYER_LAYOUT_KEY, JSON.stringify(playerLayoutState));
+            } catch (error) {
+                console.warn("Das japanische Player-Layout konnte nicht gespeichert werden.", error);
+            }
+        }
+
+    function isDesktopLayout() {
+            return window.matchMedia(`(min-width: ${DESKTOP_BREAKPOINT}px)`).matches;
+        }
+
+    function updateDesktopPlayerWidth(width) {
+            const boundedWidth = Math.max(280, Math.min(560, width));
+            playerLayoutState.width = boundedWidth;
+            document.documentElement.style.setProperty(
+                "--jp-desktop-player-width",
+                `${boundedWidth}px`
+            );
+            savePlayerLayout();
+        }
+
+    function applyPlayerLayout() {
+            if (!elements.player) {
+                return;
+            }
+
+            if (!isDesktopLayout()) {
+                elements.player.style.removeProperty("width");
+                elements.player.style.removeProperty("height");
+                elements.player.style.removeProperty("left");
+                elements.player.style.removeProperty("top");
+                elements.player.style.removeProperty("right");
+                elements.player.style.removeProperty("transform");
+                return;
+            }
+
+            playerLayoutState = playerLayoutState || readPlayerLayout();
+            updateDesktopPlayerWidth(playerLayoutState.width);
+            if (playerLayoutState.height) {
+                elements.player.style.height = `${playerLayoutState.height}px`;
+            }
+            if (Number.isFinite(playerLayoutState.left) && Number.isFinite(playerLayoutState.top)) {
+                elements.player.style.left = `${playerLayoutState.left}px`;
+                elements.player.style.top = `${playerLayoutState.top}px`;
+                elements.player.style.right = "auto";
+                elements.player.style.transform = "none";
+            }
+        }
+
+    function initializeDesktopPlayerLayout() {
+            if (!elements.player) {
+                return;
+            }
+
+            playerLayoutState = readPlayerLayout();
+            applyPlayerLayout();
+
+            elements.player.querySelector(".japanese-player-header")?.addEventListener(
+                "pointerdown",
+                event => {
+                    if (!isDesktopLayout() || event.button !== 0) {
+                        return;
+                    }
+
+                    const playerRect = elements.player.getBoundingClientRect();
+                    const dragOffsetX = event.clientX - playerRect.left;
+                    const dragOffsetY = event.clientY - playerRect.top;
+                    elements.player.classList.add("is-dragging");
+                    elements.player.setPointerCapture(event.pointerId);
+
+                    const movePlayer = moveEvent => {
+                        const nextLeft = Math.max(
+                            12,
+                            Math.min(window.innerWidth - playerRect.width - 12, moveEvent.clientX - dragOffsetX)
+                        );
+                        const nextTop = Math.max(
+                            12,
+                            Math.min(window.innerHeight - playerRect.height - 12, moveEvent.clientY - dragOffsetY)
+                        );
+                        elements.player.style.left = `${nextLeft}px`;
+                        elements.player.style.top = `${nextTop}px`;
+                        elements.player.style.right = "auto";
+                        elements.player.style.transform = "none";
+                    };
+                    const stopMoving = stopEvent => {
+                        if (elements.player.hasPointerCapture(stopEvent.pointerId)) {
+                            elements.player.releasePointerCapture(stopEvent.pointerId);
+                        }
+                        elements.player.removeEventListener("pointermove", movePlayer);
+                        elements.player.removeEventListener("pointerup", stopMoving);
+                        elements.player.removeEventListener("pointercancel", stopMoving);
+                        elements.player.classList.remove("is-dragging");
+                        const finalRect = elements.player.getBoundingClientRect();
+                        playerLayoutState.left = finalRect.left;
+                        playerLayoutState.top = finalRect.top;
+                        savePlayerLayout();
+                    };
+
+                    elements.player.addEventListener("pointermove", movePlayer);
+                    elements.player.addEventListener("pointerup", stopMoving);
+                    elements.player.addEventListener("pointercancel", stopMoving);
+                }
+            );
+
+            if (window.ResizeObserver) {
+                new ResizeObserver(entries => {
+                    if (!isDesktopLayout() || !entries[0]) {
+                        return;
+                    }
+                    const rect = entries[0].contentRect;
+                    updateDesktopPlayerWidth(rect.width);
+                    playerLayoutState.height = rect.height;
+                    savePlayerLayout();
+                }).observe(elements.player);
+            }
+
+            window.addEventListener("resize", applyPlayerLayout);
     }
 
     function setAudioStatus(message) {
@@ -1470,6 +1613,7 @@
     elements.clearPlaylistButton?.addEventListener("click", clearPlaylist);
 
     window.addEventListener("beforeunload", stopSpeaking);
+    initializeDesktopPlayerLayout();
 
     if (bosses.length === 0) {
         setAudioStatus("Noch kein japanisches Grammatik-Unterkapitel verfügbar.");
