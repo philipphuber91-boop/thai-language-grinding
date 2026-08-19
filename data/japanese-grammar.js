@@ -7,8 +7,64 @@ const japaneseGrammarBosses = [
         patternRomaji: "N1 wa N2 desu",
         patternTranslation: "N1 ist N2.",
         description:
-            "Eine der absoluten Grundlagen der japanischen Satzbildung. " +
-            "Dieser erste Drill baut das Muster Schritt für Schritt auf.",
+            "In diesem Drill lernst du, wie Japanisch mit です (desu) einfache Aussagen " +
+            "wie „Ich bin Student“ oder „Das ist ein Buch“ bildet. Dabei begegnet dir は " +
+            "(wa) als kleines Satzthema-Zeichen: Es zeigt an, worüber wir gerade sprechen – " +
+            "es gehört also nicht fest zu です (desu), sondern arbeitet mit dem gesamten Satz zusammen.",
+        introduction: {
+            example: {
+                japanese: "わたしは がくせいです。",
+                romaji: "watatschi wa gakusei desu.",
+                translation: "Ich bin Student."
+            },
+            parts: [
+                { japanese: "わたし", romaji: "watatschi", translation: "ich" },
+                { japanese: "は", romaji: "wa", translation: "„was mich betrifft …“ / Satzthema" },
+                { japanese: "がくせい", romaji: "gakusei", translation: "Student" },
+                { japanese: "です", romaji: "desu", translation: "ist / bin" }
+            ],
+            assembly: {
+                japanese: "わたし + は + がくせい + です",
+                romaji: "watatschi + wa + gakusei + desu",
+                translation: "Ich + [Thema] + Student + bin."
+            },
+            warning:
+                "は (wa) bedeutet nicht einfach „ist“ und ist auch nicht Bestandteil von です (desu). " +
+                "Es markiert das Thema des Satzes."
+        },
+        midpointReminder: {
+            title: "💎 50 SÄTZE GESCHAFFT",
+            message: "Du hast jetzt bereits gesehen:",
+            words: [
+                { japanese: "わたし", romaji: "watatschi", translation: "ich" },
+                { japanese: "あなた", romaji: "anata", translation: "du" },
+                { japanese: "かれ", romaji: "kare", translation: "er" },
+                { japanese: "かのじょ", romaji: "kanojo", translation: "sie" },
+                { japanese: "これ", romaji: "kore", translation: "das hier" },
+                { japanese: "それ", romaji: "sore", translation: "das da" },
+                { japanese: "です", romaji: "desu", translation: "ist / bin" },
+                { japanese: "じゃありません", romaji: "dschá arimasen", translation: "ist / bin nicht" }
+            ],
+            examples: [
+                {
+                    japanese: "わたしは がくせいです。",
+                    romaji: "watatschi wa gakusei desu.",
+                    translation: "Ich bin Student."
+                },
+                {
+                    japanese: "これは ほんです。",
+                    romaji: "kore wa hon desu.",
+                    translation: "Das hier ist ein Buch."
+                },
+                {
+                    japanese: "これは ほんじゃありません。",
+                    romaji: "kore wa hon dschá arimasen.",
+                    translation: "Das hier ist kein Buch."
+                }
+            ],
+            summary:
+                "Und vor allem hast du bereits ein richtiges kleines japanisches Satzsystem gesehen."
+        },
         blocks: [
             {
                 id: "foundation-block-1",

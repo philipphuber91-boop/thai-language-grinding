@@ -2,6 +2,9 @@
     "use strict";
 
     const STORAGE_KEY = "japaneseGigaDrill:v1";
+    const DEFAULT_PLAYBACK_RATE = 0.85;
+    const MIN_PLAYBACK_RATE = 0.5;
+    const MAX_PLAYBACK_RATE = 1.5;
     const bosses = Array.isArray(window.japaneseGrammarBosses)
         ? window.japaneseGrammarBosses
         : [];
@@ -11,9 +14,14 @@
         sidebarBackdrop: document.getElementById("japaneseSidebarBackdrop"),
         sidebarToggle: document.getElementById("japaneseSidebarToggle"),
         chapterNav: document.getElementById("japaneseChapterNav"),
+        foreword: document.getElementById("japaneseForeword"),
+        forewordButton: document.getElementById("japaneseForewordButton"),
+        hero: document.getElementById("japaneseHeroPanel"),
+        reader: document.getElementById("japaneseReader"),
         bossEyebrow: document.getElementById("japaneseBossEyebrow"),
         bossTitle: document.getElementById("japaneseBossTitle"),
         bossDescription: document.getElementById("japaneseBossDescription"),
+        introduction: document.getElementById("japaneseIntroduction"),
         sentenceCount: document.getElementById("japaneseSentenceCount"),
         resumeButton: document.getElementById("japaneseResumeButton"),
         pattern: document.getElementById("japanesePattern"),
@@ -26,6 +34,8 @@
         playerNext: document.getElementById("japanesePlayerNext"),
         playerLoop: document.getElementById("japanesePlayerLoop"),
         playerShuffle: document.getElementById("japanesePlayerShuffle"),
+        playerSpeed: document.getElementById("japanesePlayerSpeed"),
+        playerSpeedValue: document.getElementById("japanesePlayerSpeedValue"),
         addAllButton: document.getElementById("japaneseAddAllButton"),
         clearPlaylistButton: document.getElementById("japaneseClearPlaylistButton"),
         playlist: document.getElementById("japanesePlaylist"),
@@ -43,6 +53,7 @@
         shuffle: false,
         shuffleOrder: [],
         shufflePosition: 0,
+        playbackRate: DEFAULT_PLAYBACK_RATE,
         playing: false
     };
 
@@ -53,6 +64,18 @@
             .replace(/>/g, "&gt;")
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#039;");
+    }
+
+    function normalizePlaybackRate(value) {
+        const rate = Number(value);
+        if (!Number.isFinite(rate)) {
+            return DEFAULT_PLAYBACK_RATE;
+        }
+        return Math.min(MAX_PLAYBACK_RATE, Math.max(MIN_PLAYBACK_RATE, rate));
+    }
+
+    function formatPlaybackRate(rate) {
+        return `${normalizePlaybackRate(rate).toFixed(2).replace(".", ",")}×`;
     }
 
     function readProgress() {
@@ -76,7 +99,8 @@
                     ? Math.max(0, progress.playlistIndex)
                     : 0,
                 loop: progress.loop !== false,
-                shuffle: progress.shuffle === true
+                shuffle: progress.shuffle === true,
+                playbackRate: normalizePlaybackRate(progress.playbackRate)
             };
         } catch (error) {
             console.warn("Japanischer Lesefortschritt konnte nicht gelesen werden.", error);
@@ -87,7 +111,8 @@
                 playlist: [],
                 playlistIndex: 0,
                 loop: true,
-                shuffle: false
+                shuffle: false,
+                playbackRate: DEFAULT_PLAYBACK_RATE
             };
         }
     }
@@ -126,6 +151,27 @@
         elements.sidebarToggle?.setAttribute("aria-expanded", "true");
     }
 
+    function setJapaneseView(view, shouldScroll) {
+        const isForeword = view === "foreword";
+        elements.hero.hidden = isForeword;
+        elements.reader.hidden = isForeword;
+        elements.foreword.hidden = !isForeword;
+        elements.forewordButton.classList.toggle("is-active", isForeword);
+        elements.forewordButton.setAttribute("aria-pressed", String(isForeword));
+
+        if (shouldScroll) {
+            (isForeword ? elements.foreword : elements.reader)?.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+    }
+
+    function showForeword() {
+        setJapaneseView("foreword", true);
+        closeSidebar();
+    }
+
     function resetAudioButton() {
         if (!activeAudioButton) {
             return;
@@ -156,7 +202,8 @@
                     playlist: playerState.playlist,
                     playlistIndex: playerState.currentIndex,
                     loop: playerState.loop,
-                    shuffle: playerState.shuffle
+                    shuffle: playerState.shuffle,
+                    playbackRate: playerState.playbackRate
                 })
             );
         } catch (error) {
@@ -297,6 +344,8 @@
             playerState.playing ? "⏸ Pause" : "▶ Abspielen";
         elements.playerLoop.checked = playerState.loop;
         elements.playerShuffle.checked = playerState.shuffle;
+        elements.playerSpeed.value = String(playerState.playbackRate);
+        elements.playerSpeedValue.textContent = formatPlaybackRate(playerState.playbackRate);
 
         if (currentItem) {
             elements.playerNowPlaying.textContent =
@@ -569,7 +618,7 @@
         const speechVoice = getSpeechVoice();
         const utterance = new SpeechSynthesisUtterance(sentence.japanese);
         const currentRunId = ++speechRunId;
-        utterance.rate = 0.85;
+        utterance.rate = playerState.playbackRate;
         utterance.pitch = 1;
 
         if (speechVoice.voice) {
@@ -700,6 +749,7 @@
         );
         playerState.loop = progress.loop;
         playerState.shuffle = progress.shuffle;
+        playerState.playbackRate = progress.playbackRate;
         renderPlaylist();
         updatePlayerUi();
     }
@@ -741,10 +791,97 @@
 
         elements.chapterNav.querySelectorAll("[data-boss-id]").forEach(button => {
             button.addEventListener("click", () => {
-                renderBoss(button.dataset.bossId);
+                renderBoss(button.dataset.bossId, true);
                 closeSidebar();
             });
         });
+    }
+
+    function renderIntroduction(introduction) {
+        if (!introduction) {
+            elements.introduction.hidden = true;
+            elements.introduction.innerHTML = "";
+            return;
+        }
+
+        elements.introduction.hidden = false;
+        elements.introduction.innerHTML = `
+            <h3>🧩 Das Grundmuster</h3>
+            <div class="japanese-introduction-example">
+                <p class="japanese-introduction-japanese" lang="ja">
+                    ${escapeHtml(introduction.example.japanese)}
+                </p>
+                <p class="japanese-introduction-romaji">
+                    <em>${escapeHtml(introduction.example.romaji)}</em>
+                </p>
+                <p class="japanese-introduction-translation">
+                    ${escapeHtml(introduction.example.translation)}
+                </p>
+            </div>
+            <p class="japanese-introduction-lead">
+                Du kannst es zunächst ganz einfach als Baukasten sehen:
+            </p>
+            <div class="japanese-introduction-parts">
+                ${introduction.parts.map(part => `
+                    <div class="japanese-introduction-part">
+                        <strong lang="ja">${escapeHtml(part.japanese)}</strong>
+                        <em>${escapeHtml(part.romaji)}</em>
+                        <span>${escapeHtml(part.translation)}</span>
+                    </div>
+                `).join("")}
+            </div>
+            <div class="japanese-introduction-assembly">
+                <p class="japanese-pattern-label">Also:</p>
+                <p class="japanese-introduction-japanese" lang="ja">
+                    <strong>${escapeHtml(introduction.assembly.japanese)}</strong>
+                </p>
+                <p class="japanese-introduction-romaji">
+                    <em>${escapeHtml(introduction.assembly.romaji)}</em>
+                </p>
+                <p class="japanese-introduction-translation">
+                    <strong>${escapeHtml(introduction.assembly.translation)}</strong>
+                </p>
+            </div>
+            <p class="japanese-introduction-warning">
+                💡 <strong>Wichtig:</strong> ${escapeHtml(introduction.warning)}
+            </p>
+        `;
+    }
+
+    function renderMidpointReminder(reminder) {
+        if (!reminder) {
+            return "";
+        }
+
+        return `
+            <details class="japanese-midpoint-reminder">
+                <summary>${escapeHtml(reminder.title)}</summary>
+                <div class="japanese-midpoint-content">
+                    <p>${escapeHtml(reminder.message)}</p>
+                    <div class="japanese-reminder-words">
+                        ${reminder.words.map(word => `
+                            <div class="japanese-reminder-word">
+                                <strong lang="ja">${escapeHtml(word.japanese)}</strong>
+                                <em>${escapeHtml(word.romaji)}</em>
+                                <span>${escapeHtml(word.translation)}</span>
+                            </div>
+                        `).join("")}
+                    </div>
+                    <p class="japanese-reminder-summary">
+                        ${escapeHtml(reminder.summary)}
+                    </p>
+                    <div class="japanese-reminder-examples">
+                        ${reminder.examples.map(example => `
+                            <div>
+                                <strong lang="ja">${escapeHtml(example.japanese)}</strong>
+                                <em>${escapeHtml(example.romaji)}</em>
+                                <span>${escapeHtml(example.translation)}</span>
+                            </div>
+                        `).join("")}
+                    </div>
+                </div>
+            </details>
+        `;
     }
 
     function renderSentence(sentence) {
@@ -775,13 +912,14 @@
         `;
     }
 
-    function renderBoss(bossId) {
+    function renderBoss(bossId, shouldScroll = false) {
         const boss = bosses.find(candidate => candidate.id === bossId);
         if (!boss) {
             setAudioStatus("Das ausgewählte japanische Grammatik-Unterkapitel wurde nicht gefunden.");
             return;
         }
 
+        setJapaneseView("reader", shouldScroll);
         if (playerState.playing) {
             pausePlaylist();
         } else {
@@ -793,6 +931,7 @@
         elements.bossEyebrow.textContent = boss.title;
         elements.bossTitle.textContent = boss.subtitle;
         elements.bossDescription.textContent = boss.description;
+        renderIntroduction(boss.introduction);
         elements.sentenceCount.textContent = `${boss.sentences.length} Beispielsätze`;
         elements.pattern.textContent = boss.pattern;
         elements.patternRomaji.textContent = boss.patternRomaji;
@@ -824,6 +963,9 @@
                             + Level zur Playlist
                         </button>
                     </div>
+                    ${level.id === "level-4"
+                        ? renderMidpointReminder(boss.midpointReminder)
+                        : ""}
                 `).join("")}
             </section>
         `).join("");
@@ -879,6 +1021,7 @@
             openSidebar();
         }
     });
+    elements.forewordButton?.addEventListener("click", showForeword);
 
     elements.sidebarBackdrop?.addEventListener("click", closeSidebar);
 
@@ -915,6 +1058,17 @@
             playerState.shufflePosition = 0;
         }
         savePlayerState();
+    });
+    elements.playerSpeed?.addEventListener("input", () => {
+        playerState.playbackRate = normalizePlaybackRate(elements.playerSpeed.value);
+        updatePlayerUi();
+        savePlayerState();
+    });
+    elements.playerSpeed?.addEventListener("change", () => {
+        if (playerState.playing) {
+            stopSpeaking();
+            speakPlaylistEntry();
+        }
     });
     elements.addAllButton?.addEventListener("click", addAllSentences);
     elements.clearPlaylistButton?.addEventListener("click", clearPlaylist);

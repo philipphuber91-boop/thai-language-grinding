@@ -122,6 +122,7 @@ body.japanese-drill-page {
 }
 
 .japanese-chapter-button,
+.japanese-foreword-menu-button,
 .japanese-secondary-button,
 .japanese-audio-button {
     border: 1px solid var(--jp-border);
@@ -138,9 +139,19 @@ body.japanese-drill-page {
     text-align: left;
 }
 
+.japanese-foreword-menu-button {
+    width: 100%;
+    margin: 16px 0 20px;
+    padding: 12px 13px;
+    text-align: left;
+}
+
 .japanese-chapter-button:hover,
 .japanese-chapter-button:focus-visible,
-.japanese-chapter-button.is-active {
+.japanese-chapter-button.is-active,
+.japanese-foreword-menu-button:hover,
+.japanese-foreword-menu-button:focus-visible,
+.japanese-foreword-menu-button.is-active {
     border-color: var(--jp-gold);
     color: #211526;
     background: var(--jp-gold);
@@ -238,6 +249,211 @@ body.japanese-drill-page {
 .japanese-secondary-button:focus-visible {
     border-color: var(--jp-gold);
     background: #3b2945;
+}
+
+.japanese-introduction {
+    margin: 24px 0 30px;
+    padding: 22px;
+    border: 1px solid rgba(205, 187, 210, .35);
+    border-radius: 14px;
+    background: rgba(23, 16, 25, .35);
+}
+
+.japanese-introduction h3 {
+    margin: 0 0 18px;
+    color: #fff5cf;
+    font-size: 1.18rem;
+}
+
+.japanese-introduction-example {
+    padding: 16px 18px;
+    border-left: 3px solid var(--jp-gold);
+    background: rgba(240, 199, 110, .08);
+}
+
+.japanese-introduction-japanese {
+    margin: 0;
+    color: #fff9ee;
+    font-size: 1.3rem;
+    line-height: 1.45;
+}
+
+.japanese-introduction-romaji {
+    margin: 5px 0 0;
+    color: var(--jp-accent);
+}
+
+.japanese-introduction-translation {
+    margin: 4px 0 0;
+    color: var(--jp-muted);
+}
+
+.japanese-introduction-lead {
+    margin: 22px 0 12px;
+}
+
+.japanese-introduction-parts {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 9px;
+}
+
+.japanese-introduction-part {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid rgba(141, 106, 159, .45);
+    border-radius: 9px;
+    background: rgba(23, 16, 25, .48);
+}
+
+.japanese-introduction-part strong {
+    color: #fff9ee;
+    font-size: 1.15rem;
+}
+
+.japanese-introduction-part em {
+    color: var(--jp-accent);
+    font-size: .9rem;
+}
+
+.japanese-introduction-part span {
+    color: var(--jp-muted);
+    font-size: .9rem;
+}
+
+.japanese-introduction-assembly {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(205, 187, 210, .25);
+}
+
+.japanese-introduction-assembly .japanese-pattern-label {
+    margin-bottom: 8px;
+}
+
+.japanese-introduction-warning {
+    margin: 20px 0 0;
+    color: #fff5cf;
+}
+
+.japanese-foreword {
+    scroll-margin-top: 24px;
+    margin: 28px 0 34px;
+    border: 1px solid rgba(240, 199, 110, .5);
+    border-radius: 15px;
+    background: rgba(240, 199, 110, .06);
+}
+
+.japanese-foreword-header {
+    padding: 22px 22px 8px;
+}
+
+.japanese-foreword-header h2 {
+    margin: 8px 0 10px;
+    color: #fff5cf;
+    font-size: clamp(1.3rem, 3vw, 1.75rem);
+}
+
+.japanese-foreword-header p:last-child {
+    margin-bottom: 0;
+    color: var(--jp-muted);
+}
+
+.japanese-foreword-details > summary {
+    padding: 14px 22px;
+    border-top: 1px solid rgba(240, 199, 110, .22);
+    color: var(--jp-gold);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.japanese-foreword-details > summary:hover,
+.japanese-foreword-details > summary:focus-visible {
+    background: rgba(240, 199, 110, .08);
+}
+
+.japanese-foreword-content {
+    padding: 4px 22px 24px;
+    color: var(--jp-text);
+    line-height: 1.6;
+}
+
+.japanese-foreword-content h3 {
+    margin: 26px 0 8px;
+    color: var(--jp-gold);
+    font-size: 1.08rem;
+}
+
+.japanese-foreword-content p {
+    margin: 8px 0;
+}
+
+.japanese-foreword-content ul {
+    margin: 8px 0 12px;
+    padding-left: 24px;
+}
+
+.japanese-foreword-content blockquote {
+    margin: 14px 0;
+    padding: 12px 16px;
+    border-left: 3px solid var(--jp-gold);
+    color: #fff5cf;
+    background: rgba(23, 16, 25, .38);
+}
+
+.japanese-flow-line,
+.japanese-flow-formula {
+    padding: 12px 14px;
+    border-radius: 9px;
+    color: var(--jp-accent);
+    background: rgba(23, 16, 25, .38);
+}
+
+.japanese-foreword-triad,
+.japanese-foreword-blocks {
+    display: grid;
+    gap: 9px;
+}
+
+.japanese-foreword-triad {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.japanese-foreword-triad span,
+.japanese-foreword-blocks span {
+    padding: 11px 12px;
+    border: 1px solid rgba(141, 106, 159, .45);
+    border-radius: 9px;
+    background: rgba(23, 16, 25, .38);
+}
+
+.japanese-foreword-triad strong {
+    color: #fff9ee;
+    font-weight: normal;
+}
+
+.japanese-foreword-blocks {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.japanese-foreword-blocks strong,
+.japanese-foreword-blocks small {
+    display: block;
+}
+
+.japanese-foreword-blocks strong {
+    color: #fff9ee;
+}
+
+.japanese-foreword-blocks small {
+    color: var(--jp-muted);
+}
+
+.japanese-foreword-signature {
+    color: var(--jp-gold);
+    text-align: center;
 }
 
 .japanese-pattern-card {
@@ -343,6 +559,29 @@ body.japanese-drill-page {
     display: grid;
     gap: 7px;
     margin-left: auto;
+}
+
+.japanese-player-speed {
+    display: grid;
+    grid-template-columns: auto minmax(130px, 230px) auto;
+    gap: 10px;
+    align-items: center;
+    margin-top: 13px;
+    color: var(--jp-muted);
+    font-size: .92rem;
+}
+
+.japanese-player-speed input {
+    width: 100%;
+    accent-color: var(--jp-gold);
+    cursor: pointer;
+}
+
+.japanese-player-speed output {
+    min-width: 42px;
+    color: var(--jp-accent);
+    font-variant-numeric: tabular-nums;
+    text-align: right;
 }
 
 .japanese-shuffle-toggle {
@@ -499,6 +738,79 @@ body.japanese-drill-page {
     margin: -4px 0 14px;
     color: var(--jp-muted);
     line-height: 1.5;
+}
+
+.japanese-midpoint-reminder {
+    margin: 18px 0 22px;
+    border: 1px solid rgba(240, 199, 110, .62);
+    border-radius: 13px;
+    background: rgba(240, 199, 110, .08);
+}
+
+.japanese-midpoint-reminder summary {
+    padding: 15px 18px;
+    color: var(--jp-gold);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.japanese-midpoint-reminder summary:hover,
+.japanese-midpoint-reminder summary:focus-visible {
+    background: rgba(240, 199, 110, .08);
+}
+
+.japanese-midpoint-content {
+    padding: 0 18px 18px;
+}
+
+.japanese-reminder-words,
+.japanese-reminder-examples {
+    display: grid;
+    gap: 9px;
+}
+
+.japanese-reminder-words {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.japanese-reminder-word,
+.japanese-reminder-examples > div {
+    display: grid;
+    gap: 3px;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(23, 16, 25, .4);
+}
+
+.japanese-reminder-word strong,
+.japanese-reminder-examples strong {
+    color: #fff9ee;
+}
+
+.japanese-reminder-word em,
+.japanese-reminder-examples em {
+    color: var(--jp-accent);
+    font-size: .9rem;
+}
+
+.japanese-reminder-word span,
+.japanese-reminder-examples span {
+    color: var(--jp-muted);
+    font-size: .9rem;
+}
+
+.japanese-reminder-examples {
+    margin-top: 12px;
+}
+
+.japanese-reminder-summary {
+    margin: 16px 0 0;
+    color: #fff5cf;
+    font-weight: bold;
+}
+
+.japanese-midpoint-content blockquote {
+    margin-bottom: 0;
 }
 
 .japanese-level-shell {
@@ -757,6 +1069,33 @@ body.japanese-drill-page {
     .japanese-player-modes {
         width: 100%;
         margin: 3px 0 0;
+    }
+
+    .japanese-player-speed {
+        grid-template-columns: auto minmax(0, 1fr) auto;
+    }
+
+    .japanese-introduction-parts {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .japanese-foreword-header,
+    .japanese-foreword-content {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .japanese-foreword-details > summary {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .japanese-foreword-triad {
+        grid-template-columns: 1fr;
+    }
+
+    .japanese-reminder-words {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .japanese-sentence {
