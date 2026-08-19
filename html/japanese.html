@@ -71,6 +71,43 @@
                 <p id="japanesePatternTranslation" class="japanese-pattern-translation"></p>
             </div>
 
+            <section class="japanese-player" aria-labelledby="japanesePlayerTitle">
+                <div class="japanese-player-header">
+                    <div>
+                        <p class="japanese-pattern-label">Audio-Player</p>
+                        <h3 id="japanesePlayerTitle">Deine japanische Playlist</h3>
+                    </div>
+                    <span id="japanesePlaylistCount" class="japanese-count">0 Sätze</span>
+                </div>
+                <p id="japanesePlayerNowPlaying" class="japanese-player-now-playing">
+                    Füge Sätze über „+ Playlist“ hinzu.
+                </p>
+                <div class="japanese-player-controls">
+                    <button id="japanesePlayerPrevious" class="japanese-player-button" type="button" disabled>
+                        ⏮ Zurück
+                    </button>
+                    <button id="japanesePlayerPlayPause" class="japanese-player-button japanese-player-primary" type="button" disabled>
+                        ▶ Abspielen
+                    </button>
+                    <button id="japanesePlayerNext" class="japanese-player-button" type="button" disabled>
+                        Weiter ⏭
+                    </button>
+                    <label class="japanese-loop-toggle">
+                        <input id="japanesePlayerLoop" type="checkbox" checked>
+                        <span>🔁 Dauerschleife</span>
+                    </label>
+                </div>
+                <div class="japanese-player-actions">
+                    <button id="japaneseAddAllButton" class="japanese-secondary-button" type="button">
+                        Alle Sätze hinzufügen
+                    </button>
+                    <button id="japaneseClearPlaylistButton" class="japanese-secondary-button" type="button" disabled>
+                        Playlist leeren
+                    </button>
+                </div>
+                <ol id="japanesePlaylist" class="japanese-playlist" aria-label="Deine Playlist"></ol>
+            </section>
+
             <div id="japaneseBlockList" class="japanese-block-list"></div>
         </section>
 
