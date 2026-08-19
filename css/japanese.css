@@ -148,9 +148,21 @@ body.japanese-drill-page {
 }
 
 .japanese-chapter-button {
+    display: grid;
+    gap: 3px;
     width: 100%;
     padding: 12px 13px;
     text-align: left;
+}
+
+.japanese-chapter-button strong {
+    color: inherit;
+}
+
+.japanese-chapter-button small {
+    color: inherit;
+    font-size: .88rem;
+    line-height: 1.35;
 }
 
 .japanese-foreword-menu-button {
@@ -513,13 +525,15 @@ body.japanese-drill-page {
 }
 
 .japanese-player-button {
-    padding: 10px 13px;
+    padding: 7px 10px;
     border: 1px solid var(--jp-border);
-    border-radius: 9px;
+    border-radius: 8px;
     color: var(--jp-text);
     background: var(--jp-panel-light);
     cursor: pointer;
     font: inherit;
+    font-size: .88rem;
+    line-height: 1.2;
 }
 
 .japanese-player-button:hover:not(:disabled),
@@ -543,15 +557,14 @@ body.japanese-drill-page {
     display: inline-flex;
     gap: 7px;
     align-items: center;
-    margin-left: auto;
-    color: var(--jp-green);
+    color: var(--jp-muted);
     cursor: pointer;
-    font-size: .95rem;
+    font-size: .9rem;
 }
 
 .japanese-player-modes {
     display: grid;
-    gap: 7px;
+    gap: 5px;
     margin-left: auto;
 }
 
@@ -584,18 +597,38 @@ body.japanese-drill-page {
     align-items: center;
     color: var(--jp-muted);
     cursor: pointer;
-    font-size: .95rem;
+    font-size: .9rem;
+}
+
+.japanese-loop-toggle:hover,
+.japanese-loop-toggle:focus-within {
+    color: var(--jp-green);
+}
+
+.japanese-shuffle-toggle:hover,
+.japanese-shuffle-toggle:focus-within {
+    color: var(--jp-text);
+}
+
+.japanese-loop-toggle:has(input:checked) {
+    color: var(--jp-green);
+}
+
+.japanese-shuffle-toggle:has(input:checked) {
+    color: #fff9ee;
 }
 
 .japanese-shuffle-toggle input {
-    width: 17px;
-    height: 17px;
+    width: 15px;
+    height: 15px;
+    margin: 0;
     accent-color: var(--jp-gold);
 }
 
 .japanese-loop-toggle input {
-    width: 17px;
-    height: 17px;
+    width: 15px;
+    height: 15px;
+    margin: 0;
     accent-color: var(--jp-gold);
 }
 
@@ -616,10 +649,15 @@ body.japanese-drill-page {
 .japanese-playlist {
     display: grid;
     gap: 7px;
+    width: 100%;
     max-height: 270px;
     margin: 16px 0 0;
     padding: 0 4px 0 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
     overflow-y: auto;
+    overscroll-behavior-x: none;
+    touch-action: pan-y;
     list-style: none;
 }
 
@@ -635,10 +673,14 @@ body.japanese-drill-page {
     display: flex;
     gap: 7px;
     align-items: stretch;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     border: 1px solid rgba(141, 106, 159, .45);
     border-radius: 9px;
     background: rgba(23, 16, 25, .48);
     cursor: grab;
+    touch-action: pan-y;
 }
 
 .japanese-playlist-item.is-dragging {
@@ -668,6 +710,11 @@ body.japanese-drill-page {
     cursor: pointer;
     font: inherit;
     text-align: left;
+}
+
+.japanese-playlist-select > span:not(.japanese-playlist-card-number) {
+    flex: 1 1 auto;
+    min-width: 0;
 }
 
 .japanese-playlist-select > span:first-child {
@@ -1228,8 +1275,8 @@ body.japanese-drill-page {
     }
 
     .japanese-loop-toggle {
-        width: 100%;
-        margin: 3px 0 0;
+        width: auto;
+        margin: 0;
     }
 
     .japanese-player-modes {

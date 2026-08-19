@@ -47,6 +47,8 @@
     let activeAudioButton = null;
     let speechRunId = 0;
     let draggedPlaylistIndex = null;
+    let pointerDragState = null;
+    let suppressPlaylistClickUntil = 0;
     const playerState = {
         playlist: [],
         currentIndex: 0,
@@ -332,6 +334,9 @@
 
         elements.playlist.querySelectorAll(".japanese-playlist-select[data-playlist-index]").forEach(button => {
             button.addEventListener("click", () => {
+                if (Date.now() < suppressPlaylistClickUntil) {
+                    return;
+                }
                 playerState.currentIndex = Number(button.dataset.playlistIndex);
                 savePlayerState();
                 updatePlayerUi();
@@ -383,6 +388,58 @@
                 draggedPlaylistIndex = null;
                 item.classList.remove("is-dragging", "is-drag-over");
             });
+            item.addEventListener("pointerdown", event => {
+                if (event.pointerType === "mouse" || event.button !== 0) {
+                    return;
+                }
+                if (event.target.closest(".japanese-playlist-remove")) {
+                    return;
+                }
+
+                cancelPointerDrag();
+                const state = {
+                    item,
+                    pointerId: event.pointerId,
+                    startX: event.clientX,
+                    startY: event.clientY,
+                    dragging: false,
+                    timer: window.setTimeout(() => {
+                        if (pointerDragState !== state) {
+                            return;
+                        }
+                        state.dragging = true;
+                        draggedPlaylistIndex = Number(item.dataset.playlistIndex);
+                        item.classList.add("is-dragging");
+                        item.setPointerCapture(event.pointerId);
+                        suppressPlaylistClickUntil = Date.now() + 600;
+                    }, 350)
+                };
+                pointerDragState = state;
+            });
+            item.addEventListener("pointermove", event => {
+                const state = pointerDragState;
+                if (!state || state.pointerId !== event.pointerId) {
+                    return;
+                }
+
+                if (!state.dragging) {
+                    const movedX = Math.abs(event.clientX - state.startX);
+                    const movedY = Math.abs(event.clientY - state.startY);
+                    if (Math.max(movedX, movedY) > 8) {
+                        cancelPointerDrag();
+                    }
+                    return;
+                }
+
+                event.preventDefault();
+                updatePointerDragTarget(event.clientX, event.clientY);
+            });
+            item.addEventListener("pointerup", event => {
+                finishPointerDrag(event);
+            });
+            item.addEventListener("pointercancel", () => {
+                cancelPointerDrag();
+            });
         });
 
         elements.playlist.querySelectorAll("[data-remove-playlist-index]").forEach(button => {
@@ -390,6 +447,58 @@
                 removeFromPlaylist(Number(button.dataset.removePlaylistIndex));
             });
         });
+    }
+
+    function cancelPointerDrag() {
+        if (pointerDragState?.timer) {
+            window.clearTimeout(pointerDragState.timer);
+        }
+        pointerDragState = null;
+    }
+
+    function updatePointerDragTarget(clientX, clientY) {
+        const target = document.elementFromPoint(clientX, clientY)?.closest(
+            ".japanese-playlist-item"
+        );
+        elements.playlist.querySelectorAll(".japanese-playlist-item").forEach(item => {
+            item.classList.toggle("is-drag-over", item === target);
+        });
+    }
+
+    function finishPointerDrag(event) {
+        const state = pointerDragState;
+        if (!state || state.pointerId !== event.pointerId) {
+            return;
+        }
+
+        if (!state.dragging) {
+            cancelPointerDrag();
+            return;
+        }
+
+        event.preventDefault();
+        const target = document.elementFromPoint(event.clientX, event.clientY)?.closest(
+            ".japanese-playlist-item"
+        );
+        const sourceIndex = Number(state.item.dataset.playlistIndex);
+        const targetIndex = target ? Number(target.dataset.playlistIndex) : sourceIndex;
+        let insertionIndex = targetIndex;
+        if (target && event.clientY > target.getBoundingClientRect().top + target.offsetHeight / 2) {
+            insertionIndex += 1;
+        }
+        if (sourceIndex < insertionIndex) {
+            insertionIndex -= 1;
+        }
+
+        elements.playlist.querySelectorAll(".japanese-playlist-item").forEach(item => {
+            item.classList.remove("is-dragging", "is-drag-over");
+        });
+        draggedPlaylistIndex = null;
+        suppressPlaylistClickUntil = Date.now() + 600;
+        cancelPointerDrag();
+        if (sourceIndex !== insertionIndex) {
+            movePlaylistEntry(sourceIndex, insertionIndex);
+        }
     }
 
     function updatePlayerUi() {
@@ -890,8 +999,8 @@
                             class="japanese-chapter-button"
                             type="button"
                             data-boss-id="${escapeHtml(boss.id)}">
-                            ${escapeHtml(boss.title)}
-                            <span> · ${boss.sentences.length} Sätze</span>
+                            <strong>${escapeHtml(boss.title)}</strong>
+                            <small>${escapeHtml(boss.subtitle)}</small>
                         </button>
                     `).join("")}
                 </div>
@@ -915,7 +1024,7 @@
 
         elements.introduction.hidden = false;
         elements.introduction.innerHTML = `
-            <details class="japanese-introduction-disclosure" open>
+            <details class="japanese-introduction-disclosure">
                 <summary>🧩 Das Grundmuster</summary>
                 <div class="japanese-introduction-content">
                     <div class="japanese-introduction-example">
@@ -1041,7 +1150,7 @@
         }
 
         return `
-            <details class="japanese-quest-completion" open>
+            <details class="japanese-quest-completion">
                 <summary>${escapeHtml(completion.title)}</summary>
                 <div class="japanese-quest-content">
                     <h3>${escapeHtml(completion.heading)}</h3>
@@ -1127,7 +1236,7 @@
         elements.patternTranslation.textContent = boss.patternTranslation;
 
         elements.blockList.innerHTML = boss.blocks.map(block => `
-            <details class="japanese-block" open>
+            <details class="japanese-block">
                 <summary id="${escapeHtml(block.id)}-title" class="japanese-block-summary">
                     ${escapeHtml(block.title)}
                 </summary>
