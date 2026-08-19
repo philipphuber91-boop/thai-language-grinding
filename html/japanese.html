@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#171019">
+    <title>Japanese Giga Drill</title>
+    <link rel="stylesheet" href="../css/japanese.css">
+    <link rel="manifest" href="../manifest.json">
+</head>
+<body class="japanese-drill-page">
+    <button
+        id="japaneseSidebarToggle"
+        class="japanese-sidebar-toggle"
+        type="button"
+        aria-label="Japanisches Menü öffnen"
+        aria-expanded="false"
+        aria-controls="japaneseSidebar">☰</button>
+    <div id="japaneseSidebarBackdrop" class="japanese-sidebar-backdrop"></div>
+
+    <aside id="japaneseSidebar" class="japanese-sidebar" aria-label="Japanische Navigation">
+        <div class="japanese-menu-card">
+            <a class="japanese-back-link" href="index.html">← Zurück zu Thai Language Grinding</a>
+            <div class="japanese-menu-heading">
+                <span aria-hidden="true">🇯🇵</span>
+                <span>Japanese Giga Drill</span>
+            </div>
+            <p class="japanese-menu-label">Grammatik-Unterkapitel</p>
+            <nav id="japaneseChapterNav" class="japanese-chapter-nav" aria-label="Grammatik-Unterkapitel"></nav>
+        </div>
+    </aside>
+
+    <header class="japanese-topbar">
+        <p class="japanese-kicker">Eigenständiges Projekt</p>
+        <h1>SUPER ULTRA MEGA</h1>
+        <h2>JAPANESE GIGA DRILL</h2>
+    </header>
+
+    <main class="japanese-main">
+        <section class="japanese-hero-panel" aria-labelledby="japanesePageTitle">
+            <p class="japanese-eyebrow">Lesbare Einheit · ohne Thai-Statistik</p>
+            <h1 id="japanesePageTitle">Grammatikdrill für japanische Grundmuster</h1>
+            <p>
+                Eine Grammatikregel, viele Beispielsätze: Lies dich Satz für Satz
+                durch den Drill und höre jeden japanischen Satz direkt per Klick.
+            </p>
+            <p class="japanese-separation-note">
+                Dieser Bereich ist vollständig von Thai-Quests, XP, Chronik und Erfolgen getrennt.
+            </p>
+        </section>
+
+        <section id="japaneseReader" class="japanese-reader">
+            <div class="japanese-reader-header">
+                <div>
+                    <p id="japaneseBossEyebrow" class="japanese-eyebrow"></p>
+                    <h2 id="japaneseBossTitle"></h2>
+                    <p id="japaneseBossDescription" class="japanese-boss-description"></p>
+                </div>
+                <div class="japanese-reader-actions">
+                    <span id="japaneseSentenceCount" class="japanese-count"></span>
+                    <button id="japaneseResumeButton" class="japanese-secondary-button" type="button" hidden>
+                        Bei letzter Position fortsetzen
+                    </button>
+                </div>
+            </div>
+
+            <div class="japanese-pattern-card">
+                <p class="japanese-pattern-label">Satzmuster</p>
+                <p id="japanesePattern" class="japanese-pattern"></p>
+                <p id="japanesePatternRomaji" class="japanese-pattern-romaji"></p>
+                <p id="japanesePatternTranslation" class="japanese-pattern-translation"></p>
+            </div>
+
+            <div id="japaneseBlockList" class="japanese-block-list"></div>
+        </section>
+
+        <p id="japaneseAudioStatus" class="japanese-audio-status" role="status" aria-live="polite"></p>
+    </main>
+
+    <script src="../data/japanese-grammar.js"></script>
+    <script src="../js/japanese-drill.js"></script>
+    <script src="../js/pwa-register.js"></script>
+</body>
+</html>

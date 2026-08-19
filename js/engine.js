@@ -1479,6 +1479,11 @@ document.querySelectorAll(".mobile-menu-button").forEach(button => {
     button.addEventListener("click", () => {
         const mode = button.dataset.contentMode;
 
+        if (mode === "japanese") {
+            window.location.href = "japanese.html";
+            return;
+        }
+
         if (mode === "quests") {
             switchContent("campaign");
             return;
