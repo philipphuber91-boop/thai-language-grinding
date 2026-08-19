@@ -40,24 +40,13 @@
     </header>
 
     <main class="japanese-main">
-        <section id="japaneseHeroPanel" class="japanese-hero-panel" aria-labelledby="japanesePageTitle">
-            <h1 id="japanesePageTitle">Grammatikdrill für japanische Grundmuster</h1>
-            <p>
-                Eine Grammatikregel, viele Beispielsätze: Lies dich Satz für Satz
-                durch den Drill und höre jeden japanischen Satz direkt per Klick.
-            </p>
-            <p class="japanese-separation-note">
-                Dieser Bereich ist vollständig von Thai-Quests, XP, Chronik und Erfolgen getrennt.
-            </p>
-        </section>
-
         <section id="japaneseForeword" class="japanese-foreword" aria-labelledby="japaneseForewordTitle" hidden>
             <div class="japanese-foreword-header">
                 <p class="japanese-eyebrow">Vorwort · Japanese Language Grinding Flow Machine™</p>
                 <h2 id="japaneseForewordTitle">🏯 Das Masterkonzept des Japanese Giga Drill</h2>
                 <p>
                     Dieses Projekt baut kein schnelles Holzschuppenwissen auf, sondern ein
-                    Fundament aus Beton, Metall, Stone und Diamant.
+                    Fundament aus Beton, Metall, Stein und Diamant.
                 </p>
             </div>
             <details class="japanese-foreword-details" open>
@@ -83,7 +72,7 @@
                     </p>
                     <blockquote>
                         Wir bauen keinen schnellen Holzschuppen.<br>
-                        Wir gießen ein Fundament aus Beton, Metall, Stone und Diamant.
+                        Wir gießen ein Fundament aus Beton, Metall, Stein und Diamant.
                     </blockquote>
 
                     <h3>2. 🏯 Das Grundprinzip</h3>
@@ -233,6 +222,60 @@
             </details>
         </section>
 
+        <section id="japanesePlayer" class="japanese-player" aria-labelledby="japanesePlayerTitle">
+            <div class="japanese-player-header">
+                <div>
+                    <p class="japanese-pattern-label">Audio-Player</p>
+                    <h3 id="japanesePlayerTitle">Deine japanische Playlist</h3>
+                </div>
+                <span id="japanesePlaylistCount" class="japanese-count">0 Sätze</span>
+            </div>
+            <p id="japanesePlayerNowPlaying" class="japanese-player-now-playing">
+                Füge Sätze über „+ Playlist“ hinzu.
+            </p>
+            <div class="japanese-player-controls">
+                <button id="japanesePlayerPrevious" class="japanese-player-button" type="button" disabled>
+                    ⏮ Zurück
+                </button>
+                <button id="japanesePlayerPlayPause" class="japanese-player-button japanese-player-primary" type="button" disabled>
+                    ▶ Abspielen
+                </button>
+                <button id="japanesePlayerNext" class="japanese-player-button" type="button" disabled>
+                    Weiter ⏭
+                </button>
+                <div class="japanese-player-modes">
+                    <label class="japanese-loop-toggle">
+                        <input id="japanesePlayerLoop" type="checkbox" checked>
+                        <span>🔁 Dauerschleife</span>
+                    </label>
+                    <label class="japanese-shuffle-toggle">
+                        <input id="japanesePlayerShuffle" type="checkbox">
+                        <span>🔀 Shuffle</span>
+                    </label>
+                </div>
+            </div>
+            <label class="japanese-player-speed" for="japanesePlayerSpeed">
+                <span>Lesegeschwindigkeit</span>
+                <input
+                    id="japanesePlayerSpeed"
+                    type="range"
+                    min="0.5"
+                    max="1.5"
+                    step="0.05"
+                    value="0.85">
+                <output id="japanesePlayerSpeedValue" for="japanesePlayerSpeed">0,85×</output>
+            </label>
+            <div class="japanese-player-actions">
+                <button id="japaneseAddAllButton" class="japanese-secondary-button" type="button">
+                    Alle Sätze hinzufügen
+                </button>
+                <button id="japaneseClearPlaylistButton" class="japanese-secondary-button" type="button" disabled>
+                    Playlist leeren
+                </button>
+            </div>
+            <ol id="japanesePlaylist" class="japanese-playlist" aria-label="Deine Playlist"></ol>
+        </section>
+
         <section id="japaneseReader" class="japanese-reader">
             <div class="japanese-reader-header">
                 <div>
@@ -256,60 +299,6 @@
                 <p id="japanesePatternRomaji" class="japanese-pattern-romaji"></p>
                 <p id="japanesePatternTranslation" class="japanese-pattern-translation"></p>
             </div>
-
-            <section class="japanese-player" aria-labelledby="japanesePlayerTitle">
-                <div class="japanese-player-header">
-                    <div>
-                        <p class="japanese-pattern-label">Audio-Player</p>
-                        <h3 id="japanesePlayerTitle">Deine japanische Playlist</h3>
-                    </div>
-                    <span id="japanesePlaylistCount" class="japanese-count">0 Sätze</span>
-                </div>
-                <p id="japanesePlayerNowPlaying" class="japanese-player-now-playing">
-                    Füge Sätze über „+ Playlist“ hinzu.
-                </p>
-                <div class="japanese-player-controls">
-                    <button id="japanesePlayerPrevious" class="japanese-player-button" type="button" disabled>
-                        ⏮ Zurück
-                    </button>
-                    <button id="japanesePlayerPlayPause" class="japanese-player-button japanese-player-primary" type="button" disabled>
-                        ▶ Abspielen
-                    </button>
-                    <button id="japanesePlayerNext" class="japanese-player-button" type="button" disabled>
-                        Weiter ⏭
-                    </button>
-                    <div class="japanese-player-modes">
-                        <label class="japanese-loop-toggle">
-                            <input id="japanesePlayerLoop" type="checkbox" checked>
-                            <span>🔁 Dauerschleife</span>
-                        </label>
-                        <label class="japanese-shuffle-toggle">
-                            <input id="japanesePlayerShuffle" type="checkbox">
-                            <span>🔀 Shuffle</span>
-                        </label>
-                    </div>
-                </div>
-                <label class="japanese-player-speed" for="japanesePlayerSpeed">
-                    <span>Lesegeschwindigkeit</span>
-                    <input
-                        id="japanesePlayerSpeed"
-                        type="range"
-                        min="0.5"
-                        max="1.5"
-                        step="0.05"
-                        value="0.85">
-                    <output id="japanesePlayerSpeedValue" for="japanesePlayerSpeed">0,85×</output>
-                </label>
-                <div class="japanese-player-actions">
-                    <button id="japaneseAddAllButton" class="japanese-secondary-button" type="button">
-                        Alle Sätze hinzufügen
-                    </button>
-                    <button id="japaneseClearPlaylistButton" class="japanese-secondary-button" type="button" disabled>
-                        Playlist leeren
-                    </button>
-                </div>
-                <ol id="japanesePlaylist" class="japanese-playlist" aria-label="Deine Playlist"></ol>
-            </section>
 
             <div id="japaneseBlockList" class="japanese-block-list"></div>
         </section>

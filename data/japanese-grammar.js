@@ -1,8 +1,10 @@
 const japaneseGrammarBosses = [
     {
         id: "grammar-boss-1",
+        bossNumber: 1,
         title: "Grammatikboss #1",
         subtitle: "Nomen + です — die japanische „sein“-Konstruktion",
+        category: "Grammatikbosse",
         pattern: "N1 は N2 です",
         patternRomaji: "N1 wa N2 desu",
         patternTranslation: "N1 ist N2.",
@@ -34,36 +36,60 @@ const japaneseGrammarBosses = [
         },
         midpointReminder: {
             title: "💎 50 SÄTZE GESCHAFFT",
-            message: "Du hast jetzt bereits gesehen:",
-            words: [
-                { japanese: "わたし", romaji: "watatschi", translation: "ich" },
-                { japanese: "あなた", romaji: "anata", translation: "du" },
-                { japanese: "かれ", romaji: "kare", translation: "er" },
-                { japanese: "かのじょ", romaji: "kanojo", translation: "sie" },
-                { japanese: "これ", romaji: "kore", translation: "das hier" },
-                { japanese: "それ", romaji: "sore", translation: "das da" },
-                { japanese: "です", romaji: "desu", translation: "ist / bin" },
-                { japanese: "じゃありません", romaji: "dschá arimasen", translation: "ist / bin nicht" }
-            ],
-            examples: [
+            message: "Du hast jetzt deine ersten 50 japanischen Sätze gegrindet.",
+            lead: "Du hast bereits die ersten wichtigen Bausteine kennengelernt:",
+            sections: [
                 {
-                    japanese: "わたしは がくせいです。",
-                    romaji: "watatschi wa gakusei desu.",
-                    translation: "Ich bin Student."
+                    title: "👤 Personen",
+                    words: [
+                        { japanese: "わたし", romaji: "watatschi", translation: "ich" },
+                        { japanese: "あなた", romaji: "anata", translation: "du" },
+                        { japanese: "かれ", romaji: "kare", translation: "er" },
+                        { japanese: "かのじょ", romaji: "kanojo", translation: "sie" }
+                    ]
                 },
                 {
-                    japanese: "これは ほんです。",
-                    romaji: "kore wa hon desu.",
-                    translation: "Das hier ist ein Buch."
+                    title: "👉 Dinge",
+                    words: [
+                        { japanese: "これ", romaji: "kore", translation: "das hier" },
+                        { japanese: "それ", romaji: "sore", translation: "das da" }
+                    ]
                 },
                 {
-                    japanese: "これは ほんじゃありません。",
-                    romaji: "kore wa hon dschá arimasen.",
-                    translation: "Das hier ist kein Buch."
+                    title: "🧱 Erste wichtige Wörter",
+                    words: [
+                        { japanese: "がくせい", romaji: "gakusei", translation: "Schüler / Student" },
+                        { japanese: "せんせい", romaji: "sensei", translation: "Lehrer" },
+                        { japanese: "ともだち", romaji: "tomodatschi", translation: "Freund / Freundin" },
+                        { japanese: "にほんじん", romaji: "nihondschin", translation: "Japaner / Japanerin" },
+                        { japanese: "ほん", romaji: "hon", translation: "Buch" },
+                        { japanese: "みず", romaji: "midzu", translation: "Wasser" },
+                        { japanese: "ごはん", romaji: "gohan", translation: "Essen / Reis" },
+                        { japanese: "いえ", romaji: "ie", translation: "Haus / Zuhause" },
+                        { japanese: "ねこ", romaji: "neko", translation: "Katze" },
+                        { japanese: "いぬ", romaji: "inu", translation: "Hund" },
+                        { japanese: "くるま", romaji: "kuruma", translation: "Auto" }
+                    ]
+                },
+                {
+                    title: "🧩 Erste Grammatikbausteine",
+                    words: [
+                        { japanese: "です", romaji: "desu", translation: "ist / bin" },
+                        { japanese: "じゃありません", romaji: "dschá arimasen", translation: "ist / bin nicht" }
+                    ]
                 }
             ],
-            summary:
-                "Und vor allem hast du bereits ein richtiges kleines japanisches Satzsystem gesehen."
+            patternLead: "🧠 Und du erkennst bereits ein echtes japanisches Satzmuster:",
+            pattern: {
+                japanese: "わたしは がくせいです。",
+                romaji: "watatschi wa gakusei desu.",
+                translation: "Ich bin Student."
+            },
+            discoveries: [
+                { japanese: "は", romaji: "wa", translation: "markiert das Thema des Satzes." },
+                { japanese: "です", romaji: "desu", translation: "bildet hier die „sein“-Aussage." }
+            ],
+            closing: "Und jetzt bauen wir genau darauf weiter."
         },
         blocks: [
             {
@@ -83,7 +109,69 @@ const japaneseGrammarBosses = [
                     { id: "level-7", title: "LEVEL 7 — Erste echte Miniwelt", start: 71, end: 80 },
                     { id: "level-8", title: "LEVEL 8 — Jetzt verbinden wir Bekanntes", start: 81, end: 90 },
                     { id: "level-9", title: "LEVEL 9 — Die ersten kleinen Kombos", start: 91, end: 100 }
-                ]
+                ],
+                completion: {
+                    title: "🏆 100 / 1.000 — BLOCK 1 GESCHAFFT",
+                    heading: "🧱 Dein erstes Fundament steht!",
+                    message: "Du hast jetzt die ersten 100 japanischen Sätze gegrindet.",
+                    lead: "In den letzten 50 Sätzen sind neue wichtige Bausteine dazugekommen:",
+                    wordSectionTitle: "🆕 Deine neuen Wörter aus Satz 51–100",
+                    words: [
+                        { japanese: "ですか", romaji: "des ka?", translation: "Frageform: „ist / bin ...?“" },
+                        { japanese: "はい", romaji: "hai", translation: "ja" },
+                        { japanese: "そう", romaji: "so", translation: "so / so ist es" },
+                        { japanese: "いいえ", romaji: "iie", translation: "nein" },
+                        { japanese: "ちがいます", romaji: "tschigaimasu", translation: "nicht so sein / nicht stimmen" },
+                        { japanese: "の", romaji: "no", translation: "markiert hier eine Zugehörigkeit bzw. einen Besitz" }
+                    ],
+                    questionLead: "🧠 Jetzt kannst du bereits einfache Fragen erkennen:",
+                    question: {
+                        japanese: "これは ほんですか。",
+                        romaji: "kore wa hon des ka?",
+                        translation: "Ist das hier ein Buch?"
+                    },
+                    answerLead: "Und darauf antworten:",
+                    answer: {
+                        japanese: "はい、そうです。",
+                        romaji: "hai, so desu.",
+                        translation: "Ja, genau."
+                    },
+                    alternativeLead: "Oder:",
+                    alternative: {
+                        japanese: "いいえ、ちがいます。",
+                        romaji: "iie, tschigaimasu.",
+                        translation: "Nein, das stimmt nicht."
+                    },
+                    possessionLead: "Du kannst außerdem bereits Zugehörigkeit bzw. Besitz ausdrücken:",
+                    possession: {
+                        japanese: "わたしの ほんです。",
+                        romaji: "watatschi no hon desu.",
+                        translation: "Das ist mein Buch."
+                    },
+                    progressTitle: "📈 DEIN FORTSCHRITT",
+                    progress: "100 / 1.000 Sätze",
+                    progressSummary: "10 % von Grammatikboss #1 geschafft.",
+                    systemLead: "Du hast jetzt bereits ein kleines japanisches Satzsystem aufgebaut:",
+                    systemExamples: [
+                        {
+                            japanese: "わたしは がくせいです。",
+                            romaji: "watatschi wa gakusei desu.",
+                            translation: "Ich bin Student."
+                        },
+                        {
+                            japanese: "これは わたしの ほんです。",
+                            romaji: "kore wa watatschi no hon desu.",
+                            translation: "Das hier ist mein Buch."
+                        },
+                        {
+                            japanese: "あなたは がくせいですか。",
+                            romaji: "anata wa gakusei des ka?",
+                            translation: "Bist du Student?"
+                        }
+                    ],
+                    final: "🗿 Der erste Fundament-Block ist gegossen.",
+                    finalProgress: "100 / 1.000 → 10 %"
+                }
             }
         ],
         sentences: [

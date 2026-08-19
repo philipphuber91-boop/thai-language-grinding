@@ -16,7 +16,7 @@
         chapterNav: document.getElementById("japaneseChapterNav"),
         foreword: document.getElementById("japaneseForeword"),
         forewordButton: document.getElementById("japaneseForewordButton"),
-        hero: document.getElementById("japaneseHeroPanel"),
+        player: document.getElementById("japanesePlayer"),
         reader: document.getElementById("japaneseReader"),
         bossEyebrow: document.getElementById("japaneseBossEyebrow"),
         bossTitle: document.getElementById("japaneseBossTitle"),
@@ -46,6 +46,7 @@
     let currentBoss = null;
     let activeAudioButton = null;
     let speechRunId = 0;
+    let draggedPlaylistIndex = null;
     const playerState = {
         playlist: [],
         currentIndex: 0,
@@ -153,7 +154,7 @@
 
     function setJapaneseView(view, shouldScroll) {
         const isForeword = view === "foreword";
-        elements.hero.hidden = isForeword;
+        elements.player.hidden = isForeword;
         elements.reader.hidden = isForeword;
         elements.foreword.hidden = !isForeword;
         elements.forewordButton.classList.toggle("is-active", isForeword);
@@ -179,7 +180,10 @@
 
         activeAudioButton.classList.remove("is-speaking");
         activeAudioButton.textContent = "🔊";
-        activeAudioButton.setAttribute("aria-label", "Satz vorlesen");
+        activeAudioButton.setAttribute(
+            "aria-label",
+            activeAudioButton.dataset.audioLabel || "Satz vorlesen"
+        );
         activeAudioButton = null;
     }
 
@@ -221,6 +225,15 @@
         const sentence = findSentenceInBoss(boss, entry.sentenceId);
 
         return boss && sentence ? { boss, sentence } : null;
+    }
+
+    function getBossShortLabel(boss) {
+        if (Number.isInteger(boss?.bossNumber)) {
+            return `#${boss.bossNumber}`;
+        }
+
+        const titleMatch = String(boss?.title || "").match(/#\d+/);
+        return titleMatch ? titleMatch[0] : "Boss";
     }
 
     function playlistContains(sentenceId) {
@@ -285,17 +298,22 @@
 
         elements.playlist.innerHTML = playerState.playlist.length === 0
             ? "<li class=\"japanese-playlist-empty\">Noch keine Sätze ausgewählt.</li>"
-            : playerState.playlist.map((entry, index) => {
+            : (() => {
+                return playerState.playlist.map((entry, index) => {
                 const item = findPlaylistEntry(entry);
                 return `
                     <li
                         class="japanese-playlist-item ${index === playerState.currentIndex ? "is-current" : ""}"
-                        data-playlist-index="${index}">
+                        data-playlist-index="${index}"
+                        draggable="true">
                         <button
                             class="japanese-playlist-select"
                             type="button"
                             data-playlist-index="${index}">
-                            <span>${index + 1}.</span>
+                            <span class="japanese-playlist-card-number">
+                                <strong>${item.sentence.number}</strong>
+                                <small>${escapeHtml(getBossShortLabel(item.boss))}</small>
+                            </span>
                             <span>
                                 <strong lang="ja">${escapeHtml(item.sentence.japanese)}</strong>
                                 <small class="japanese-playlist-romaji">${escapeHtml(item.sentence.romaji)}</small>
@@ -309,7 +327,8 @@
                             aria-label="Satz aus Playlist entfernen">×</button>
                     </li>
                 `;
-            }).join("");
+                }).join("");
+            })();
 
         elements.playlist.querySelectorAll(".japanese-playlist-select[data-playlist-index]").forEach(button => {
             button.addEventListener("click", () => {
@@ -319,6 +338,50 @@
                 if (playerState.playing) {
                     speakPlaylistEntry();
                 }
+            });
+        });
+
+        elements.playlist.querySelectorAll(".japanese-playlist-item").forEach(item => {
+            item.addEventListener("dragstart", event => {
+                draggedPlaylistIndex = Number(item.dataset.playlistIndex);
+                item.classList.add("is-dragging");
+                event.dataTransfer.effectAllowed = "move";
+                event.dataTransfer.setData("text/plain", String(draggedPlaylistIndex));
+            });
+            item.addEventListener("dragover", event => {
+                if (draggedPlaylistIndex === null) {
+                    return;
+                }
+                event.preventDefault();
+                event.dataTransfer.dropEffect = "move";
+                item.classList.add("is-drag-over");
+            });
+            item.addEventListener("dragleave", () => {
+                item.classList.remove("is-drag-over");
+            });
+            item.addEventListener("drop", event => {
+                event.preventDefault();
+                item.classList.remove("is-drag-over");
+                if (draggedPlaylistIndex === null) {
+                    return;
+                }
+
+                const targetIndex = Number(item.dataset.playlistIndex);
+                const insertAfterTarget =
+                    event.clientY > item.getBoundingClientRect().top + item.offsetHeight / 2;
+                let insertionIndex = insertAfterTarget
+                    ? targetIndex + 1
+                    : targetIndex;
+                if (draggedPlaylistIndex < insertionIndex) {
+                    insertionIndex -= 1;
+                }
+
+                movePlaylistEntry(draggedPlaylistIndex, insertionIndex);
+                draggedPlaylistIndex = null;
+            });
+            item.addEventListener("dragend", () => {
+                draggedPlaylistIndex = null;
+                item.classList.remove("is-dragging", "is-drag-over");
             });
         });
 
@@ -423,6 +486,36 @@
         renderPlaylist();
         updatePlayerUi();
         updatePlaylistButtons();
+    }
+
+    function movePlaylistEntry(fromIndex, toIndex) {
+        if (
+            fromIndex < 0 ||
+            fromIndex >= playerState.playlist.length ||
+            toIndex < 0 ||
+            toIndex >= playerState.playlist.length ||
+            fromIndex === toIndex
+        ) {
+            return;
+        }
+
+        const [entry] = playerState.playlist.splice(fromIndex, 1);
+        playerState.playlist.splice(toIndex, 0, entry);
+
+        if (playerState.currentIndex === fromIndex) {
+            playerState.currentIndex = toIndex;
+        } else if (fromIndex < playerState.currentIndex && toIndex >= playerState.currentIndex) {
+            playerState.currentIndex -= 1;
+        } else if (fromIndex > playerState.currentIndex && toIndex <= playerState.currentIndex) {
+            playerState.currentIndex += 1;
+        }
+
+        if (playerState.shuffle) {
+            resetShuffleOrder();
+        }
+        savePlayerState();
+        renderPlaylist();
+        updatePlayerUi();
     }
 
     function clearPlaylist() {
@@ -779,15 +872,31 @@
     }
 
     function renderChapterNav() {
-        elements.chapterNav.innerHTML = bosses.map(boss => `
-            <button
-                class="japanese-chapter-button"
-                type="button"
-                data-boss-id="${escapeHtml(boss.id)}">
-                ${escapeHtml(boss.title)}
-                <span> · ${boss.sentences.length} Sätze</span>
-            </button>
-        `).join("");
+        const groups = new Map();
+        bosses.forEach(boss => {
+            const category = boss.category || "Grammatikbosse";
+            if (!groups.has(category)) {
+                groups.set(category, []);
+            }
+            groups.get(category).push(boss);
+        });
+
+        elements.chapterNav.innerHTML = Array.from(groups.entries()).map(
+            ([category, categoryBosses]) => `
+                <div class="japanese-chapter-group">
+                    <p class="japanese-chapter-group-title">${escapeHtml(category)}</p>
+                    ${categoryBosses.map(boss => `
+                        <button
+                            class="japanese-chapter-button"
+                            type="button"
+                            data-boss-id="${escapeHtml(boss.id)}">
+                            ${escapeHtml(boss.title)}
+                            <span> · ${boss.sentences.length} Sätze</span>
+                        </button>
+                    `).join("")}
+                </div>
+            `
+        ).join("");
 
         elements.chapterNav.querySelectorAll("[data-boss-id]").forEach(button => {
             button.addEventListener("click", () => {
@@ -806,45 +915,49 @@
 
         elements.introduction.hidden = false;
         elements.introduction.innerHTML = `
-            <h3>🧩 Das Grundmuster</h3>
-            <div class="japanese-introduction-example">
-                <p class="japanese-introduction-japanese" lang="ja">
-                    ${escapeHtml(introduction.example.japanese)}
-                </p>
-                <p class="japanese-introduction-romaji">
-                    <em>${escapeHtml(introduction.example.romaji)}</em>
-                </p>
-                <p class="japanese-introduction-translation">
-                    ${escapeHtml(introduction.example.translation)}
-                </p>
-            </div>
-            <p class="japanese-introduction-lead">
-                Du kannst es zunächst ganz einfach als Baukasten sehen:
-            </p>
-            <div class="japanese-introduction-parts">
-                ${introduction.parts.map(part => `
-                    <div class="japanese-introduction-part">
-                        <strong lang="ja">${escapeHtml(part.japanese)}</strong>
-                        <em>${escapeHtml(part.romaji)}</em>
-                        <span>${escapeHtml(part.translation)}</span>
+            <details class="japanese-introduction-disclosure" open>
+                <summary>🧩 Das Grundmuster</summary>
+                <div class="japanese-introduction-content">
+                    <div class="japanese-introduction-example">
+                        <p class="japanese-introduction-japanese" lang="ja">
+                            ${escapeHtml(introduction.example.japanese)}
+                        </p>
+                        <p class="japanese-introduction-romaji">
+                            <em>${escapeHtml(introduction.example.romaji)}</em>
+                        </p>
+                        <p class="japanese-introduction-translation">
+                            ${escapeHtml(introduction.example.translation)}
+                        </p>
                     </div>
-                `).join("")}
-            </div>
-            <div class="japanese-introduction-assembly">
-                <p class="japanese-pattern-label">Also:</p>
-                <p class="japanese-introduction-japanese" lang="ja">
-                    <strong>${escapeHtml(introduction.assembly.japanese)}</strong>
-                </p>
-                <p class="japanese-introduction-romaji">
-                    <em>${escapeHtml(introduction.assembly.romaji)}</em>
-                </p>
-                <p class="japanese-introduction-translation">
-                    <strong>${escapeHtml(introduction.assembly.translation)}</strong>
-                </p>
-            </div>
-            <p class="japanese-introduction-warning">
-                💡 <strong>Wichtig:</strong> ${escapeHtml(introduction.warning)}
-            </p>
+                    <p class="japanese-introduction-lead">
+                        Du kannst es zunächst ganz einfach als Baukasten sehen:
+                    </p>
+                    <div class="japanese-introduction-parts">
+                        ${introduction.parts.map(part => `
+                            <div class="japanese-introduction-part">
+                                <strong lang="ja">${escapeHtml(part.japanese)}</strong>
+                                <em>${escapeHtml(part.romaji)}</em>
+                                <span>${escapeHtml(part.translation)}</span>
+                            </div>
+                        `).join("")}
+                    </div>
+                    <div class="japanese-introduction-assembly">
+                        <p class="japanese-pattern-label">Also:</p>
+                        <p class="japanese-introduction-japanese" lang="ja">
+                            <strong>${escapeHtml(introduction.assembly.japanese)}</strong>
+                        </p>
+                        <p class="japanese-introduction-romaji">
+                            <em>${escapeHtml(introduction.assembly.romaji)}</em>
+                        </p>
+                        <p class="japanese-introduction-translation">
+                            <strong>${escapeHtml(introduction.assembly.translation)}</strong>
+                        </p>
+                    </div>
+                    <p class="japanese-introduction-warning">
+                        💡 <strong>Wichtig:</strong> ${escapeHtml(introduction.warning)}
+                    </p>
+                </div>
+            </details>
         `;
     }
 
@@ -858,27 +971,103 @@
                 <summary>${escapeHtml(reminder.title)}</summary>
                 <div class="japanese-midpoint-content">
                     <p>${escapeHtml(reminder.message)}</p>
-                    <div class="japanese-reminder-words">
-                        ${reminder.words.map(word => `
-                            <div class="japanese-reminder-word">
+                    <p>${escapeHtml(reminder.lead)}</p>
+                    ${reminder.sections.map(section => `
+                        <section class="japanese-reminder-section">
+                            <h4>${escapeHtml(section.title)}</h4>
+                            <div class="japanese-reminder-words">
+                                ${section.words.map(word => renderReminderWord(word)).join("")}
+                            </div>
+                        </section>
+                    `).join("")}
+                    <p class="japanese-reminder-pattern-lead">
+                        ${escapeHtml(reminder.patternLead)}
+                    </p>
+                    ${renderReminderExample(reminder.pattern)}
+                    <div class="japanese-reminder-discoveries">
+                        ${reminder.discoveries.map(word => `
+                            <div>
                                 <strong lang="ja">${escapeHtml(word.japanese)}</strong>
                                 <em>${escapeHtml(word.romaji)}</em>
                                 <span>${escapeHtml(word.translation)}</span>
                             </div>
                         `).join("")}
                     </div>
-                    <p class="japanese-reminder-summary">
-                        ${escapeHtml(reminder.summary)}
+                    <p class="japanese-reminder-closing">
+                        ${escapeHtml(reminder.closing)}
                     </p>
-                    <div class="japanese-reminder-examples">
-                        ${reminder.examples.map(example => `
-                            <div>
-                                <strong lang="ja">${escapeHtml(example.japanese)}</strong>
-                                <em>${escapeHtml(example.romaji)}</em>
-                                <span>${escapeHtml(example.translation)}</span>
-                            </div>
-                        `).join("")}
+                </div>
+            </details>
+        `;
+    }
+
+    function renderReminderWord(word) {
+        return `
+            <div class="japanese-reminder-word">
+                <strong lang="ja">${escapeHtml(word.japanese)}</strong>
+                <em>${escapeHtml(word.romaji)}</em>
+                <span>${escapeHtml(word.translation)}</span>
+                ${renderSpecialAudioButton(word.japanese)}
+            </div>
+        `;
+    }
+
+    function renderReminderExample(example) {
+        return `
+            <div class="japanese-reminder-example">
+                <strong lang="ja">${escapeHtml(example.japanese)}</strong>
+                <em>${escapeHtml(example.romaji)}</em>
+                <span>${escapeHtml(example.translation)}</span>
+                ${renderSpecialAudioButton(example.japanese)}
+            </div>
+        `;
+    }
+
+    function renderSpecialAudioButton(japanese) {
+        return `
+            <button
+                class="japanese-special-audio-button"
+                type="button"
+                data-special-audio="${escapeHtml(japanese)}"
+                data-audio-label="Aussprache abspielen"
+                aria-label="Aussprache abspielen"
+                title="Japanische Aussprache abspielen">🔊</button>
+        `;
+    }
+
+    function renderBlockCompletion(completion) {
+        if (!completion) {
+            return "";
+        }
+
+        return `
+            <details class="japanese-quest-completion" open>
+                <summary>${escapeHtml(completion.title)}</summary>
+                <div class="japanese-quest-content">
+                    <h3>${escapeHtml(completion.heading)}</h3>
+                    <p>${escapeHtml(completion.message)}</p>
+                    <p>${escapeHtml(completion.lead)}</p>
+                    <h4>${escapeHtml(completion.wordSectionTitle)}</h4>
+                    <div class="japanese-reminder-words">
+                        ${completion.words.map(word => renderReminderWord(word)).join("")}
                     </div>
+                    <p class="japanese-quest-lead">${escapeHtml(completion.questionLead)}</p>
+                    ${renderReminderExample(completion.question)}
+                    <p class="japanese-quest-lead">${escapeHtml(completion.answerLead)}</p>
+                    ${renderReminderExample(completion.answer)}
+                    <p class="japanese-quest-lead">${escapeHtml(completion.alternativeLead)}</p>
+                    ${renderReminderExample(completion.alternative)}
+                    <p class="japanese-quest-lead">${escapeHtml(completion.possessionLead)}</p>
+                    ${renderReminderExample(completion.possession)}
+                    <h3 class="japanese-quest-progress-title">${escapeHtml(completion.progressTitle)}</h3>
+                    <p class="japanese-quest-progress">${escapeHtml(completion.progress)}</p>
+                    <p class="japanese-reminder-summary">${escapeHtml(completion.progressSummary)}</p>
+                    <p class="japanese-quest-lead">${escapeHtml(completion.systemLead)}</p>
+                    <div class="japanese-reminder-examples">
+                        ${completion.systemExamples.map(renderReminderExample).join("")}
+                    </div>
+                    <p class="japanese-quest-final">${escapeHtml(completion.final)}</p>
+                    <p class="japanese-quest-progress">${escapeHtml(completion.finalProgress)}</p>
                 </div>
             </details>
         `;
@@ -938,14 +1127,14 @@
         elements.patternTranslation.textContent = boss.patternTranslation;
 
         elements.blockList.innerHTML = boss.blocks.map(block => `
-            <section class="japanese-block" aria-labelledby="${escapeHtml(block.id)}-title">
-                <h3 id="${escapeHtml(block.id)}-title" class="japanese-block-heading">
+            <details class="japanese-block" open>
+                <summary id="${escapeHtml(block.id)}-title" class="japanese-block-summary">
                     ${escapeHtml(block.title)}
-                </h3>
+                </summary>
                 <p class="japanese-block-description">${escapeHtml(block.description)}</p>
                 ${block.levels.map(level => `
                     <div class="japanese-level-shell">
-                        <details class="japanese-level" open>
+                        <details class="japanese-level">
                             <summary class="japanese-level-summary">${escapeHtml(level.title)}</summary>
                             <div class="japanese-sentence-list">
                                 ${boss.sentences
@@ -967,7 +1156,8 @@
                         ? renderMidpointReminder(boss.midpointReminder)
                         : ""}
                 `).join("")}
-            </section>
+                ${renderBlockCompletion(block.completion)}
+            </details>
         `).join("");
 
         elements.chapterNav.querySelectorAll("[data-boss-id]").forEach(button => {
@@ -984,6 +1174,17 @@
 
                 markCurrentSentence(sentence.number, false);
                 speakSentence(sentence, button);
+            });
+        });
+        elements.blockList.querySelectorAll("[data-special-audio]").forEach(button => {
+            button.addEventListener("click", () => {
+                const japanese = button.dataset.specialAudio;
+                if (!japanese) {
+                    setAudioStatus("Diese Aussprache konnte nicht geladen werden.");
+                    return;
+                }
+
+                speakSentence({ japanese }, button);
             });
         });
         elements.blockList.querySelectorAll("[data-playlist-sentence-id]").forEach(button => {
