@@ -274,6 +274,17 @@ body.japanese-drill-page {
     background: rgba(240, 199, 110, .08);
 }
 
+.japanese-introduction-audio-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.japanese-introduction-audio-line .japanese-special-audio-button {
+    flex: 0 0 auto;
+    margin-top: 0;
+}
+
 .japanese-introduction-japanese {
     margin: 0;
     color: #fff9ee;
@@ -682,6 +693,7 @@ body.japanese-drill-page {
 
 .japanese-playlist-item.is-dragging {
     opacity: .45;
+    touch-action: none;
 }
 
 .japanese-playlist-item.is-drag-over {
@@ -1268,20 +1280,29 @@ body.japanese-drill-page {
     }
 
     .japanese-level summary {
-        padding: 12px 132px 12px 0;
+        padding: 10px 82px 10px 12px;
+        font-size: .88rem;
     }
 
     .japanese-level-playlist-button {
-        top: 5px;
-        right: 0;
+        top: 7px;
+        right: 10px;
         margin: 0;
     }
 
     .japanese-level {
         overflow: visible;
-        border: 0;
-        border-radius: 0;
-        background: transparent;
+        border: 1px solid rgba(141, 106, 159, .7);
+        border-radius: 13px;
+        background: rgba(23, 16, 25, .35);
+    }
+
+    .japanese-block {
+        margin-top: 20px;
+        padding: 0 12px 14px;
+        border: 1px solid rgba(141, 106, 159, .7);
+        border-radius: 15px;
+        background: rgba(23, 16, 25, .24);
     }
 
     .japanese-block > .japanese-level-shell {
@@ -1297,6 +1318,12 @@ body.japanese-drill-page {
     .japanese-block-summary {
         padding-left: 0;
         padding-right: 0;
+        border-bottom: 0;
+        font-size: .92rem;
+    }
+
+    .japanese-block-title-count {
+        margin-inline: .28em;
     }
 
     .japanese-block-description {
@@ -1305,8 +1332,8 @@ body.japanese-drill-page {
     }
 
     .japanese-sentence-list {
-        padding-left: 0;
-        padding-right: 0;
+        padding-left: 8px;
+        padding-right: 8px;
     }
 
     .japanese-quest-completion {
@@ -1352,22 +1379,59 @@ body.japanese-drill-page {
     }
 
     .japanese-sentence {
-        grid-template-columns: 32px minmax(0, 1fr) 36px auto;
-        gap: 9px;
-        padding: 12px;
+        grid-template-columns: 32px minmax(0, 1fr) 32px 28px;
+        gap: 7px;
+        padding: 10px;
     }
 
     .japanese-audio-button {
-        width: 36px;
-        height: 36px;
-        font-size: .95rem;
+        width: 32px;
+        height: 32px;
+        font-size: .85rem;
     }
 
     .japanese-playlist-button {
-        width: auto;
-        height: 32px;
-        padding: 6px 7px;
-        font-size: .75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        font-size: 0;
+        line-height: 1;
+    }
+
+    .japanese-playlist-button::before {
+        display: block;
+        content: "+";
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    .japanese-playlist-button.is-added::before {
+        content: "\2713";
+    }
+
+    .japanese-level-playlist-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        font-size: 0;
+        line-height: 1;
+    }
+
+    .japanese-level-playlist-button::before {
+        display: block;
+        content: "+";
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    .japanese-level-playlist-button.is-added::before {
+        content: "\2713";
     }
 
     .japanese-playlist-select > span.japanese-playlist-card-number {

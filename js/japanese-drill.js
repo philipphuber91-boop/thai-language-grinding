@@ -402,6 +402,9 @@
                     pointerId: event.pointerId,
                     startX: event.clientX,
                     startY: event.clientY,
+                    lastX: event.clientX,
+                    lastY: event.clientY,
+                    lastTarget: null,
                     dragging: false,
                     timer: window.setTimeout(() => {
                         if (pointerDragState !== state) {
@@ -432,7 +435,9 @@
                 }
 
                 event.preventDefault();
-                updatePointerDragTarget(event.clientX, event.clientY);
+                state.lastX = event.clientX;
+                state.lastY = event.clientY;
+                state.lastTarget = updatePointerDragTarget(event.clientX, event.clientY);
             });
             item.addEventListener("pointerup", event => {
                 finishPointerDrag(event);
@@ -453,6 +458,9 @@
         if (pointerDragState?.timer) {
             window.clearTimeout(pointerDragState.timer);
         }
+        elements.playlist.querySelectorAll(".japanese-playlist-item").forEach(item => {
+            item.classList.remove("is-dragging", "is-drag-over");
+        });
         pointerDragState = null;
     }
 
@@ -463,6 +471,34 @@
         elements.playlist.querySelectorAll(".japanese-playlist-item").forEach(item => {
             item.classList.toggle("is-drag-over", item === target);
         });
+        return target;
+    }
+
+    function getPointerDragInsertionIndex(sourceIndex, clientX, clientY, target) {
+        const items = Array.from(
+            elements.playlist.querySelectorAll(".japanese-playlist-item")
+        );
+        let insertionIndex;
+
+        if (target) {
+            const targetIndex = Number(target.dataset.playlistIndex);
+            insertionIndex = clientY > target.getBoundingClientRect().top + target.offsetHeight / 2
+                ? targetIndex + 1
+                : targetIndex;
+        } else {
+            insertionIndex = items.findIndex(item =>
+                clientY < item.getBoundingClientRect().top + item.offsetHeight / 2
+            );
+            if (insertionIndex < 0) {
+                insertionIndex = items.length;
+            }
+        }
+
+        if (sourceIndex < insertionIndex) {
+            insertionIndex -= 1;
+        }
+
+        return Math.max(0, Math.min(items.length - 1, insertionIndex));
     }
 
     function finishPointerDrag(event) {
@@ -477,18 +513,18 @@
         }
 
         event.preventDefault();
-        const target = document.elementFromPoint(event.clientX, event.clientY)?.closest(
+        const clientX = event.clientX || state.lastX;
+        const clientY = event.clientY || state.lastY;
+        const target = document.elementFromPoint(clientX, clientY)?.closest(
             ".japanese-playlist-item"
-        );
+        ) || state.lastTarget;
         const sourceIndex = Number(state.item.dataset.playlistIndex);
-        const targetIndex = target ? Number(target.dataset.playlistIndex) : sourceIndex;
-        let insertionIndex = targetIndex;
-        if (target && event.clientY > target.getBoundingClientRect().top + target.offsetHeight / 2) {
-            insertionIndex += 1;
-        }
-        if (sourceIndex < insertionIndex) {
-            insertionIndex -= 1;
-        }
+        const insertionIndex = getPointerDragInsertionIndex(
+            sourceIndex,
+            clientX,
+            clientY,
+            target
+        );
 
         elements.playlist.querySelectorAll(".japanese-playlist-item").forEach(item => {
             item.classList.remove("is-dragging", "is-drag-over");
@@ -734,6 +770,36 @@
         }
 
         const levelSentences = getLevelSentences(levelId);
+        const levelSentenceIds = new Set(levelSentences.map(sentence => sentence.id));
+        if (isLevelInPlaylist(levelId)) {
+            const currentEntry = playerState.playlist[playerState.currentIndex];
+            const currentEntryIsRemoved = currentEntry &&
+                currentEntry.bossId === currentBoss.id &&
+                levelSentenceIds.has(currentEntry.sentenceId);
+            if (currentEntryIsRemoved && playerState.playing) {
+                pausePlaylist();
+            }
+
+            playerState.playlist = playerState.playlist.filter(entry =>
+                entry.bossId !== currentBoss.id || !levelSentenceIds.has(entry.sentenceId)
+            );
+            const remainingCurrentIndex = currentEntry
+                ? playerState.playlist.indexOf(currentEntry)
+                : -1;
+            playerState.currentIndex = remainingCurrentIndex >= 0
+                ? remainingCurrentIndex
+                : Math.min(
+                    playerState.currentIndex,
+                    Math.max(0, playerState.playlist.length - 1)
+                );
+            savePlayerState();
+            renderPlaylist();
+            updatePlayerUi();
+            updatePlaylistButtons();
+            setAudioStatus("Alle Sätze dieses Levels wurden aus der Playlist entfernt.");
+            return;
+        }
+
         const existingIds = new Set(
             playerState.playlist
                 .filter(entry => entry.bossId === currentBoss.id)
@@ -1028,9 +1094,12 @@
                 <summary>🧩 Das Grundmuster</summary>
                 <div class="japanese-introduction-content">
                     <div class="japanese-introduction-example">
-                        <p class="japanese-introduction-japanese" lang="ja">
-                            ${escapeHtml(introduction.example.japanese)}
-                        </p>
+                        <div class="japanese-introduction-audio-line">
+                            <p class="japanese-introduction-japanese" lang="ja">
+                                ${escapeHtml(introduction.example.japanese)}
+                            </p>
+                            ${renderSpecialAudioButton(introduction.example.japanese)}
+                        </div>
                         <p class="japanese-introduction-romaji">
                             <em>${escapeHtml(introduction.example.romaji)}</em>
                         </p>
@@ -1044,7 +1113,10 @@
                     <div class="japanese-introduction-parts">
                         ${introduction.parts.map(part => `
                             <div class="japanese-introduction-part">
-                                <strong lang="ja">${escapeHtml(part.japanese)}</strong>
+                                <div class="japanese-introduction-audio-line">
+                                    <strong lang="ja">${escapeHtml(part.japanese)}</strong>
+                                    ${renderSpecialAudioButton(part.japanese)}
+                                </div>
                                 <em>${escapeHtml(part.romaji)}</em>
                                 <span>${escapeHtml(part.translation)}</span>
                             </div>
@@ -1052,9 +1124,12 @@
                     </div>
                     <div class="japanese-introduction-assembly">
                         <p class="japanese-pattern-label">Also:</p>
-                        <p class="japanese-introduction-japanese" lang="ja">
-                            <strong>${escapeHtml(introduction.assembly.japanese)}</strong>
-                        </p>
+                        <div class="japanese-introduction-audio-line">
+                            <p class="japanese-introduction-japanese" lang="ja">
+                                <strong>${escapeHtml(introduction.assembly.japanese)}</strong>
+                            </p>
+                            ${renderSpecialAudioButton(introduction.assembly.japanese)}
+                        </div>
                         <p class="japanese-introduction-romaji">
                             <em>${escapeHtml(introduction.assembly.romaji)}</em>
                         </p>
@@ -1130,6 +1205,15 @@
                 ${renderSpecialAudioButton(example.japanese)}
             </div>
         `;
+    }
+
+    function renderBlockTitle(title) {
+        const match = title.match(/^(.*?)(\d+\/\d+)(\s+—\s+.*)$/);
+        if (!match) {
+            return escapeHtml(title);
+        }
+
+        return `${escapeHtml(match[1])}<span class="japanese-block-title-count">${escapeHtml(match[2])}</span>${escapeHtml(match[3])}`;
     }
 
     function renderSpecialAudioButton(japanese) {
@@ -1238,7 +1322,7 @@
         elements.blockList.innerHTML = boss.blocks.map(block => `
             <details class="japanese-block">
                 <summary id="${escapeHtml(block.id)}-title" class="japanese-block-summary">
-                    ${escapeHtml(block.title)}
+                    ${renderBlockTitle(block.title)}
                 </summary>
                 <p class="japanese-block-description">${escapeHtml(block.description)}</p>
                 ${block.levels.map(level => `
@@ -1285,7 +1369,7 @@
                 speakSentence(sentence, button);
             });
         });
-        elements.blockList.querySelectorAll("[data-special-audio]").forEach(button => {
+        document.querySelectorAll("#japaneseIntroduction [data-special-audio], #japaneseBlockList [data-special-audio]").forEach(button => {
             button.addEventListener("click", () => {
                 const japanese = button.dataset.specialAudio;
                 if (!japanese) {
