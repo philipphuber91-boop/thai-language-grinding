@@ -502,10 +502,26 @@
         return currentBoss?.sentences.filter(sentence => sentence.levelId === levelId) || [];
     }
 
+    function getBlockSentences(blockId) {
+        const block = currentBoss?.blocks.find(candidate => candidate.id === blockId);
+        if (!block) {
+            return [];
+        }
+
+        const levelIds = new Set(block.levels.map(level => level.id));
+        return currentBoss.sentences.filter(sentence => levelIds.has(sentence.levelId));
+    }
+
     function isLevelInPlaylist(levelId) {
         const levelSentences = getLevelSentences(levelId);
         return levelSentences.length > 0 &&
             levelSentences.every(sentence => playlistContains(sentence.id));
+    }
+
+    function isBlockInPlaylist(blockId) {
+        const blockSentences = getBlockSentences(blockId);
+        return blockSentences.length > 0 &&
+            blockSentences.every(sentence => playlistContains(sentence.id));
     }
 
     function updatePlaylistButtons() {
@@ -537,6 +553,23 @@
             button.title = isAdded
                 ? "Alle Sätze dieses Levels sind bereits in der Playlist"
                 : "Alle Sätze dieses Levels zur Playlist hinzufügen";
+        });
+
+        elements.blockList.querySelectorAll("[data-playlist-block-id]").forEach(button => {
+            const isAdded = isBlockInPlaylist(button.dataset.playlistBlockId);
+            button.classList.toggle("is-added", isAdded);
+            button.textContent = isAdded
+                ? "✓ Block in Playlist"
+                : "+ Block zur Playlist";
+            button.setAttribute(
+                "aria-label",
+                isAdded
+                    ? "Alle Sätze dieses Blocks sind in der Playlist"
+                    : "Alle Sätze dieses Blocks zur Playlist hinzufügen"
+            );
+            button.title = isAdded
+                ? "Alle Sätze dieses Blocks sind bereits in der Playlist"
+                : "Alle Sätze dieses Blocks zur Playlist hinzufügen";
         });
     }
 
@@ -1080,6 +1113,69 @@
         );
     }
 
+    function addBlockToPlaylist(blockId) {
+        if (!currentBoss) {
+            return;
+        }
+
+        const blockSentences = getBlockSentences(blockId);
+        const blockSentenceIds = new Set(blockSentences.map(sentence => sentence.id));
+        if (isBlockInPlaylist(blockId)) {
+            const currentEntry = playerState.playlist[playerState.currentIndex];
+            const currentEntryIsRemoved = currentEntry &&
+                currentEntry.bossId === currentBoss.id &&
+                blockSentenceIds.has(currentEntry.sentenceId);
+            if (currentEntryIsRemoved && playerState.playing) {
+                pausePlaylist();
+            }
+
+            playerState.playlist = playerState.playlist.filter(entry =>
+                entry.bossId !== currentBoss.id || !blockSentenceIds.has(entry.sentenceId)
+            );
+            const remainingCurrentIndex = currentEntry
+                ? playerState.playlist.indexOf(currentEntry)
+                : -1;
+            playerState.currentIndex = remainingCurrentIndex >= 0
+                ? remainingCurrentIndex
+                : Math.min(
+                    playerState.currentIndex,
+                    Math.max(0, playerState.playlist.length - 1)
+                );
+            savePlayerState();
+            renderPlaylist();
+            updatePlayerUi();
+            updatePlaylistButtons();
+            setAudioStatus("Alle Sätze dieses Blocks wurden aus der Playlist entfernt.");
+            return;
+        }
+
+        const existingIds = new Set(
+            playerState.playlist
+                .filter(entry => entry.bossId === currentBoss.id)
+                .map(entry => entry.sentenceId)
+        );
+
+        blockSentences.forEach(sentence => {
+            if (!existingIds.has(sentence.id)) {
+                playerState.playlist.push({
+                    bossId: currentBoss.id,
+                    sentenceId: sentence.id
+                });
+            }
+        });
+
+        if (playerState.playlist.length > 0 && !Number.isInteger(playerState.currentIndex)) {
+            playerState.currentIndex = 0;
+        }
+        savePlayerState();
+        renderPlaylist();
+        updatePlayerUi();
+        updatePlaylistButtons();
+        setAudioStatus(
+            `${blockSentences.length} Sätze aus diesem Block sind in der Playlist.`
+        );
+    }
+
     function markCurrentSentence(number, shouldScroll) {
         let sentenceToScroll = null;
         document.querySelectorAll(".japanese-sentence").forEach(sentenceElement => {
@@ -1584,7 +1680,15 @@
         elements.blockList.innerHTML = boss.blocks.map(block => `
             <details class="japanese-block">
                 <summary id="${escapeHtml(block.id)}-title" class="japanese-block-summary">
-                    ${renderBlockTitle(block.title)}
+                    <span class="japanese-block-summary-title">${renderBlockTitle(block.title)}</span>
+                    <button
+                        class="japanese-block-playlist-button"
+                        type="button"
+                        data-playlist-block-id="${escapeHtml(block.id)}"
+                        aria-label="Alle Sätze dieses Blocks zur Playlist hinzufügen"
+                        title="Alle Sätze dieses Blocks zur Playlist hinzufügen">
+                        + Block zur Playlist
+                    </button>
                 </summary>
                 <p class="japanese-block-description">${escapeHtml(block.description)}</p>
                 ${block.levels.map(level => `
@@ -1607,8 +1711,12 @@
                             + Level zur Playlist
                         </button>
                     </div>
-                    ${level.id === "level-4"
-                        ? renderMidpointReminder(boss.midpointReminder)
+                    ${level.id === (block.midpointLevelId || "level-4")
+                        ? renderMidpointReminder(block.midpointReminder || (
+                            block.id === "foundation-block-1"
+                                ? boss.midpointReminder
+                                : null
+                        ))
                         : ""}
                 `).join("")}
                 ${renderBlockCompletion(block.completion)}
@@ -1659,6 +1767,13 @@
         elements.blockList.querySelectorAll("[data-playlist-level-id]").forEach(button => {
             button.addEventListener("click", () => {
                 addLevelToPlaylist(button.dataset.playlistLevelId);
+            });
+        });
+        elements.blockList.querySelectorAll("[data-playlist-block-id]").forEach(button => {
+            button.addEventListener("click", event => {
+                event.preventDefault();
+                event.stopPropagation();
+                addBlockToPlaylist(button.dataset.playlistBlockId);
             });
         });
         updatePlaylistButtons();

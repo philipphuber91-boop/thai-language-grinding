@@ -958,12 +958,41 @@ body.japanese-drill-page {
 }
 
 .japanese-block-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
     padding: 16px 0 10px;
     border-bottom: 1px solid rgba(141, 106, 159, .55);
     color: var(--jp-gold);
     font-size: 1.2rem;
     font-weight: bold;
     cursor: pointer;
+}
+
+.japanese-block-summary-title {
+    min-width: 0;
+}
+
+.japanese-block-playlist-button {
+    flex: 0 0 auto;
+    padding: 6px 9px;
+    border: 1px solid rgba(141, 106, 159, .85);
+    border-radius: 8px;
+    color: var(--jp-muted);
+    background: rgba(48, 32, 57, .8);
+    cursor: pointer;
+    font: inherit;
+    font-size: .78rem;
+    white-space: nowrap;
+}
+
+.japanese-block-playlist-button:hover,
+.japanese-block-playlist-button:focus-visible,
+.japanese-block-playlist-button.is-added {
+    border-color: var(--jp-green);
+    color: var(--jp-green);
+    background: rgba(155, 224, 189, .1);
 }
 
 .japanese-block-summary:hover,
@@ -1617,6 +1646,29 @@ body.japanese-drill-page {
     }
 
     .japanese-level-playlist-button.is-added::before {
+        content: "\2713";
+    }
+
+    .japanese-block-playlist-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        border-radius: 8px;
+        font-size: 0;
+        line-height: 1;
+    }
+
+    .japanese-block-playlist-button::before {
+        display: block;
+        content: "+";
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    .japanese-block-playlist-button.is-added::before {
         content: "\2713";
     }
 
