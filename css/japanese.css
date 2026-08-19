@@ -562,7 +562,6 @@ body.japanese-drill-page {
         flex-direction: column;
         overflow: hidden;
         resize: both;
-        direction: rtl;
         scrollbar-width: none;
         -ms-overflow-style: none;
         background: var(--jp-panel);
@@ -605,10 +604,6 @@ body.japanese-drill-page {
 
     .japanese-player > :not(.japanese-playlist) {
         flex-shrink: 0;
-    }
-
-    .japanese-player > * {
-        direction: ltr;
     }
 
     .japanese-reader {
