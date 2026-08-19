@@ -25,6 +25,7 @@
         playerPlayPause: document.getElementById("japanesePlayerPlayPause"),
         playerNext: document.getElementById("japanesePlayerNext"),
         playerLoop: document.getElementById("japanesePlayerLoop"),
+        playerShuffle: document.getElementById("japanesePlayerShuffle"),
         addAllButton: document.getElementById("japaneseAddAllButton"),
         clearPlaylistButton: document.getElementById("japaneseClearPlaylistButton"),
         playlist: document.getElementById("japanesePlaylist"),
@@ -39,6 +40,9 @@
         playlist: [],
         currentIndex: 0,
         loop: true,
+        shuffle: false,
+        shuffleOrder: [],
+        shufflePosition: 0,
         playing: false
     };
 
@@ -71,12 +75,20 @@
                 playlistIndex: Number.isInteger(progress.playlistIndex)
                     ? Math.max(0, progress.playlistIndex)
                     : 0,
-                loop: progress.loop !== false
+                loop: progress.loop !== false,
+                shuffle: progress.shuffle === true
             };
         } catch (error) {
             console.warn("Japanischer Lesefortschritt konnte nicht gelesen werden.", error);
             setAudioStatus("Der lokale japanische Lesefortschritt ist nicht verfügbar.");
-            return { bossId: "", sentenceNumber: 1 };
+            return {
+                bossId: "",
+                sentenceNumber: 1,
+                playlist: [],
+                playlistIndex: 0,
+                loop: true,
+                shuffle: false
+            };
         }
     }
 
@@ -143,7 +155,8 @@
                     ...progress,
                     playlist: playerState.playlist,
                     playlistIndex: playerState.currentIndex,
-                    loop: playerState.loop
+                    loop: playerState.loop,
+                    shuffle: playerState.shuffle
                 })
             );
         } catch (error) {
@@ -228,7 +241,9 @@
             : playerState.playlist.map((entry, index) => {
                 const item = findPlaylistEntry(entry);
                 return `
-                    <li class="japanese-playlist-item ${index === playerState.currentIndex ? "is-current" : ""}">
+                    <li
+                        class="japanese-playlist-item ${index === playerState.currentIndex ? "is-current" : ""}"
+                        data-playlist-index="${index}">
                         <button
                             class="japanese-playlist-select"
                             type="button"
@@ -249,7 +264,7 @@
                 `;
             }).join("");
 
-        elements.playlist.querySelectorAll("[data-playlist-index]").forEach(button => {
+        elements.playlist.querySelectorAll(".japanese-playlist-select[data-playlist-index]").forEach(button => {
             button.addEventListener("click", () => {
                 playerState.currentIndex = Number(button.dataset.playlistIndex);
                 savePlayerState();
@@ -281,29 +296,21 @@
         elements.playerPlayPause.textContent =
             playerState.playing ? "⏸ Pause" : "▶ Abspielen";
         elements.playerLoop.checked = playerState.loop;
+        elements.playerShuffle.checked = playerState.shuffle;
 
         if (currentItem) {
-            elements.playerNowPlaying.innerHTML = `
-                <span class="japanese-player-current-label">
-                    ${playerState.currentIndex + 1}/${playlistLength}:
-                </span>
-                <span class="japanese-player-current-japanese" lang="ja">
-                    ${escapeHtml(currentItem.sentence.japanese)}
-                </span>
-                <span class="japanese-player-current-romaji">
-                    ${escapeHtml(currentItem.sentence.romaji)}
-                </span>
-                <span class="japanese-player-current-translation">
-                    ${escapeHtml(currentItem.sentence.translation)}
-                </span>
-            `;
+            elements.playerNowPlaying.textContent =
+                `${playerState.currentIndex + 1}/${playlistLength}`;
         } else {
             elements.playerNowPlaying.textContent =
                 "Füge Sätze über „+ Playlist“ hinzu.";
         }
 
-        elements.playlist.querySelectorAll(".japanese-playlist-item").forEach((item, index) => {
-            item.classList.toggle("is-current", index === playerState.currentIndex);
+        elements.playlist.querySelectorAll(".japanese-playlist-item").forEach(item => {
+            item.classList.toggle(
+                "is-current",
+                Number(item.dataset.playlistIndex) === playerState.currentIndex
+            );
         });
     }
 
@@ -314,9 +321,13 @@
             return;
         }
 
-        const targetTop = currentItem.offsetTop -
-            (playlist.clientHeight - currentItem.offsetHeight) / 2;
+        const playlistRect = playlist.getBoundingClientRect();
+        const itemRect = currentItem.getBoundingClientRect();
+        const targetTop = playlist.scrollTop +
+            (itemRect.top - playlistRect.top) -
+            (playlist.clientHeight - itemRect.height) / 2;
         const maxTop = playlist.scrollHeight - playlist.clientHeight;
+
         playlist.scrollTo({
             top: Math.max(0, Math.min(targetTop, maxTop)),
             behavior: "smooth"
@@ -402,6 +413,68 @@
         updatePlayerUi();
         updatePlaylistButtons();
         setAudioStatus("Alle Sätze dieses Grammatik-Unterkapitels sind in der Playlist.");
+    }
+
+    function resetShuffleOrder() {
+        const indexes = playerState.playlist.map((_, index) => index);
+        for (let index = indexes.length - 1; index > 0; index -= 1) {
+            const randomIndex = Math.floor(Math.random() * (index + 1));
+            [indexes[index], indexes[randomIndex]] =
+                [indexes[randomIndex], indexes[index]];
+        }
+
+        const currentPosition = indexes.indexOf(playerState.currentIndex);
+        if (currentPosition > 0) {
+            [indexes[0], indexes[currentPosition]] =
+                [indexes[currentPosition], indexes[0]];
+        }
+
+        playerState.shuffleOrder = indexes;
+        playerState.shufflePosition = 0;
+    }
+
+    function advancePlaylistIndex() {
+        if (playerState.playlist.length === 0) {
+            return false;
+        }
+
+        if (!playerState.shuffle) {
+            const isLastSentence =
+                playerState.currentIndex >= playerState.playlist.length - 1;
+            if (isLastSentence && !playerState.loop) {
+                return false;
+            }
+
+            playerState.currentIndex = isLastSentence
+                ? 0
+                : playerState.currentIndex + 1;
+            return true;
+        }
+
+        if (
+            playerState.shuffleOrder.length !== playerState.playlist.length ||
+            playerState.shuffleOrder[playerState.shufflePosition] !==
+                playerState.currentIndex
+        ) {
+            resetShuffleOrder();
+        }
+
+        if (playerState.shufflePosition >= playerState.shuffleOrder.length - 1) {
+            if (!playerState.loop) {
+                return false;
+            }
+
+            resetShuffleOrder();
+            if (playerState.shuffleOrder.length > 1) {
+                playerState.shufflePosition = 1;
+            }
+        } else {
+            playerState.shufflePosition += 1;
+        }
+
+        playerState.currentIndex =
+            playerState.shuffleOrder[playerState.shufflePosition];
+        return true;
     }
 
     function addLevelToPlaylist(levelId) {
@@ -558,18 +631,13 @@
                 return;
             }
 
-            const isLastSentence =
-                playerState.currentIndex >= playerState.playlist.length - 1;
-            if (isLastSentence && !playerState.loop) {
+            if (!advancePlaylistIndex()) {
                 playerState.playing = false;
                 updatePlayerUi();
                 setAudioStatus("Playlist beendet.");
                 return;
             }
 
-            playerState.currentIndex = isLastSentence
-                ? 0
-                : playerState.currentIndex + 1;
             savePlayerState();
             renderPlaylist();
             updatePlayerUi();
@@ -593,6 +661,9 @@
             return;
         }
 
+        if (playerState.shuffle) {
+            resetShuffleOrder();
+        }
         playerState.playing = true;
         setAudioStatus("");
         speakPlaylistEntry();
@@ -607,6 +678,9 @@
         const playlistLength = playerState.playlist.length;
         playerState.currentIndex =
             (playerState.currentIndex + offset + playlistLength) % playlistLength;
+        if (playerState.shuffle) {
+            resetShuffleOrder();
+        }
         savePlayerState();
         renderPlaylist();
         updatePlayerUi();
@@ -625,6 +699,7 @@
             Math.max(0, playerState.playlist.length - 1)
         );
         playerState.loop = progress.loop;
+        playerState.shuffle = progress.shuffle;
         renderPlaylist();
         updatePlayerUi();
     }
@@ -829,6 +904,16 @@
     elements.playerNext?.addEventListener("click", () => movePlaylist(1));
     elements.playerLoop?.addEventListener("change", () => {
         playerState.loop = elements.playerLoop.checked;
+        savePlayerState();
+    });
+    elements.playerShuffle?.addEventListener("change", () => {
+        playerState.shuffle = elements.playerShuffle.checked;
+        if (playerState.shuffle) {
+            resetShuffleOrder();
+        } else {
+            playerState.shuffleOrder = [];
+            playerState.shufflePosition = 0;
+        }
         savePlayerState();
     });
     elements.addAllButton?.addEventListener("click", addAllSentences);
