@@ -170,6 +170,16 @@
         );
     }
 
+    function getLevelSentences(levelId) {
+        return currentBoss?.sentences.filter(sentence => sentence.levelId === levelId) || [];
+    }
+
+    function isLevelInPlaylist(levelId) {
+        const levelSentences = getLevelSentences(levelId);
+        return levelSentences.length > 0 &&
+            levelSentences.every(sentence => playlistContains(sentence.id));
+    }
+
     function updatePlaylistButtons() {
         elements.blockList.querySelectorAll("[data-playlist-sentence-id]").forEach(button => {
             const isAdded = playlistContains(button.dataset.playlistSentenceId);
@@ -182,6 +192,23 @@
             button.title = isAdded
                 ? "Satz aus Playlist entfernen"
                 : "Satz zur Playlist hinzufügen";
+        });
+
+        elements.blockList.querySelectorAll("[data-playlist-level-id]").forEach(button => {
+            const isAdded = isLevelInPlaylist(button.dataset.playlistLevelId);
+            button.classList.toggle("is-added", isAdded);
+            button.textContent = isAdded
+                ? "✓ Level in Playlist"
+                : "+ Level zur Playlist";
+            button.setAttribute(
+                "aria-label",
+                isAdded
+                    ? "Alle Sätze dieses Levels sind in der Playlist"
+                    : "Alle Sätze dieses Levels zur Playlist hinzufügen"
+            );
+            button.title = isAdded
+                ? "Alle Sätze dieses Levels sind bereits in der Playlist"
+                : "Alle Sätze dieses Levels zur Playlist hinzufügen";
         });
     }
 
@@ -209,7 +236,8 @@
                             <span>${index + 1}.</span>
                             <span>
                                 <strong lang="ja">${escapeHtml(item.sentence.japanese)}</strong>
-                                <small>${escapeHtml(item.sentence.translation)}</small>
+                                <small class="japanese-playlist-romaji">${escapeHtml(item.sentence.romaji)}</small>
+                                <small class="japanese-playlist-translation">${escapeHtml(item.sentence.translation)}</small>
                             </span>
                         </button>
                         <button
@@ -347,6 +375,39 @@
         updatePlayerUi();
         updatePlaylistButtons();
         setAudioStatus("Alle Sätze dieses Grammatik-Unterkapitels sind in der Playlist.");
+    }
+
+    function addLevelToPlaylist(levelId) {
+        if (!currentBoss) {
+            return;
+        }
+
+        const levelSentences = getLevelSentences(levelId);
+        const existingIds = new Set(
+            playerState.playlist
+                .filter(entry => entry.bossId === currentBoss.id)
+                .map(entry => entry.sentenceId)
+        );
+
+        levelSentences.forEach(sentence => {
+            if (!existingIds.has(sentence.id)) {
+                playerState.playlist.push({
+                    bossId: currentBoss.id,
+                    sentenceId: sentence.id
+                });
+            }
+        });
+
+        if (playerState.playlist.length > 0 && !Number.isInteger(playerState.currentIndex)) {
+            playerState.currentIndex = 0;
+        }
+        savePlayerState();
+        renderPlaylist();
+        updatePlayerUi();
+        updatePlaylistButtons();
+        setAudioStatus(
+            `${levelSentences.length} Sätze aus diesem Level sind in der Playlist.`
+        );
     }
 
     function markCurrentSentence(number, shouldScroll) {
@@ -640,15 +701,25 @@
                 </h3>
                 <p class="japanese-block-description">${escapeHtml(block.description)}</p>
                 ${block.levels.map(level => `
-                    <details class="japanese-level" open>
-                        <summary>${escapeHtml(level.title)}</summary>
-                        <div class="japanese-sentence-list">
-                            ${boss.sentences
-                                .filter(sentence => sentence.levelId === level.id)
-                                .map(renderSentence)
-                                .join("")}
-                        </div>
-                    </details>
+                    <div class="japanese-level-shell">
+                        <details class="japanese-level" open>
+                            <summary class="japanese-level-summary">${escapeHtml(level.title)}</summary>
+                            <div class="japanese-sentence-list">
+                                ${boss.sentences
+                                    .filter(sentence => sentence.levelId === level.id)
+                                    .map(renderSentence)
+                                    .join("")}
+                            </div>
+                        </details>
+                        <button
+                            class="japanese-level-playlist-button"
+                            type="button"
+                            data-playlist-level-id="${escapeHtml(level.id)}"
+                            aria-label="Alle Sätze dieses Levels zur Playlist hinzufügen"
+                            title="Alle Sätze dieses Levels zur Playlist hinzufügen">
+                            + Level zur Playlist
+                        </button>
+                    </div>
                 `).join("")}
             </section>
         `).join("");
@@ -681,6 +752,11 @@
                 } else {
                     addToPlaylist(sentenceId);
                 }
+            });
+        });
+        elements.blockList.querySelectorAll("[data-playlist-level-id]").forEach(button => {
+            button.addEventListener("click", () => {
+                addLevelToPlaylist(button.dataset.playlistLevelId);
             });
         });
         updatePlaylistButtons();
