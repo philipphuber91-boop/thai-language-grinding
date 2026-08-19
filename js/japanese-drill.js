@@ -283,9 +283,20 @@
         elements.playerLoop.checked = playerState.loop;
 
         if (currentItem) {
-            elements.playerNowPlaying.textContent =
-                `${playerState.currentIndex + 1}/${playlistLength}: ` +
-                `${currentItem.sentence.japanese} — ${currentItem.sentence.translation}`;
+            elements.playerNowPlaying.innerHTML = `
+                <span class="japanese-player-current-label">
+                    ${playerState.currentIndex + 1}/${playlistLength}:
+                </span>
+                <span class="japanese-player-current-japanese" lang="ja">
+                    ${escapeHtml(currentItem.sentence.japanese)}
+                </span>
+                <span class="japanese-player-current-romaji">
+                    ${escapeHtml(currentItem.sentence.romaji)}
+                </span>
+                <span class="japanese-player-current-translation">
+                    ${escapeHtml(currentItem.sentence.translation)}
+                </span>
+            `;
         } else {
             elements.playerNowPlaying.textContent =
                 "Füge Sätze über „+ Playlist“ hinzu.";
@@ -293,6 +304,22 @@
 
         elements.playlist.querySelectorAll(".japanese-playlist-item").forEach((item, index) => {
             item.classList.toggle("is-current", index === playerState.currentIndex);
+        });
+    }
+
+    function focusPlaylistEntry() {
+        const playlist = elements.playlist;
+        const currentItem = playlist.querySelector(".japanese-playlist-item.is-current");
+        if (!currentItem || playlist.scrollHeight <= playlist.clientHeight) {
+            return;
+        }
+
+        const targetTop = currentItem.offsetTop -
+            (playlist.clientHeight - currentItem.offsetHeight) / 2;
+        const maxTop = playlist.scrollHeight - playlist.clientHeight;
+        playlist.scrollTo({
+            top: Math.max(0, Math.min(targetTop, maxTop)),
+            behavior: "smooth"
         });
     }
 
@@ -523,8 +550,9 @@
             return;
         }
 
-        markCurrentSentence(item.sentence.number, true);
+        markCurrentSentence(item.sentence.number, false);
         updatePlayerUi();
+        focusPlaylistEntry();
         speakWithVoice(item.sentence, () => {
             if (!playerState.playing) {
                 return;
@@ -584,7 +612,8 @@
         updatePlayerUi();
         const item = findPlaylistEntry(playerState.playlist[playerState.currentIndex]);
         if (item) {
-            markCurrentSentence(item.sentence.number, true);
+            markCurrentSentence(item.sentence.number, false);
+            focusPlaylistEntry();
         }
     }
 

@@ -288,10 +288,30 @@ body.japanese-drill-page {
 }
 
 .japanese-player-now-playing {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
     min-height: 1.5em;
     margin: 18px 0 14px;
     color: var(--jp-muted);
     line-height: 1.45;
+}
+
+.japanese-player-current-label {
+    color: var(--jp-muted);
+}
+
+.japanese-player-current-japanese {
+    color: #fff9ee;
+    font-weight: bold;
+}
+
+.japanese-player-current-romaji {
+    color: var(--jp-accent);
+}
+
+.japanese-player-current-translation {
+    color: var(--jp-muted);
 }
 
 .japanese-player-controls,
