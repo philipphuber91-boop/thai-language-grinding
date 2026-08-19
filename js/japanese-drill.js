@@ -146,12 +146,14 @@
         elements.sidebar?.classList.remove("is-open");
         elements.sidebarBackdrop?.classList.remove("is-visible");
         elements.sidebarToggle?.setAttribute("aria-expanded", "false");
+        elements.sidebarToggle?.setAttribute("aria-label", "Japanisches Menü öffnen");
     }
 
     function openSidebar() {
         elements.sidebar?.classList.add("is-open");
         elements.sidebarBackdrop?.classList.add("is-visible");
         elements.sidebarToggle?.setAttribute("aria-expanded", "true");
+        elements.sidebarToggle?.setAttribute("aria-label", "Japanisches Menü schließen");
     }
 
     function setJapaneseView(view, shouldScroll) {
