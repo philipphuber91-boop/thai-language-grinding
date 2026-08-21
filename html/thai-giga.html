@@ -25,6 +25,42 @@
             <a class="thai-giga-back-link" href="index.html">← Zur Hauptnavigation</a>
         </header>
 
+        <section id="thaiGigaAudioPlayer" class="thai-giga-audio-player" aria-labelledby="thaiGigaAudioTitle">
+            <header class="thai-giga-audio-header">
+                <div>
+                    <p class="eyebrow">Gemeinsamer Audio-Player</p>
+                    <h2 id="thaiGigaAudioTitle">Deine Thai-Giga-Playlist</h2>
+                </div>
+                <span id="thaiGigaAudioCount" class="thai-giga-audio-count">0 Sätze</span>
+            </header>
+            <p id="thaiGigaAudioNowPlaying" class="thai-giga-audio-now-playing">
+                Füge einzelne Sätze, Situationen oder Blöcke hinzu.
+            </p>
+            <div class="thai-giga-audio-controls">
+                <button id="thaiGigaAudioPrevious" type="button" disabled>⏮ Zurück</button>
+                <button id="thaiGigaAudioPlayPause" class="is-primary" type="button" disabled>▶ Abspielen</button>
+                <button id="thaiGigaAudioNext" type="button" disabled>Weiter ⏭</button>
+                <label>
+                    <input id="thaiGigaAudioLoop" type="checkbox" checked>
+                    <span>🔁 Dauerschleife</span>
+                </label>
+                <label>
+                    <input id="thaiGigaAudioShuffle" type="checkbox">
+                    <span>🔀 Shuffle</span>
+                </label>
+            </div>
+            <label class="thai-giga-audio-speed" for="thaiGigaAudioSpeed">
+                <span>Wiedergabegeschwindigkeit</span>
+                <input id="thaiGigaAudioSpeed" type="range" min="0.5" max="1.5" step="0.05" value="0.85">
+                <output id="thaiGigaAudioSpeedValue" for="thaiGigaAudioSpeed">0,85×</output>
+            </label>
+            <div class="thai-giga-audio-actions">
+                <button id="thaiGigaAudioClear" type="button" disabled>Playlist leeren</button>
+            </div>
+            <ol id="thaiGigaAudioPlaylist" class="thai-giga-audio-playlist" aria-label="Thai-Giga-Playlist"></ol>
+            <p id="thaiGigaAudioStatus" class="thai-giga-audio-status" role="status" aria-live="polite"></p>
+        </section>
+
         <div class="thai-giga-layout">
             <aside class="thai-giga-sidebar" aria-label="Thai-Giga-Navigation">
                 <h2>Grammatikbosse</h2>
@@ -48,9 +84,14 @@
                             <p id="thaiGigaStoryContext" class="eyebrow"></p>
                             <h2 id="thaiGigaStoryTitle"></h2>
                         </div>
-                        <button id="thaiGigaStoryTypingButton" class="dark-action-button" type="button">
-                            Satz im Typing öffnen
-                        </button>
+                        <div class="thai-giga-story-actions">
+                            <button id="thaiGigaStoryPlaylistButton" class="dark-action-button" type="button">
+                                + Situation zur Playlist
+                            </button>
+                            <button id="thaiGigaStoryTypingButton" class="dark-action-button" type="button">
+                                Satz im Typing öffnen
+                            </button>
+                        </div>
                     </header>
                     <div id="thaiGigaSentenceList" class="thai-giga-sentence-list"></div>
                 </article>
@@ -66,6 +107,7 @@
 
     <script src="../js/quest-audio.js"></script>
     <script src="../js/thai-giga-drill.js"></script>
+    <script src="../js/thai-giga-audio.js"></script>
     <script src="../js/thai-giga-reader.js"></script>
     <script src="../js/pwa-register.js"></script>
 </body>

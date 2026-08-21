@@ -20,6 +20,12 @@
     align-items: flex-start;
 }
 
+.thai-giga-story-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
 .thai-giga-header {
     margin-bottom: 24px;
 }
@@ -36,6 +42,140 @@
 .thai-giga-back-link {
     color: #f4d79e;
     white-space: nowrap;
+}
+
+.thai-giga-audio-player {
+    margin-bottom: 18px;
+    padding: 18px;
+    border: 1px solid rgba(244, 215, 158, 0.22);
+    border-radius: 14px;
+    background: rgba(38, 27, 19, 0.88);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+}
+
+.thai-giga-audio-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.thai-giga-audio-header h2 {
+    margin: 0;
+}
+
+.thai-giga-audio-count {
+    color: #d5bd91;
+    white-space: nowrap;
+}
+
+.thai-giga-audio-now-playing {
+    min-height: 1.4em;
+    color: #ffe4a9;
+}
+
+.thai-giga-audio-controls,
+.thai-giga-audio-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+}
+
+.thai-giga-audio-controls button,
+.thai-giga-audio-actions button,
+.thai-giga-audio-playlist button {
+    border: 1px solid rgba(244, 215, 158, 0.28);
+    border-radius: 7px;
+    background: rgba(244, 215, 158, 0.08);
+    color: #f4d79e;
+    cursor: pointer;
+    padding: 7px 10px;
+}
+
+.thai-giga-audio-controls button.is-primary {
+    background: #d69b45;
+    color: #1b120b;
+    border-color: #e7b861;
+}
+
+.thai-giga-audio-controls button:disabled,
+.thai-giga-audio-actions button:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+}
+
+.thai-giga-audio-controls label {
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+    color: #d5bd91;
+    font-size: 0.9rem;
+}
+
+.thai-giga-audio-speed {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 14px 0;
+    color: #d5bd91;
+}
+
+.thai-giga-audio-speed input {
+    flex: 1;
+    min-width: 120px;
+}
+
+.thai-giga-audio-speed output {
+    min-width: 3.4em;
+    color: #ffe4a9;
+}
+
+.thai-giga-audio-playlist {
+    display: grid;
+    gap: 6px;
+    max-height: 260px;
+    overflow: auto;
+    margin: 14px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.thai-giga-playlist-item {
+    display: flex;
+    gap: 6px;
+}
+
+.thai-giga-playlist-select {
+    display: grid;
+    flex: 1;
+    gap: 2px;
+    text-align: left;
+}
+
+.thai-giga-playlist-select span {
+    color: #cbb68f;
+    font-size: 0.85rem;
+}
+
+.thai-giga-playlist-item.is-current .thai-giga-playlist-select {
+    border-color: #e7b861;
+    box-shadow: 0 0 0 1px rgba(231, 184, 97, 0.25);
+}
+
+.thai-giga-playlist-remove {
+    width: 36px;
+    padding-inline: 0 !important;
+}
+
+.thai-giga-playlist-empty,
+.thai-giga-audio-status {
+    color: #bda77f;
+}
+
+.thai-giga-audio-status {
+    min-height: 1.2em;
+    margin-bottom: 0;
 }
 
 .thai-giga-layout {
@@ -241,7 +381,8 @@
     }
 
     .thai-giga-header,
-    .thai-giga-story-header {
+    .thai-giga-story-header,
+    .thai-giga-audio-header {
         flex-direction: column;
     }
 

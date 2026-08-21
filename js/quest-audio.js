@@ -6,6 +6,7 @@
     const MAX_PLAYBACK_RATE = 2;
     const activePlayers = new Set();
     let activeSpeech = null;
+    let activeNativeAudio = null;
 
     function getStoredPlaybackRate() {
         const storedRate = Number(localStorage.getItem(SPEED_STORAGE_KEY));
@@ -38,6 +39,12 @@
             window.speechSynthesis.cancel();
         }
 
+        if (activeNativeAudio) {
+            activeNativeAudio.pause();
+            activeNativeAudio.currentTime = 0;
+            activeNativeAudio = null;
+        }
+
         if (activeSpeech?.button) {
             activeSpeech.button.classList.remove("is-playing");
             activeSpeech.button.setAttribute("aria-pressed", "false");
@@ -47,7 +54,7 @@
         activeSpeech = null;
     }
 
-    function speakText(text, button = null) {
+    function speakText(text, button = null, options = {}) {
         if (
             typeof text !== "string" ||
             text.trim() === "" ||
@@ -57,7 +64,7 @@
             return false;
         }
 
-        if (activeSpeech?.text === text) {
+        if (button && activeSpeech?.text === text) {
             stopSpeech();
             return true;
         }
@@ -65,8 +72,10 @@
         stopSpeech();
 
         const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = "th-TH";
-        utterance.rate = getStoredPlaybackRate();
+        utterance.lang = options.lang || "th-TH";
+        utterance.rate = Number.isFinite(options.rate)
+            ? options.rate
+            : getStoredPlaybackRate();
         activeSpeech = { text, button, utterance };
 
         if (button) {
@@ -81,15 +90,424 @@
             }
 
             stopSpeech();
+            options.onEnd?.();
         };
         utterance.onerror = () => {
             if (activeSpeech?.utterance === utterance) {
                 stopSpeech();
+                options.onError?.();
             }
         };
 
         window.speechSynthesis.speak(utterance);
         return true;
+    }
+
+    function createPlaylistPlayer({
+        storageKey,
+        getEntryId,
+        resolveEntry,
+        getEntryText,
+        getEntryAudio,
+        onCurrentChange,
+        onStateChange,
+        onStatus,
+        defaultPlaybackRate = DEFAULT_PLAYBACK_RATE,
+        minPlaybackRate = MIN_PLAYBACK_RATE,
+        maxPlaybackRate = MAX_PLAYBACK_RATE
+    } = {}) {
+        if (
+            typeof storageKey !== "string" ||
+            typeof getEntryId !== "function" ||
+            typeof resolveEntry !== "function" ||
+            typeof getEntryText !== "function"
+        ) {
+            throw new TypeError("Eine Playlist braucht stabile IDs, eine Auflösung und Satztext.");
+        }
+
+        const clampRate = value => {
+            const rate = Number(value);
+            if (!Number.isFinite(rate)) {
+                return defaultPlaybackRate;
+            }
+            return Math.min(maxPlaybackRate, Math.max(minPlaybackRate, rate));
+        };
+        const state = {
+            playlist: [],
+            currentIndex: 0,
+            loop: true,
+            shuffle: false,
+            shuffleOrder: [],
+            shufflePosition: 0,
+            playbackRate: clampRate(defaultPlaybackRate),
+            playing: false
+        };
+        let playbackRunId = 0;
+
+        const notify = () => {
+            const current = state.playlist[state.currentIndex] || null;
+            onCurrentChange?.(current, state);
+            onStateChange?.(state);
+        };
+
+        const setStatus = message => {
+            onStatus?.(message);
+        };
+
+        const save = () => {
+            try {
+                localStorage.setItem(
+                    storageKey,
+                    JSON.stringify({
+                        playlist: state.playlist.map(getEntryId),
+                        currentIndex: state.currentIndex,
+                        loop: state.loop,
+                        shuffle: state.shuffle,
+                        playbackRate: state.playbackRate
+                    })
+                );
+            } catch (error) {
+                console.warn("Audio-Playlist konnte nicht gespeichert werden.", error);
+                setStatus("Die Audio-Playlist konnte nicht gespeichert werden.");
+            }
+        };
+
+        const resetShuffleOrder = () => {
+            const indexes = state.playlist.map((_, index) => index);
+            for (let index = indexes.length - 1; index > 0; index -= 1) {
+                const randomIndex = Math.floor(Math.random() * (index + 1));
+                [indexes[index], indexes[randomIndex]] =
+                    [indexes[randomIndex], indexes[index]];
+            }
+
+            const currentPosition = indexes.indexOf(state.currentIndex);
+            if (currentPosition > 0) {
+                [indexes[0], indexes[currentPosition]] =
+                    [indexes[currentPosition], indexes[0]];
+            }
+            state.shuffleOrder = indexes;
+            state.shufflePosition = 0;
+        };
+
+        const stopPlayback = () => {
+            playbackRunId += 1;
+            state.playing = false;
+            stopSpeech();
+            notify();
+        };
+
+        const advance = () => {
+            if (state.playlist.length === 0) {
+                return false;
+            }
+
+            if (!state.shuffle) {
+                const isLast = state.currentIndex >= state.playlist.length - 1;
+                if (isLast && !state.loop) {
+                    return false;
+                }
+                state.currentIndex = isLast ? 0 : state.currentIndex + 1;
+                return true;
+            }
+
+            if (
+                state.shuffleOrder.length !== state.playlist.length ||
+                state.shuffleOrder[state.shufflePosition] !== state.currentIndex
+            ) {
+                resetShuffleOrder();
+            }
+
+            if (state.shufflePosition >= state.shuffleOrder.length - 1) {
+                if (!state.loop) {
+                    return false;
+                }
+                resetShuffleOrder();
+                state.shufflePosition = state.shuffleOrder.length > 1 ? 1 : 0;
+            } else {
+                state.shufflePosition += 1;
+            }
+            state.currentIndex = state.shuffleOrder[state.shufflePosition];
+            return true;
+        };
+
+        const speakCurrent = () => {
+            if (!state.playing || state.playlist.length === 0) {
+                return;
+            }
+
+            const entry = state.playlist[state.currentIndex];
+            const resolvedEntry = resolveEntry(getEntryId(entry));
+            if (!resolvedEntry) {
+                setStatus("Ein Satz in der Playlist konnte nicht gefunden werden.");
+                stopPlayback();
+                return;
+            }
+
+            const currentRunId = ++playbackRunId;
+            onCurrentChange?.(resolvedEntry, state);
+            const finish = () => {
+                if (currentRunId !== playbackRunId || !state.playing) {
+                    return;
+                }
+                if (!advance()) {
+                    state.playing = false;
+                    notify();
+                    setStatus("Playlist beendet.");
+                    return;
+                }
+                save();
+                notify();
+                speakCurrent();
+            };
+            const fail = () => {
+                if (currentRunId !== playbackRunId) {
+                    return;
+                }
+                state.playing = false;
+                notify();
+                setStatus("Audio konnte nicht abgespielt werden.");
+            };
+            const audio = getEntryAudio?.(resolvedEntry);
+
+            if (audio?.type === "url" && typeof audio.src === "string" && audio.src.trim()) {
+                const nativeAudio = new Audio(audio.src);
+                nativeAudio.playbackRate = state.playbackRate;
+                activeNativeAudio = nativeAudio;
+                nativeAudio.addEventListener("ended", () => {
+                    if (activeNativeAudio === nativeAudio) {
+                        activeNativeAudio = null;
+                    }
+                    finish();
+                }, { once: true });
+                nativeAudio.addEventListener("error", () => {
+                    if (activeNativeAudio === nativeAudio) {
+                        activeNativeAudio = null;
+                    }
+                    fail();
+                }, { once: true });
+                nativeAudio.play().catch(() => {
+                    if (activeNativeAudio === nativeAudio) {
+                        activeNativeAudio = null;
+                    }
+                    fail();
+                });
+                return;
+            }
+
+            const text = getEntryText(resolvedEntry);
+            if (!speakText(text, null, {
+                rate: state.playbackRate,
+                lang: audio?.lang || "th-TH",
+                onEnd: finish,
+                onError: fail
+            })) {
+                fail();
+            }
+        };
+
+        const renderAfterMutation = message => {
+            save();
+            notify();
+            if (message) {
+                setStatus(message);
+            }
+        };
+
+        const add = entry => {
+            const id = getEntryId(entry);
+            if (typeof id !== "string" || state.playlist.some(item => getEntryId(item) === id)) {
+                return false;
+            }
+            state.playlist.push(entry);
+            if (state.playlist.length === 1) {
+                state.currentIndex = 0;
+            }
+            renderAfterMutation("Satz zur Playlist hinzugefügt.");
+            return true;
+        };
+
+        const addMany = entries => {
+            let added = 0;
+            const ids = new Set(state.playlist.map(getEntryId));
+            entries.forEach(entry => {
+                const id = getEntryId(entry);
+                if (typeof id !== "string" || ids.has(id)) {
+                    return;
+                }
+                ids.add(id);
+                state.playlist.push(entry);
+                added += 1;
+            });
+            if (state.playlist.length > 0 && !Number.isInteger(state.currentIndex)) {
+                state.currentIndex = 0;
+            }
+            renderAfterMutation(
+                added > 0 ? `${added} Sätze zur Playlist hinzugefügt.` : "Alle Sätze sind bereits in der Playlist."
+            );
+            return added;
+        };
+
+        const remove = index => {
+            if (!Number.isInteger(index) || index < 0 || index >= state.playlist.length) {
+                return false;
+            }
+            if (state.playing && index === state.currentIndex) {
+                stopPlayback();
+            }
+            state.playlist.splice(index, 1);
+            if (state.currentIndex > index) {
+                state.currentIndex -= 1;
+            }
+            state.currentIndex = Math.min(
+                state.currentIndex,
+                Math.max(0, state.playlist.length - 1)
+            );
+            renderAfterMutation();
+            return true;
+        };
+
+        const move = (fromIndex, toIndex) => {
+            if (
+                !Number.isInteger(fromIndex) ||
+                !Number.isInteger(toIndex) ||
+                fromIndex < 0 ||
+                fromIndex >= state.playlist.length ||
+                toIndex < 0 ||
+                toIndex >= state.playlist.length ||
+                fromIndex === toIndex
+            ) {
+                return false;
+            }
+            const [entry] = state.playlist.splice(fromIndex, 1);
+            state.playlist.splice(toIndex, 0, entry);
+            if (state.currentIndex === fromIndex) {
+                state.currentIndex = toIndex;
+            } else if (fromIndex < state.currentIndex && toIndex >= state.currentIndex) {
+                state.currentIndex -= 1;
+            } else if (fromIndex > state.currentIndex && toIndex <= state.currentIndex) {
+                state.currentIndex += 1;
+            }
+            if (state.shuffle) {
+                resetShuffleOrder();
+            }
+            renderAfterMutation();
+            return true;
+        };
+
+        const clear = () => {
+            stopPlayback();
+            state.playlist = [];
+            state.currentIndex = 0;
+            renderAfterMutation("Playlist geleert.");
+        };
+
+        const togglePlayback = () => {
+            if (state.playlist.length === 0) {
+                return;
+            }
+            if (state.playing) {
+                stopPlayback();
+                return;
+            }
+            if (state.shuffle) {
+                resetShuffleOrder();
+            }
+            state.playing = true;
+            setStatus("");
+            notify();
+            speakCurrent();
+        };
+
+        const moveCurrent = offset => {
+            if (state.playlist.length === 0) {
+                return;
+            }
+            stopPlayback();
+            const length = state.playlist.length;
+            state.currentIndex = (state.currentIndex + offset + length) % length;
+            if (state.shuffle) {
+                resetShuffleOrder();
+            }
+            renderAfterMutation();
+        };
+
+        const select = (index, autoplay = false) => {
+            if (!Number.isInteger(index) || index < 0 || index >= state.playlist.length) {
+                return false;
+            }
+            stopPlayback();
+            state.currentIndex = index;
+            renderAfterMutation();
+            if (autoplay) {
+                state.playing = true;
+                speakCurrent();
+            }
+            return true;
+        };
+
+        const load = () => {
+            try {
+                const raw = localStorage.getItem(storageKey);
+                const stored = raw ? JSON.parse(raw) : {};
+                const ids = Array.isArray(stored.playlist) ? stored.playlist : [];
+                state.playlist = ids
+                    .map(id => resolveEntry(id))
+                    .filter(Boolean);
+                state.currentIndex = Math.min(
+                    Number.isInteger(stored.currentIndex) ? stored.currentIndex : 0,
+                    Math.max(0, state.playlist.length - 1)
+                );
+                state.loop = stored.loop !== false;
+                state.shuffle = stored.shuffle === true;
+                state.playbackRate = clampRate(stored.playbackRate);
+            } catch (error) {
+                console.warn("Audio-Playlist konnte nicht geladen werden.", error);
+                setStatus("Die gespeicherte Audio-Playlist konnte nicht geladen werden.");
+            }
+            notify();
+        };
+
+        return {
+            state,
+            load,
+            add,
+            addMany,
+            remove,
+            move,
+            clear,
+            togglePlayback,
+            pause: stopPlayback,
+            next: () => moveCurrent(1),
+            previous: () => moveCurrent(-1),
+            select,
+            setLoop(value) {
+                state.loop = Boolean(value);
+                renderAfterMutation();
+            },
+            setShuffle(value) {
+                state.shuffle = Boolean(value);
+                if (state.shuffle) {
+                    resetShuffleOrder();
+                } else {
+                    state.shuffleOrder = [];
+                    state.shufflePosition = 0;
+                }
+                renderAfterMutation();
+            },
+            setPlaybackRate(value) {
+                state.playbackRate = clampRate(value);
+                if (state.playing) {
+                    stopPlayback();
+                    state.playing = true;
+                    notify();
+                    speakCurrent();
+                } else {
+                    notify();
+                }
+                save();
+            },
+            playCurrent: speakCurrent
+        };
     }
 
     function getQuestAudioSource(contentMode, questNumber) {
@@ -352,6 +770,7 @@
         initializeSentenceAudioPlayers,
         renderQuestAudioPlayer,
         renderSentenceAudioPlayer,
+        createPlaylistPlayer,
         speakText,
         stopSpeech
     };

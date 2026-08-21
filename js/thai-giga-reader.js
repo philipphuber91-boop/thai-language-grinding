@@ -9,6 +9,7 @@
         storyContext: document.getElementById("thaiGigaStoryContext"),
         storyTitle: document.getElementById("thaiGigaStoryTitle"),
         sentenceList: document.getElementById("thaiGigaSentenceList"),
+        storyPlaylistButton: document.getElementById("thaiGigaStoryPlaylistButton"),
         storyTypingButton: document.getElementById("thaiGigaStoryTypingButton"),
         dictionary: document.getElementById("thaiGigaDictionary")
     };
@@ -58,6 +59,17 @@
                     const blockDetails = document.createElement("details");
                     blockDetails.open = false;
                     blockDetails.innerHTML = `<summary>${escapeHtml(block.title)}</summary>`;
+                    const blockAudioButton = document.createElement("button");
+                    blockAudioButton.type = "button";
+                    blockAudioButton.dataset.thaiGigaPlaylistBlock = block.id;
+                    blockAudioButton.textContent = "+ Block zur Playlist";
+                    blockAudioButton.title = "Alle Sätze dieses Blocks zur Playlist hinzufügen";
+                    blockAudioButton.addEventListener("click", event => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        window.thaiGigaAudio.addBlock(block.id);
+                    });
+                    blockDetails.appendChild(blockAudioButton);
 
                     block.miniStories.forEach(story => {
                         const button = document.createElement("button");
@@ -108,6 +120,9 @@
                 <p class="thai-giga-translation">${escapeHtml(sentence.translation)}</p>
                 <div class="thai-giga-sentence-actions">
                     ${audioMarkup}
+                    <button type="button" data-thai-giga-playlist-sentence="${escapeHtml(sentence.id)}">
+                        + Playlist
+                    </button>
                     <button type="button" data-typing-sentence="${escapeHtml(sentence.id)}">
                         Im Typing öffnen
                     </button>
@@ -134,6 +149,22 @@
                 }
             });
         });
+
+        elements.sentenceList
+            .querySelectorAll("[data-thai-giga-playlist-sentence]")
+            .forEach(button => {
+                button.addEventListener("click", () => {
+                    const sentenceId = button.dataset.thaiGigaPlaylistSentence;
+                    if (window.thaiGigaAudio.hasSentence(sentenceId)) {
+                        window.thaiGigaAudio.removeSentence(sentenceId);
+                    } else {
+                        window.thaiGigaAudio.addSentence(sentenceId);
+                    }
+                    updatePlaylistButtons();
+                });
+            });
+
+        updatePlaylistButtons();
     }
 
     function showStory(storyId, sentenceId = "") {
@@ -156,6 +187,8 @@
         elements.story.hidden = false;
         elements.storyContext.textContent = getStoryContext(story);
         elements.storyTitle.textContent = story.title;
+        elements.storyPlaylistButton.dataset.thaiGigaPlaylistStory = story.id;
+        elements.storyTypingButton.dataset.thaiGigaPlaylistStory = story.id;
         elements.sentenceList.innerHTML = story.sentences
             .map(sentence => renderSentence(indexes.sentencesById.get(sentence.id)))
             .join("");
@@ -168,6 +201,22 @@
                     ?.scrollIntoView({ behavior: "smooth", block: "center" });
             });
         }
+    }
+
+    function updatePlaylistButtons() {
+        elements.sentenceList
+            .querySelectorAll("[data-thai-giga-playlist-sentence]")
+            .forEach(button => {
+                const sentenceId = button.dataset.thaiGigaPlaylistSentence;
+                const isAdded = window.thaiGigaAudio.hasSentence(sentenceId);
+                button.textContent = isAdded ? "− Playlist" : "+ Playlist";
+                button.setAttribute(
+                    "aria-label",
+                    isAdded
+                        ? "Satz aus Playlist entfernen"
+                        : "Satz zur Playlist hinzufügen"
+                );
+            });
     }
 
     function showDictionary(wordId) {
@@ -206,6 +255,7 @@
                 button.addEventListener("click", () => {
                     const sentence = indexes.sentencesById.get(button.dataset.dictionarySentence);
                     showStory(sentence.storyId, sentence.id);
+                    window.thaiGigaAudio.addSentence(sentence.id, true);
                 });
             });
     }
@@ -239,6 +289,7 @@
 
             renderHierarchy();
             showInitialStory();
+            window.thaiGigaAudio.initialize(indexes);
         } catch (error) {
             console.error(error);
             setStatus("Content konnte nicht geladen werden.", true);
@@ -258,6 +309,26 @@
 
         const sentence = indexes.sentencesById.get(activeStory.sentences[0].id);
         window.thaiGigaDrill.openSentenceInTyping(sentence, activeStory);
+    });
+
+    elements.storyPlaylistButton.addEventListener("click", () => {
+        if (activeStory) {
+            window.thaiGigaAudio.addStory(activeStory.id);
+        }
+    });
+
+    window.addEventListener("thai-giga:audio-current", event => {
+        const sentenceId = event.detail?.sentenceId;
+        const sentence = indexes?.sentencesById.get(sentenceId);
+        if (sentence && sentence.storyId !== activeStory?.id) {
+            showStory(sentence.storyId, sentence.id);
+        } else if (sentence) {
+            activeSentenceId = sentence.id;
+            elements.sentenceList.innerHTML = activeStory.sentences
+                .map(storySentence => renderSentence(indexes.sentencesById.get(storySentence.id)))
+                .join("");
+            initializeSentenceActions();
+        }
     });
 
     initialize();
