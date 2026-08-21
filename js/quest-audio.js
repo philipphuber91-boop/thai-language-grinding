@@ -5,6 +5,7 @@
     const MIN_PLAYBACK_RATE = 0.5;
     const MAX_PLAYBACK_RATE = 2;
     const activePlayers = new Set();
+    let activeSpeech = null;
 
     function getStoredPlaybackRate() {
         const storedRate = Number(localStorage.getItem(SPEED_STORAGE_KEY));
@@ -21,6 +22,74 @@
 
     function formatPlaybackRate(rate) {
         return `${Number(rate).toFixed(2).replace(/0$/, "").replace(/\.0$/, "")}×`;
+    }
+
+    function escapeAttribute(value) {
+        return String(value ?? "")
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    function stopSpeech() {
+        if ("speechSynthesis" in window) {
+            window.speechSynthesis.cancel();
+        }
+
+        if (activeSpeech?.button) {
+            activeSpeech.button.classList.remove("is-playing");
+            activeSpeech.button.setAttribute("aria-pressed", "false");
+            activeSpeech.button.textContent = "🔊";
+        }
+
+        activeSpeech = null;
+    }
+
+    function speakText(text, button = null) {
+        if (
+            typeof text !== "string" ||
+            text.trim() === "" ||
+            !("speechSynthesis" in window) ||
+            typeof SpeechSynthesisUtterance !== "function"
+        ) {
+            return false;
+        }
+
+        if (activeSpeech?.text === text) {
+            stopSpeech();
+            return true;
+        }
+
+        stopSpeech();
+
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "th-TH";
+        utterance.rate = getStoredPlaybackRate();
+        activeSpeech = { text, button, utterance };
+
+        if (button) {
+            button.classList.add("is-playing");
+            button.setAttribute("aria-pressed", "true");
+            button.textContent = "❚❚";
+        }
+
+        utterance.onend = () => {
+            if (activeSpeech?.utterance !== utterance) {
+                return;
+            }
+
+            stopSpeech();
+        };
+        utterance.onerror = () => {
+            if (activeSpeech?.utterance === utterance) {
+                stopSpeech();
+            }
+        };
+
+        window.speechSynthesis.speak(utterance);
+        return true;
     }
 
     function getQuestAudioSource(contentMode, questNumber) {
@@ -213,10 +282,78 @@
             });
     }
 
+    function renderSentenceAudioPlayer({
+        audio = null,
+        text = "",
+        className = ""
+    } = {}) {
+        if (audio?.type === "url" && typeof audio.src === "string" && audio.src.trim()) {
+            return `
+                <div class="quest-audio-player ${className}" data-quest-audio-player data-audio-source="${escapeAttribute(audio.src)}">
+                    <button type="button" class="quest-audio-play-button" aria-label="Satzaudio abspielen" aria-pressed="false">
+                        <span aria-hidden="true">▶</span>
+                    </button>
+                    <span class="quest-audio-status" aria-live="polite"></span>
+                    <audio class="quest-audio-native" preload="none" src="${escapeAttribute(audio.src)}"></audio>
+                </div>
+            `;
+        }
+
+        if (audio?.type === "none") {
+            return "";
+        }
+
+        if (typeof text !== "string" || text.trim() === "") {
+            return "";
+        }
+
+        return `
+            <div class="quest-audio-player ${className}" data-speech-audio-player data-speech-text="${encodeURIComponent(text)}">
+                <button type="button" class="quest-audio-play-button" aria-label="Satz vorlesen" aria-pressed="false">🔊</button>
+                <span class="quest-audio-status" aria-live="polite"></span>
+            </div>
+        `;
+    }
+
+    function initializeSpeechAudioPlayers(container = document) {
+        container.querySelectorAll("[data-speech-audio-player]").forEach(playerElement => {
+            if (playerElement.dataset.audioInitialized === "true") {
+                return;
+            }
+
+            const button = playerElement.querySelector(".quest-audio-play-button");
+            const status = playerElement.querySelector(".quest-audio-status");
+            const text = decodeURIComponent(playerElement.dataset.speechText || "");
+
+            if (!button || !text) {
+                return;
+            }
+
+            button.addEventListener("click", event => {
+                event.stopPropagation();
+                const started = speakText(text, button);
+                if (!started && status) {
+                    status.textContent = "Sprachausgabe nicht verfügbar.";
+                }
+            });
+
+            playerElement.dataset.audioInitialized = "true";
+        });
+    }
+
+    function initializeSentenceAudioPlayers(container = document) {
+        initializeQuestAudioPlayers(container);
+        initializeSpeechAudioPlayers(container);
+    }
+
     window.questAudio = {
         getQuestAudioSource,
         initializeQuestAudioPlayers,
-        renderQuestAudioPlayer
+        initializeSentenceAudioPlayers,
+        renderQuestAudioPlayer,
+        renderSentenceAudioPlayer,
+        speakText,
+        stopSpeech
     };
 
 })();

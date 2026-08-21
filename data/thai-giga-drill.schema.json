@@ -1,0 +1,343 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thai-language-grinding.example/schemas/thai-giga-drill.v1.json",
+  "title": "Thai Giga Drill Content v1",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "contentVersion",
+    "contentStatus",
+    "language",
+    "levels",
+    "words",
+    "archivedIds"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "contentVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "contentStatus": {
+      "enum": [
+        "draft",
+        "complete",
+        "placeholder-only"
+      ]
+    },
+    "language": {
+      "const": "th"
+    },
+    "levels": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/level"
+      }
+    },
+    "words": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/word"
+      }
+    },
+    "archivedIds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "contentStatus": {
+            "const": "complete"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "levels": {
+            "items": {
+              "properties": {
+                "bosses": {
+                  "items": {
+                    "properties": {
+                      "blocks": {
+                        "minItems": 5,
+                        "maxItems": 5
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "level": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "bosses"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bosses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/boss"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "boss": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "grammarFocus",
+        "blocks"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "grammarFocus": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocks": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "items": {
+            "$ref": "#/$defs/foundationBlock"
+          }
+        },
+        "reminders": {
+          "$ref": "#/$defs/supplementalContent"
+        },
+        "completion": {
+          "$ref": "#/$defs/supplementalContent"
+        }
+      },
+      "additionalProperties": true
+    },
+    "foundationBlock": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "miniStories"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "miniStories": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 10,
+          "items": {
+            "$ref": "#/$defs/miniStory"
+          }
+        },
+        "reminder": {
+          "$ref": "#/$defs/supplementalContent"
+        },
+        "completion": {
+          "$ref": "#/$defs/supplementalContent"
+        }
+      },
+      "additionalProperties": true
+    },
+    "miniStory": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "sentences"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "context": {
+          "type": "string"
+        },
+        "sentences": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 10,
+          "items": {
+            "$ref": "#/$defs/sentence"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "sentence": {
+      "type": "object",
+      "required": [
+        "id",
+        "thai",
+        "transliteration",
+        "translation",
+        "tokens"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "thai": {
+          "type": "string",
+          "minLength": 1
+        },
+        "transliteration": {
+          "type": "string",
+          "minLength": 1
+        },
+        "translation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tokens": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/token"
+          }
+        },
+        "audio": {
+          "$ref": "#/$defs/audio"
+        }
+      },
+      "additionalProperties": true
+    },
+    "token": {
+      "type": "object",
+      "required": [
+        "id",
+        "text",
+        "kind"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "word",
+            "punctuation",
+            "space"
+          ]
+        },
+        "wordId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": true
+    },
+    "word": {
+      "type": "object",
+      "required": [
+        "id",
+        "thai",
+        "transliteration",
+        "meanings"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "thai": {
+          "type": "string",
+          "minLength": 1
+        },
+        "transliteration": {
+          "type": "string",
+          "minLength": 1
+        },
+        "meanings": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "audio": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "type": {
+          "enum": [
+            "speechSynthesis",
+            "url",
+            "none"
+          ]
+        },
+        "src": {
+          "type": "string"
+        },
+        "text": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "supplementalContent": {
+      "type": [
+        "object",
+        "array",
+        "null"
+      ]
+    }
+  }
+}

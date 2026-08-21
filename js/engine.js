@@ -1219,6 +1219,11 @@ function switchContent(mode) {
 
     console.log("switchContent:", mode);
 
+    if (mode === "thai-giga") {
+        window.location.href = "thai-giga.html";
+        return;
+    }
+
     contentMode = mode;
     document.body.classList.toggle(
         "worldmap-view-mode",

@@ -37,6 +37,20 @@ const keyboardTutorModeEnabled = true;
 const contentMode =
     localStorage.getItem("contentMode") || "campaign";
 
+let gigaDrillSentence = null;
+if (contentMode === "thai-giga") {
+    try {
+        const rawGigaDrillSentence = localStorage.getItem(
+            "thaiGigaDrill:v1:typing-sentence"
+        );
+        gigaDrillSentence = rawGigaDrillSentence
+            ? JSON.parse(rawGigaDrillSentence)
+            : null;
+    } catch (error) {
+        console.error("Thai-Giga-Satz konnte nicht gelesen werden.", error);
+    }
+}
+
 const daten =
     contentMode === "campaign"
         ? quests
@@ -44,19 +58,26 @@ const daten =
             ? comedyEpisodes
         : contentMode === "missions"
             ? missions
+            : contentMode === "thai-giga"
+                ? { [aktuelleQuest]: gigaDrillSentence }
             : getYoutubeQuests();
 
 const typingAudioContainer =
     document.getElementById("typingAudioContainer");
 
 if (typingAudioContainer && window.questAudio) {
-    typingAudioContainer.innerHTML =
-        window.questAudio.renderQuestAudioPlayer({
-            contentMode,
-            questNumber: aktuelleQuest,
+    typingAudioContainer.innerHTML = contentMode === "thai-giga"
+        ? window.questAudio.renderSentenceAudioPlayer({
+            audio: gigaDrillSentence?.audio,
+            text: gigaDrillSentence?.thaiZeilen?.[0] || "",
             className: "typing-audio-player"
-        });
-    window.questAudio.initializeQuestAudioPlayers(typingAudioContainer);
+        })
+        : window.questAudio.renderQuestAudioPlayer({
+              contentMode,
+              questNumber: aktuelleQuest,
+              className: "typing-audio-player"
+          });
+    window.questAudio.initializeSentenceAudioPlayers(typingAudioContainer);
 }
 
 window.addEventListener("questaudio:ended", () => {
@@ -68,7 +89,11 @@ window.addEventListener("questaudio:ended", () => {
 // Separate IDs prevent a campaign quest and a mission with the same number
 // from sharing progress, records, and review dates.
 const questStatsId = `${contentMode}:${aktuelleQuest}`;
-const stats = getQuestStats(questStatsId, daten[aktuelleQuest].version ?? 1);
+const activeTypingQuest = daten[aktuelleQuest];
+if (!activeTypingQuest) {
+    throw new Error("Kein gültiger Thai-Giga-Satz für den Typing-Start gefunden.");
+}
+const stats = getQuestStats(questStatsId, activeTypingQuest.version ?? 1);
 
 const keyboardElement = document.getElementById("thaiKeyboard");
 let highlightedKeyElements = [];
@@ -513,7 +538,9 @@ function initializeTypingAwardsOverview() {
 initializeTypingAwardsOverview();
 
 function registerCompletedTypingSentence() {
-    const sentenceWords = getThaiWordList([text]).words.length;
+    const sentenceWords = contentMode === "thai-giga"
+        ? getThaiWordListFromCanonicalTokens(gigaDrillSentence.gigaDrillTokens).words.length
+        : getThaiWordList([text]).words.length;
     const cleanSentence = !currentSentenceHasError;
     const activeTime = ActivityManager.getActiveTimeMs();
     const sentenceDurationMs = sentenceStartActiveTimeMs === null
@@ -1369,9 +1396,10 @@ function aktualisiereQuestFortschrittUI() {
     const currentAccuracy = gesamtZeichen + fehler > 0
         ? (gesamtZeichen / (gesamtZeichen + fehler)) * 100
         : 100;
-    const totalWords = getThaiWordList(thaiZeilen).words.length;
-    const typedWords = getThaiWordList(
-        thaiZeilen.slice(0, aktuelleZeile)
+    const totalWords = getThaiWordListForContent(activeTypingQuest).words.length;
+    const typedWords = getThaiWordListForContent(
+        activeTypingQuest,
+        aktuelleZeile
     ).words.length;
     const targetCpm = Math.max(
         1,

@@ -423,9 +423,26 @@ function getQuestDataFromStatsId(questId) {
             : contentType === "youtube" &&
                 typeof getYoutubeQuests === "function"
                 ? getYoutubeQuests()
+                : contentType === "thai-giga"
+                    ? getStoredThaiGigaSentenceData(questNumber)
                 : null;
 
     return daten ? daten[questNumber] ?? null : null;
+
+}
+
+function getStoredThaiGigaSentenceData(sentenceId) {
+    try {
+        const rawSentence = localStorage.getItem("thaiGigaDrill:v1:typing-sentence");
+        const sentence = rawSentence ? JSON.parse(rawSentence) : null;
+
+        return sentence && sentence.id === sentenceId
+            ? { [sentenceId]: sentence }
+            : null;
+    } catch (error) {
+        console.warn("Thai-Giga-Satz konnte für die Statistik nicht gelesen werden.", error);
+        return null;
+    }
 }
 
 function getStoredUniqueThaiWords() {
@@ -523,7 +540,7 @@ function getCompletedQuestWordTotal() {
             continue;
         }
 
-        const wordList = getThaiWordList(quest.thaiZeilen);
+        const wordList = getThaiWordListForContent(quest);
 
         if (!wordList.supported) {
             continue;
@@ -574,7 +591,7 @@ function migrateThaiWordStatsFromCompletedQuests() {
             continue;
         }
 
-        const wordList = getThaiWordList(quest.thaiZeilen);
+        const wordList = getThaiWordListForContent(quest);
 
         if (!wordList.supported) {
             continue;
@@ -606,7 +623,7 @@ function addCompletedQuestWordsToTotal(questId) {
         return;
     }
 
-    const wordList = getThaiWordList(quest.thaiZeilen);
+    const wordList = getThaiWordListForContent(quest);
 
     if (!wordList.supported) {
         return;
@@ -624,7 +641,7 @@ function addQuestWordsToWordStats(questId) {
         return [];
     }
 
-    const wordList = getThaiWordList(quest.thaiZeilen);
+    const wordList = getThaiWordListForContent(quest);
 
     if (!wordList.supported) {
         return [];
@@ -669,7 +686,7 @@ function addQuestWordsToUniqueCollection(questId) {
         return 0;
     }
 
-    const wordList = getThaiWordList(quest.thaiZeilen);
+    const wordList = getThaiWordListForContent(quest);
 
     if (!wordList.supported) {
         return 0;
@@ -715,7 +732,7 @@ function migrateUniqueThaiWordsFromCompletedQuests() {
             continue;
         }
 
-        const wordList = getThaiWordList(quest.thaiZeilen);
+        const wordList = getThaiWordListForContent(quest);
 
         if (!wordList.supported) {
             continue;

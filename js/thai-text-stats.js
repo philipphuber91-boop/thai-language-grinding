@@ -54,6 +54,45 @@ function getThaiWordList(thaiZeilen) {
     };
 }
 
+function getThaiWordListFromCanonicalTokens(tokens) {
+    if (!Array.isArray(tokens)) {
+        return {
+            words: [],
+            supported: false
+        };
+    }
+
+    return {
+        words: tokens
+            .filter(token =>
+                token &&
+                token.kind === "word" &&
+                typeof token.text === "string" &&
+                token.text.trim() !== ""
+            )
+            .map(token => token.text.normalize("NFC")),
+        supported: true
+    };
+}
+
+function getThaiWordListForContent(content, maxLines) {
+    if (Array.isArray(content?.gigaDrillTokensByLine)) {
+        const tokenLines = Number.isInteger(maxLines)
+            ? content.gigaDrillTokensByLine.slice(0, Math.max(0, maxLines))
+            : content.gigaDrillTokensByLine;
+        const words = tokenLines.flatMap(tokens =>
+            getThaiWordListFromCanonicalTokens(tokens).words
+        );
+
+        return {
+            words,
+            supported: true
+        };
+    }
+
+    return getThaiWordList(content?.thaiZeilen);
+}
+
 function getThaiWordStatistics(thaiZeilen) {
 
     const wordList = getThaiWordList(thaiZeilen);

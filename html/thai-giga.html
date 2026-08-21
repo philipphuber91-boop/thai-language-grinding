@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thai Giga Drill</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/thai-giga.css">
+</head>
+<body class="thai-giga-page">
+    <header class="topbar">
+        <h1>THAI</h1>
+        <h2>LANGUAGE GRINDING</h2>
+    </header>
+
+    <main class="thai-giga-shell">
+        <header class="thai-giga-header">
+            <div>
+                <p class="eyebrow">The Flow Machine</p>
+                <h1>🇹🇭 Thai Super Duper Mega Giga Drill</h1>
+                <p id="thaiGigaStatus" class="thai-giga-status" role="status">
+                    Content wird geladen ...
+                </p>
+            </div>
+            <a class="thai-giga-back-link" href="index.html">← Zur Hauptnavigation</a>
+        </header>
+
+        <div class="thai-giga-layout">
+            <aside class="thai-giga-sidebar" aria-label="Thai-Giga-Navigation">
+                <h2>Grammatikbosse</h2>
+                <div id="thaiGigaHierarchy" class="thai-giga-hierarchy"></div>
+            </aside>
+
+            <section class="thai-giga-reader" aria-labelledby="thaiGigaStoryTitle">
+                <div id="thaiGigaEmptyState" class="thai-giga-empty-state">
+                    <h2>Technische Infrastruktur bereit</h2>
+                    <p>
+                        Es ist noch kein offizieller Lerncontent eingepflegt. Sobald eine
+                        validierte JSON-Contentdatei bereitsteht, erscheinen hier Level,
+                        Grammatikbosse, Mini-Storys und interaktive Sätze.
+                    </p>
+                    <p><strong>Dieser Bereich enthält bewusst keinen erfundenen Lerncontent.</strong></p>
+                </div>
+
+                <article id="thaiGigaStory" hidden>
+                    <header class="thai-giga-story-header">
+                        <div>
+                            <p id="thaiGigaStoryContext" class="eyebrow"></p>
+                            <h2 id="thaiGigaStoryTitle"></h2>
+                        </div>
+                        <button id="thaiGigaStoryTypingButton" class="dark-action-button" type="button">
+                            Satz im Typing öffnen
+                        </button>
+                    </header>
+                    <div id="thaiGigaSentenceList" class="thai-giga-sentence-list"></div>
+                </article>
+            </section>
+
+            <aside id="thaiGigaDictionary" class="thai-giga-dictionary" aria-live="polite">
+                <p class="eyebrow">Wörterbuch</p>
+                <h2>Wort auswählen</h2>
+                <p>Klicke im Reader auf ein kanonisches Thai-Wort.</p>
+            </aside>
+        </div>
+    </main>
+
+    <script src="../js/quest-audio.js"></script>
+    <script src="../js/thai-giga-drill.js"></script>
+    <script src="../js/thai-giga-reader.js"></script>
+    <script src="../js/pwa-register.js"></script>
+</body>
+</html>
