@@ -557,23 +557,23 @@
         };
     }
 
-    function cacheTypingSentences(content) {
-        const snapshots = {};
-        content.levels.forEach(level => {
-            level.bosses.forEach(boss => {
-                boss.blocks.forEach(block => {
-                    block.miniStories.forEach(story => {
-                        story.sentences.forEach(sentence => {
-                            snapshots[sentence.id] = getTypingSentence(sentence, {
-                                title: story.title,
-                                id: story.id
-                            });
-                        });
-                    });
-                });
-            });
-        });
-        localStorage.setItem(TYPING_SENTENCES_STORAGE_KEY, JSON.stringify(snapshots));
+    function persistContent(content) {
+        const serializedContent = JSON.stringify(content);
+
+        try {
+            // Die vollständigen Satz-Snapshots sind redundant und überschreiten auf
+            // mobilen Geräten häufig das localStorage-Limit.
+            localStorage.removeItem(TYPING_SENTENCES_STORAGE_KEY);
+        } catch (error) {
+            console.warn("Alte Thai-Giga-Snapshots konnten nicht entfernt werden.", error);
+        }
+
+        try {
+            localStorage.setItem(CONTENT_STORAGE_KEY, serializedContent);
+        } catch (error) {
+            // Der Reader kann den frisch geladenen Content auch ohne Cache verwenden.
+            console.warn("Thai-Giga-Content konnte nicht lokal zwischengespeichert werden.", error);
+        }
     }
 
     function getSharedPlaylistEntry(sentence, story) {
@@ -683,8 +683,7 @@
             throw new Error(`Thai-Giga-Content ist ungültig:\n${details}`);
         }
 
-        localStorage.setItem(CONTENT_STORAGE_KEY, JSON.stringify(content));
-        cacheTypingSentences(content);
+        persistContent(content);
         return content;
     }
 
