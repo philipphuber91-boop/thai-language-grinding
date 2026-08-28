@@ -35,6 +35,15 @@
     }
 
     function stopSpeech() {
+        const speech = activeSpeech;
+        activeSpeech = null;
+
+        if (speech?.button) {
+            speech.button.classList.remove("is-playing");
+            speech.button.setAttribute("aria-pressed", "false");
+            speech.button.textContent = "🔊";
+        }
+
         if ("speechSynthesis" in window) {
             window.speechSynthesis.cancel();
         }
@@ -44,14 +53,21 @@
             activeNativeAudio.currentTime = 0;
             activeNativeAudio = null;
         }
+    }
 
-        if (activeSpeech?.button) {
-            activeSpeech.button.classList.remove("is-playing");
-            activeSpeech.button.setAttribute("aria-pressed", "false");
-            activeSpeech.button.textContent = "🔊";
+    function clearSpeechState(utterance) {
+        if (activeSpeech?.utterance !== utterance) {
+            return false;
         }
 
+        const speech = activeSpeech;
         activeSpeech = null;
+        if (speech.button) {
+            speech.button.classList.remove("is-playing");
+            speech.button.setAttribute("aria-pressed", "false");
+            speech.button.textContent = "🔊";
+        }
+        return true;
     }
 
     function speakText(text, button = null, options = {}) {
@@ -89,7 +105,7 @@
                 return;
             }
 
-            stopSpeech();
+            clearSpeechState(utterance);
             window.dispatchEvent(new CustomEvent("questaudio:ended", {
                 detail: {
                     source: "speechSynthesis",
@@ -100,8 +116,16 @@
             }));
             options.onEnd?.();
         };
-        utterance.onerror = () => {
+        utterance.onerror = event => {
             if (activeSpeech?.utterance === utterance) {
+                if (
+                    event.error === "canceled" ||
+                    event.error === "cancelled" ||
+                    event.error === "interrupted"
+                ) {
+                    clearSpeechState(utterance);
+                    return;
+                }
                 stopSpeech();
                 options.onError?.();
             }

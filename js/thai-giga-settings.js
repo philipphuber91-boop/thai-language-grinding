@@ -4,6 +4,8 @@
     const FONT_STORAGE_KEY = "thaiFontFamily";
     const REMINDER_SIZE_STORAGE_KEY = "thaiGigaReminderFontSize";
     const THEME_STORAGE_KEY = "thaiGigaTheme";
+    const TRANSLITERATION_STORAGE_KEY = "thaiGigaTransliterationVisible";
+    const TRANSLATION_STORAGE_KEY = "thaiGigaTranslationVisible";
     const DEFAULT_FONT = "sarabun";
     const DEFAULT_REMINDER_SIZE = 20;
     const DEFAULT_THEME = "classic";
@@ -25,6 +27,8 @@
         close: document.getElementById("thaiGigaSettingsClose"),
         themeSelect: document.getElementById("thaiGigaThemeSelect"),
         fontSelect: document.getElementById("thaiGigaFontSelect"),
+        transliterationToggle: document.getElementById("thaiGigaTransliterationToggle"),
+        translationToggle: document.getElementById("thaiGigaTranslationToggle"),
         reminderSize: document.getElementById("thaiGigaReminderFontSize"),
         reminderSizeValue: document.getElementById("thaiGigaReminderFontSizeValue")
     };
@@ -52,6 +56,17 @@
         elements.body.dataset.thaiTheme = selection;
         elements.themeSelect.value = selection;
         return selection;
+    }
+
+    function applyVisibilitySetting(setting, value) {
+        const visible = value !== false;
+        elements.body.dataset[`thai${setting}Visible`] = String(visible);
+        return visible;
+    }
+
+    function readStoredVisibility(key) {
+        const stored = localStorage.getItem(key);
+        return stored === null ? true : stored === "true";
     }
 
     function applyFont(value) {
@@ -92,9 +107,24 @@
     const initialTheme = applyTheme(
         localStorage.getItem(THEME_STORAGE_KEY) || DEFAULT_THEME
     );
+    const initialTransliterationVisible = applyVisibilitySetting(
+        "Transliteration",
+        readStoredVisibility(TRANSLITERATION_STORAGE_KEY)
+    );
+    const initialTranslationVisible = applyVisibilitySetting(
+        "Translation",
+        readStoredVisibility(TRANSLATION_STORAGE_KEY)
+    );
+    elements.transliterationToggle.checked = initialTransliterationVisible;
+    elements.translationToggle.checked = initialTranslationVisible;
     localStorage.setItem(FONT_STORAGE_KEY, initialFont);
     localStorage.setItem(REMINDER_SIZE_STORAGE_KEY, String(initialReminderSize));
     localStorage.setItem(THEME_STORAGE_KEY, initialTheme);
+    localStorage.setItem(
+        TRANSLITERATION_STORAGE_KEY,
+        String(initialTransliterationVisible)
+    );
+    localStorage.setItem(TRANSLATION_STORAGE_KEY, String(initialTranslationVisible));
 
     elements.toggle.addEventListener("click", () => {
         if (elements.panel.hidden) {
@@ -108,6 +138,14 @@
     elements.themeSelect.addEventListener("change", event => {
         const selection = applyTheme(event.target.value);
         localStorage.setItem(THEME_STORAGE_KEY, selection);
+    });
+    elements.transliterationToggle.addEventListener("change", event => {
+        const visible = applyVisibilitySetting("Transliteration", event.target.checked);
+        localStorage.setItem(TRANSLITERATION_STORAGE_KEY, String(visible));
+    });
+    elements.translationToggle.addEventListener("change", event => {
+        const visible = applyVisibilitySetting("Translation", event.target.checked);
+        localStorage.setItem(TRANSLATION_STORAGE_KEY, String(visible));
     });
     elements.fontSelect.addEventListener("change", event => {
         const selection = applyFont(event.target.value);

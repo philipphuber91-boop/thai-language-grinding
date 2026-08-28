@@ -233,6 +233,13 @@ body.thai-giga-page {
     color: var(--thai-muted);
 }
 
+.thai-giga-settings-row {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .thai-giga-settings-select {
     width: 100%;
     min-height: 40px;
@@ -1510,4 +1517,22 @@ body.thai-giga-page[data-thai-theme="night"] .thai-giga-pattern,
 body.thai-giga-page[data-thai-theme="desert"] .thai-giga-pattern,
 body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-pattern {
     color: var(--thai-strong-text);
+}
+
+body.thai-giga-page[data-thai-transliteration-visible="false"] .thai-giga-transliteration,
+body.thai-giga-page[data-thai-transliteration-visible="false"] .thai-giga-playlist-transliteration,
+body.thai-giga-page[data-thai-transliteration-visible="false"] .thai-giga-dictionary-transliteration,
+body.thai-giga-page[data-thai-transliteration-visible="false"] .thai-giga-reminder-word em,
+body.thai-giga-page[data-thai-transliteration-visible="false"] .thai-giga-reminder-example em,
+body.thai-giga-page[data-thai-transliteration-visible="false"] .thai-giga-reminder-discoveries em {
+    display: none;
+}
+
+body.thai-giga-page[data-thai-translation-visible="false"] .thai-giga-translation,
+body.thai-giga-page[data-thai-translation-visible="false"] .thai-giga-playlist-translation,
+body.thai-giga-page[data-thai-translation-visible="false"] .thai-giga-dictionary-meaning,
+body.thai-giga-page[data-thai-translation-visible="false"] .thai-giga-reminder-word span,
+body.thai-giga-page[data-thai-translation-visible="false"] .thai-giga-reminder-example span,
+body.thai-giga-page[data-thai-translation-visible="false"] .thai-giga-reminder-discoveries span {
+    display: none;
 }
