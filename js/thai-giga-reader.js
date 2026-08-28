@@ -19,7 +19,16 @@
         readerContent: document.getElementById("thaiGigaReaderContent"),
         emptyState: document.getElementById("thaiGigaEmptyState"),
         sentenceList: document.getElementById("thaiGigaBlockList"),
-        dictionary: document.getElementById("thaiGigaDictionary")
+        dictionary: document.getElementById("thaiGigaDictionary"),
+        wordDictionary: document.getElementById("thaiGigaWordDictionary"),
+        wordDictionaryBossFilter: document.getElementById("thaiGigaWordDictionaryBossFilter"),
+        wordDictionaryScopeFilter: document.getElementById("thaiGigaWordDictionaryScopeFilter"),
+        wordDictionarySummary: document.getElementById("thaiGigaWordDictionarySummary"),
+        wordDictionaryList: document.getElementById("thaiGigaWordDictionaryList"),
+        wordDictionaryExport: document.getElementById("thaiGigaWordDictionaryExport"),
+        wordDictionaryExportStatus: document.getElementById(
+            "thaiGigaWordDictionaryExportStatus"
+        )
     };
 
     let content = null;
@@ -80,7 +89,258 @@
         ].filter(Boolean).join(" · ");
     }
 
+    function getWordDictionaryEntries() {
+        const bosses = content.levels.flatMap(level => level.bosses);
+        const bossesById = new Map(bosses.map(boss => [boss.id, boss]));
+        const wordBossIds = new Map();
+
+        indexes.sentencesById.forEach(sentence => {
+            sentence.tokens.forEach(token => {
+                if (!token.wordId) {
+                    return;
+                }
+
+                const bossIds = wordBossIds.get(token.wordId) || new Set();
+                bossIds.add(sentence.bossId);
+                wordBossIds.set(token.wordId, bossIds);
+            });
+        });
+
+        return (content.words || []).map(word => {
+            const firstSentence = indexes.sentencesById.get(word.firstSentenceId);
+            const firstBoss = firstSentence
+                ? bossesById.get(firstSentence.bossId)
+                : null;
+
+            return {
+                ...word,
+                firstSentence,
+                firstBoss,
+                appearsInBossIds: wordBossIds.get(word.id) || new Set()
+            };
+        });
+    }
+
+    function renderWordDictionaryFilters() {
+        if (!elements.wordDictionaryBossFilter || !content) {
+            return;
+        }
+
+        const currentBossId = elements.wordDictionaryBossFilter.value || "all";
+        const bosses = content.levels.flatMap(level => level.bosses);
+        elements.wordDictionaryBossFilter.innerHTML = `
+            <option value="all">Alle Bosse</option>
+            ${bosses.map(boss => `
+                <option value="${escapeHtml(boss.id)}">
+                    ${escapeHtml(boss.title)} · ${escapeHtml(boss.grammarFocus)}
+                </option>
+            `).join("")}
+        `;
+        elements.wordDictionaryBossFilter.value =
+            bosses.some(boss => boss.id === currentBossId) ? currentBossId : "all";
+    }
+
+    function renderWordDictionaryEntry(entry) {
+        const firstSentenceLabel = entry.firstSentence
+            ? `Satz ${entry.firstSentence.numberInBoss}`
+            : "Noch keinem Satz zugeordnet";
+        const firstBossLabel = entry.firstBoss
+            ? entry.firstBoss.title
+            : "Nicht zugeordnet";
+
+        return `
+            <article class="thai-giga-word-card">
+                <div class="thai-giga-word-card-main">
+                    <strong lang="th">${escapeHtml(entry.thai)}</strong>
+                    <em>${escapeHtml(entry.transliteration)}</em>
+                    <span>${escapeHtml(entry.meanings.join(" / "))}</span>
+                </div>
+                <div class="thai-giga-word-card-meta">
+                    <span>Neu in ${escapeHtml(firstBossLabel)}</span>
+                    <small>${escapeHtml(firstSentenceLabel)}</small>
+                </div>
+            </article>
+        `;
+    }
+
+    function renderWordDictionary() {
+        if (
+            !elements.wordDictionaryList ||
+            !elements.wordDictionarySummary ||
+            !content ||
+            !indexes
+        ) {
+            return;
+        }
+
+        const entries = getWordDictionaryEntries();
+        const selectedBossId = elements.wordDictionaryBossFilter?.value || "all";
+        const scope = elements.wordDictionaryScopeFilter?.value || "all";
+        const filteredEntries = entries.filter(entry => {
+            const appearsInSelectedBoss =
+                selectedBossId === "all" ||
+                entry.appearsInBossIds.has(selectedBossId);
+            const isNewInSelectedBoss =
+                selectedBossId === "all"
+                    ? true
+                    : entry.firstBoss?.id === selectedBossId;
+            return appearsInSelectedBoss &&
+                (scope === "all" || isNewInSelectedBoss);
+        });
+        const bosses = content.levels.flatMap(level => level.bosses);
+        const groups = new Map();
+
+        filteredEntries.forEach(entry => {
+            const groupId = selectedBossId === "all"
+                ? entry.firstBoss?.id || "unassigned"
+                : selectedBossId;
+            const group = groups.get(groupId) || {
+                title: selectedBossId === "all"
+                    ? entry.firstBoss?.title || "Nicht zugeordnet"
+                    : bosses.find(boss => boss.id === selectedBossId)?.title ||
+                        "Nicht zugeordnet",
+                entries: []
+            };
+            group.entries.push(entry);
+            groups.set(groupId, group);
+        });
+
+        const orderedGroups = [
+            ...bosses.map(boss => groups.get(boss.id)).filter(Boolean),
+            groups.get("unassigned")
+        ].filter(Boolean);
+        elements.wordDictionaryList.innerHTML = orderedGroups.length > 0
+            ? orderedGroups.map(group => `
+                <section class="thai-giga-word-group">
+                    <header>
+                        <h3>${escapeHtml(
+                            scope === "new" || selectedBossId === "all"
+                                ? `Neu in ${group.title}`
+                                : group.title
+                        )}</h3>
+                        <span>${group.entries.length} Wörter</span>
+                    </header>
+                    <div class="thai-giga-word-card-grid">
+                        ${group.entries
+                            .sort((left, right) =>
+                                (left.firstSentence?.number || 0) -
+                                (right.firstSentence?.number || 0)
+                            )
+                            .map(renderWordDictionaryEntry)
+                            .join("")}
+                    </div>
+                </section>
+            `).join("")
+            : `<p class="thai-giga-word-dictionary-empty">
+                Für diesen Filter sind noch keine Wörter vorhanden.
+            </p>`;
+
+        const scopeLabel = scope === "new"
+            ? "neue Wörter"
+            : "bekannte Wörter";
+        elements.wordDictionarySummary.textContent =
+            `${filteredEntries.length} ${scopeLabel} angezeigt · ` +
+            `${entries.length} eindeutige Wörter insgesamt`;
+    }
+
+    function escapeMarkdown(value) {
+        return String(value ?? "")
+            .replace(/\|/g, "\\|")
+            .replace(/\r?\n/g, " ");
+    }
+
+    function buildWordListDocument() {
+        const entries = getWordDictionaryEntries().sort((left, right) => {
+            const leftBoss = left.firstBoss?.id || "";
+            const rightBoss = right.firstBoss?.id || "";
+            return leftBoss.localeCompare(rightBoss) ||
+                (left.firstSentence?.number || 0) -
+                    (right.firstSentence?.number || 0);
+        });
+        const bosses = content.levels.flatMap(level => level.bosses);
+        const lines = [
+            "# Thai Super Ultra Mega Giga Drill – vollständige Wortliste",
+            "",
+            `Stand: ${new Date().toISOString().slice(0, 10)}`,
+            `Content-Version: ${content.contentVersion}`,
+            `Eindeutige Wörter: ${entries.length}`,
+            "",
+            "Diese Liste enthält alle bisher bekannten eindeutigen Wörter. " +
+                "Neue Wörter sollen vor dem Ergänzen neuer Inhalte gegen diese " +
+                "Liste geprüft werden.",
+            ""
+        ];
+
+        bosses.forEach(boss => {
+            const bossEntries = entries.filter(entry => entry.firstBoss?.id === boss.id);
+            if (bossEntries.length === 0) {
+                return;
+            }
+
+            lines.push(`## ${boss.title} – ${boss.grammarFocus}`, "");
+            lines.push("| Thai | Umschrift | Deutsche Bedeutung | Erster Satz |");
+            lines.push("| --- | --- | --- | --- |");
+            bossEntries.forEach(entry => {
+                lines.push(
+                    `| ${escapeMarkdown(entry.thai)} | ` +
+                    `${escapeMarkdown(entry.transliteration)} | ` +
+                    `${escapeMarkdown(entry.meanings.join(" / "))} | ` +
+                    `${escapeMarkdown(
+                        entry.firstSentence
+                            ? `Satz ${entry.firstSentence.numberInBoss}`
+                            : "–"
+                    )} |`
+                );
+            });
+            lines.push("");
+        });
+
+        const unassignedEntries = entries.filter(entry => !entry.firstBoss);
+        if (unassignedEntries.length > 0) {
+            lines.push("## Noch keinem Grammatikboss zugeordnet", "");
+            unassignedEntries.forEach(entry => {
+                lines.push(
+                    `- ${escapeMarkdown(entry.thai)} — ` +
+                    `${escapeMarkdown(entry.transliteration)} — ` +
+                    `${escapeMarkdown(entry.meanings.join(" / "))}`
+                );
+            });
+        }
+
+        return lines.join("\n");
+    }
+
+    function exportWordList() {
+        if (!content || !indexes || !elements.wordDictionaryExportStatus) {
+            return;
+        }
+
+        try {
+            const blob = new Blob([buildWordListDocument()], {
+                type: "text/markdown;charset=utf-8"
+            });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.href = url;
+            link.download = "thai-giga-woerterliste.md";
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            URL.revokeObjectURL(url);
+            elements.wordDictionaryExportStatus.textContent =
+                "Vollständige Wortliste wurde heruntergeladen.";
+        } catch (error) {
+            console.error("Thai-Giga-Wortliste konnte nicht exportiert werden.", error);
+            elements.wordDictionaryExportStatus.textContent =
+                "Export fehlgeschlagen. Bitte erneut versuchen.";
+        }
+    }
+
     function renderHierarchy() {
+        if (!elements.hierarchy) {
+            return;
+        }
+
         const bosses = content.levels.flatMap(level => level.bosses);
         elements.hierarchy.innerHTML = `
             <div class="thai-giga-chapter-group">
@@ -101,8 +361,13 @@
             button.addEventListener("click", () => {
                 const boss = bosses.find(candidate => candidate.id === button.dataset.bossId);
                 if (boss) {
-                    renderBossOverview(boss);
-                    setThaiView("reader");
+                    if (elements.bossOverview) {
+                        renderBossOverview(boss);
+                        setThaiView("reader");
+                    } else {
+                        window.location.href =
+                            `thai-giga.html#${encodeURIComponent(boss.id)}`;
+                    }
                     closeSidebar();
                 }
             });
@@ -224,6 +489,10 @@
     }
 
     function renderBlockList() {
+        if (!elements.blockList) {
+            return;
+        }
+
         const blocks = content.levels.flatMap(level =>
             level.bosses.flatMap(boss => boss.blocks)
         );
@@ -312,12 +581,19 @@
                 class="thai-giga-sentence${sentence.id === activeSentenceId ? " is-highlighted" : ""}"
                 id="thai-giga-sentence-${escapeHtml(sentence.id)}"
                 data-sentence-id="${escapeHtml(sentence.id)}"
-                data-sentence-number="${sentence.numberInStory}">
+                data-sentence-number="${sentence.numberInStory}"
+                tabindex="0"
+                title="Tippen, um die deutsche Übersetzung ein- oder auszublenden">
                 <span class="thai-giga-sentence-number">${sentence.numberInStory}.</span>
                 <div>
                     <p class="thai-giga-thai" lang="th">${tokenMarkup}</p>
                     <p class="thai-giga-transliteration">${escapeHtml(sentence.transliteration)}</p>
-                    <p class="thai-giga-translation">${escapeHtml(sentence.translation)}</p>
+                    <p
+                        class="thai-giga-translation"
+                        id="thai-giga-translation-${escapeHtml(sentence.id)}"
+                        data-thai-giga-translation-state="default">
+                        ${escapeHtml(sentence.translation)}
+                    </p>
                 </div>
                 ${audioMarkup}
                 <button
@@ -340,6 +616,57 @@
                 showDictionary(button.dataset.wordId, button)
             );
         });
+
+        elements.sentenceList
+            .querySelectorAll("[data-sentence-id]")
+            .forEach(sentenceElement => {
+                const translation = sentenceElement.querySelector(
+                    "[data-thai-giga-translation-state]"
+                );
+                if (!translation) {
+                    return;
+                }
+                const initiallyVisible =
+                    document.body.dataset.thaiTranslationVisible !== "false";
+                sentenceElement.setAttribute(
+                    "aria-expanded",
+                    String(initiallyVisible)
+                );
+
+                const toggleTranslation = () => {
+                    const globallyVisible =
+                        document.body.dataset.thaiTranslationVisible !== "false";
+                    const state =
+                        translation.dataset.thaiGigaTranslationState || "default";
+                    const currentlyVisible =
+                        state === "visible" ||
+                        (state === "default" && globallyVisible);
+                    const nextState = currentlyVisible ? "hidden" : "visible";
+
+                    translation.dataset.thaiGigaTranslationState = nextState;
+                    sentenceElement.setAttribute(
+                        "aria-expanded",
+                        String(nextState === "visible")
+                    );
+                };
+
+                sentenceElement.addEventListener("click", event => {
+                    if (event.target.closest("button, a, input, select, textarea")) {
+                        return;
+                    }
+                    toggleTranslation();
+                });
+                sentenceElement.addEventListener("keydown", event => {
+                    if (
+                        event.target !== sentenceElement ||
+                        (event.key !== "Enter" && event.key !== " ")
+                    ) {
+                        return;
+                    }
+                    event.preventDefault();
+                    toggleTranslation();
+                });
+            });
 
         elements.sentenceList
             .querySelectorAll("[data-thai-giga-playlist-sentence]")
@@ -533,15 +860,29 @@
                 return;
             }
 
-            window.thaiGigaAudio.initialize(indexes);
             renderHierarchy();
-            renderBlockList();
-            const firstBoss = content.levels[0].bosses[0];
-            renderBossOverview(firstBoss);
-            showInitialStory();
-            initializeSentenceActions();
+            if (elements.blockList) {
+                window.thaiGigaAudio.initialize(indexes);
+                renderBlockList();
+            }
+            renderWordDictionaryFilters();
+            renderWordDictionary();
+            const bosses = content.levels.flatMap(level => level.bosses);
+            const requestedBossId = decodeURIComponent(window.location.hash.slice(1));
+            const firstBoss = bosses.find(boss => boss.id === requestedBossId) || bosses[0];
+            if (elements.bossOverview && firstBoss) {
+                renderBossOverview(firstBoss);
+                setThaiView("reader");
+                showInitialStory();
+            }
+            if (elements.sentenceList && window.thaiGigaAudio) {
+                initializeSentenceActions();
+            }
         } catch (error) {
             console.error(error);
+            if (!elements.emptyState) {
+                throw error;
+            }
             elements.emptyState.hidden = false;
             elements.emptyState.innerHTML = `
                 <h2>Content-Import fehlgeschlagen</h2>
@@ -560,11 +901,20 @@
     });
     elements.sidebarBackdrop?.addEventListener("click", closeSidebar);
     elements.forewordButton?.addEventListener("click", showForeword);
-    elements.dictionary.addEventListener("click", event => {
+    elements.dictionary?.addEventListener("click", event => {
         if (event.target.closest(".thai-giga-dictionary-close")) {
             closeDictionary();
         }
     });
+    elements.wordDictionaryBossFilter?.addEventListener(
+        "change",
+        renderWordDictionary
+    );
+    elements.wordDictionaryScopeFilter?.addEventListener(
+        "change",
+        renderWordDictionary
+    );
+    elements.wordDictionaryExport?.addEventListener("click", exportWordList);
     document.addEventListener("keydown", event => {
         if (event.key === "Escape" && !elements.dictionary.hidden) {
             closeDictionary();
@@ -579,8 +929,7 @@
         }
 
         activeSentenceId = sentenceId;
-        elements.blockList
-            .querySelectorAll(".thai-giga-sentence")
+        elements.blockList?.querySelectorAll(".thai-giga-sentence")
             .forEach(sentenceElement => {
                 sentenceElement.classList.toggle(
                     "is-highlighted",

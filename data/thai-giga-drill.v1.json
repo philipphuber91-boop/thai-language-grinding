@@ -13087,8 +13087,8 @@
                       "id": "l1-b4-s358",
                       "number": 358,
                       "numberInStory": 8,
-                      "thai": "เขาคือเพื่อนใหม่",
-                      "transliteration": "khǎo khʉʉ phʉ̂an mài",
+                      "thai": "เขาเป็นเพื่อนใหม่",
+                      "transliteration": "khǎo bpen phʉ̂an mài",
                       "translation": "Er ist der neue Freund.",
                       "tokens": [
                         {
@@ -13099,9 +13099,9 @@
                         },
                         {
                           "id": "l1-b4-s358-t2",
-                          "text": "คือ",
+                          "text": "เป็น",
                           "kind": "word",
-                          "wordId": "word-kh"
+                          "wordId": "word-bpen"
                         },
                         {
                           "id": "l1-b4-s358-t3",
@@ -14895,11 +14895,6 @@
                     "thai": "ใหม่",
                     "transliteration": "mài",
                     "translation": "neu"
-                  },
-                  {
-                    "thai": "คือ",
-                    "transliteration": "khʉʉ",
-                    "translation": "sein / das ist"
                   },
                   {
                     "thai": "ยินดี",
@@ -20444,15 +20439,6 @@
         "neu"
       ],
       "firstSentenceId": "l1-b4-s351"
-    },
-    {
-      "id": "word-kh",
-      "thai": "คือ",
-      "transliteration": "khʉʉ",
-      "meanings": [
-        "sein / das ist"
-      ],
-      "firstSentenceId": "l1-b4-s358"
     },
     {
       "id": "word-yin-dii",

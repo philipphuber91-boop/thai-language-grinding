@@ -315,6 +315,25 @@ body.thai-giga-page {
     border-bottom: 1px solid rgba(213, 189, 145, .25);
 }
 
+.thai-giga-menu-link {
+    display: block;
+    margin: 0 0 22px;
+    padding: 11px 13px;
+    border: 1px solid var(--thai-border);
+    border-radius: 10px;
+    color: var(--thai-text);
+    background: var(--thai-panel-light);
+    text-decoration: none;
+}
+
+.thai-giga-menu-link:hover,
+.thai-giga-menu-link:focus-visible,
+.thai-giga-menu-link.is-active {
+    border-color: var(--thai-gold);
+    color: var(--thai-text);
+    background: var(--thai-hover-background);
+}
+
 .thai-giga-chapter-nav {
     display: grid;
     gap: 10px;
@@ -822,6 +841,159 @@ body.thai-giga-page {
     color: var(--thai-muted);
 }
 
+.thai-giga-word-dictionary {
+    margin-top: 28px;
+    padding: 28px;
+    border: 1px solid rgba(142, 107, 60, .8);
+    border-radius: 20px;
+    background: var(--thai-surface-background);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, .2);
+}
+
+.thai-giga-word-dictionary-header {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.thai-giga-word-dictionary-header h2 {
+    margin: 8px 0;
+    color: var(--thai-gold);
+}
+
+.thai-giga-word-dictionary-description {
+    max-width: 720px;
+    margin: 0;
+    color: var(--thai-muted);
+    line-height: 1.55;
+}
+
+.thai-giga-word-dictionary-actions {
+    display: grid;
+    flex: 0 0 auto;
+    gap: 8px;
+    justify-items: end;
+}
+
+.thai-giga-word-dictionary-status {
+    min-height: 1.3em;
+    color: var(--thai-accent);
+    font-size: .85rem;
+    text-align: right;
+}
+
+.thai-giga-word-dictionary-filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(142, 107, 60, .35);
+}
+
+.thai-giga-word-dictionary-filters label {
+    display: grid;
+    gap: 7px;
+    color: var(--thai-muted);
+}
+
+.thai-giga-word-dictionary-summary {
+    margin: 18px 0 0;
+    color: var(--thai-accent);
+    font-weight: bold;
+}
+
+.thai-giga-word-dictionary-list {
+    display: grid;
+    gap: 20px;
+    margin-top: 18px;
+}
+
+.thai-giga-word-group {
+    padding: 16px;
+    border: 1px solid var(--thai-card-border);
+    border-radius: 14px;
+    background: var(--thai-word-background);
+}
+
+.thai-giga-word-group > header {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.thai-giga-word-group h3 {
+    margin: 0;
+    color: var(--thai-gold);
+    font-size: 1.05rem;
+}
+
+.thai-giga-word-group > header > span {
+    color: var(--thai-muted);
+    font-size: .85rem;
+    white-space: nowrap;
+}
+
+.thai-giga-word-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 10px;
+}
+
+.thai-giga-word-card {
+    display: grid;
+    gap: 10px;
+    padding: 13px;
+    border: 1px solid rgba(142, 107, 60, .45);
+    border-radius: 10px;
+    background: var(--thai-card-background);
+}
+
+.thai-giga-word-card-main {
+    display: grid;
+    gap: 3px;
+}
+
+.thai-giga-word-card-main strong {
+    color: var(--thai-strong-text);
+    font-family: inherit;
+    font-size: 1.35rem;
+    font-weight: 400;
+}
+
+.thai-giga-word-card-main em {
+    color: var(--thai-accent);
+    font-size: .9rem;
+    font-style: normal;
+}
+
+.thai-giga-word-card-main span {
+    color: var(--thai-text);
+    line-height: 1.4;
+}
+
+.thai-giga-word-card-meta {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    padding-top: 8px;
+    border-top: 1px solid rgba(142, 107, 60, .25);
+    color: var(--thai-muted);
+    font-size: .78rem;
+}
+
+.thai-giga-word-card-meta small {
+    white-space: nowrap;
+}
+
+.thai-giga-word-dictionary-empty {
+    margin: 0;
+    color: var(--thai-muted);
+}
+
 .thai-giga-lower-layout {
     display: block;
 }
@@ -1069,7 +1241,13 @@ body.thai-giga-page {
     border: 1px solid rgba(142, 107, 60, .35);
     border-radius: 10px;
     background: var(--thai-card-background);
+    cursor: pointer;
     scroll-margin-top: 24px;
+}
+
+.thai-giga-sentence:focus-visible {
+    outline: 2px solid var(--thai-gold);
+    outline-offset: 2px;
 }
 
 .thai-giga-sentence.is-highlighted {
@@ -1243,13 +1421,21 @@ body.thai-giga-page {
 }
 
 .thai-giga-dictionary-word {
-    color: #ffe4a9;
+    margin: 8px 0 2px;
+    color: var(--thai-strong-text);
     font-family: var(--thai-font-family);
     font-size: 1.7rem;
 }
 
+.thai-giga-dictionary-transliteration {
+    margin: 0 0 12px;
+    color: var(--thai-accent);
+    font-style: italic;
+}
+
 .thai-giga-dictionary-meaning {
     color: var(--thai-text);
+    line-height: 1.5;
 }
 
 .thai-giga-dictionary-sentences {
@@ -1348,6 +1534,28 @@ body.thai-giga-page {
     .thai-giga-reader {
         padding: 19px;
         border-radius: 15px;
+    }
+
+    .thai-giga-word-dictionary {
+        padding: 19px;
+        border-radius: 15px;
+    }
+
+    .thai-giga-word-dictionary-header {
+        display: block;
+    }
+
+    .thai-giga-word-dictionary-actions {
+        justify-items: stretch;
+        margin-top: 16px;
+    }
+
+    .thai-giga-word-dictionary-status {
+        text-align: left;
+    }
+
+    .thai-giga-word-dictionary-filters {
+        grid-template-columns: 1fr;
     }
 
     .thai-giga-reader-header {
@@ -1566,7 +1774,10 @@ body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reader,
 body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-reader,
 body.thai-giga-page[data-thai-theme="night"] .thai-giga-dictionary,
 body.thai-giga-page[data-thai-theme="desert"] .thai-giga-dictionary,
-body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-dictionary {
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-dictionary,
+body.thai-giga-page[data-thai-theme="night"] .thai-giga-word-dictionary,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-word-dictionary,
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-word-dictionary {
     border-color: var(--thai-card-border);
     background: var(--thai-surface-background);
 }
@@ -1585,7 +1796,13 @@ body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-example,
 body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-reminder-example,
 body.thai-giga-page[data-thai-theme="night"] .thai-giga-reminder-discoveries > div,
 body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-discoveries > div,
-body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-reminder-discoveries > div {
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-reminder-discoveries > div,
+body.thai-giga-page[data-thai-theme="night"] .thai-giga-word-group,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-word-group,
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-word-group,
+body.thai-giga-page[data-thai-theme="night"] .thai-giga-word-card,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-word-card,
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-word-card {
     border-color: var(--thai-card-border);
     background: var(--thai-card-background);
 }
@@ -1624,4 +1841,13 @@ body.thai-giga-page[data-thai-translation-visible="false"] .thai-giga-reminder-w
 body.thai-giga-page[data-thai-translation-visible="false"] .thai-giga-reminder-example span,
 body.thai-giga-page[data-thai-translation-visible="false"] .thai-giga-reminder-discoveries span {
     display: none;
+}
+
+.thai-giga-translation[data-thai-giga-translation-state="hidden"] {
+    display: none;
+}
+
+body.thai-giga-page[data-thai-translation-visible="false"]
+    .thai-giga-translation[data-thai-giga-translation-state="visible"] {
+    display: block;
 }
