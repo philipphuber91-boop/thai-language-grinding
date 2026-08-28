@@ -1438,7 +1438,8 @@ body.thai-giga-page {
 .thai-giga-page,
 .thai-giga-page * {
     font-family: var(--thai-font-family);
-    font-weight: 400;
+    font-weight: 300;
+    font-synthesis: none;
 }
 
 .thai-giga-midpoint-content,
