@@ -6,7 +6,7 @@
     const DEFAULT_FONT = "sarabun";
     const DEFAULT_REMINDER_SIZE = 20;
     const FONT_FAMILIES = {
-        standard: '"Noto Sans Thai", "Segoe UI", sans-serif',
+        standard: '"Times New Roman", Times, serif',
         "noto-sans-thai": '"Noto Sans Thai", sans-serif',
         sarabun: '"Sarabun", sans-serif',
         prompt: '"Prompt", sans-serif',
