@@ -15,11 +15,14 @@
             .replace(/'/g, "&#039;");
     }
 
-    function getSentenceAudio() {
+    function getSentenceAudio(sentence) {
         return {
             type: "speechSynthesis",
             lang: "th-TH",
-            voiceId: ""
+            voiceId: "",
+            fallbackSrc:
+                "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=" +
+                encodeURIComponent(sentence.thai)
         };
     }
 

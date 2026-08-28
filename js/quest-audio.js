@@ -64,6 +64,55 @@
         activePlayers.clear();
     }
 
+    function playNativeSpeechFallback(source, text, button, rate, onEnd, onError) {
+        if (typeof source !== "string" || !source.trim()) {
+            return false;
+        }
+
+        stopSpeech();
+        const audio = new Audio(source);
+        audio.preload = "auto";
+        audio.playbackRate = Number.isFinite(rate) ? rate : DEFAULT_PLAYBACK_RATE;
+        activeNativeAudio = audio;
+        activeSpeech = { text, button, utterance: null };
+
+        if (button) {
+            button.classList.add("is-playing");
+            button.setAttribute("aria-pressed", "true");
+            button.textContent = "❚❚";
+        }
+
+        const cleanup = () => {
+            if (activeNativeAudio === audio) {
+                activeNativeAudio = null;
+            }
+            if (activeSpeech?.button === button && activeSpeech?.text === text) {
+                activeSpeech = null;
+            }
+            audio.onended = null;
+            audio.onerror = null;
+            if (button) {
+                button.classList.remove("is-playing");
+                button.setAttribute("aria-pressed", "false");
+                button.textContent = "🔊";
+            }
+        };
+
+        audio.onended = () => {
+            cleanup();
+            onEnd?.();
+        };
+        audio.onerror = () => {
+            cleanup();
+            onError?.();
+        };
+        audio.play().catch(() => {
+            cleanup();
+            onError?.();
+        });
+        return true;
+    }
+
     function getSpeechVoices(language = "") {
         if (!("speechSynthesis" in window)) {
             return [];
@@ -160,10 +209,10 @@
             }));
             options.onEnd?.();
         };
-        utterance.onerror = () => {
+        utterance.onerror = event => {
             if (activeSpeech?.utterance === utterance) {
                 stopSpeech();
-                options.onError?.();
+                options.onError?.(event?.error || "");
             }
         };
 
@@ -439,6 +488,25 @@
             }
 
             const text = getEntryText(resolvedEntry);
+            const fallbackSource = audio?.type === "speechSynthesis" &&
+                !speechVoice &&
+                typeof audio.fallbackSrc === "string"
+                ? audio.fallbackSrc.trim()
+                : "";
+            if (fallbackSource) {
+                if (!playNativeSpeechFallback(
+                    fallbackSource,
+                    text,
+                    null,
+                    state.playbackRate,
+                    finish,
+                    fail
+                )) {
+                    fail();
+                }
+                setStatus("Keine Thai-Stimme gefunden. Online-TTS-Fallback wird verwendet.");
+                return;
+            }
             if (!speakText(text, null, {
                 rate: state.playbackRate,
                 lang: audio?.lang || "th-TH",
@@ -1154,7 +1222,7 @@
         }
 
         return `
-            <div class="quest-audio-player ${className}" data-speech-audio-player data-speech-text="${encodeURIComponent(speechText)}" data-speech-lang="${escapeAttribute(audio?.lang || "th-TH")}" data-speech-voice-id="${escapeAttribute(audio?.voiceId || audio?.voiceName || "")}">
+            <div class="quest-audio-player ${className}" data-speech-audio-player data-speech-text="${encodeURIComponent(speechText)}" data-speech-lang="${escapeAttribute(audio?.lang || "th-TH")}" data-speech-voice-id="${escapeAttribute(audio?.voiceId || audio?.voiceName || "")}" data-speech-fallback-src="${escapeAttribute(audio?.fallbackSrc || "")}">
                 <button type="button" class="quest-audio-play-button" aria-label="Satz vorlesen" aria-pressed="false">🔊</button>
                 <span class="quest-audio-status" aria-live="polite"></span>
             </div>
@@ -1177,18 +1245,41 @@
 
             button.addEventListener("click", event => {
                 event.stopPropagation();
-                const started = speakText(text, button, {
-                    rate: 1,
-                    lang: playerElement.dataset.speechLang || "th-TH",
-                    voiceId: playerElement.dataset.speechVoiceId || "",
-                    onFallback: usedFallback => {
-                        if (status) {
-                            status.textContent = usedFallback
-                                ? "Keine Thai-Stimme gefunden. Die Browser-Standardstimme wird verwendet."
-                                : "";
+                const language = playerElement.dataset.speechLang || "th-TH";
+                const voiceId = playerElement.dataset.speechVoiceId || "";
+                const fallbackSource = playerElement.dataset.speechFallbackSrc || "";
+                const matchingVoice = getSpeechVoice(language, voiceId);
+                const started = fallbackSource && !matchingVoice
+                    ? playNativeSpeechFallback(
+                        fallbackSource,
+                        text,
+                        button,
+                        1,
+                        null,
+                        () => {
+                            if (status) {
+                                status.textContent = "Online-TTS konnte nicht abgespielt werden.";
+                            }
                         }
-                    }
-                });
+                    )
+                    : speakText(text, button, {
+                        rate: 1,
+                        lang: language,
+                        voiceId,
+                        onFallback: usedFallback => {
+                            if (status) {
+                                status.textContent = usedFallback
+                                    ? "Keine Thai-Stimme gefunden. Die Browser-Standardstimme wird verwendet."
+                                    : "";
+                            }
+                        },
+                        onError: errorCode => {
+                            if (status) {
+                                status.textContent =
+                                    `Sprachausgabe fehlgeschlagen${errorCode ? ` (${errorCode})` : ""}.`;
+                            }
+                        }
+                    });
                 if (!started && status) {
                     status.textContent = "Sprachausgabe nicht verfügbar.";
                 }
