@@ -11,7 +11,38 @@
     }
 
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('../service-worker.js', { scope: '../' })
+        const hadController = Boolean(navigator.serviceWorker.controller);
+        let reloadedForUpdate = false;
+
+        navigator.serviceWorker.addEventListener('controllerchange', () => {
+            if (!hadController || reloadedForUpdate) {
+                return;
+            }
+
+            reloadedForUpdate = true;
+            window.location.reload();
+        });
+
+        navigator.serviceWorker.register('../service-worker.js', {
+            scope: '../',
+            updateViaCache: 'none'
+        })
+            .then((registration) => {
+                const requestUpdate = () => {
+                    registration.update().catch((err) => {
+                        console.warn('Service Worker Update fehlgeschlagen:', err);
+                    });
+                };
+
+                // Beim Öffnen und beim Zurückkehren aus dem Hintergrund nach Updates suchen.
+                requestUpdate();
+                document.addEventListener('visibilitychange', () => {
+                    if (document.visibilityState === 'visible') {
+                        requestUpdate();
+                    }
+                });
+                window.addEventListener('pageshow', requestUpdate);
+            })
             .catch((err) => {
                 console.warn('Service Worker Registrierung fehlgeschlagen:', err);
             });
