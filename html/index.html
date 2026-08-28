@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../style.css">
     <!-- Nur additive Anpassungen für schmale Viewports, ändert keine bestehende Desktop-Regel -->
     <link rel="stylesheet" href="../css/mobile.css?v=16">
+    <link rel="stylesheet" href="../css/comedy-reader.css?v=2">
 
     <!-- PWA: Installierbarkeit & Offline-Support, ohne bestehende Optik/Logik zu verändern -->
     <link rel="manifest" href="../manifest.json">
@@ -363,6 +364,24 @@
 
             </div>
 
+            <div id="readingModeCard" class="mode-card reading-mode-card" hidden>
+
+                <h3>📖 Lesen</h3>
+
+                <p>🇹🇭 Thai-Sätze untereinander</p>
+
+                <p>🔎 Wörter anklicken</p>
+
+                <p>📚 Wörterbuch im Kontext</p>
+
+                <button id="readingButton" type="button">
+
+                    📖 LESEN
+
+                </button>
+
+            </div>
+
         </div>
 
         <div
@@ -388,6 +407,39 @@
 
     </div>
 
+</div>
+
+<div id="comedyReadingOverlay" class="comedy-reading-overlay" hidden>
+    <section
+        class="comedy-reading-window"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="comedyReadingTitle">
+        <header class="comedy-reading-header">
+            <div>
+                <p class="eyebrow">Komödie · Lesemodus</p>
+                <h2 id="comedyReadingTitle"></h2>
+            </div>
+            <button
+                id="comedyReadingClose"
+                class="comedy-reading-close"
+                type="button"
+                aria-label="Lesemodus schließen">✕</button>
+        </header>
+        <p class="comedy-reading-intro">
+            Lies die Sätze in Ruhe. Klicke auf ein Thai-Wort, um rechts die
+            deutsche Bedeutung, eine mögliche Gebrauchserklärung und seine
+            Vorkommen im Satzkontext zu sehen.
+        </p>
+        <div class="comedy-reading-layout">
+            <div id="comedyReadingLines" class="comedy-reading-lines"></div>
+            <aside
+                id="comedyReadingDictionary"
+                class="comedy-reading-dictionary"
+                hidden
+                aria-live="polite"></aside>
+        </div>
+    </section>
 </div>
 
 <div
@@ -425,6 +477,8 @@
 
 <script src="../data/comedy.js"></script>
 
+<script src="../data/comedy-glossary.js"></script>
+
 <script src="../js/thai-text-stats.js"></script>
 <script src="../js/youtube-quests.js"></script>
 <script src="../js/player.js"></script>
@@ -445,6 +499,7 @@ loadQuestStats();
 <script src="../js/quest-audio.js"></script>
 <script src="../js/profile.js"></script>
 <script src="../js/engine.js"></script>
+<script src="../js/comedy-reader.js"></script>
 <script src="../js/youtube-lesson.js"></script>
 <script src="../js/daily-quests.js"></script>
 <script src="../js/worldmap.js"></script>
