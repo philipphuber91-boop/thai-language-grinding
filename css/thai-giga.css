@@ -9,6 +9,20 @@
     --thai-accent: #d69b45;
     --thai-font-family: "Sarabun", "Noto Sans Thai", "Segoe UI", sans-serif;
     --thai-reminder-word-size: 20px;
+    --thai-page-background:
+        radial-gradient(circle at 80% 0%, rgba(213, 151, 71, .16), transparent 34rem),
+        linear-gradient(135deg, #15110d 0%, #21170f 52%, #100c09 100%);
+    --thai-topbar-border: rgba(231, 184, 97, .35);
+    --thai-glow: rgba(231, 184, 97, .2);
+    --thai-menu-background: rgba(38, 27, 19, .95);
+    --thai-surface-background: rgba(38, 27, 19, .84);
+    --thai-card-background: rgba(50, 33, 22, .54);
+    --thai-card-border: rgba(142, 107, 60, .7);
+    --thai-reminder-background: rgba(231, 184, 97, .08);
+    --thai-word-background: rgba(21, 17, 13, .4);
+    --thai-strong-text: #ffe4a9;
+    --thai-ink: #1b120b;
+    --thai-hover-background: #3b2919;
 }
 
 * {
@@ -25,15 +39,13 @@ body.thai-giga-page {
     min-height: 100vh;
     margin: 0;
     color: var(--thai-text);
-    background:
-        radial-gradient(circle at 80% 0%, rgba(213, 151, 71, .16), transparent 34rem),
-        linear-gradient(135deg, #15110d 0%, #21170f 52%, #100c09 100%);
+    background: var(--thai-page-background);
     font-family: var(--thai-font-family);
 }
 
 .thai-giga-topbar {
     padding: 28px 32px;
-    border-bottom: 1px solid rgba(231, 184, 97, .35);
+    border-bottom: 1px solid var(--thai-topbar-border);
     text-align: center;
 }
 
@@ -42,7 +54,7 @@ body.thai-giga-page {
     margin: 0;
     color: var(--thai-gold);
     letter-spacing: .2em;
-    text-shadow: 0 0 18px rgba(231, 184, 97, .2);
+    text-shadow: 0 0 18px var(--thai-glow);
 }
 
 .thai-giga-topbar h1 {
@@ -140,7 +152,7 @@ body.thai-giga-page {
 .thai-giga-settings-toggle:focus-visible,
 .thai-giga-player-toggle:hover,
 .thai-giga-player-toggle:focus-visible {
-    background: #3b2919;
+    background: var(--thai-hover-background);
 }
 
 .thai-giga-settings-backdrop {
@@ -263,7 +275,7 @@ body.thai-giga-page {
     padding: 22px;
     border: 1px solid var(--thai-border);
     border-radius: 18px;
-    background: rgba(38, 27, 19, .95);
+    background: var(--thai-menu-background);
     box-shadow: 0 16px 40px rgba(0, 0, 0, .32);
 }
 
@@ -438,7 +450,7 @@ body.thai-giga-page {
 .thai-giga-audio-now-playing {
     min-height: 1.5em;
     margin: 18px 0 14px;
-    color: #ffe4a9;
+    color: var(--thai-strong-text);
     line-height: 1.45;
 }
 
@@ -470,7 +482,7 @@ body.thai-giga-page {
 }
 
 .thai-giga-audio-controls button.is-primary {
-    color: #1b120b;
+    color: var(--thai-ink);
     background: var(--thai-gold);
     border-color: var(--thai-gold);
 }
@@ -667,7 +679,7 @@ body.thai-giga-page {
     padding: 28px;
     border: 1px solid rgba(142, 107, 60, .8);
     border-radius: 20px;
-    background: rgba(38, 27, 19, .84);
+    background: var(--thai-surface-background);
     box-shadow: 0 18px 45px rgba(0, 0, 0, .25);
 }
 
@@ -688,7 +700,7 @@ body.thai-giga-page {
     margin-top: 22px;
     border: 1px solid rgba(142, 107, 60, .7);
     border-radius: 12px;
-    background: rgba(21, 17, 13, .4);
+    background: var(--thai-word-background);
 }
 
 .thai-giga-introduction summary {
@@ -774,7 +786,7 @@ body.thai-giga-page {
 
 .thai-giga-block-summary:hover,
 .thai-giga-block-summary:focus-visible {
-    background: rgba(231, 184, 97, .08);
+    background: var(--thai-reminder-background);
 }
 
 .thai-giga-block-description {
@@ -846,13 +858,13 @@ body.thai-giga-page {
 
 .thai-giga-reminder-word strong,
 .thai-giga-reminder-example strong {
-    color: #fff4d5;
+    color: var(--thai-strong-text);
     font-size: 1.05rem;
 }
 
 .thai-giga-reminder-word em,
 .thai-giga-reminder-example em {
-    color: #ddb76c;
+    color: var(--thai-accent);
     font-size: .9rem;
 }
 
@@ -959,7 +971,7 @@ body.thai-giga-page {
     padding: 15px;
     border: 1px solid rgba(142, 107, 60, .35);
     border-radius: 10px;
-    background: rgba(50, 33, 22, .54);
+    background: var(--thai-card-background);
     scroll-margin-top: 24px;
 }
 
@@ -1372,4 +1384,130 @@ body.thai-giga-page {
 .thai-giga-reminder-example span,
 .thai-giga-reminder-discoveries span {
     font-size: 1em;
+}
+
+body.thai-giga-page[data-thai-theme="night"] {
+    --thai-bg: #0c1018;
+    --thai-panel: #141b27;
+    --thai-panel-light: #202c3d;
+    --thai-border: #4a5d78;
+    --thai-gold: #d1b978;
+    --thai-text: #e9eff6;
+    --thai-muted: #aebdce;
+    --thai-accent: #82b1d6;
+    --thai-page-background:
+        radial-gradient(circle at 80% 0%, rgba(88, 129, 177, .18), transparent 34rem),
+        linear-gradient(135deg, #0c1018 0%, #131b2a 52%, #080b12 100%);
+    --thai-topbar-border: rgba(130, 177, 214, .35);
+    --thai-glow: rgba(130, 177, 214, .2);
+    --thai-menu-background: rgba(20, 27, 39, .96);
+    --thai-surface-background: rgba(20, 27, 39, .9);
+    --thai-card-background: rgba(32, 44, 61, .68);
+    --thai-card-border: rgba(104, 135, 171, .7);
+    --thai-reminder-background: rgba(130, 177, 214, .12);
+    --thai-word-background: rgba(8, 12, 18, .48);
+    --thai-strong-text: #edf5fb;
+    --thai-ink: #0c1118;
+    --thai-hover-background: #2d3d53;
+}
+
+body.thai-giga-page[data-thai-theme="desert"] {
+    --thai-bg: #f3e1b7;
+    --thai-panel: #f8edcf;
+    --thai-panel-light: #fff8e7;
+    --thai-border: #b98636;
+    --thai-gold: #724719;
+    --thai-text: #503927;
+    --thai-muted: #806342;
+    --thai-accent: #a6611d;
+    --thai-page-background:
+        radial-gradient(circle at 12% 0%, rgba(255, 250, 226, .72), transparent 34rem),
+        linear-gradient(135deg, #f3e1b7 0%, #ead09a 52%, #d9b875 100%);
+    --thai-topbar-border: rgba(169, 111, 26, .45);
+    --thai-glow: rgba(174, 115, 28, .2);
+    --thai-menu-background: rgba(250, 241, 215, .98);
+    --thai-surface-background: rgba(255, 248, 230, .9);
+    --thai-card-background: rgba(255, 250, 239, .84);
+    --thai-card-border: rgba(184, 135, 53, .68);
+    --thai-reminder-background: rgba(217, 166, 65, .16);
+    --thai-word-background: rgba(245, 226, 184, .54);
+    --thai-strong-text: #4d331e;
+    --thai-ink: #fff8e7;
+    --thai-hover-background: #f2ddb0;
+}
+
+body.thai-giga-page[data-thai-theme="japanese"] {
+    --thai-bg: #171019;
+    --thai-panel: #241827;
+    --thai-panel-light: #302039;
+    --thai-border: #8d6a9f;
+    --thai-gold: #f0c76e;
+    --thai-text: #f7efe4;
+    --thai-muted: #cdbbd2;
+    --thai-accent: #d783b8;
+    --thai-page-background:
+        radial-gradient(circle at 80% 0%, rgba(173, 91, 151, .16), transparent 34rem),
+        linear-gradient(135deg, #171019 0%, #211626 52%, #120e18 100%);
+    --thai-topbar-border: rgba(240, 199, 110, .3);
+    --thai-glow: rgba(240, 199, 110, .2);
+    --thai-menu-background: rgba(36, 24, 39, .94);
+    --thai-surface-background: rgba(36, 24, 39, .9);
+    --thai-card-background: rgba(48, 32, 57, .72);
+    --thai-card-border: rgba(141, 106, 159, .72);
+    --thai-reminder-background: rgba(215, 131, 184, .12);
+    --thai-word-background: rgba(23, 16, 25, .48);
+    --thai-strong-text: #fff7e8;
+    --thai-ink: #171019;
+    --thai-hover-background: #3a2747;
+}
+
+body.thai-giga-page[data-thai-theme="night"] .thai-giga-audio-player,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-audio-player,
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-audio-player,
+body.thai-giga-page[data-thai-theme="night"] .thai-giga-reader,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reader,
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-reader,
+body.thai-giga-page[data-thai-theme="night"] .thai-giga-dictionary,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-dictionary,
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-dictionary {
+    border-color: var(--thai-card-border);
+    background: var(--thai-surface-background);
+}
+
+body.thai-giga-page[data-thai-theme="night"] .thai-giga-introduction,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-introduction,
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-introduction,
+body.thai-giga-page[data-thai-theme="night"] .thai-giga-sentence,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-sentence,
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-sentence,
+body.thai-giga-page[data-thai-theme="night"] .thai-giga-reminder-word,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-word,
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-reminder-word,
+body.thai-giga-page[data-thai-theme="night"] .thai-giga-reminder-example,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-example,
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-reminder-example,
+body.thai-giga-page[data-thai-theme="night"] .thai-giga-reminder-discoveries > div,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-discoveries > div,
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-reminder-discoveries > div {
+    border-color: var(--thai-card-border);
+    background: var(--thai-card-background);
+}
+
+body.thai-giga-page[data-thai-theme="night"] .thai-giga-midpoint-reminder,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-midpoint-reminder,
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-midpoint-reminder,
+body.thai-giga-page[data-thai-theme="night"] .thai-giga-block-completion,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-block-completion,
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-block-completion {
+    border-color: var(--thai-gold);
+    background: var(--thai-reminder-background);
+}
+
+body.thai-giga-page[data-thai-theme="night"] .thai-giga-thai,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-thai,
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-thai,
+body.thai-giga-page[data-thai-theme="night"] .thai-giga-pattern,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-pattern,
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-pattern {
+    color: var(--thai-strong-text);
 }
