@@ -44,20 +44,15 @@
     </header>
 
     <main class="thai-giga-main">
-        <p id="thaiGigaStatus" class="thai-giga-status" role="status">
-            Content wird geladen ...
-        </p>
-
-        <section id="thaiGigaAudioPlayer" class="thai-giga-audio-player" aria-labelledby="thaiGigaAudioTitle">
+        <section id="thaiGigaAudioPlayer" class="thai-giga-audio-player" aria-label="Thai-Giga-Playlist">
             <header class="thai-giga-audio-header">
                 <div>
-                    <p class="eyebrow">Gemeinsamer Audio-Player</p>
-                    <h2 id="thaiGigaAudioTitle">Deine Thai-Giga-Playlist</h2>
+                    <p class="thai-giga-eyebrow">Audio-Player</p>
                 </div>
                 <span id="thaiGigaAudioCount" class="thai-giga-audio-count">0 Sätze</span>
             </header>
             <p id="thaiGigaAudioNowPlaying" class="thai-giga-audio-now-playing">
-                Füge einzelne Sätze, Situationen oder Blöcke hinzu.
+                Füge Sätze über „+ Playlist“ hinzu.
             </p>
             <div class="thai-giga-audio-controls">
                 <button id="thaiGigaAudioPrevious" type="button" disabled>⏮ Zurück</button>
@@ -107,11 +102,13 @@
 
         <div class="thai-giga-lower-layout">
             <div id="thaiGigaBlockList" class="thai-giga-block-list" aria-label="Foundation Blocks"></div>
-            <aside id="thaiGigaDictionary" class="thai-giga-dictionary" aria-live="polite">
-                <p class="thai-giga-eyebrow">Wörterbuch</p>
-                <h2>Wort auswählen</h2>
-                <p>Klicke im Reader auf ein kanonisches Thai-Wort.</p>
-            </aside>
+            <aside
+                id="thaiGigaDictionary"
+                class="thai-giga-dictionary"
+                role="dialog"
+                aria-label="Wörterbuch"
+                aria-live="polite"
+                hidden></aside>
         </div>
 
         <div id="thaiGigaEmptyState" class="thai-giga-empty-state" hidden>

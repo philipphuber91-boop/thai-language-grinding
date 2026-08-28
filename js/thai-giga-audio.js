@@ -26,6 +26,8 @@
             id: sentence.id,
             storyId: sentence.storyId,
             storyTitle: story?.title || "Situation",
+            bossTitle: story?.bossTitle || "",
+            sentenceNumber: sentence.numberInBoss || sentence.numberInStory,
             thai: sentence.thai,
             transliteration: sentence.transliteration,
             translation: sentence.translation,
@@ -35,6 +37,26 @@
 
     function getEntryLabel(entry) {
         return `${entry.storyTitle} · ${entry.thai}`;
+    }
+
+    function getBossShortLabel(entry) {
+        const match = String(entry.bossTitle || "").match(/(\d+)/);
+        return match ? `#${match[1]}` : "#?";
+    }
+
+    function keepCurrentPlaylistItemVisible() {
+        const currentItem = elements.playlist.querySelector(".thai-giga-playlist-item.is-current");
+        if (!currentItem) {
+            return;
+        }
+
+        const itemTop = currentItem.offsetTop;
+        const itemBottom = itemTop + currentItem.offsetHeight;
+        if (itemTop < elements.playlist.scrollTop) {
+            elements.playlist.scrollTop = itemTop;
+        } else if (itemBottom > elements.playlist.scrollTop + elements.playlist.clientHeight) {
+            elements.playlist.scrollTop = itemBottom - elements.playlist.clientHeight;
+        }
     }
 
     function renderPlaylist() {
@@ -58,7 +80,7 @@
         const currentEntry = entries[state.currentIndex];
         elements.nowPlaying.textContent = currentEntry
             ? `${state.currentIndex + 1}/${entries.length} · ${getEntryLabel(currentEntry)}`
-            : "Füge einzelne Sätze, Situationen oder Blöcke hinzu.";
+            : "Füge Sätze über „+ Playlist“ hinzu.";
 
         elements.playlist.innerHTML = entries.length === 0
             ? "<li class=\"thai-giga-playlist-empty\">Noch keine Sätze ausgewählt.</li>"
@@ -68,8 +90,15 @@
                         type="button"
                         class="thai-giga-playlist-select"
                         data-thai-giga-playlist-index="${index}">
-                        <strong>${escapeHtml(entry.thai)}</strong>
-                        <span>${escapeHtml(entry.storyTitle)} · ${escapeHtml(entry.translation)}</span>
+                        <span class="thai-giga-playlist-card-number">
+                            <strong>${escapeHtml(entry.sentenceNumber)}</strong>
+                            <small>${escapeHtml(getBossShortLabel(entry))}</small>
+                        </span>
+                        <span>
+                            <strong lang="th">${escapeHtml(entry.thai)}</strong>
+                            <small class="thai-giga-playlist-transliteration">${escapeHtml(entry.transliteration)}</small>
+                            <small class="thai-giga-playlist-translation">${escapeHtml(entry.translation)}</small>
+                        </span>
                     </button>
                     <div class="thai-giga-playlist-order">
                         <button
@@ -93,6 +122,7 @@
                 </li>
             `).join("");
 
+        keepCurrentPlaylistItemVisible();
         elements.playlist
             .querySelectorAll("[data-thai-giga-playlist-index]")
             .forEach(button => {

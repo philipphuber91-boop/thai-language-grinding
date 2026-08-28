@@ -63,12 +63,6 @@ body.thai-giga-page {
     text-transform: uppercase;
 }
 
-.thai-giga-status {
-    min-height: 1.3em;
-    margin: 0 0 8px;
-    color: var(--thai-muted);
-}
-
 .thai-giga-sidebar {
     position: fixed;
     top: 0;
@@ -171,35 +165,48 @@ body.thai-giga-page {
     margin-top: 16px;
 }
 
-.thai-giga-chapter-nav details {
-    border-top: 1px solid rgba(213, 189, 145, .2);
-    padding-top: 8px;
+.thai-giga-chapter-group {
+    display: grid;
+    gap: 8px;
 }
 
-.thai-giga-chapter-nav summary {
-    cursor: pointer;
-    color: var(--thai-gold);
-    line-height: 1.4;
+.thai-giga-chapter-group-title {
+    margin: 8px 0 0;
+    color: var(--thai-accent);
+    font-size: .82rem;
+    font-weight: bold;
+    letter-spacing: .08em;
+    text-transform: uppercase;
 }
 
-.thai-giga-chapter-nav button {
-    display: block;
+.thai-giga-chapter-button {
+    display: grid;
+    gap: 3px;
     width: 100%;
     min-height: 0;
-    margin-top: 4px;
-    padding: 9px 10px;
-    border: 1px solid rgba(142, 107, 60, .75);
-    border-radius: 9px;
+    padding: 12px 13px;
+    border: 1px solid var(--thai-border);
+    border-radius: 10px;
     color: var(--thai-text);
     background: var(--thai-panel-light);
     cursor: pointer;
     font: inherit;
-    font-size: .9rem;
     text-align: left;
 }
 
-.thai-giga-chapter-nav button:hover,
-.thai-giga-chapter-nav button:focus-visible {
+.thai-giga-chapter-button strong {
+    color: inherit;
+}
+
+.thai-giga-chapter-button small {
+    color: inherit;
+    font-size: .88rem;
+    line-height: 1.35;
+}
+
+.thai-giga-chapter-button:hover,
+.thai-giga-chapter-button:focus-visible,
+.thai-giga-chapter-button.is-active {
     border-color: var(--thai-gold);
     background: #3b2919;
 }
@@ -266,6 +273,7 @@ body.thai-giga-page {
     .thai-giga-audio-player > :not(.thai-giga-audio-playlist) {
         flex-shrink: 0;
     }
+
 }
 
 .thai-giga-audio-header,
@@ -386,41 +394,113 @@ body.thai-giga-page {
     display: grid;
     gap: 6px;
     max-height: 260px;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
     margin: 14px 0 0;
-    padding: 0;
+    padding: 0 4px 0 0;
     list-style: none;
+    overscroll-behavior-x: none;
+    touch-action: pan-y;
+}
+
+@media (min-width: 901px) {
+    .thai-giga-audio-playlist {
+        flex: 1 1 auto;
+        min-height: 80px;
+        max-height: none;
+    }
 }
 
 .thai-giga-playlist-item {
     display: flex;
     gap: 6px;
     align-items: stretch;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    border: 1px solid rgba(142, 107, 60, .45);
+    border-radius: 9px;
+    background: rgba(21, 17, 13, .48);
 }
 
 .thai-giga-playlist-select {
-    display: grid;
+    display: flex;
     flex: 1;
-    gap: 2px;
+    gap: 10px;
+    align-items: flex-start;
     min-width: 0;
+    padding: 9px 10px;
+    border: 0;
+    color: var(--thai-text);
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
     text-align: left;
 }
 
+.thai-giga-playlist-select > span:not(.thai-giga-playlist-card-number) {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
 .thai-giga-playlist-select strong,
-.thai-giga-playlist-select span {
+.thai-giga-playlist-select small {
+    display: block;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-.thai-giga-playlist-select span {
-    color: var(--thai-muted);
+.thai-giga-playlist-card-number {
+    display: grid;
+    flex: 0 0 38px;
+    gap: 3px;
+    align-self: center;
+    align-content: center;
+    color: var(--thai-gold);
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.thai-giga-playlist-card-number strong {
+    color: var(--thai-gold);
+    font-size: .9rem;
+}
+
+.thai-giga-playlist-card-number small {
+    color: var(--thai-gold);
+    font-size: .72rem;
+    font-weight: bold;
+    letter-spacing: .04em;
+}
+
+.thai-giga-playlist-select > span:not(.thai-giga-playlist-card-number) > strong {
+    color: #ffe4a9;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+.thai-giga-playlist-select small {
+    margin-top: 3px;
     font-size: .85rem;
 }
 
-.thai-giga-playlist-item.is-current .thai-giga-playlist-select {
+.thai-giga-playlist-transliteration {
+    color: var(--thai-accent);
+}
+
+.thai-giga-playlist-translation {
+    color: var(--thai-muted);
+}
+
+.thai-giga-playlist-item.is-current {
     border-color: var(--thai-gold);
-    box-shadow: 0 0 0 1px rgba(231, 184, 97, .25);
+    box-shadow: 0 0 0 2px rgba(231, 184, 97, .14);
+}
+
+.thai-giga-playlist-select:hover,
+.thai-giga-playlist-select:focus-visible {
+    background: rgba(231, 184, 97, .12);
 }
 
 .thai-giga-playlist-order {
@@ -497,10 +577,7 @@ body.thai-giga-page {
 }
 
 .thai-giga-lower-layout {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(230px, 300px);
-    gap: 18px;
-    align-items: start;
+    display: block;
 }
 
 .thai-giga-block-list {
@@ -728,8 +805,11 @@ body.thai-giga-page {
 }
 
 .thai-giga-dictionary {
-    position: sticky;
+    position: fixed;
     top: 16px;
+    left: 16px;
+    z-index: 30;
+    width: min(360px, calc(100vw - 32px));
     max-height: calc(100vh - 32px);
     overflow: auto;
     padding: 18px;
@@ -737,6 +817,38 @@ body.thai-giga-page {
     border-radius: 15px;
     background: rgba(38, 27, 19, .9);
     box-shadow: 0 14px 36px rgba(0, 0, 0, .22);
+}
+
+.thai-giga-dictionary-header {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.thai-giga-dictionary-header .thai-giga-eyebrow {
+    margin: 0;
+}
+
+.thai-giga-dictionary-close {
+    width: 30px;
+    min-width: 30px;
+    min-height: 30px;
+    padding: 0;
+    border: 1px solid rgba(142, 107, 60, .75);
+    border-radius: 50%;
+    color: var(--thai-muted);
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+    font-size: 1.2rem;
+    line-height: 1;
+}
+
+.thai-giga-dictionary-close:hover,
+.thai-giga-dictionary-close:focus-visible {
+    border-color: var(--thai-gold);
+    color: var(--thai-gold);
 }
 
 .thai-giga-dictionary-examples {
@@ -818,15 +930,11 @@ body.thai-giga-page {
         margin-top: 22px;
     }
 
-    .thai-giga-lower-layout {
-        display: block;
-    }
-
     .thai-giga-dictionary {
-        position: static;
-        max-height: none;
-        margin-top: 18px;
-        overflow: visible;
+        top: 16px;
+        left: 16px;
+        width: min(360px, calc(100vw - 32px));
+        max-height: calc(100vh - 32px);
     }
 }
 
@@ -840,15 +948,6 @@ body.thai-giga-page {
 
     .thai-giga-block-summary {
         border-bottom: 0;
-    }
-
-    .thai-giga-dictionary {
-        position: fixed;
-        top: var(--thai-giga-dictionary-top, 120px);
-        right: max(24px, calc((100vw - 1200px) / 2));
-        z-index: 6;
-        width: min(300px, calc(100vw - 48px));
-        max-height: calc(100vh - var(--thai-giga-dictionary-top, 120px) - 16px);
     }
 
     .thai-giga-sidebar-toggle {

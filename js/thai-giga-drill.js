@@ -452,6 +452,7 @@
 
         (content.levels || []).forEach(level => {
             level.bosses.forEach(boss => {
+                let bossSentenceNumber = 0;
                 boss.blocks.forEach(block => {
                     block.miniStories.forEach(story => {
                         storiesById.set(story.id, {
@@ -468,6 +469,7 @@
                             const indexedSentence = {
                                 ...sentence,
                                 numberInStory: index + 1,
+                                numberInBoss: ++bossSentenceNumber,
                                 levelId: level.id,
                                 bossId: boss.id,
                                 blockId: block.id,

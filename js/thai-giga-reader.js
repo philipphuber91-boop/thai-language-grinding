@@ -2,7 +2,6 @@
     "use strict";
 
     const elements = {
-        status: document.getElementById("thaiGigaStatus"),
         sidebar: document.getElementById("thaiGigaSidebar"),
         sidebarBackdrop: document.getElementById("thaiGigaSidebarBackdrop"),
         sidebarToggle: document.getElementById("thaiGigaSidebarToggle"),
@@ -16,7 +15,6 @@
         patternTranslation: document.getElementById("thaiGigaPatternTranslation"),
         blockList: document.getElementById("thaiGigaBlockList"),
         emptyState: document.getElementById("thaiGigaEmptyState"),
-        audioPlayer: document.getElementById("thaiGigaAudioPlayer"),
         sentenceList: document.getElementById("thaiGigaBlockList"),
         dictionary: document.getElementById("thaiGigaDictionary")
     };
@@ -25,6 +23,7 @@
     let indexes = null;
     let activeStory = null;
     let activeSentenceId = "";
+    let dictionaryAnchor = null;
 
     function escapeHtml(value) {
         return String(value ?? "")
@@ -33,11 +32,6 @@
             .replace(/>/g, "&gt;")
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#039;");
-    }
-
-    function setStatus(message, isError = false) {
-        elements.status.textContent = message;
-        elements.status.classList.toggle("is-error", isError);
     }
 
     function closeSidebar() {
@@ -52,25 +46,6 @@
         elements.sidebarToggle?.setAttribute("aria-expanded", "true");
     }
 
-    function syncDictionaryPosition() {
-        const isPlayerOpen = !elements.audioPlayer?.classList.contains("is-desktop-collapsed");
-        elements.dictionary?.classList.toggle("is-player-open", isPlayerOpen);
-        if (isPlayerOpen && window.matchMedia("(min-width: 901px)").matches) {
-            const playerBottom = elements.audioPlayer.getBoundingClientRect().bottom + 16;
-            const dictionaryHeight = elements.dictionary.getBoundingClientRect().height;
-            const availableTop = Math.max(120, window.innerHeight - dictionaryHeight - 16);
-            const dictionaryTop = playerBottom <= availableTop
-                ? Math.max(120, playerBottom)
-                : Math.max(120, playerBottom - 16);
-            elements.dictionary.style.setProperty(
-                "--thai-giga-dictionary-top",
-                `${dictionaryTop}px`
-            );
-        } else {
-            elements.dictionary?.style.removeProperty("--thai-giga-dictionary-top");
-        }
-    }
-
     function getStoryContext(story) {
         return [
             story.levelTitle,
@@ -81,49 +56,30 @@
     }
 
     function renderHierarchy() {
-        elements.hierarchy.innerHTML = "";
+        const bosses = content.levels.flatMap(level => level.bosses);
+        elements.hierarchy.innerHTML = `
+            <div class="thai-giga-chapter-group">
+                <p class="thai-giga-chapter-group-title">Grammatikbosse</p>
+                ${bosses.map(boss => `
+                    <button
+                        class="thai-giga-chapter-button"
+                        type="button"
+                        data-boss-id="${escapeHtml(boss.id)}">
+                        <strong>${escapeHtml(boss.title)}</strong>
+                        <small>${escapeHtml(boss.grammarFocus)}</small>
+                    </button>
+                `).join("")}
+            </div>
+        `;
 
-        content.levels.forEach(level => {
-            const levelDetails = document.createElement("details");
-            levelDetails.open = true;
-            levelDetails.innerHTML = `<summary>${escapeHtml(level.title)}</summary>`;
-
-            level.bosses.forEach(boss => {
-                const bossDetails = document.createElement("details");
-                bossDetails.open = true;
-                bossDetails.innerHTML = `<summary>${escapeHtml(boss.title)}</summary>`;
-
-                boss.blocks.forEach(block => {
-                    const blockDetails = document.createElement("details");
-                    blockDetails.open = false;
-                    blockDetails.innerHTML = `<summary>${escapeHtml(block.title)}</summary>`;
-                    const blockAudioButton = document.createElement("button");
-                    blockAudioButton.type = "button";
-                    blockAudioButton.dataset.thaiGigaPlaylistBlock = block.id;
-                    blockAudioButton.textContent = "+ Block zur Playlist";
-                    blockAudioButton.title = "Alle Sätze dieses Blocks zur Playlist hinzufügen";
-                    blockAudioButton.addEventListener("click", event => {
-                        event.preventDefault();
-                        event.stopPropagation();
-                        window.thaiGigaAudio.addBlock(block.id);
-                    });
-                    blockDetails.appendChild(blockAudioButton);
-
-                    block.miniStories.forEach(story => {
-                        const button = document.createElement("button");
-                        button.type = "button";
-                        button.textContent = story.title;
-                        button.addEventListener("click", () => showStory(story.id));
-                        blockDetails.appendChild(button);
-                    });
-
-                    bossDetails.appendChild(blockDetails);
-                });
-
-                levelDetails.appendChild(bossDetails);
+        elements.hierarchy.querySelectorAll("[data-boss-id]").forEach(button => {
+            button.addEventListener("click", () => {
+                const boss = bosses.find(candidate => candidate.id === button.dataset.bossId);
+                if (boss) {
+                    renderBossOverview(boss);
+                    closeSidebar();
+                }
             });
-
-            elements.hierarchy.appendChild(levelDetails);
         });
     }
 
@@ -257,7 +213,9 @@
         window.questAudio.initializeSentenceAudioPlayers(elements.sentenceList);
 
         elements.sentenceList.querySelectorAll("[data-word-id]").forEach(button => {
-            button.addEventListener("click", () => showDictionary(button.dataset.wordId));
+            button.addEventListener("click", () =>
+                showDictionary(button.dataset.wordId, button)
+            );
         });
 
         elements.sentenceList
@@ -343,17 +301,57 @@
             });
     }
 
-    function showDictionary(wordId) {
+    function closeDictionary() {
+        dictionaryAnchor = null;
+        elements.dictionary.hidden = true;
+        elements.dictionary.removeAttribute("aria-labelledby");
+        elements.dictionary.style.removeProperty("left");
+        elements.dictionary.style.removeProperty("top");
+    }
+
+    function positionDictionary() {
+        if (!dictionaryAnchor || elements.dictionary.hidden) {
+            return;
+        }
+
+        const anchorRect = dictionaryAnchor.getBoundingClientRect();
+        const dictionaryRect = elements.dictionary.getBoundingClientRect();
+        const margin = 12;
+        const edge = 16;
+        let left = anchorRect.right + margin;
+        if (left + dictionaryRect.width > window.innerWidth - edge) {
+            left = anchorRect.left - dictionaryRect.width - margin;
+        }
+        left = Math.max(edge, Math.min(left, window.innerWidth - dictionaryRect.width - edge));
+
+        let top = anchorRect.top;
+        if (top + dictionaryRect.height > window.innerHeight - edge) {
+            top = window.innerHeight - dictionaryRect.height - edge;
+        }
+        top = Math.max(edge, top);
+
+        elements.dictionary.style.left = `${left}px`;
+        elements.dictionary.style.top = `${top}px`;
+    }
+
+    function showDictionary(wordId, anchor) {
         const word = indexes.wordsById.get(wordId);
         if (!word) {
             return;
         }
 
+        dictionaryAnchor = anchor;
         const sentenceIds = indexes.sentenceIdsByWordId.get(wordId) || [];
         elements.dictionary.innerHTML = `
-            <p class="eyebrow">Wörterbuch</p>
+            <div class="thai-giga-dictionary-header">
+                <p class="thai-giga-eyebrow">Wörterbuch</p>
+                <button
+                    class="thai-giga-dictionary-close"
+                    type="button"
+                    aria-label="Wörterbuch schließen">×</button>
+            </div>
             <div class="thai-giga-dictionary-word" lang="th">${escapeHtml(word.thai)}</div>
-            <p>${escapeHtml(word.transliteration)}</p>
+            <p class="thai-giga-dictionary-transliteration">${escapeHtml(word.transliteration)}</p>
             <div class="thai-giga-dictionary-meaning">
                 ${word.meanings.map(meaning => `<div>${escapeHtml(meaning)}</div>`).join("")}
             </div>
@@ -374,12 +372,15 @@
                 </div>
             </details>
         `;
+        elements.dictionary.hidden = false;
+        positionDictionary();
 
         elements.dictionary
             .querySelectorAll("[data-dictionary-sentence]")
             .forEach(button => {
                 button.addEventListener("click", () => {
                     const sentence = indexes.sentencesById.get(button.dataset.dictionarySentence);
+                    closeDictionary();
                     showStory(sentence.storyId, sentence.id);
                     window.thaiGigaAudio.addSentence(sentence.id, true);
                 });
@@ -403,14 +404,6 @@
         try {
             content = await window.thaiGigaDrill.loadContent();
             indexes = window.thaiGigaDrill.buildIndexes(content);
-            setStatus(
-                content.contentStatus === "placeholder-only"
-                    ? "Technische Vorschau · offizieller Content folgt"
-                    : content.contentStatus === "draft"
-                        ? `Entwurf · Content-Version ${content.contentVersion}`
-                    : `Content-Version ${content.contentVersion}`
-            );
-
             if (content.levels.length === 0) {
                 elements.emptyState.hidden = false;
                 return;
@@ -423,15 +416,8 @@
             showInitialStory();
             window.thaiGigaAudio.initialize(indexes);
             initializeSentenceActions();
-            syncDictionaryPosition();
-            new MutationObserver(syncDictionaryPosition).observe(elements.audioPlayer, {
-                attributes: true,
-                attributeFilter: ["class"]
-            });
-            window.addEventListener("resize", syncDictionaryPosition);
         } catch (error) {
             console.error(error);
-            setStatus("Content konnte nicht geladen werden.", true);
             elements.emptyState.hidden = false;
             elements.emptyState.innerHTML = `
                 <h2>Content-Import fehlgeschlagen</h2>
@@ -449,6 +435,17 @@
         }
     });
     elements.sidebarBackdrop?.addEventListener("click", closeSidebar);
+    elements.dictionary.addEventListener("click", event => {
+        if (event.target.closest(".thai-giga-dictionary-close")) {
+            closeDictionary();
+        }
+    });
+    document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && !elements.dictionary.hidden) {
+            closeDictionary();
+        }
+    });
+    window.addEventListener("resize", positionDictionary);
 
     window.addEventListener("thai-giga:audio-current", event => {
         const sentenceId = event.detail?.sentenceId;
