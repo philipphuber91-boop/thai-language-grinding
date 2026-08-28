@@ -26,6 +26,7 @@
         wordDictionarySummary: document.getElementById("thaiGigaWordDictionarySummary"),
         wordDictionaryList: document.getElementById("thaiGigaWordDictionaryList"),
         wordDictionaryExport: document.getElementById("thaiGigaWordDictionaryExport"),
+        sentenceListExport: document.getElementById("thaiGigaSentenceListExport"),
         wordDictionaryExportStatus: document.getElementById(
             "thaiGigaWordDictionaryExportStatus"
         )
@@ -35,6 +36,7 @@
     let indexes = null;
     let activeStory = null;
     let activeSentenceId = "";
+    let activeBossId = "";
     let dictionaryAnchor = null;
 
     function escapeHtml(value) {
@@ -310,27 +312,92 @@
         return lines.join("\n");
     }
 
+    function buildSentenceListDocument() {
+        const lines = [
+            "# Thai Super Ultra Mega Giga Drill – vollständige Satzliste",
+            "",
+            `Stand: ${new Date().toISOString().slice(0, 10)}`,
+            `Content-Version: ${content.contentVersion}`,
+            `Sätze: ${indexes.sentencesById.size}`,
+            "",
+            "Diese Liste enthält alle bisher bekannten Sätze in der Reihenfolge " +
+                "des Curriculums. Sie dient als Referenz für die Erstellung neuer Inhalte.",
+            ""
+        ];
+
+        content.levels.forEach(level => {
+            level.bosses.forEach(boss => {
+                lines.push(`## ${boss.title} – ${boss.grammarFocus}`, "");
+                boss.blocks.forEach(block => {
+                    lines.push(`### ${block.title}`, "");
+                    block.miniStories.forEach(story => {
+                        lines.push(`#### ${story.title}`, "");
+                        lines.push("| Satz-ID | Thai | Umschrift | Deutsche Übersetzung |");
+                        lines.push("| --- | --- | --- | --- |");
+                        story.sentences.forEach(sentence => {
+                            lines.push(
+                                `| ${escapeMarkdown(sentence.id)} | ` +
+                                `${escapeMarkdown(sentence.thai)} | ` +
+                                `${escapeMarkdown(sentence.transliteration)} | ` +
+                                `${escapeMarkdown(sentence.translation)} |`
+                            );
+                        });
+                        lines.push("");
+                    });
+                });
+            });
+        });
+
+        return lines.join("\n");
+    }
+
+    function downloadMarkdownDocument(documentText, filename) {
+        const blob = new Blob([documentText], {
+            type: "text/markdown;charset=utf-8"
+        });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = filename;
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        URL.revokeObjectURL(url);
+    }
+
     function exportWordList() {
         if (!content || !indexes || !elements.wordDictionaryExportStatus) {
             return;
         }
 
         try {
-            const blob = new Blob([buildWordListDocument()], {
-                type: "text/markdown;charset=utf-8"
-            });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement("a");
-            link.href = url;
-            link.download = "thai-giga-woerterliste.md";
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
-            URL.revokeObjectURL(url);
+            downloadMarkdownDocument(
+                buildWordListDocument(),
+                "thai-giga-woerterliste.md"
+            );
             elements.wordDictionaryExportStatus.textContent =
                 "Vollständige Wortliste wurde heruntergeladen.";
         } catch (error) {
             console.error("Thai-Giga-Wortliste konnte nicht exportiert werden.", error);
+            elements.wordDictionaryExportStatus.textContent =
+                "Export fehlgeschlagen. Bitte erneut versuchen.";
+        }
+    }
+
+    function exportSentenceList() {
+        if (!content || !indexes || !elements.wordDictionaryExportStatus) {
+            return;
+        }
+
+        try {
+            downloadMarkdownDocument(
+                buildSentenceListDocument(),
+                "thai-giga-satzliste.md"
+            );
+            elements.wordDictionaryExportStatus.textContent =
+                "Vollständige Satzliste wurde heruntergeladen.";
+        } catch (error) {
+            console.error("Thai-Giga-Satzliste konnte nicht exportiert werden.", error);
             elements.wordDictionaryExportStatus.textContent =
                 "Export fehlgeschlagen. Bitte erneut versuchen.";
         }
@@ -361,9 +428,23 @@
             button.addEventListener("click", () => {
                 const boss = bosses.find(candidate => candidate.id === button.dataset.bossId);
                 if (boss) {
+                    activeBossId = boss.id;
+                    activeStory = Array.from(indexes.storiesById.values()).find(
+                        story => story.bossId === boss.id
+                    ) || null;
+                    activeSentenceId = "";
+                    window.history.replaceState(
+                        null,
+                        "",
+                        `#${encodeURIComponent(boss.id)}`
+                    );
                     if (elements.bossOverview) {
                         renderBossOverview(boss);
                         setThaiView("reader");
+                        renderBlockList();
+                        if (window.questAudio && window.thaiGigaAudio) {
+                            initializeSentenceActions();
+                        }
                     } else {
                         window.location.href =
                             `thai-giga.html#${encodeURIComponent(boss.id)}`;
@@ -493,9 +574,9 @@
             return;
         }
 
-        const blocks = content.levels.flatMap(level =>
-            level.bosses.flatMap(boss => boss.blocks)
-        );
+        const bosses = content.levels.flatMap(level => level.bosses);
+        const activeBoss = bosses.find(boss => boss.id === activeBossId) || bosses[0];
+        const blocks = activeBoss ? activeBoss.blocks : [];
         elements.blockList.innerHTML = blocks.map(block => `
             <details class="thai-giga-block">
                 <summary class="thai-giga-block-summary" id="${escapeHtml(block.id)}-title">
@@ -691,13 +772,21 @@
             return;
         }
 
+        const bossChanged = activeBossId !== story.bossId;
         activeStory = story;
         activeSentenceId = sentenceId;
+        activeBossId = story.bossId;
         const boss = content.levels
             .flatMap(level => level.bosses)
             .find(candidate => candidate.id === story.bossId);
         renderBossOverview(boss);
         setThaiView("reader");
+        if (bossChanged && elements.blockList) {
+            renderBlockList();
+            if (window.questAudio && window.thaiGigaAudio) {
+                initializeSentenceActions();
+            }
+        }
         window.thaiGigaDrill.saveProgress({
             levelId: story.levelId,
             bossId: story.bossId,
@@ -840,9 +929,12 @@
 
     function showInitialStory() {
         const progress = window.thaiGigaDrill.getStoredProgress();
-        const story = progress.storyId
+        const story = progress.storyId &&
+            (!activeBossId || progress.bossId === activeBossId)
             ? indexes.storiesById.get(progress.storyId)
-            : indexes.storiesById.values().next().value;
+            : Array.from(indexes.storiesById.values()).find(
+                candidate => !activeBossId || candidate.bossId === activeBossId
+            );
 
         if (story && progress.sentenceId) {
             showStory(story.id, progress.sentenceId);
@@ -860,6 +952,10 @@
                 return;
             }
 
+            const bosses = content.levels.flatMap(level => level.bosses);
+            const requestedBossId = decodeURIComponent(window.location.hash.slice(1));
+            const firstBoss = bosses.find(boss => boss.id === requestedBossId) || bosses[0];
+            activeBossId = firstBoss?.id || "";
             renderHierarchy();
             if (elements.blockList) {
                 window.thaiGigaAudio.initialize(indexes);
@@ -867,9 +963,6 @@
             }
             renderWordDictionaryFilters();
             renderWordDictionary();
-            const bosses = content.levels.flatMap(level => level.bosses);
-            const requestedBossId = decodeURIComponent(window.location.hash.slice(1));
-            const firstBoss = bosses.find(boss => boss.id === requestedBossId) || bosses[0];
             if (elements.bossOverview && firstBoss) {
                 renderBossOverview(firstBoss);
                 setThaiView("reader");
@@ -877,6 +970,9 @@
             }
             if (elements.sentenceList && window.thaiGigaAudio) {
                 initializeSentenceActions();
+            }
+            if (window.location.hash === "#foreword" && elements.forewordButton) {
+                showForeword();
             }
         } catch (error) {
             console.error(error);
@@ -915,6 +1011,7 @@
         renderWordDictionary
     );
     elements.wordDictionaryExport?.addEventListener("click", exportWordList);
+    elements.sentenceListExport?.addEventListener("click", exportSentenceList);
     document.addEventListener("keydown", event => {
         if (event.key === "Escape" && !elements.dictionary.hidden) {
             closeDictionary();
