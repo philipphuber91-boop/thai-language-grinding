@@ -26,7 +26,7 @@ body.thai-giga-page {
     background:
         radial-gradient(circle at 80% 0%, rgba(213, 151, 71, .16), transparent 34rem),
         linear-gradient(135deg, #15110d 0%, #21170f 52%, #100c09 100%);
-    font-family: "Noto Sans Thai", "Segoe UI", sans-serif;
+    font-family: "Sarabun", "Noto Sans Thai", "Segoe UI", sans-serif;
 }
 
 .thai-giga-topbar {
@@ -930,7 +930,7 @@ body.thai-giga-page {
 .thai-giga-thai {
     margin: 0;
     color: #ffe4a9;
-    font-family: "Noto Sans Thai", sans-serif;
+    font-family: inherit;
     font-size: clamp(1.3rem, 3vw, 1.7rem);
     line-height: 1.35;
 }
@@ -1296,4 +1296,28 @@ body.thai-giga-page {
     .thai-giga-audio-controls {
         align-items: stretch;
     }
+}
+
+.thai-giga-page,
+.thai-giga-page * {
+    font-family: "Sarabun", "Noto Sans Thai", "Segoe UI", sans-serif;
+    font-weight: 400;
+}
+
+.thai-giga-midpoint-content,
+.thai-giga-completion-content {
+    font-size: 1.06rem;
+}
+
+.thai-giga-reminder-word strong,
+.thai-giga-reminder-example strong {
+    font-size: 1.2rem;
+}
+
+.thai-giga-reminder-word em,
+.thai-giga-reminder-word span,
+.thai-giga-reminder-example em,
+.thai-giga-reminder-example span,
+.thai-giga-reminder-discoveries span {
+    font-size: 1rem;
 }
