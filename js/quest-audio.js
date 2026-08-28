@@ -118,18 +118,21 @@
 
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = options.lang || "th-TH";
-        const voice = options.voice ||
+        const requestedVoice = options.voice ||
             getSpeechVoice(utterance.lang, options.voiceId || options.voiceName);
-        if (
-            options.requireVoice &&
-            getSpeechVoices("").length > 0 &&
-            !voice
-        ) {
-            return false;
-        }
+        const availableVoices = getSpeechVoices("");
+        const voice = requestedVoice ||
+            availableVoices.find(candidate => candidate.default) ||
+            availableVoices[0] ||
+            null;
+        const usedFallbackVoice = !requestedVoice && Boolean(voice);
         if (voice) {
             utterance.voice = voice;
+            if (usedFallbackVoice && voice.lang) {
+                utterance.lang = voice.lang;
+            }
         }
+        options.onFallback?.(usedFallbackVoice);
         utterance.rate = Number.isFinite(options.rate)
             ? options.rate
             : getStoredPlaybackRate();
@@ -440,10 +443,14 @@
                 rate: state.playbackRate,
                 lang: audio?.lang || "th-TH",
                 voiceId: audio?.voiceId || audio?.voiceName || "",
-                requireVoice: audio?.requireVoice === true,
                 voice: speechVoice,
                 contentMode: resolvedEntry.contentMode || "",
                 sentenceId: getEntryId(resolvedEntry),
+                onFallback: usedFallback => {
+                    if (usedFallback) {
+                        setStatus("Keine Thai-Stimme gefunden. Die Browser-Standardstimme wird verwendet.");
+                    }
+                },
                 onEnd: finish,
                 onError: fail
             })) {
@@ -1147,7 +1154,7 @@
         }
 
         return `
-            <div class="quest-audio-player ${className}" data-speech-audio-player data-speech-text="${encodeURIComponent(speechText)}" data-speech-lang="${escapeAttribute(audio?.lang || "th-TH")}" data-speech-voice-id="${escapeAttribute(audio?.voiceId || audio?.voiceName || "")}" data-speech-require-voice="${audio?.requireVoice ? "true" : "false"}">
+            <div class="quest-audio-player ${className}" data-speech-audio-player data-speech-text="${encodeURIComponent(speechText)}" data-speech-lang="${escapeAttribute(audio?.lang || "th-TH")}" data-speech-voice-id="${escapeAttribute(audio?.voiceId || audio?.voiceName || "")}">
                 <button type="button" class="quest-audio-play-button" aria-label="Satz vorlesen" aria-pressed="false">🔊</button>
                 <span class="quest-audio-status" aria-live="polite"></span>
             </div>
@@ -1174,7 +1181,13 @@
                     rate: 1,
                     lang: playerElement.dataset.speechLang || "th-TH",
                     voiceId: playerElement.dataset.speechVoiceId || "",
-                    requireVoice: playerElement.dataset.speechRequireVoice === "true"
+                    onFallback: usedFallback => {
+                        if (status) {
+                            status.textContent = usedFallback
+                                ? "Keine Thai-Stimme gefunden. Die Browser-Standardstimme wird verwendet."
+                                : "";
+                        }
+                    }
                 });
                 if (!started && status) {
                     status.textContent = "Sprachausgabe nicht verfügbar.";

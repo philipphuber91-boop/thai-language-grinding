@@ -19,8 +19,7 @@
         return {
             type: "speechSynthesis",
             lang: "th-TH",
-            voiceId: "",
-            requireVoice: true
+            voiceId: ""
         };
     }
 
