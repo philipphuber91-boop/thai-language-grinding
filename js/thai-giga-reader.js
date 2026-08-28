@@ -109,6 +109,102 @@
         });
     }
 
+    function renderThaiReminderWord(word) {
+        return `
+            <div class="thai-giga-reminder-word">
+                <strong lang="th">${escapeHtml(word.thai)}</strong>
+                <em>${escapeHtml(word.transliteration)}</em>
+                <span>${escapeHtml(word.translation)}</span>
+            </div>
+        `;
+    }
+
+    function renderThaiReminderExample(example) {
+        return `
+            <div class="thai-giga-reminder-example">
+                <strong lang="th">${escapeHtml(example.thai)}</strong>
+                <em>${escapeHtml(example.transliteration)}</em>
+                <span>${escapeHtml(example.translation)}</span>
+            </div>
+        `;
+    }
+
+    function renderThaiMidpointReminder(reminder) {
+        if (!reminder) {
+            return "";
+        }
+
+        return `
+            <details class="thai-giga-midpoint-reminder">
+                <summary>${escapeHtml(reminder.title)}</summary>
+                <div class="thai-giga-midpoint-content">
+                    <p>${escapeHtml(reminder.message)}</p>
+                    <p>${escapeHtml(reminder.lead)}</p>
+                    ${reminder.sections.map(section => `
+                        <section class="thai-giga-reminder-section">
+                            <h4>${escapeHtml(section.title)}</h4>
+                            <div class="thai-giga-reminder-words">
+                                ${section.words.map(renderThaiReminderWord).join("")}
+                            </div>
+                        </section>
+                    `).join("")}
+                    <p class="thai-giga-reminder-pattern-lead">
+                        ${escapeHtml(reminder.patternLead)}
+                    </p>
+                    ${renderThaiReminderExample(reminder.pattern)}
+                    <div class="thai-giga-reminder-discoveries">
+                        ${reminder.discoveries.map(renderThaiReminderExample).join("")}
+                    </div>
+                    <p class="thai-giga-reminder-closing">
+                        ${escapeHtml(reminder.closing)}
+                    </p>
+                </div>
+            </details>
+        `;
+    }
+
+    function renderThaiBlockCompletion(completion) {
+        if (!completion) {
+            return "";
+        }
+
+        return `
+            <details class="thai-giga-block-completion">
+                <summary>${escapeHtml(completion.title)}</summary>
+                <div class="thai-giga-completion-content">
+                    <h3>${escapeHtml(completion.heading)}</h3>
+                    <p>${escapeHtml(completion.message)}</p>
+                    <p>${escapeHtml(completion.lead)}</p>
+                    <h4>${escapeHtml(completion.wordSectionTitle)}</h4>
+                    <div class="thai-giga-reminder-words">
+                        ${completion.words.map(renderThaiReminderWord).join("")}
+                    </div>
+                    <p class="thai-giga-reminder-lead">${escapeHtml(completion.questionLead)}</p>
+                    ${renderThaiReminderExample(completion.question)}
+                    <p class="thai-giga-reminder-lead">${escapeHtml(completion.answerLead)}</p>
+                    ${renderThaiReminderExample(completion.answer)}
+                    <p class="thai-giga-reminder-lead">${escapeHtml(completion.alternativeLead)}</p>
+                    ${renderThaiReminderExample(completion.alternative)}
+                    <p class="thai-giga-reminder-lead">${escapeHtml(completion.possessionLead)}</p>
+                    ${renderThaiReminderExample(completion.possession)}
+                    <h3 class="thai-giga-completion-progress-title">
+                        ${escapeHtml(completion.progressTitle)}
+                    </h3>
+                    <p class="thai-giga-completion-progress">${escapeHtml(completion.progress)}</p>
+                    <p class="thai-giga-reminder-summary">${escapeHtml(completion.progressSummary)}</p>
+                    <p class="thai-giga-reminder-lead">${escapeHtml(completion.systemLead)}</p>
+                    <div class="thai-giga-reminder-examples">
+                        ${completion.systemExamples.map(renderThaiReminderExample).join("")}
+                    </div>
+                    <p class="thai-giga-completion-final">${escapeHtml(completion.final)}</p>
+                    <p class="thai-giga-completion-progress">
+                        ${escapeHtml(completion.finalProgress)}
+                    </p>
+                </div>
+            </details>
+        `;
+    }
+
     function renderBossOverview(boss) {
         if (!boss) {
             elements.bossOverview.hidden = true;
@@ -147,7 +243,7 @@
                 ${block.description
                     ? `<p class="thai-giga-block-description">${escapeHtml(block.description)}</p>`
                     : ""}
-                ${block.miniStories.map(story => `
+                ${block.miniStories.map((story, index) => `
                     <div class="thai-giga-level-shell">
                         <details class="thai-giga-level">
                             <summary class="thai-giga-level-summary">${escapeHtml(story.title)}</summary>
@@ -166,7 +262,9 @@
                             + Situation zur Playlist
                         </button>
                     </div>
+                    ${index === 4 ? renderThaiMidpointReminder(block.midpointReminder) : ""}
                 `).join("")}
+                ${renderThaiBlockCompletion(block.completion)}
             </details>
         `).join("");
 

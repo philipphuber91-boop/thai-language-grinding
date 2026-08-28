@@ -737,6 +737,129 @@ body.thai-giga-page {
     line-height: 1.5;
 }
 
+.thai-giga-midpoint-reminder,
+.thai-giga-block-completion {
+    margin: 14px 0;
+    border: 1px solid rgba(231, 184, 97, .62);
+    border-radius: 13px;
+    background: rgba(231, 184, 97, .08);
+}
+
+.thai-giga-midpoint-reminder summary,
+.thai-giga-block-completion > summary {
+    padding: 15px 18px;
+    color: var(--thai-gold);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.thai-giga-midpoint-reminder summary:hover,
+.thai-giga-midpoint-reminder summary:focus-visible,
+.thai-giga-block-completion > summary:hover,
+.thai-giga-block-completion > summary:focus-visible {
+    background: rgba(231, 184, 97, .1);
+}
+
+.thai-giga-midpoint-content,
+.thai-giga-completion-content {
+    padding: 0 18px 18px;
+}
+
+.thai-giga-reminder-section {
+    margin-top: 18px;
+}
+
+.thai-giga-reminder-section h4,
+.thai-giga-completion-content h4 {
+    margin: 0 0 9px;
+    color: var(--thai-gold);
+    font-size: .95rem;
+}
+
+.thai-giga-reminder-words,
+.thai-giga-reminder-examples,
+.thai-giga-reminder-discoveries {
+    display: grid;
+    gap: 9px;
+}
+
+.thai-giga-reminder-words {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.thai-giga-reminder-word,
+.thai-giga-reminder-example,
+.thai-giga-reminder-discoveries > div {
+    display: grid;
+    gap: 3px;
+    padding: 10px;
+    border-radius: 8px;
+    background: rgba(21, 17, 13, .4);
+}
+
+.thai-giga-reminder-word strong,
+.thai-giga-reminder-example strong {
+    color: #fff4d5;
+    font-size: 1.05rem;
+}
+
+.thai-giga-reminder-word em,
+.thai-giga-reminder-example em {
+    color: #ddb76c;
+    font-size: .9rem;
+}
+
+.thai-giga-reminder-word span,
+.thai-giga-reminder-example span,
+.thai-giga-reminder-discoveries span {
+    color: var(--thai-muted);
+    font-size: .9rem;
+}
+
+.thai-giga-reminder-examples {
+    margin-top: 12px;
+}
+
+.thai-giga-reminder-example {
+    margin-top: 9px;
+}
+
+.thai-giga-reminder-pattern-lead,
+.thai-giga-reminder-closing,
+.thai-giga-reminder-lead {
+    margin: 18px 0 0;
+    font-weight: bold;
+}
+
+.thai-giga-reminder-discoveries {
+    margin-top: 14px;
+}
+
+.thai-giga-reminder-summary {
+    margin: 16px 0 0;
+    color: #fff5cf;
+    font-weight: bold;
+}
+
+.thai-giga-completion-content h3 {
+    margin: 18px 0 8px;
+}
+
+.thai-giga-completion-progress-title {
+    color: var(--thai-gold);
+}
+
+.thai-giga-completion-progress {
+    color: var(--thai-gold);
+    font-weight: bold;
+}
+
+.thai-giga-completion-final {
+    margin: 18px 0 0;
+    color: #fff5cf;
+    font-weight: bold;
+}
+
 .thai-giga-level-shell {
     position: relative;
 }
@@ -1125,6 +1248,10 @@ body.thai-giga-page {
     .thai-giga-sentence-list {
         padding-left: 8px;
         padding-right: 8px;
+    }
+
+    .thai-giga-reminder-words {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .thai-giga-sentence {

@@ -6,7 +6,7 @@
   "source": {
     "document": "🇹🇭 LEVEL 1.docx",
     "ownerSupplied": true,
-    "normalization": "500 Sätze aus den getrennten DOCX-Feldern übernommen; Satz 492 wurde aus den getrennten Übersetzungsläufen zusammengeführt."
+    "normalization": "500 S?tze aus den getrennten DOCX-Feldern ?bernommen; Satz 492 wurde aus den getrennten ?bersetzungsl?ufen zusammengef?hrt. 50-Satz-Reminder und 100-Satz-Foundation-Abschl?sse analog zur japanischen Drill-Struktur erg?nzt."
   },
   "levels": [
     {
@@ -3369,6 +3369,173 @@
                 "sentenceRange": "1–100",
                 "grammar": "เป็น",
                 "pattern": "X + เป็น + Y"
+              },
+              "midpointReminder": {
+                "title": "💎 50 SÄTZE GESCHAFFT",
+                "message": "Du hast jetzt 50 Sätze im Thai-Giga-Drill gegrindet.",
+                "lead": "🆕 Neue Wörter aus Satz 1–50",
+                "sections": [
+                  {
+                    "title": "Neue Wörter",
+                    "words": [
+                      {
+                        "thai": "ผม",
+                        "transliteration": "phǒm",
+                        "translation": "ich / mich"
+                      },
+                      {
+                        "thai": "เป็น",
+                        "transliteration": "bpen",
+                        "translation": "sein / ist"
+                      },
+                      {
+                        "thai": "คน",
+                        "transliteration": "khon",
+                        "translation": "Person / Mensch"
+                      },
+                      {
+                        "thai": "คุณ",
+                        "transliteration": "khun",
+                        "translation": "du / Sie"
+                      },
+                      {
+                        "thai": "ไทย",
+                        "transliteration": "Thai",
+                        "translation": "Thailand / thailändisch"
+                      },
+                      {
+                        "thai": "เยอรมัน",
+                        "transliteration": "Yəə-rá-man",
+                        "translation": "deutsch / Deutschland"
+                      },
+                      {
+                        "thai": "เขา",
+                        "transliteration": "khǎo",
+                        "translation": "er / sie"
+                      },
+                      {
+                        "thai": "เรา",
+                        "transliteration": "rao",
+                        "translation": "wir"
+                      },
+                      {
+                        "thai": "นักเรียน",
+                        "transliteration": "nák-rian",
+                        "translation": "Schüler / Schülerin"
+                      },
+                      {
+                        "thai": "ครู",
+                        "transliteration": "khruu",
+                        "translation": "Lehrer / Lehrerin"
+                      },
+                      {
+                        "thai": "เพื่อน",
+                        "transliteration": "phʉ̂an",
+                        "translation": "Freund / Freundin"
+                      }
+                    ]
+                  }
+                ],
+                "patternLead": "🔥 Das aktive Grammatikmuster bleibt stabil:",
+                "pattern": {
+                  "thai": "เราเป็นเพื่อน",
+                  "transliteration": "rao bpen phʉ̂an",
+                  "translation": "Wir sind Freunde."
+                },
+                "discoveries": [
+                  {
+                    "thai": "เป็น",
+                    "transliteration": "bpen",
+                    "translation": "Die zentrale sein-Konstruktion bleibt aktiv."
+                  }
+                ],
+                "closing": "Keine Grammatikexplosion: Wir festigen das Muster durch kontrollierte Wiederholung."
+              },
+              "completion": {
+                "title": "🏆 100 / 500 — FOUNDATION BLOCK 1 GESCHAFFT",
+                "heading": "🧠 Grammatikboss 1",
+                "message": "Du hast jetzt 100 von 500 Sätzen gegrindet.",
+                "lead": "🆕 Neue Wörter aus Satz 51–100",
+                "wordSectionTitle": "Neue Wörter aus Satz 51–100",
+                "words": [
+                  {
+                    "thai": "แม่",
+                    "transliteration": "mâe",
+                    "translation": "Mutter"
+                  },
+                  {
+                    "thai": "พ่อ",
+                    "transliteration": "phɔ̂ɔ",
+                    "translation": "Vater"
+                  },
+                  {
+                    "thai": "หมอ",
+                    "transliteration": "mɔ̌ɔ",
+                    "translation": "Arzt / Ärztin"
+                  },
+                  {
+                    "thai": "คนสวน",
+                    "transliteration": "khon-sǔan",
+                    "translation": "Gärtner / Gärtnerin"
+                  },
+                  {
+                    "thai": "ลูกค้า",
+                    "transliteration": "lûuk-kháa",
+                    "translation": "Kunde / Kundin"
+                  },
+                  {
+                    "thai": "พ่อครัว",
+                    "transliteration": "phɔ̂ɔ-khrua",
+                    "translation": "Koch / Köchin"
+                  }
+                ],
+                "questionLead": "🧠 Erkanntes Muster:",
+                "question": {
+                  "thai": "คุณเป็นพ่อครัว",
+                  "transliteration": "khun bpen phɔ̂ɔ-khrua",
+                  "translation": "Du bist Koch."
+                },
+                "answerLead": "Und darauf folgt:",
+                "answer": {
+                  "thai": "เขาเป็นลูกค้า",
+                  "transliteration": "khǎo bpen lûuk-kháa",
+                  "translation": "Er ist Kunde."
+                },
+                "alternativeLead": "Oder:",
+                "alternative": {
+                  "thai": "เราเป็นเพื่อน",
+                  "transliteration": "rao bpen phʉ̂an",
+                  "translation": "Wir sind Freunde."
+                },
+                "possessionLead": "Die Struktur erscheint außerdem in neuen Situationen:",
+                "possession": {
+                  "thai": "เราเป็นคน",
+                  "transliteration": "rao bpen khon",
+                  "translation": "Wir sind Menschen."
+                },
+                "progressTitle": "📈 DEIN FORTSCHRITT",
+                "progress": "100 / 500 Sätze",
+                "progressSummary": "20 % von Grammatikboss 1 geschafft.",
+                "systemLead": "Deine Grundstruktur wird immer sicherer:",
+                "systemExamples": [
+                  {
+                    "thai": "คุณเป็นพ่อครัว",
+                    "transliteration": "khun bpen phɔ̂ɔ-khrua",
+                    "translation": "Du bist Koch."
+                  },
+                  {
+                    "thai": "เขาเป็นลูกค้า",
+                    "transliteration": "khǎo bpen lûuk-kháa",
+                    "translation": "Er ist Kunde."
+                  },
+                  {
+                    "thai": "เราเป็นคน",
+                    "transliteration": "rao bpen khon",
+                    "translation": "Wir sind Menschen."
+                  }
+                ],
+                "final": "Der nächste Foundation-Block kann beginnen.",
+                "finalProgress": "100 / 500 → 20 %"
               }
             },
             {
@@ -6685,6 +6852,113 @@
                 "sentenceRange": "101–200",
                 "grammar": "เป็น",
                 "pattern": "X + เป็น + Y"
+              },
+              "midpointReminder": {
+                "title": "💎 150 SÄTZE GESCHAFFT",
+                "message": "Du hast jetzt 150 Sätze im Thai-Giga-Drill gegrindet.",
+                "lead": "🆕 Neue Wörter aus Satz 101–150",
+                "sections": [
+                  {
+                    "title": "Neue Wörter",
+                    "words": [
+                      {
+                        "thai": "พนักงาน",
+                        "transliteration": "pha-nák-ngaan",
+                        "translation": "Mitarbeiter / Mitarbeiterin"
+                      },
+                      {
+                        "thai": "ครอบครัว",
+                        "transliteration": "khrɔ̂ɔp-khrua",
+                        "translation": "Familie"
+                      }
+                    ]
+                  }
+                ],
+                "patternLead": "🔥 Das aktive Grammatikmuster bleibt stabil:",
+                "pattern": {
+                  "thai": "เราเป็นเพื่อน",
+                  "transliteration": "rao bpen phʉ̂an",
+                  "translation": "Wir sind Freunde."
+                },
+                "discoveries": [
+                  {
+                    "thai": "เป็น",
+                    "transliteration": "bpen",
+                    "translation": "Die zentrale sein-Konstruktion bleibt aktiv."
+                  }
+                ],
+                "closing": "Keine Grammatikexplosion: Wir festigen das Muster durch kontrollierte Wiederholung."
+              },
+              "completion": {
+                "title": "🏆 200 / 500 — FOUNDATION BLOCK 2 GESCHAFFT",
+                "heading": "🧠 Grammatikboss 1",
+                "message": "Du hast jetzt 200 von 500 Sätzen gegrindet.",
+                "lead": "🆕 Neue Wörter aus Satz 151–200",
+                "wordSectionTitle": "Neue Wörter aus Satz 151–200",
+                "words": [
+                  {
+                    "thai": "นักกีฬา",
+                    "transliteration": "nák-gi-laa",
+                    "translation": "Sportler / Sportlerin"
+                  },
+                  {
+                    "thai": "เจ้าของร้าน",
+                    "transliteration": "jâo-khɔ̌ɔng ráan",
+                    "translation": "Ladenbesitzer / Ladenbesitzerin"
+                  },
+                  {
+                    "thai": "เชฟ",
+                    "transliteration": "chêep",
+                    "translation": "Koch / Köchin"
+                  }
+                ],
+                "questionLead": "🧠 Erkanntes Muster:",
+                "question": {
+                  "thai": "ผมเป็นลูกค้า",
+                  "transliteration": "phǒm bpen lûuk-kháa",
+                  "translation": "Ich bin Kunde."
+                },
+                "answerLead": "Und darauf folgt:",
+                "answer": {
+                  "thai": "คุณเป็นเชฟ",
+                  "transliteration": "khun bpen chêep",
+                  "translation": "Du bist Koch."
+                },
+                "alternativeLead": "Oder:",
+                "alternative": {
+                  "thai": "เราเป็นเพื่อน",
+                  "transliteration": "rao bpen phʉ̂an",
+                  "translation": "Wir sind Freunde."
+                },
+                "possessionLead": "Die Struktur erscheint außerdem in neuen Situationen:",
+                "possession": {
+                  "thai": "เราเป็นครอบครัว",
+                  "transliteration": "rao bpen khrɔ̂ɔp-khrua",
+                  "translation": "Wir sind eine Familie."
+                },
+                "progressTitle": "📈 DEIN FORTSCHRITT",
+                "progress": "200 / 500 Sätze",
+                "progressSummary": "40 % von Grammatikboss 1 geschafft.",
+                "systemLead": "Deine Grundstruktur wird immer sicherer:",
+                "systemExamples": [
+                  {
+                    "thai": "ผมเป็นลูกค้า",
+                    "transliteration": "phǒm bpen lûuk-kháa",
+                    "translation": "Ich bin Kunde."
+                  },
+                  {
+                    "thai": "คุณเป็นเชฟ",
+                    "transliteration": "khun bpen chêep",
+                    "translation": "Du bist Koch."
+                  },
+                  {
+                    "thai": "เราเป็นครอบครัว",
+                    "transliteration": "rao bpen khrɔ̂ɔp-khrua",
+                    "translation": "Wir sind eine Familie."
+                  }
+                ],
+                "final": "Der nächste Foundation-Block kann beginnen.",
+                "finalProgress": "200 / 500 → 40 %"
               }
             },
             {
@@ -10388,6 +10662,213 @@
                 "sentenceRange": "201–300",
                 "grammar": "เป็น",
                 "pattern": "X + เป็น + Y"
+              },
+              "midpointReminder": {
+                "title": "💎 250 SÄTZE GESCHAFFT",
+                "message": "Du hast jetzt 250 Sätze im Thai-Giga-Drill gegrindet.",
+                "lead": "🆕 Neue Wörter aus Satz 201–250",
+                "sections": [
+                  {
+                    "title": "Neue Wörter",
+                    "words": [
+                      {
+                        "thai": "ใคร",
+                        "transliteration": "khrai",
+                        "translation": "wer"
+                      },
+                      {
+                        "thai": "เธอ",
+                        "transliteration": "thəə",
+                        "translation": "sie"
+                      },
+                      {
+                        "thai": "แล้ว",
+                        "transliteration": "lɛ́ɛo",
+                        "translation": "dann / und / schon"
+                      },
+                      {
+                        "thai": "อ๋อ",
+                        "transliteration": "ɔ̌ɔ",
+                        "translation": "ach so"
+                      },
+                      {
+                        "thai": "ผู้ชาย",
+                        "transliteration": "phûu-chaai",
+                        "translation": "Mann"
+                      },
+                      {
+                        "thai": "นั้น",
+                        "transliteration": "nán",
+                        "translation": "dort / jener"
+                      },
+                      {
+                        "thai": "ของ",
+                        "transliteration": "khɔ̌ɔng",
+                        "translation": "von / gehören zu"
+                      },
+                      {
+                        "thai": "เหรอ",
+                        "transliteration": "rǒ̌ɔ",
+                        "translation": "etwa? / Fragepartikel"
+                      },
+                      {
+                        "thai": "ใช่",
+                        "transliteration": "châi",
+                        "translation": "ja / richtig"
+                      },
+                      {
+                        "thai": "ครับ",
+                        "transliteration": "khráp",
+                        "translation": "Höflichkeitspartikel"
+                      },
+                      {
+                        "thai": "ผู้หญิง",
+                        "transliteration": "phûu-yǐng",
+                        "translation": "Frau"
+                      },
+                      {
+                        "thai": "เข้าใจ",
+                        "transliteration": "khâo-jai",
+                        "translation": "verstehen"
+                      },
+                      {
+                        "thai": "กัน",
+                        "transliteration": "gan",
+                        "translation": "zusammen / einander"
+                      },
+                      {
+                        "thai": "ล่ะ",
+                        "transliteration": "lâ",
+                        "translation": "und was ist mit ...?"
+                      },
+                      {
+                        "thai": "ไม่",
+                        "transliteration": "mâi",
+                        "translation": "nicht / nein"
+                      },
+                      {
+                        "thai": "นี้",
+                        "transliteration": "níi",
+                        "translation": "dies / hier"
+                      },
+                      {
+                        "thai": "วันนี้",
+                        "transliteration": "wan-níi",
+                        "translation": "heute"
+                      },
+                      {
+                        "thai": "ไหม",
+                        "transliteration": "mái",
+                        "translation": "Fragepartikel"
+                      }
+                    ]
+                  }
+                ],
+                "patternLead": "🔥 Das aktive Grammatikmuster bleibt stabil:",
+                "pattern": {
+                  "thai": "ใช่ครับ",
+                  "transliteration": "châi khráp",
+                  "translation": "Ja."
+                },
+                "discoveries": [
+                  {
+                    "thai": "เป็น",
+                    "transliteration": "bpen",
+                    "translation": "Die zentrale sein-Konstruktion bleibt aktiv."
+                  },
+                  {
+                    "thai": "ใคร",
+                    "transliteration": "khrai",
+                    "translation": "Wer — als Fragewerkzeug, sobald es eingeführt wurde."
+                  }
+                ],
+                "closing": "Keine Grammatikexplosion: Wir festigen das Muster durch kontrollierte Wiederholung."
+              },
+              "completion": {
+                "title": "🏆 300 / 500 — FOUNDATION BLOCK 3 GESCHAFFT",
+                "heading": "🧠 Grammatikboss 1",
+                "message": "Du hast jetzt 300 von 500 Sätzen gegrindet.",
+                "lead": "🆕 Neue Wörter aus Satz 251–300",
+                "wordSectionTitle": "Neue Wörter aus Satz 251–300",
+                "words": [
+                  {
+                    "thai": "ฮ่าๆ",
+                    "transliteration": "hâa hâa",
+                    "translation": "haha"
+                  },
+                  {
+                    "thai": "ไง",
+                    "transliteration": "ngai",
+                    "translation": "da! / also!"
+                  },
+                  {
+                    "thai": "นึกว่า",
+                    "transliteration": "nʉ́k wâa",
+                    "translation": "denken / dachte"
+                  },
+                  {
+                    "thai": "ไม่ใช่",
+                    "transliteration": "mâi châi",
+                    "translation": "nicht sein / nein"
+                  },
+                  {
+                    "thai": "ตอนนี้",
+                    "transliteration": "dtɔɔn-níi",
+                    "translation": "jetzt"
+                  },
+                  {
+                    "thai": "รู้",
+                    "transliteration": "rúu",
+                    "translation": "wissen"
+                  }
+                ],
+                "questionLead": "🧠 Erkanntes Muster:",
+                "question": {
+                  "thai": "เธอเป็นใคร",
+                  "transliteration": "thəə bpen khrai",
+                  "translation": "Wer ist sie?"
+                },
+                "answerLead": "Und darauf folgt:",
+                "answer": {
+                  "thai": "เธอเป็นเพื่อน",
+                  "transliteration": "thəə bpen phʉ̂an",
+                  "translation": "Sie ist eine Freundin."
+                },
+                "alternativeLead": "Oder:",
+                "alternative": {
+                  "thai": "เราเป็นใคร",
+                  "transliteration": "rao bpen khrai",
+                  "translation": "Wer sind wir?"
+                },
+                "possessionLead": "Die Struktur erscheint außerdem in neuen Situationen:",
+                "possession": {
+                  "thai": "เราเป็นเพื่อนกัน",
+                  "transliteration": "rao bpen phʉ̂an gan",
+                  "translation": "Wir sind Freunde."
+                },
+                "progressTitle": "📈 DEIN FORTSCHRITT",
+                "progress": "300 / 500 Sätze",
+                "progressSummary": "60 % von Grammatikboss 1 geschafft.",
+                "systemLead": "Deine Grundstruktur wird immer sicherer:",
+                "systemExamples": [
+                  {
+                    "thai": "เธอเป็นใคร",
+                    "transliteration": "thəə bpen khrai",
+                    "translation": "Wer ist sie?"
+                  },
+                  {
+                    "thai": "เธอเป็นเพื่อน",
+                    "transliteration": "thəə bpen phʉ̂an",
+                    "translation": "Sie ist eine Freundin."
+                  },
+                  {
+                    "thai": "เราเป็นเพื่อนกัน",
+                    "transliteration": "rao bpen phʉ̂an gan",
+                    "translation": "Wir sind Freunde."
+                  }
+                ],
+                "final": "Der nächste Foundation-Block kann beginnen.",
+                "finalProgress": "300 / 500 → 60 %"
               }
             },
             {
@@ -14276,6 +14757,298 @@
                 "sentenceRange": "301–400",
                 "grammar": "เป็น",
                 "pattern": "X + เป็น + Y"
+              },
+              "midpointReminder": {
+                "title": "💎 350 SÄTZE GESCHAFFT",
+                "message": "Du hast jetzt 350 Sätze im Thai-Giga-Drill gegrindet.",
+                "lead": "🆕 Neue Wörter aus Satz 301–350",
+                "sections": [
+                  {
+                    "title": "Neue Wörter",
+                    "words": [
+                      {
+                        "thai": "ไป",
+                        "transliteration": "bpai",
+                        "translation": "gehen"
+                      },
+                      {
+                        "thai": "บ้าน",
+                        "transliteration": "bâan",
+                        "translation": "Haus / zu Hause"
+                      },
+                      {
+                        "thai": "พี่ชาย",
+                        "transliteration": "phîi-chaai",
+                        "translation": "älterer Bruder"
+                      },
+                      {
+                        "thai": "น้องสาว",
+                        "transliteration": "nóng-sǎao",
+                        "translation": "jüngere Schwester"
+                      },
+                      {
+                        "thai": "ใหญ่",
+                        "transliteration": "yài",
+                        "translation": "groß"
+                      },
+                      {
+                        "thai": "นี่",
+                        "transliteration": "nîi",
+                        "translation": "dies / hier"
+                      },
+                      {
+                        "thai": "น่ารัก",
+                        "transliteration": "nâa-rák",
+                        "translation": "süß / liebenswert"
+                      },
+                      {
+                        "thai": "อยู่",
+                        "transliteration": "yùu",
+                        "translation": "sich befinden / sein"
+                      },
+                      {
+                        "thai": "ที่",
+                        "transliteration": "thîi",
+                        "translation": "bei / an / in"
+                      },
+                      {
+                        "thai": "ร้าน",
+                        "transliteration": "ráan",
+                        "translation": "Laden"
+                      },
+                      {
+                        "thai": "ร้านกาแฟ",
+                        "transliteration": "ráan gaa-fɛɛ",
+                        "translation": "Café"
+                      },
+                      {
+                        "thai": "ทำงาน",
+                        "transliteration": "tham-ngaan",
+                        "translation": "arbeiten"
+                      },
+                      {
+                        "thai": "ที่นี่",
+                        "transliteration": "thîi-nîi",
+                        "translation": "hier"
+                      },
+                      {
+                        "thai": "คิดว่า",
+                        "transliteration": "khít wâa",
+                        "translation": "denken, dass"
+                      },
+                      {
+                        "thai": "เห็น",
+                        "transliteration": "hěn",
+                        "translation": "sehen"
+                      },
+                      {
+                        "thai": "คนหนึ่ง",
+                        "transliteration": "khon nʉ̀ng",
+                        "translation": "eine Person"
+                      },
+                      {
+                        "thai": "ในที่สุด",
+                        "transliteration": "nai-thîi-sùt",
+                        "translation": "endlich"
+                      },
+                      {
+                        "thai": "ก็",
+                        "transliteration": "kɔ̂ɔ",
+                        "translation": "auch / so"
+                      }
+                    ]
+                  }
+                ],
+                "patternLead": "🔥 Das aktive Grammatikmuster bleibt stabil:",
+                "pattern": {
+                  "thai": "อ๋อ ในที่สุดก็รู้แล้ว",
+                  "transliteration": "ɔ̌ɔ, nai-thîi-sùt kɔ̂ɔ rúu lɛ́ɛo",
+                  "translation": "Ach so, endlich weiß ich es."
+                },
+                "discoveries": [
+                  {
+                    "thai": "เป็น",
+                    "transliteration": "bpen",
+                    "translation": "Die zentrale sein-Konstruktion bleibt aktiv."
+                  },
+                  {
+                    "thai": "ใคร",
+                    "transliteration": "khrai",
+                    "translation": "Wer — als Fragewerkzeug, sobald es eingeführt wurde."
+                  }
+                ],
+                "closing": "Keine Grammatikexplosion: Wir festigen das Muster durch kontrollierte Wiederholung."
+              },
+              "completion": {
+                "title": "🏆 400 / 500 — FOUNDATION BLOCK 4 GESCHAFFT",
+                "heading": "🧠 Grammatikboss 1",
+                "message": "Du hast jetzt 400 von 500 Sätzen gegrindet.",
+                "lead": "🆕 Neue Wörter aus Satz 351–400",
+                "wordSectionTitle": "Neue Wörter aus Satz 351–400",
+                "words": [
+                  {
+                    "thai": "เจอ",
+                    "transliteration": "jəə",
+                    "translation": "treffen / begegnen"
+                  },
+                  {
+                    "thai": "ใหม่",
+                    "transliteration": "mài",
+                    "translation": "neu"
+                  },
+                  {
+                    "thai": "คือ",
+                    "transliteration": "khʉʉ",
+                    "translation": "sein / das ist"
+                  },
+                  {
+                    "thai": "ยินดี",
+                    "transliteration": "yin-dii",
+                    "translation": "erfreut / gern"
+                  },
+                  {
+                    "thai": "ได้",
+                    "transliteration": "dâi",
+                    "translation": "können / erhalten"
+                  },
+                  {
+                    "thai": "รู้จัก",
+                    "transliteration": "rúu-jàk",
+                    "translation": "kennen / kennenlernen"
+                  },
+                  {
+                    "thai": "เพื่อนร่วมงาน",
+                    "transliteration": "phʉ̂an-rûam-ngaan",
+                    "translation": "Arbeitskollege / Arbeitskollegin"
+                  },
+                  {
+                    "thai": "กับ",
+                    "transliteration": "gàp",
+                    "translation": "mit"
+                  },
+                  {
+                    "thai": "หัวหน้า",
+                    "transliteration": "hǔa-nâa",
+                    "translation": "Chef / Chefin"
+                  },
+                  {
+                    "thai": "แต่",
+                    "transliteration": "dtɛ̀ɛ",
+                    "translation": "aber"
+                  },
+                  {
+                    "thai": "ด้วย",
+                    "transliteration": "dûai",
+                    "translation": "auch / mit"
+                  },
+                  {
+                    "thai": "ใน",
+                    "transliteration": "nai",
+                    "translation": "in"
+                  },
+                  {
+                    "thai": "สวน",
+                    "transliteration": "sǔan",
+                    "translation": "Park / Garten"
+                  },
+                  {
+                    "thai": "เด็ก",
+                    "transliteration": "dèk",
+                    "translation": "Kind"
+                  },
+                  {
+                    "thai": "ลูก",
+                    "transliteration": "lûuk",
+                    "translation": "Kind / Sohn / Tochter"
+                  },
+                  {
+                    "thai": "ทุกคน",
+                    "transliteration": "thúk-khon",
+                    "translation": "alle / jeder"
+                  },
+                  {
+                    "thai": "เดียวกัน",
+                    "transliteration": "diao-gan",
+                    "translation": "gleich / derselbe"
+                  },
+                  {
+                    "thai": "มา",
+                    "transliteration": "maa",
+                    "translation": "kommen"
+                  },
+                  {
+                    "thai": "มี",
+                    "transliteration": "mii",
+                    "translation": "haben / es gibt"
+                  },
+                  {
+                    "thai": "หลาย",
+                    "transliteration": "lǎai",
+                    "translation": "viele"
+                  },
+                  {
+                    "thai": "จำ",
+                    "transliteration": "jam",
+                    "translation": "sich erinnern / merken"
+                  },
+                  {
+                    "thai": "ไม่ได้",
+                    "transliteration": "mâi dâi",
+                    "translation": "nicht können"
+                  },
+                  {
+                    "thai": "พี่สาว",
+                    "transliteration": "phîi-sǎao",
+                    "translation": "ältere Schwester"
+                  }
+                ],
+                "questionLead": "🧠 Erkanntes Muster:",
+                "question": {
+                  "thai": "แล้วเด็กเป็นใคร",
+                  "transliteration": "lɛ́ɛo dèk bpen khrai",
+                  "translation": "Und wer ist das Kind?"
+                },
+                "answerLead": "Und darauf folgt:",
+                "answer": {
+                  "thai": "เด็กเป็นลูก",
+                  "transliteration": "dèk bpen lûuk",
+                  "translation": "Das Kind ist ein Sohn/eine Tochter."
+                },
+                "alternativeLead": "Oder:",
+                "alternative": {
+                  "thai": "แล้วผมเป็นใคร",
+                  "transliteration": "lɛ́ɛo phǒm bpen khrai",
+                  "translation": "Und wer bin ich?"
+                },
+                "possessionLead": "Die Struktur erscheint außerdem in neuen Situationen:",
+                "possession": {
+                  "thai": "คุณเป็นเพื่อนครับ",
+                  "transliteration": "khun bpen phʉ̂an khráp",
+                  "translation": "Du bist ein Freund."
+                },
+                "progressTitle": "📈 DEIN FORTSCHRITT",
+                "progress": "400 / 500 Sätze",
+                "progressSummary": "80 % von Grammatikboss 1 geschafft.",
+                "systemLead": "Deine Grundstruktur wird immer sicherer:",
+                "systemExamples": [
+                  {
+                    "thai": "แล้วเด็กเป็นใคร",
+                    "transliteration": "lɛ́ɛo dèk bpen khrai",
+                    "translation": "Und wer ist das Kind?"
+                  },
+                  {
+                    "thai": "เด็กเป็นลูก",
+                    "transliteration": "dèk bpen lûuk",
+                    "translation": "Das Kind ist ein Sohn/eine Tochter."
+                  },
+                  {
+                    "thai": "คุณเป็นเพื่อนครับ",
+                    "transliteration": "khun bpen phʉ̂an khráp",
+                    "translation": "Du bist ein Freund."
+                  }
+                ],
+                "final": "Der nächste Foundation-Block kann beginnen.",
+                "finalProgress": "400 / 500 → 80 %"
               }
             },
             {
@@ -18686,21 +19459,386 @@
                 "sentenceRange": "401–500",
                 "grammar": "เป็น",
                 "pattern": "X + เป็น + Y"
+              },
+              "midpointReminder": {
+                "title": "💎 450 SÄTZE GESCHAFFT",
+                "message": "Du hast jetzt 450 Sätze im Thai-Giga-Drill gegrindet.",
+                "lead": "🆕 Neue Wörter aus Satz 401–450",
+                "sections": [
+                  {
+                    "title": "Neue Wörter",
+                    "words": [
+                      {
+                        "thai": "บอก",
+                        "transliteration": "bòk",
+                        "translation": "sagen"
+                      },
+                      {
+                        "thai": "ว่า",
+                        "transliteration": "wâa",
+                        "translation": "dass / sagen"
+                      },
+                      {
+                        "thai": "คำถาม",
+                        "transliteration": "kham-thǎam",
+                        "translation": "Frage"
+                      },
+                      {
+                        "thai": "ง่าย",
+                        "transliteration": "ngâai",
+                        "translation": "einfach"
+                      },
+                      {
+                        "thai": "มาก",
+                        "transliteration": "mâak",
+                        "translation": "viel / sehr"
+                      },
+                      {
+                        "thai": "หัวเราะ",
+                        "transliteration": "hǔa-rɔ́",
+                        "translation": "lachen"
+                      },
+                      {
+                        "thai": "ดี",
+                        "transliteration": "dii",
+                        "translation": "gut"
+                      },
+                      {
+                        "thai": "วัน",
+                        "transliteration": "wan",
+                        "translation": "Tag"
+                      },
+                      {
+                        "thai": "ต่อไป",
+                        "transliteration": "dtɔ̀ɔ-bpai",
+                        "translation": "später / als Nächstes"
+                      },
+                      {
+                        "thai": "อาจ",
+                        "transliteration": "àat",
+                        "translation": "vielleicht"
+                      },
+                      {
+                        "thai": "สนิท",
+                        "transliteration": "sà-nìt",
+                        "translation": "eng / vertraut"
+                      },
+                      {
+                        "thai": "ร้านอาหาร",
+                        "transliteration": "ráan-aa-hǎan",
+                        "translation": "Restaurant"
+                      },
+                      {
+                        "thai": "ตอนเย็น",
+                        "transliteration": "dtɔɔn-yen",
+                        "translation": "am Abend"
+                      },
+                      {
+                        "thai": "เดิน",
+                        "transliteration": "dəən",
+                        "translation": "gehen / laufen"
+                      },
+                      {
+                        "thai": "คนรู้จัก",
+                        "transliteration": "khon rúu-jàk",
+                        "translation": "Bekannter / Bekannte"
+                      },
+                      {
+                        "thai": "ภรรยา",
+                        "transliteration": "phan-rá-yaa",
+                        "translation": "Ehefrau"
+                      }
+                    ]
+                  }
+                ],
+                "patternLead": "🔥 Das aktive Grammatikmuster bleibt stabil:",
+                "pattern": {
+                  "thai": "ทุกคนเป็นคนดี",
+                  "transliteration": "thúk-khon bpen khon dii",
+                  "translation": "Alle sind gute Menschen."
+                },
+                "discoveries": [
+                  {
+                    "thai": "เป็น",
+                    "transliteration": "bpen",
+                    "translation": "Die zentrale sein-Konstruktion bleibt aktiv."
+                  },
+                  {
+                    "thai": "ใคร",
+                    "transliteration": "khrai",
+                    "translation": "Wer — als Fragewerkzeug, sobald es eingeführt wurde."
+                  }
+                ],
+                "closing": "Keine Grammatikexplosion: Wir festigen das Muster durch kontrollierte Wiederholung."
+              },
+              "completion": {
+                "title": "🏆 500 / 500 — GRAMMATIKBOSS 1 GESCHAFFT",
+                "heading": "🧠 Grammatikboss 1",
+                "message": "Du hast jetzt 500 von 500 Sätzen gegrindet.",
+                "lead": "🆕 Neue Wörter aus Satz 451–500",
+                "wordSectionTitle": "Neue Wörter aus Satz 451–500",
+                "words": [
+                  {
+                    "thai": "ถาม",
+                    "transliteration": "thǎam",
+                    "translation": "fragen"
+                  },
+                  {
+                    "thai": "อีก",
+                    "transliteration": "ìik",
+                    "translation": "noch / wieder"
+                  },
+                  {
+                    "thai": "สนุก",
+                    "transliteration": "sà-nùk",
+                    "translation": "Spaß machen"
+                  },
+                  {
+                    "thai": "ทีม",
+                    "transliteration": "thiim",
+                    "translation": "Team"
+                  },
+                  {
+                    "thai": "อาหาร",
+                    "transliteration": "aa-hǎan",
+                    "translation": "Essen"
+                  },
+                  {
+                    "thai": "อร่อย",
+                    "transliteration": "a-rɔ̀i",
+                    "translation": "lecker"
+                  },
+                  {
+                    "thai": "ความสุข",
+                    "transliteration": "khwaam-sùk",
+                    "translation": "Glück"
+                  },
+                  {
+                    "thai": "อ่าน",
+                    "transliteration": "àan",
+                    "translation": "lesen"
+                  },
+                  {
+                    "thai": "ภาษา",
+                    "transliteration": "phaa-sǎa",
+                    "translation": "Sprache"
+                  },
+                  {
+                    "thai": "ครบ",
+                    "transliteration": "khróp",
+                    "translation": "vollständig"
+                  },
+                  {
+                    "thai": "ห้า",
+                    "transliteration": "hâa",
+                    "translation": "fünf"
+                  },
+                  {
+                    "thai": "ร้อย",
+                    "transliteration": "rɔ́ɔi",
+                    "translation": "hundert"
+                  },
+                  {
+                    "thai": "ประโยค",
+                    "transliteration": "bprà-yòok",
+                    "translation": "Satz"
+                  },
+                  {
+                    "thai": "ตอนแรก",
+                    "transliteration": "dtɔɔn râek",
+                    "translation": "am Anfang"
+                  },
+                  {
+                    "thai": "คำว่า",
+                    "transliteration": "kham wâa",
+                    "translation": "das Wort / dass"
+                  },
+                  {
+                    "thai": "ใช้",
+                    "transliteration": "chái",
+                    "translation": "benutzen"
+                  },
+                  {
+                    "thai": "ยังไง",
+                    "transliteration": "yang-ngai",
+                    "translation": "wie"
+                  },
+                  {
+                    "thai": "ขึ้น",
+                    "transliteration": "khʉ̂n",
+                    "translation": "mehr / hinauf"
+                  },
+                  {
+                    "thai": "คำ",
+                    "transliteration": "kham",
+                    "translation": "Wort"
+                  },
+                  {
+                    "thai": "ยัง",
+                    "transliteration": "yang",
+                    "translation": "noch / weiterhin"
+                  },
+                  {
+                    "thai": "อะไร",
+                    "transliteration": "à-rai",
+                    "translation": "was"
+                  },
+                  {
+                    "thai": "ยาก",
+                    "transliteration": "yâak",
+                    "translation": "schwierig"
+                  },
+                  {
+                    "thai": "สิ",
+                    "transliteration": "sì",
+                    "translation": "doch / klar"
+                  },
+                  {
+                    "thai": "ค่อยๆ",
+                    "transliteration": "khɔ̂i-khɔ̂i",
+                    "translation": "nach und nach / Stück für Stück"
+                  },
+                  {
+                    "thai": "ฝึก",
+                    "transliteration": "fʉ̀k",
+                    "translation": "üben"
+                  },
+                  {
+                    "thai": "ถ้า",
+                    "transliteration": "thâa",
+                    "translation": "wenn"
+                  },
+                  {
+                    "thai": "ทุก",
+                    "transliteration": "thúk",
+                    "translation": "jeder / alle"
+                  },
+                  {
+                    "thai": "เดี๋ยว",
+                    "transliteration": "dǐao",
+                    "translation": "gleich / später"
+                  },
+                  {
+                    "thai": "เก่ง",
+                    "transliteration": "gèng",
+                    "translation": "gut / geschickt"
+                  },
+                  {
+                    "thai": "พร้อม",
+                    "transliteration": "phrɔ́ɔm",
+                    "translation": "bereit"
+                  },
+                  {
+                    "thai": "สำหรับ",
+                    "transliteration": "sǎm-ràp",
+                    "translation": "für"
+                  },
+                  {
+                    "thai": "บอส",
+                    "transliteration": "bɔ́ɔ",
+                    "translation": "Boss"
+                  }
+                ],
+                "questionLead": "🧠 Erkanntes Muster:",
+                "question": {
+                  "thai": "ยังมีอะไรที่ยากอยู่ไหม",
+                  "transliteration": "yang mii à-rai thîi yâak yùu mái",
+                  "translation": "Gibt es noch etwas, das schwierig ist?"
+                },
+                "answerLead": "Und darauf folgt:",
+                "answer": {
+                  "thai": "มีสิ แต่ค่อยๆ ฝึกไปก็ได้",
+                  "transliteration": "mii sì, dtɛ̀ɛ khɔ̂i-khɔ̂i fʉ̀k bpai kɔ̂ɔ dâi",
+                  "translation": "Klar, aber man kann einfach Stück für Stück üben."
+                },
+                "alternativeLead": "Oder:",
+                "alternative": {
+                  "thai": "ถ้าฝึกทุกวัน เดี๋ยวก็เก่งขึ้น",
+                  "transliteration": "thâa fʉ̀k thúk wan, dǐao kɔ̂ɔ gèng khʉ̂n",
+                  "translation": "Wenn man jeden Tag übt, wird man besser."
+                },
+                "possessionLead": "Die Struktur erscheint außerdem in neuen Situationen:",
+                "possession": {
+                  "thai": "ตอนนี้ผมพร้อมสำหรับบอสต่อไปแล้ว",
+                  "transliteration": "dtɔɔn-níi phǒm phrɔ́ɔm sǎm-ràp bɔ́ɔtɔ̀ɔ-bpai lɛ́ɛo",
+                  "translation": "Jetzt bin ich bereit für den nächsten Boss."
+                },
+                "progressTitle": "📈 DEIN FORTSCHRITT",
+                "progress": "500 / 500 Sätze",
+                "progressSummary": "100 % von Grammatikboss 1 geschafft.",
+                "systemLead": "Deine Grundstruktur wird immer sicherer:",
+                "systemExamples": [
+                  {
+                    "thai": "ยังมีอะไรที่ยากอยู่ไหม",
+                    "transliteration": "yang mii à-rai thîi yâak yùu mái",
+                    "translation": "Gibt es noch etwas, das schwierig ist?"
+                  },
+                  {
+                    "thai": "มีสิ แต่ค่อยๆ ฝึกไปก็ได้",
+                    "transliteration": "mii sì, dtɛ̀ɛ khɔ̂i-khɔ̂i fʉ̀k bpai kɔ̂ɔ dâi",
+                    "translation": "Klar, aber man kann einfach Stück für Stück üben."
+                  },
+                  {
+                    "thai": "ตอนนี้ผมพร้อมสำหรับบอสต่อไปแล้ว",
+                    "transliteration": "dtɔɔn-níi phǒm phrɔ́ɔm sǎm-ràp bɔ́ɔtɔ̀ɔ-bpai lɛ́ɛo",
+                    "translation": "Jetzt bin ich bereit für den nächsten Boss."
+                  }
+                ],
+                "final": "Der erste thailändische Grammatikboss ist geschafft.",
+                "finalProgress": "500 / 500 → 100 %"
               }
             }
           ],
           "reminders": [
             {
-              "title": "50-Satz-Reminder",
+              "title": "💎 50 SÄTZE GESCHAFFT",
               "sentenceRange": "1–50",
-              "grammar": "เป็น",
-              "pattern": "X เป็น Y"
+              "type": "midpoint"
             },
             {
-              "title": "100-Satz-Foundation-Abschluss",
-              "sentenceRange": "1–100",
-              "grammar": "เป็น",
-              "pattern": "X + เป็น + Y"
+              "title": "💎 100 SÄTZE GESCHAFFT",
+              "sentenceRange": "51–100",
+              "type": "midpoint"
+            },
+            {
+              "title": "💎 150 SÄTZE GESCHAFFT",
+              "sentenceRange": "101–150",
+              "type": "midpoint"
+            },
+            {
+              "title": "💎 200 SÄTZE GESCHAFFT",
+              "sentenceRange": "151–200",
+              "type": "midpoint"
+            },
+            {
+              "title": "💎 250 SÄTZE GESCHAFFT",
+              "sentenceRange": "201–250",
+              "type": "midpoint"
+            },
+            {
+              "title": "💎 300 SÄTZE GESCHAFFT",
+              "sentenceRange": "251–300",
+              "type": "midpoint"
+            },
+            {
+              "title": "💎 350 SÄTZE GESCHAFFT",
+              "sentenceRange": "301–350",
+              "type": "midpoint"
+            },
+            {
+              "title": "💎 400 SÄTZE GESCHAFFT",
+              "sentenceRange": "351–400",
+              "type": "midpoint"
+            },
+            {
+              "title": "💎 450 SÄTZE GESCHAFFT",
+              "sentenceRange": "401–450",
+              "type": "midpoint"
+            },
+            {
+              "title": "💎 500 SÄTZE GESCHAFFT",
+              "sentenceRange": "451–500",
+              "type": "midpoint"
             }
           ],
           "completion": {
