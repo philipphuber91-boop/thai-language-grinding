@@ -1,0 +1,258 @@
+.comedy-reading-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: none;
+    align-items: stretch;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(12, 9, 6, 0.78);
+}
+
+.comedy-reading-overlay.is-open {
+    display: flex;
+}
+
+.comedy-reading-window {
+    display: flex;
+    flex-direction: column;
+    width: min(1180px, 100%);
+    max-height: 100%;
+    overflow: hidden;
+    padding: 28px;
+    border: 2px solid #c89a35;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #3b3122 0%, #231d16 100%);
+    color: #fff8e7;
+    box-shadow: 0 0 45px rgba(0, 0, 0, 0.65);
+}
+
+.comedy-reading-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.comedy-reading-header h2 {
+    margin: 4px 0 0;
+    color: #ffd56f;
+}
+
+.comedy-reading-close,
+.comedy-reading-dictionary-close {
+    flex: 0 0 auto;
+    border: 1px solid rgba(255, 213, 111, 0.55);
+    border-radius: 8px;
+    background: #4b3a22;
+    color: #ffe4a2;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.comedy-reading-intro {
+    max-width: 760px;
+    margin: 16px 0 22px;
+    color: #e7d8b6;
+}
+
+.comedy-reading-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(260px, 340px);
+    gap: 20px;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.comedy-reading-lines {
+    min-height: 0;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+.comedy-reading-line {
+    margin: 0 0 14px;
+    padding: 16px 18px;
+    border: 1px solid rgba(232, 202, 135, 0.25);
+    border-radius: 12px;
+    background: rgba(255, 248, 226, 0.07);
+}
+
+.comedy-reading-line.is-scene-intro {
+    border-color: rgba(255, 213, 111, 0.55);
+    background: rgba(200, 154, 53, 0.12);
+}
+
+.comedy-reading-line-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+    color: #d7bc7f;
+    font-size: 0.84rem;
+}
+
+.comedy-reading-line-meta strong {
+    color: #fff0c8;
+}
+
+.comedy-reading-thai {
+    margin: 0;
+    font-family: "Noto Serif Thai", "Sarabun", sans-serif;
+    font-size: clamp(1.35rem, 2.1vw, 1.8rem);
+    line-height: 1.65;
+}
+
+.comedy-reading-word {
+    display: inline;
+    padding: 1px 3px;
+    border: 0;
+    border-radius: 4px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+}
+
+.comedy-reading-word:hover,
+.comedy-reading-word:focus-visible,
+.comedy-reading-word.is-selected {
+    background: rgba(255, 213, 111, 0.25);
+    outline: none;
+}
+
+.comedy-reading-word.is-missing {
+    text-decoration: underline dotted rgba(255, 138, 128, 0.9);
+    text-underline-offset: 3px;
+}
+
+.comedy-reading-german {
+    margin: 8px 0 0;
+    color: #e7d8b6;
+    line-height: 1.5;
+}
+
+.comedy-reading-dictionary {
+    min-height: 0;
+    overflow-y: auto;
+    padding: 18px;
+    border: 1px solid rgba(255, 213, 111, 0.45);
+    border-radius: 12px;
+    background: rgba(22, 16, 10, 0.65);
+}
+
+.comedy-reading-dictionary-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.comedy-reading-dictionary h3 {
+    margin: 4px 0 0;
+    color: #ffd56f;
+    font-family: "Noto Serif Thai", "Sarabun", sans-serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.comedy-reading-dictionary-meaning {
+    margin: 16px 0 0;
+    padding: 14px 16px;
+    border: 1px solid rgba(255, 213, 111, 0.55);
+    border-radius: 10px;
+    background: rgba(200, 154, 53, 0.16);
+}
+
+.comedy-reading-dictionary-meaning.is-missing {
+    border-color: rgba(255, 138, 128, 0.7);
+    background: rgba(120, 40, 34, 0.35);
+}
+
+.comedy-reading-dictionary-meaning .eyebrow {
+    margin: 0;
+    color: #d7bc7f;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.comedy-reading-dictionary-translation {
+    margin: 6px 0 0;
+    color: #fff4d2;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.35;
+}
+
+.comedy-reading-dictionary-translation.is-missing {
+    color: #ffd0c8;
+    font-size: 1.05rem;
+}
+
+.comedy-reading-dictionary-explanation {
+    margin: 8px 0 0;
+    color: #e7d8b6;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.comedy-reading-dictionary-note {
+    color: #d7bc7f;
+    font-size: 0.9rem;
+    line-height: 1.45;
+}
+
+.comedy-reading-dictionary-occurrences {
+    display: grid;
+    gap: 12px;
+    margin: 16px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.comedy-reading-dictionary-occurrences li {
+    display: grid;
+    gap: 4px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(232, 202, 135, 0.2);
+}
+
+.comedy-reading-dictionary-occurrences strong {
+    color: #fff0c8;
+    font-size: 0.85rem;
+}
+
+.comedy-reading-dictionary-occurrences span {
+    color: #e7d8b6;
+    line-height: 1.4;
+}
+
+.comedy-reading-dictionary-occurrences .comedy-reading-dictionary-thai {
+    color: #fff8e7;
+    font-family: "Noto Serif Thai", "Sarabun", sans-serif;
+}
+
+@media (max-width: 800px) {
+    .comedy-reading-overlay {
+        padding: 10px;
+    }
+
+    .comedy-reading-window {
+        padding: 18px;
+    }
+
+    .comedy-reading-layout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .comedy-reading-lines {
+        flex: 1 1 auto;
+    }
+
+    .comedy-reading-dictionary {
+        flex: 0 0 auto;
+        max-height: 36vh;
+    }
+}

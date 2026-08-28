@@ -1,4 +1,6 @@
 const questListe = document.getElementById("questListe");
+const readingModeCard = document.getElementById("readingModeCard");
+const readingButton = document.getElementById("readingButton");
 
 let contentMode = "campaign";
 const questUnlockBypassEnabled = true;
@@ -917,6 +919,9 @@ function starteQuest(questNummer) {
     const quest = daten[questNummer];
     const unlockState = getQuestUnlockState(quest, questNummer);
     questStartBypassActive = false;
+    if (readingModeCard) {
+        readingModeCard.hidden = contentMode !== "comedy";
+    }
     const thaiWordStats = getThaiWordStatistics(quest.thaiZeilen);
     const familiarityStats =
         getThaiWordFamiliarityStatistics(
@@ -961,6 +966,9 @@ function starteQuest(questNummer) {
             button.disabled = !unlockState.unlocked;
         }
     });
+    if (readingButton) {
+        readingButton.disabled = !unlockState.unlocked;
+    }
 
     document.getElementById("startQuestWords").textContent =
         "📖 " + formatThaiWordStatistics(thaiWordStats);
@@ -1137,6 +1145,26 @@ if (challengeButton) {
 
 }
 
+if (readingButton) {
+    readingButton.onclick = function () {
+        if (
+            contentMode !== "comedy" ||
+            !questStartBypassActive &&
+            !getQuestUnlockState(
+                getQuestCollection()[ausgewaehlteQuest],
+                ausgewaehlteQuest
+            ).unlocked
+        ) {
+            return;
+        }
+
+        document
+            .getElementById("startQuestOverlay")
+            .classList.remove("active");
+        window.comedyReader?.open(ausgewaehlteQuest);
+    };
+}
+
 const questUnlockBypassButton = document.getElementById(
     "questUnlockBypassButton"
 );
@@ -1148,7 +1176,7 @@ if (questUnlockBypassButton) {
         }
 
         questStartBypassActive = true;
-        [campaignButton, challengeButton].forEach(button => {
+        [campaignButton, challengeButton, readingButton].forEach(button => {
             if (button) {
                 button.disabled = false;
             }
