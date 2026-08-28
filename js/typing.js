@@ -70,7 +70,8 @@ if (typingAudioContainer && window.questAudio) {
         ? window.questAudio.renderSentenceAudioPlayer({
             audio: gigaDrillSentence?.audio,
             text: gigaDrillSentence?.thaiZeilen?.[0] || "",
-            className: "typing-audio-player"
+            className: "typing-audio-player",
+            playbackRate: 1
         })
         : window.questAudio.renderQuestAudioPlayer({
               contentMode,

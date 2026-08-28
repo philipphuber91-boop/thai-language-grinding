@@ -531,6 +531,15 @@
         return progress;
     }
 
+    function getTypingAudio(sentence) {
+        return {
+            type: "speechSynthesis",
+            lang: "th-TH",
+            voiceId: "",
+            requireVoice: true
+        };
+    }
+
     function getTypingSentence(sentence, story) {
         return {
             id: sentence.id,
@@ -544,7 +553,7 @@
             gigaDrillStoryId: story.id,
             gigaDrillTokens: sentence.tokens,
             gigaDrillTokensByLine: [sentence.tokens],
-            audio: sentence.audio || { type: "speechSynthesis", text: sentence.thai }
+            audio: getTypingAudio(sentence)
         };
     }
 

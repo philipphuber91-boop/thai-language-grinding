@@ -15,6 +15,15 @@
             .replace(/'/g, "&#039;");
     }
 
+    function getSentenceAudio() {
+        return {
+            type: "speechSynthesis",
+            lang: "th-TH",
+            voiceId: "",
+            requireVoice: true
+        };
+    }
+
     function getSentenceEntry(sentenceId) {
         const sentence = indexes?.sentencesById.get(sentenceId);
         if (!sentence) {
@@ -22,7 +31,7 @@
         }
 
         const story = indexes.storiesById.get(sentence.storyId);
-        const audio = sentence.audio || { type: "speechSynthesis" };
+        const audio = getSentenceAudio(sentence);
         return {
             id: sentence.id,
             storyId: sentence.storyId,
@@ -33,15 +42,14 @@
             transliteration: sentence.transliteration,
             translation: sentence.translation,
             audio: audio.type === "speechSynthesis"
-                ? {
-                    ...audio,
-                    lang: audio.lang || "th-TH",
-                    fallbackSrc:
-                        "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=" +
-                        encodeURIComponent(sentence.thai)
-                }
+                ? { ...audio, lang: audio.lang || "th-TH" }
                 : audio
         };
+    }
+
+    function getAudioForSentence(sentenceId) {
+        const sentence = indexes?.sentencesById.get(sentenceId);
+        return sentence ? getSentenceAudio(sentence) : null;
     }
 
     function getEntryLabel(entry) {
@@ -272,7 +280,7 @@
             getEntryId: entry => entry.id,
             resolveEntry: getSentenceEntry,
             getEntryText: entry => entry.thai,
-            getEntryAudio: entry => entry.audio,
+            getEntryAudio: entry => getSentenceEntry(entry.id)?.audio || entry.audio,
             onCurrentChange: notifyCurrentSentence,
             onStateChange: renderPlaylist,
             onStatus: setStatus,
@@ -309,6 +317,7 @@
         addBlock,
         openTypingPlaylist,
         removeSentence,
+        getAudioForSentence,
         hasSentence: sentenceId =>
             Boolean(controller?.state.playlist.some(entry => entry.id === sentenceId)),
         getState: () => controller?.state || null

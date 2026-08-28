@@ -315,6 +315,9 @@
         "object",
         "null"
       ],
+      "required": [
+        "type"
+      ],
       "properties": {
         "type": {
           "enum": [
@@ -330,6 +333,22 @@
           "type": "string"
         }
       },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "type": {
+                "const": "url"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "src"
+            ]
+          }
+        }
+      ],
       "additionalProperties": true
     },
     "supplementalContent": {

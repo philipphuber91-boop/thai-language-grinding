@@ -176,9 +176,10 @@
                 : `<span>${escapeHtml(token.text)}</span>`)
             .join("");
         const audioMarkup = window.questAudio.renderSentenceAudioPlayer({
-            audio: sentence.audio,
+            audio: window.thaiGigaAudio.getAudioForSentence(sentence.id) || sentence.audio,
             text: sentence.thai,
-            className: "thai-giga-inline-audio"
+            className: "thai-giga-inline-audio",
+            playbackRate: 1
         });
 
         return `
@@ -406,12 +407,12 @@
                 return;
             }
 
+            window.thaiGigaAudio.initialize(indexes);
             renderHierarchy();
             renderBlockList();
             const firstBoss = content.levels[0].bosses[0];
             renderBossOverview(firstBoss);
             showInitialStory();
-            window.thaiGigaAudio.initialize(indexes);
             initializeSentenceActions();
         } catch (error) {
             console.error(error);

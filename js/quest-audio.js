@@ -40,6 +40,8 @@
         }
 
         if (activeNativeAudio) {
+            activeNativeAudio.onended = null;
+            activeNativeAudio.onerror = null;
             activeNativeAudio.pause();
             activeNativeAudio.currentTime = 0;
             activeNativeAudio = null;
@@ -54,17 +56,43 @@
         activeSpeech = null;
     }
 
-    function getSpeechVoice(language) {
+    function stopNativeAudioPlayers() {
+        activePlayers.forEach(audio => {
+            audio.pause();
+            audio.currentTime = 0;
+        });
+        activePlayers.clear();
+    }
+
+    function getSpeechVoices(language = "") {
         if (!("speechSynthesis" in window)) {
-            return null;
+            return [];
         }
 
         const requestedLanguage = String(language || "").toLowerCase();
         const languageCode = requestedLanguage.split("-")[0];
         const voices = window.speechSynthesis.getVoices();
-        return voices.find(voice => voice.lang.toLowerCase() === requestedLanguage) ||
-            voices.find(voice => voice.lang.toLowerCase().split("-")[0] === languageCode) ||
-            null;
+        if (!requestedLanguage) {
+            return voices;
+        }
+        return voices.filter(voice => {
+                const voiceLanguage = String(voice.lang || "").toLowerCase();
+                return voiceLanguage === requestedLanguage ||
+                    voiceLanguage.split("-")[0] === languageCode;
+            });
+    }
+
+    function getSpeechVoice(language, voiceId = "") {
+        const voices = getSpeechVoices(language);
+        if (voiceId) {
+            const exactVoice = voices.find(voice =>
+                voice.voiceURI === voiceId || voice.name === voiceId
+            );
+            if (exactVoice) {
+                return exactVoice;
+            }
+        }
+        return voices[0] || null;
     }
 
     function speakText(text, button = null, options = {}) {
@@ -77,7 +105,11 @@
             return false;
         }
 
-        if (button && activeSpeech?.text === text) {
+        if (
+            button &&
+            activeSpeech?.button === button &&
+            activeSpeech?.text === text
+        ) {
             stopSpeech();
             return true;
         }
@@ -86,7 +118,15 @@
 
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = options.lang || "th-TH";
-        const voice = options.voice || getSpeechVoice(utterance.lang);
+        const voice = options.voice ||
+            getSpeechVoice(utterance.lang, options.voiceId || options.voiceName);
+        if (
+            options.requireVoice &&
+            getSpeechVoices("").length > 0 &&
+            !voice
+        ) {
+            return false;
+        }
         if (voice) {
             utterance.voice = voice;
         }
@@ -168,6 +208,64 @@
             playing: false
         };
         let playbackRunId = 0;
+        const preloadedAudio = new Map();
+
+        const preloadEntry = entry => {
+            const resolvedEntry = resolveEntry(getEntryId(entry));
+            const audio = resolvedEntry ? getEntryAudio?.(resolvedEntry) : null;
+            if (
+                audio?.type !== "url" ||
+                typeof audio.src !== "string" ||
+                !audio.src.trim()
+            ) {
+                return;
+            }
+
+            const entryId = getEntryId(entry);
+            const cached = preloadedAudio.get(entryId);
+            if (cached?.src === audio.src && !cached.element.error) {
+                return;
+            }
+
+            if (cached) {
+                cached.element.onended = null;
+                cached.element.onerror = null;
+                cached.element.pause();
+            }
+
+            const element = new Audio();
+            element.preload = "auto";
+            element.src = audio.src;
+            element.load();
+            preloadedAudio.set(entryId, { src: audio.src, element });
+        };
+
+        const preloadPlaylist = () => {
+            const playlistIds = new Set(state.playlist.map(getEntryId));
+            preloadedAudio.forEach((cached, entryId) => {
+                if (playlistIds.has(entryId)) {
+                    return;
+                }
+                cached.element.onended = null;
+                cached.element.onerror = null;
+                cached.element.pause();
+                cached.element.removeAttribute("src");
+                cached.element.load();
+                preloadedAudio.delete(entryId);
+            });
+            state.playlist.forEach(preloadEntry);
+        };
+
+        const clearPreloadedAudio = () => {
+            preloadedAudio.forEach(cached => {
+                cached.element.onended = null;
+                cached.element.onerror = null;
+                cached.element.pause();
+                cached.element.removeAttribute("src");
+                cached.element.load();
+            });
+            preloadedAudio.clear();
+        };
 
         const notify = () => {
             const current = state.playlist[state.currentIndex] || null;
@@ -294,38 +392,44 @@
             };
             const audio = getEntryAudio?.(resolvedEntry);
             const speechVoice = audio?.type === "speechSynthesis"
-                ? getSpeechVoice(audio.lang || "th-TH")
+                ? getSpeechVoice(audio.lang || "th-TH", audio.voiceId || audio.voiceName)
                 : null;
-            const fallbackSource = audio?.type === "speechSynthesis" &&
-                !speechVoice &&
-                typeof audio.fallbackSrc === "string" &&
-                audio.fallbackSrc.trim()
-                ? audio.fallbackSrc
-                : "";
 
-            if (
-                (audio?.type === "url" && typeof audio.src === "string" && audio.src.trim()) ||
-                fallbackSource
-            ) {
-                const nativeAudio = new Audio(fallbackSource || audio.src);
+            if (audio?.type === "url" && typeof audio.src === "string" && audio.src.trim()) {
+                preloadEntry(entry);
+                const cached = preloadedAudio.get(getEntryId(entry));
+                const nativeAudio = cached?.src === audio.src
+                    ? cached.element
+                    : new Audio(audio.src);
+                nativeAudio.preload = "auto";
                 nativeAudio.playbackRate = state.playbackRate;
+                nativeAudio.currentTime = 0;
                 activeNativeAudio = nativeAudio;
-                nativeAudio.addEventListener("ended", () => {
+                nativeAudio.onended = () => {
                     if (activeNativeAudio === nativeAudio) {
                         activeNativeAudio = null;
                     }
+                    nativeAudio.onended = null;
+                    nativeAudio.onerror = null;
                     finish();
-                }, { once: true });
-                nativeAudio.addEventListener("error", () => {
+                };
+                nativeAudio.onerror = () => {
                     if (activeNativeAudio === nativeAudio) {
                         activeNativeAudio = null;
                     }
+                    nativeAudio.onended = null;
+                    nativeAudio.onerror = null;
                     fail();
-                }, { once: true });
+                };
+                if (!cached || cached.src !== audio.src) {
+                    nativeAudio.load();
+                }
                 nativeAudio.play().catch(() => {
                     if (activeNativeAudio === nativeAudio) {
                         activeNativeAudio = null;
                     }
+                    nativeAudio.onended = null;
+                    nativeAudio.onerror = null;
                     fail();
                 });
                 return;
@@ -335,6 +439,8 @@
             if (!speakText(text, null, {
                 rate: state.playbackRate,
                 lang: audio?.lang || "th-TH",
+                voiceId: audio?.voiceId || audio?.voiceName || "",
+                requireVoice: audio?.requireVoice === true,
                 voice: speechVoice,
                 contentMode: resolvedEntry.contentMode || "",
                 sentenceId: getEntryId(resolvedEntry),
@@ -348,6 +454,7 @@
         const renderAfterMutation = message => {
             save();
             notify();
+            preloadPlaylist();
             if (message) {
                 setStatus(message);
             }
@@ -438,6 +545,7 @@
             stopPlayback();
             state.playlist = [];
             state.currentIndex = 0;
+            clearPreloadedAudio();
             renderAfterMutation("Playlist geleert.");
         };
 
@@ -505,6 +613,7 @@
                 setStatus("Die gespeicherte Audio-Playlist konnte nicht geladen werden.");
             }
             notify();
+            preloadPlaylist();
         };
 
         return {
@@ -540,12 +649,15 @@
                     stopPlayback();
                     state.playing = true;
                     notify();
+                    preloadPlaylist();
                     speakCurrent();
                 } else {
                     notify();
                 }
                 save();
+                preloadPlaylist();
             },
+            preload: preloadPlaylist,
             playCurrent: speakCurrent
         };
     }
@@ -886,7 +998,7 @@
                     ".quest-audio-status"
                 );
 
-                if (!audio || !playButton || !speedSlider || !speedValue) {
+                if (!audio || !playButton) {
                     return;
                 }
 
@@ -919,11 +1031,16 @@
                     });
                 };
 
-                const storedRate = getStoredPlaybackRate();
-                speedSlider.value = String(storedRate);
-                speedValue.value = formatPlaybackRate(storedRate);
-                speedValue.textContent = formatPlaybackRate(storedRate);
-                audio.playbackRate = storedRate;
+                const fixedRate = Number(playerElement.dataset.playbackRate);
+                const playbackRate = Number.isFinite(fixedRate)
+                    ? fixedRate
+                    : getStoredPlaybackRate();
+                if (speedSlider && speedValue) {
+                    speedSlider.value = String(playbackRate);
+                    speedValue.value = formatPlaybackRate(playbackRate);
+                    speedValue.textContent = formatPlaybackRate(playbackRate);
+                }
+                audio.playbackRate = playbackRate;
 
                 playButton.addEventListener("click", event => {
                     event.stopPropagation();
@@ -941,18 +1058,20 @@
                     });
                 });
 
-                speedSlider.addEventListener("click", event => {
-                    event.stopPropagation();
-                });
+                if (speedSlider && speedValue) {
+                    speedSlider.addEventListener("click", event => {
+                        event.stopPropagation();
+                    });
 
-                speedSlider.addEventListener("input", event => {
-                    event.stopPropagation();
-                    const rate = Number(event.target.value);
-                    audio.playbackRate = rate;
-                    speedValue.value = formatPlaybackRate(rate);
-                    speedValue.textContent = formatPlaybackRate(rate);
-                    localStorage.setItem(SPEED_STORAGE_KEY, String(rate));
-                });
+                    speedSlider.addEventListener("input", event => {
+                        event.stopPropagation();
+                        const rate = Number(event.target.value);
+                        audio.playbackRate = rate;
+                        speedValue.value = formatPlaybackRate(rate);
+                        speedValue.textContent = formatPlaybackRate(rate);
+                        localStorage.setItem(SPEED_STORAGE_KEY, String(rate));
+                    });
+                }
 
                 playerElement.addEventListener("click", event => {
                     event.stopPropagation();
@@ -997,16 +1116,21 @@
     function renderSentenceAudioPlayer({
         audio = null,
         text = "",
-        className = ""
+        className = "",
+        playbackRate = null
     } = {}) {
         if (audio?.type === "url" && typeof audio.src === "string" && audio.src.trim()) {
+            const fixedRate = Number(playbackRate);
+            const playbackRateAttribute = Number.isFinite(fixedRate)
+                ? ` data-playback-rate="${fixedRate}"`
+                : "";
             return `
-                <div class="quest-audio-player ${className}" data-quest-audio-player data-audio-source="${escapeAttribute(audio.src)}">
+                <div class="quest-audio-player ${className}" data-quest-audio-player${playbackRateAttribute} data-audio-source="${escapeAttribute(audio.src)}">
                     <button type="button" class="quest-audio-play-button" aria-label="Satzaudio abspielen" aria-pressed="false">
                         <span aria-hidden="true">▶</span>
                     </button>
                     <span class="quest-audio-status" aria-live="polite"></span>
-                    <audio class="quest-audio-native" preload="none" src="${escapeAttribute(audio.src)}"></audio>
+                    <audio class="quest-audio-native" preload="auto" src="${escapeAttribute(audio.src)}"></audio>
                 </div>
             `;
         }
@@ -1023,7 +1147,7 @@
         }
 
         return `
-            <div class="quest-audio-player ${className}" data-speech-audio-player data-speech-text="${encodeURIComponent(speechText)}">
+            <div class="quest-audio-player ${className}" data-speech-audio-player data-speech-text="${encodeURIComponent(speechText)}" data-speech-lang="${escapeAttribute(audio?.lang || "th-TH")}" data-speech-voice-id="${escapeAttribute(audio?.voiceId || audio?.voiceName || "")}" data-speech-require-voice="${audio?.requireVoice ? "true" : "false"}">
                 <button type="button" class="quest-audio-play-button" aria-label="Satz vorlesen" aria-pressed="false">🔊</button>
                 <span class="quest-audio-status" aria-live="polite"></span>
             </div>
@@ -1046,7 +1170,12 @@
 
             button.addEventListener("click", event => {
                 event.stopPropagation();
-                const started = speakText(text, button);
+                const started = speakText(text, button, {
+                    rate: 1,
+                    lang: playerElement.dataset.speechLang || "th-TH",
+                    voiceId: playerElement.dataset.speechVoiceId || "",
+                    requireVoice: playerElement.dataset.speechRequireVoice === "true"
+                });
                 if (!started && status) {
                     status.textContent = "Sprachausgabe nicht verfügbar.";
                 }
@@ -1069,8 +1198,10 @@
         renderSentenceAudioPlayer,
         createPlaylistPlayer,
         initializeFloatingPlayerMenu,
+        getSpeechVoices,
         speakText,
-        stopSpeech
+        stopSpeech,
+        stopNativeAudioPlayers
     };
 
 })();
