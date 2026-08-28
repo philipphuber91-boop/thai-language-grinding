@@ -739,6 +739,23 @@ body.thai-giga-page {
     box-shadow: 0 14px 36px rgba(0, 0, 0, .22);
 }
 
+.thai-giga-dictionary-examples {
+    margin-top: 18px;
+    border-top: 1px solid rgba(142, 107, 60, .45);
+}
+
+.thai-giga-dictionary-examples > summary {
+    padding: 12px 0;
+    color: var(--thai-gold);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.thai-giga-dictionary-examples > summary:hover,
+.thai-giga-dictionary-examples > summary:focus-visible {
+    color: var(--thai-text);
+}
+
 .thai-giga-dictionary h2 {
     margin-top: 8px;
     color: var(--thai-gold);
@@ -823,6 +840,19 @@ body.thai-giga-page {
 
     .thai-giga-block-summary {
         border-bottom: 0;
+    }
+
+    .thai-giga-dictionary {
+        position: fixed;
+        top: 120px;
+        right: max(24px, calc((100vw - 1200px) / 2));
+        z-index: 6;
+        width: min(300px, calc(100vw - 48px));
+        max-height: calc(100vh - 136px);
+    }
+
+    .thai-giga-dictionary.is-player-open {
+        right: max(560px, calc((100vw - 1200px) / 2));
     }
 
     .thai-giga-sidebar-toggle {

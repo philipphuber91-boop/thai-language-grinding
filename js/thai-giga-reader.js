@@ -16,6 +16,7 @@
         patternTranslation: document.getElementById("thaiGigaPatternTranslation"),
         blockList: document.getElementById("thaiGigaBlockList"),
         emptyState: document.getElementById("thaiGigaEmptyState"),
+        audioPlayer: document.getElementById("thaiGigaAudioPlayer"),
         sentenceList: document.getElementById("thaiGigaBlockList"),
         dictionary: document.getElementById("thaiGigaDictionary")
     };
@@ -49,6 +50,11 @@
         elements.sidebar?.classList.add("is-open");
         elements.sidebarBackdrop?.classList.add("is-visible");
         elements.sidebarToggle?.setAttribute("aria-expanded", "true");
+    }
+
+    function syncDictionaryPosition() {
+        const isPlayerOpen = !elements.audioPlayer?.classList.contains("is-desktop-collapsed");
+        elements.dictionary?.classList.toggle("is-player-open", isPlayerOpen);
     }
 
     function getStoryContext(story) {
@@ -337,20 +343,22 @@
             <div class="thai-giga-dictionary-meaning">
                 ${word.meanings.map(meaning => `<div>${escapeHtml(meaning)}</div>`).join("")}
             </div>
-            <h3>Verwendet in ${sentenceIds.length} Sätzen</h3>
-            <div class="thai-giga-dictionary-sentences">
-                ${sentenceIds.map(sentenceId => {
-                    const sentence = indexes.sentencesById.get(sentenceId);
-                    const story = indexes.storiesById.get(sentence.storyId);
-                    return `
-                        <button class="thai-giga-dictionary-sentence"
-                                type="button"
-                                data-dictionary-sentence="${escapeHtml(sentenceId)}">
-                            ${escapeHtml(story.title)} · Satz ${sentence.numberInStory}
-                        </button>
-                    `;
-                }).join("")}
-            </div>
+            <details class="thai-giga-dictionary-examples">
+                <summary>Beispiele in ${sentenceIds.length} Sätzen</summary>
+                <div class="thai-giga-dictionary-sentences">
+                    ${sentenceIds.map(sentenceId => {
+                        const sentence = indexes.sentencesById.get(sentenceId);
+                        const story = indexes.storiesById.get(sentence.storyId);
+                        return `
+                            <button class="thai-giga-dictionary-sentence"
+                                    type="button"
+                                    data-dictionary-sentence="${escapeHtml(sentenceId)}">
+                                ${escapeHtml(story.title)} · Satz ${sentence.numberInStory}
+                            </button>
+                        `;
+                    }).join("")}
+                </div>
+            </details>
         `;
 
         elements.dictionary
@@ -401,6 +409,11 @@
             showInitialStory();
             window.thaiGigaAudio.initialize(indexes);
             initializeSentenceActions();
+            syncDictionaryPosition();
+            new MutationObserver(syncDictionaryPosition).observe(elements.audioPlayer, {
+                attributes: true,
+                attributeFilter: ["class"]
+            });
         } catch (error) {
             console.error(error);
             setStatus("Content konnte nicht geladen werden.", true);
@@ -424,10 +437,19 @@
 
     window.addEventListener("thai-giga:audio-current", event => {
         const sentenceId = event.detail?.sentenceId;
-        const sentence = indexes?.sentencesById.get(sentenceId);
-        if (sentence) {
-            showStory(sentence.storyId, sentence.id);
+        if (!sentenceId) {
+            return;
         }
+
+        activeSentenceId = sentenceId;
+        elements.blockList
+            .querySelectorAll(".thai-giga-sentence")
+            .forEach(sentenceElement => {
+                sentenceElement.classList.toggle(
+                    "is-highlighted",
+                    sentenceElement.dataset.sentenceId === sentenceId
+                );
+            });
     });
 
     initialize();
