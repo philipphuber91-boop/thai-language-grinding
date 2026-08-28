@@ -26,6 +26,15 @@
         return true;
     }
 
+    function requireTokenText(value, path, errors) {
+        if (typeof value !== "string" || value.length === 0) {
+            errors.push(createValidationError(path, "Muss ein nichtleerer String sein."));
+            return false;
+        }
+
+        return true;
+    }
+
     function validateUniqueId(id, path, ids, errors) {
         if (!requireString(id, path, errors)) {
             return;
@@ -121,7 +130,7 @@
         }
 
         requireString(token.id, `${path}.id`, errors);
-        requireString(token.text, `${path}.text`, errors);
+        requireTokenText(token.text, `${path}.text`, errors);
         requireString(token.kind, `${path}.kind`, errors);
         const kind = token.kind;
 
