@@ -6,6 +6,9 @@
         sidebarBackdrop: document.getElementById("thaiGigaSidebarBackdrop"),
         sidebarToggle: document.getElementById("thaiGigaSidebarToggle"),
         hierarchy: document.getElementById("thaiGigaHierarchy"),
+        foreword: document.getElementById("thaiGigaForeword"),
+        forewordButton: document.getElementById("thaiGigaForewordButton"),
+        audioPlayer: document.getElementById("thaiGigaAudioPlayer"),
         bossOverview: document.getElementById("thaiGigaBossOverview"),
         bossEyebrow: document.getElementById("thaiGigaBossEyebrow"),
         bossTitle: document.getElementById("thaiGigaBossTitle"),
@@ -13,6 +16,7 @@
         pattern: document.getElementById("thaiGigaPattern"),
         patternTranslation: document.getElementById("thaiGigaPatternTranslation"),
         blockList: document.getElementById("thaiGigaBlockList"),
+        readerContent: document.getElementById("thaiGigaReaderContent"),
         emptyState: document.getElementById("thaiGigaEmptyState"),
         sentenceList: document.getElementById("thaiGigaBlockList"),
         dictionary: document.getElementById("thaiGigaDictionary")
@@ -43,6 +47,28 @@
         elements.sidebar?.classList.add("is-open");
         elements.sidebarBackdrop?.classList.add("is-visible");
         elements.sidebarToggle?.setAttribute("aria-expanded", "true");
+    }
+
+    function setThaiView(view, shouldScroll = false) {
+        const isForeword = view === "foreword";
+        elements.foreword.hidden = !isForeword;
+        elements.audioPlayer.hidden = isForeword;
+        elements.bossOverview.hidden = isForeword;
+        elements.readerContent.hidden = isForeword;
+        elements.forewordButton.classList.toggle("is-active", isForeword);
+        elements.forewordButton.setAttribute("aria-pressed", String(isForeword));
+
+        if (shouldScroll) {
+            (isForeword ? elements.foreword : elements.bossOverview)?.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+    }
+
+    function showForeword() {
+        setThaiView("foreword", true);
+        closeSidebar();
     }
 
     function getStoryContext(story) {
@@ -76,6 +102,7 @@
                 const boss = bosses.find(candidate => candidate.id === button.dataset.bossId);
                 if (boss) {
                     renderBossOverview(boss);
+                    setThaiView("reader");
                     closeSidebar();
                 }
             });
@@ -245,6 +272,7 @@
             .flatMap(level => level.bosses)
             .find(candidate => candidate.id === story.bossId);
         renderBossOverview(boss);
+        setThaiView("reader");
         window.thaiGigaDrill.saveProgress({
             levelId: story.levelId,
             bossId: story.bossId,
@@ -433,6 +461,7 @@
         }
     });
     elements.sidebarBackdrop?.addEventListener("click", closeSidebar);
+    elements.forewordButton?.addEventListener("click", showForeword);
     elements.dictionary.addEventListener("click", event => {
         if (event.target.closest(".thai-giga-dictionary-close")) {
             closeDictionary();

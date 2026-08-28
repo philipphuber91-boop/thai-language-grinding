@@ -179,6 +179,16 @@ body.thai-giga-page {
     text-transform: uppercase;
 }
 
+.thai-giga-chapter-button,
+.thai-giga-foreword-menu-button {
+    border: 1px solid var(--thai-border);
+    border-radius: 10px;
+    color: var(--thai-text);
+    background: var(--thai-panel-light);
+    cursor: pointer;
+    font: inherit;
+}
+
 .thai-giga-chapter-button {
     display: grid;
     gap: 3px;
@@ -194,6 +204,13 @@ body.thai-giga-page {
     text-align: left;
 }
 
+.thai-giga-foreword-menu-button {
+    width: 100%;
+    margin: 16px 0 20px;
+    padding: 12px 13px;
+    text-align: left;
+}
+
 .thai-giga-chapter-button strong {
     color: inherit;
 }
@@ -206,7 +223,10 @@ body.thai-giga-page {
 
 .thai-giga-chapter-button:hover,
 .thai-giga-chapter-button:focus-visible,
-.thai-giga-chapter-button.is-active {
+.thai-giga-chapter-button.is-active,
+.thai-giga-foreword-menu-button:hover,
+.thai-giga-foreword-menu-button:focus-visible,
+.thai-giga-foreword-menu-button.is-active {
     border-color: var(--thai-gold);
     background: #3b2919;
 }
@@ -215,6 +235,83 @@ body.thai-giga-page {
     width: calc(100% - 96px);
     margin: 0 auto;
     padding: 38px 0 70px;
+}
+
+.thai-giga-foreword {
+    scroll-margin-top: 24px;
+    margin: 28px 0 34px;
+    border: 1px solid rgba(231, 184, 97, .5);
+    border-radius: 15px;
+    background: rgba(231, 184, 97, .06);
+}
+
+.thai-giga-foreword-header {
+    padding: 22px 22px 8px;
+}
+
+.thai-giga-foreword-header h2 {
+    margin: 8px 0 10px;
+    color: var(--thai-gold);
+    font-size: clamp(1.3rem, 3vw, 1.75rem);
+}
+
+.thai-giga-foreword-header p:last-child {
+    margin-bottom: 0;
+    color: var(--thai-muted);
+}
+
+.thai-giga-foreword-details > summary {
+    padding: 14px 22px;
+    border-top: 1px solid rgba(231, 184, 97, .22);
+    color: var(--thai-gold);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.thai-giga-foreword-details > summary:hover,
+.thai-giga-foreword-details > summary:focus-visible {
+    background: rgba(231, 184, 97, .08);
+}
+
+.thai-giga-foreword-content {
+    padding: 4px 22px 24px;
+    color: var(--thai-text);
+    line-height: 1.6;
+}
+
+.thai-giga-foreword-content h3 {
+    margin: 26px 0 8px;
+    color: var(--thai-gold);
+    font-size: 1.08rem;
+}
+
+.thai-giga-foreword-content p {
+    margin: 8px 0;
+}
+
+.thai-giga-foreword-content ul {
+    margin: 8px 0 12px;
+    padding-left: 24px;
+}
+
+.thai-giga-foreword-content blockquote {
+    margin: 14px 0;
+    padding: 12px 16px;
+    border-left: 3px solid var(--thai-gold);
+    color: #fff5cf;
+    background: rgba(21, 17, 13, .38);
+}
+
+.thai-giga-flow-formula {
+    padding: 12px 14px;
+    border-radius: 9px;
+    color: var(--thai-accent);
+    background: rgba(21, 17, 13, .38);
+}
+
+.thai-giga-foreword-signature {
+    color: var(--thai-gold);
+    text-align: center;
 }
 
 .thai-giga-audio-player {
