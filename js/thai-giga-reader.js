@@ -851,6 +851,9 @@
                 window.thaiGigaAudio.initialize(indexes);
                 initializeSentenceActions();
             }
+            if (window.location.hash === "#foreword" && elements.forewordButton) {
+                showForeword();
+            }
         } catch (error) {
             console.error(error);
             if (!elements.emptyState) {
