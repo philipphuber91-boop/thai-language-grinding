@@ -538,8 +538,13 @@ function initializeTypingAwardsOverview() {
 initializeTypingAwardsOverview();
 
 function registerCompletedTypingSentence() {
+    const sentenceTokens = contentMode === "thai-giga"
+        ? gigaDrillSentence.gigaDrillTokensByLine?.[aktuelleZeile]
+            || gigaDrillSentence.gigaDrillTokens
+            || []
+        : null;
     const sentenceWords = contentMode === "thai-giga"
-        ? getThaiWordListFromCanonicalTokens(gigaDrillSentence.gigaDrillTokens).words.length
+        ? getThaiWordListFromCanonicalTokens(sentenceTokens).words.length
         : getThaiWordList([text]).words.length;
     const cleanSentence = !currentSentenceHasError;
     const activeTime = ActivityManager.getActiveTimeMs();

@@ -1199,9 +1199,12 @@ function getQuestAchievementGoal(definition, questId) {
     const lineCount = Array.isArray(quest.thaiZeilen)
         ? quest.thaiZeilen.length
         : 0;
-    const wordCount = typeof getThaiWordList === "function"
-        ? getThaiWordList(quest.thaiZeilen).words.length
-        : 0;
+    const wordCount = quest.gigaDrill
+        && typeof getThaiWordListForContent === "function"
+        ? getThaiWordListForContent(quest).words.length
+        : typeof getThaiWordList === "function"
+            ? getThaiWordList(quest.thaiZeilen).words.length
+            : 0;
 
     if (definition.runType === "cleanWords") {
         return Math.max(

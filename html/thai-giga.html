@@ -2,28 +2,51 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#15110d">
     <title>Thai Giga Drill</title>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../css/thai-giga.css">
+    <link rel="manifest" href="../manifest.json">
 </head>
 <body class="thai-giga-page">
-    <header class="topbar">
-        <h1>THAI</h1>
-        <h2>LANGUAGE GRINDING</h2>
+    <button
+        id="thaiGigaSidebarToggle"
+        class="thai-giga-sidebar-toggle"
+        type="button"
+        aria-label="Thai-Giga-Menü öffnen"
+        aria-expanded="false"
+        aria-controls="thaiGigaSidebar">☰</button>
+    <div id="thaiGigaSidebarBackdrop" class="thai-giga-sidebar-backdrop"></div>
+    <button
+        id="thaiGigaPlayerToggle"
+        class="thai-giga-player-toggle"
+        type="button"
+        aria-label="Audio-Player öffnen"
+        aria-expanded="false"
+        aria-controls="thaiGigaAudioPlayer">🎧</button>
+
+    <aside id="thaiGigaSidebar" class="thai-giga-sidebar" aria-label="Thai-Giga-Navigation">
+        <div class="thai-giga-menu-card">
+            <a class="thai-giga-back-link" href="index.html">← Zurück zu Thai Language Grinding</a>
+            <div class="thai-giga-menu-heading">
+                <span aria-hidden="true">🇹🇭</span>
+                <span>Thai Giga Drill</span>
+            </div>
+            <p class="thai-giga-menu-label">Grammatikbosse</p>
+            <nav id="thaiGigaHierarchy" class="thai-giga-chapter-nav" aria-label="Grammatikbosse"></nav>
+        </div>
+    </aside>
+
+    <header class="thai-giga-topbar">
+        <h1>SUPER ULTRA MEGA</h1>
+        <h2>THAI GIGA DRILL</h2>
     </header>
 
-    <main class="thai-giga-shell">
-        <header class="thai-giga-header">
-            <div>
-                <p class="eyebrow">The Flow Machine</p>
-                <h1>🇹🇭 Thai Super Duper Mega Giga Drill</h1>
-                <p id="thaiGigaStatus" class="thai-giga-status" role="status">
-                    Content wird geladen ...
-                </p>
-            </div>
-            <a class="thai-giga-back-link" href="index.html">← Zur Hauptnavigation</a>
-        </header>
+    <main class="thai-giga-main">
+        <p id="thaiGigaStatus" class="thai-giga-status" role="status">
+            Content wird geladen ...
+        </p>
 
         <section id="thaiGigaAudioPlayer" class="thai-giga-audio-player" aria-labelledby="thaiGigaAudioTitle">
             <header class="thai-giga-audio-header">
@@ -55,19 +78,37 @@
                 <output id="thaiGigaAudioSpeedValue" for="thaiGigaAudioSpeed">0,85×</output>
             </label>
             <div class="thai-giga-audio-actions">
+                <button id="thaiGigaAudioOpenTyping" type="button" disabled>
+                    Playlist im Typing öffnen
+                </button>
                 <button id="thaiGigaAudioClear" type="button" disabled>Playlist leeren</button>
             </div>
             <ol id="thaiGigaAudioPlaylist" class="thai-giga-audio-playlist" aria-label="Thai-Giga-Playlist"></ol>
             <p id="thaiGigaAudioStatus" class="thai-giga-audio-status" role="status" aria-live="polite"></p>
         </section>
 
-        <div class="thai-giga-layout">
-            <aside class="thai-giga-sidebar" aria-label="Thai-Giga-Navigation">
-                <h2>Grammatikbosse</h2>
-                <div id="thaiGigaHierarchy" class="thai-giga-hierarchy"></div>
-            </aside>
+        <section id="thaiGigaBossOverview" class="thai-giga-reader" aria-labelledby="thaiGigaBossTitle" hidden>
+            <header class="thai-giga-reader-header">
+                <div>
+                    <p id="thaiGigaBossEyebrow" class="thai-giga-eyebrow"></p>
+                    <h2 id="thaiGigaBossTitle"></h2>
+                    <p id="thaiGigaBossDescription" class="thai-giga-boss-description"></p>
+                </div>
+                <span id="thaiGigaSentenceCount" class="thai-giga-count"></span>
+            </header>
+            <details class="thai-giga-introduction" open>
+                <summary>🧩 Das Grundmuster</summary>
+                <div class="thai-giga-introduction-content">
+                    <p id="thaiGigaPattern" class="thai-giga-pattern"></p>
+                    <p id="thaiGigaPatternTranslation" class="thai-giga-pattern-translation"></p>
+                </div>
+            </details>
+        </section>
 
-            <section class="thai-giga-reader" aria-labelledby="thaiGigaStoryTitle">
+        <section id="thaiGigaBlockList" class="thai-giga-block-list" aria-label="Foundation Blocks"></section>
+
+        <article id="thaiGigaStory" class="thai-giga-story-card" aria-labelledby="thaiGigaStoryTitle" hidden>
+            <section class="thai-giga-reader">
                 <div id="thaiGigaEmptyState" class="thai-giga-empty-state">
                     <h2>Technische Infrastruktur bereit</h2>
                     <p>
@@ -78,31 +119,32 @@
                     <p><strong>Dieser Bereich enthält bewusst keinen erfundenen Lerncontent.</strong></p>
                 </div>
 
-                <article id="thaiGigaStory" hidden>
-                    <header class="thai-giga-story-header">
-                        <div>
-                            <p id="thaiGigaStoryContext" class="eyebrow"></p>
-                            <h2 id="thaiGigaStoryTitle"></h2>
-                        </div>
-                        <div class="thai-giga-story-actions">
-                            <button id="thaiGigaStoryPlaylistButton" class="dark-action-button" type="button">
-                                + Situation zur Playlist
-                            </button>
-                            <button id="thaiGigaStoryTypingButton" class="dark-action-button" type="button">
-                                Satz im Typing öffnen
-                            </button>
-                        </div>
-                    </header>
-                    <div id="thaiGigaSentenceList" class="thai-giga-sentence-list"></div>
-                </article>
+                <header class="thai-giga-story-header">
+                    <div>
+                        <p id="thaiGigaStoryContext" class="thai-giga-eyebrow"></p>
+                        <h2 id="thaiGigaStoryTitle"></h2>
+                    </div>
+                    <div class="thai-giga-story-actions">
+                        <button id="thaiGigaStoryPlaylistButton" class="thai-giga-secondary-button" type="button">
+                            + Situation zur Playlist
+                        </button>
+                        <button id="thaiGigaStorySelectedPlaylistButton" class="thai-giga-secondary-button" type="button">
+                            Ausgewählte Sätze zur Playlist
+                        </button>
+                        <button id="thaiGigaStoryTypingButton" class="thai-giga-secondary-button" type="button">
+                            Satz im Typing öffnen
+                        </button>
+                    </div>
+                </header>
+                <div id="thaiGigaSentenceList" class="thai-giga-sentence-list"></div>
             </section>
 
             <aside id="thaiGigaDictionary" class="thai-giga-dictionary" aria-live="polite">
-                <p class="eyebrow">Wörterbuch</p>
+                <p class="thai-giga-eyebrow">Wörterbuch</p>
                 <h2>Wort auswählen</h2>
                 <p>Klicke im Reader auf ein kanonisches Thai-Wort.</p>
             </aside>
-        </div>
+        </article>
     </main>
 
     <script src="../js/quest-audio.js"></script>

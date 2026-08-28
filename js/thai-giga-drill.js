@@ -4,6 +4,7 @@
     const CONTENT_STORAGE_KEY = "thaiGigaDrill:v1:content";
     const PROGRESS_STORAGE_KEY = "thaiGigaDrill:v1:progress";
     const TYPING_SENTENCE_STORAGE_KEY = "thaiGigaDrill:v1:typing-sentence";
+    const TYPING_SENTENCES_STORAGE_KEY = "thaiGigaDrill:v1:typing-sentences";
     const REQUIRED_BLOCK_COUNT = 5;
     const REQUIRED_STORY_COUNT = 10;
     const REQUIRED_SENTENCE_COUNT = 10;
@@ -545,12 +546,77 @@
         };
     }
 
+    function cacheTypingSentences(content) {
+        const snapshots = {};
+        content.levels.forEach(level => {
+            level.bosses.forEach(boss => {
+                boss.blocks.forEach(block => {
+                    block.miniStories.forEach(story => {
+                        story.sentences.forEach(sentence => {
+                            snapshots[sentence.id] = getTypingSentence(sentence, {
+                                title: story.title,
+                                id: story.id
+                            });
+                        });
+                    });
+                });
+            });
+        });
+        localStorage.setItem(TYPING_SENTENCES_STORAGE_KEY, JSON.stringify(snapshots));
+    }
+
     function getSharedPlaylistEntry(sentence, story) {
         return {
             contentMode: "thai-giga",
             sentenceId: sentence.id,
             storyId: story.id,
             sentence: getTypingSentence(sentence, story)
+        };
+    }
+
+    function getTypingPlaylistSentence(sentenceIds) {
+        if (!Array.isArray(sentenceIds)) {
+            return null;
+        }
+
+        const content = getContentFromStorage();
+        if (!content) {
+            return null;
+        }
+
+        const indexes = buildIndexes(content);
+        const typingSentences = sentenceIds
+            .map(sentenceId => {
+                const sentence = indexes.sentencesById.get(sentenceId);
+                const story = sentence
+                    ? indexes.storiesById.get(sentence.storyId)
+                    : null;
+                return sentence && story ? getTypingSentence(sentence, story) : null;
+            })
+            .filter(Boolean);
+
+        if (typingSentences.length === 0) {
+            return null;
+        }
+
+        return {
+            id: "thai-giga-playlist",
+            version: 1,
+            titel: "Thai-Giga Typing-Playlist",
+            thaiZeilen: typingSentences.flatMap(sentence => sentence.thaiZeilen),
+            deutschZeilen: typingSentences.flatMap(sentence => sentence.deutschZeilen),
+            transliterationZeilen: typingSentences.flatMap(
+                sentence => sentence.transliterationZeilen
+            ),
+            gigaDrill: true,
+            gigaDrillPlaylist: true,
+            gigaDrillSentenceIds: typingSentences.map(
+                sentence => sentence.gigaDrillSentenceId
+            ),
+            gigaDrillTokensByLine: typingSentences.flatMap(
+                sentence => sentence.gigaDrillTokensByLine
+            ),
+            audio: { type: "none" }
         };
     }
 
@@ -561,6 +627,23 @@
         localStorage.setItem("aktuelleQuest", sentence.id);
         localStorage.setItem("questMode", "learning");
         window.location.href = "typing.html";
+    }
+
+    function openTypingPlaylistInTyping(sentenceIds) {
+        const typingPlaylist = getTypingPlaylistSentence(sentenceIds);
+        if (!typingPlaylist) {
+            return false;
+        }
+
+        localStorage.setItem(
+            TYPING_SENTENCE_STORAGE_KEY,
+            JSON.stringify(typingPlaylist)
+        );
+        localStorage.setItem("contentMode", "thai-giga");
+        localStorage.setItem("aktuelleQuest", typingPlaylist.id);
+        localStorage.setItem("questMode", "learning");
+        window.location.href = "typing.html";
+        return true;
     }
 
     function getContentFromStorage() {
@@ -590,6 +673,7 @@
         }
 
         localStorage.setItem(CONTENT_STORAGE_KEY, JSON.stringify(content));
+        cacheTypingSentences(content);
         return content;
     }
 
@@ -609,6 +693,8 @@
         saveProgress,
         getTypingSentence,
         getSharedPlaylistEntry,
-        openSentenceInTyping
+        getTypingPlaylistSentence,
+        openSentenceInTyping,
+        openTypingPlaylistInTyping
     };
 })();

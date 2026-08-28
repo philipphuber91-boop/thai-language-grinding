@@ -433,12 +433,17 @@ function getQuestDataFromStatsId(questId) {
 
 function getStoredThaiGigaSentenceData(sentenceId) {
     try {
+        const rawSnapshots = localStorage.getItem(
+            "thaiGigaDrill:v1:typing-sentences"
+        );
+        const snapshots = rawSnapshots ? JSON.parse(rawSnapshots) : null;
+        if (snapshots && snapshots[sentenceId]) {
+            return { [sentenceId]: snapshots[sentenceId] };
+        }
+
         const rawSentence = localStorage.getItem("thaiGigaDrill:v1:typing-sentence");
         const sentence = rawSentence ? JSON.parse(rawSentence) : null;
-
-        return sentence && sentence.id === sentenceId
-            ? { [sentenceId]: sentence }
-            : null;
+        return sentence && sentence.id === sentenceId ? { [sentenceId]: sentence } : null;
     } catch (error) {
         console.warn("Thai-Giga-Satz konnte für die Statistik nicht gelesen werden.", error);
         return null;

@@ -3,13 +3,27 @@
 
     const elements = {
         status: document.getElementById("thaiGigaStatus"),
+        sidebar: document.getElementById("thaiGigaSidebar"),
+        sidebarBackdrop: document.getElementById("thaiGigaSidebarBackdrop"),
+        sidebarToggle: document.getElementById("thaiGigaSidebarToggle"),
         hierarchy: document.getElementById("thaiGigaHierarchy"),
+        bossOverview: document.getElementById("thaiGigaBossOverview"),
+        bossEyebrow: document.getElementById("thaiGigaBossEyebrow"),
+        bossTitle: document.getElementById("thaiGigaBossTitle"),
+        bossDescription: document.getElementById("thaiGigaBossDescription"),
+        sentenceCount: document.getElementById("thaiGigaSentenceCount"),
+        pattern: document.getElementById("thaiGigaPattern"),
+        patternTranslation: document.getElementById("thaiGigaPatternTranslation"),
+        blockList: document.getElementById("thaiGigaBlockList"),
         emptyState: document.getElementById("thaiGigaEmptyState"),
         story: document.getElementById("thaiGigaStory"),
         storyContext: document.getElementById("thaiGigaStoryContext"),
         storyTitle: document.getElementById("thaiGigaStoryTitle"),
         sentenceList: document.getElementById("thaiGigaSentenceList"),
         storyPlaylistButton: document.getElementById("thaiGigaStoryPlaylistButton"),
+        storySelectedPlaylistButton: document.getElementById(
+            "thaiGigaStorySelectedPlaylistButton"
+        ),
         storyTypingButton: document.getElementById("thaiGigaStoryTypingButton"),
         dictionary: document.getElementById("thaiGigaDictionary")
     };
@@ -31,6 +45,18 @@
     function setStatus(message, isError = false) {
         elements.status.textContent = message;
         elements.status.classList.toggle("is-error", isError);
+    }
+
+    function closeSidebar() {
+        elements.sidebar?.classList.remove("is-open");
+        elements.sidebarBackdrop?.classList.remove("is-visible");
+        elements.sidebarToggle?.setAttribute("aria-expanded", "false");
+    }
+
+    function openSidebar() {
+        elements.sidebar?.classList.add("is-open");
+        elements.sidebarBackdrop?.classList.add("is-visible");
+        elements.sidebarToggle?.setAttribute("aria-expanded", "true");
     }
 
     function getStoryContext(story) {
@@ -89,6 +115,72 @@
         });
     }
 
+    function renderBossOverview(boss) {
+        if (!boss) {
+            elements.bossOverview.hidden = true;
+            return;
+        }
+
+        const sentences = boss.blocks.flatMap(block =>
+            block.miniStories.flatMap(story => story.sentences)
+        );
+        elements.bossOverview.hidden = false;
+        elements.bossEyebrow.textContent = boss.title;
+        elements.bossTitle.textContent = boss.grammarFocus;
+        elements.bossDescription.textContent =
+            "Offizieller Thai-Giga-Content mit stabilen Satzobjekten, kanonischen Wort-Token und wiederverwendbarer Audio-/Typing-Anbindung.";
+        elements.sentenceCount.textContent = `${sentences.length} Beispielsätze`;
+        elements.pattern.textContent = boss.grammarFocus;
+        elements.patternTranslation.textContent =
+            "Das aktive Grammatikmuster wird in den Situationen und Sätzen dieses Bosses wiederholt.";
+    }
+
+    function renderBlockList() {
+        const blocks = content.levels.flatMap(level =>
+            level.bosses.flatMap(boss => boss.blocks)
+        );
+        elements.blockList.innerHTML = blocks.map(block => `
+            <details class="thai-giga-block">
+                <summary class="thai-giga-block-summary">
+                    <span>${escapeHtml(block.title)}</span>
+                    <button
+                        type="button"
+                        data-thai-giga-block-playlist="${escapeHtml(block.id)}"
+                        aria-label="Alle Sätze dieses Blocks zur Playlist hinzufügen">
+                        + Block zur Playlist
+                    </button>
+                </summary>
+                <div class="thai-giga-story-links">
+                    ${block.miniStories.map(story => `
+                        <button
+                            class="thai-giga-story-link"
+                            type="button"
+                            data-thai-giga-story="${escapeHtml(story.id)}">
+                            ${escapeHtml(story.title)}
+                        </button>
+                    `).join("")}
+                </div>
+            </details>
+        `).join("");
+
+        elements.blockList
+            .querySelectorAll("[data-thai-giga-block-playlist]")
+            .forEach(button => {
+                button.addEventListener("click", event => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    window.thaiGigaAudio.addBlock(button.dataset.thaiGigaBlockPlaylist);
+                });
+            });
+        elements.blockList
+            .querySelectorAll("[data-thai-giga-story]")
+            .forEach(button => {
+                button.addEventListener("click", () => {
+                    showStory(button.dataset.thaiGigaStory);
+                });
+            });
+    }
+
     function renderSentence(sentence) {
         const tokenMarkup = sentence.tokens
             .map(token => token.wordId
@@ -119,6 +211,13 @@
                 <p class="thai-giga-transliteration">${escapeHtml(sentence.transliteration)}</p>
                 <p class="thai-giga-translation">${escapeHtml(sentence.translation)}</p>
                 <div class="thai-giga-sentence-actions">
+                    <label class="thai-giga-sentence-select">
+                        <input
+                            type="checkbox"
+                            data-thai-giga-select-sentence="${escapeHtml(sentence.id)}"
+                            aria-label="Satz für die Playlist auswählen">
+                        <span>Auswählen</span>
+                    </label>
                     ${audioMarkup}
                     <button type="button" data-thai-giga-playlist-sentence="${escapeHtml(sentence.id)}">
                         + Playlist
@@ -175,6 +274,10 @@
 
         activeStory = story;
         activeSentenceId = sentenceId;
+        const boss = content.levels
+            .flatMap(level => level.bosses)
+            .find(candidate => candidate.id === story.bossId);
+        renderBossOverview(boss);
         window.thaiGigaDrill.saveProgress({
             levelId: story.levelId,
             bossId: story.bossId,
@@ -288,6 +391,7 @@
             }
 
             renderHierarchy();
+            renderBlockList();
             showInitialStory();
             window.thaiGigaAudio.initialize(indexes);
         } catch (error) {
@@ -314,6 +418,32 @@
     elements.storyPlaylistButton.addEventListener("click", () => {
         if (activeStory) {
             window.thaiGigaAudio.addStory(activeStory.id);
+        }
+    });
+
+    elements.sidebarToggle?.addEventListener("click", () => {
+        if (elements.sidebar?.classList.contains("is-open")) {
+            closeSidebar();
+        } else {
+            openSidebar();
+        }
+    });
+    elements.sidebarBackdrop?.addEventListener("click", closeSidebar);
+
+    elements.storySelectedPlaylistButton.addEventListener("click", () => {
+        const sentenceIds = Array.from(
+            elements.sentenceList.querySelectorAll(
+                "[data-thai-giga-select-sentence]:checked"
+            ),
+            checkbox => checkbox.dataset.thaiGigaSelectSentence
+        );
+        if (sentenceIds.length > 0) {
+            window.thaiGigaAudio.addSentences(sentenceIds);
+            elements.sentenceList
+                .querySelectorAll("[data-thai-giga-select-sentence]")
+                .forEach(checkbox => {
+                    checkbox.checked = false;
+                });
         }
     });
 

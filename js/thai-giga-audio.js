@@ -45,6 +45,7 @@
         elements.playPause.disabled = entries.length === 0;
         elements.next.disabled = entries.length === 0;
         elements.clear.disabled = entries.length === 0;
+        elements.openTyping.disabled = entries.length === 0;
         elements.playPause.textContent = state.playing ? "⏸ Pause" : "▶ Abspielen";
         elements.loop.checked = state.loop;
         elements.shuffle.checked = state.shuffle;
@@ -70,6 +71,20 @@
                         <strong>${escapeHtml(entry.thai)}</strong>
                         <span>${escapeHtml(entry.storyTitle)} · ${escapeHtml(entry.translation)}</span>
                     </button>
+                    <div class="thai-giga-playlist-order">
+                        <button
+                            type="button"
+                            class="thai-giga-playlist-order-button"
+                            data-thai-giga-playlist-move="${index}:up"
+                            aria-label="Satz nach oben verschieben"
+                            ${index === 0 ? "disabled" : ""}>↑</button>
+                        <button
+                            type="button"
+                            class="thai-giga-playlist-order-button"
+                            data-thai-giga-playlist-move="${index}:down"
+                            aria-label="Satz nach unten verschieben"
+                            ${index === entries.length - 1 ? "disabled" : ""}>↓</button>
+                    </div>
                     <button
                         type="button"
                         class="thai-giga-playlist-remove"
@@ -90,6 +105,16 @@
             .forEach(button => {
                 button.addEventListener("click", () => {
                     controller.remove(Number(button.dataset.thaiGigaPlaylistRemove));
+                });
+            });
+        elements.playlist
+            .querySelectorAll("[data-thai-giga-playlist-move]")
+            .forEach(button => {
+                button.addEventListener("click", () => {
+                    const [indexValue, direction] =
+                        button.dataset.thaiGigaPlaylistMove.split(":");
+                    const index = Number(indexValue);
+                    controller.move(index, index + (direction === "up" ? -1 : 1));
                 });
             });
     }
@@ -143,6 +168,23 @@
         controller.addMany(getEntriesForStory(storyId));
     }
 
+    function addSentences(sentenceIds) {
+        const entries = Array.isArray(sentenceIds)
+            ? sentenceIds.map(getSentenceEntry).filter(Boolean)
+            : [];
+        return controller.addMany(entries);
+    }
+
+    function openTypingPlaylist() {
+        const sentenceIds = controller.state.playlist.map(entry => entry.id);
+        if (sentenceIds.length === 0) {
+            setStatus("Füge zuerst Sätze zur Playlist hinzu.");
+            return false;
+        }
+
+        return window.thaiGigaDrill.openTypingPlaylistInTyping(sentenceIds);
+    }
+
     function addBlock(blockId) {
         controller.addMany(getEntriesForBlock(blockId));
     }
@@ -158,6 +200,8 @@
         indexes = nextIndexes;
         elements = {
             player: document.getElementById("thaiGigaAudioPlayer"),
+            playerToggle: document.getElementById("thaiGigaPlayerToggle"),
+            openTyping: document.getElementById("thaiGigaAudioOpenTyping"),
             count: document.getElementById("thaiGigaAudioCount"),
             nowPlaying: document.getElementById("thaiGigaAudioNowPlaying"),
             previous: document.getElementById("thaiGigaAudioPrevious"),
@@ -171,6 +215,13 @@
             playlist: document.getElementById("thaiGigaAudioPlaylist"),
             status: document.getElementById("thaiGigaAudioStatus")
         };
+
+        window.questAudio.initializeFloatingPlayerMenu({
+            player: elements.player,
+            toggle: elements.playerToggle,
+            positionStorageKey: "thaiGigaDrill:v1:audio-player-position",
+            sizeStorageKey: "thaiGigaDrill:v1:audio-player-size"
+        });
 
         controller = window.questAudio.createPlaylistPlayer({
             storageKey: STORAGE_KEY,
@@ -193,14 +244,17 @@
         elements.shuffle.addEventListener("change", () => controller.setShuffle(elements.shuffle.checked));
         elements.speed.addEventListener("input", () => controller.setPlaybackRate(elements.speed.value));
         elements.clear.addEventListener("click", () => controller.clear());
+        elements.openTyping.addEventListener("click", openTypingPlaylist);
         controller.load();
     }
 
     window.thaiGigaAudio = {
         initialize,
         addSentence,
+        addSentences,
         addStory,
         addBlock,
+        openTypingPlaylist,
         removeSentence,
         hasSentence: sentenceId =>
             Boolean(controller?.state.playlist.some(entry => entry.id === sentenceId)),

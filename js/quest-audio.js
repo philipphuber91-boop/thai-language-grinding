@@ -90,6 +90,14 @@
             }
 
             stopSpeech();
+            window.dispatchEvent(new CustomEvent("questaudio:ended", {
+                detail: {
+                    source: "speechSynthesis",
+                    contentMode: options.contentMode || "",
+                    questNumber: options.questNumber || "",
+                    sentenceId: options.sentenceId || ""
+                }
+            }));
             options.onEnd?.();
         };
         utterance.onerror = () => {
@@ -298,6 +306,8 @@
             if (!speakText(text, null, {
                 rate: state.playbackRate,
                 lang: audio?.lang || "th-TH",
+                contentMode: resolvedEntry.contentMode || "",
+                sentenceId: getEntryId(resolvedEntry),
                 onEnd: finish,
                 onError: fail
             })) {
@@ -508,6 +518,260 @@
             },
             playCurrent: speakCurrent
         };
+    }
+
+    function initializeFloatingPlayerMenu({
+        player,
+        toggle,
+        positionStorageKey,
+        sizeStorageKey,
+        collapsedClass = "is-desktop-collapsed",
+        breakpoint = 901
+    } = {}) {
+        if (!player || !toggle || typeof positionStorageKey !== "string" || typeof sizeStorageKey !== "string") {
+            return;
+        }
+
+        const isDesktopLayout = () =>
+            window.matchMedia(`(min-width: ${breakpoint}px)`).matches;
+        let menuPosition = null;
+        let menuSize = null;
+
+        const readPosition = () => {
+            try {
+                const rawPosition = localStorage.getItem(positionStorageKey);
+                const position = rawPosition ? JSON.parse(rawPosition) : {};
+                return {
+                    left: Number.isFinite(position.left) ? position.left : null,
+                    top: Number.isFinite(position.top) ? position.top : 100,
+                    playerLeft: Number.isFinite(position.playerLeft)
+                        ? position.playerLeft
+                        : null
+                };
+            } catch (error) {
+                console.warn("Die Position des Audio-Player-Menüs konnte nicht gelesen werden.", error);
+                return { left: null, top: 100, playerLeft: null };
+            }
+        };
+
+        const savePosition = () => {
+            if (!menuPosition) {
+                return;
+            }
+
+            try {
+                localStorage.setItem(positionStorageKey, JSON.stringify(menuPosition));
+            } catch (error) {
+                console.warn("Die Position des Audio-Player-Menüs konnte nicht gespeichert werden.", error);
+            }
+        };
+
+        const readSize = () => {
+            try {
+                const rawSize = localStorage.getItem(sizeStorageKey);
+                const size = rawSize ? JSON.parse(rawSize) : {};
+                const maxHeight = Math.max(260, window.innerHeight - 48);
+                return {
+                    width: Number.isFinite(size.width)
+                        ? Math.max(280, Math.min(560, size.width))
+                        : 320,
+                    height: Number.isFinite(size.height)
+                        ? Math.max(260, Math.min(maxHeight, size.height))
+                        : 445
+                };
+            } catch (error) {
+                console.warn("Die Größe des Audio-Player-Menüs konnte nicht gelesen werden.", error);
+                return { width: 320, height: 445 };
+            }
+        };
+
+        const saveSize = () => {
+            if (!menuSize) {
+                return;
+            }
+
+            try {
+                localStorage.setItem(sizeStorageKey, JSON.stringify(menuSize));
+            } catch (error) {
+                console.warn("Die Größe des Audio-Player-Menüs konnte nicht gespeichert werden.", error);
+            }
+        };
+
+        const applySize = () => {
+            if (!isDesktopLayout()) {
+                player.style.removeProperty("width");
+                player.style.removeProperty("height");
+                return;
+            }
+
+            menuSize = menuSize || readSize();
+            player.style.width = `${menuSize.width}px`;
+            player.style.height = `${menuSize.height}px`;
+        };
+
+        const applyPosition = () => {
+            if (!isDesktopLayout()) {
+                applySize();
+                player.classList.remove(collapsedClass);
+                toggle.style.removeProperty("left");
+                toggle.style.removeProperty("top");
+                toggle.style.removeProperty("right");
+                player.style.removeProperty("left");
+                player.style.removeProperty("top");
+                player.style.removeProperty("right");
+                player.style.removeProperty("transform");
+                return;
+            }
+
+            menuPosition = menuPosition || readPosition();
+            applySize();
+            const toggleWidth = toggle.offsetWidth || 36;
+            const toggleHeight = toggle.offsetHeight || 36;
+            const playerWidth = menuSize.width;
+            const defaultToggleLeft =
+                window.innerWidth - 12 - playerWidth + (playerWidth - toggleWidth) / 2;
+            const left = Number.isFinite(menuPosition.left)
+                ? menuPosition.left
+                : defaultToggleLeft;
+            const boundedLeft = Math.max(
+                12,
+                Math.min(window.innerWidth - toggleWidth - 12, left)
+            );
+            const boundedTop = Math.max(
+                12,
+                Math.min(window.innerHeight - toggleHeight - 12, menuPosition.top)
+            );
+            const defaultPlayerLeft = boundedLeft - (playerWidth - toggleWidth) / 2;
+            const playerLeft = Number.isFinite(menuPosition.playerLeft)
+                ? menuPosition.playerLeft
+                : defaultPlayerLeft;
+            const maxPlayerLeft = Math.max(12, window.innerWidth - playerWidth - 12);
+            const boundedPlayerLeft = Math.max(
+                12,
+                Math.min(maxPlayerLeft, playerLeft)
+            );
+
+            menuPosition.left = boundedLeft;
+            menuPosition.top = boundedTop;
+            menuPosition.playerLeft = boundedPlayerLeft;
+            toggle.style.left = `${boundedLeft}px`;
+            toggle.style.top = `${boundedTop}px`;
+            toggle.style.right = "auto";
+            player.style.left = `${boundedPlayerLeft}px`;
+            player.style.top = `${boundedTop + toggleHeight + 8}px`;
+            player.style.right = "auto";
+            player.style.transform = "none";
+            savePosition();
+        };
+
+        menuPosition = readPosition();
+        menuSize = readSize();
+        player.classList.add(collapsedClass);
+        applySize();
+        applyPosition();
+
+        let playerResizeObserver = null;
+        const observePlayerSize = () => {
+            if (playerResizeObserver || !window.ResizeObserver) {
+                return;
+            }
+
+            playerResizeObserver = new ResizeObserver(entries => {
+                if (!isDesktopLayout() || !entries[0]) {
+                    return;
+                }
+
+                const rect = player.getBoundingClientRect();
+                if (rect.width <= 0 || rect.height <= 0) {
+                    return;
+                }
+
+                menuSize.width = Math.max(280, Math.min(560, rect.width));
+                menuSize.height = Math.max(
+                    260,
+                    Math.min(Math.max(260, window.innerHeight - 48), rect.height)
+                );
+                menuPosition.playerLeft = rect.left;
+                applySize();
+                saveSize();
+                savePosition();
+            });
+            playerResizeObserver.observe(player);
+        };
+
+        toggle.addEventListener("click", () => {
+            if (toggle.dataset.dragged === "true") {
+                delete toggle.dataset.dragged;
+                return;
+            }
+
+            const isOpen = !player.classList.contains(collapsedClass);
+            player.classList.toggle(collapsedClass, isOpen);
+            if (!isOpen) {
+                observePlayerSize();
+            }
+            toggle.setAttribute("aria-expanded", String(!isOpen));
+            toggle.setAttribute(
+                "aria-label",
+                isOpen ? "Audio-Player öffnen" : "Audio-Player schließen"
+            );
+        });
+
+        toggle.addEventListener("pointerdown", event => {
+            if (!isDesktopLayout() || event.button !== 0) {
+                return;
+            }
+
+            const toggleRect = toggle.getBoundingClientRect();
+            const playerRect = player.getBoundingClientRect();
+            const initialPlayerLeft = playerRect.width > 0
+                ? playerRect.left
+                : menuPosition.playerLeft ??
+                    toggleRect.left - (menuSize.width - toggleRect.width) / 2;
+            const offsetX = event.clientX - toggleRect.left;
+            const offsetY = event.clientY - toggleRect.top;
+            let moved = false;
+            toggle.setPointerCapture(event.pointerId);
+
+            const moveToggle = moveEvent => {
+                const nextLeft = Math.max(
+                    12,
+                    Math.min(window.innerWidth - toggleRect.width - 12, moveEvent.clientX - offsetX)
+                );
+                const nextTop = Math.max(
+                    12,
+                    Math.min(window.innerHeight - toggleRect.height - 12, moveEvent.clientY - offsetY)
+                );
+                if (
+                    Math.abs(nextLeft - toggleRect.left) > 3 ||
+                    Math.abs(nextTop - toggleRect.top) > 3
+                ) {
+                    moved = true;
+                }
+                menuPosition.left = nextLeft;
+                menuPosition.top = nextTop;
+                menuPosition.playerLeft = initialPlayerLeft + nextLeft - toggleRect.left;
+                applyPosition();
+            };
+            const stopMoving = stopEvent => {
+                if (toggle.hasPointerCapture(stopEvent.pointerId)) {
+                    toggle.releasePointerCapture(stopEvent.pointerId);
+                }
+                toggle.removeEventListener("pointermove", moveToggle);
+                toggle.removeEventListener("pointerup", stopMoving);
+                toggle.removeEventListener("pointercancel", stopMoving);
+                if (moved) {
+                    toggle.dataset.dragged = "true";
+                    savePosition();
+                }
+            };
+
+            toggle.addEventListener("pointermove", moveToggle);
+            toggle.addEventListener("pointerup", stopMoving);
+            toggle.addEventListener("pointercancel", stopMoving);
+        });
+
+        window.addEventListener("resize", applyPosition);
     }
 
     function getQuestAudioSource(contentMode, questNumber) {
@@ -721,12 +985,15 @@
             return "";
         }
 
-        if (typeof text !== "string" || text.trim() === "") {
+        const speechText = typeof audio?.text === "string" && audio.text.trim()
+            ? audio.text
+            : text;
+        if (typeof speechText !== "string" || speechText.trim() === "") {
             return "";
         }
 
         return `
-            <div class="quest-audio-player ${className}" data-speech-audio-player data-speech-text="${encodeURIComponent(text)}">
+            <div class="quest-audio-player ${className}" data-speech-audio-player data-speech-text="${encodeURIComponent(speechText)}">
                 <button type="button" class="quest-audio-play-button" aria-label="Satz vorlesen" aria-pressed="false">🔊</button>
                 <span class="quest-audio-status" aria-live="polite"></span>
             </div>
@@ -771,6 +1038,7 @@
         renderQuestAudioPlayer,
         renderSentenceAudioPlayer,
         createPlaylistPlayer,
+        initializeFloatingPlayerMenu,
         speakText,
         stopSpeech
     };
