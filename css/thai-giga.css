@@ -844,15 +844,11 @@ body.thai-giga-page {
 
     .thai-giga-dictionary {
         position: fixed;
-        top: 120px;
+        top: var(--thai-giga-dictionary-top, 120px);
         right: max(24px, calc((100vw - 1200px) / 2));
         z-index: 6;
         width: min(300px, calc(100vw - 48px));
-        max-height: calc(100vh - 136px);
-    }
-
-    .thai-giga-dictionary.is-player-open {
-        right: max(560px, calc((100vw - 1200px) / 2));
+        max-height: calc(100vh - var(--thai-giga-dictionary-top, 120px) - 16px);
     }
 
     .thai-giga-sidebar-toggle {

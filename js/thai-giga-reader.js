@@ -55,6 +55,20 @@
     function syncDictionaryPosition() {
         const isPlayerOpen = !elements.audioPlayer?.classList.contains("is-desktop-collapsed");
         elements.dictionary?.classList.toggle("is-player-open", isPlayerOpen);
+        if (isPlayerOpen && window.matchMedia("(min-width: 901px)").matches) {
+            const playerBottom = elements.audioPlayer.getBoundingClientRect().bottom + 16;
+            const dictionaryHeight = elements.dictionary.getBoundingClientRect().height;
+            const availableTop = Math.max(120, window.innerHeight - dictionaryHeight - 16);
+            const dictionaryTop = playerBottom <= availableTop
+                ? Math.max(120, playerBottom)
+                : Math.max(120, playerBottom - 16);
+            elements.dictionary.style.setProperty(
+                "--thai-giga-dictionary-top",
+                `${dictionaryTop}px`
+            );
+        } else {
+            elements.dictionary?.style.removeProperty("--thai-giga-dictionary-top");
+        }
     }
 
     function getStoryContext(story) {
@@ -414,6 +428,7 @@
                 attributes: true,
                 attributeFilter: ["class"]
             });
+            window.addEventListener("resize", syncDictionaryPosition);
         } catch (error) {
             console.error(error);
             setStatus("Content konnte nicht geladen werden.", true);
