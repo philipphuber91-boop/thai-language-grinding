@@ -11,7 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../css/thai-giga.css">
+    <link rel="stylesheet" href="../css/thai-giga.css?v=116">
     <link rel="manifest" href="../manifest.json">
 </head>
 <body class="thai-giga-page">
@@ -30,6 +30,64 @@
         aria-label="Audio-Player öffnen"
         aria-expanded="false"
         aria-controls="thaiGigaAudioPlayer">🎧</button>
+    <button
+        id="thaiGigaSettingsToggle"
+        class="thai-giga-settings-toggle"
+        type="button"
+        aria-label="Thai-Giga-Einstellungen öffnen"
+        aria-expanded="false"
+        aria-controls="thaiGigaSettingsPanel">⚙</button>
+
+    <div id="thaiGigaSettingsBackdrop" class="thai-giga-settings-backdrop" hidden></div>
+    <section
+        id="thaiGigaSettingsPanel"
+        class="thai-giga-settings-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="thaiGigaSettingsTitle"
+        hidden>
+        <header class="thai-giga-settings-header">
+            <h2 id="thaiGigaSettingsTitle">Einstellungen</h2>
+            <button
+                id="thaiGigaSettingsClose"
+                class="thai-giga-settings-close"
+                type="button"
+                aria-label="Einstellungen schließen">✕</button>
+        </header>
+        <div class="thai-giga-settings-section">
+            <label class="thai-giga-settings-label" for="thaiGigaFontSelect">
+                Thai-Schriftart
+            </label>
+            <select id="thaiGigaFontSelect" class="thai-giga-settings-select">
+                <option value="standard">Standard</option>
+                <option value="noto-sans-thai">Noto Sans Thai</option>
+                <option value="sarabun">Sarabun</option>
+                <option value="prompt">Prompt</option>
+                <option value="kanit">Kanit</option>
+            </select>
+        </div>
+        <div class="thai-giga-settings-section">
+            <div class="thai-giga-settings-range-header">
+                <label class="thai-giga-settings-label" for="thaiGigaReminderFontSize">
+                    Reminder-Wörter
+                </label>
+                <output id="thaiGigaReminderFontSizeValue" for="thaiGigaReminderFontSize">20 px</output>
+            </div>
+            <input
+                id="thaiGigaReminderFontSize"
+                class="thai-giga-settings-range"
+                type="range"
+                min="18"
+                max="24"
+                step="1"
+                value="20"
+                aria-label="Schriftgröße der Reminder-Wörter">
+            <div class="thai-giga-settings-range-scale" aria-hidden="true">
+                <span>18</span>
+                <span>24</span>
+            </div>
+        </div>
+    </section>
 
     <aside id="thaiGigaSidebar" class="thai-giga-sidebar" aria-label="Thai-Giga-Navigation">
         <div class="thai-giga-menu-card">
@@ -131,6 +189,7 @@
     <script src="../js/thai-giga-drill.js"></script>
     <script src="../js/thai-giga-audio.js"></script>
     <script src="../js/thai-giga-reader.js"></script>
+    <script src="../js/thai-giga-settings.js"></script>
     <script src="../js/pwa-register.js"></script>
 </body>
 </html>
