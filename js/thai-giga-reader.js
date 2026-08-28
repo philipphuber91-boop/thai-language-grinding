@@ -9,7 +9,6 @@
         bossOverview: document.getElementById("thaiGigaBossOverview"),
         bossEyebrow: document.getElementById("thaiGigaBossEyebrow"),
         bossTitle: document.getElementById("thaiGigaBossTitle"),
-        bossDescription: document.getElementById("thaiGigaBossDescription"),
         sentenceCount: document.getElementById("thaiGigaSentenceCount"),
         pattern: document.getElementById("thaiGigaPattern"),
         patternTranslation: document.getElementById("thaiGigaPatternTranslation"),
@@ -95,8 +94,6 @@
         elements.bossOverview.hidden = false;
         elements.bossEyebrow.textContent = boss.title;
         elements.bossTitle.textContent = boss.grammarFocus;
-        elements.bossDescription.textContent =
-            "Offizieller Thai-Giga-Content mit stabilen Satzobjekten, kanonischen Wort-Token und wiederverwendbarer Audio-/Typing-Anbindung.";
         elements.sentenceCount.textContent = `${sentences.length} Beispielsätze`;
         elements.pattern.textContent = boss.grammarFocus;
         elements.patternTranslation.textContent =

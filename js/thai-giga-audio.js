@@ -44,18 +44,23 @@
         return match ? `#${match[1]}` : "#?";
     }
 
-    function keepCurrentPlaylistItemVisible() {
+    function centerCurrentPlaylistItem() {
+        if (!elements?.playlist || elements.playlist.clientHeight <= 0) {
+            return;
+        }
+
         const currentItem = elements.playlist.querySelector(".thai-giga-playlist-item.is-current");
         if (!currentItem) {
             return;
         }
 
-        const itemTop = currentItem.offsetTop;
-        const itemBottom = itemTop + currentItem.offsetHeight;
-        if (itemTop < elements.playlist.scrollTop) {
-            elements.playlist.scrollTop = itemTop;
-        } else if (itemBottom > elements.playlist.scrollTop + elements.playlist.clientHeight) {
-            elements.playlist.scrollTop = itemBottom - elements.playlist.clientHeight;
+        const playlistRect = elements.playlist.getBoundingClientRect();
+        const itemRect = currentItem.getBoundingClientRect();
+        const playlistCenter = playlistRect.top + elements.playlist.clientHeight / 2;
+        const itemCenter = itemRect.top + itemRect.height / 2;
+        const scrollDelta = itemCenter - playlistCenter;
+        if (Math.abs(scrollDelta) > 1) {
+            elements.playlist.scrollTop += scrollDelta;
         }
     }
 
@@ -122,7 +127,7 @@
                 </li>
             `).join("");
 
-        keepCurrentPlaylistItemVisible();
+        centerCurrentPlaylistItem();
         elements.playlist
             .querySelectorAll("[data-thai-giga-playlist-index]")
             .forEach(button => {
@@ -276,6 +281,15 @@
         elements.clear.addEventListener("click", () => controller.clear());
         elements.openTyping.addEventListener("click", openTypingPlaylist);
         controller.load();
+
+        if (window.ResizeObserver) {
+            const playlistResizeObserver = new ResizeObserver(() => {
+                centerCurrentPlaylistItem();
+            });
+            playlistResizeObserver.observe(elements.playlist);
+        } else {
+            window.addEventListener("resize", centerCurrentPlaylistItem);
+        }
     }
 
     window.thaiGigaAudio = {
