@@ -85,8 +85,19 @@ body.thai-giga-page {
     z-index: 30;
     width: 320px;
     padding: 32px 24px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
     transform: translateX(-100%);
     transition: transform .22s ease;
+}
+
+.thai-giga-sidebar::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 .thai-giga-sidebar.is-open {
@@ -1384,6 +1395,8 @@ body.thai-giga-page {
     .thai-giga-sidebar {
         width: min(320px, 86vw);
         padding: 78px 18px 20px;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
         background: var(--thai-bg);
     }
 
