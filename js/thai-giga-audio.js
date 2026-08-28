@@ -22,6 +22,7 @@
         }
 
         const story = indexes.storiesById.get(sentence.storyId);
+        const audio = sentence.audio || { type: "speechSynthesis" };
         return {
             id: sentence.id,
             storyId: sentence.storyId,
@@ -31,7 +32,15 @@
             thai: sentence.thai,
             transliteration: sentence.transliteration,
             translation: sentence.translation,
-            audio: sentence.audio || { type: "speechSynthesis" }
+            audio: audio.type === "speechSynthesis"
+                ? {
+                    ...audio,
+                    lang: audio.lang || "th-TH",
+                    fallbackSrc:
+                        "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=" +
+                        encodeURIComponent(sentence.thai)
+                }
+                : audio
         };
     }
 

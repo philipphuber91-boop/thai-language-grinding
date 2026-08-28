@@ -54,6 +54,19 @@
         activeSpeech = null;
     }
 
+    function getSpeechVoice(language) {
+        if (!("speechSynthesis" in window)) {
+            return null;
+        }
+
+        const requestedLanguage = String(language || "").toLowerCase();
+        const languageCode = requestedLanguage.split("-")[0];
+        const voices = window.speechSynthesis.getVoices();
+        return voices.find(voice => voice.lang.toLowerCase() === requestedLanguage) ||
+            voices.find(voice => voice.lang.toLowerCase().split("-")[0] === languageCode) ||
+            null;
+    }
+
     function speakText(text, button = null, options = {}) {
         if (
             typeof text !== "string" ||
@@ -73,6 +86,10 @@
 
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = options.lang || "th-TH";
+        const voice = options.voice || getSpeechVoice(utterance.lang);
+        if (voice) {
+            utterance.voice = voice;
+        }
         utterance.rate = Number.isFinite(options.rate)
             ? options.rate
             : getStoredPlaybackRate();
@@ -276,9 +293,21 @@
                 setStatus("Audio konnte nicht abgespielt werden.");
             };
             const audio = getEntryAudio?.(resolvedEntry);
+            const speechVoice = audio?.type === "speechSynthesis"
+                ? getSpeechVoice(audio.lang || "th-TH")
+                : null;
+            const fallbackSource = audio?.type === "speechSynthesis" &&
+                !speechVoice &&
+                typeof audio.fallbackSrc === "string" &&
+                audio.fallbackSrc.trim()
+                ? audio.fallbackSrc
+                : "";
 
-            if (audio?.type === "url" && typeof audio.src === "string" && audio.src.trim()) {
-                const nativeAudio = new Audio(audio.src);
+            if (
+                (audio?.type === "url" && typeof audio.src === "string" && audio.src.trim()) ||
+                fallbackSource
+            ) {
+                const nativeAudio = new Audio(fallbackSource || audio.src);
                 nativeAudio.playbackRate = state.playbackRate;
                 activeNativeAudio = nativeAudio;
                 nativeAudio.addEventListener("ended", () => {
@@ -306,6 +335,7 @@
             if (!speakText(text, null, {
                 rate: state.playbackRate,
                 lang: audio?.lang || "th-TH",
+                voice: speechVoice,
                 contentMode: resolvedEntry.contentMode || "",
                 sentenceId: getEntryId(resolvedEntry),
                 onEnd: finish,
