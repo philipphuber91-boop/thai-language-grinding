@@ -3,8 +3,10 @@
 
     const FONT_STORAGE_KEY = "thaiFontFamily";
     const REMINDER_SIZE_STORAGE_KEY = "thaiGigaReminderFontSize";
+    const THEME_STORAGE_KEY = "thaiGigaTheme";
     const DEFAULT_FONT = "sarabun";
     const DEFAULT_REMINDER_SIZE = 20;
+    const DEFAULT_THEME = "classic";
     const FONT_FAMILIES = {
         standard: '"Noto Serif Thai", "Times New Roman", Times, serif',
         "noto-sans-thai": '"Noto Sans Thai", sans-serif',
@@ -13,6 +15,7 @@
         kanit: '"Kanit", sans-serif'
     };
     const FONT_OPTIONS = Object.keys(FONT_FAMILIES);
+    const THEME_OPTIONS = ["classic", "night", "desert", "japanese"];
 
     const elements = {
         body: document.body,
@@ -20,6 +23,7 @@
         backdrop: document.getElementById("thaiGigaSettingsBackdrop"),
         panel: document.getElementById("thaiGigaSettingsPanel"),
         close: document.getElementById("thaiGigaSettingsClose"),
+        themeSelect: document.getElementById("thaiGigaThemeSelect"),
         fontSelect: document.getElementById("thaiGigaFontSelect"),
         reminderSize: document.getElementById("thaiGigaReminderFontSize"),
         reminderSizeValue: document.getElementById("thaiGigaReminderFontSizeValue")
@@ -36,6 +40,18 @@
             return DEFAULT_REMINDER_SIZE;
         }
         return Math.min(24, Math.max(18, Math.round(size)));
+    }
+
+    function normalizeTheme(value) {
+        const selection = String(value ?? "");
+        return THEME_OPTIONS.includes(selection) ? selection : DEFAULT_THEME;
+    }
+
+    function applyTheme(value) {
+        const selection = normalizeTheme(value);
+        elements.body.dataset.thaiTheme = selection;
+        elements.themeSelect.value = selection;
+        return selection;
     }
 
     function applyFont(value) {
@@ -73,8 +89,12 @@
     const initialReminderSize = applyReminderSize(
         localStorage.getItem(REMINDER_SIZE_STORAGE_KEY) || DEFAULT_REMINDER_SIZE
     );
+    const initialTheme = applyTheme(
+        localStorage.getItem(THEME_STORAGE_KEY) || DEFAULT_THEME
+    );
     localStorage.setItem(FONT_STORAGE_KEY, initialFont);
     localStorage.setItem(REMINDER_SIZE_STORAGE_KEY, String(initialReminderSize));
+    localStorage.setItem(THEME_STORAGE_KEY, initialTheme);
 
     elements.toggle.addEventListener("click", () => {
         if (elements.panel.hidden) {
@@ -85,6 +105,10 @@
     });
     elements.close.addEventListener("click", closeSettings);
     elements.backdrop.addEventListener("click", closeSettings);
+    elements.themeSelect.addEventListener("change", event => {
+        const selection = applyTheme(event.target.value);
+        localStorage.setItem(THEME_STORAGE_KEY, selection);
+    });
     elements.fontSelect.addEventListener("change", event => {
         const selection = applyFont(event.target.value);
         localStorage.setItem(FONT_STORAGE_KEY, selection);
