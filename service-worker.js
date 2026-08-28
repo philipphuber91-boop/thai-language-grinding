@@ -16,7 +16,7 @@
  * müssen den Cache in Safari nicht manuell löschen.
  */
 
-const CACHE_VERSION = 'v134';
+const CACHE_VERSION = 'v135';
 const CACHE_NAME = `thai-language-grinding-${CACHE_VERSION}`;
 
 // App-Shell: alles, was für Start und Offline-Betrieb gebraucht wird.
@@ -209,7 +209,9 @@ async function networkFirst(request) {
     const cache = await caches.open(CACHE_NAME);
 
     try {
-        const networkResponse = await fetch(request);
+        // HTTP-Cache umgehen: Auch installierte PWAs sollen neue Deployments
+        // beim nächsten Online-Aufruf zuverlässig erkennen.
+        const networkResponse = await fetch(request, { cache: 'no-store' });
         if (networkResponse && networkResponse.ok) {
             cache.put(request, networkResponse.clone());
         }
