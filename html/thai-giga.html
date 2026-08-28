@@ -105,46 +105,24 @@
             </details>
         </section>
 
-        <section id="thaiGigaBlockList" class="thai-giga-block-list" aria-label="Foundation Blocks"></section>
-
-        <article id="thaiGigaStory" class="thai-giga-story-card" aria-labelledby="thaiGigaStoryTitle" hidden>
-            <section class="thai-giga-reader">
-                <div id="thaiGigaEmptyState" class="thai-giga-empty-state">
-                    <h2>Technische Infrastruktur bereit</h2>
-                    <p>
-                        Es ist noch kein offizieller Lerncontent eingepflegt. Sobald eine
-                        validierte JSON-Contentdatei bereitsteht, erscheinen hier Level,
-                        Grammatikbosse, Mini-Storys und interaktive Sätze.
-                    </p>
-                    <p><strong>Dieser Bereich enthält bewusst keinen erfundenen Lerncontent.</strong></p>
-                </div>
-
-                <header class="thai-giga-story-header">
-                    <div>
-                        <p id="thaiGigaStoryContext" class="thai-giga-eyebrow"></p>
-                        <h2 id="thaiGigaStoryTitle"></h2>
-                    </div>
-                    <div class="thai-giga-story-actions">
-                        <button id="thaiGigaStoryPlaylistButton" class="thai-giga-secondary-button" type="button">
-                            + Situation zur Playlist
-                        </button>
-                        <button id="thaiGigaStorySelectedPlaylistButton" class="thai-giga-secondary-button" type="button">
-                            Ausgewählte Sätze zur Playlist
-                        </button>
-                        <button id="thaiGigaStoryTypingButton" class="thai-giga-secondary-button" type="button">
-                            Satz im Typing öffnen
-                        </button>
-                    </div>
-                </header>
-                <div id="thaiGigaSentenceList" class="thai-giga-sentence-list"></div>
-            </section>
-
+        <div class="thai-giga-lower-layout">
+            <div id="thaiGigaBlockList" class="thai-giga-block-list" aria-label="Foundation Blocks"></div>
             <aside id="thaiGigaDictionary" class="thai-giga-dictionary" aria-live="polite">
                 <p class="thai-giga-eyebrow">Wörterbuch</p>
                 <h2>Wort auswählen</h2>
                 <p>Klicke im Reader auf ein kanonisches Thai-Wort.</p>
             </aside>
-        </article>
+        </div>
+
+        <div id="thaiGigaEmptyState" class="thai-giga-empty-state" hidden>
+            <h2>Technische Infrastruktur bereit</h2>
+            <p>
+                Es ist noch kein offizieller Lerncontent eingepflegt. Sobald eine
+                validierte JSON-Contentdatei bereitsteht, erscheinen hier Level,
+                Grammatikbosse, Mini-Storys und interaktive Sätze.
+            </p>
+            <p><strong>Dieser Bereich enthält bewusst keinen erfundenen Lerncontent.</strong></p>
+        </div>
     </main>
 
     <script src="../js/quest-audio.js"></script>

@@ -26,7 +26,7 @@ body.thai-giga-page {
     background:
         radial-gradient(circle at 80% 0%, rgba(213, 151, 71, .16), transparent 34rem),
         linear-gradient(135deg, #15110d 0%, #21170f 52%, #100c09 100%);
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: "Noto Sans Thai", "Segoe UI", sans-serif;
 }
 
 .thai-giga-topbar {
@@ -496,96 +496,109 @@ body.thai-giga-page {
     color: var(--thai-muted);
 }
 
-.thai-giga-block-list {
-    display: grid;
-    gap: 14px;
-    margin-top: 20px;
-}
-
-.thai-giga-block {
-    border: 1px solid rgba(142, 107, 60, .8);
-    border-radius: 15px;
-    background: rgba(38, 27, 19, .84);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, .2);
-}
-
-.thai-giga-block-summary {
-    display: flex;
-    gap: 14px;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 16px;
-    cursor: pointer;
-    color: var(--thai-gold);
-    font-weight: bold;
-}
-
-.thai-giga-block-summary::marker {
-    color: var(--thai-gold);
-}
-
-.thai-giga-block-summary button {
-    width: auto;
-    min-width: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 6px 9px;
-    border: 1px solid rgba(244, 215, 158, .32);
-    border-radius: 7px;
-    color: var(--thai-text);
-    background: rgba(244, 215, 158, .08);
-    cursor: pointer;
-    font: inherit;
-    font-size: .78rem;
-    font-weight: normal;
-}
-
-.thai-giga-block-summary button:hover,
-.thai-giga-block-summary button:focus-visible {
-    border-color: var(--thai-gold);
-    background: rgba(231, 184, 97, .16);
-}
-
-.thai-giga-block-description {
-    margin: 0;
-    padding: 0 18px 12px;
-    color: var(--thai-muted);
-}
-
-.thai-giga-story-links {
-    display: grid;
-    gap: 8px;
-    padding: 0 18px 18px;
-}
-
-.thai-giga-story-link {
-    width: 100%;
-    min-height: 0;
-    padding: 10px 12px;
-    border: 1px solid rgba(142, 107, 60, .55);
-    border-radius: 9px;
-    color: var(--thai-text);
-    background: rgba(21, 17, 13, .38);
-    cursor: pointer;
-    font: inherit;
-    text-align: left;
-}
-
-.thai-giga-story-link:hover,
-.thai-giga-story-link:focus-visible {
-    border-color: var(--thai-gold);
-    background: rgba(231, 184, 97, .12);
-}
-
-.thai-giga-story-card {
+.thai-giga-lower-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(230px, 300px);
     gap: 18px;
     align-items: start;
 }
 
-.thai-giga-story-card .thai-giga-reader {
+.thai-giga-block-list {
+    width: 100%;
+}
+
+.thai-giga-block {
+    overflow: visible;
+    margin-top: 28px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+}
+
+.thai-giga-block-summary {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0 10px;
+    border-bottom: 1px solid rgba(142, 107, 60, .55);
+    color: var(--thai-gold);
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.thai-giga-block-summary-title {
     min-width: 0;
+}
+
+.thai-giga-block-playlist-button,
+.thai-giga-level-playlist-button {
+    flex: 0 0 auto;
+    width: auto;
+    min-width: 0;
+    min-height: 0;
+    padding: 6px 9px;
+    border: 1px solid rgba(142, 107, 60, .85);
+    border-radius: 8px;
+    color: var(--thai-muted);
+    background: rgba(50, 33, 22, .8);
+    cursor: pointer;
+    font: inherit;
+    font-size: .78rem;
+    white-space: nowrap;
+}
+
+.thai-giga-block-playlist-button:hover,
+.thai-giga-block-playlist-button:focus-visible,
+.thai-giga-level-playlist-button:hover,
+.thai-giga-level-playlist-button:focus-visible {
+    border-color: var(--thai-gold);
+    color: var(--thai-gold);
+    background: rgba(231, 184, 97, .1);
+}
+
+.thai-giga-block-summary:hover,
+.thai-giga-block-summary:focus-visible {
+    background: rgba(231, 184, 97, .08);
+}
+
+.thai-giga-block-description {
+    margin: 12px 0 14px;
+    padding: 0 0 4px;
+    color: var(--thai-muted);
+    line-height: 1.5;
+}
+
+.thai-giga-level-shell {
+    position: relative;
+}
+
+.thai-giga-level {
+    overflow: hidden;
+    margin: 14px 0;
+    border: 1px solid rgba(142, 107, 60, .7);
+    border-radius: 13px;
+    background: rgba(21, 17, 13, .52);
+}
+
+.thai-giga-level summary {
+    padding: 15px 190px 15px 18px;
+    color: #f2d99b;
+    cursor: pointer;
+    font-size: 1.05rem;
+    font-weight: bold;
+}
+
+.thai-giga-level summary:hover,
+.thai-giga-level summary:focus-visible {
+    background: rgba(231, 184, 97, .1);
+}
+
+.thai-giga-level-playlist-button {
+    position: absolute;
+    top: 8px;
+    right: 12px;
 }
 
 .thai-giga-empty-state {
@@ -595,27 +608,22 @@ body.thai-giga-page {
     color: var(--thai-muted);
 }
 
-.thai-giga-story-header {
-    padding-bottom: 18px;
-    border-bottom: 1px solid rgba(244, 215, 158, .2);
-}
-
-.thai-giga-story-header h2 {
-    font-size: clamp(1.35rem, 3vw, 2rem);
-}
-
 .thai-giga-sentence-list {
     display: grid;
-    gap: 12px;
-    margin-top: 18px;
+    gap: 10px;
+    padding: 0 10px 14px;
 }
 
 .thai-giga-sentence {
-    padding: 14px;
-    border: 1px solid rgba(244, 215, 158, .14);
-    border-radius: 12px;
-    background: rgba(20, 15, 11, .45);
-    scroll-margin-top: 20px;
+    display: grid;
+    grid-template-columns: 46px minmax(0, 1fr) auto auto;
+    gap: 12px;
+    align-items: center;
+    padding: 15px;
+    border: 1px solid rgba(142, 107, 60, .35);
+    border-radius: 10px;
+    background: rgba(50, 33, 22, .54);
+    scroll-margin-top: 24px;
 }
 
 .thai-giga-sentence.is-highlighted {
@@ -623,20 +631,18 @@ body.thai-giga-page {
     box-shadow: 0 0 0 2px rgba(231, 184, 97, .18);
 }
 
-.thai-giga-sentence-meta {
-    display: flex;
-    gap: 12px;
-    justify-content: space-between;
-    color: #bda77f;
-    font-size: .85rem;
+.thai-giga-sentence-number {
+    color: var(--thai-gold);
+    font-size: .95rem;
+    font-weight: bold;
 }
 
 .thai-giga-thai {
-    margin: 8px 0;
+    margin: 0;
     color: #ffe4a9;
     font-family: "Noto Sans Thai", sans-serif;
-    font-size: 1.4rem;
-    line-height: 1.7;
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    line-height: 1.35;
 }
 
 .thai-giga-word-button {
@@ -648,6 +654,7 @@ body.thai-giga-page {
     border-radius: 5px;
     color: inherit;
     background: transparent;
+    box-shadow: none;
     cursor: pointer;
     font: inherit;
 }
@@ -658,29 +665,66 @@ body.thai-giga-page {
 }
 
 .thai-giga-transliteration {
-    margin: 0 0 6px;
+    margin: 5px 0 0;
     color: var(--thai-accent);
+    line-height: 1.4;
 }
 
 .thai-giga-translation {
-    margin: 0;
+    margin: 5px 0 0;
     color: var(--thai-muted);
+    line-height: 1.4;
 }
 
-.thai-giga-sentence-actions {
-    margin-top: 12px;
-}
-
-.thai-giga-sentence-select {
-    display: inline-flex;
-    gap: 6px;
+.thai-giga-inline-audio {
+    display: flex;
     align-items: center;
-    color: var(--thai-muted);
-    font-size: .85rem;
 }
 
-.thai-giga-sentence-select input {
-    accent-color: var(--thai-gold);
+.thai-giga-inline-audio .quest-audio-play-button {
+    display: inline-grid;
+    place-items: center;
+    flex: 0 0 42px;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 1px solid rgba(142, 107, 60, .85);
+    border-radius: 10px;
+    color: var(--thai-gold);
+    background: rgba(50, 33, 22, .8);
+    cursor: pointer;
+    font: inherit;
+    font-size: 1.2rem;
+}
+
+.thai-giga-inline-audio .quest-audio-play-button:hover,
+.thai-giga-inline-audio .quest-audio-play-button:focus-visible,
+.thai-giga-inline-audio .quest-audio-play-button.is-speaking {
+    border-color: var(--thai-gold);
+    color: #1b120b;
+    background: var(--thai-gold);
+}
+
+.thai-giga-playlist-button {
+    width: auto;
+    min-width: 0;
+    padding: 8px 9px;
+    border: 1px solid rgba(142, 107, 60, .85);
+    border-radius: 8px;
+    color: var(--thai-muted);
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+    font-size: .83rem;
+    white-space: nowrap;
+}
+
+.thai-giga-playlist-button:hover,
+.thai-giga-playlist-button:focus-visible,
+.thai-giga-playlist-button.is-added {
+    border-color: var(--thai-gold);
+    color: var(--thai-gold);
+    background: rgba(231, 184, 97, .1);
 }
 
 .thai-giga-dictionary {
@@ -757,7 +801,7 @@ body.thai-giga-page {
         margin-top: 22px;
     }
 
-    .thai-giga-story-card {
+    .thai-giga-lower-layout {
         display: block;
     }
 
@@ -770,6 +814,17 @@ body.thai-giga-page {
 }
 
 @media (min-width: 901px) {
+    .thai-giga-block {
+        padding: 0 18px 18px;
+        border: 1px solid rgba(142, 107, 60, .7);
+        border-radius: 15px;
+        background: rgba(21, 17, 13, .24);
+    }
+
+    .thai-giga-block-summary {
+        border-bottom: 0;
+    }
+
     .thai-giga-sidebar-toggle {
         display: grid;
     }
@@ -778,6 +833,17 @@ body.thai-giga-page {
 @media (max-width: 580px) {
     .thai-giga-topbar {
         padding: 26px 18px 24px;
+    }
+
+    .thai-giga-topbar h1 {
+        padding-left: 48px;
+        font-size: 1.15rem;
+    }
+
+    .thai-giga-topbar h2 {
+        padding-left: 48px;
+        font-size: .83rem;
+        letter-spacing: .2em;
     }
 
     .thai-giga-main {
@@ -790,8 +856,7 @@ body.thai-giga-page {
         border-radius: 15px;
     }
 
-    .thai-giga-reader-header,
-    .thai-giga-story-header {
+    .thai-giga-reader-header {
         display: block;
     }
 
@@ -800,12 +865,86 @@ body.thai-giga-page {
         margin-top: 12px;
     }
 
-    .thai-giga-story-actions {
-        margin-top: 15px;
-    }
-
     .thai-giga-audio-speed {
         grid-template-columns: auto minmax(0, 1fr) auto;
+    }
+
+    .thai-giga-level summary {
+        padding: 10px 82px 10px 12px;
+        font-size: .88rem;
+    }
+
+    .thai-giga-level-playlist-button {
+        top: 7px;
+        right: 10px;
+        margin: 0;
+    }
+
+    .thai-giga-level {
+        overflow: visible;
+        border: 1px solid rgba(142, 107, 60, .7);
+        border-radius: 13px;
+        background: rgba(21, 17, 13, .35);
+    }
+
+    .thai-giga-block {
+        margin-top: 20px;
+        padding: 0 12px 14px;
+        border: 1px solid rgba(142, 107, 60, .7);
+        border-radius: 15px;
+        background: rgba(21, 17, 13, .24);
+    }
+
+    .thai-giga-block-summary {
+        padding-left: 0;
+        padding-right: 0;
+        border-bottom: 0;
+        font-size: .92rem;
+    }
+
+    .thai-giga-block-description {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .thai-giga-sentence-list {
+        padding-left: 8px;
+        padding-right: 8px;
+    }
+
+    .thai-giga-sentence {
+        grid-template-columns: 32px minmax(0, 1fr) 32px 28px;
+        gap: 7px;
+        padding: 10px;
+    }
+
+    .thai-giga-inline-audio .quest-audio-play-button {
+        flex-basis: 32px;
+        width: 32px;
+        height: 32px;
+        font-size: .85rem;
+    }
+
+    .thai-giga-playlist-button,
+    .thai-giga-level-playlist-button,
+    .thai-giga-block-playlist-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        padding: 0;
+        font-size: 0;
+        line-height: 1;
+    }
+
+    .thai-giga-playlist-button::before,
+    .thai-giga-level-playlist-button::before,
+    .thai-giga-block-playlist-button::before {
+        display: block;
+        content: "+";
+        font-size: 1rem;
+        line-height: 1;
     }
 
     .thai-giga-audio-header {
