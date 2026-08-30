@@ -147,6 +147,10 @@
             requireString(token.wordId, `${path}.wordId`, errors);
         }
 
+        if (token.contextMeaning !== undefined) {
+            requireString(token.contextMeaning, `${path}.contextMeaning`, errors);
+        }
+
         if (
             typeof token.wordId === "string" &&
             token.wordId.trim() !== "" &&

@@ -1444,6 +1444,21 @@ body.thai-giga-page {
     line-height: 1.5;
 }
 
+.thai-giga-dictionary-context {
+    display: grid;
+    gap: 4px;
+    margin: 12px 0;
+    padding: 10px 12px;
+    border-left: 3px solid var(--thai-gold);
+    color: var(--thai-strong-text);
+    background: rgba(231, 184, 97, .1);
+    line-height: 1.45;
+}
+
+.thai-giga-dictionary-context strong {
+    color: var(--thai-gold);
+}
+
 .thai-giga-dictionary-sentences {
     display: grid;
     gap: 6px;
