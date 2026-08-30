@@ -11,6 +11,7 @@
         bossTitle: document.getElementById("thaiGigaBossTitle"),
         bossDescription: document.getElementById("thaiGigaBossDescription"),
         sentenceCount: document.getElementById("thaiGigaSentenceCount"),
+        introduction: document.getElementById("thaiGigaIntroduction"),
         pattern: document.getElementById("thaiGigaPattern"),
         patternTranslation: document.getElementById("thaiGigaPatternTranslation"),
         blockList: document.getElementById("thaiGigaBlockList"),
@@ -525,6 +526,89 @@
         `;
     }
 
+    function renderThaiIntroductionAudio(text) {
+        if (!window.questAudio?.renderSentenceAudioPlayer) {
+            return "";
+        }
+
+        return window.questAudio.renderSentenceAudioPlayer({
+            audio: { type: "speechSynthesis", lang: "th-TH" },
+            text,
+            className: "thai-giga-introduction-audio",
+            playbackRate: 1
+        });
+    }
+
+    function renderThaiIntroduction(introduction) {
+        if (!elements.introduction) {
+            return;
+        }
+
+        if (!introduction) {
+            elements.introduction.hidden = true;
+            elements.introduction.innerHTML = "";
+            return;
+        }
+
+        elements.introduction.hidden = false;
+        elements.introduction.innerHTML = `
+            <details class="thai-giga-introduction-disclosure" open>
+                <summary>🧩 Das Grundmuster</summary>
+                <div class="thai-giga-introduction-content">
+                    <div class="thai-giga-introduction-example">
+                        <div class="thai-giga-introduction-audio-line">
+                            <p class="thai-giga-introduction-thai" lang="th">
+                                ${escapeHtml(introduction.example.thai)}
+                            </p>
+                            ${renderThaiIntroductionAudio(introduction.example.thai)}
+                        </div>
+                        <p class="thai-giga-introduction-transliteration">
+                            <em>${escapeHtml(introduction.example.transliteration)}</em>
+                        </p>
+                        <p class="thai-giga-introduction-translation">
+                            ${escapeHtml(introduction.example.translation)}
+                        </p>
+                    </div>
+                    <p class="thai-giga-introduction-lead">
+                        Du kannst es zunächst als Baukasten sehen:
+                    </p>
+                    <div class="thai-giga-introduction-parts">
+                        ${introduction.parts.map(part => `
+                            <div class="thai-giga-introduction-part">
+                                <div class="thai-giga-introduction-audio-line">
+                                    <strong lang="th">${escapeHtml(part.thai)}</strong>
+                                    ${renderThaiIntroductionAudio(part.thai)}
+                                </div>
+                                <em>${escapeHtml(part.transliteration)}</em>
+                                <span>${escapeHtml(part.translation)}</span>
+                            </div>
+                        `).join("")}
+                    </div>
+                    <div class="thai-giga-introduction-assembly">
+                        <p class="thai-giga-pattern-label">Also:</p>
+                        <div class="thai-giga-introduction-audio-line">
+                            <p class="thai-giga-introduction-thai" lang="th">
+                                <strong>${escapeHtml(introduction.assembly.thai)}</strong>
+                            </p>
+                            ${renderThaiIntroductionAudio(introduction.assembly.thai)}
+                        </div>
+                        <p class="thai-giga-introduction-transliteration">
+                            <em>${escapeHtml(introduction.assembly.transliteration)}</em>
+                        </p>
+                        <p class="thai-giga-introduction-translation">
+                            <strong>${escapeHtml(introduction.assembly.translation)}</strong>
+                        </p>
+                    </div>
+                    <p class="thai-giga-introduction-warning">
+                        💡 <strong>Wichtig:</strong> ${escapeHtml(introduction.warning)}
+                    </p>
+                </div>
+            </details>
+        `;
+
+        window.questAudio?.initializeSentenceAudioPlayers(elements.introduction);
+    }
+
     function renderBossOverview(boss) {
         if (!boss) {
             elements.bossOverview.hidden = true;
@@ -538,11 +622,17 @@
         elements.bossEyebrow.textContent = boss.title;
         elements.bossTitle.textContent = boss.grammarFocus;
         elements.bossDescription.textContent =
-            "Offizieller Thai-Giga-Content mit stabilen Satzobjekten, kanonischen Wort-Token und wiederverwendbarer Audio-/Typing-Anbindung.";
-        elements.sentenceCount.textContent = `${sentences.length} Beispielsätze`;
-        elements.pattern.textContent = boss.grammarFocus;
-        elements.patternTranslation.textContent =
+            boss.introduction?.description ||
             "Das aktive Grammatikmuster wird in den Situationen und Sätzen dieses Bosses wiederholt.";
+        elements.sentenceCount.textContent = `${sentences.length} Beispielsätze`;
+        if (elements.pattern) {
+            elements.pattern.textContent = boss.grammarFocus;
+        }
+        if (elements.patternTranslation) {
+            elements.patternTranslation.textContent =
+                "Das aktive Grammatikmuster wird in den Situationen und Sätzen dieses Bosses wiederholt.";
+        }
+        renderThaiIntroduction(boss.introduction);
     }
 
     function renderBlockList() {

@@ -751,6 +751,91 @@ body.thai-giga-page {
     padding: 0 15px 15px;
 }
 
+.thai-giga-introduction-example {
+    padding: 16px 18px;
+    border-left: 3px solid var(--thai-gold);
+    background: rgba(231, 184, 97, .08);
+}
+
+.thai-giga-introduction-audio-line {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.thai-giga-introduction-audio-line .quest-audio-player {
+    flex: 0 0 auto;
+    margin-top: 0;
+}
+
+.thai-giga-introduction-thai {
+    margin: 0;
+    color: var(--thai-text);
+    font-size: 1.35rem;
+    line-height: 1.45;
+}
+
+.thai-giga-introduction-transliteration {
+    margin: 5px 0 0;
+    color: var(--thai-accent);
+}
+
+.thai-giga-introduction-translation {
+    margin: 4px 0 0;
+    color: var(--thai-muted);
+}
+
+.thai-giga-introduction-lead {
+    margin: 20px 0 12px;
+}
+
+.thai-giga-introduction-parts {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 9px;
+}
+
+.thai-giga-introduction-part {
+    display: grid;
+    gap: 4px;
+    min-width: 0;
+    padding: 12px;
+    border: 1px solid rgba(142, 107, 60, .65);
+    border-radius: 9px;
+    background: rgba(21, 17, 13, .38);
+}
+
+.thai-giga-introduction-part strong {
+    color: var(--thai-text);
+    font-size: 1.15rem;
+}
+
+.thai-giga-introduction-part em {
+    color: var(--thai-accent);
+    font-size: .9rem;
+}
+
+.thai-giga-introduction-part span {
+    color: var(--thai-muted);
+    font-size: .9rem;
+}
+
+.thai-giga-introduction-assembly {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(142, 107, 60, .35);
+}
+
+.thai-giga-introduction-assembly .thai-giga-pattern-label {
+    margin-bottom: 8px;
+}
+
+.thai-giga-introduction-warning {
+    margin: 20px 0 0;
+    color: var(--thai-strong-text);
+    line-height: 1.55;
+}
+
 .thai-giga-pattern {
     margin: 8px 0 5px;
     color: #ffe4a9;
@@ -1434,6 +1519,10 @@ body.thai-giga-page {
 }
 
 @media (max-width: 580px) {
+    .thai-giga-introduction-parts {
+        grid-template-columns: 1fr;
+    }
+
     .thai-giga-topbar {
         padding: 26px 18px 24px;
     }

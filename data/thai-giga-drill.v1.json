@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "level-1-boss-3-complete-1500",
+  "contentVersion": "level-1-boss-3-introductions-complete-1500",
   "contentStatus": "complete",
   "language": "th",
   "source": {
@@ -18,6 +18,37 @@
           "title": "GRAMMATIKBOSS 1",
           "grammarFocus": "เป็น — sein / etwas sein",
           "contentStatus": "complete",
+          "introduction": {
+            "description": "In diesem Boss lernst du เป็น (bpen), um mit Nomen einfache Aussagen über Identität, Beruf, Herkunft und Zugehörigkeit zu bilden. Die Grundstruktur ist Subjekt + เป็น + Nomen; Fragen und Verneinungen werden danach Schritt für Schritt erweitert.",
+            "example": {
+              "thai": "ผมเป็นคนไทย",
+              "transliteration": "phǒm bpen khon Thai",
+              "translation": "Ich bin Thailänder."
+            },
+            "parts": [
+              {
+                "thai": "ผม",
+                "transliteration": "phǒm",
+                "translation": "ich / mich"
+              },
+              {
+                "thai": "เป็น",
+                "transliteration": "bpen",
+                "translation": "sein / etwas sein"
+              },
+              {
+                "thai": "คนไทย",
+                "transliteration": "khon Thai",
+                "translation": "Thailänder / thailändische Person"
+              }
+            ],
+            "assembly": {
+              "thai": "ผม + เป็น + คนไทย",
+              "transliteration": "phǒm + bpen + khon Thai",
+              "translation": "Ich + bin + Thailänder."
+            },
+            "warning": "เป็น steht hier vor einem Nomen und beschreibt Identität, Beruf, Herkunft oder Zugehörigkeit. Thai verändert das Verb nicht nach der Person; Fragen werden häufig mit ไหม am Satzende gebildet. Für die nominale Verneinung wird später meist ไม่ใช่ verwendet."
+          },
           "blocks": [
             {
               "id": "level-1-boss-1-foundation-block-1",
@@ -19847,6 +19878,37 @@
           "title": "GRAMMATIKBOSS 2",
           "grammarFocus": "จะ — werden / wollen / Zukunft",
           "contentStatus": "complete",
+          "introduction": {
+            "description": "In diesem Boss lernst du จะ (jà) als Marker für Zukunft, Absicht und geplante Handlungen. จะ steht direkt vor dem Verb und bleibt für alle Personen gleich; je nach Kontext bedeutet es „werden“, „wollen“ oder „vorhaben zu“.",
+            "example": {
+              "thai": "ผมจะไป",
+              "transliteration": "phǒm jà bpai",
+              "translation": "Ich werde gehen / ich will gehen."
+            },
+            "parts": [
+              {
+                "thai": "ผม",
+                "transliteration": "phǒm",
+                "translation": "ich / mich"
+              },
+              {
+                "thai": "จะ",
+                "transliteration": "jà",
+                "translation": "werden / vorhaben zu"
+              },
+              {
+                "thai": "ไป",
+                "transliteration": "bpai",
+                "translation": "gehen / fahren"
+              }
+            ],
+            "assembly": {
+              "thai": "ผม + จะ + ไป",
+              "transliteration": "phǒm + jà + bpai",
+              "translation": "Ich + werde / will + gehen."
+            },
+            "warning": "จะ steht direkt vor dem Verb oder der Verbgruppe und markiert eine zukünftige oder beabsichtigte Handlung. Es ist kein konjugiertes „werden“: Die Bedeutung ergibt sich aus dem Kontext und kann auch „vorhaben zu“ oder „gleich tun“ sein."
+          },
           "blocks": [
             {
               "id": "level-1-boss-2-foundation-block-1",
@@ -43539,6 +43601,37 @@
           "title": "GRAMMATIKBOSS 3",
           "grammarFocus": "แล้ว — schon / bereits / abgeschlossen / dann",
           "contentStatus": "complete",
+          "introduction": {
+            "description": "In diesem Boss lernst du แล้ว (lɛ́ɛo), ein wichtiges Wort für bereits abgeschlossene Handlungen und Zustandsänderungen. แล้ว steht meist nach dem Verb; der Kontext entscheidet, ob die Bedeutung eher „schon“, „bereits“ oder in einer Abfolge „dann“ ist.",
+            "example": {
+              "thai": "ผมกินแล้ว",
+              "transliteration": "phǒm gin lɛ́ɛo",
+              "translation": "Ich habe schon gegessen."
+            },
+            "parts": [
+              {
+                "thai": "ผม",
+                "transliteration": "phǒm",
+                "translation": "ich / mich"
+              },
+              {
+                "thai": "กิน",
+                "transliteration": "gin",
+                "translation": "essen"
+              },
+              {
+                "thai": "แล้ว",
+                "transliteration": "lɛ́ɛo",
+                "translation": "schon / bereits; abgeschlossen"
+              }
+            ],
+            "assembly": {
+              "thai": "ผม + กิน + แล้ว",
+              "transliteration": "phǒm + gin + lɛ́ɛo",
+              "translation": "Ich + essen + schon. → Ich habe schon gegessen."
+            },
+            "warning": "แล้ว steht meist nach dem Verb oder Ereignis und zeigt an, dass etwas bereits geschehen oder abgeschlossen ist. Es ist keine deutsche Vergangenheitsform; je nach Kontext kann แล้ว auch eine Abfolge wie „dann“ ausdrücken."
+          },
           "blocks": [
             {
               "id": "level-1-boss-3-foundation-block-1",
