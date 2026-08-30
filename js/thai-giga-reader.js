@@ -733,15 +733,25 @@
 
     function renderSentence(sentence) {
         const tokenMarkup = sentence.tokens
-            .map(token => token.wordId
-                ? `
+            .map(token => {
+                if (!token.wordId) {
+                    return `<span>${escapeHtml(token.text)}</span>`;
+                }
+
+                const contextAttribute = token.contextMeaning
+                    ? ` data-context-meaning="${escapeHtml(token.contextMeaning)}"`
+                    : "";
+                const contextTitle = token.contextMeaning
+                    ? "Wörterbuch öffnen – Kontextbedeutung anzeigen"
+                    : "Wörterbuch öffnen";
+                return `
                     <button
                         class="thai-giga-word-button"
                         type="button"
-                        data-word-id="${escapeHtml(token.wordId)}"
-                        title="Wörterbuch öffnen">${escapeHtml(token.text)}</button>
-                `
-                : `<span>${escapeHtml(token.text)}</span>`)
+                        data-word-id="${escapeHtml(token.wordId)}"${contextAttribute}
+                        title="${contextTitle}">${escapeHtml(token.text)}</button>
+                `;
+            })
             .join("");
         const audioMarkup = window.questAudio.renderSentenceAudioPlayer({
             audio: window.thaiGigaAudio.getAudioForSentence(sentence.id) || sentence.audio,
@@ -787,7 +797,11 @@
 
         elements.sentenceList.querySelectorAll("[data-word-id]").forEach(button => {
             button.addEventListener("click", () =>
-                showDictionary(button.dataset.wordId, button)
+                showDictionary(
+                    button.dataset.wordId,
+                    button,
+                    button.dataset.contextMeaning || ""
+                )
             );
         });
 
@@ -967,7 +981,7 @@
         elements.dictionary.style.top = `${top}px`;
     }
 
-    function showDictionary(wordId, anchor) {
+    function showDictionary(wordId, anchor, contextMeaning = "") {
         const word = indexes.wordsById.get(wordId);
         if (!word) {
             return;
@@ -985,7 +999,16 @@
             </div>
             <div class="thai-giga-dictionary-word" lang="th">${escapeHtml(word.thai)}</div>
             <p class="thai-giga-dictionary-transliteration">${escapeHtml(word.transliteration)}</p>
+            ${contextMeaning
+                ? `
+                    <div class="thai-giga-dictionary-context">
+                        <strong>In diesem Satz gemeint als:</strong>
+                        <span>${escapeHtml(contextMeaning)}</span>
+                    </div>
+                `
+                : ""}
             <div class="thai-giga-dictionary-meaning">
+                <strong>Grundbedeutung:</strong>
                 ${word.meanings.map(meaning => `<div>${escapeHtml(meaning)}</div>`).join("")}
             </div>
             <details class="thai-giga-dictionary-examples">

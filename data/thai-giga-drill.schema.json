@@ -334,6 +334,10 @@
         "wordId": {
           "type": "string",
           "minLength": 1
+        },
+        "contextMeaning": {
+          "type": "string",
+          "minLength": 1
         }
       },
       "additionalProperties": true
