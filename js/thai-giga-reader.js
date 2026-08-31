@@ -732,27 +732,54 @@
     }
 
     function renderSentence(sentence) {
-        const tokenMarkup = sentence.tokens
-            .map(token => {
-                if (!token.wordId) {
-                    return `<span>${escapeHtml(token.text)}</span>`;
-                }
+        let thaiOffset = 0;
+        let previousToken = null;
+        const tokenMarkup = [];
 
-                const contextAttribute = token.contextMeaning
-                    ? ` data-context-meaning="${escapeHtml(token.contextMeaning)}"`
+        sentence.tokens.forEach(token => {
+            if (previousToken?.kind === "word" && token.kind === "word") {
+                tokenMarkup.push(
+                    '<span class="thai-giga-space-token thai-giga-generated-space"> </span>'
+                );
+            }
+
+            const tokenStart = thaiOffset;
+            thaiOffset += token.text.length;
+
+            if (token.kind === "space") {
+                const isRequiredSpace =
+                    sentence.thai.slice(tokenStart, thaiOffset) === token.text;
+                const spaceClass = isRequiredSpace
+                    ? " thai-giga-space-token-is-required"
                     : "";
-                const contextTitle = token.contextMeaning
-                    ? "Wörterbuch öffnen – Kontextbedeutung anzeigen"
-                    : "Wörterbuch öffnen";
-                return `
-                    <button
-                        class="thai-giga-word-button"
-                        type="button"
-                        data-word-id="${escapeHtml(token.wordId)}"${contextAttribute}
-                        title="${contextTitle}">${escapeHtml(token.text)}</button>
-                `;
-            })
-            .join("");
+                tokenMarkup.push(
+                    `<span class="thai-giga-space-token${spaceClass}">${escapeHtml(token.text)}</span>`
+                );
+                previousToken = token;
+                return;
+            }
+
+            if (!token.wordId) {
+                tokenMarkup.push(`<span>${escapeHtml(token.text)}</span>`);
+                previousToken = token;
+                return;
+            }
+
+            const contextAttribute = token.contextMeaning
+                ? ` data-context-meaning="${escapeHtml(token.contextMeaning)}"`
+                : "";
+            const contextTitle = token.contextMeaning
+                ? "Wörterbuch öffnen – Kontextbedeutung anzeigen"
+                : "Wörterbuch öffnen";
+            tokenMarkup.push(`
+                <button
+                    class="thai-giga-word-button"
+                    type="button"
+                    data-word-id="${escapeHtml(token.wordId)}"${contextAttribute}
+                    title="${contextTitle}">${escapeHtml(token.text)}</button>
+            `);
+            previousToken = token;
+        });
         const audioMarkup = window.questAudio.renderSentenceAudioPlayer({
             audio: window.thaiGigaAudio.getAudioForSentence(sentence.id) || sentence.audio,
             text: sentence.thai,
@@ -770,7 +797,7 @@
                 title="Tippen, um die deutsche Übersetzung ein- oder auszublenden">
                 <span class="thai-giga-sentence-number">${sentence.numberInStory}.</span>
                 <div>
-                    <p class="thai-giga-thai" lang="th">${tokenMarkup}</p>
+                    <p class="thai-giga-thai" lang="th">${tokenMarkup.join("")}</p>
                     <p class="thai-giga-transliteration">${escapeHtml(sentence.transliteration)}</p>
                     <p
                         class="thai-giga-translation"

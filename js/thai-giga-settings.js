@@ -6,6 +6,8 @@
     const THEME_STORAGE_KEY = "thaiGigaTheme";
     const TRANSLITERATION_STORAGE_KEY = "thaiGigaTransliterationVisible";
     const TRANSLATION_STORAGE_KEY = "thaiGigaTranslationVisible";
+    const WORD_SEPARATION_STORAGE_KEY = "thaiGigaWordSeparation";
+    const DEFAULT_WORD_SEPARATION = true;
     const DEFAULT_FONT = "sarabun";
     const DEFAULT_REMINDER_SIZE = 20;
     const DEFAULT_THEME = "classic";
@@ -29,6 +31,7 @@
         fontSelect: document.getElementById("thaiGigaFontSelect"),
         transliterationToggle: document.getElementById("thaiGigaTransliterationToggle"),
         translationToggle: document.getElementById("thaiGigaTranslationToggle"),
+        wordSeparationToggle: document.getElementById("thaiGigaWordSeparationToggle"),
         reminderSize: document.getElementById("thaiGigaReminderFontSize"),
         reminderSizeValue: document.getElementById("thaiGigaReminderFontSizeValue")
     };
@@ -62,6 +65,12 @@
         const visible = value !== false;
         elements.body.dataset[`thai${setting}Visible`] = String(visible);
         return visible;
+    }
+
+    function applyWordSeparationSetting(value) {
+        const separated = value !== false;
+        elements.body.dataset.thaiWordSeparation = String(separated);
+        return separated;
     }
 
     function readStoredVisibility(key) {
@@ -115,8 +124,14 @@
         "Translation",
         readStoredVisibility(TRANSLATION_STORAGE_KEY)
     );
+    const initialWordSeparation = applyWordSeparationSetting(
+        localStorage.getItem(WORD_SEPARATION_STORAGE_KEY) === null
+            ? DEFAULT_WORD_SEPARATION
+            : localStorage.getItem(WORD_SEPARATION_STORAGE_KEY) === "true"
+    );
     elements.transliterationToggle.checked = initialTransliterationVisible;
     elements.translationToggle.checked = initialTranslationVisible;
+    elements.wordSeparationToggle.checked = initialWordSeparation;
     localStorage.setItem(FONT_STORAGE_KEY, initialFont);
     localStorage.setItem(REMINDER_SIZE_STORAGE_KEY, String(initialReminderSize));
     localStorage.setItem(THEME_STORAGE_KEY, initialTheme);
@@ -125,6 +140,7 @@
         String(initialTransliterationVisible)
     );
     localStorage.setItem(TRANSLATION_STORAGE_KEY, String(initialTranslationVisible));
+    localStorage.setItem(WORD_SEPARATION_STORAGE_KEY, String(initialWordSeparation));
 
     elements.toggle.addEventListener("click", () => {
         if (elements.panel.hidden) {
@@ -146,6 +162,10 @@
     elements.translationToggle.addEventListener("change", event => {
         const visible = applyVisibilitySetting("Translation", event.target.checked);
         localStorage.setItem(TRANSLATION_STORAGE_KEY, String(visible));
+    });
+    elements.wordSeparationToggle.addEventListener("change", event => {
+        const separated = applyWordSeparationSetting(event.target.checked);
+        localStorage.setItem(WORD_SEPARATION_STORAGE_KEY, String(separated));
     });
     elements.fontSelect.addEventListener("change", event => {
         const selection = applyFont(event.target.value);

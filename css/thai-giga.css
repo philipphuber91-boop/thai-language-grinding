@@ -1968,3 +1968,8 @@ body.thai-giga-page[data-thai-translation-visible="false"]
     .thai-giga-translation[data-thai-giga-translation-state="visible"] {
     display: block;
 }
+
+body.thai-giga-page[data-thai-word-separation="false"]
+    .thai-giga-space-token:not(.thai-giga-space-token-is-required) {
+    display: none;
+}
