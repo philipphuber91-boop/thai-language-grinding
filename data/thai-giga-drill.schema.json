@@ -337,7 +337,8 @@
         },
         "contextMeaning": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "description": "Bei Wörtern mit mehreren Wörterbuchbedeutungen muss hier die in diesem Satz gemeinte Bedeutung angegeben werden."
         }
       },
       "additionalProperties": true
@@ -366,6 +367,7 @@
         "meanings": {
           "type": "array",
           "minItems": 1,
+          "description": "Alle relevanten Bedeutungen bzw. Lesarten des Wortes; bei mehreren Bedeutungen muss jedes verwendete Token contextMeaning angeben.",
           "items": {
             "type": "string",
             "minLength": 1
