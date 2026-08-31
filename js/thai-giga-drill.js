@@ -216,6 +216,79 @@
         }
     }
 
+    function validatePolysemousTokens(content, errors) {
+        const polysemousWordIds = new Map();
+
+        if (Array.isArray(content.words)) {
+            content.words.forEach(word => {
+                if (
+                    isRecord(word) &&
+                    typeof word.id === "string" &&
+                    Array.isArray(word.meanings) &&
+                    word.meanings.length > 1
+                ) {
+                    polysemousWordIds.set(word.id, word.meanings);
+                }
+            });
+        }
+
+        if (polysemousWordIds.size === 0 || !Array.isArray(content.levels)) {
+            return;
+        }
+
+        content.levels.forEach((level, levelIndex) => {
+            if (!isRecord(level) || !Array.isArray(level.bosses)) {
+                return;
+            }
+
+            level.bosses.forEach((boss, bossIndex) => {
+                if (!isRecord(boss) || !Array.isArray(boss.blocks)) {
+                    return;
+                }
+
+                boss.blocks.forEach((block, blockIndex) => {
+                    if (!isRecord(block) || !Array.isArray(block.miniStories)) {
+                        return;
+                    }
+
+                    block.miniStories.forEach((story, storyIndex) => {
+                        if (!isRecord(story) || !Array.isArray(story.sentences)) {
+                            return;
+                        }
+
+                        story.sentences.forEach((sentence, sentenceIndex) => {
+                            if (!isRecord(sentence) || !Array.isArray(sentence.tokens)) {
+                                return;
+                            }
+
+                            sentence.tokens.forEach((token, tokenIndex) => {
+                                if (
+                                    !isRecord(token) ||
+                                    typeof token.wordId !== "string" ||
+                                    !polysemousWordIds.has(token.wordId) ||
+                                    (
+                                        typeof token.contextMeaning === "string" &&
+                                        token.contextMeaning.trim() !== ""
+                                    )
+                                ) {
+                                    return;
+                                }
+
+                                const meanings = polysemousWordIds.get(token.wordId);
+                                errors.push(
+                                    createValidationError(
+                                        `$.levels[${levelIndex}].bosses[${bossIndex}].blocks[${blockIndex}].miniStories[${storyIndex}].sentences[${sentenceIndex}].tokens[${tokenIndex}].contextMeaning`,
+                                        `Polysemes Wort "${token.text}" braucht eine Kontextbedeutung. Global hinterlegt: ${meanings.join("; ")}.`
+                                    )
+                                );
+                            });
+                        });
+                    });
+                });
+            });
+        });
+    }
+
     function validateContent(content) {
         const errors = [];
         const ids = new Set();
@@ -448,6 +521,8 @@
                 }
             });
         }
+
+        validatePolysemousTokens(content, errors);
 
         return { valid: errors.length === 0, errors };
     }

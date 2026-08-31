@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "level-1-boss-5-foundation-1-100",
+  "contentVersion": "level-1-boss-5-foundation-1-100-context-meanings",
   "contentStatus": "draft",
   "language": "th",
   "source": {
@@ -34943,6 +34943,7 @@
                           "text": "คืน",
                           "kind": "word",
                           "wordId": "word-khn-2",
+                          "contextMeaning": "Nacht; hier als Substantiv in „eine gute Nacht“",
                           "id": "l1-b2-b4-s320-t4"
                         },
                         {
@@ -89417,7 +89418,8 @@
                           "id": "l1-boss5-s025-t7",
                           "text": "คืน",
                           "kind": "word",
-                          "wordId": "word-khn-2"
+                          "wordId": "word-khn-2",
+                          "contextMeaning": "zurückgeben; hier als Verb für das Zurückgeben von Geld"
                         },
                         {
                           "id": "l1-boss5-s025-t8",
@@ -89502,7 +89504,8 @@
                           "id": "l1-boss5-s027-t6",
                           "text": "คืน",
                           "kind": "word",
-                          "wordId": "word-khn-2"
+                          "wordId": "word-khn-2",
+                          "contextMeaning": "zurückgeben; hier als Verb für das Zurückgeben von Geld"
                         },
                         {
                           "id": "l1-boss5-s027-t7",
@@ -94813,7 +94816,8 @@
       "thai": "คืน",
       "transliteration": "khʉʉn",
       "meanings": [
-        "Nacht"
+        "Nacht",
+        "zurückgeben"
       ],
       "firstSentenceId": "l1-b2-b4-s320"
     },
