@@ -1973,3 +1973,7 @@ body.thai-giga-page[data-thai-word-separation="false"]
     .thai-giga-space-token:not(.thai-giga-space-token-is-required) {
     display: none;
 }
+
+body.thai-giga-page[data-thai-word-separation="false"] .thai-giga-word-button {
+    padding-inline: 0;
+}

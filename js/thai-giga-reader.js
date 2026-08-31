@@ -771,13 +771,13 @@
             const contextTitle = token.contextMeaning
                 ? "Wörterbuch öffnen – Kontextbedeutung anzeigen"
                 : "Wörterbuch öffnen";
-            tokenMarkup.push(`
-                <button
-                    class="thai-giga-word-button"
-                    type="button"
-                    data-word-id="${escapeHtml(token.wordId)}"${contextAttribute}
-                    title="${contextTitle}">${escapeHtml(token.text)}</button>
-            `);
+            tokenMarkup.push(
+                `<button class="thai-giga-word-button" type="button" data-word-id="${escapeHtml(
+                    token.wordId
+                )}"${contextAttribute} title="${contextTitle}">${escapeHtml(
+                    token.text
+                )}</button>`
+            );
             previousToken = token;
         });
         const audioMarkup = window.questAudio.renderSentenceAudioPlayer({
