@@ -2078,7 +2078,7 @@ body.thai-giga-page[data-thai-tone-colors="true"] .thai-tone-mixed {
     }
 
     .thai-giga-speedreading-line {
-        grid-template-columns: 28px minmax(0, 1fr);
+        grid-template-columns: 28px minmax(0, 1fr) 32px;
         gap: 8px;
         align-items: start;
         padding: 11px 0;
@@ -2090,8 +2090,8 @@ body.thai-giga-page[data-thai-tone-colors="true"] .thai-tone-mixed {
     }
 
     .thai-giga-speedreading-audio {
-        grid-column: 2;
-        justify-content: flex-start;
+        grid-column: 3;
+        justify-content: center;
         margin-top: 3px;
     }
 
