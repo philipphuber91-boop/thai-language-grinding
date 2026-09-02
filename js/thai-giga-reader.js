@@ -31,7 +31,18 @@
         sentenceListExport: document.getElementById("thaiGigaSentenceListExport"),
         wordDictionaryExportStatus: document.getElementById(
             "thaiGigaWordDictionaryExportStatus"
-        )
+        ),
+        speedreading: document.getElementById("thaiGigaSpeedreading"),
+        speedreadingScope: document.getElementById("thaiGigaSpeedreadingScope"),
+        speedreadingTitle: document.getElementById("thaiGigaSpeedreadingTitle"),
+        speedreadingContext: document.getElementById("thaiGigaSpeedreadingContext"),
+        speedreadingList: document.getElementById("thaiGigaSpeedreadingList"),
+        speedreadingClose: document.getElementById("thaiGigaSpeedreadingClose"),
+        speedreadingTransliteration: document.getElementById(
+            "thaiGigaSpeedreadingTransliteration"
+        ),
+        speedreadingTranslation: document.getElementById("thaiGigaSpeedreadingTranslation"),
+        bossSpeedreading: document.getElementById("thaiGigaBossSpeedreading")
     };
 
     let content = null;
@@ -40,6 +51,7 @@
     let activeSentenceId = "";
     let activeBossId = "";
     let dictionaryAnchor = null;
+    let speedreadingReturnFocus = null;
 
     function escapeHtml(value) {
         return String(value ?? "")
@@ -48,6 +60,53 @@
             .replace(/>/g, "&gt;")
             .replace(/"/g, "&quot;")
             .replace(/'/g, "&#039;");
+    }
+
+    const TONE_MARKS = new Map([
+        ["\u0300", "low"],
+        ["\u0301", "high"],
+        ["\u0302", "falling"],
+        ["\u030c", "rising"]
+    ]);
+
+    function getToneClass(transliteration) {
+        const tones = [...String(transliteration ?? "").normalize("NFD")]
+            .map(character => TONE_MARKS.get(character))
+            .filter(Boolean);
+        const uniqueTones = [...new Set(tones)];
+
+        if (uniqueTones.length === 0) {
+            return "thai-tone-mid";
+        }
+        if (uniqueTones.length === 1) {
+            return `thai-tone-${uniqueTones[0]}`;
+        }
+        return "thai-tone-mixed";
+    }
+
+    function renderToneMarkup(thai, transliteration, syllables) {
+        const validSyllables = Array.isArray(syllables) &&
+            syllables.length > 1 &&
+            syllables.every(syllable =>
+                syllable &&
+                typeof syllable.thai === "string" &&
+                typeof syllable.transliteration === "string"
+            ) &&
+            syllables.map(syllable => syllable.thai).join("") === thai;
+
+        if (validSyllables) {
+            return syllables.map(syllable =>
+                `<span class="${getToneClass(syllable.transliteration)}">${escapeHtml(
+                    syllable.thai
+                )}</span>`
+            ).join("");
+        }
+
+        return `<span class="${getToneClass(transliteration)}">${escapeHtml(thai)}</span>`;
+    }
+
+    function getWordSyllables(thai) {
+        return (content?.words || []).find(word => word.thai === thai)?.syllables;
     }
 
     function closeSidebar() {
@@ -60,6 +119,32 @@
         elements.sidebar?.classList.add("is-open");
         elements.sidebarBackdrop?.classList.add("is-visible");
         elements.sidebarToggle?.setAttribute("aria-expanded", "true");
+    }
+
+    function updateSpeedreadingVisibility() {
+        if (!elements.speedreading) {
+            return;
+        }
+
+        elements.speedreading.dataset.speedreadingTransliteration = String(
+            elements.speedreadingTransliteration?.checked !== false
+        );
+        elements.speedreading.dataset.speedreadingTranslation = String(
+            elements.speedreadingTranslation?.checked !== false
+        );
+    }
+
+    function syncSpeedreadingVisibility() {
+        const body = document.body;
+        if (elements.speedreadingTransliteration) {
+            elements.speedreadingTransliteration.checked =
+                body.dataset.thaiTransliterationVisible !== "false";
+        }
+        if (elements.speedreadingTranslation) {
+            elements.speedreadingTranslation.checked =
+                body.dataset.thaiTranslationVisible !== "false";
+        }
+        updateSpeedreadingVisibility();
     }
 
     function setThaiView(view, shouldScroll = false) {
@@ -145,24 +230,30 @@
     }
 
     function renderWordDictionaryEntry(entry) {
-        const firstSentenceLabel = entry.firstSentence
-            ? `Satz ${entry.firstSentence.numberInBoss}`
-            : "Noch keinem Satz zugeordnet";
-        const firstBossLabel = entry.firstBoss
-            ? entry.firstBoss.title
-            : "Nicht zugeordnet";
+        const audioMarkup = window.questAudio?.renderSentenceAudioPlayer({
+            audio: window.thaiGigaAudio?.getAudioForText(entry.thai) || {
+                type: "speechSynthesis",
+                lang: "th-TH"
+            },
+            text: entry.thai,
+            className: "thai-giga-word-audio",
+            ariaLabel: "Wort vorlesen"
+        }) || "";
 
         return `
             <article class="thai-giga-word-card">
                 <div class="thai-giga-word-card-main">
-                    <strong lang="th">${escapeHtml(entry.thai)}</strong>
+                    <div class="thai-giga-word-card-thai-line">
+                        <strong lang="th">${renderToneMarkup(
+                            entry.thai,
+                            entry.transliteration,
+                            entry.syllables
+                        )}</strong>
+                    </div>
                     <em>${escapeHtml(entry.transliteration)}</em>
                     <span>${escapeHtml(entry.meanings.join(" / "))}</span>
                 </div>
-                <div class="thai-giga-word-card-meta">
-                    <span>Neu in ${escapeHtml(firstBossLabel)}</span>
-                    <small>${escapeHtml(firstSentenceLabel)}</small>
-                </div>
+                ${audioMarkup}
             </article>
         `;
     }
@@ -241,10 +332,11 @@
 
         const scopeLabel = scope === "new"
             ? "neue Wörter"
-            : "bekannte Wörter";
+            : "Wörter des aktiven Contents";
         elements.wordDictionarySummary.textContent =
             `${filteredEntries.length} ${scopeLabel} angezeigt · ` +
             `${entries.length} eindeutige Wörter insgesamt`;
+        window.questAudio?.initializeSentenceAudioPlayers(elements.wordDictionaryList);
     }
 
     function escapeMarkdown(value) {
@@ -269,7 +361,7 @@
             `Content-Version: ${content.contentVersion}`,
             `Eindeutige Wörter: ${entries.length}`,
             "",
-            "Diese Liste enthält alle bisher bekannten eindeutigen Wörter. " +
+            "Diese Liste enthält alle eindeutigen Wörter des aktiven Contents. " +
                 "Neue Wörter sollen vor dem Ergänzen neuer Inhalte gegen diese " +
                 "Liste geprüft werden.",
             ""
@@ -322,7 +414,7 @@
             `Content-Version: ${content.contentVersion}`,
             `Sätze: ${indexes.sentencesById.size}`,
             "",
-            "Diese Liste enthält alle bisher bekannten Sätze in der Reihenfolge " +
+            "Diese Liste enthält alle Sätze des aktiven Contents in der Reihenfolge " +
                 "des Curriculums. Sie dient als Referenz für die Erstellung neuer Inhalte.",
             ""
         ];
@@ -460,17 +552,72 @@
     function renderThaiReminderWord(word) {
         return `
             <div class="thai-giga-reminder-word">
-                <strong lang="th">${escapeHtml(word.thai)}</strong>
+                <div class="thai-giga-reminder-thai-line">
+                    <strong lang="th">${renderToneMarkup(
+                        word.thai,
+                        word.transliteration,
+                        word.syllables || getWordSyllables(word.thai)
+                    )}</strong>
+                    ${renderReminderAudio(word.thai)}
+                </div>
                 <em>${escapeHtml(word.transliteration)}</em>
                 <span>${escapeHtml(word.translation)}</span>
             </div>
         `;
     }
 
+    function renderToneMarkedPhrase(phrase) {
+        const matchingSentence = indexes &&
+            Array.from(indexes.sentencesById.values()).find(sentence =>
+                sentence.thai === phrase.thai &&
+                sentence.transliteration === phrase.transliteration
+            );
+
+        if (!matchingSentence) {
+            return renderToneMarkup(
+                phrase.thai,
+                phrase.transliteration,
+                phrase.syllables || getWordSyllables(phrase.thai)
+            );
+        }
+
+        return matchingSentence.tokens.map(token => {
+            if (token.kind !== "word" || !token.wordId) {
+                return escapeHtml(token.text);
+            }
+
+            const word = indexes.wordsById.get(token.wordId);
+            return renderToneMarkup(
+                token.text,
+                word?.transliteration,
+                word?.syllables
+            );
+        }).join("");
+    }
+
+    function renderReminderAudio(text) {
+        if (!window.questAudio?.renderSentenceAudioPlayer) {
+            return "";
+        }
+
+        return window.questAudio.renderSentenceAudioPlayer({
+            audio: window.thaiGigaAudio?.getAudioForText(text) || {
+                type: "speechSynthesis",
+                lang: "th-TH"
+            },
+            text,
+            className: "thai-giga-reminder-audio",
+            ariaLabel: "Reminder vorlesen"
+        });
+    }
+
     function renderThaiReminderExample(example) {
         return `
             <div class="thai-giga-reminder-example">
-                <strong lang="th">${escapeHtml(example.thai)}</strong>
+                <div class="thai-giga-reminder-thai-line">
+                    <strong lang="th">${renderToneMarkedPhrase(example)}</strong>
+                    ${renderReminderAudio(example.thai)}
+                </div>
                 <em>${escapeHtml(example.transliteration)}</em>
                 <span>${escapeHtml(example.translation)}</span>
             </div>
@@ -559,11 +706,32 @@
         }
 
         return window.questAudio.renderSentenceAudioPlayer({
-            audio: { type: "speechSynthesis", lang: "th-TH" },
+            audio: window.thaiGigaAudio?.getAudioForText(text) || {
+                type: "speechSynthesis",
+                lang: "th-TH"
+            },
             text,
             className: "thai-giga-introduction-audio",
             playbackRate: 1
         });
+    }
+
+    function renderIntroductionPart(part) {
+        return renderToneMarkup(
+            part.thai,
+            part.transliteration,
+            part.syllables || getWordSyllables(part.thai)
+        );
+    }
+
+    function renderIntroductionPhrase(phrase, parts, separator) {
+        const validParts = Array.isArray(parts) &&
+            parts.length > 0 &&
+            parts.map(part => part.thai).join(separator) === phrase.thai;
+
+        return validParts
+            ? parts.map(renderIntroductionPart).join(separator)
+            : renderToneMarkup(phrase.thai, phrase.transliteration, phrase.syllables);
     }
 
     function renderThaiIntroduction(introduction) {
@@ -585,7 +753,11 @@
                     <div class="thai-giga-introduction-example">
                         <div class="thai-giga-introduction-audio-line">
                             <p class="thai-giga-introduction-thai" lang="th">
-                                ${escapeHtml(introduction.example.thai)}
+                                ${renderIntroductionPhrase(
+                                    introduction.example,
+                                    introduction.parts,
+                                    ""
+                                )}
                             </p>
                             ${renderThaiIntroductionAudio(introduction.example.thai)}
                         </div>
@@ -603,7 +775,7 @@
                         ${introduction.parts.map(part => `
                             <div class="thai-giga-introduction-part">
                                 <div class="thai-giga-introduction-audio-line">
-                                    <strong lang="th">${escapeHtml(part.thai)}</strong>
+                                    <strong lang="th">${renderIntroductionPart(part)}</strong>
                                     ${renderThaiIntroductionAudio(part.thai)}
                                 </div>
                                 <em>${escapeHtml(part.transliteration)}</em>
@@ -613,12 +785,13 @@
                     </div>
                     <div class="thai-giga-introduction-assembly">
                         <p class="thai-giga-pattern-label">Also:</p>
-                        <div class="thai-giga-introduction-audio-line">
-                            <p class="thai-giga-introduction-thai" lang="th">
-                                <strong>${escapeHtml(introduction.assembly.thai)}</strong>
-                            </p>
-                            ${renderThaiIntroductionAudio(introduction.assembly.thai)}
-                        </div>
+                        <p class="thai-giga-introduction-thai" lang="th">
+                            <strong>${renderIntroductionPhrase(
+                                introduction.assembly,
+                                introduction.parts,
+                                " + "
+                            )}</strong>
+                        </p>
                         <p class="thai-giga-introduction-transliteration">
                             <em>${escapeHtml(introduction.assembly.transliteration)}</em>
                         </p>
@@ -659,6 +832,9 @@
             elements.patternTranslation.textContent =
                 "Das aktive Grammatikmuster wird in den Situationen und Sätzen dieses Bosses wiederholt.";
         }
+        if (elements.bossSpeedreading) {
+            elements.bossSpeedreading.dataset.thaiGigaSpeedreadingBoss = boss.id;
+        }
         renderThaiIntroduction(boss.introduction);
     }
 
@@ -674,14 +850,22 @@
             <details class="thai-giga-block">
                 <summary class="thai-giga-block-summary" id="${escapeHtml(block.id)}-title">
                     <span class="thai-giga-block-summary-title">${escapeHtml(block.title)}</span>
-                    <button
-                        class="thai-giga-block-playlist-button"
-                        type="button"
-                        data-thai-giga-block-playlist="${escapeHtml(block.id)}"
-                        aria-label="Alle Sätze dieses Blocks zur Playlist hinzufügen"
-                        title="Alle Sätze dieses Blocks zur Playlist hinzufügen">
-                        + Block zur Playlist
-                    </button>
+                    <span class="thai-giga-block-summary-actions">
+                        <button
+                            class="thai-giga-block-speedreading-button"
+                            type="button"
+                            data-thai-giga-speedreading-block="${escapeHtml(block.id)}"
+                            aria-label="Speedreading für diesen Foundation Block öffnen"
+                            title="Speedreading für diesen Foundation Block öffnen">▶</button>
+                        <button
+                            class="thai-giga-block-playlist-button"
+                            type="button"
+                            data-thai-giga-block-playlist="${escapeHtml(block.id)}"
+                            aria-label="Alle Sätze dieses Blocks zur Playlist hinzufügen"
+                            title="Alle Sätze dieses Blocks zur Playlist hinzufügen">
+                            + Block zur Playlist
+                        </button>
+                    </span>
                 </summary>
                 ${block.description
                     ? `<p class="thai-giga-block-description">${escapeHtml(block.description)}</p>`
@@ -717,7 +901,15 @@
                 button.addEventListener("click", event => {
                     event.preventDefault();
                     event.stopPropagation();
-                    window.thaiGigaAudio.addBlock(button.dataset.thaiGigaBlockPlaylist);
+                    const sentenceIds = getBlockSentenceIds(
+                        button.dataset.thaiGigaBlockPlaylist
+                    );
+                    if (arePlaylistSentencesAdded(sentenceIds)) {
+                        window.thaiGigaAudio.removeSentences(sentenceIds);
+                    } else {
+                        window.thaiGigaAudio.addBlock(button.dataset.thaiGigaBlockPlaylist);
+                    }
+                    updatePlaylistButtons();
                 });
             });
         elements.blockList
@@ -726,12 +918,21 @@
                 button.addEventListener("click", event => {
                     event.preventDefault();
                     event.stopPropagation();
-                    window.thaiGigaAudio.addStory(button.dataset.thaiGigaStoryPlaylist);
+                    const sentenceIds = getStorySentenceIds(
+                        button.dataset.thaiGigaStoryPlaylist
+                    );
+                    if (arePlaylistSentencesAdded(sentenceIds)) {
+                        window.thaiGigaAudio.removeSentences(sentenceIds);
+                    } else {
+                        window.thaiGigaAudio.addStory(button.dataset.thaiGigaStoryPlaylist);
+                    }
+                    updatePlaylistButtons();
                 });
             });
+        updatePlaylistButtons();
     }
 
-    function renderSentence(sentence) {
+    function renderSentenceTokenMarkup(sentence, interactive = true) {
         let thaiOffset = 0;
         let previousToken = null;
         const tokenMarkup = [];
@@ -771,15 +972,25 @@
             const contextTitle = token.contextMeaning
                 ? "Wörterbuch öffnen – Kontextbedeutung anzeigen"
                 : "Wörterbuch öffnen";
+            const word = indexes.wordsById.get(token.wordId);
+            const toneMarkup = renderToneMarkup(
+                token.text,
+                word?.transliteration,
+                word?.syllables
+            );
             tokenMarkup.push(
-                `<button class="thai-giga-word-button" type="button" data-word-id="${escapeHtml(
-                    token.wordId
-                )}"${contextAttribute} title="${contextTitle}">${escapeHtml(
-                    token.text
-                )}</button>`
+                interactive
+                    ? `<button class="thai-giga-word-button" type="button" data-word-id="${escapeHtml(
+                        token.wordId
+                    )}"${contextAttribute} title="${contextTitle}">${toneMarkup}</button>`
+                    : `<span>${toneMarkup}</span>`
             );
             previousToken = token;
         });
+        return tokenMarkup.join("");
+    }
+
+    function renderSentence(sentence) {
         const audioMarkup = window.questAudio.renderSentenceAudioPlayer({
             audio: window.thaiGigaAudio.getAudioForSentence(sentence.id) || sentence.audio,
             text: sentence.thai,
@@ -797,7 +1008,7 @@
                 title="Tippen, um die deutsche Übersetzung ein- oder auszublenden">
                 <span class="thai-giga-sentence-number">${sentence.numberInStory}.</span>
                 <div>
-                    <p class="thai-giga-thai" lang="th">${tokenMarkup.join("")}</p>
+                    <p class="thai-giga-thai" lang="th">${renderSentenceTokenMarkup(sentence)}</p>
                     <p class="thai-giga-transliteration">${escapeHtml(sentence.transliteration)}</p>
                     <p
                         class="thai-giga-translation"
@@ -817,6 +1028,111 @@
                 </button>
             </article>
         `;
+    }
+
+    function renderSpeedreadingSentence(sentence, displayNumber) {
+        const audioMarkup = window.questAudio.renderSentenceAudioPlayer({
+            audio: window.thaiGigaAudio.getAudioForSentence(sentence.id) || sentence.audio,
+            text: sentence.thai,
+            className: "thai-giga-speedreading-audio",
+            playbackRate: 1
+        });
+
+        return `
+            <article class="thai-giga-speedreading-line" data-sentence-id="${escapeHtml(sentence.id)}">
+                <span class="thai-giga-speedreading-number">${displayNumber}.</span>
+                <div class="thai-giga-speedreading-content">
+                    <p class="thai-giga-thai" lang="th">${renderSentenceTokenMarkup(
+                        sentence,
+                        false
+                    )}</p>
+                    <p class="thai-giga-transliteration">${escapeHtml(sentence.transliteration)}</p>
+                    <p class="thai-giga-translation">${escapeHtml(sentence.translation)}</p>
+                </div>
+                ${audioMarkup}
+            </article>
+        `;
+    }
+
+    function getSpeedreadingScope(scope, scopeId) {
+        const bosses = content.levels.flatMap(level => level.bosses);
+        const boss = scope === "boss"
+            ? bosses.find(candidate => candidate.id === scopeId)
+            : bosses.find(candidate => candidate.blocks.some(block => block.id === scopeId));
+        if (!boss) {
+            return null;
+        }
+
+        const blocks = scope === "boss"
+            ? boss.blocks
+            : boss.blocks.filter(block => block.id === scopeId);
+        const sentences = blocks.flatMap(block =>
+            block.miniStories.flatMap(story =>
+                story.sentences
+                    .map(sentence => indexes.sentencesById.get(sentence.id))
+                    .filter(Boolean)
+            )
+        );
+
+        return {
+            boss,
+            title: scope === "boss"
+                ? `${boss.title} — ${boss.grammarFocus}`
+                : blocks[0]?.title || "Foundation Block",
+            scopeLabel: scope === "boss" ? "Grammatikboss" : "Foundation Block",
+            sentences
+        };
+    }
+
+    function openSpeedreading(scope, scopeId, trigger) {
+        if (
+            !elements.speedreading ||
+            !elements.speedreadingScope ||
+            !elements.speedreadingTitle ||
+            !elements.speedreadingContext ||
+            !elements.speedreadingList ||
+            !indexes
+        ) {
+            return;
+        }
+
+        const speedreadingScope = getSpeedreadingScope(scope, scopeId);
+        if (!speedreadingScope) {
+            return;
+        }
+
+        speedreadingReturnFocus = trigger || document.activeElement;
+        syncSpeedreadingVisibility();
+        elements.speedreadingScope.textContent = `Speedreading · ${speedreadingScope.scopeLabel}`;
+        elements.speedreadingTitle.textContent = speedreadingScope.title;
+        elements.speedreadingContext.textContent =
+            `${speedreadingScope.sentences.length} Sätze · ${speedreadingScope.boss.title}`;
+        elements.speedreadingList.innerHTML = speedreadingScope.sentences
+            .map((sentence, index) => renderSpeedreadingSentence(sentence, index + 1))
+            .join("");
+        elements.speedreading.hidden = false;
+        document.body.classList.add("thai-giga-speedreading-open");
+        window.questAudio.initializeSentenceAudioPlayers(elements.speedreadingList);
+        elements.speedreadingClose?.focus();
+    }
+
+    function closeSpeedreading() {
+        if (!elements.speedreading || elements.speedreading.hidden) {
+            return;
+        }
+
+        window.questAudio.stopSpeech();
+        window.questAudio.stopNativeAudioPlayers();
+        elements.speedreading.hidden = true;
+        if (elements.speedreadingList) {
+            elements.speedreadingList.innerHTML = "";
+        }
+        document.body.classList.remove("thai-giga-speedreading-open");
+        const returnFocus = speedreadingReturnFocus;
+        speedreadingReturnFocus = null;
+        if (returnFocus && typeof returnFocus.focus === "function") {
+            returnFocus.focus();
+        }
     }
 
     function initializeSentenceActions() {
@@ -959,12 +1275,76 @@
         }
     }
 
+    function getStorySentenceIds(storyId) {
+        return indexes?.storiesById.get(storyId)?.sentences.map(sentence => sentence.id) || [];
+    }
+
+    function getBlockSentenceIds(blockId) {
+        const sentenceIds = [];
+        indexes?.storiesById.forEach(story => {
+            if (story.blockId === blockId) {
+                sentenceIds.push(...story.sentences.map(sentence => sentence.id));
+            }
+        });
+        return sentenceIds;
+    }
+
+    function arePlaylistSentencesAdded(sentenceIds) {
+        return sentenceIds.length > 0 &&
+            sentenceIds.every(sentenceId => window.thaiGigaAudio.hasSentence(sentenceId));
+    }
+
     function updatePlaylistButtons() {
+        elements.sentenceList
+            .querySelectorAll("[data-thai-giga-block-playlist]")
+            .forEach(button => {
+                const sentenceIds = getBlockSentenceIds(
+                    button.dataset.thaiGigaBlockPlaylist
+                );
+                const isAdded = arePlaylistSentencesAdded(sentenceIds);
+                button.classList.toggle("is-added", isAdded);
+                button.textContent = isAdded
+                    ? "✓ Block in Playlist"
+                    : "+ Block zur Playlist";
+                button.setAttribute(
+                    "aria-label",
+                    isAdded
+                        ? "Alle Sätze dieses Blocks sind in der Playlist"
+                        : "Alle Sätze dieses Blocks zur Playlist hinzufügen"
+                );
+                button.title = isAdded
+                    ? "Alle Sätze dieses Blocks sind bereits in der Playlist"
+                    : "Alle Sätze dieses Blocks zur Playlist hinzufügen";
+            });
+
+        elements.sentenceList
+            .querySelectorAll("[data-thai-giga-story-playlist]")
+            .forEach(button => {
+                const sentenceIds = getStorySentenceIds(
+                    button.dataset.thaiGigaStoryPlaylist
+                );
+                const isAdded = arePlaylistSentencesAdded(sentenceIds);
+                button.classList.toggle("is-added", isAdded);
+                button.textContent = isAdded
+                    ? "✓ Situation in Playlist"
+                    : "+ Situation zur Playlist";
+                button.setAttribute(
+                    "aria-label",
+                    isAdded
+                        ? "Alle Sätze dieser Situation sind in der Playlist"
+                        : "Alle Sätze dieser Situation zur Playlist hinzufügen"
+                );
+                button.title = isAdded
+                    ? "Alle Sätze dieser Situation sind bereits in der Playlist"
+                    : "Alle Sätze dieser Situation zur Playlist hinzufügen";
+            });
+
         elements.sentenceList
             .querySelectorAll("[data-thai-giga-playlist-sentence]")
             .forEach(button => {
                 const sentenceId = button.dataset.thaiGigaPlaylistSentence;
                 const isAdded = window.thaiGigaAudio.hasSentence(sentenceId);
+                button.classList.toggle("is-added", isAdded);
                 button.textContent = isAdded ? "− Playlist" : "+ Playlist";
                 button.setAttribute(
                     "aria-label",
@@ -972,6 +1352,9 @@
                         ? "Satz aus Playlist entfernen"
                         : "Satz zur Playlist hinzufügen"
                 );
+                button.title = isAdded
+                    ? "Satz aus Playlist entfernen"
+                    : "Satz zur Playlist hinzufügen";
             });
     }
 
@@ -1024,7 +1407,11 @@
                     type="button"
                     aria-label="Wörterbuch schließen">×</button>
             </div>
-            <div class="thai-giga-dictionary-word" lang="th">${escapeHtml(word.thai)}</div>
+            <div class="thai-giga-dictionary-word" lang="th">${renderToneMarkup(
+                word.thai,
+                word.transliteration,
+                word.syllables
+            )}</div>
             <p class="thai-giga-dictionary-transliteration">${escapeHtml(word.transliteration)}</p>
             ${contextMeaning
                 ? `
@@ -1140,6 +1527,41 @@
     });
     elements.sidebarBackdrop?.addEventListener("click", closeSidebar);
     elements.forewordButton?.addEventListener("click", showForeword);
+    elements.blockList?.addEventListener("click", event => {
+        const blockTrigger = event.target.closest("[data-thai-giga-speedreading-block]");
+        if (blockTrigger) {
+            event.preventDefault();
+            event.stopPropagation();
+            openSpeedreading(
+                "block",
+                blockTrigger.dataset.thaiGigaSpeedreadingBlock,
+                blockTrigger
+            );
+            return;
+        }
+    });
+    elements.bossSpeedreading?.addEventListener("click", event => {
+        event.preventDefault();
+        openSpeedreading(
+            "boss",
+            event.currentTarget.dataset.thaiGigaSpeedreadingBoss,
+            event.currentTarget
+        );
+    });
+    elements.speedreadingTransliteration?.addEventListener(
+        "change",
+        updateSpeedreadingVisibility
+    );
+    elements.speedreadingTranslation?.addEventListener(
+        "change",
+        updateSpeedreadingVisibility
+    );
+    elements.speedreadingClose?.addEventListener("click", closeSpeedreading);
+    elements.speedreading?.addEventListener("click", event => {
+        if (event.target === elements.speedreading) {
+            closeSpeedreading();
+        }
+    });
     elements.dictionary?.addEventListener("click", event => {
         if (event.target.closest(".thai-giga-dictionary-close")) {
             closeDictionary();
@@ -1156,6 +1578,10 @@
     elements.wordDictionaryExport?.addEventListener("click", exportWordList);
     elements.sentenceListExport?.addEventListener("click", exportSentenceList);
     document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && elements.speedreading && !elements.speedreading.hidden) {
+            closeSpeedreading();
+            return;
+        }
         if (event.key === "Escape" && !elements.dictionary.hidden) {
             closeDictionary();
         }

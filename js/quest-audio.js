@@ -4,7 +4,9 @@
     const DEFAULT_PLAYBACK_RATE = 1;
     const MIN_PLAYBACK_RATE = 0.5;
     const MAX_PLAYBACK_RATE = 2;
+    const NATIVE_SPEECH_AUDIO_CACHE_LIMIT = 32;
     const activePlayers = new Set();
+    const nativeSpeechAudioCache = new Map();
     let activeSpeech = null;
     let activeNativeAudio = null;
 
@@ -86,9 +88,25 @@
         }
 
         stopSpeech();
-        const audio = new Audio(source);
+        let audio = nativeSpeechAudioCache.get(source);
+        if (audio) {
+            nativeSpeechAudioCache.delete(source);
+        } else {
+            audio = new Audio(source);
+        }
+        nativeSpeechAudioCache.set(source, audio);
+        while (nativeSpeechAudioCache.size > NATIVE_SPEECH_AUDIO_CACHE_LIMIT) {
+            const oldestSource = nativeSpeechAudioCache.keys().next().value;
+            const oldestAudio = nativeSpeechAudioCache.get(oldestSource);
+            if (oldestAudio === activeNativeAudio) {
+                break;
+            }
+            nativeSpeechAudioCache.delete(oldestSource);
+        }
         audio.preload = "auto";
         audio.playbackRate = Number.isFinite(rate) ? rate : DEFAULT_PLAYBACK_RATE;
+        audio.pause();
+        audio.currentTime = 0;
         activeNativeAudio = audio;
         activeSpeech = { text, button, utterance: null };
 
@@ -120,10 +138,16 @@
         };
         audio.onerror = () => {
             cleanup();
+            if (nativeSpeechAudioCache.get(source) === audio) {
+                nativeSpeechAudioCache.delete(source);
+            }
             onError?.();
         };
         audio.play().catch(() => {
             cleanup();
+            if (nativeSpeechAudioCache.get(source) === audio) {
+                nativeSpeechAudioCache.delete(source);
+            }
             onError?.();
         });
         return true;
@@ -1216,7 +1240,8 @@
         audio = null,
         text = "",
         className = "",
-        playbackRate = null
+        playbackRate = null,
+        ariaLabel = "Satz vorlesen"
     } = {}) {
         if (audio?.type === "url" && typeof audio.src === "string" && audio.src.trim()) {
             const fixedRate = Number(playbackRate);
@@ -1247,7 +1272,7 @@
 
         return `
             <div class="quest-audio-player ${className}" data-speech-audio-player data-speech-text="${encodeURIComponent(speechText)}" data-speech-lang="${escapeAttribute(audio?.lang || "th-TH")}" data-speech-voice-id="${escapeAttribute(audio?.voiceId || audio?.voiceName || "")}" data-speech-fallback-src="${escapeAttribute(audio?.fallbackSrc || "")}">
-                <button type="button" class="quest-audio-play-button" aria-label="Satz vorlesen" aria-pressed="false">🔊</button>
+                <button type="button" class="quest-audio-play-button" aria-label="${escapeAttribute(ariaLabel)}" aria-pressed="false">🔊</button>
                 <span class="quest-audio-status" aria-live="polite"></span>
             </div>
         `;
@@ -1269,6 +1294,10 @@
 
             button.addEventListener("click", event => {
                 event.stopPropagation();
+                if (button.classList.contains("is-playing")) {
+                    stopSpeech();
+                    return;
+                }
                 const language = playerElement.dataset.speechLang || "th-TH";
                 const voiceId = playerElement.dataset.speechVoiceId || "";
                 const fallbackSource = playerElement.dataset.speechFallbackSrc || "";

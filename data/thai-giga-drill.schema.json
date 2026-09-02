@@ -338,7 +338,7 @@
         "contextMeaning": {
           "type": "string",
           "minLength": 1,
-          "description": "Bei Wörtern mit mehreren Wörterbuchbedeutungen muss hier die in diesem Satz gemeinte Bedeutung angegeben werden."
+          "description": "Die in diesem Satz gemeinte Übersetzung oder grammatische Verwendung; besonders bei mehreren Bedeutungen, Pronomenformen und festen Wendungen."
         }
       },
       "additionalProperties": true
@@ -367,14 +367,40 @@
         "meanings": {
           "type": "array",
           "minItems": 1,
-          "description": "Alle relevanten Bedeutungen bzw. Lesarten des Wortes; bei mehreren Bedeutungen muss jedes verwendete Token contextMeaning angeben.",
+          "description": "Alle relevanten Bedeutungen bzw. Lesarten des Wortes. Eine konkrete grammatische Form oder Verwendung kann am Token mit contextMeaning präzisiert werden.",
           "items": {
             "type": "string",
             "minLength": 1
           }
+        },
+        "syllables": {
+          "type": "array",
+          "minItems": 2,
+          "description": "Optionale Silbenstruktur für mehrsilbige Wörter; die Thai-Teile müssen zusammen exakt thai ergeben.",
+          "items": {
+            "$ref": "#/$defs/syllable"
+          }
         }
       },
       "additionalProperties": true
+    },
+    "syllable": {
+      "type": "object",
+      "required": [
+        "thai",
+        "transliteration"
+      ],
+      "properties": {
+        "thai": {
+          "type": "string",
+          "minLength": 1
+        },
+        "transliteration": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
     },
     "audio": {
       "type": [

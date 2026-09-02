@@ -2,14 +2,14 @@
     "use strict";
 
     const FONT_STORAGE_KEY = "thaiFontFamily";
-    const REMINDER_SIZE_STORAGE_KEY = "thaiGigaReminderFontSize";
     const THEME_STORAGE_KEY = "thaiGigaTheme";
     const TRANSLITERATION_STORAGE_KEY = "thaiGigaTransliterationVisible";
     const TRANSLATION_STORAGE_KEY = "thaiGigaTranslationVisible";
     const WORD_SEPARATION_STORAGE_KEY = "thaiGigaWordSeparation";
+    const TONE_COLORS_STORAGE_KEY = "thaiGigaToneColors";
     const DEFAULT_WORD_SEPARATION = true;
+    const DEFAULT_TONE_COLORS = true;
     const DEFAULT_FONT = "sarabun";
-    const DEFAULT_REMINDER_SIZE = 20;
     const DEFAULT_THEME = "classic";
     const FONT_FAMILIES = {
         standard: '"Noto Serif Thai", "Times New Roman", Times, serif',
@@ -32,21 +32,12 @@
         transliterationToggle: document.getElementById("thaiGigaTransliterationToggle"),
         translationToggle: document.getElementById("thaiGigaTranslationToggle"),
         wordSeparationToggle: document.getElementById("thaiGigaWordSeparationToggle"),
-        reminderSize: document.getElementById("thaiGigaReminderFontSize"),
-        reminderSizeValue: document.getElementById("thaiGigaReminderFontSizeValue")
+        toneColorsToggle: document.getElementById("thaiGigaToneColorsToggle")
     };
 
     function normalizeFont(value) {
         const selection = String(value ?? "");
         return FONT_OPTIONS.includes(selection) ? selection : DEFAULT_FONT;
-    }
-
-    function normalizeReminderSize(value) {
-        const size = Number(value);
-        if (!Number.isFinite(size)) {
-            return DEFAULT_REMINDER_SIZE;
-        }
-        return Math.min(24, Math.max(18, Math.round(size)));
     }
 
     function normalizeTheme(value) {
@@ -73,6 +64,12 @@
         return separated;
     }
 
+    function applyToneColorsSetting(value) {
+        const enabled = value !== false;
+        elements.body.dataset.thaiToneColors = String(enabled);
+        return enabled;
+    }
+
     function readStoredVisibility(key) {
         const stored = localStorage.getItem(key);
         return stored === null ? true : stored === "true";
@@ -85,15 +82,6 @@
         return selection;
     }
 
-    function applyReminderSize(value) {
-        const size = normalizeReminderSize(value);
-        elements.body.style.setProperty("--thai-reminder-word-size", `${size}px`);
-        elements.reminderSize.value = String(size);
-        elements.reminderSizeValue.value = `${size} px`;
-        elements.reminderSizeValue.textContent = `${size} px`;
-        return size;
-    }
-
     function closeSettings() {
         elements.panel.hidden = true;
         elements.backdrop.hidden = true;
@@ -104,14 +92,11 @@
         elements.panel.hidden = false;
         elements.backdrop.hidden = false;
         elements.toggle.setAttribute("aria-expanded", "true");
-        elements.fontSelect.focus();
+        elements.close.focus();
     }
 
     const initialFont = applyFont(
         localStorage.getItem(FONT_STORAGE_KEY) || DEFAULT_FONT
-    );
-    const initialReminderSize = applyReminderSize(
-        localStorage.getItem(REMINDER_SIZE_STORAGE_KEY) || DEFAULT_REMINDER_SIZE
     );
     const initialTheme = applyTheme(
         localStorage.getItem(THEME_STORAGE_KEY) || DEFAULT_THEME
@@ -129,11 +114,16 @@
             ? DEFAULT_WORD_SEPARATION
             : localStorage.getItem(WORD_SEPARATION_STORAGE_KEY) === "true"
     );
+    const initialToneColors = applyToneColorsSetting(
+        localStorage.getItem(TONE_COLORS_STORAGE_KEY) === null
+            ? DEFAULT_TONE_COLORS
+            : localStorage.getItem(TONE_COLORS_STORAGE_KEY) === "true"
+    );
     elements.transliterationToggle.checked = initialTransliterationVisible;
     elements.translationToggle.checked = initialTranslationVisible;
     elements.wordSeparationToggle.checked = initialWordSeparation;
+    elements.toneColorsToggle.checked = initialToneColors;
     localStorage.setItem(FONT_STORAGE_KEY, initialFont);
-    localStorage.setItem(REMINDER_SIZE_STORAGE_KEY, String(initialReminderSize));
     localStorage.setItem(THEME_STORAGE_KEY, initialTheme);
     localStorage.setItem(
         TRANSLITERATION_STORAGE_KEY,
@@ -141,6 +131,7 @@
     );
     localStorage.setItem(TRANSLATION_STORAGE_KEY, String(initialTranslationVisible));
     localStorage.setItem(WORD_SEPARATION_STORAGE_KEY, String(initialWordSeparation));
+    localStorage.setItem(TONE_COLORS_STORAGE_KEY, String(initialToneColors));
 
     elements.toggle.addEventListener("click", () => {
         if (elements.panel.hidden) {
@@ -167,13 +158,13 @@
         const separated = applyWordSeparationSetting(event.target.checked);
         localStorage.setItem(WORD_SEPARATION_STORAGE_KEY, String(separated));
     });
+    elements.toneColorsToggle.addEventListener("change", event => {
+        const enabled = applyToneColorsSetting(event.target.checked);
+        localStorage.setItem(TONE_COLORS_STORAGE_KEY, String(enabled));
+    });
     elements.fontSelect.addEventListener("change", event => {
         const selection = applyFont(event.target.value);
         localStorage.setItem(FONT_STORAGE_KEY, selection);
-    });
-    elements.reminderSize.addEventListener("input", event => {
-        const size = applyReminderSize(event.target.value);
-        localStorage.setItem(REMINDER_SIZE_STORAGE_KEY, String(size));
     });
     document.addEventListener("keydown", event => {
         if (event.key === "Escape" && !elements.panel.hidden) {

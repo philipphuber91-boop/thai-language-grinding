@@ -15,15 +15,19 @@
             .replace(/'/g, "&#039;");
     }
 
-    function getSentenceAudio(sentence) {
+    function getAudioForText(text) {
         return {
             type: "speechSynthesis",
             lang: "th-TH",
             voiceId: "",
             fallbackSrc:
                 "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=" +
-                encodeURIComponent(sentence.thai)
+                encodeURIComponent(text)
         };
+    }
+
+    function getSentenceAudio(sentence) {
+        return getAudioForText(sentence.thai);
     }
 
     function getSentenceEntry(sentenceId) {
@@ -250,6 +254,21 @@
         }
     }
 
+    function removeSentences(sentenceIds) {
+        if (!controller || !Array.isArray(sentenceIds)) {
+            return 0;
+        }
+
+        const ids = new Set(sentenceIds);
+        const indexesToRemove = controller.state.playlist
+            .map((entry, index) => ids.has(entry.id) ? index : -1)
+            .filter(index => index >= 0)
+            .reverse();
+
+        indexesToRemove.forEach(index => controller.remove(index));
+        return indexesToRemove.length;
+    }
+
     function initialize(nextIndexes) {
         indexes = nextIndexes;
         elements = {
@@ -319,7 +338,9 @@
         addBlock,
         openTypingPlaylist,
         removeSentence,
+        removeSentences,
         getAudioForSentence,
+        getAudioForText,
         hasSentence: sentenceId =>
             Boolean(controller?.state.playlist.some(entry => entry.id === sentenceId)),
         getState: () => controller?.state || null

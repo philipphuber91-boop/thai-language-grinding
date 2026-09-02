@@ -11,7 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&family=Noto+Sans+Thai:wght@300;400&family=Noto+Serif+Thai:wght@300;400&family=Prompt:wght@300;400&family=Sarabun:wght@300;400&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../css/thai-giga.css?v=141">
+    <link rel="stylesheet" href="../css/thai-giga.css?v=177">
     <link rel="manifest" href="../manifest.json">
 </head>
 <body class="thai-giga-page">
@@ -79,26 +79,16 @@
                 <span class="thai-giga-settings-label">Wörter separieren</span>
                 <input id="thaiGigaWordSeparationToggle" type="checkbox" checked>
             </label>
-        </div>
-        <div class="thai-giga-settings-section">
-            <div class="thai-giga-settings-range-header">
-                <label class="thai-giga-settings-label" for="thaiGigaReminderFontSize">
-                    Reminder-Wörter
-                </label>
-                <output id="thaiGigaReminderFontSizeValue" for="thaiGigaReminderFontSize">20 px</output>
-            </div>
-            <input
-                id="thaiGigaReminderFontSize"
-                class="thai-giga-settings-range"
-                type="range"
-                min="18"
-                max="24"
-                step="1"
-                value="20"
-                aria-label="Schriftgröße der Reminder-Wörter">
-            <div class="thai-giga-settings-range-scale" aria-hidden="true">
-                <span>18</span>
-                <span>24</span>
+            <label class="thai-giga-settings-row" for="thaiGigaToneColorsToggle">
+                <span class="thai-giga-settings-label">Tonfarben anzeigen</span>
+                <input id="thaiGigaToneColorsToggle" type="checkbox" checked>
+            </label>
+            <div class="thai-giga-tone-legend" aria-label="Tonfarben-Legende">
+                <span><i class="thai-tone-swatch thai-tone-low"></i>Tief</span>
+                <span><i class="thai-tone-swatch thai-tone-mid"></i>Mittel</span>
+                <span><i class="thai-tone-swatch thai-tone-high"></i>Hoch</span>
+                <span><i class="thai-tone-swatch thai-tone-rising"></i>Steigend</span>
+                <span><i class="thai-tone-swatch thai-tone-falling"></i>Fallend</span>
             </div>
         </div>
     </section>
@@ -138,7 +128,7 @@
                     <p class="thai-giga-eyebrow">Wortschatzübersicht</p>
                     <h2 id="thaiGigaWordDictionaryTitle">Wörterbuch</h2>
                     <p class="thai-giga-word-dictionary-description">
-                        Alle bisher bekannten eindeutigen Wörter des Thai-Giga-Drills.
+                        Alle eindeutigen Wörter des aktiven Thai-Giga-Contents.
                         Filtere nach Grammatikboss oder neuen Wörtern und exportiere
                         die Wort- oder Satzliste für ChatGPT.
                     </p>
@@ -177,7 +167,7 @@
                     <select
                         id="thaiGigaWordDictionaryScopeFilter"
                         class="thai-giga-settings-select">
-                        <option value="all">Alle bekannten Wörter</option>
+                        <option value="all">Alle Wörter des aktiven Contents</option>
                         <option value="new">Nur neue Wörter des ausgewählten Bosses</option>
                     </select>
                 </label>
@@ -202,11 +192,11 @@
         </div>
     </main>
 
-    <script src="../js/quest-audio.js"></script>
+    <script src="../js/quest-audio.js?v=147"></script>
     <script src="../js/thai-giga-drill.js?v=141"></script>
-    <script src="../js/thai-giga-audio.js"></script>
-    <script src="../js/thai-giga-reader.js?v=141"></script>
-    <script src="../js/thai-giga-settings.js"></script>
+    <script src="../js/thai-giga-audio.js?v=146"></script>
+    <script src="../js/thai-giga-reader.js?v=156"></script>
+    <script src="../js/thai-giga-settings.js?v=153"></script>
     <script src="../js/pwa-register.js"></script>
 </body>
 </html>

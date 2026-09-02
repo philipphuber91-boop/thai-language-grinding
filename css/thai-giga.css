@@ -23,6 +23,17 @@
     --thai-strong-text: #ffe4a9;
     --thai-ink: #1b120b;
     --thai-hover-background: #3b2919;
+    --thai-tone-mid: #e2b52f;
+    --thai-tone-low: #299bd1;
+    --thai-tone-falling: #4aaa68;
+    --thai-tone-high: #c96a68;
+    --thai-tone-rising: #a576c7;
+    --thai-tone-mixed: #a06bbd;
+    --thai-playlist-border: rgba(142, 107, 60, .85);
+    --thai-playlist-muted: var(--thai-muted);
+    --thai-playlist-background: rgba(50, 33, 22, .8);
+    --thai-playlist-added: #9be0bd;
+    --thai-playlist-added-background: rgba(155, 224, 189, .1);
 }
 
 * {
@@ -65,6 +76,16 @@ body.thai-giga-page {
     margin-top: 8px;
     font-size: clamp(.9rem, 1.4vw, 1.3rem);
     letter-spacing: .35em;
+}
+
+.thai-giga-tone-legend.thai-giga-inline-tone-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    justify-content: center;
+    max-width: 620px;
+    margin: 18px auto 0;
+    font-size: .78rem;
 }
 
 .thai-giga-eyebrow,
@@ -278,6 +299,52 @@ body.thai-giga-page {
 .thai-giga-settings-range-header output {
     color: var(--thai-gold);
     white-space: nowrap;
+}
+
+.thai-giga-tone-legend {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 7px 12px;
+    color: var(--thai-muted);
+    font-size: .82rem;
+}
+
+.thai-giga-tone-legend span {
+    display: inline-flex;
+    gap: 7px;
+    align-items: center;
+}
+
+.thai-tone-swatch {
+    display: inline-block;
+    width: .75rem;
+    height: .75rem;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.thai-giga-tone-legend .thai-tone-swatch.thai-tone-mid {
+    background: var(--thai-tone-mid);
+}
+
+.thai-giga-tone-legend .thai-tone-swatch.thai-tone-low {
+    background: var(--thai-tone-low);
+}
+
+.thai-giga-tone-legend .thai-tone-swatch.thai-tone-falling {
+    background: var(--thai-tone-falling);
+}
+
+.thai-giga-tone-legend .thai-tone-swatch.thai-tone-high {
+    background: var(--thai-tone-high);
+}
+
+.thai-giga-tone-legend .thai-tone-swatch.thai-tone-rising {
+    background: var(--thai-tone-rising);
+}
+
+.thai-giga-tone-legend .thai-tone-swatch.thai-tone-mixed {
+    background: var(--thai-tone-mixed);
 }
 
 .thai-giga-sidebar-backdrop.is-visible {
@@ -559,9 +626,161 @@ body.thai-giga-page {
 
 }
 
-.thai-giga-audio-header,
-.thai-giga-reader-header,
-.thai-giga-story-header {
+    .thai-giga-speedreading {
+        position: fixed;
+        inset: 0;
+        z-index: 80;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        background: rgba(10, 8, 5, .72);
+        backdrop-filter: blur(3px);
+    }
+
+    .thai-giga-speedreading-panel {
+        display: flex;
+        flex-direction: column;
+        width: min(900px, 100%);
+        max-height: calc(100vh - 48px);
+        padding: 24px;
+        border: 1px solid var(--thai-card-border);
+        border-radius: 18px;
+        background: var(--thai-surface-background);
+        box-shadow: 0 24px 70px rgba(0, 0, 0, .42);
+    }
+
+    .thai-giga-speedreading-header {
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .thai-giga-speedreading-header h2 {
+        margin: 8px 0 0;
+        color: var(--thai-gold);
+        font-size: clamp(1.3rem, 3vw, 1.9rem);
+        line-height: 1.25;
+    }
+
+    .thai-giga-speedreading-context {
+        margin: 7px 0 0;
+        color: var(--thai-muted);
+    }
+
+    .thai-giga-speedreading-options {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px 16px;
+        margin-top: 14px;
+    }
+
+    .thai-giga-speedreading-options label {
+        display: inline-flex;
+        gap: 7px;
+        align-items: center;
+        color: var(--thai-text);
+        cursor: pointer;
+        font-size: .92rem;
+    }
+
+    .thai-giga-speedreading-options input {
+        margin: 0;
+        accent-color: var(--thai-gold);
+    }
+
+    .thai-giga-speedreading-close {
+        display: grid;
+        flex: 0 0 36px;
+        place-items: center;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        border: 1px solid var(--thai-card-border);
+        border-radius: 50%;
+        color: var(--thai-muted);
+        background: transparent;
+        cursor: pointer;
+        font: inherit;
+        font-size: 1.1rem;
+    }
+
+    .thai-giga-speedreading-close:hover,
+    .thai-giga-speedreading-close:focus-visible {
+        border-color: var(--thai-gold);
+        color: var(--thai-gold);
+        background: var(--thai-hover-background);
+    }
+
+    .thai-giga-speedreading-list {
+        min-height: 0;
+        margin-top: 20px;
+        overflow-y: auto;
+        border-top: 1px solid var(--thai-card-border);
+    }
+
+    .thai-giga-speedreading-line {
+        display: grid;
+        grid-template-columns: 42px minmax(0, 1fr) 32px;
+        gap: 12px;
+        align-items: center;
+        padding: 13px 4px;
+        border-bottom: 1px solid var(--thai-card-border);
+    }
+
+    .thai-giga-speedreading-number {
+        color: var(--thai-gold);
+        font-variant-numeric: tabular-nums;
+        text-align: right;
+    }
+
+    .thai-giga-speedreading-content {
+        min-width: 0;
+    }
+
+    .thai-giga-speedreading-content .thai-giga-thai {
+        font-size: clamp(1.25rem, 3vw, 1.65rem);
+    }
+
+    .thai-giga-speedreading-content .thai-giga-transliteration,
+    .thai-giga-speedreading-content .thai-giga-translation {
+        margin-top: 3px;
+    }
+
+    .thai-giga-speedreading-audio {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .thai-giga-speedreading-audio .quest-audio-play-button {
+        display: inline-grid;
+        flex: 0 0 32px;
+        place-items: center;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        border: 1px solid var(--thai-card-border);
+        border-radius: 8px;
+        color: var(--thai-gold);
+        background: var(--thai-panel);
+        cursor: pointer;
+        font: inherit;
+        font-size: .9rem;
+    }
+
+    .thai-giga-speedreading-audio .quest-audio-play-button:hover,
+    .thai-giga-speedreading-audio .quest-audio-play-button:focus-visible,
+    .thai-giga-speedreading-audio .quest-audio-play-button.is-speaking,
+    .thai-giga-speedreading-audio .quest-audio-play-button.is-playing {
+        border-color: var(--thai-gold);
+        color: var(--thai-gold);
+        background: var(--thai-hover-background);
+    }
+
+    .thai-giga-audio-header,
+    .thai-giga-reader-header,
+    .thai-giga-story-header {
     display: flex;
     gap: 16px;
     align-items: flex-start;
@@ -579,6 +798,13 @@ body.thai-giga-page {
 .thai-giga-count {
     color: var(--thai-muted);
     white-space: nowrap;
+}
+
+.thai-giga-reader-header-actions {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 10px;
+    align-items: center;
 }
 
 .thai-giga-audio-now-playing {
@@ -760,7 +986,7 @@ body.thai-giga-page {
 .thai-giga-playlist-select > span:not(.thai-giga-playlist-card-number) > strong {
     color: #ffe4a9;
     font-size: 1rem;
-    font-weight: normal;
+    font-weight: 300;
 }
 
 .thai-giga-playlist-select small {
@@ -842,20 +1068,79 @@ body.thai-giga-page {
 }
 
 .thai-giga-introduction-example {
+    position: relative;
     padding: 16px 18px;
     border-left: 3px solid var(--thai-gold);
     background: rgba(231, 184, 97, .08);
+}
+
+.thai-giga-introduction-example .thai-giga-introduction-audio {
+    position: absolute;
+    top: 16px;
+    left: 50%;
+    right: auto;
+    width: 48px;
+    transform: translateX(-50%);
 }
 
 .thai-giga-introduction-audio-line {
     display: flex;
     gap: 8px;
     align-items: center;
+    min-width: 0;
 }
 
-.thai-giga-introduction-audio-line .quest-audio-player {
+.thai-giga-introduction-audio-line > strong,
+.thai-giga-introduction-audio-line > .thai-giga-introduction-thai {
+    min-width: 0;
+}
+
+.thai-giga-introduction-audio-line .quest-audio-player,
+.thai-giga-word-audio,
+.thai-giga-word-card-thai-line .quest-audio-player,
+.thai-giga-reminder-thai-line .quest-audio-player {
     flex: 0 0 auto;
+    width: auto;
     margin-top: 0;
+    margin-bottom: 0;
+    padding: 0;
+    justify-content: flex-start;
+}
+
+.thai-giga-introduction-audio .quest-audio-play-button,
+.thai-giga-word-audio .quest-audio-play-button,
+.thai-giga-reminder-audio .quest-audio-play-button,
+.thai-giga-inline-audio .quest-audio-play-button {
+    display: inline-grid;
+    flex: 0 0 32px;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid rgba(142, 107, 60, .75);
+    border-radius: 8px;
+    color: var(--thai-gold);
+    background: rgba(50, 33, 22, .8);
+    cursor: pointer;
+    font: inherit;
+    font-size: .9rem;
+}
+
+.thai-giga-introduction-audio .quest-audio-play-button:hover,
+.thai-giga-introduction-audio .quest-audio-play-button:focus-visible,
+.thai-giga-introduction-audio .quest-audio-play-button.is-speaking,
+.thai-giga-word-audio .quest-audio-play-button:hover,
+.thai-giga-word-audio .quest-audio-play-button:focus-visible,
+.thai-giga-word-audio .quest-audio-play-button.is-speaking,
+.thai-giga-reminder-audio .quest-audio-play-button:hover,
+.thai-giga-reminder-audio .quest-audio-play-button:focus-visible,
+.thai-giga-reminder-audio .quest-audio-play-button.is-speaking,
+.thai-giga-inline-audio .quest-audio-play-button:hover,
+.thai-giga-inline-audio .quest-audio-play-button:focus-visible,
+.thai-giga-inline-audio .quest-audio-play-button.is-speaking {
+    border-color: var(--thai-gold);
+    color: var(--thai-gold);
+    background: rgba(231, 184, 97, .1);
 }
 
 .thai-giga-introduction-thai {
@@ -886,18 +1171,20 @@ body.thai-giga-page {
 }
 
 .thai-giga-introduction-part {
+    position: relative;
     display: grid;
-    gap: 4px;
+    gap: 3px;
     min-width: 0;
-    padding: 12px;
-    border: 1px solid rgba(142, 107, 60, .65);
+    padding: 12px 70px 12px 12px;
+    border: 1px solid rgba(142, 107, 60, .45);
     border-radius: 9px;
     background: rgba(21, 17, 13, .38);
 }
 
 .thai-giga-introduction-part strong {
     color: var(--thai-text);
-    font-size: 1.15rem;
+    font-size: 18px;
+    white-space: nowrap;
 }
 
 .thai-giga-introduction-part em {
@@ -1040,17 +1327,35 @@ body.thai-giga-page {
 }
 
 .thai-giga-word-card {
+    position: relative;
     display: grid;
     gap: 10px;
-    padding: 13px;
+    padding: 12px 70px 12px 12px;
     border: 1px solid rgba(142, 107, 60, .45);
-    border-radius: 10px;
-    background: var(--thai-card-background);
+    border-radius: 9px;
+    background: rgba(21, 17, 13, .38);
 }
 
 .thai-giga-word-card-main {
     display: grid;
     gap: 3px;
+}
+
+.thai-giga-word-card-thai-line,
+.thai-giga-reminder-thai-line {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    min-width: 0;
+}
+
+.thai-giga-word-card-thai-line > strong,
+.thai-giga-reminder-thai-line > strong {
+    min-width: 0;
+}
+
+.thai-giga-word-card-thai-line > strong {
+    white-space: nowrap;
 }
 
 .thai-giga-word-card-main strong {
@@ -1071,18 +1376,17 @@ body.thai-giga-page {
     line-height: 1.4;
 }
 
-.thai-giga-word-card-meta {
-    display: flex;
-    gap: 8px;
-    justify-content: space-between;
-    padding-top: 8px;
-    border-top: 1px solid rgba(142, 107, 60, .25);
+.thai-giga-word-audio .quest-audio-status {
+    margin-left: 7px;
     color: var(--thai-muted);
-    font-size: .78rem;
+    font-size: .75rem;
 }
 
-.thai-giga-word-card-meta small {
-    white-space: nowrap;
+.thai-giga-word-audio {
+    position: absolute;
+    top: 50%;
+    right: 13px;
+    transform: translateY(-50%);
 }
 
 .thai-giga-word-dictionary-empty {
@@ -1123,6 +1427,13 @@ body.thai-giga-page {
     min-width: 0;
 }
 
+.thai-giga-block-summary-actions {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 8px;
+    align-items: center;
+}
+
 .thai-giga-block-playlist-button,
 .thai-giga-level-playlist-button {
     flex: 0 0 auto;
@@ -1130,10 +1441,10 @@ body.thai-giga-page {
     min-width: 0;
     min-height: 0;
     padding: 6px 9px;
-    border: 1px solid rgba(142, 107, 60, .85);
+    border: 1px solid var(--thai-playlist-border);
     border-radius: 8px;
-    color: var(--thai-muted);
-    background: rgba(50, 33, 22, .8);
+    color: var(--thai-playlist-muted);
+    background: var(--thai-playlist-background);
     cursor: pointer;
     font: inherit;
     font-size: .78rem;
@@ -1142,11 +1453,13 @@ body.thai-giga-page {
 
 .thai-giga-block-playlist-button:hover,
 .thai-giga-block-playlist-button:focus-visible,
+.thai-giga-block-playlist-button.is-added,
 .thai-giga-level-playlist-button:hover,
-.thai-giga-level-playlist-button:focus-visible {
-    border-color: var(--thai-gold);
-    color: var(--thai-gold);
-    background: rgba(231, 184, 97, .1);
+.thai-giga-level-playlist-button:focus-visible,
+.thai-giga-level-playlist-button.is-added {
+    border-color: var(--thai-playlist-added);
+    color: var(--thai-playlist-added);
+    background: var(--thai-playlist-added-background);
 }
 
 .thai-giga-block-summary:hover,
@@ -1214,11 +1527,28 @@ body.thai-giga-page {
 .thai-giga-reminder-word,
 .thai-giga-reminder-example,
 .thai-giga-reminder-discoveries > div {
+    position: relative;
     display: grid;
     gap: 3px;
-    padding: 10px;
-    border-radius: 8px;
-    background: rgba(21, 17, 13, .4);
+    padding: 12px 70px 12px 12px;
+    border: 1px solid rgba(142, 107, 60, .45);
+    border-radius: 9px;
+    background: rgba(21, 17, 13, .38);
+}
+
+.thai-giga-reminder-word {
+    position: relative;
+}
+
+.thai-giga-introduction-part .thai-giga-introduction-audio,
+.thai-giga-reminder-word .thai-giga-reminder-audio,
+.thai-giga-reminder-example .thai-giga-reminder-audio,
+.thai-giga-reminder-discoveries > div .thai-giga-reminder-audio {
+    position: absolute;
+    top: 50%;
+    right: 13px;
+    width: 48px;
+    transform: translateY(-50%);
 }
 
 .thai-giga-reminder-word strong,
@@ -1227,17 +1557,27 @@ body.thai-giga-page {
     font-size: 1.05rem;
 }
 
+.thai-giga-reminder-word strong {
+    white-space: nowrap;
+}
+
 .thai-giga-reminder-word em,
 .thai-giga-reminder-example em {
     color: var(--thai-accent);
     font-size: .9rem;
 }
 
-.thai-giga-reminder-word span,
-.thai-giga-reminder-example span,
-.thai-giga-reminder-discoveries span {
+.thai-giga-reminder-word > span,
+.thai-giga-reminder-example > span,
+.thai-giga-reminder-discoveries > div > span {
     color: var(--thai-muted);
     font-size: .9rem;
+}
+
+.thai-giga-reminder-audio .quest-audio-status {
+    margin-left: 7px;
+    color: var(--thai-muted);
+    font-size: .75rem;
 }
 
 .thai-giga-reminder-examples {
@@ -1315,6 +1655,32 @@ body.thai-giga-page {
     right: 12px;
 }
 
+.thai-giga-block-speedreading-button,
+.thai-giga-boss-speedreading-button {
+    display: grid;
+    flex: 0 0 32px;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid var(--thai-card-border);
+    border-radius: 8px;
+    color: var(--thai-gold);
+    background: var(--thai-panel);
+    cursor: pointer;
+    font: inherit;
+    font-size: .95rem;
+}
+
+.thai-giga-block-speedreading-button:hover,
+.thai-giga-block-speedreading-button:focus-visible,
+.thai-giga-boss-speedreading-button:hover,
+.thai-giga-boss-speedreading-button:focus-visible {
+    border-color: var(--thai-gold);
+    color: var(--thai-gold);
+    background: var(--thai-hover-background);
+}
+
 .thai-giga-empty-state {
     max-width: 680px;
     margin: 30px auto;
@@ -1384,6 +1750,30 @@ body.thai-giga-page {
     background: rgba(231, 184, 97, .2);
 }
 
+body.thai-giga-page[data-thai-tone-colors="true"] .thai-tone-mid {
+    color: var(--thai-tone-mid);
+}
+
+body.thai-giga-page[data-thai-tone-colors="true"] .thai-tone-low {
+    color: var(--thai-tone-low);
+}
+
+body.thai-giga-page[data-thai-tone-colors="true"] .thai-tone-falling {
+    color: var(--thai-tone-falling);
+}
+
+body.thai-giga-page[data-thai-tone-colors="true"] .thai-tone-high {
+    color: var(--thai-tone-high);
+}
+
+body.thai-giga-page[data-thai-tone-colors="true"] .thai-tone-rising {
+    color: var(--thai-tone-rising);
+}
+
+body.thai-giga-page[data-thai-tone-colors="true"] .thai-tone-mixed {
+    color: var(--thai-tone-mixed);
+}
+
 .thai-giga-transliteration {
     margin: 5px 0 0;
     color: var(--thai-accent);
@@ -1401,37 +1791,13 @@ body.thai-giga-page {
     align-items: center;
 }
 
-.thai-giga-inline-audio .quest-audio-play-button {
-    display: inline-grid;
-    place-items: center;
-    flex: 0 0 42px;
-    width: 42px;
-    height: 42px;
-    padding: 0;
-    border: 1px solid rgba(142, 107, 60, .85);
-    border-radius: 10px;
-    color: var(--thai-gold);
-    background: rgba(50, 33, 22, .8);
-    cursor: pointer;
-    font: inherit;
-    font-size: 1.2rem;
-}
-
-.thai-giga-inline-audio .quest-audio-play-button:hover,
-.thai-giga-inline-audio .quest-audio-play-button:focus-visible,
-.thai-giga-inline-audio .quest-audio-play-button.is-speaking {
-    border-color: var(--thai-gold);
-    color: #1b120b;
-    background: var(--thai-gold);
-}
-
 .thai-giga-playlist-button {
     width: auto;
     min-width: 0;
     padding: 8px 9px;
-    border: 1px solid rgba(142, 107, 60, .85);
+    border: 1px solid var(--thai-playlist-border);
     border-radius: 8px;
-    color: var(--thai-muted);
+    color: var(--thai-playlist-muted);
     background: transparent;
     cursor: pointer;
     font: inherit;
@@ -1439,12 +1805,43 @@ body.thai-giga-page {
     white-space: nowrap;
 }
 
+.thai-giga-playlist-button,
+.thai-giga-level-playlist-button,
+.thai-giga-block-playlist-button {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    padding: 0;
+    font-size: 0;
+    line-height: 1;
+}
+
+.thai-giga-playlist-button::before,
+.thai-giga-level-playlist-button::before,
+.thai-giga-block-playlist-button::before {
+    display: block;
+    content: "+";
+    font-size: 1.05rem;
+    line-height: 1;
+}
+
+.thai-giga-playlist-button.is-added::before,
+.thai-giga-level-playlist-button.is-added::before,
+.thai-giga-block-playlist-button.is-added::before {
+    content: "\2713";
+}
+
 .thai-giga-playlist-button:hover,
 .thai-giga-playlist-button:focus-visible,
 .thai-giga-playlist-button.is-added {
-    border-color: var(--thai-gold);
-    color: var(--thai-gold);
-    background: rgba(231, 184, 97, .1);
+    border-color: var(--thai-playlist-added);
+    color: var(--thai-playlist-added);
+    background: var(--thai-playlist-added-background);
 }
 
 .thai-giga-dictionary {
@@ -1648,6 +2045,60 @@ body.thai-giga-page {
         padding-top: 20px;
     }
 
+    .thai-giga-speedreading {
+        padding: 12px;
+    }
+
+    .thai-giga-speedreading-panel {
+        max-height: calc(100vh - 24px);
+        padding: 18px 14px;
+        border-radius: 14px;
+    }
+
+    .thai-giga-speedreading-header {
+        gap: 10px;
+    }
+
+    .thai-giga-speedreading-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .thai-giga-speedreading-options {
+        gap: 9px 14px;
+        margin-top: 12px;
+    }
+
+    .thai-giga-speedreading-list {
+        margin-top: 16px;
+    }
+
+    .thai-giga-speedreading-line {
+        grid-template-columns: 28px minmax(0, 1fr);
+        gap: 8px;
+        align-items: start;
+        padding: 11px 0;
+    }
+
+    .thai-giga-speedreading-number {
+        padding-top: 4px;
+        text-align: left;
+    }
+
+    .thai-giga-speedreading-audio {
+        grid-column: 2;
+        justify-content: flex-start;
+        margin-top: 3px;
+    }
+
+    .thai-giga-reader-header-actions {
+        justify-content: space-between;
+        margin-top: 12px;
+    }
+
+    .thai-giga-reader-header-actions .thai-giga-count {
+        margin-top: 0;
+    }
+
     .thai-giga-reader {
         padding: 19px;
         border-radius: 15px;
@@ -1689,7 +2140,7 @@ body.thai-giga-page {
     }
 
     .thai-giga-level summary {
-        padding: 10px 82px 10px 12px;
+        padding: 10px 124px 10px 12px;
         font-size: .88rem;
     }
 
@@ -1741,21 +2192,14 @@ body.thai-giga-page {
         padding: 10px;
     }
 
-    .thai-giga-inline-audio .quest-audio-play-button {
-        flex-basis: 32px;
-        width: 32px;
-        height: 32px;
-        font-size: .85rem;
-    }
-
     .thai-giga-playlist-button,
     .thai-giga-level-playlist-button,
     .thai-giga-block-playlist-button {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 28px;
-        height: 28px;
+        width: 32px;
+        height: 32px;
         padding: 0;
         font-size: 0;
         line-height: 1;
@@ -1770,12 +2214,48 @@ body.thai-giga-page {
         line-height: 1;
     }
 
+    .thai-giga-playlist-button.is-added::before,
+    .thai-giga-level-playlist-button.is-added::before,
+    .thai-giga-block-playlist-button.is-added::before {
+        content: "\2713";
+    }
+
     .thai-giga-audio-header {
         align-items: flex-start;
     }
 
     .thai-giga-audio-controls {
         align-items: stretch;
+    }
+}
+
+@media (max-width: 900px) {
+    .thai-giga-playlist-button,
+    .thai-giga-level-playlist-button,
+    .thai-giga-block-playlist-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        font-size: 0;
+        line-height: 1;
+    }
+
+    .thai-giga-playlist-button::before,
+    .thai-giga-level-playlist-button::before,
+    .thai-giga-block-playlist-button::before {
+        display: block;
+        content: "+";
+        font-size: 1rem;
+        line-height: 1;
+    }
+
+    .thai-giga-playlist-button.is-added::before,
+    .thai-giga-level-playlist-button.is-added::before,
+    .thai-giga-block-playlist-button.is-added::before {
+        content: "\2713";
     }
 }
 
@@ -1800,12 +2280,30 @@ body.thai-giga-page {
     font-size: 1.2em;
 }
 
+.thai-giga-introduction-parts .thai-giga-introduction-part strong,
+.thai-giga-reminder-word .thai-giga-reminder-thai-line > strong {
+    font-size: 19px;
+}
+
+.thai-giga-introduction-parts
+    .thai-giga-introduction-part
+    .thai-giga-introduction-audio-line
+    strong
+    span {
+    font-size: 19px;
+}
+
 .thai-giga-reminder-word em,
-.thai-giga-reminder-word span,
+.thai-giga-reminder-word > span,
 .thai-giga-reminder-example em,
-.thai-giga-reminder-example span,
-.thai-giga-reminder-discoveries span {
+.thai-giga-reminder-example > span,
+.thai-giga-reminder-discoveries > div > span {
     font-size: 1em;
+}
+
+.thai-giga-reminder-word em,
+.thai-giga-reminder-word > span {
+    font-size: .9rem;
 }
 
 body.thai-giga-page[data-thai-theme="night"] {
@@ -1831,6 +2329,9 @@ body.thai-giga-page[data-thai-theme="night"] {
     --thai-strong-text: #edf5fb;
     --thai-ink: #0c1118;
     --thai-hover-background: #2d3d53;
+    --thai-playlist-border: rgba(130, 177, 214, .7);
+    --thai-playlist-muted: #aebdce;
+    --thai-playlist-background: rgba(32, 44, 61, .85);
 }
 
 body.thai-giga-page[data-thai-theme="desert"] {
@@ -1838,24 +2339,35 @@ body.thai-giga-page[data-thai-theme="desert"] {
     --thai-panel: #f8edcf;
     --thai-panel-light: #fff8e7;
     --thai-border: #b98636;
-    --thai-gold: #724719;
-    --thai-text: #503927;
-    --thai-muted: #806342;
-    --thai-accent: #a6611d;
+    --thai-gold: #654016;
+    --thai-text: #3f2816;
+    --thai-muted: #68451f;
+    --thai-accent: #8b4b0d;
     --thai-page-background:
         radial-gradient(circle at 12% 0%, rgba(255, 250, 226, .72), transparent 34rem),
         linear-gradient(135deg, #f3e1b7 0%, #ead09a 52%, #d9b875 100%);
     --thai-topbar-border: rgba(169, 111, 26, .45);
     --thai-glow: rgba(174, 115, 28, .2);
-    --thai-menu-background: rgba(250, 241, 215, .98);
-    --thai-surface-background: rgba(255, 248, 230, .9);
-    --thai-card-background: rgba(255, 250, 239, .84);
-    --thai-card-border: rgba(184, 135, 53, .68);
-    --thai-reminder-background: rgba(217, 166, 65, .16);
-    --thai-word-background: rgba(245, 226, 184, .54);
-    --thai-strong-text: #4d331e;
-    --thai-ink: #fff8e7;
+    --thai-menu-background: #faf1d7;
+    --thai-surface-background: #fff8e6;
+    --thai-card-background: #f5e5c5;
+    --thai-card-border: #b88735;
+    --thai-reminder-background: #ecd39c;
+    --thai-word-background: #f4e0b4;
+    --thai-strong-text: #3c2514;
+    --thai-ink: #fffaf0;
     --thai-hover-background: #f2ddb0;
+    --thai-playlist-border: #a87327;
+    --thai-playlist-muted: #fff0c5;
+    --thai-playlist-background: #60451f;
+    --thai-playlist-added: #3f6332;
+    --thai-playlist-added-background: #dceab7;
+    --thai-tone-mid: #a86f00;
+    --thai-tone-low: #087da8;
+    --thai-tone-falling: #2f8748;
+    --thai-tone-high: #ad4545;
+    --thai-tone-rising: #7d4aa3;
+    --thai-tone-mixed: #734b9a;
 }
 
 body.thai-giga-page[data-thai-theme="japanese"] {
@@ -1881,11 +2393,17 @@ body.thai-giga-page[data-thai-theme="japanese"] {
     --thai-strong-text: #fff7e8;
     --thai-ink: #171019;
     --thai-hover-background: #3a2747;
+    --thai-playlist-border: rgba(141, 106, 159, .85);
+    --thai-playlist-muted: #cdbbd2;
+    --thai-playlist-background: rgba(48, 32, 57, .8);
 }
 
 body.thai-giga-page[data-thai-theme="night"] .thai-giga-audio-player,
 body.thai-giga-page[data-thai-theme="desert"] .thai-giga-audio-player,
 body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-audio-player,
+body.thai-giga-page[data-thai-theme="night"] .thai-giga-speedreading-panel,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-speedreading-panel,
+body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-speedreading-panel,
 body.thai-giga-page[data-thai-theme="night"] .thai-giga-reader,
 body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reader,
 body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-reader,
@@ -1902,28 +2420,9 @@ body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-word-dictionary {
 body.thai-giga-page[data-thai-theme="night"] .thai-giga-introduction,
 body.thai-giga-page[data-thai-theme="desert"] .thai-giga-introduction,
 body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-introduction,
-body.thai-giga-page[data-thai-theme="night"] .thai-giga-sentence,
-body.thai-giga-page[data-thai-theme="desert"] .thai-giga-sentence,
-body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-sentence,
-body.thai-giga-page[data-thai-theme="night"] .thai-giga-reminder-word,
-body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-word,
-body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-reminder-word,
-body.thai-giga-page[data-thai-theme="night"] .thai-giga-reminder-example,
-body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-example,
-body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-reminder-example,
-body.thai-giga-page[data-thai-theme="night"] .thai-giga-reminder-discoveries > div,
-body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-discoveries > div,
-body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-reminder-discoveries > div,
 body.thai-giga-page[data-thai-theme="night"] .thai-giga-word-group,
 body.thai-giga-page[data-thai-theme="desert"] .thai-giga-word-group,
 body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-word-group,
-body.thai-giga-page[data-thai-theme="night"] .thai-giga-word-card,
-body.thai-giga-page[data-thai-theme="desert"] .thai-giga-word-card,
-body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-word-card {
-    border-color: var(--thai-card-border);
-    background: var(--thai-card-background);
-}
-
 body.thai-giga-page[data-thai-theme="night"] .thai-giga-midpoint-reminder,
 body.thai-giga-page[data-thai-theme="desert"] .thai-giga-midpoint-reminder,
 body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-midpoint-reminder,
@@ -1943,6 +2442,196 @@ body.thai-giga-page[data-thai-theme="japanese"] .thai-giga-pattern {
     color: var(--thai-strong-text);
 }
 
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-boss-description,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-introduction-lead,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-introduction-warning,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-midpoint-content > p,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-pattern-lead,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-closing,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-lead,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-completion-content > p,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-summary,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-completion-final {
+    color: var(--thai-text);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-introduction-part,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-word-card,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-word,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-example,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-discoveries > div {
+    border-color: var(--thai-card-border);
+    background: var(--thai-word-background);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-introduction-example {
+    background: #f6e6c2;
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-sentence {
+    border-color: var(--thai-card-border);
+    background: var(--thai-card-background);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-block {
+    border-color: #b88735;
+    background: #d8bd88;
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-block-summary {
+    color: var(--thai-text);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-block-summary:hover,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-block-summary:focus-visible {
+    background: rgba(139, 75, 13, .1);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-block-description {
+    color: #4f351c;
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-level {
+    border-color: #a98245;
+    background: #6e5b3d;
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-level summary {
+    color: #fff2cf;
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-level summary:hover,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-level summary:focus-visible {
+    background: rgba(255, 242, 207, .1);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-block-playlist-button,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-level-playlist-button,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-playlist-button {
+    border-color: var(--thai-playlist-border);
+    color: var(--thai-playlist-muted);
+    background: var(--thai-playlist-background);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-block-playlist-button:hover,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-block-playlist-button:focus-visible,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-block-playlist-button.is-added,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-level-playlist-button:hover,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-level-playlist-button:focus-visible,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-level-playlist-button.is-added,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-playlist-button:hover,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-playlist-button:focus-visible,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-playlist-button.is-added {
+    border-color: var(--thai-playlist-added);
+    color: var(--thai-playlist-added);
+    background: var(--thai-playlist-added-background);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-audio-player {
+    border-color: #99651f;
+    color: #4a3019;
+    background: linear-gradient(145deg, #efd7a7 0%, #d0ad70 100%);
+    box-shadow:
+        0 18px 45px rgba(74, 46, 17, .32),
+        0 0 0 1px rgba(255, 247, 221, .28) inset;
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-audio-controls button,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-audio-actions button,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-audio-playlist button {
+    border-color: #b27b2d;
+    color: #4a3019;
+    background: #edd09a;
+    box-shadow: 0 4px 10px rgba(74, 46, 17, .2);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-audio-controls button.is-primary {
+    border-color: #7b4b15;
+    color: #fff4d5;
+    background: #7b4b15;
+}
+
+body.thai-giga-page[data-thai-theme="desert"]
+    .thai-giga-audio-controls button:hover:not(:disabled),
+body.thai-giga-page[data-thai-theme="desert"]
+    .thai-giga-audio-controls button:focus-visible:not(:disabled),
+body.thai-giga-page[data-thai-theme="desert"]
+    .thai-giga-audio-actions button:hover:not(:disabled),
+body.thai-giga-page[data-thai-theme="desert"]
+    .thai-giga-audio-actions button:focus-visible:not(:disabled),
+body.thai-giga-page[data-thai-theme="desert"]
+    .thai-giga-playlist-select:hover,
+body.thai-giga-page[data-thai-theme="desert"]
+    .thai-giga-playlist-select:focus-visible,
+body.thai-giga-page[data-thai-theme="desert"]
+    .thai-giga-playlist-order-button:hover:not(:disabled),
+body.thai-giga-page[data-thai-theme="desert"]
+    .thai-giga-playlist-order-button:focus-visible:not(:disabled),
+body.thai-giga-page[data-thai-theme="desert"]
+    .thai-giga-playlist-remove:hover:not(:disabled),
+body.thai-giga-page[data-thai-theme="desert"]
+    .thai-giga-playlist-remove:focus-visible:not(:disabled) {
+    border-color: #7b4b15;
+    color: #3f2816;
+    background: #d3ad6d;
+}
+
+body.thai-giga-page[data-thai-theme="desert"]
+    .thai-giga-audio-controls button.is-primary:hover:not(:disabled),
+body.thai-giga-page[data-thai-theme="desert"]
+    .thai-giga-audio-controls button.is-primary:focus-visible:not(:disabled) {
+    border-color: #5f380f;
+    color: #fff8e6;
+    background: #8b570f;
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-playlist-item {
+    border-color: #9f6d25;
+    background: #b79058;
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-playlist-select {
+    color: #4a3019;
+    background: #f0d8a7;
+}
+
+body.thai-giga-page[data-thai-theme="desert"]
+    .thai-giga-playlist-select > span:not(.thai-giga-playlist-card-number) > strong {
+    color: #4a3019;
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-playlist-item.is-current {
+    border-color: #7b4b15;
+    box-shadow: 0 0 0 2px rgba(123, 75, 21, .2);
+}
+
+body.thai-giga-page[data-thai-theme="desert"][data-thai-tone-colors="true"]
+    .thai-giga-thai .thai-tone-mid,
+body.thai-giga-page[data-thai-theme="desert"][data-thai-tone-colors="true"]
+    .thai-giga-thai .thai-tone-low,
+body.thai-giga-page[data-thai-theme="desert"][data-thai-tone-colors="true"]
+    .thai-giga-thai .thai-tone-falling,
+body.thai-giga-page[data-thai-theme="desert"][data-thai-tone-colors="true"]
+    .thai-giga-thai .thai-tone-high,
+body.thai-giga-page[data-thai-theme="desert"][data-thai-tone-colors="true"]
+    .thai-giga-thai .thai-tone-rising,
+body.thai-giga-page[data-thai-theme="desert"][data-thai-tone-colors="true"]
+    .thai-giga-thai .thai-tone-mixed,
+body.thai-giga-page[data-thai-theme="desert"][data-thai-tone-colors="true"]
+    .thai-giga-pattern .thai-tone-mid,
+body.thai-giga-page[data-thai-theme="desert"][data-thai-tone-colors="true"]
+    .thai-giga-pattern .thai-tone-low,
+body.thai-giga-page[data-thai-theme="desert"][data-thai-tone-colors="true"]
+    .thai-giga-pattern .thai-tone-falling,
+body.thai-giga-page[data-thai-theme="desert"][data-thai-tone-colors="true"]
+    .thai-giga-pattern .thai-tone-high,
+body.thai-giga-page[data-thai-theme="desert"][data-thai-tone-colors="true"]
+    .thai-giga-pattern .thai-tone-rising,
+body.thai-giga-page[data-thai-theme="desert"][data-thai-tone-colors="true"]
+    .thai-giga-pattern .thai-tone-mixed {
+    font-weight: 400;
+}
+
 body.thai-giga-page[data-thai-transliteration-visible="false"] .thai-giga-transliteration,
 body.thai-giga-page[data-thai-transliteration-visible="false"] .thai-giga-playlist-transliteration,
 body.thai-giga-page[data-thai-transliteration-visible="false"] .thai-giga-dictionary-transliteration,
@@ -1953,11 +2642,28 @@ body.thai-giga-page[data-thai-transliteration-visible="false"] .thai-giga-remind
 }
 
 body.thai-giga-page[data-thai-translation-visible="false"] .thai-giga-translation,
-body.thai-giga-page[data-thai-translation-visible="false"] .thai-giga-playlist-translation,
-body.thai-giga-page[data-thai-translation-visible="false"] .thai-giga-reminder-word span,
-body.thai-giga-page[data-thai-translation-visible="false"] .thai-giga-reminder-example span,
-body.thai-giga-page[data-thai-translation-visible="false"] .thai-giga-reminder-discoveries span {
+body.thai-giga-page[data-thai-translation-visible="false"] .thai-giga-playlist-translation {
     display: none;
+}
+
+body.thai-giga-page .thai-giga-speedreading[data-speedreading-transliteration="false"]
+    .thai-giga-transliteration {
+    display: none;
+}
+
+body.thai-giga-page .thai-giga-speedreading[data-speedreading-transliteration="true"]
+    .thai-giga-transliteration {
+    display: block;
+}
+
+body.thai-giga-page .thai-giga-speedreading[data-speedreading-translation="false"]
+    .thai-giga-translation {
+    display: none;
+}
+
+body.thai-giga-page .thai-giga-speedreading[data-speedreading-translation="true"]
+    .thai-giga-translation {
+    display: block;
 }
 
 .thai-giga-translation[data-thai-giga-translation-state="hidden"] {
@@ -1976,4 +2682,39 @@ body.thai-giga-page[data-thai-word-separation="false"]
 
 body.thai-giga-page[data-thai-word-separation="false"] .thai-giga-word-button {
     padding-inline: 0;
+}
+
+@media (max-width: 580px) {
+    .thai-giga-thai,
+    .thai-giga-introduction-thai,
+    .thai-giga-pattern {
+        font-size: 1.4rem;
+    }
+
+    .thai-giga-transliteration,
+    .thai-giga-translation {
+        font-size: 1rem;
+    }
+
+    .thai-giga-playlist-transliteration,
+    .thai-giga-playlist-translation {
+        font-size: .9rem;
+    }
+
+    .thai-giga-playlist-select > span:not(.thai-giga-playlist-card-number) > strong {
+        font-size: 1.05rem;
+    }
+
+    .thai-giga-reminder-word strong,
+    .thai-giga-reminder-example strong {
+        font-size: 1.2rem;
+    }
+
+    .thai-giga-reminder-word em,
+    .thai-giga-reminder-word > span,
+    .thai-giga-reminder-example em,
+    .thai-giga-reminder-example > span,
+    .thai-giga-reminder-discoveries > div > span {
+        font-size: .9rem;
+    }
 }

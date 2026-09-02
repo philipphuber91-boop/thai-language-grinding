@@ -214,6 +214,46 @@
                 requireString(meaning, `${path}.meanings[${index}]`, errors);
             });
         }
+
+        if (word.syllables !== undefined) {
+            if (!Array.isArray(word.syllables) || word.syllables.length < 2) {
+                errors.push(
+                    createValidationError(
+                        `${path}.syllables`,
+                        "Eine Silbenstruktur muss mindestens zwei Silben enthalten."
+                    )
+                );
+            } else {
+                const syllableThai = [];
+                word.syllables.forEach((syllable, index) => {
+                    const syllablePath = `${path}.syllables[${index}]`;
+                    if (!isRecord(syllable)) {
+                        errors.push(
+                            createValidationError(syllablePath, "Silbe muss ein Objekt sein.")
+                        );
+                        return;
+                    }
+                    requireString(syllable.thai, `${syllablePath}.thai`, errors);
+                    requireString(
+                        syllable.transliteration,
+                        `${syllablePath}.transliteration`,
+                        errors
+                    );
+                    if (typeof syllable.thai === "string") {
+                        syllableThai.push(syllable.thai);
+                    }
+                });
+
+                if (syllableThai.join("") !== word.thai) {
+                    errors.push(
+                        createValidationError(
+                            `${path}.syllables`,
+                            "Die Silben müssen den Thai-Text des Wortes exakt rekonstruieren."
+                        )
+                    );
+                }
+            }
+        }
     }
 
     function validatePolysemousTokens(content, errors) {
