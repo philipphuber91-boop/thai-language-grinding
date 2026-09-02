@@ -187,6 +187,18 @@
             sentence.tokens.forEach((token, index) => {
                 validateToken(token, `${path}.tokens[${index}]`, wordIds, errors);
             });
+
+            const reconstructedThai = sentence.tokens
+                .map(token => isRecord(token) && typeof token.text === "string" ? token.text : "")
+                .join("");
+            if (reconstructedThai !== sentence.thai) {
+                errors.push(
+                    createValidationError(
+                        `${path}.tokens`,
+                        "Die Token müssen den Thai-Text des Satzes exakt rekonstruieren."
+                    )
+                );
+            }
         }
 
         validateAudio(sentence.audio, `${path}.audio`, errors);
@@ -254,6 +266,135 @@
                 }
             }
         }
+    }
+
+    function validateWordSemantics(words, sentenceRecords, errors) {
+        if (!Array.isArray(words)) {
+            return;
+        }
+
+        const sentencesById = new Map();
+        const firstSentenceByWordId = new Map();
+        const sentenceTranslations = new Map();
+        const sentenceTransliterations = new Map();
+
+        sentenceRecords.forEach(({ sentence, path }) => {
+            if (!isRecord(sentence) || typeof sentence.id !== "string") {
+                return;
+            }
+
+            sentencesById.set(sentence.id, { sentence, path });
+
+            if (typeof sentence.translation === "string") {
+                const matches = sentenceTranslations.get(sentence.translation) || [];
+                matches.push(sentence);
+                sentenceTranslations.set(sentence.translation, matches);
+            }
+
+            if (typeof sentence.transliteration === "string") {
+                const matches = sentenceTransliterations.get(sentence.transliteration) || [];
+                matches.push(sentence);
+                sentenceTransliterations.set(sentence.transliteration, matches);
+            }
+
+            if (!Array.isArray(sentence.tokens)) {
+                return;
+            }
+
+            sentence.tokens.forEach(token => {
+                if (
+                    isRecord(token) &&
+                    typeof token.wordId === "string" &&
+                    token.wordId.trim() !== "" &&
+                    !firstSentenceByWordId.has(token.wordId)
+                ) {
+                    firstSentenceByWordId.set(token.wordId, sentence.id);
+                }
+            });
+        });
+
+        words.forEach((word, wordIndex) => {
+            if (!isRecord(word) || typeof word.id !== "string" || word.id.trim() === "") {
+                return;
+            }
+
+            const wordPath = `$.words[${wordIndex}]`;
+            const firstSentence = sentencesById.get(word.firstSentenceId);
+            const actualFirstSentenceId = firstSentenceByWordId.get(word.id);
+
+            if (
+                typeof word.transliteration === "string" &&
+                word.transliteration.includes(String.fromCharCode(0xfffd))
+            ) {
+                errors.push(
+                    createValidationError(
+                        `${wordPath}.transliteration`,
+                        "Die Umschrift enthält ein ungültiges Unicode-Ersatzzeichen."
+                    )
+                );
+            }
+
+            if (
+                Array.isArray(word.meanings) &&
+                word.meanings.some(
+                    meaning =>
+                        typeof meaning === "string" &&
+                        meaning.includes(String.fromCharCode(0xfffd))
+                )
+            ) {
+                errors.push(
+                    createValidationError(
+                        `${wordPath}.meanings`,
+                        "Eine Wortbedeutung enthält ein ungültiges Unicode-Ersatzzeichen."
+                    )
+                );
+            }
+
+            if (word.firstSentenceId && !firstSentence) {
+                errors.push(
+                    createValidationError(
+                        `${wordPath}.firstSentenceId`,
+                        `Erstes Vorkommen "${word.firstSentenceId}" verweist auf keinen Satz.`
+                    )
+                );
+            } else if (actualFirstSentenceId && word.firstSentenceId !== actualFirstSentenceId) {
+                errors.push(
+                    createValidationError(
+                        `${wordPath}.firstSentenceId`,
+                        `Erstes Vorkommen muss "${actualFirstSentenceId}" sein.`
+                    )
+                );
+            }
+
+            const leakedTranslation = Array.isArray(word.meanings)
+                ? word.meanings.find(meaning =>
+                      (sentenceTranslations.get(meaning) || []).some(
+                          sentence => sentence.thai !== word.thai
+                      )
+                  )
+                : undefined;
+            if (leakedTranslation) {
+                errors.push(
+                    createValidationError(
+                        `${wordPath}.meanings`,
+                        `Wortbedeutung "${leakedTranslation}" entspricht einer vollständigen Satzübersetzung.`
+                    )
+                );
+            }
+
+            const leakedTransliteration =
+                typeof word.transliteration === "string"
+                    ? sentenceTransliterations.get(word.transliteration) || []
+                    : [];
+            if (leakedTransliteration.some(sentence => sentence.thai !== word.thai)) {
+                errors.push(
+                    createValidationError(
+                        `${wordPath}.transliteration`,
+                        "Die Wortumschrift entspricht einer vollständigen Satzumschrift."
+                    )
+                );
+            }
+        });
     }
 
     function validatePolysemousTokens(content, errors) {
@@ -333,6 +474,7 @@
         const errors = [];
         const ids = new Set();
         const wordIds = new Set();
+        const sentenceRecords = [];
 
         if (!isRecord(content)) {
             return {
@@ -534,6 +676,12 @@
                                     wordIds,
                                     errors
                                 );
+                                if (isRecord(sentence)) {
+                                    sentenceRecords.push({
+                                        sentence,
+                                        path: `${storyPath}.sentences[${sentenceIndex}]`
+                                    });
+                                }
                             });
                         });
                     });
@@ -549,6 +697,7 @@
             });
         }
 
+        validateWordSemantics(content.words, sentenceRecords, errors);
         if (Array.isArray(content.archivedIds)) {
             content.archivedIds.forEach((id, index) => {
                 if (typeof id === "string" && ids.has(id)) {

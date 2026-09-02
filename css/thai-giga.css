@@ -1506,6 +1506,11 @@ body.thai-giga-page {
     margin-top: 18px;
 }
 
+.thai-giga-reminder-explanation {
+    margin: 0 0 10px;
+    color: var(--thai-text);
+}
+
 .thai-giga-reminder-section h4,
 .thai-giga-completion-content h4 {
     margin: 0 0 9px;
@@ -2449,6 +2454,7 @@ body.thai-giga-page[data-thai-theme="desert"] .thai-giga-midpoint-content > p,
 body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-pattern-lead,
 body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-closing,
 body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-lead,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-explanation,
 body.thai-giga-page[data-thai-theme="desert"] .thai-giga-completion-content > p,
 body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-summary,
 body.thai-giga-page[data-thai-theme="desert"] .thai-giga-completion-final {

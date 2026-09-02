@@ -624,80 +624,250 @@
         `;
     }
 
-    function renderThaiMidpointReminder(reminder) {
-        if (!reminder) {
+    const REMINDER_WINDOW_SIZE = 50;
+    const REMINDER_WORD_LIMIT = 20;
+
+    function getBlockSentences(block) {
+        return block.miniStories
+            .flatMap(story => story.sentences)
+            .map(sentence => indexes.sentencesById.get(sentence.id))
+            .filter(Boolean);
+    }
+
+    function getReminderWindow(block, position) {
+        const sentences = getBlockSentences(block);
+        return position === "first"
+            ? sentences.slice(0, REMINDER_WINDOW_SIZE)
+            : sentences.slice(-REMINDER_WINDOW_SIZE);
+    }
+
+    function getContextualReminderWords(targetSentences) {
+        const targetSentenceIds = new Set(targetSentences.map(sentence => sentence.id));
+        const seenWordIds = new Set();
+        const newWordIds = [];
+
+        indexes.sentencesById.forEach(sentence => {
+            const isTargetSentence = targetSentenceIds.has(sentence.id);
+            sentence.tokens.forEach(token => {
+                if (token.kind !== "word" || !token.wordId || seenWordIds.has(token.wordId)) {
+                    return;
+                }
+
+                seenWordIds.add(token.wordId);
+                if (isTargetSentence) {
+                    newWordIds.push(token.wordId);
+                }
+            });
+        });
+
+        return newWordIds
+            .slice(0, REMINDER_WORD_LIMIT)
+            .map(wordId => indexes.wordsById.get(wordId))
+            .filter(Boolean)
+            .map(word => ({
+                ...word,
+                translation: word.meanings.join(" / ")
+            }));
+    }
+
+    function getReminderRangeLabel(sentences) {
+        if (!sentences.length) {
             return "";
         }
 
+        return `${sentences[0].number}–${sentences[sentences.length - 1].number}`;
+    }
+
+    function getReminderPhraseParts(phrase) {
+        const matchingSentence = indexes &&
+            Array.from(indexes.sentencesById.values()).find(sentence =>
+                sentence.thai === phrase.thai &&
+                sentence.transliteration === phrase.transliteration
+            );
+
+        if (!matchingSentence) {
+            return [];
+        }
+
+        return matchingSentence.tokens
+            .filter(token => token.kind === "word" && token.wordId)
+            .map(token => {
+                const word = indexes.wordsById.get(token.wordId);
+                return word
+                    ? {
+                        thai: token.text,
+                        transliteration: word.transliteration,
+                        translation: word.meanings.join(" / "),
+                        syllables: word.syllables
+                    }
+                    : null;
+            })
+            .filter(Boolean);
+    }
+
+    function renderReminderContext(source, position) {
+        const phrase = position === "first"
+            ? source.pattern
+            : source.question || source.systemExamples?.[0];
+        const parts = phrase ? getReminderPhraseParts(phrase) : [];
+        const lead = position === "first"
+            ? source.patternLead || "Ein Beispiel aus diesem 50-Satz-Fenster"
+            : source.questionLead || "Ein Beispiel aus diesem 50-Satz-Fenster";
+        const closing = typeof source.closing === "string" && source.closing.length <= 140
+            ? source.closing
+            : "Achte darauf, wie die neuen Wörter hier mit bereits bekannten Strukturen verbunden werden.";
+        const variations = position === "first"
+            ? (source.discoveries || [])
+                .slice(0, 2)
+                .map(example => ({ example }))
+            : [
+                { lead: source.answerLead, example: source.answer },
+                { lead: source.alternativeLead, example: source.alternative }
+            ].filter(item => item.example).slice(0, 2);
+        let previousVariationLead = lead;
+        const variationMarkup = variations.length
+            ? `
+                <p class="thai-giga-introduction-lead">
+                    ${escapeHtml(
+                        position === "first"
+                            ? "Weitere Verbindungen aus diesem Abschnitt:"
+                            : "So reagiert das Muster im Gespräch:"
+                    )}
+                </p>
+                <div class="thai-giga-reminder-examples">
+                    ${variations.map(({ lead: variationLead, example }) => {
+                        const leadMarkup = variationLead && variationLead !== previousVariationLead
+                            ? `<p class="thai-giga-reminder-lead">${escapeHtml(variationLead)}</p>`
+                            : "";
+                        previousVariationLead = variationLead || previousVariationLead;
+                        return `${leadMarkup}${renderThaiReminderExample(example)}`;
+                    }).join("")}
+                </div>
+            `
+            : "";
+
+        if (!phrase) {
+            return `<p class="thai-giga-reminder-explanation">${escapeHtml(closing)}</p>`;
+        }
+
         return `
-            <details class="thai-giga-midpoint-reminder">
-                <summary>${escapeHtml(reminder.title)}</summary>
-                <div class="thai-giga-midpoint-content">
-                    <p>${escapeHtml(reminder.message)}</p>
-                    <p>${escapeHtml(reminder.lead)}</p>
-                    ${reminder.sections.map(section => `
-                        <section class="thai-giga-reminder-section">
-                            <h4>${escapeHtml(section.title)}</h4>
-                            <div class="thai-giga-reminder-words">
-                                ${section.words.map(renderThaiReminderWord).join("")}
-                            </div>
-                        </section>
-                    `).join("")}
-                    <p class="thai-giga-reminder-pattern-lead">
-                        ${escapeHtml(reminder.patternLead)}
-                    </p>
-                    ${renderThaiReminderExample(reminder.pattern)}
-                    <div class="thai-giga-reminder-discoveries">
-                        ${reminder.discoveries.map(renderThaiReminderExample).join("")}
+            <div class="thai-giga-reminder-context">
+                <p class="thai-giga-reminder-lead">${escapeHtml(lead)}</p>
+                <div class="thai-giga-introduction-example">
+                    <div class="thai-giga-introduction-audio-line">
+                        <p class="thai-giga-introduction-thai" lang="th">
+                            ${renderToneMarkedPhrase(phrase)}
+                        </p>
+                        ${renderThaiIntroductionAudio(phrase.thai)}
                     </div>
-                    <p class="thai-giga-reminder-closing">
-                        ${escapeHtml(reminder.closing)}
+                    <p class="thai-giga-introduction-transliteration">
+                        <em>${escapeHtml(phrase.transliteration)}</em>
                     </p>
+                    <p class="thai-giga-introduction-translation">
+                        ${escapeHtml(phrase.translation)}
+                    </p>
+                </div>
+                ${parts.length
+                    ? `
+                        <p class="thai-giga-introduction-lead">
+                            Du kannst es hier als kleinen Baukasten sehen:
+                        </p>
+                        <div class="thai-giga-introduction-parts">
+                            ${parts.map(part => `
+                                <div class="thai-giga-introduction-part">
+                                    <div class="thai-giga-introduction-audio-line">
+                                        <strong lang="th">${renderIntroductionPart(part)}</strong>
+                                        ${renderThaiIntroductionAudio(part.thai)}
+                                    </div>
+                                    <em>${escapeHtml(part.transliteration)}</em>
+                                    <span>${escapeHtml(part.translation)}</span>
+                                </div>
+                            `).join("")}
+                        </div>
+                        <div class="thai-giga-introduction-assembly">
+                            <p class="thai-giga-pattern-label">Also:</p>
+                            <p class="thai-giga-introduction-thai" lang="th">
+                                <strong>${parts.map(part => renderIntroductionPart(part)).join(" + ")}</strong>
+                            </p>
+                            <p class="thai-giga-introduction-transliteration">
+                                <em>${escapeHtml(parts.map(part => part.transliteration).join(" + "))}</em>
+                            </p>
+                            <p class="thai-giga-introduction-translation">
+                                <strong>${escapeHtml(parts.map(part => part.translation).join(" + "))}</strong>
+                            </p>
+                        </div>
+                    `
+                    : ""}
+                ${variationMarkup}
+                <p class="thai-giga-introduction-warning">
+                    💡 <strong>Wichtig:</strong> ${escapeHtml(closing)}
+                </p>
+            </div>
+        `;
+    }
+
+    function renderContextualReminder({ source, block, position, className, prefix }) {
+        const sentences = getReminderWindow(block, position);
+        const words = getContextualReminderWords(sentences);
+        const rangeLabel = getReminderRangeLabel(sentences);
+        const section = (source.sections || [])[0];
+        const note = (source.sections || [])
+            .map(section => section.note)
+            .find(note => typeof note === "string" && note.trim()) ||
+            (position === "first"
+                ? source.lead
+                : source.progress?.length > 40
+                    ? source.progress
+                    : source.progressSummary || source.message) ||
+            "Diese Wörter wurden in den letzten 50 Sätzen erstmals verwendet. Ihre Bedeutung bleibt an den jeweiligen Satzkontext gebunden.";
+        const sectionTitle = typeof section?.title === "string" ? section.title : "";
+        const wordTitle = position === "first"
+            ? sectionTitle.length <= 80
+                ? sectionTitle || source.patternLead || source.message || "Neue Wörter"
+                : source.patternLead || source.message || "Neue Wörter"
+            : source.wordSectionTitle || source.heading || "Neue Wörter";
+
+        return `
+            <details class="${className}">
+                <summary>${escapeHtml(prefix)} · SÄTZE ${escapeHtml(rangeLabel)}</summary>
+                <div class="thai-giga-midpoint-content">
+                    <p class="thai-giga-reminder-lead">${escapeHtml(wordTitle)}</p>
+                    <p class="thai-giga-reminder-explanation">${escapeHtml(note)}</p>
+                    <div class="thai-giga-reminder-words">
+                        ${words.map(renderThaiReminderWord).join("")}
+                    </div>
+                    ${renderReminderContext(source, position)}
                 </div>
             </details>
         `;
     }
 
-    function renderThaiBlockCompletion(completion) {
-        if (!completion) {
+    function renderThaiMidpointReminder(reminder, block) {
+        if (!reminder || !block) {
             return "";
         }
 
-        return `
-            <details class="thai-giga-block-completion">
-                <summary>${escapeHtml(completion.title)}</summary>
-                <div class="thai-giga-completion-content">
-                    <h3>${escapeHtml(completion.heading)}</h3>
-                    <p>${escapeHtml(completion.message)}</p>
-                    <p>${escapeHtml(completion.lead)}</p>
-                    <h4>${escapeHtml(completion.wordSectionTitle)}</h4>
-                    <div class="thai-giga-reminder-words">
-                        ${completion.words.map(renderThaiReminderWord).join("")}
-                    </div>
-                    <p class="thai-giga-reminder-lead">${escapeHtml(completion.questionLead)}</p>
-                    ${renderThaiReminderExample(completion.question)}
-                    <p class="thai-giga-reminder-lead">${escapeHtml(completion.answerLead)}</p>
-                    ${renderThaiReminderExample(completion.answer)}
-                    <p class="thai-giga-reminder-lead">${escapeHtml(completion.alternativeLead)}</p>
-                    ${renderThaiReminderExample(completion.alternative)}
-                    <p class="thai-giga-reminder-lead">${escapeHtml(completion.possessionLead)}</p>
-                    ${renderThaiReminderExample(completion.possession)}
-                    <h3 class="thai-giga-completion-progress-title">
-                        ${escapeHtml(completion.progressTitle)}
-                    </h3>
-                    <p class="thai-giga-completion-progress">${escapeHtml(completion.progress)}</p>
-                    <p class="thai-giga-reminder-summary">${escapeHtml(completion.progressSummary)}</p>
-                    <p class="thai-giga-reminder-lead">${escapeHtml(completion.systemLead)}</p>
-                    <div class="thai-giga-reminder-examples">
-                        ${completion.systemExamples.map(renderThaiReminderExample).join("")}
-                    </div>
-                    <p class="thai-giga-completion-final">${escapeHtml(completion.final)}</p>
-                    <p class="thai-giga-completion-progress">
-                        ${escapeHtml(completion.finalProgress)}
-                    </p>
-                </div>
-            </details>
-        `;
+        return renderContextualReminder({
+            source: reminder,
+            block,
+            position: "first",
+            className: "thai-giga-midpoint-reminder",
+            prefix: "💎 REMINDER"
+        });
+    }
+
+    function renderThaiBlockCompletion(completion, block) {
+        if (!completion || !block) {
+            return "";
+        }
+
+        return renderContextualReminder({
+            source: completion,
+            block,
+            position: "last",
+            className: "thai-giga-block-completion",
+            prefix: "🏆 100er-REMINDER"
+        });
     }
 
     function renderThaiIntroductionAudio(text) {
@@ -889,9 +1059,11 @@
                             + Situation zur Playlist
                         </button>
                     </div>
-                    ${index === 4 ? renderThaiMidpointReminder(block.midpointReminder) : ""}
+                    ${index === 4
+                        ? renderThaiMidpointReminder(block.midpointReminder, block)
+                        : ""}
                 `).join("")}
-                ${renderThaiBlockCompletion(block.completion)}
+                ${renderThaiBlockCompletion(block.completion, block)}
             </details>
         `).join("");
 
