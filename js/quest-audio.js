@@ -12,6 +12,7 @@
     let activeSpeech = null;
     let activeNativeAudio = null;
     let activeRemoteRequest = null;
+    let remotePlaybackAudio = null;
 
     function resetSpeechButton(button) {
         if (!button) {
@@ -112,6 +113,14 @@
         };
     }
 
+    function getRemotePlaybackAudio() {
+        if (!remotePlaybackAudio) {
+            remotePlaybackAudio = new Audio();
+            remotePlaybackAudio.preload = "auto";
+        }
+        return remotePlaybackAudio;
+    }
+
     function getRemoteCacheKey(request) {
         return `${request.endpoint}:${JSON.stringify(request.body)}`;
     }
@@ -172,7 +181,7 @@
 
                 const blob = await response.blob();
                 const url = URL.createObjectURL(blob);
-                cachedAudio = { url, audio: new Audio(url) };
+                cachedAudio = { url };
                 cacheRemoteAudio(cacheKey, cachedAudio);
             } catch {
                 if (activeSpeech !== requestState) {
@@ -194,11 +203,14 @@
             return { handled: true, started: false };
         }
 
-        const audio = cachedAudio.audio;
+        const audio = getRemotePlaybackAudio();
         audio.preload = "auto";
         audio.playbackRate = Number.isFinite(options.rate)
             ? options.rate
             : getStoredPlaybackRate();
+        audio.pause();
+        audio.src = cachedAudio.url;
+        audio.load();
         audio.currentTime = 0;
         activeNativeAudio = audio;
         if (button) {
@@ -216,6 +228,11 @@
             }
             audio.onended = null;
             audio.onerror = null;
+            if (audio.src === cachedAudio.url) {
+                audio.pause();
+                audio.removeAttribute("src");
+                audio.load();
+            }
             if (button) {
                 button.classList.remove("is-playing");
                 button.setAttribute("aria-pressed", "false");

@@ -12,6 +12,8 @@ const DEFAULT_DELIVERY_MODE = process.env.INWORLD_DELIVERY_MODE || "STABLE";
 const DEFAULT_SPEAKING_RATE = Number(process.env.INWORLD_SPEAKING_RATE || 1);
 const MAX_TEXT_LENGTH = 4000;
 const MAX_CACHE_ENTRIES = 128;
+const MAX_SYNTHESIS_ATTEMPTS = 2;
+const SYNTHESIS_RETRY_DELAY_MS = 250;
 const AUDIO_CACHE_PREFIX = process.env.AUDIO_CACHE_PREFIX || "tts/v1";
 const audioCache = new Map();
 const pendingGenerations = new Map();
@@ -322,32 +324,61 @@ async function readAudioResponse(response) {
 }
 
 async function synthesize(options) {
-    const upstreamResponse = await fetch(INWORLD_TTS_URL, {
-        method: "POST",
-        headers: {
-            Authorization: `Basic ${process.env.INWORLD_API_KEY}`,
-            "Content-Type": "application/json",
-            Accept: "application/json"
-        },
-        body: JSON.stringify({
-            text: options.text,
-            voiceId: options.voiceId,
-            modelId: options.modelId,
-            audioConfig: {
-                audioEncoding: options.audioEncoding,
-                speakingRate: options.speakingRate
-            },
-            deliveryMode: options.deliveryMode,
-            language: options.language
-        })
-    });
+    let lastError = null;
 
-    if (!upstreamResponse.ok) {
-        const detail = (await upstreamResponse.text()).slice(0, 500);
-        throw new Error(`Inworld antwortete mit ${upstreamResponse.status}: ${detail}`);
+    for (let attempt = 1; attempt <= MAX_SYNTHESIS_ATTEMPTS; attempt += 1) {
+        try {
+            const upstreamResponse = await fetch(INWORLD_TTS_URL, {
+                method: "POST",
+                headers: {
+                    Authorization: `Basic ${process.env.INWORLD_API_KEY}`,
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                },
+                body: JSON.stringify({
+                    text: options.text,
+                    voiceId: options.voiceId,
+                    modelId: options.modelId,
+                    audioConfig: {
+                        audioEncoding: options.audioEncoding,
+                        speakingRate: options.speakingRate
+                    },
+                    deliveryMode: options.deliveryMode,
+                    language: options.language
+                })
+            });
+
+            if (!upstreamResponse.ok) {
+                const detail = (await upstreamResponse.text()).slice(0, 500);
+                const error = new Error(
+                    `Inworld antwortete mit ${upstreamResponse.status}: ${detail}`
+                );
+                const retryableStatus =
+                    upstreamResponse.status === 408 ||
+                    upstreamResponse.status === 425 ||
+                    upstreamResponse.status === 429 ||
+                    upstreamResponse.status >= 500;
+                if (!retryableStatus || attempt === MAX_SYNTHESIS_ATTEMPTS) {
+                    throw error;
+                }
+                lastError = error;
+            } else {
+                return await readAudioResponse(upstreamResponse);
+            }
+        } catch (error) {
+            const retryableError =
+                error?.name === "TypeError" ||
+                String(error?.message || "").includes("keine Audiodaten");
+            if (!retryableError || attempt === MAX_SYNTHESIS_ATTEMPTS) {
+                throw error;
+            }
+            lastError = error;
+        }
+
+        await new Promise(resolve => setTimeout(resolve, SYNTHESIS_RETRY_DELAY_MS));
     }
 
-    return readAudioResponse(upstreamResponse);
+    throw lastError || new Error("Inworld konnte kein Audio erzeugen.");
 }
 
 module.exports = async function handler(request, response) {
