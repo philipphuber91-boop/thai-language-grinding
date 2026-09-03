@@ -36,7 +36,7 @@
             "label": "Vater",
             "gender": "male",
             "ageGroup": "adult",
-            "voiceId": "Mauricio",
+            "voiceId": "regal-walnut-9770__design-voice-79033814",
             "modelId": "inworld-tts-2",
             "speakingRate": 1,
             "deliveryMode": "BALANCED",
@@ -136,12 +136,34 @@
             "label": "Männliche Nebenfigur 2",
             "gender": "male",
             "ageGroup": "adult",
-            "voiceId": "Mauricio",
+            "voiceId": "regal-walnut-9770__design-voice-79033814",
             "modelId": "inworld-tts-2",
             "speakingRate": 1,
             "deliveryMode": "BALANCED",
             "language": "th-TH"
         }
+    },
+    "contentVoiceRouting": {
+        "genericMaleProfileIds": [
+            "M",
+            "M1",
+            "M2"
+        ],
+        "genericMaleRotationProfileIds": [
+            "M",
+            "OP"
+        ],
+        "genericFemaleProfileIds": [
+            "W",
+            "F1",
+            "F2"
+        ],
+        "genericFemaleRotationProfileIds": [
+            "W",
+            "MU",
+            "OM",
+            "JW"
+        ]
     },
     "defaultVoiceId": "Mauricio",
     "speakerVoices": {},

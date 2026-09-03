@@ -42,6 +42,45 @@ function getSentenceGender(sentence) {
     return "";
 }
 
+function getStableVoicePoolIndex(key, poolLength) {
+    let hash = 2166136261;
+    for (const character of String(key)) {
+        hash ^= character.charCodeAt(0);
+        hash = Math.imul(hash, 16777619);
+    }
+    return (hash >>> 0) % poolLength;
+}
+
+function getBalancedProfileId(sentence, profileId, voiceConfig) {
+    const routing = voiceConfig.contentVoiceRouting;
+    if (!routing || !profileId) {
+        return profileId;
+    }
+
+    const profile = voiceConfig.voiceProfiles?.[profileId];
+    const gender = profile && typeof profile === "object" ? profile.gender : "";
+    const genericProfiles = gender === "female"
+        ? routing.genericFemaleProfileIds
+        : routing.genericMaleProfileIds;
+    const rotationProfiles = gender === "female"
+        ? routing.genericFemaleRotationProfileIds
+        : routing.genericMaleRotationProfileIds;
+    if (!Array.isArray(genericProfiles) ||
+        !genericProfiles.includes(profileId) ||
+        !Array.isArray(rotationProfiles) ||
+        rotationProfiles.length === 0) {
+        return profileId;
+    }
+
+    const storyKey = sentence?.storyId || sentence?.id || profileId;
+    const speakerMatch = String(sentence?.speakerId || "").match(/speaker-([a-z])$/);
+    const speakerOffset = speakerMatch
+        ? speakerMatch[1].charCodeAt(0) - "a".charCodeAt(0)
+        : 0;
+    const poolIndex = getStableVoicePoolIndex(storyKey, rotationProfiles.length);
+    return rotationProfiles[(poolIndex + speakerOffset) % rotationProfiles.length];
+}
+
 function getSentenceVoiceProfileId(sentence, voiceConfig) {
     const profile = sentence.voiceProfileId &&
         voiceConfig.voiceProfiles?.[sentence.voiceProfileId];
@@ -49,7 +88,7 @@ function getSentenceVoiceProfileId(sentence, voiceConfig) {
     const profileGender = profile && typeof profile === "object" ? profile.gender : "";
 
     if (!sentenceGender || !profileGender || sentenceGender === profileGender) {
-        return sentence.voiceProfileId || "";
+        return getBalancedProfileId(sentence, sentence.voiceProfileId || "", voiceConfig);
     }
 
     return sentenceGender === "female" ? "W" : "M";

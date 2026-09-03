@@ -148,6 +148,12 @@ assignments and the default are used as fallbacks. A sentence may carry a
 `speakerId`; when a story declares `speakers`, the content validator checks
 that the reference exists in that story.
 
+Generic speaker profiles use the `contentVoiceRouting` pools for stable,
+story-local rotation across the selected voices. The rotation is gender-aware,
+uses the same result in the browser and in `tools/tts-batch.js`, and leaves
+named roles such as `MU`, `OM`, `OP` and `JW` on their dedicated profiles.
+Thai gender particles still take precedence over a conflicting profile.
+
 Each profile may also define its `modelId`, `language`, `speakingRate` and
 `deliveryMode`. These values are carried through to the proxy request, so a
 profile's voice and delivery settings remain consistent for generated audio.
