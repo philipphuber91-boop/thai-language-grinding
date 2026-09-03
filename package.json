@@ -2,7 +2,7 @@
     "name": "thai-language-grinding-tts",
     "private": true,
     "engines": {
-        "node": ">=20"
+        "node": "24.x"
     },
     "scripts": {
         "start:tts": "node api/local-server.js",
