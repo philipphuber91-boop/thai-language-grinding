@@ -317,17 +317,18 @@ async function synthesize(options) {
         method: "POST",
         headers: {
             Authorization: `Basic ${process.env.INWORLD_API_KEY}`,
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            Accept: "application/json"
         },
         body: JSON.stringify({
             text: options.text,
-            voice_id: options.voiceId,
-            model_id: options.modelId,
-            audio_config: {
-                audio_encoding: options.audioEncoding,
-                speaking_rate: options.speakingRate
+            voiceId: options.voiceId,
+            modelId: options.modelId,
+            audioConfig: {
+                audioEncoding: options.audioEncoding,
+                speakingRate: options.speakingRate
             },
-            delivery_mode: options.deliveryMode,
+            deliveryMode: options.deliveryMode,
             language: options.language
         })
     });
