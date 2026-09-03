@@ -8,7 +8,7 @@
             "ageGroup": "adult",
             "voiceId": "regal-walnut-9770__main_male",
             "modelId": "inworld-tts-2",
-            "speakingRate": 1,
+            "speakingRate": 0.85,
             "deliveryMode": "BALANCED",
             "language": "th-TH"
         },
