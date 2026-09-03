@@ -42,24 +42,54 @@
         return speaker?.voiceProfileId || "";
     }
 
+    function getSentenceGender(sentence) {
+        const text = String(sentence?.thai || "");
+        if (/ค่ะ|คะ/.test(text)) {
+            return "female";
+        }
+        if (/ครับ/.test(text)) {
+            return "male";
+        }
+        return "";
+    }
+
+    function getSentenceVoiceProfileId(sentence) {
+        const speakerProfileId = getSpeakerVoiceProfileId(sentence);
+        const profile = speakerProfileId && voiceConfig.voiceProfiles?.[speakerProfileId];
+        const sentenceGender = getSentenceGender(sentence);
+        const profileGender = profile && typeof profile === "object" ? profile.gender : "";
+
+        if (!sentenceGender || !profileGender || sentenceGender === profileGender) {
+            return speakerProfileId;
+        }
+
+        return sentenceGender === "female" ? "W" : "M";
+    }
+
     function getConfiguredVoiceId(sentence = {}) {
         return sentence.voiceId ||
             voiceConfig.sentenceVoices?.[sentence.id] ||
             voiceConfig.speakerVoices?.[sentence.speakerId] ||
-            getProfileVoiceId(getSpeakerVoiceProfileId(sentence)) ||
+            getProfileVoiceId(getSentenceVoiceProfileId(sentence)) ||
             voiceConfig.storyVoices?.[sentence.storyId] ||
             voiceConfig.defaultVoiceId ||
             "";
     }
 
     function getAudioForText(text, voiceId = "", options = {}) {
+        const defaultProfile = getProfileVoiceId("W");
+        const configuredVoiceId = voiceId || options.voiceId || defaultProfile;
+        const profileOptions = voiceId || options.voiceId
+            ? {}
+            : getProfileAudioOptions("W");
+
         return {
             type: "speechSynthesis",
-            lang: options.language || "th-TH",
-            voiceId,
-            modelId: options.modelId || "inworld-tts-2",
-            speakingRate: options.speakingRate,
-            deliveryMode: options.deliveryMode,
+            lang: options.language || profileOptions.language || "th-TH",
+            voiceId: configuredVoiceId,
+            modelId: options.modelId || profileOptions.modelId || "inworld-tts-2",
+            speakingRate: options.speakingRate ?? profileOptions.speakingRate,
+            deliveryMode: options.deliveryMode || profileOptions.deliveryMode,
             fallbackSrc:
                 "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=" +
                 encodeURIComponent(text)
@@ -110,7 +140,7 @@
         return getAudioForText(
             sentence.thai,
             getConfiguredVoiceId(sentence),
-            getProfileAudioOptions(getSpeakerVoiceProfileId(sentence))
+            getProfileAudioOptions(getSentenceVoiceProfileId(sentence))
         );
     }
 

@@ -97,20 +97,31 @@ Inworld again, even after a server restart or from another device.
 ## Multiple voices
 
 `data/tts-voices.json` is the shared, non-secret voice assignment file. It
-contains the fixed role profiles from `M` through `M2`; only their concrete
-Inworld `voiceId` values still need to be selected:
+contains the fixed role profiles from `M` through `M2`, all mapped to the
+active six-voice pool:
 
 `M`, `W`, `MU`, `VA`, `OM`, `OP`, `TA`, `ON`, `JM`, `JW`, `F1`, `F2`, `M1`,
 and `M2`.
 
 The dictionary currently exposes two independent choices:
 
-- `female` → `regal-walnut-9770__main_female`
-- `male` → `regal-walnut-9770__main_male`
+- `female` → `Lupita`
+- `male` → `Mauricio`
 
 These dictionary voices are intentionally separate from the story-role voice
 assignments. The selected dictionary voice is persisted in the browser and is
 part of the client and server cache key.
+
+For comparing the configured voices before consolidating the role assignments,
+open `html/inworld-voice-comparison.html`. It deduplicates profiles that use
+the same concrete voice and lets the user mark a local shortlist. The page
+uses only existing Thai-Giga sentences and does not change
+`data/tts-voices.json`.
+
+The active six-voice pool is recorded separately in
+`data/tts-voice-selection.json`. All role profiles in
+`data/tts-voices.json` now resolve to one of these six concrete voice IDs.
+Roles remain separate even when they intentionally share a voice.
 
 ```json
 {

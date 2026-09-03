@@ -1,0 +1,58 @@
+{
+    "version": 1,
+    "status": "active",
+    "selectedAt": "2026-09-03",
+    "activatedAt": "2026-09-03",
+    "selectedVoiceIds": [
+        "regal-walnut-9770__design-voice-1077b93f",
+        "regal-walnut-9770__design-voice-f1b377ad",
+        "regal-walnut-9770__design-voice-79033814",
+        "regal-walnut-9770__design-voice-57eabe64",
+        "Lupita",
+        "Mauricio"
+    ],
+    "selectedProfiles": [
+        {
+            "profileIds": [
+                "MU"
+            ],
+            "voiceId": "regal-walnut-9770__design-voice-1077b93f"
+        },
+        {
+            "profileIds": [
+                "VA"
+            ],
+            "voiceId": "Mauricio"
+        },
+        {
+            "profileIds": [
+                "OM"
+            ],
+            "voiceId": "regal-walnut-9770__design-voice-f1b377ad"
+        },
+        {
+            "profileIds": [
+                "OP"
+            ],
+            "voiceId": "regal-walnut-9770__design-voice-79033814"
+        },
+        {
+            "profileIds": [
+                "JW"
+            ],
+            "voiceId": "regal-walnut-9770__design-voice-57eabe64"
+        },
+        {
+            "profileIds": [
+                "F2"
+            ],
+            "voiceId": "Lupita"
+        },
+        {
+            "profileIds": [
+                "M1"
+            ],
+            "voiceId": "Mauricio"
+        }
+    ]
+}

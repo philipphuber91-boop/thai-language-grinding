@@ -6,9 +6,9 @@
             "label": "Erwachsener Mann",
             "gender": "male",
             "ageGroup": "adult",
-            "voiceId": "regal-walnut-9770__main_male",
+            "voiceId": "Mauricio",
             "modelId": "inworld-tts-2",
-            "speakingRate": 0.85,
+            "speakingRate": 1,
             "deliveryMode": "BALANCED",
             "language": "th-TH"
         },
@@ -16,7 +16,7 @@
             "label": "Erwachsene Frau",
             "gender": "female",
             "ageGroup": "adult",
-            "voiceId": "regal-walnut-9770__main_female",
+            "voiceId": "Lupita",
             "modelId": "inworld-tts-2",
             "speakingRate": 1,
             "deliveryMode": "BALANCED",
@@ -36,9 +36,9 @@
             "label": "Vater",
             "gender": "male",
             "ageGroup": "adult",
-            "voiceId": "regal-walnut-9770__design-voice-1077b93f",
+            "voiceId": "Mauricio",
             "modelId": "inworld-tts-2",
-            "speakingRate": 0.85,
+            "speakingRate": 1,
             "deliveryMode": "BALANCED",
             "language": "th-TH"
         },
@@ -66,30 +66,30 @@
             "label": "Tante",
             "gender": "female",
             "ageGroup": "adult",
-            "voiceId": "regal-walnut-9770__design-voice-76e59dbb",
+            "voiceId": "Lupita",
             "modelId": "inworld-tts-2",
             "speakingRate": 1,
-            "deliveryMode": "CREATIVE",
+            "deliveryMode": "BALANCED",
             "language": "th-TH"
         },
         "ON": {
             "label": "Onkel",
             "gender": "male",
             "ageGroup": "adult",
-            "voiceId": "regal-walnut-9770__design-voice-03155f1a",
+            "voiceId": "Mauricio",
             "modelId": "inworld-tts-2",
-            "speakingRate": 0.85,
-            "deliveryMode": "STABLE",
+            "speakingRate": 1,
+            "deliveryMode": "BALANCED",
             "language": "th-TH"
         },
         "JM": {
             "label": "Junge / männliches Kind",
             "gender": "male",
             "ageGroup": "child",
-            "voiceId": "regal-walnut-9770__design-voice-76e59dbb",
+            "voiceId": "Mauricio",
             "modelId": "inworld-tts-2",
             "speakingRate": 1,
-            "deliveryMode": "CREATIVE",
+            "deliveryMode": "BALANCED",
             "language": "th-TH"
         },
         "JW": {
@@ -106,7 +106,7 @@
             "label": "Weibliche Nebenfigur 1",
             "gender": "female",
             "ageGroup": "adult",
-            "voiceId": "community-pwotyqkmtlsi",
+            "voiceId": "Lupita",
             "modelId": "inworld-tts-2",
             "speakingRate": 1,
             "deliveryMode": "BALANCED",
@@ -136,14 +136,14 @@
             "label": "Männliche Nebenfigur 2",
             "gender": "male",
             "ageGroup": "adult",
-            "voiceId": "Chip",
+            "voiceId": "Mauricio",
             "modelId": "inworld-tts-2",
             "speakingRate": 1,
             "deliveryMode": "BALANCED",
             "language": "th-TH"
         }
     },
-    "defaultVoiceId": "",
+    "defaultVoiceId": "Mauricio",
     "speakerVoices": {},
     "storyVoices": {},
     "sentenceVoices": {},
@@ -153,13 +153,13 @@
             "id": "female",
             "label": "Weibliche Stimme",
             "voiceProfileId": "W",
-            "voiceId": "regal-walnut-9770__main_female"
+            "voiceId": "Lupita"
         },
         {
             "id": "male",
             "label": "Männliche Stimme",
             "voiceProfileId": "M",
-            "voiceId": "regal-walnut-9770__main_male"
+            "voiceId": "Mauricio"
         }
     ]
 }

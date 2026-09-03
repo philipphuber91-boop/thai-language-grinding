@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Thai-Giga Stimmenvergleich</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+            background: #f4f1ea;
+            color: #211b16;
+        }
+
+        body {
+            margin: 0;
+            padding: 2rem 1rem 4rem;
+        }
+
+        main {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .intro,
+        .status {
+            color: #66594d;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem 1rem;
+            align-items: center;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #fffdf8;
+            border: 1px solid #d8cdbd;
+            border-radius: 0.75rem;
+        }
+
+        button {
+            padding: 0.55rem 0.8rem;
+            border: 1px solid #80654d;
+            border-radius: 0.45rem;
+            background: #fffaf0;
+            color: #211b16;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        button:hover:not(:disabled),
+        button:focus-visible {
+            background: #f0e1c8;
+        }
+
+        button:disabled {
+            cursor: wait;
+            opacity: 0.6;
+        }
+
+        .voices {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1rem;
+        }
+
+        .voice-card {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+            padding: 1rem;
+            background: #fffdf8;
+            border: 1px solid #d8cdbd;
+            border-radius: 0.75rem;
+            box-shadow: 0 0.25rem 1rem rgb(55 38 20 / 8%);
+        }
+
+        .voice-card.is-kept {
+            border-color: #9b6f28;
+            box-shadow: 0 0 0 2px rgb(155 111 40 / 18%);
+        }
+
+        .voice-heading {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .voice-heading h2 {
+            margin: 0;
+            font-size: 1.15rem;
+        }
+
+        .keep {
+            display: flex;
+            gap: 0.4rem;
+            align-items: center;
+            white-space: nowrap;
+            color: #5631a8;
+            font-weight: 700;
+        }
+
+        .voice-id,
+        .roles,
+        .settings {
+            margin: 0;
+            color: #66594d;
+            font-size: 0.86rem;
+        }
+
+        .voice-id {
+            overflow-wrap: anywhere;
+            font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+        }
+
+        .sample {
+            padding-top: 0.75rem;
+            border-top: 1px solid #e5dccf;
+        }
+
+        .sample:first-of-type {
+            padding-top: 0;
+            border-top: 0;
+        }
+
+        .thai {
+            display: block;
+            margin-bottom: 0.15rem;
+            font-size: 1.2rem;
+            line-height: 1.45;
+        }
+
+        .translation {
+            display: block;
+            margin-bottom: 0.55rem;
+            color: #66594d;
+        }
+
+        .sample audio {
+            display: block;
+            width: 100%;
+            margin-top: 0.55rem;
+        }
+
+        .sample-actions {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .sample-status {
+            min-height: 1.3em;
+            color: #66594d;
+            font-size: 0.8rem;
+        }
+
+        .error {
+            color: #a12b22;
+            font-weight: 600;
+        }
+
+        @media (max-width: 520px) {
+            .voices {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<main>
+    <h1>Thai-Giga Stimmenvergleich</h1>
+    <p class="intro">
+        Jede Karte ist eine unterschiedliche konkrete Inworld-Stimme. Die drei
+        identischen Testphrasen stammen aus dem vorhandenen Thai-Giga-Content.
+        Der Stimmenpool entspricht der aktuell aktiven Seitenkonfiguration.
+        Rollen können dieselbe Stimme verwenden, bleiben aber technisch getrennt.
+        Markiere mit „Behalten“ deine Favoriten; die Auswahl wird zusätzlich
+        lokal in diesem Browser gespeichert.
+    </p>
+
+    <section class="toolbar" aria-label="Vergleichsstatus">
+        <strong id="voice-count">Lade Stimmen …</strong>
+        <span id="kept-count">0 Favoriten markiert</span>
+        <button id="clear-kept" type="button">Favoriten zurücksetzen</button>
+        <span id="endpoint" class="status"></span>
+    </section>
+
+    <section id="voices" class="voices" aria-live="polite"></section>
+</main>
+
+<script src="../js/thai-giga-tts-config.js"></script>
+<script>
+    (function () {
+        "use strict";
+
+        const KEEP_STORAGE_KEY = "thaiGigaVoiceComparison:kept";
+        const samples = [
+            {
+                thai: "อ้าว ฉันอยู่ข้างหลังคุณ",
+                translation: "Oh, ich bin hinter dir."
+            },
+            {
+                thai: "คุณอยู่ข้างในหรือข้างนอก",
+                translation: "Bist du drinnen oder draußen?"
+            },
+            {
+                thai: "ตอนนี้ผมอยู่ที่ร้านอาหาร",
+                translation: "Jetzt bin ich im Restaurant."
+            }
+        ];
+        const audioCache = new Map();
+        const voicesContainer = document.getElementById("voices");
+        const voiceCount = document.getElementById("voice-count");
+        const keptCount = document.getElementById("kept-count");
+        const endpointLabel = document.getElementById("endpoint");
+        const clearKeptButton = document.getElementById("clear-kept");
+        let candidates = [];
+        let keptVoiceKeys = loadKeptVoiceKeys();
+        const hasLocalSelection = localStorage.getItem(KEEP_STORAGE_KEY) !== null;
+
+        function loadKeptVoiceKeys() {
+            try {
+                const stored = JSON.parse(localStorage.getItem(KEEP_STORAGE_KEY) || "[]");
+                return new Set(Array.isArray(stored) ? stored.filter(value => typeof value === "string") : []);
+            } catch (error) {
+                console.warn("Gespeicherte Stimmenauswahl konnte nicht geladen werden.", error);
+                return new Set();
+            }
+        }
+
+        function saveKeptVoiceKeys() {
+            localStorage.setItem(KEEP_STORAGE_KEY, JSON.stringify([...keptVoiceKeys]));
+        }
+
+        function getEndpoint() {
+            const configured = window.THAI_GIGA_TTS_CONFIG;
+            if (configured && typeof configured.endpoint === "string" && configured.endpoint.trim()) {
+                return configured.endpoint.trim();
+            }
+            return "/api/tts";
+        }
+
+        function getVoiceKey(profile) {
+            return JSON.stringify({
+                voiceId: profile.voiceId,
+                modelId: profile.modelId || "inworld-tts-2",
+                speakingRate: Number.isFinite(Number(profile.speakingRate))
+                    ? Number(profile.speakingRate)
+                    : 1,
+                deliveryMode: profile.deliveryMode || "BALANCED",
+                language: profile.language || "th-TH"
+            });
+        }
+
+        function collectCandidates(config) {
+            const grouped = new Map();
+            Object.entries(config.voiceProfiles || {}).forEach(([profileId, profile]) => {
+                if (!profile || typeof profile !== "object" || !profile.voiceId) {
+                    return;
+                }
+
+                const key = getVoiceKey(profile);
+                const existing = grouped.get(key);
+                if (existing) {
+                    existing.profileIds.push(profileId);
+                    existing.labels.push(profile.label || profileId);
+                    return;
+                }
+
+                grouped.set(key, {
+                    key,
+                    profileIds: [profileId],
+                    labels: [profile.label || profileId],
+                    profile
+                });
+            });
+            return [...grouped.values()];
+        }
+
+        function applySavedSelection(selection) {
+            if (hasLocalSelection || !Array.isArray(selection?.selectedVoiceIds)) {
+                return;
+            }
+            const selectedIds = new Set(selection.selectedVoiceIds);
+            keptVoiceKeys = new Set(
+                candidates
+                    .filter(candidate => selectedIds.has(candidate.profile.voiceId))
+                    .map(candidate => candidate.key)
+            );
+        }
+
+        function createTextElement(className, text, tagName) {
+            const element = document.createElement(tagName || "span");
+            element.className = className;
+            element.textContent = text;
+            return element;
+        }
+
+        function setKeptState(card, candidate, checked) {
+            if (checked) {
+                keptVoiceKeys.add(candidate.key);
+            } else {
+                keptVoiceKeys.delete(candidate.key);
+            }
+            saveKeptVoiceKeys();
+            card.classList.toggle("is-kept", checked);
+            updateKeptCount();
+        }
+
+        function updateKeptCount() {
+            const count = candidates.filter(candidate => keptVoiceKeys.has(candidate.key)).length;
+            keptCount.textContent = `${count} Favorit${count === 1 ? "" : "en"} markiert`;
+        }
+
+        function requestAudio(candidate, sample, audio, button, status) {
+            const profile = candidate.profile;
+            const request = {
+                text: sample.thai,
+                language: profile.language || "th-TH",
+                voiceId: profile.voiceId,
+                modelId: profile.modelId || "inworld-tts-2",
+                speakingRate: Number.isFinite(Number(profile.speakingRate))
+                    ? Number(profile.speakingRate)
+                    : 1,
+                deliveryMode: profile.deliveryMode || "BALANCED"
+            };
+            const cacheKey = `${getEndpoint()}:${JSON.stringify(request)}`;
+            const cachedUrl = audioCache.get(cacheKey);
+
+            button.disabled = true;
+            status.classList.remove("error");
+            status.textContent = cachedUrl ? "Cache wird geladen …" : "Erzeuge Audio …";
+
+            const audioPromise = cachedUrl
+                ? Promise.resolve(cachedUrl)
+                : fetch(getEndpoint(), {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(request)
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`TTS-Proxy antwortete mit ${response.status}.`);
+                        }
+                        return response.blob();
+                    })
+                    .then(blob => {
+                        const url = URL.createObjectURL(blob);
+                        audioCache.set(cacheKey, url);
+                        return url;
+                    });
+
+            audioPromise
+                .then(url => {
+                    audio.src = url;
+                    audio.controls = true;
+                    status.textContent = "Bereit – Wiedergabe im Audioplayer starten.";
+                    return audio.play().catch(() => undefined);
+                })
+                .catch(error => {
+                    status.classList.add("error");
+                    status.textContent = error.message || "Audio konnte nicht geladen werden.";
+                })
+                .finally(() => {
+                    button.disabled = false;
+                });
+        }
+
+        function renderCandidate(candidate) {
+            const card = document.createElement("article");
+            const isKept = keptVoiceKeys.has(candidate.key);
+            card.className = `voice-card${isKept ? " is-kept" : ""}`;
+
+            const heading = document.createElement("div");
+            heading.className = "voice-heading";
+            const title = document.createElement("h2");
+            title.textContent = candidate.labels.join(" / ");
+            const keepLabel = document.createElement("label");
+            keepLabel.className = "keep";
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.checked = isKept;
+            checkbox.addEventListener("change", () => setKeptState(card, candidate, checkbox.checked));
+            keepLabel.append(checkbox, "Behalten");
+            heading.append(title, keepLabel);
+
+            const profile = candidate.profile;
+            const id = createTextElement("voice-id", profile.voiceId, "p");
+            const roles = createTextElement(
+                "roles",
+                `Technische Profile: ${candidate.profileIds.join(", ")}`,
+                "p"
+            );
+            const settings = createTextElement(
+                "settings",
+                `${profile.modelId || "inworld-tts-2"} · Rate ${profile.speakingRate ?? 1} · ${profile.deliveryMode || "BALANCED"} · ${profile.language || "th-TH"}`,
+                "p"
+            );
+            card.append(heading, id, roles, settings);
+
+            samples.forEach(sample => {
+                const sampleElement = document.createElement("div");
+                sampleElement.className = "sample";
+                sampleElement.append(
+                    createTextElement("thai", sample.thai, "strong"),
+                    createTextElement("translation", sample.translation)
+                );
+
+                const actions = document.createElement("div");
+                actions.className = "sample-actions";
+                const button = document.createElement("button");
+                button.type = "button";
+                button.textContent = "▶ Abspielen";
+                const status = createTextElement("sample-status", "");
+                const audio = document.createElement("audio");
+                audio.preload = "none";
+                button.addEventListener("click", () =>
+                    requestAudio(candidate, sample, audio, button, status)
+                );
+                actions.append(button, status);
+                sampleElement.append(actions, audio);
+                card.append(sampleElement);
+            });
+            return card;
+        }
+
+        clearKeptButton.addEventListener("click", () => {
+            keptVoiceKeys.clear();
+            saveKeptVoiceKeys();
+            document.querySelectorAll(".voice-card").forEach(card => {
+                card.classList.remove("is-kept");
+                const checkbox = card.querySelector("input[type=checkbox]");
+                if (checkbox) {
+                    checkbox.checked = false;
+                }
+            });
+            updateKeptCount();
+        });
+
+        Promise.all([
+            fetch("../data/tts-voices.json", { cache: "no-cache" }).then(response => {
+                if (!response.ok) {
+                    throw new Error(`Voice-Konfiguration konnte nicht geladen werden (${response.status}).`);
+                }
+                return response.json();
+            }),
+            fetch("../data/tts-voice-selection.json", { cache: "no-cache" }).then(response => {
+                if (!response.ok) {
+                    return null;
+                }
+                return response.json();
+            })
+        ])
+            .then(([config, selection]) => {
+                candidates = collectCandidates(config);
+                applySavedSelection(selection);
+                voiceCount.textContent = `${candidates.length} unterschiedliche Stimmen (14 Profile; gleiche Konfigurationen zusammengefasst)`;
+                endpointLabel.textContent = `Endpoint: ${getEndpoint()}`;
+                candidates.forEach(candidate => voicesContainer.append(renderCandidate(candidate)));
+                updateKeptCount();
+            })
+            .catch(error => {
+                voiceCount.textContent = "Stimmen konnten nicht geladen werden.";
+                endpointLabel.textContent = error.message;
+                endpointLabel.classList.add("error");
+            });
+    }());
+</script>
+</body>
+</html>

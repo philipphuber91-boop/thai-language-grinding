@@ -31,11 +31,35 @@ function getProfileVoiceId(profileId, voiceConfig) {
     return typeof profile === "string" ? profile : profile?.voiceId || "";
 }
 
+function getSentenceGender(sentence) {
+    const text = String(sentence?.thai || "");
+    if (/ค่ะ|คะ/.test(text)) {
+        return "female";
+    }
+    if (/ครับ/.test(text)) {
+        return "male";
+    }
+    return "";
+}
+
+function getSentenceVoiceProfileId(sentence, voiceConfig) {
+    const profile = sentence.voiceProfileId &&
+        voiceConfig.voiceProfiles?.[sentence.voiceProfileId];
+    const sentenceGender = getSentenceGender(sentence);
+    const profileGender = profile && typeof profile === "object" ? profile.gender : "";
+
+    if (!sentenceGender || !profileGender || sentenceGender === profileGender) {
+        return sentence.voiceProfileId || "";
+    }
+
+    return sentenceGender === "female" ? "W" : "M";
+}
+
 function resolveVoiceId(sentence, voiceConfig) {
     return sentence.voiceId ||
         voiceConfig.sentenceVoices?.[sentence.id] ||
         voiceConfig.speakerVoices?.[sentence.speakerId] ||
-        getProfileVoiceId(sentence.voiceProfileId, voiceConfig) ||
+        getProfileVoiceId(getSentenceVoiceProfileId(sentence, voiceConfig), voiceConfig) ||
         voiceConfig.storyVoices?.[sentence.storyId] ||
         voiceConfig.defaultVoiceId ||
         voiceId;
