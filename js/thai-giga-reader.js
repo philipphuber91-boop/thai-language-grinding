@@ -25,6 +25,7 @@
         wordDictionary: document.getElementById("thaiGigaWordDictionary"),
         wordDictionaryBossFilter: document.getElementById("thaiGigaWordDictionaryBossFilter"),
         wordDictionaryScopeFilter: document.getElementById("thaiGigaWordDictionaryScopeFilter"),
+        wordDictionaryVoice: document.getElementById("thaiGigaDictionaryVoice"),
         wordDictionarySummary: document.getElementById("thaiGigaWordDictionarySummary"),
         wordDictionaryList: document.getElementById("thaiGigaWordDictionaryList"),
         wordDictionaryExport: document.getElementById("thaiGigaWordDictionaryExport"),
@@ -52,6 +53,7 @@
     let activeBossId = "";
     let dictionaryAnchor = null;
     let speedreadingReturnFocus = null;
+    const DICTIONARY_VOICE_STORAGE_KEY = "thaiGigaDrill:v1:dictionary-voice";
 
     function escapeHtml(value) {
         return String(value ?? "")
@@ -229,9 +231,40 @@
             bosses.some(boss => boss.id === currentBossId) ? currentBossId : "all";
     }
 
+    function renderWordDictionaryVoiceOptions() {
+        if (!elements.wordDictionaryVoice || !window.thaiGigaAudio) {
+            return;
+        }
+
+        const options = window.thaiGigaAudio.getDictionaryVoiceOptions();
+        const storedVoiceId = localStorage.getItem(DICTIONARY_VOICE_STORAGE_KEY);
+        const selectedVoiceId = options.some(option => option.id === storedVoiceId)
+            ? storedVoiceId
+            : options[0]?.id || "";
+
+        elements.wordDictionaryVoice.innerHTML = options.map(option => `
+            <option value="${escapeHtml(option.id)}">
+                ${escapeHtml(option.label)}
+            </option>
+        `).join("");
+        elements.wordDictionaryVoice.value = selectedVoiceId;
+        elements.wordDictionaryVoice.disabled = options.length === 0;
+    }
+
+    function getSelectedDictionaryVoice() {
+        const selectedId = elements.wordDictionaryVoice?.value || "";
+        const options = window.thaiGigaAudio?.getDictionaryVoiceOptions() || [];
+        return options.find(option => option.id === selectedId) || null;
+    }
+
     function renderWordDictionaryEntry(entry) {
+        const selectedVoice = getSelectedDictionaryVoice();
         const audioMarkup = window.questAudio?.renderSentenceAudioPlayer({
-            audio: window.thaiGigaAudio?.getAudioForText(entry.thai) || {
+            audio: window.thaiGigaAudio?.getAudioForText(
+                entry.thai,
+                selectedVoice?.voiceId || "",
+                selectedVoice || {}
+            ) || {
                 type: "speechSynthesis",
                 lang: "th-TH"
             },
@@ -1660,9 +1693,12 @@
             activeBossId = firstBoss?.id || "";
             renderHierarchy();
             if (elements.blockList) {
-                window.thaiGigaAudio.initialize(indexes);
+                await window.thaiGigaAudio.initialize(indexes);
                 renderBlockList();
+            } else if (window.thaiGigaAudio) {
+                await window.thaiGigaAudio.loadVoiceConfig();
             }
+            renderWordDictionaryVoiceOptions();
             renderWordDictionaryFilters();
             renderWordDictionary();
             if (elements.bossOverview && firstBoss) {
@@ -1747,6 +1783,14 @@
         "change",
         renderWordDictionary
     );
+    elements.wordDictionaryVoice?.addEventListener("change", () => {
+        localStorage.setItem(
+            DICTIONARY_VOICE_STORAGE_KEY,
+            elements.wordDictionaryVoice.value
+        );
+        window.questAudio?.stopSpeech();
+        renderWordDictionary();
+    });
     elements.wordDictionaryExport?.addEventListener("click", exportWordList);
     elements.sentenceListExport?.addEventListener("click", exportSentenceList);
     document.addEventListener("keydown", event => {

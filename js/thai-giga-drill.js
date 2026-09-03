@@ -165,7 +165,7 @@
         }
     }
 
-    function validateSentence(sentence, path, ids, wordIds, errors) {
+    function validateSentence(sentence, path, ids, wordIds, errors, speakerIds = null) {
         if (!isRecord(sentence)) {
             errors.push(createValidationError(path, "Satz muss ein Objekt sein."));
             return;
@@ -175,6 +175,21 @@
         requireString(sentence.thai, `${path}.thai`, errors);
         requireString(sentence.transliteration, `${path}.transliteration`, errors);
         requireString(sentence.translation, `${path}.translation`, errors);
+        if (sentence.speakerId !== undefined) {
+            requireString(sentence.speakerId, `${path}.speakerId`, errors);
+            if (
+                speakerIds &&
+                typeof sentence.speakerId === "string" &&
+                !speakerIds.has(sentence.speakerId)
+            ) {
+                errors.push(
+                    createValidationError(
+                        `${path}.speakerId`,
+                        `Unbekannte Sprecher-ID "${sentence.speakerId}" in dieser Mini-Story.`
+                    )
+                );
+            }
+        }
 
         if (!Array.isArray(sentence.tokens) || sentence.tokens.length === 0) {
             errors.push(
@@ -202,6 +217,70 @@
         }
 
         validateAudio(sentence.audio, `${path}.audio`, errors);
+    }
+
+    function validateStorySpeakers(story, path, errors) {
+        if (story.speakers === undefined) {
+            return null;
+        }
+        if (!Array.isArray(story.speakers)) {
+            errors.push(createValidationError(`${path}.speakers`, "Muss ein Array sein."));
+            return new Set();
+        }
+
+        const speakerIds = new Set();
+        story.speakers.forEach((speaker, index) => {
+            const speakerPath = `${path}.speakers[${index}]`;
+            if (!isRecord(speaker)) {
+                errors.push(createValidationError(speakerPath, "Sprecher muss ein Objekt sein."));
+                return;
+            }
+            if (!requireString(speaker.id, `${speakerPath}.id`, errors)) {
+                return;
+            }
+            if (speakerIds.has(speaker.id)) {
+                errors.push(
+                    createValidationError(
+                        `${speakerPath}.id`,
+                        `Sprecher-ID "${speaker.id}" wurde in dieser Mini-Story doppelt verwendet.`
+                    )
+                );
+            }
+            speakerIds.add(speaker.id);
+            if (speaker.characterId !== undefined) {
+                requireString(speaker.characterId, `${speakerPath}.characterId`, errors);
+            }
+            requireString(speaker.role, `${speakerPath}.role`, errors);
+            requireString(speaker.assignmentSource, `${speakerPath}.assignmentSource`, errors);
+            if (
+                !["explicit", "contextual", "uncertain", "neutral"]
+                    .includes(speaker.assignmentSource)
+            ) {
+                errors.push(
+                    createValidationError(
+                        `${speakerPath}.assignmentSource`,
+                        "Erlaubt sind explicit, contextual, uncertain oder neutral."
+                    )
+                );
+            }
+            if (
+                typeof speaker.confidence !== "number" ||
+                !Number.isFinite(speaker.confidence) ||
+                speaker.confidence < 0 ||
+                speaker.confidence > 1
+            ) {
+                errors.push(
+                    createValidationError(
+                        `${speakerPath}.confidence`,
+                        "Muss eine Zahl zwischen 0 und 1 sein."
+                    )
+                );
+            }
+            if (speaker.voiceProfileId !== undefined) {
+                requireString(speaker.voiceProfileId, `${speakerPath}.voiceProfileId`, errors);
+            }
+        });
+        return speakerIds;
     }
 
     function validateWord(word, path, wordIds, errors) {
@@ -654,6 +733,7 @@
                             if (story.context !== undefined) {
                                 requireString(story.context, `${storyPath}.context`, errors);
                             }
+                            const speakerIds = validateStorySpeakers(story, storyPath, errors);
 
                             if (
                                 !Array.isArray(story.sentences) ||
@@ -674,7 +754,8 @@
                                     `${storyPath}.sentences[${sentenceIndex}]`,
                                     ids,
                                     wordIds,
-                                    errors
+                                    errors,
+                                    speakerIds
                                 );
                                 if (isRecord(sentence)) {
                                     sentenceRecords.push({

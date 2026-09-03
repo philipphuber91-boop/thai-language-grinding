@@ -1,0 +1,14 @@
+{
+    "name": "thai-language-grinding-tts",
+    "private": true,
+    "engines": {
+        "node": ">=20"
+    },
+    "scripts": {
+        "start:tts": "node api/local-server.js",
+        "tts:batch": "node tools/tts-batch.js"
+    },
+    "dependencies": {
+        "@aws-sdk/client-s3": "^3.879.0"
+    }
+}

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inworld Nour Thai-Hörtest</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+            background: #f4f1ea;
+            color: #211b16;
+        }
+
+        body {
+            margin: 0;
+            padding: 2rem 1rem 4rem;
+        }
+
+        main {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .sentence {
+            display: grid;
+            grid-template-columns: 3rem 1fr;
+            gap: 0.75rem;
+            align-items: start;
+            margin: 0.75rem 0;
+            padding: 1rem;
+            background: #fffdf8;
+            border: 1px solid #d8cdbd;
+            border-radius: 0.75rem;
+            box-shadow: 0 0.25rem 1rem rgb(55 38 20 / 8%);
+        }
+
+        .number {
+            color: #7b6a57;
+            font-weight: 700;
+        }
+
+        .thai {
+            display: block;
+            font-size: 1.35rem;
+            line-height: 1.5;
+        }
+
+        .translation {
+            display: block;
+            margin: 0.2rem 0 0.6rem;
+            color: #66594d;
+        }
+
+        .voice {
+            display: block;
+            margin-bottom: 0.6rem;
+            color: #5631a8;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        audio {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<main>
+    <h1>Inworld Nour – Thai-Hörtest</h1>
+    <p>
+        Grammatikboss 2 · Mini-Situation 1 „Nach dem Essen“.
+        Alle zehn Sätze wurden mit <strong>Inworld TTS-2</strong> erzeugt.
+        Nour und Satoshi wechseln sich ab.
+    </p>
+    <section id="sentences" aria-label="Dialog mit Nour und Satoshi"></section>
+</main>
+<script>
+    (function () {
+        "use strict";
+
+        const sentences = [
+            ["l1-b2-s501", "ตอนนี้ผมอยู่ที่ร้านอาหาร", "Jetzt bin ich im Restaurant.", "Nour"],
+            ["l1-b2-s502", "คุณเป็นลูกค้าใช่ไหม", "Du bist Kunde, oder?", "Satoshi"],
+            ["l1-b2-s503", "ใช่ครับ ผมเป็นลูกค้า", "Ja, ich bin Kunde.", "Nour"],
+            ["l1-b2-s504", "คุณกินอาหารไหม", "Isst du?", "Satoshi"],
+            ["l1-b2-s505", "ผมไม่กินครับ", "Ich esse nicht.", "Nour"],
+            ["l1-b2-s506", "อ๋อ คุณไม่หิวเหรอ", "Ach so, du hast keinen Hunger?", "Satoshi"],
+            ["l1-b2-s507", "ใช่ครับ ผมไม่หิว", "Ja, ich habe keinen Hunger.", "Nour"],
+            ["l1-b2-s508", "งั้นคุณดื่มน้ำไหม", "Dann trinkst du Wasser?", "Satoshi"],
+            ["l1-b2-s509", "ดื่มครับ", "Ja, ich trinke.", "Nour"],
+            ["l1-b2-s510", "อ๋อ งั้นก็ดีครับ", "Ach so, dann ist es ja gut.", "Satoshi"]
+        ];
+        const container = document.getElementById("sentences");
+
+        sentences.forEach(function ([id, thai, translation, voice], index) {
+            const article = document.createElement("article");
+            article.className = "sentence";
+
+            const number = document.createElement("span");
+            number.className = "number";
+            number.textContent = String(index + 1);
+
+            const content = document.createElement("div");
+            const thaiText = document.createElement("strong");
+            thaiText.className = "thai";
+            thaiText.lang = "th";
+            thaiText.textContent = thai;
+            const translationText = document.createElement("span");
+            translationText.className = "translation";
+            translationText.textContent = translation;
+            const voiceText = document.createElement("span");
+            voiceText.className = "voice";
+            voiceText.textContent = voice;
+            const audio = document.createElement("audio");
+            audio.controls = true;
+            audio.preload = "none";
+            audio.src = `http://localhost:8766/${id}-${voice.toLowerCase()}.mp3`;
+
+            content.append(thaiText, translationText, voiceText, audio);
+            article.append(number, content);
+            container.append(article);
+        });
+    }());
+</script>
+</body>
+</html>

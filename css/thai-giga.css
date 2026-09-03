@@ -1281,6 +1281,20 @@ body.thai-giga-page {
     color: var(--thai-muted);
 }
 
+.thai-giga-word-dictionary-voice {
+    display: grid;
+    grid-template-columns: auto minmax(180px, 260px);
+    gap: 7px 12px;
+    align-items: center;
+    margin-top: 16px;
+    color: var(--thai-muted);
+}
+
+.thai-giga-word-dictionary-voice span {
+    grid-column: 2;
+    font-size: .85rem;
+}
+
 .thai-giga-word-dictionary-summary {
     margin: 18px 0 0;
     color: var(--thai-accent);
@@ -2129,6 +2143,14 @@ body.thai-giga-page[data-thai-tone-colors="true"] .thai-tone-mixed {
 
     .thai-giga-word-dictionary-filters {
         grid-template-columns: 1fr;
+    }
+
+    .thai-giga-word-dictionary-voice {
+        grid-template-columns: 1fr;
+    }
+
+    .thai-giga-word-dictionary-voice span {
+        grid-column: auto;
     }
 
     .thai-giga-reader-header {

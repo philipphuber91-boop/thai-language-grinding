@@ -5,10 +5,22 @@
     const MIN_PLAYBACK_RATE = 0.5;
     const MAX_PLAYBACK_RATE = 2;
     const NATIVE_SPEECH_AUDIO_CACHE_LIMIT = 32;
+    const REMOTE_AUDIO_CACHE_LIMIT = 32;
     const activePlayers = new Set();
     const nativeSpeechAudioCache = new Map();
+    const remoteAudioCache = new Map();
     let activeSpeech = null;
     let activeNativeAudio = null;
+    let activeRemoteRequest = null;
+
+    function resetSpeechButton(button) {
+        if (!button) {
+            return;
+        }
+        button.classList.remove("is-playing");
+        button.setAttribute("aria-pressed", "false");
+        button.textContent = "🔊";
+    }
 
     function getStoredPlaybackRate() {
         const storedRate = Number(localStorage.getItem(SPEED_STORAGE_KEY));
@@ -40,11 +52,12 @@
         const speech = activeSpeech;
         activeSpeech = null;
 
-        if (speech?.button) {
-            speech.button.classList.remove("is-playing");
-            speech.button.setAttribute("aria-pressed", "false");
-            speech.button.textContent = "🔊";
+        if (activeRemoteRequest) {
+            activeRemoteRequest.abort();
+            activeRemoteRequest = null;
         }
+
+        resetSpeechButton(speech?.button);
 
         if ("speechSynthesis" in window) {
             window.speechSynthesis.cancel();
@@ -57,6 +70,176 @@
             activeNativeAudio.currentTime = 0;
             activeNativeAudio = null;
         }
+    }
+
+    function getRemoteTtsConfig() {
+        const configured = window.THAI_GIGA_TTS_CONFIG;
+        if (configured === false || configured?.enabled === false) {
+            return null;
+        }
+
+        const endpoint = typeof configured?.endpoint === "string"
+            ? configured.endpoint.trim()
+            : "/api/tts";
+        return endpoint
+            ? { ...configured, endpoint }
+            : null;
+    }
+
+    function getRemoteTtsRequest(text, options = {}) {
+        const config = getRemoteTtsConfig();
+        const language = String(options.lang || "th-TH");
+        if (!config || !/^th(?:-|$)/i.test(language)) {
+            return null;
+        }
+
+        const body = {
+            text,
+            language,
+            voiceId: options.voiceId || config.voiceId || "",
+            modelId: options.modelId || config.modelId || "inworld-tts-2"
+        };
+        if (Number.isFinite(Number(options.speakingRate))) {
+            body.speakingRate = Number(options.speakingRate);
+        }
+        if (typeof options.deliveryMode === "string" && options.deliveryMode.trim()) {
+            body.deliveryMode = options.deliveryMode.trim();
+        }
+
+        return {
+            endpoint: config.endpoint,
+            body
+        };
+    }
+
+    function getRemoteCacheKey(request) {
+        return `${request.endpoint}:${JSON.stringify(request.body)}`;
+    }
+
+    function cacheRemoteAudio(key, audio) {
+        remoteAudioCache.delete(key);
+        remoteAudioCache.set(key, audio);
+        while (remoteAudioCache.size > REMOTE_AUDIO_CACHE_LIMIT) {
+            const oldestKey = remoteAudioCache.keys().next().value;
+            const oldest = remoteAudioCache.get(oldestKey);
+            if (oldest?.url) {
+                URL.revokeObjectURL(oldest.url);
+            }
+            remoteAudioCache.delete(oldestKey);
+        }
+    }
+
+    async function playRemoteSpeech(text, button, options = {}) {
+        const request = getRemoteTtsRequest(text, options);
+        if (!request) {
+            return { handled: false, started: false };
+        }
+
+        stopSpeech();
+        const requestState = { text, button, utterance: null };
+        activeSpeech = requestState;
+        if (button) {
+            button.classList.add("is-playing");
+            button.setAttribute("aria-pressed", "true");
+            button.textContent = "❚❚";
+        }
+        const cacheKey = getRemoteCacheKey(request);
+        let cachedAudio = remoteAudioCache.get(cacheKey);
+
+        if (cachedAudio) {
+            remoteAudioCache.delete(cacheKey);
+            remoteAudioCache.set(cacheKey, cachedAudio);
+        } else {
+            const abortController = new AbortController();
+            activeRemoteRequest = abortController;
+            try {
+                const response = await fetch(request.endpoint, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(request.body),
+                    signal: abortController.signal
+                });
+                if (!response.ok) {
+                    if (activeSpeech !== requestState) {
+                        return { handled: true, started: false };
+                    }
+                    if (activeSpeech === requestState) {
+                        activeSpeech = null;
+                    }
+                    resetSpeechButton(button);
+                    return { handled: false, started: false };
+                }
+
+                const blob = await response.blob();
+                const url = URL.createObjectURL(blob);
+                cachedAudio = { url, audio: new Audio(url) };
+                cacheRemoteAudio(cacheKey, cachedAudio);
+            } catch {
+                if (activeSpeech !== requestState) {
+                    return { handled: true, started: false };
+                }
+                if (activeSpeech === requestState) {
+                    activeSpeech = null;
+                }
+                resetSpeechButton(button);
+                return { handled: false, started: false };
+            } finally {
+                if (activeRemoteRequest === abortController) {
+                    activeRemoteRequest = null;
+                }
+            }
+        }
+
+        if (activeSpeech !== requestState) {
+            return { handled: true, started: false };
+        }
+
+        const audio = cachedAudio.audio;
+        audio.preload = "auto";
+        audio.playbackRate = Number.isFinite(options.rate)
+            ? options.rate
+            : getStoredPlaybackRate();
+        audio.currentTime = 0;
+        activeNativeAudio = audio;
+        if (button) {
+            button.classList.add("is-playing");
+            button.setAttribute("aria-pressed", "true");
+            button.textContent = "❚❚";
+        }
+
+        const cleanup = () => {
+            if (activeNativeAudio === audio) {
+                activeNativeAudio = null;
+            }
+            if (activeSpeech === requestState) {
+                activeSpeech = null;
+            }
+            audio.onended = null;
+            audio.onerror = null;
+            if (button) {
+                button.classList.remove("is-playing");
+                button.setAttribute("aria-pressed", "false");
+                button.textContent = "🔊";
+            }
+        };
+
+        audio.onended = () => {
+            cleanup();
+            options.onEnd?.();
+        };
+        audio.onerror = () => {
+            cleanup();
+            remoteAudioCache.delete(cacheKey);
+            URL.revokeObjectURL(cachedAudio.url);
+            options.onError?.();
+        };
+        audio.play().catch(() => {
+            cleanup();
+            remoteAudioCache.delete(cacheKey);
+            URL.revokeObjectURL(cachedAudio.url);
+            options.onError?.();
+        });
+        return { handled: true, started: true };
     }
 
     function clearSpeechState(utterance) {
@@ -541,37 +724,56 @@
                 typeof audio.fallbackSrc === "string"
                 ? audio.fallbackSrc.trim()
                 : "";
-            if (fallbackSource) {
-                if (!playNativeSpeechFallback(
-                    fallbackSource,
-                    text,
-                    null,
-                    state.playbackRate,
-                    finish,
-                    fail
-                )) {
+            const startLocalSpeech = () => {
+                if (currentRunId !== playbackRunId) {
+                    return;
+                }
+                if (fallbackSource) {
+                    if (!playNativeSpeechFallback(
+                        fallbackSource,
+                        text,
+                        null,
+                        state.playbackRate,
+                        finish,
+                        fail
+                    )) {
+                        fail();
+                    }
+                    setStatus("Keine Thai-Stimme gefunden. Online-TTS-Fallback wird verwendet.");
+                    return;
+                }
+                if (!speakText(text, null, {
+                    rate: state.playbackRate,
+                    lang: audio?.lang || "th-TH",
+                    voiceId: audio?.voiceId || audio?.voiceName || "",
+                    voice: speechVoice,
+                    contentMode: resolvedEntry.contentMode || "",
+                    sentenceId: getEntryId(resolvedEntry),
+                    onFallback: usedFallback => {
+                        if (usedFallback) {
+                            setStatus("Keine Thai-Stimme gefunden. Die Browser-Standardstimme wird verwendet.");
+                        }
+                    },
+                    onEnd: finish,
+                    onError: fail
+                })) {
                     fail();
                 }
-                setStatus("Keine Thai-Stimme gefunden. Online-TTS-Fallback wird verwendet.");
-                return;
-            }
-            if (!speakText(text, null, {
+            };
+
+            playRemoteSpeech(text, null, {
                 rate: state.playbackRate,
                 lang: audio?.lang || "th-TH",
                 voiceId: audio?.voiceId || audio?.voiceName || "",
-                voice: speechVoice,
                 contentMode: resolvedEntry.contentMode || "",
                 sentenceId: getEntryId(resolvedEntry),
-                onFallback: usedFallback => {
-                    if (usedFallback) {
-                        setStatus("Keine Thai-Stimme gefunden. Die Browser-Standardstimme wird verwendet.");
-                    }
-                },
                 onEnd: finish,
                 onError: fail
-            })) {
-                fail();
-            }
+            }).then(result => {
+                if (!result.started && !result.handled) {
+                    startLocalSpeech();
+                }
+            });
         };
 
         const renderAfterMutation = message => {
@@ -1270,8 +1472,12 @@
             return "";
         }
 
+        const speakingRate = Number(audio?.speakingRate);
+        const speakingRateAttribute = Number.isFinite(speakingRate)
+            ? ` data-speech-speaking-rate="${speakingRate}"`
+            : "";
         return `
-            <div class="quest-audio-player ${className}" data-speech-audio-player data-speech-text="${encodeURIComponent(speechText)}" data-speech-lang="${escapeAttribute(audio?.lang || "th-TH")}" data-speech-voice-id="${escapeAttribute(audio?.voiceId || audio?.voiceName || "")}" data-speech-fallback-src="${escapeAttribute(audio?.fallbackSrc || "")}">
+            <div class="quest-audio-player ${className}" data-speech-audio-player data-speech-text="${encodeURIComponent(speechText)}" data-speech-lang="${escapeAttribute(audio?.lang || "th-TH")}" data-speech-voice-id="${escapeAttribute(audio?.voiceId || audio?.voiceName || "")}" data-speech-model-id="${escapeAttribute(audio?.modelId || "")}" data-speech-delivery-mode="${escapeAttribute(audio?.deliveryMode || "")}"${speakingRateAttribute} data-speech-fallback-src="${escapeAttribute(audio?.fallbackSrc || "")}">
                 <button type="button" class="quest-audio-play-button" aria-label="${escapeAttribute(ariaLabel)}" aria-pressed="false">🔊</button>
                 <span class="quest-audio-status" aria-live="polite"></span>
             </div>
@@ -1300,42 +1506,63 @@
                 }
                 const language = playerElement.dataset.speechLang || "th-TH";
                 const voiceId = playerElement.dataset.speechVoiceId || "";
+                const modelId = playerElement.dataset.speechModelId || "";
+                const deliveryMode = playerElement.dataset.speechDeliveryMode || "";
+                const speakingRate = Number(playerElement.dataset.speechSpeakingRate);
                 const fallbackSource = playerElement.dataset.speechFallbackSrc || "";
                 const matchingVoice = getSpeechVoice(language, voiceId);
-                const started = fallbackSource && !matchingVoice
-                    ? playNativeSpeechFallback(
-                        fallbackSource,
-                        text,
-                        button,
-                        1,
-                        null,
-                        () => {
-                            if (status) {
-                                status.textContent = "Online-TTS konnte nicht abgespielt werden.";
+                const startLocalSpeech = () => {
+                    const started = fallbackSource && !matchingVoice
+                        ? playNativeSpeechFallback(
+                            fallbackSource,
+                            text,
+                            button,
+                            Number.isFinite(speakingRate) ? speakingRate : 1,
+                            null,
+                            () => {
+                                if (status) {
+                                    status.textContent = "Online-TTS konnte nicht abgespielt werden.";
+                                }
                             }
-                        }
-                    )
-                    : speakText(text, button, {
-                        rate: 1,
-                        lang: language,
-                        voiceId,
-                        onFallback: usedFallback => {
-                            if (status) {
-                                status.textContent = usedFallback
-                                    ? "Keine Thai-Stimme gefunden. Die Browser-Standardstimme wird verwendet."
-                                    : "";
+                        )
+                        : speakText(text, button, {
+                            rate: 1,
+                            lang: language,
+                            voiceId,
+                            modelId,
+                            speakingRate,
+                            deliveryMode,
+                            onFallback: usedFallback => {
+                                if (status) {
+                                    status.textContent = usedFallback
+                                        ? "Keine Thai-Stimme gefunden. Die Browser-Standardstimme wird verwendet."
+                                        : "";
+                                }
+                            },
+                            onError: errorCode => {
+                                if (status) {
+                                    status.textContent =
+                                        `Sprachausgabe fehlgeschlagen${errorCode ? ` (${errorCode})` : ""}.`;
+                                }
                             }
-                        },
-                        onError: errorCode => {
-                            if (status) {
-                                status.textContent =
-                                    `Sprachausgabe fehlgeschlagen${errorCode ? ` (${errorCode})` : ""}.`;
-                            }
-                        }
-                    });
-                if (!started && status) {
-                    status.textContent = "Sprachausgabe nicht verfügbar.";
-                }
+                        });
+                    if (!started && status) {
+                        status.textContent = "Sprachausgabe nicht verfügbar.";
+                    }
+                };
+
+                playRemoteSpeech(text, button, {
+                    rate: 1,
+                    lang: language,
+                    voiceId,
+                    modelId,
+                    speakingRate,
+                    deliveryMode
+                }).then(result => {
+                    if (!result.started && !result.handled) {
+                        startLocalSpeech();
+                    }
+                });
             });
 
             playerElement.dataset.audioInitialized = "true";

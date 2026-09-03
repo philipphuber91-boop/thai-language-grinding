@@ -2,3 +2,4 @@
 .env
 .env.*
 !api/.env.example
+node_modules/

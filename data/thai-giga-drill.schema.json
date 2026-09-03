@@ -258,6 +258,12 @@
         "context": {
           "type": "string"
         },
+        "speakers": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/speaker"
+          }
+        },
         "sentences": {
           "type": "array",
           "minItems": 10,
@@ -295,6 +301,10 @@
           "type": "string",
           "minLength": 1
         },
+        "speakerId": {
+          "type": "string",
+          "minLength": 1
+        },
         "tokens": {
           "type": "array",
           "minItems": 1,
@@ -304,6 +314,47 @@
         },
         "audio": {
           "$ref": "#/$defs/audio"
+        }
+      },
+      "additionalProperties": true
+    },
+    "speaker": {
+      "type": "object",
+      "required": [
+        "id",
+        "role",
+        "assignmentSource",
+        "confidence"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "characterId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assignmentSource": {
+          "enum": [
+            "explicit",
+            "contextual",
+            "uncertain",
+            "neutral"
+          ]
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "voiceProfileId": {
+          "type": "string",
+          "minLength": 1
         }
       },
       "additionalProperties": true

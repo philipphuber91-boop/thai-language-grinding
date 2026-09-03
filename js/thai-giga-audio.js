@@ -5,6 +5,8 @@
     let controller = null;
     let indexes = null;
     let elements = null;
+    let voiceConfig = {};
+    let voiceConfigPromise = null;
 
     function escapeHtml(value) {
         return String(value ?? "")
@@ -15,19 +17,101 @@
             .replace(/'/g, "&#039;");
     }
 
-    function getAudioForText(text) {
+    function getProfileVoiceId(profileId) {
+        const profile = profileId && voiceConfig.voiceProfiles?.[profileId];
+        return typeof profile === "string" ? profile : profile?.voiceId || "";
+    }
+
+    function getProfileAudioOptions(profileId) {
+        const profile = profileId && voiceConfig.voiceProfiles?.[profileId];
+        if (!profile || typeof profile !== "object") {
+            return {};
+        }
+
+        return {
+            modelId: profile.modelId,
+            speakingRate: profile.speakingRate,
+            deliveryMode: profile.deliveryMode,
+            language: profile.language
+        };
+    }
+
+    function getSpeakerVoiceProfileId(sentence) {
+        const story = indexes?.storiesById.get(sentence.storyId);
+        const speaker = story?.speakers?.find(item => item.id === sentence.speakerId);
+        return speaker?.voiceProfileId || "";
+    }
+
+    function getConfiguredVoiceId(sentence = {}) {
+        return sentence.voiceId ||
+            voiceConfig.sentenceVoices?.[sentence.id] ||
+            voiceConfig.speakerVoices?.[sentence.speakerId] ||
+            getProfileVoiceId(getSpeakerVoiceProfileId(sentence)) ||
+            voiceConfig.storyVoices?.[sentence.storyId] ||
+            voiceConfig.defaultVoiceId ||
+            "";
+    }
+
+    function getAudioForText(text, voiceId = "", options = {}) {
         return {
             type: "speechSynthesis",
-            lang: "th-TH",
-            voiceId: "",
+            lang: options.language || "th-TH",
+            voiceId,
+            modelId: options.modelId || "inworld-tts-2",
+            speakingRate: options.speakingRate,
+            deliveryMode: options.deliveryMode,
             fallbackSrc:
                 "https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=th&q=" +
                 encodeURIComponent(text)
         };
     }
 
+    function loadVoiceConfig() {
+        if (voiceConfigPromise) {
+            return voiceConfigPromise;
+        }
+
+        voiceConfigPromise = fetch("../data/tts-voices.json", { cache: "no-cache" })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Voice-Konfiguration konnte nicht geladen werden (${response.status}).`);
+                }
+                return response.json();
+            })
+            .then(configured => {
+                voiceConfig = configured && typeof configured === "object" ? configured : {};
+            })
+            .catch(error => {
+                voiceConfig = {};
+                console.warn("Voice-Konfiguration ist nicht verfügbar; Standardstimme wird verwendet.", error);
+            });
+
+        return voiceConfigPromise;
+    }
+
+    function getDictionaryVoiceOptions() {
+        return Array.isArray(voiceConfig.dictionaryVoices)
+            ? voiceConfig.dictionaryVoices
+                .filter(option =>
+                    option &&
+                    typeof option.id === "string" &&
+                    typeof option.label === "string"
+                )
+                .map(option => ({
+                    id: option.id,
+                    label: option.label,
+                    voiceId: option.voiceId || getProfileVoiceId(option.voiceProfileId),
+                    ...getProfileAudioOptions(option.voiceProfileId)
+                }))
+            : [];
+    }
+
     function getSentenceAudio(sentence) {
-        return getAudioForText(sentence.thai);
+        return getAudioForText(
+            sentence.thai,
+            getConfiguredVoiceId(sentence),
+            getProfileAudioOptions(getSpeakerVoiceProfileId(sentence))
+        );
     }
 
     function getSentenceEntry(sentenceId) {
@@ -269,8 +353,9 @@
         return indexesToRemove.length;
     }
 
-    function initialize(nextIndexes) {
+    async function initialize(nextIndexes) {
         indexes = nextIndexes;
+        await loadVoiceConfig();
         elements = {
             player: document.getElementById("thaiGigaAudioPlayer"),
             playerToggle: document.getElementById("thaiGigaPlayerToggle"),
@@ -332,6 +417,7 @@
 
     window.thaiGigaAudio = {
         initialize,
+        loadVoiceConfig,
         addSentence,
         addSentences,
         addStory,
@@ -341,6 +427,7 @@
         removeSentences,
         getAudioForSentence,
         getAudioForText,
+        getDictionaryVoiceOptions,
         hasSentence: sentenceId =>
             Boolean(controller?.state.playlist.some(entry => entry.id === sentenceId)),
         getState: () => controller?.state || null

@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ResponsiveVoice Thai-Test</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+            background: #f4f1ea;
+            color: #211b16;
+        }
+
+        body {
+            margin: 0;
+            padding: 2rem 1rem 4rem;
+        }
+
+        main {
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .panel,
+        .sentence {
+            background: #fffdf8;
+            border: 1px solid #d8cdbd;
+            border-radius: 0.75rem;
+            box-shadow: 0 0.25rem 1rem rgb(55 38 20 / 8%);
+        }
+
+        .panel {
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+
+        input {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 0.7rem;
+            border: 1px solid #b9aa97;
+            border-radius: 0.45rem;
+            font: inherit;
+        }
+
+        input[type="range"] {
+            padding: 0;
+        }
+
+        button {
+            border: 0;
+            border-radius: 0.45rem;
+            padding: 0.65rem 0.9rem;
+            background: #5631a8;
+            color: white;
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        button:disabled {
+            cursor: wait;
+            opacity: 0.55;
+        }
+
+        .hint,
+        #status {
+            color: #66594d;
+        }
+
+        #status {
+            min-height: 1.4rem;
+            margin: 0.75rem 0 0;
+        }
+
+        #sentenceList {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .sentence {
+            display: grid;
+            grid-template-columns: 3rem 1fr auto;
+            gap: 0.75rem;
+            align-items: center;
+            padding: 0.8rem;
+        }
+
+        .number {
+            color: #7b6a57;
+            font-weight: 700;
+        }
+
+        .thai {
+            display: block;
+            font-size: 1.35rem;
+            line-height: 1.5;
+        }
+
+        .translation {
+            display: block;
+            margin-top: 0.2rem;
+            color: #66594d;
+        }
+
+        .voice {
+            display: block;
+            margin-top: 0.2rem;
+            color: #5631a8;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .controls {
+            display: grid;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        .control {
+            display: grid;
+            grid-template-columns: 7rem 1fr 3rem;
+            gap: 0.75rem;
+            align-items: center;
+        }
+
+        .control label {
+            margin: 0;
+        }
+
+        .control output {
+            color: #5631a8;
+            font-variant-numeric: tabular-nums;
+            text-align: right;
+        }
+
+        @media (max-width: 620px) {
+            .sentence {
+                grid-template-columns: 2rem 1fr;
+            }
+
+            .sentence button {
+                grid-column: 2;
+                justify-self: start;
+            }
+        }
+    </style>
+</head>
+<body>
+<main>
+    <h1>ResponsiveVoice Thai-Test</h1>
+
+    <section class="panel">
+        <p>
+            Dieser Test lädt die ersten zehn Sätze einer ausgewählten
+            Mini-Situation direkt aus der kanonischen Content-Datei. Die
+            Sätze werden abwechselnd mit <strong>Thai Female</strong> und
+            <strong>Thai Male</strong> aufgerufen.
+        </p>
+        <p class="hint">
+            Verwende hier nur den ResponsiveVoice-Browser-Key. Das Server-Secret
+            gehört niemals in diese Seite.
+        </p>
+        <label for="situationSelect">Testsituation</label>
+        <select id="situationSelect" style="box-sizing: border-box; width: 100%; padding: 0.7rem; margin-bottom: 0.9rem; border: 1px solid #b9aa97; border-radius: 0.45rem; font: inherit;" disabled>
+            <option>Situationen werden geladen …</option>
+        </select>
+        <div class="controls" aria-label="Stimmparameter">
+            <div class="control">
+                <label for="rate">Tempo</label>
+                <input id="rate" type="range" min="0.5" max="1.2" step="0.05" value="0.85">
+                <output id="rateValue" for="rate">0,85</output>
+            </div>
+            <div class="control">
+                <label for="pitch">Tonhöhe</label>
+                <input id="pitch" type="range" min="0.7" max="1.3" step="0.05" value="1">
+                <output id="pitchValue" for="pitch">1,00</output>
+            </div>
+            <div class="control">
+                <label for="volume">Lautstärke</label>
+                <input id="volume" type="range" min="0.2" max="1" step="0.05" value="0.8">
+                <output id="volumeValue" for="volume">0,80</output>
+            </div>
+        </div>
+        <label for="apiKey">ResponsiveVoice API-Key</label>
+        <input id="apiKey" type="password" autocomplete="off"
+               placeholder="API-Key hier nur für diesen Test einfügen">
+        <p id="status" role="status">Lade Grammatikboss 3 …</p>
+    </section>
+
+    <section class="panel">
+        <div id="sentenceList"></div>
+    </section>
+</main>
+
+<script src="https://cdn.responsivevoice.org/sdk/latest/responsivevoice.js"></script>
+<script>
+    (function () {
+        "use strict";
+
+        const apiKeyInput = document.getElementById("apiKey");
+        const situationSelect = document.getElementById("situationSelect");
+        const rateInput = document.getElementById("rate");
+        const pitchInput = document.getElementById("pitch");
+        const volumeInput = document.getElementById("volume");
+        const rateValue = document.getElementById("rateValue");
+        const pitchValue = document.getElementById("pitchValue");
+        const volumeValue = document.getElementById("volumeValue");
+        const sentenceList = document.getElementById("sentenceList");
+        const status = document.getElementById("status");
+        let initializedKey = "";
+        let activeButton = null;
+        let speechTimeout = null;
+        let situations = new Map();
+
+        function setStatus(message, isError = false) {
+            status.textContent = message;
+            status.style.color = isError ? "#a32929" : "";
+        }
+
+        function initializeVoice() {
+            const apiKey = apiKeyInput.value.trim();
+            if (!apiKey) {
+                throw new Error("Bitte zuerst den ResponsiveVoice API-Key eintragen.");
+            }
+            if (typeof responsiveVoice === "undefined") {
+                throw new Error("ResponsiveVoice konnte nicht geladen werden.");
+            }
+            if (initializedKey !== apiKey) {
+                responsiveVoice.init({ apiKey });
+                initializedKey = apiKey;
+            }
+        }
+
+        function finishSpeech(message, isError = false) {
+            if (speechTimeout) {
+                window.clearTimeout(speechTimeout);
+                speechTimeout = null;
+            }
+            if (activeButton) {
+                activeButton.disabled = false;
+                activeButton = null;
+            }
+            setStatus(message, isError);
+        }
+
+        function updateControlLabels() {
+            rateValue.textContent = Number(rateInput.value).toFixed(2).replace(".", ",");
+            pitchValue.textContent = Number(pitchInput.value).toFixed(2).replace(".", ",");
+            volumeValue.textContent = Number(volumeInput.value).toFixed(2).replace(".", ",");
+        }
+
+        function speak(sentence, voiceName, button) {
+            try {
+                initializeVoice();
+                responsiveVoice.cancel();
+                finishSpeech("Bereit.");
+                activeButton = button;
+                button.disabled = true;
+                setStatus(`${voiceName} wird abgespielt …`);
+                const speechRequest = responsiveVoice.speak(sentence.thai, voiceName, {
+                    rate: Number(rateInput.value),
+                    pitch: Number(pitchInput.value),
+                    volume: Number(volumeInput.value),
+                    onend: function () {
+                        finishSpeech("Bereit.");
+                    },
+                    onerror: function () {
+                        finishSpeech("ResponsiveVoice konnte diesen Satz nicht abspielen.", true);
+                    }
+                });
+                speechTimeout = window.setTimeout(function () {
+                    finishSpeech(
+                        "Keine Antwort von ResponsiveVoice. Prüfe Website-Freigabe und Voice-ID.",
+                        true
+                    );
+                }, 12000);
+                if (speechRequest && typeof speechRequest.catch === "function") {
+                    speechRequest.catch(function () {
+                        finishSpeech(
+                            "ResponsiveVoice hat die Anfrage abgelehnt. Prüfe Website-Freigabe und API-Key.",
+                            true
+                        );
+                    });
+                }
+            } catch (error) {
+                finishSpeech(error.message, true);
+            }
+        }
+
+        function renderSentences(sentences) {
+            sentenceList.replaceChildren();
+            sentences.forEach((sentence, index) => {
+                const voiceName = index % 2 === 0 ? "Thai Female" : "Thai Male";
+                const article = document.createElement("article");
+                article.className = "sentence";
+
+                const number = document.createElement("span");
+                number.className = "number";
+                number.textContent = String(index + 1);
+
+                const text = document.createElement("div");
+                const thai = document.createElement("strong");
+                thai.className = "thai";
+                thai.lang = "th";
+                thai.textContent = sentence.thai;
+                const translation = document.createElement("span");
+                translation.className = "translation";
+                translation.textContent = sentence.translation;
+                const voice = document.createElement("span");
+                voice.className = "voice";
+                voice.textContent = voiceName;
+                text.append(thai, translation, voice);
+
+                const button = document.createElement("button");
+                button.type = "button";
+                button.textContent = "Abspielen";
+                button.addEventListener("click", function () {
+                    speak(sentence, voiceName, button);
+                });
+
+                article.append(number, text, button);
+                sentenceList.append(article);
+            });
+        }
+
+        function getSituationSentences(boss, storyIndex) {
+            const story = boss.blocks
+                .flatMap(block => block.miniStories)[storyIndex];
+            if (!story) {
+                throw new Error("Die ausgewählte Mini-Situation wurde nicht gefunden.");
+            }
+            const sentences = story.sentences.slice(0, 10);
+            if (sentences.length !== 10) {
+                throw new Error("Die ausgewählte Mini-Situation enthält nicht mindestens zehn Sätze.");
+            }
+            return {
+                label: `${boss.title} · ${story.title}`,
+                sentences
+            };
+        }
+
+        function renderSelectedSituation() {
+            const selected = situations.get(situationSelect.value);
+            if (!selected) {
+                return;
+            }
+            renderSentences(selected.sentences);
+            setStatus(`${selected.label} geladen. API-Key eintragen und einen Satz abspielen.`);
+        }
+
+        async function loadSituations() {
+            const response = await fetch("../data/thai-giga-drill.v1.json");
+            if (!response.ok) {
+                throw new Error(`Content konnte nicht geladen werden (${response.status}).`);
+            }
+            const content = await response.json();
+            const bosses = new Map(content.levels
+                .flatMap(level => level.bosses)
+                .map(boss => [boss.id, boss]));
+            const testDefinitions = [
+                ["boss-3-story-01", "level-1-grammar-boss-3", 0],
+                ["boss-2-story-01", "level-1-grammar-boss-2", 0]
+            ];
+
+            situations = new Map(testDefinitions.map(([key, bossId, storyIndex]) => {
+                const boss = bosses.get(bossId);
+                if (!boss) {
+                    throw new Error(`${bossId} wurde nicht gefunden.`);
+                }
+                return [key, getSituationSentences(boss, storyIndex)];
+            }));
+
+            situationSelect.replaceChildren();
+            situations.forEach((situation, key) => {
+                const option = document.createElement("option");
+                option.value = key;
+                option.textContent = situation.label;
+                situationSelect.append(option);
+            });
+            situationSelect.disabled = false;
+            situationSelect.addEventListener("change", renderSelectedSituation);
+            renderSelectedSituation();
+        }
+
+        [rateInput, pitchInput, volumeInput].forEach(input => {
+            input.addEventListener("input", updateControlLabels);
+        });
+        updateControlLabels();
+
+        loadSituations().catch(error => setStatus(error.message, true));
+
+        window.addEventListener("unhandledrejection", function (event) {
+            if (String(event.reason || "").toLowerCase().includes("origin-gate")) {
+                finishSpeech(
+                    "ResponsiveVoice blockiert diese Domain (401 origin-gate). Füge localhost im Dashboard hinzu.",
+                    true
+                );
+            }
+        });
+    }());
+</script>
+</body>
+</html>

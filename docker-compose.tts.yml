@@ -1,0 +1,67 @@
+services:
+  minio:
+    image: minio/minio:latest
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:-minioadmin}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:-minioadmin}
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - thai-giga-minio:/data
+
+  minio-init:
+    image: minio/mc:latest
+    depends_on:
+      minio:
+        condition: service_started
+    entrypoint: ["/bin/sh", "-c"]
+    command: >
+      "until mc alias set local http://minio:9000
+      ${MINIO_ROOT_USER:-minioadmin}
+      ${MINIO_ROOT_PASSWORD:-minioadmin}
+      ; do sleep 1; done
+      && mc mb --ignore-existing local/${AUDIO_STORAGE_BUCKET:-thai-giga-audio}"
+
+  tts-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.tts
+    depends_on:
+      minio-init:
+        condition: service_completed_successfully
+    environment:
+      PORT: 3000
+      INWORLD_API_KEY: ${INWORLD_API_KEY:-}
+      INWORLD_DEFAULT_VOICE_ID: ${INWORLD_DEFAULT_VOICE_ID:-}
+      INWORLD_DEFAULT_MODEL_ID: ${INWORLD_DEFAULT_MODEL_ID:-inworld-tts-2}
+      INWORLD_DELIVERY_MODE: ${INWORLD_DELIVERY_MODE:-STABLE}
+      INWORLD_SPEAKING_RATE: ${INWORLD_SPEAKING_RATE:-1}
+      TTS_ALLOWED_ORIGINS: ${TTS_ALLOWED_ORIGINS:-}
+      AUDIO_STORAGE_BUCKET: ${AUDIO_STORAGE_BUCKET:-thai-giga-audio}
+      AUDIO_STORAGE_REGION: us-east-1
+      AUDIO_STORAGE_ENDPOINT: http://minio:9000
+      AUDIO_STORAGE_FORCE_PATH_STYLE: "true"
+      AUDIO_STORAGE_ACCESS_KEY_ID: ${MINIO_ROOT_USER:-minioadmin}
+      AUDIO_STORAGE_SECRET_ACCESS_KEY: ${MINIO_ROOT_PASSWORD:-minioadmin}
+    ports:
+      - "3000:3000"
+
+  tts-batch:
+    profiles: ["batch"]
+    build:
+      context: .
+      dockerfile: Dockerfile.tts
+    depends_on:
+      tts-api:
+        condition: service_started
+    environment:
+      TTS_ENDPOINT: ${TTS_ENDPOINT:-http://tts-api:3000/api/tts}
+      TTS_VOICE_ID: ${INWORLD_DEFAULT_VOICE_ID:-}
+      TTS_MODEL_ID: ${INWORLD_DEFAULT_MODEL_ID:-inworld-tts-2}
+      TTS_CONCURRENCY: ${TTS_CONCURRENCY:-3}
+    command: ["npm", "run", "tts:batch"]
+
+volumes:
+  thai-giga-minio:

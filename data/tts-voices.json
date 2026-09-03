@@ -1,0 +1,165 @@
+{
+    "version": 2,
+    "provider": "inworld",
+    "voiceProfiles": {
+        "M": {
+            "label": "Erwachsener Mann",
+            "gender": "male",
+            "ageGroup": "adult",
+            "voiceId": "Satoshi",
+            "modelId": "inworld-tts-2",
+            "speakingRate": 0.85,
+            "deliveryMode": "BALANCED",
+            "language": "th-TH"
+        },
+        "W": {
+            "label": "Erwachsene Frau",
+            "gender": "female",
+            "ageGroup": "adult",
+            "voiceId": "Nour",
+            "modelId": "inworld-tts-2",
+            "speakingRate": 0.85,
+            "deliveryMode": "BALANCED",
+            "language": "th-TH"
+        },
+        "MU": {
+            "label": "Mutter",
+            "gender": "female",
+            "ageGroup": "adult",
+            "voiceId": "regal-walnut-9770__design-voice-1077b93f",
+            "modelId": "inworld-tts-2",
+            "speakingRate": 0.85,
+            "deliveryMode": "BALANCED",
+            "language": "th-TH"
+        },
+        "VA": {
+            "label": "Vater",
+            "gender": "male",
+            "ageGroup": "adult",
+            "voiceId": "regal-walnut-9770__design-voice-1077b93f",
+            "modelId": "inworld-tts-2",
+            "speakingRate": 0.85,
+            "deliveryMode": "BALANCED",
+            "language": "th-TH"
+        },
+        "OM": {
+            "label": "Oma",
+            "gender": "female",
+            "ageGroup": "senior",
+            "voiceId": "regal-walnut-9770__design-voice-f1b377ad",
+            "modelId": "inworld-tts-2",
+            "speakingRate": 0.85,
+            "deliveryMode": "STABLE",
+            "language": "th-TH"
+        },
+        "OP": {
+            "label": "Opa",
+            "gender": "male",
+            "ageGroup": "senior",
+            "voiceId": "regal-walnut-9770__design-voice-79033814",
+            "modelId": "inworld-tts-2",
+            "speakingRate": 0.85,
+            "deliveryMode": "STABLE",
+            "language": "th-TH"
+        },
+        "TA": {
+            "label": "Tante",
+            "gender": "female",
+            "ageGroup": "adult",
+            "voiceId": "regal-walnut-9770__design-voice-76e59dbb",
+            "modelId": "inworld-tts-2",
+            "speakingRate": 1,
+            "deliveryMode": "CREATIVE",
+            "language": "th-TH"
+        },
+        "ON": {
+            "label": "Onkel",
+            "gender": "male",
+            "ageGroup": "adult",
+            "voiceId": "regal-walnut-9770__design-voice-03155f1a",
+            "modelId": "inworld-tts-2",
+            "speakingRate": 0.85,
+            "deliveryMode": "STABLE",
+            "language": "th-TH"
+        },
+        "JM": {
+            "label": "Junge / männliches Kind",
+            "gender": "male",
+            "ageGroup": "child",
+            "voiceId": "regal-walnut-9770__design-voice-76e59dbb",
+            "modelId": "inworld-tts-2",
+            "speakingRate": 1,
+            "deliveryMode": "CREATIVE",
+            "language": "th-TH"
+        },
+        "JW": {
+            "label": "Mädchen / weibliches Kind",
+            "gender": "female",
+            "ageGroup": "child",
+            "voiceId": "regal-walnut-9770__design-voice-57eabe64",
+            "modelId": "inworld-tts-2",
+            "speakingRate": 1,
+            "deliveryMode": "BALANCED",
+            "language": "th-TH"
+        },
+        "F1": {
+            "label": "Weibliche Nebenfigur 1",
+            "gender": "female",
+            "ageGroup": "adult",
+            "voiceId": "community-pwotyqkmtlsi",
+            "modelId": "inworld-tts-2",
+            "speakingRate": 1,
+            "deliveryMode": "BALANCED",
+            "language": "th-TH"
+        },
+        "F2": {
+            "label": "Weibliche Nebenfigur 2",
+            "gender": "female",
+            "ageGroup": "adult",
+            "voiceId": "Lupita",
+            "modelId": "inworld-tts-2",
+            "speakingRate": 1,
+            "deliveryMode": "BALANCED",
+            "language": "th-TH"
+        },
+        "M1": {
+            "label": "Männliche Nebenfigur 1",
+            "gender": "male",
+            "ageGroup": "adult",
+            "voiceId": "Mauricio",
+            "modelId": "inworld-tts-2",
+            "speakingRate": 1,
+            "deliveryMode": "BALANCED",
+            "language": "th-TH"
+        },
+        "M2": {
+            "label": "Männliche Nebenfigur 2",
+            "gender": "male",
+            "ageGroup": "adult",
+            "voiceId": "Chip",
+            "modelId": "inworld-tts-2",
+            "speakingRate": 1,
+            "deliveryMode": "BALANCED",
+            "language": "th-TH"
+        }
+    },
+    "defaultVoiceId": "",
+    "speakerVoices": {},
+    "storyVoices": {},
+    "sentenceVoices": {},
+    "characterProfiles": {},
+    "dictionaryVoices": [
+        {
+            "id": "female",
+            "label": "Weibliche Stimme",
+            "voiceProfileId": "W",
+            "voiceId": "Nour"
+        },
+        {
+            "id": "male",
+            "label": "Männliche Stimme",
+            "voiceProfileId": "M",
+            "voiceId": "Satoshi"
+        }
+    ]
+}
