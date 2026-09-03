@@ -78,6 +78,8 @@ AUDIO_STORAGE_SECRET_ACCESS_KEY=<r2-secret-key>
 
 Cloudflare R2 uses the S3-compatible API already supported by the proxy. The
 R2 bucket must be private; the proxy reads and writes objects server-side.
+R2 is an optional durable cache: if a configured R2 operation fails, the proxy
+logs a cache warning and continues with Inworld and its runtime cache.
 After deployment, set the public function URL in
 `window.THAI_GIGA_TTS_CONFIG` before `quest-audio.js` loads:
 

@@ -168,6 +168,13 @@ function getObjectKey(key) {
     return `${objectStorage.prefix}/${key}.mp3`;
 }
 
+function getStorageErrorDetails(error) {
+    return {
+        name: error?.name || "UnknownError",
+        statusCode: error?.$metadata?.httpStatusCode || null
+    };
+}
+
 async function readObjectCache(key) {
     if (!objectStorage) {
         return null;
@@ -195,7 +202,11 @@ async function readObjectCache(key) {
         if (statusCode === 404 || errorName === "NoSuchKey" || errorName === "NotFound") {
             return null;
         }
-        throw error;
+        console.warn(
+            "TTS-Object-Storage-Lesen fehlgeschlagen; verwende Inworld-Fallback.",
+            getStorageErrorDetails(error)
+        );
+        return null;
     }
 }
 
@@ -204,14 +215,21 @@ async function writeObjectCache(key, audio) {
         return;
     }
 
-    await objectStorage.client.send(new PutObjectCommand({
-        Bucket: objectStorage.bucket,
-        Key: getObjectKey(key),
-        Body: audio.audio,
-        ContentType: audio.contentType,
-        CacheControl: "public, max-age=31536000, immutable",
-        Metadata: { "tts-cache-key": key }
-    }));
+    try {
+        await objectStorage.client.send(new PutObjectCommand({
+            Bucket: objectStorage.bucket,
+            Key: getObjectKey(key),
+            Body: audio.audio,
+            ContentType: audio.contentType,
+            CacheControl: "public, max-age=31536000, immutable",
+            Metadata: { "tts-cache-key": key }
+        }));
+    } catch (error) {
+        console.warn(
+            "TTS-Object-Storage-Schreiben fehlgeschlagen; Audio bleibt im Laufzeit-Cache.",
+            getStorageErrorDetails(error)
+        );
+    }
 }
 
 async function readAnyCache(key) {
