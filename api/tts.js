@@ -291,10 +291,19 @@ async function readAudioResponse(response) {
     }
 
     const payload = await response.json();
-    const result = payload.result || payload;
-    const encodedAudio = result.audioContent || result.audio || result.data;
+    const result = payload.result && !Array.isArray(payload.result)
+        ? payload.result
+        : payload;
+    const encodedAudio = result.audioContent ||
+        result.audio_content ||
+        result.audio ||
+        result.data;
     if (typeof encodedAudio !== "string" || !encodedAudio) {
-        throw new Error("Inworld hat keine Audiodaten zurückgegeben.");
+        const payloadKeys = Object.keys(payload).join(",") || "(keine)";
+        const resultKeys = Object.keys(result).join(",") || "(keine)";
+        throw new Error(
+            `Inworld hat keine Audiodaten zurückgegeben. payload=${payloadKeys}; result=${resultKeys}`
+        );
     }
 
     return {
