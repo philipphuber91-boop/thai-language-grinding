@@ -105,8 +105,8 @@ and `M2`.
 
 The dictionary currently exposes two independent choices:
 
-- `female` → Nour
-- `male` → Satoshi
+- `female` → `regal-walnut-9770__main_female`
+- `male` → `regal-walnut-9770__main_male`
 
 These dictionary voices are intentionally separate from the story-role voice
 assignments. The selected dictionary voice is persisted in the browser and is
