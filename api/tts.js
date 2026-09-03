@@ -301,8 +301,17 @@ async function readAudioResponse(response) {
     if (typeof encodedAudio !== "string" || !encodedAudio) {
         const payloadKeys = Object.keys(payload).join(",") || "(keine)";
         const resultKeys = Object.keys(result).join(",") || "(keine)";
+        const audioContentType = typeof result.audioContent;
+        const audioContentLength = audioContentType === "string"
+            ? result.audioContent.length
+            : null;
+        const usageKeys = payload.usage && typeof payload.usage === "object"
+            ? Object.keys(payload.usage).join(",")
+            : "(keine)";
         throw new Error(
-            `Inworld hat keine Audiodaten zurückgegeben. payload=${payloadKeys}; result=${resultKeys}`
+            `Inworld hat keine Audiodaten zurückgegeben. payload=${payloadKeys}; ` +
+            `result=${resultKeys}; audioContentType=${audioContentType}; ` +
+            `audioContentLength=${audioContentLength}; usage=${usageKeys}`
         );
     }
 
