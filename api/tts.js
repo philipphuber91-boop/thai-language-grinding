@@ -291,7 +291,8 @@ async function readAudioResponse(response) {
     }
 
     const payload = await response.json();
-    const encodedAudio = payload.audioContent || payload.audio || payload.data;
+    const result = payload.result || payload;
+    const encodedAudio = result.audioContent || result.audio || result.data;
     if (typeof encodedAudio !== "string" || !encodedAudio) {
         throw new Error("Inworld hat keine Audiodaten zurückgegeben.");
     }
