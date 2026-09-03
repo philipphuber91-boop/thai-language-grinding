@@ -19,6 +19,17 @@ next to `docker-compose.tts.yml`:
 - `AUDIO_STORAGE_*` configures an S3-compatible bucket for durable audio
   storage. Leave these values empty to use only the warm-runtime cache.
 
+The local proxy loads a `.env` file from the repository root automatically.
+Create it once from `api/.env.example`, fill in the Inworld key, and keep the
+file local; `.env` is ignored by Git. Start the proxy with:
+
+```powershell
+npm run start:tts
+```
+
+The same environment variables can be configured in a hosted deployment
+without changing the source code.
+
 For the local static test server on port 8765, start the proxy in the same
 PowerShell session after setting the key:
 
@@ -47,6 +58,41 @@ provided before `quest-audio.js` loads:
 This is useful when the static GitHub Pages frontend and the API are deployed
 separately. Voice IDs can also be supplied here, but the recommended default
 is to keep the selected voice in `INWORLD_DEFAULT_VOICE_ID` on the server.
+
+## GitHub Pages and Vercel
+
+GitHub Pages serves the static frontend but cannot safely execute the proxy or
+hold the Inworld key. Deploy the `api/tts.js` function to a serverless Node
+host, such as Vercel, and configure these environment variables there:
+
+```text
+INWORLD_API_KEY
+TTS_ALLOWED_ORIGINS=https://<github-account>.github.io
+AUDIO_STORAGE_BUCKET=<r2-bucket-name>
+AUDIO_STORAGE_REGION=auto
+AUDIO_STORAGE_ENDPOINT=https://<cloudflare-account-id>.r2.cloudflarestorage.com
+AUDIO_STORAGE_FORCE_PATH_STYLE=false
+AUDIO_STORAGE_ACCESS_KEY_ID=<r2-access-key>
+AUDIO_STORAGE_SECRET_ACCESS_KEY=<r2-secret-key>
+```
+
+Cloudflare R2 uses the S3-compatible API already supported by the proxy. The
+R2 bucket must be private; the proxy reads and writes objects server-side.
+After deployment, set the public function URL in
+`window.THAI_GIGA_TTS_CONFIG` before `quest-audio.js` loads:
+
+```html
+<script>
+    window.THAI_GIGA_TTS_CONFIG = {
+        endpoint: "https://<your-vercel-project>.vercel.app/api/tts",
+        modelId: "inworld-tts-2"
+    };
+</script>
+```
+
+The cache key includes the complete text, language, voice, model, speaking
+rate and delivery mode. An identical request served from R2 does not call
+Inworld again, even after a server restart or from another device.
 
 ## Multiple voices
 

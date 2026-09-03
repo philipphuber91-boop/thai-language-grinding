@@ -1,4 +1,8 @@
 const http = require("node:http");
+const path = require("node:path");
+require("dotenv").config({
+    path: path.resolve(__dirname, "..", ".env")
+});
 const handler = require("./tts.js");
 
 const port = Number(process.env.PORT || 3000);
