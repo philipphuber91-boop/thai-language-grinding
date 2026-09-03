@@ -312,13 +312,13 @@ async function synthesize(options) {
         },
         body: JSON.stringify({
             text: options.text,
-            voiceId: options.voiceId,
-            modelId: options.modelId,
-            audioConfig: {
-                audioEncoding: options.audioEncoding,
-                speakingRate: options.speakingRate
+            voice_id: options.voiceId,
+            model_id: options.modelId,
+            audio_config: {
+                audio_encoding: options.audioEncoding,
+                speaking_rate: options.speakingRate
             },
-            deliveryMode: options.deliveryMode,
+            delivery_mode: options.deliveryMode,
             language: options.language
         })
     });
