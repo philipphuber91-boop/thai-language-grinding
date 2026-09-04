@@ -1870,12 +1870,18 @@ body.thai-giga-page[data-thai-tone-colors="true"] .thai-tone-mixed {
     z-index: 30;
     width: min(360px, calc(100vw - 32px));
     max-height: calc(100vh - 32px);
-    overflow: auto;
+    overflow: hidden;
     padding: 18px;
     border: 1px solid rgba(142, 107, 60, .8);
     border-radius: 15px;
     background: rgba(38, 27, 19, .9);
     box-shadow: 0 14px 36px rgba(0, 0, 0, .22);
+    cursor: grab;
+    user-select: none;
+}
+
+.thai-giga-dictionary.is-dragging {
+    cursor: grabbing;
 }
 
 .thai-giga-dictionary-header {
@@ -1912,11 +1918,12 @@ body.thai-giga-page[data-thai-tone-colors="true"] .thai-tone-mixed {
 
 .thai-giga-dictionary-examples {
     margin-top: 18px;
-    border-top: 1px solid rgba(142, 107, 60, .45);
+    border-top: 0;
 }
 
 .thai-giga-dictionary-examples > summary {
-    padding: 12px 0;
+    padding: 0 0 8px;
+    border: 0;
     color: var(--thai-gold);
     cursor: pointer;
     font-weight: bold;
@@ -1946,8 +1953,46 @@ body.thai-giga-page[data-thai-tone-colors="true"] .thai-tone-mixed {
 }
 
 .thai-giga-dictionary-meaning {
+    overflow: hidden;
+    margin-top: 10px;
+    border: 1px solid rgba(142, 107, 60, .7);
+    border-radius: 10px;
+    background: rgba(53, 38, 28, .62);
     color: var(--thai-text);
     line-height: 1.5;
+}
+
+.thai-giga-dictionary-meaning-header {
+    padding: 10px 12px 0;
+    color: var(--thai-gold);
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.thai-giga-dictionary-meaning-body {
+    padding: 10px 12px 14px;
+}
+
+.thai-giga-dictionary-meaning-text {
+    margin: 0;
+    color: var(--thai-text);
+    line-height: 1.5;
+}
+
+.thai-giga-dictionary-meaning-info {
+    margin: 8px 0 0;
+    color: var(--thai-muted);
+    font-size: calc(1rem - 2pt);
+    line-height: 1.45;
+}
+
+.thai-giga-dictionary-meaning-info-label {
+    margin-top: 10px;
+    color: var(--thai-gold);
+    font-size: .65rem;
+    letter-spacing: .08em;
 }
 
 .thai-giga-dictionary-context {
@@ -1968,7 +2013,83 @@ body.thai-giga-page[data-thai-tone-colors="true"] .thai-tone-mixed {
 .thai-giga-dictionary-sentences {
     display: grid;
     gap: 6px;
+    max-height: min(36vh, 260px);
     margin-top: 12px;
+    overflow-y: auto;
+    padding-right: 6px;
+    scrollbar-color: rgba(231, 184, 97, .7) rgba(61, 45, 33, .5);
+    scrollbar-width: thin;
+}
+
+.thai-giga-dictionary-sentences::-webkit-scrollbar {
+    width: 10px;
+}
+
+.thai-giga-dictionary-sentences::-webkit-scrollbar-track {
+    border-radius: 999px;
+    background: rgba(61, 45, 33, .5);
+}
+
+.thai-giga-dictionary-sentences::-webkit-scrollbar-thumb {
+    border: 2px solid rgba(61, 45, 33, .5);
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(240, 205, 131, .92), rgba(188, 132, 61, .8));
+}
+
+.thai-giga-dictionary-sentences::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, rgba(249, 221, 168, .95), rgba(200, 143, 68, .9));
+}
+
+.thai-giga-dictionary-example {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 0;
+    border: 0;
+    border-top: 1px solid rgba(142, 107, 60, .28);
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+    font: inherit;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.thai-giga-dictionary-example:first-child {
+    border-top: 0;
+}
+
+.thai-giga-dictionary-example:hover,
+.thai-giga-dictionary-example:focus-visible {
+    background: rgba(244, 215, 158, .08);
+}
+
+.thai-giga-dictionary-example-thai {
+    display: block;
+    width: 100%;
+    margin: 0;
+    color: var(--thai-strong-text);
+    font-family: var(--thai-font-family);
+    font-size: 1.12rem;
+    line-height: 1.5;
+    text-align: left;
+    word-break: break-word;
+}
+
+.thai-giga-dictionary-example-translation {
+    display: block;
+    width: 100%;
+    margin: 0;
+    color: var(--thai-muted);
+    line-height: 1.45;
+    text-align: left;
+}
+
+body.thai-giga-page[data-thai-translation-visible="false"]
+.thai-giga-dictionary-example-translation {
+    display: none;
 }
 
 .thai-giga-dictionary-sentence {

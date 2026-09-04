@@ -478,6 +478,7 @@
 
     function validatePolysemousTokens(content, errors) {
         const polysemousWordIds = new Map();
+        const contextExampleBossWordIds = new Map();
 
         if (Array.isArray(content.words)) {
             content.words.forEach(word => {
@@ -488,6 +489,23 @@
                     word.meanings.length > 1
                 ) {
                     polysemousWordIds.set(word.id, word.meanings);
+                }
+                if (
+                    isRecord(word) &&
+                    typeof word.id === "string" &&
+                    isRecord(word.bossContexts)
+                ) {
+                    Object.entries(word.bossContexts).forEach(([bossId, context]) => {
+                        if (
+                            isRecord(context) &&
+                            Array.isArray(context.contextExamples) &&
+                            context.contextExamples.length > 0
+                        ) {
+                            const wordIds = contextExampleBossWordIds.get(bossId) || new Set();
+                            wordIds.add(word.id);
+                            contextExampleBossWordIds.set(bossId, wordIds);
+                        }
+                    });
                 }
             });
         }
@@ -529,7 +547,10 @@
                                     (
                                         typeof token.contextMeaning === "string" &&
                                         token.contextMeaning.trim() !== ""
-                                    )
+                                    ) ||
+                                    contextExampleBossWordIds
+                                        .get(boss.id)
+                                        ?.has(token.wordId)
                                 ) {
                                     return;
                                 }

@@ -52,8 +52,10 @@
     let activeSentenceId = "";
     let activeBossId = "";
     let dictionaryAnchor = null;
+    let dictionaryDrag = null;
     let speedreadingReturnFocus = null;
     const DICTIONARY_VOICE_STORAGE_KEY = "thaiGigaDrill:v1:dictionary-voice";
+    const GRAMMAR_BOSS_1_ID = "level-1-grammar-boss-1";
 
     function escapeHtml(value) {
         return String(value ?? "")
@@ -1137,12 +1139,61 @@
         updatePlaylistButtons();
     }
 
+    function getChaiMaiPhrase(sentence, tokenIndex) {
+        const token = sentence.tokens[tokenIndex];
+        const nextToken = sentence.tokens[tokenIndex + 1];
+        if (
+            sentence.bossId !== GRAMMAR_BOSS_1_ID ||
+            token?.kind !== "word" ||
+            nextToken?.kind !== "word" ||
+            token.text !== "ใช่" ||
+            nextToken.text !== "ไหม" ||
+            !token.wordId ||
+            !nextToken.wordId
+        ) {
+            return null;
+        }
+
+        const words = [token, nextToken].map(currentToken =>
+            indexes.wordsById.get(currentToken.wordId)
+        );
+        return {
+            endIndex: tokenIndex + 1,
+            wordId: nextToken.wordId,
+            thai: `${token.text}${nextToken.text}`,
+            transliteration: words
+                .map(word => word?.transliteration)
+                .filter(Boolean)
+                .join(" "),
+            contextToken: nextToken.text,
+            toneMarkup: words
+                .map((word, index) => renderToneMarkup(
+                    [token, nextToken][index].text,
+                    word?.transliteration,
+                    word?.syllables
+                ))
+                .join("")
+        };
+    }
+
     function renderSentenceTokenMarkup(sentence, interactive = true) {
         let thaiOffset = 0;
         let previousToken = null;
         const tokenMarkup = [];
 
-        sentence.tokens.forEach(token => {
+        for (let tokenIndex = 0; tokenIndex < sentence.tokens.length; tokenIndex += 1) {
+            const token = sentence.tokens[tokenIndex];
+            const phrase = getChaiMaiPhrase(sentence, tokenIndex);
+            const renderedToken = phrase
+                ? {
+                    ...token,
+                    wordId: phrase.wordId,
+                    text: phrase.thai,
+                    transliteration: phrase.transliteration,
+                    toneMarkup: phrase.toneMarkup
+                }
+                : token;
+
             if (previousToken?.kind === "word" && token.kind === "word") {
                 tokenMarkup.push(
                     '<span class="thai-giga-space-token thai-giga-generated-space"> </span>'
@@ -1151,6 +1202,9 @@
 
             const tokenStart = thaiOffset;
             thaiOffset += token.text.length;
+            if (phrase) {
+                thaiOffset += sentence.tokens[phrase.endIndex].text.length;
+            }
 
             if (token.kind === "space") {
                 const isRequiredSpace =
@@ -1162,36 +1216,54 @@
                     `<span class="thai-giga-space-token${spaceClass}">${escapeHtml(token.text)}</span>`
                 );
                 previousToken = token;
-                return;
+                continue;
             }
 
-            if (!token.wordId) {
-                tokenMarkup.push(`<span>${escapeHtml(token.text)}</span>`);
+            if (!renderedToken.wordId) {
+                tokenMarkup.push(`<span>${escapeHtml(renderedToken.text)}</span>`);
                 previousToken = token;
-                return;
+                continue;
             }
 
-            const contextAttribute = token.contextMeaning
-                ? ` data-context-meaning="${escapeHtml(token.contextMeaning)}"`
+            const standaloneQuestionMeaning =
+                !phrase &&
+                sentence.bossId === GRAMMAR_BOSS_1_ID &&
+                token.text === "ไหม"
+                    ? "?"
+                    : "";
+            const contextMeaning = standaloneQuestionMeaning || token.contextMeaning || "";
+            const contextAttribute = contextMeaning
+                ? ` data-context-meaning="${escapeHtml(contextMeaning)}"`
                 : "";
-            const contextTitle = token.contextMeaning
-                ? "Wörterbuch öffnen – Kontextbedeutung anzeigen"
-                : "Wörterbuch öffnen";
-            const word = indexes.wordsById.get(token.wordId);
-            const toneMarkup = renderToneMarkup(
-                token.text,
+            const phraseAttributes = phrase
+                ? ` data-phrase-thai="${escapeHtml(phrase.thai)}"` +
+                    ` data-phrase-transliteration="${escapeHtml(phrase.transliteration)}"` +
+                    ` data-phrase-context-token="${escapeHtml(phrase.contextToken)}"`
+                : "";
+            const contextTitle = phrase
+                ? "Wörterbuch öffnen – feste Einheit anzeigen"
+                : contextMeaning
+                    ? "Wörterbuch öffnen – Kontextbedeutung anzeigen"
+                    : "Wörterbuch öffnen";
+            const sentenceAttribute = ` data-sentence-id="${escapeHtml(sentence.id)}"`;
+            const word = indexes.wordsById.get(renderedToken.wordId);
+            const toneMarkup = renderedToken.toneMarkup || renderToneMarkup(
+                renderedToken.text,
                 word?.transliteration,
                 word?.syllables
             );
             tokenMarkup.push(
                 interactive
                     ? `<button class="thai-giga-word-button" type="button" data-word-id="${escapeHtml(
-                        token.wordId
-                    )}"${contextAttribute} title="${contextTitle}">${toneMarkup}</button>`
+                        renderedToken.wordId
+                    )}"${sentenceAttribute}${contextAttribute}${phraseAttributes} title="${contextTitle}">${toneMarkup}</button>`
                     : `<span>${toneMarkup}</span>`
             );
-            previousToken = token;
-        });
+            previousToken = renderedToken;
+            if (phrase) {
+                tokenIndex = phrase.endIndex;
+            }
+        }
         return tokenMarkup.join("");
     }
 
@@ -1348,7 +1420,15 @@
                 showDictionary(
                     button.dataset.wordId,
                     button,
-                    button.dataset.contextMeaning || ""
+                    button.dataset.contextMeaning || "",
+                    button.dataset.sentenceId || "",
+                    button.dataset.phraseThai
+                        ? {
+                            thai: button.dataset.phraseThai,
+                            transliteration: button.dataset.phraseTransliteration || "",
+                            contextToken: button.dataset.phraseContextToken || ""
+                        }
+                        : null
                 )
             );
         });
@@ -1565,11 +1645,75 @@
 
     function closeDictionary() {
         dictionaryAnchor = null;
+        dictionaryDrag = null;
         elements.dictionary.hidden = true;
         elements.dictionary.removeAttribute("aria-labelledby");
         elements.dictionary.style.removeProperty("left");
         elements.dictionary.style.removeProperty("top");
+        elements.dictionary.classList.remove("is-dragging");
     }
+
+    function clampDictionaryPosition(left, top) {
+        if (!elements.dictionary) {
+            return { left, top };
+        }
+
+        const dictionaryRect = elements.dictionary.getBoundingClientRect();
+        const margin = 16;
+        const maxLeft = window.innerWidth - dictionaryRect.width - margin;
+        const maxTop = window.innerHeight - dictionaryRect.height - margin;
+
+        return {
+            left: Math.min(Math.max(left, margin), Math.max(margin, maxLeft)),
+            top: Math.min(Math.max(top, margin), Math.max(margin, maxTop))
+        };
+    }
+
+    function beginDictionaryDrag(event) {
+        if (!elements.dictionary || elements.dictionary.hidden) {
+            return;
+        }
+        if (event.target.closest("button, summary, input, select, textarea, a")) {
+            return;
+        }
+
+        const rect = elements.dictionary.getBoundingClientRect();
+        dictionaryDrag = {
+            offsetX: event.clientX - rect.left,
+            offsetY: event.clientY - rect.top
+        };
+        elements.dictionary.classList.add("is-dragging");
+        event.preventDefault();
+    }
+
+    function moveDictionaryDrag(event) {
+        if (!dictionaryDrag || !elements.dictionary) {
+            return;
+        }
+
+        const nextPosition = clampDictionaryPosition(
+            event.clientX - dictionaryDrag.offsetX,
+            event.clientY - dictionaryDrag.offsetY
+        );
+        elements.dictionary.style.left = `${nextPosition.left}px`;
+        elements.dictionary.style.top = `${nextPosition.top}px`;
+    }
+
+    function endDictionaryDrag() {
+        if (!elements.dictionary) {
+            return;
+        }
+        dictionaryDrag = null;
+        elements.dictionary.classList.remove("is-dragging");
+    }
+
+    window.addEventListener("pointermove", event => {
+        if (dictionaryDrag) {
+            moveDictionaryDrag(event);
+        }
+    });
+    window.addEventListener("pointerup", endDictionaryDrag);
+    window.addEventListener("pointercancel", endDictionaryDrag);
 
     function positionDictionary() {
         if (!dictionaryAnchor || elements.dictionary.hidden) {
@@ -1596,14 +1740,74 @@
         elements.dictionary.style.top = `${top}px`;
     }
 
-    function showDictionary(wordId, anchor, contextMeaning = "") {
+    function showDictionary(
+        wordId,
+        anchor,
+        contextMeaning = "",
+        sentenceId = "",
+        phrase = null
+    ) {
         const word = indexes.wordsById.get(wordId);
         if (!word) {
             return;
         }
 
+        const bossContext = activeBossId && word.bossContexts
+            ? word.bossContexts[activeBossId]
+            : null;
+        const meanings = bossContext?.meanings || word.meanings;
+        const infoSentence = bossContext?.infoSentence || word.infoSentence;
+        const contextExample = bossContext?.contextExamples?.find(example =>
+            example.sentenceId === sentenceId &&
+            (!example.matchedToken ||
+                example.matchedToken === (phrase?.contextToken || anchor.textContent.trim()))
+        );
+        const sentenceMeaning = contextExample?.entryMeaningInSentence || contextMeaning || "";
+        const distinctMeanings = Array.from(new Set(
+            meanings.map(meaning => meaning.trim()).filter(Boolean)
+        ));
+        const hasInfoSentence = infoSentence && infoSentence !== "Keine erforderlich.";
+        const showSingleGlobalMeaning = !bossContext && distinctMeanings.length > 0;
+        const generalMeaningMarkup = distinctMeanings.length > 1 ||
+            showSingleGlobalMeaning ||
+            hasInfoSentence
+            ? `
+                <div class="thai-giga-dictionary-meaning">
+                    <div class="thai-giga-dictionary-meaning-header">DEUTSCHE BEDEUTUNG</div>
+                    <div class="thai-giga-dictionary-meaning-body">
+                        ${distinctMeanings.length > 1 || showSingleGlobalMeaning
+                            ? `<p class="thai-giga-dictionary-meaning-text">${escapeHtml(
+                                distinctMeanings.join(" / ")
+                            )}</p>`
+                            : ""}
+                        ${hasInfoSentence
+                            ? `
+                                <div class="thai-giga-dictionary-meaning-info-label">Hinweis</div>
+                                <p class="thai-giga-dictionary-meaning-info">${escapeHtml(infoSentence)}</p>
+                            `
+                            : ""}
+                    </div>
+                </div>
+            `
+            : "";
+        const scopedContextSentenceIds = bossContext?.contextExamples
+            ?.map(example => example.sentenceId)
+            .filter(sentenceId => {
+                const sentence = indexes.sentencesById.get(sentenceId);
+                return sentence && (!activeBossId || sentence.bossId === activeBossId);
+            }) || [];
+        const indexedSentenceIds = indexes.sentenceIdsByWordId
+            .get(wordId)
+            ?.filter(sentenceId => {
+                const sentence = indexes.sentencesById.get(sentenceId);
+                return sentence && (!activeBossId || sentence.bossId === activeBossId);
+            }) || [];
+        const sentenceIds = Array.from(new Set(
+            scopedContextSentenceIds.length > 0
+                ? scopedContextSentenceIds
+                : indexedSentenceIds
+        ));
         dictionaryAnchor = anchor;
-        const sentenceIds = indexes.sentenceIdsByWordId.get(wordId) || [];
         elements.dictionary.innerHTML = `
             <div class="thai-giga-dictionary-header">
                 <p class="thai-giga-eyebrow">Wörterbuch</p>
@@ -1613,34 +1817,38 @@
                     aria-label="Wörterbuch schließen">×</button>
             </div>
             <div class="thai-giga-dictionary-word" lang="th">${renderToneMarkup(
-                word.thai,
-                word.transliteration,
-                word.syllables
+                phrase?.thai || word.thai,
+                phrase?.transliteration || word.transliteration,
+                phrase?.syllables || word.syllables
             )}</div>
-            <p class="thai-giga-dictionary-transliteration">${escapeHtml(word.transliteration)}</p>
-            ${contextMeaning
+            <p class="thai-giga-dictionary-transliteration">${escapeHtml(
+                phrase?.transliteration || word.transliteration
+            )}</p>
+            ${sentenceMeaning
                 ? `
                     <div class="thai-giga-dictionary-context">
                         <strong>In diesem Satz gemeint als:</strong>
-                        <span>${escapeHtml(contextMeaning)}</span>
+                        <span>${escapeHtml(sentenceMeaning)}</span>
                     </div>
                 `
                 : ""}
-            <div class="thai-giga-dictionary-meaning">
-                <strong>Grundbedeutung:</strong>
-                ${word.meanings.map(meaning => `<div>${escapeHtml(meaning)}</div>`).join("")}
-            </div>
+            ${generalMeaningMarkup}
             <details class="thai-giga-dictionary-examples">
                 <summary>Beispiele in ${sentenceIds.length} Sätzen</summary>
                 <div class="thai-giga-dictionary-sentences">
                     ${sentenceIds.map(sentenceId => {
                         const sentence = indexes.sentencesById.get(sentenceId);
-                        const story = indexes.storiesById.get(sentence.storyId);
                         return `
-                            <button class="thai-giga-dictionary-sentence"
-                                    type="button"
-                                    data-dictionary-sentence="${escapeHtml(sentenceId)}">
-                                ${escapeHtml(story.title)} · Satz ${sentence.numberInStory}
+                            <button
+                                class="thai-giga-dictionary-example"
+                                type="button"
+                                data-dictionary-sentence="${escapeHtml(sentenceId)}">
+                                <span class="thai-giga-dictionary-example-thai" lang="th">
+                                    ${renderSentenceTokenMarkup(sentence, false)}
+                                </span>
+                                <span class="thai-giga-dictionary-example-translation">
+                                    ${escapeHtml(sentence.translation)}
+                                </span>
                             </button>
                         `;
                     }).join("")}
@@ -1649,12 +1857,18 @@
         `;
         elements.dictionary.hidden = false;
         positionDictionary();
-
+        elements.dictionary.onpointerdown = beginDictionaryDrag;
+        elements.dictionary.onpointermove = moveDictionaryDrag;
+        elements.dictionary.onpointerup = endDictionaryDrag;
+        elements.dictionary.onpointercancel = endDictionaryDrag;
         elements.dictionary
             .querySelectorAll("[data-dictionary-sentence]")
             .forEach(button => {
                 button.addEventListener("click", () => {
                     const sentence = indexes.sentencesById.get(button.dataset.dictionarySentence);
+                    if (!sentence) {
+                        return;
+                    }
                     closeDictionary();
                     showStory(sentence.storyId, sentence.id);
                     window.thaiGigaAudio.addSentence(sentence.id, true);
@@ -1773,6 +1987,15 @@
     elements.dictionary?.addEventListener("click", event => {
         if (event.target.closest(".thai-giga-dictionary-close")) {
             closeDictionary();
+        }
+    });
+    document.addEventListener("pointerdown", event => {
+        if (elements.dictionary && !elements.dictionary.hidden) {
+            const clickedInsideDictionary = elements.dictionary.contains(event.target);
+            const clickedOnAnchor = dictionaryAnchor && dictionaryAnchor.contains(event.target);
+            if (!clickedInsideDictionary && !clickedOnAnchor) {
+                closeDictionary();
+            }
         }
     });
     elements.wordDictionaryBossFilter?.addEventListener(
