@@ -67974,7 +67974,7 @@
                       "numberInStory": 8,
                       "thai": "แต่ก็อยู่สบาย",
                       "transliteration": "dtɛ̀ɛ gɔ̂ɔ yùu sà-baai",
-                      "translation": "Aber man kann gut darin wohnen.",
+                      "translation": "Aber es ist angenehm dort zu wohnen.",
                       "tokens": [
                         {
                           "text": "แต่",
@@ -68158,7 +68158,7 @@
                       "numberInStory": 2,
                       "thai": "มีโทรศัพท์",
                       "transliteration": "mii thoo-rá-sàp",
-                      "translation": "Mein Handy.",
+                      "translation": "Ich habe ein Handy.",
                       "tokens": [
                         {
                           "text": "มี",
@@ -68284,7 +68284,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1516-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "เยอะ",
@@ -68404,7 +68405,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1520-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": " ",
@@ -68648,7 +68650,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1526-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         }
                       ],
                       "audio": {
@@ -70025,7 +70028,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1564-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "ที่ชาร์จ",
@@ -70461,7 +70465,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1576-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "ครับ",
@@ -70760,7 +70765,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1584-t2",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         }
                       ],
                       "audio": {
@@ -71627,7 +71633,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1606-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": " ",
@@ -71876,13 +71883,14 @@
                       "numberInStory": 2,
                       "thai": "ไม่มี",
                       "transliteration": "mâi mii",
-                      "translation": "Nein.",
+                      "translation": "Nein, ?berhaupt nicht.",
                       "tokens": [
                         {
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1612-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         }
                       ],
                       "audio": {
@@ -71941,7 +71949,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1614-t3",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "เลย",
@@ -72123,7 +72132,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1619-t3",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         }
                       ],
                       "audio": {
@@ -72245,7 +72255,7 @@
                       "numberInStory": 2,
                       "thai": "มีค่ะ ตรงนั้นยังว่างอยู่",
                       "transliteration": "mii khâ dtrong-nán yang wâang yùu",
-                      "translation": "Ja, dort ist noch einer frei.",
+                      "translation": "Ja, dort ist noch ein freier Platz.",
                       "tokens": [
                         {
                           "text": "มี",
@@ -72301,7 +72311,7 @@
                       "numberInStory": 3,
                       "thai": "มีคนจองไหม",
                       "transliteration": "mii khon jɔɔng mái",
-                      "translation": "Ist der reserviert?",
+                      "translation": "Ist er schon reserviert?",
                       "tokens": [
                         {
                           "text": "มี",
@@ -72346,7 +72356,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1624-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "ค่ะ",
@@ -73093,7 +73104,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1644-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "ครับ",
@@ -73272,34 +73284,29 @@
                       "translation": "Dann kann ich es erst mal machen.",
                       "tokens": [
                         {
+                          "id": "l1-b4-s1649-t1",
                           "text": "งั้น",
                           "kind": "word",
-                          "id": "l1-b4-s1649-t1",
                           "wordId": "word-b2-ngan"
                         },
                         {
+                          "id": "l1-b4-s1649-t2",
                           "text": "ทำ",
                           "kind": "word",
-                          "id": "l1-b4-s1649-t2",
                           "wordId": "word-b2-lo-khun-tham-a-rai"
                         },
                         {
+                          "id": "l1-b4-s1649-t3",
                           "text": "ก่อน",
                           "kind": "word",
-                          "id": "l1-b4-s1649-t3",
                           "wordId": "word-b2-ngan-ao-naam-gn"
                         },
                         {
-                          "text": "ก็",
-                          "kind": "word",
                           "id": "l1-b4-s1649-t4",
-                          "wordId": "word-b2-kao-g-mai-bpai"
-                        },
-                        {
-                          "text": "ได้",
+                          "text": "ก็ได้",
                           "kind": "word",
-                          "id": "l1-b4-s1649-t5",
-                          "wordId": "word-b2-phrung-nii-g-bpai-dai"
+                          "wordId": "word-b4-ko-dai",
+                          "contextMeaning": "geht auch / okay"
                         }
                       ],
                       "audio": {
@@ -73493,7 +73500,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1654-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         }
                       ],
                       "audio": {
@@ -73541,7 +73549,7 @@
                       "numberInStory": 6,
                       "thai": "ก็อยู่ข้างใน",
                       "transliteration": "gɔ̂ɔ yùu khâang-nai",
-                      "translation": "Ist auch drinnen.",
+                      "translation": "Er ist auch drinnen.",
                       "tokens": [
                         {
                           "text": "ก็",
@@ -73619,7 +73627,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1658-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "แล้ว",
@@ -74388,7 +74397,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1678-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": " ",
@@ -74429,28 +74439,23 @@
                       "translation": "Dann kann ich auch stehen.",
                       "tokens": [
                         {
+                          "id": "l1-b4-s1679-t1",
                           "text": "งั้น",
                           "kind": "word",
-                          "id": "l1-b4-s1679-t1",
                           "wordId": "word-b2-ngan"
                         },
                         {
+                          "id": "l1-b4-s1679-t2",
                           "text": "ยืน",
                           "kind": "word",
-                          "id": "l1-b4-s1679-t2",
                           "wordId": "word-b3-yn"
                         },
                         {
-                          "text": "ก็",
-                          "kind": "word",
                           "id": "l1-b4-s1679-t3",
-                          "wordId": "word-b2-kao-g-mai-bpai"
-                        },
-                        {
-                          "text": "ได้",
+                          "text": "ก็ได้",
                           "kind": "word",
-                          "id": "l1-b4-s1679-t4",
-                          "wordId": "word-b2-phrung-nii-g-bpai-dai"
+                          "wordId": "word-b4-ko-dai",
+                          "contextMeaning": "geht auch / okay"
                         }
                       ],
                       "audio": {
@@ -75056,34 +75061,29 @@
                       "translation": "Dann können wir auch zu Hause bleiben.",
                       "tokens": [
                         {
+                          "id": "l1-b4-s1695-t1",
                           "text": "งั้น",
                           "kind": "word",
-                          "id": "l1-b4-s1695-t1",
                           "wordId": "word-b2-ngan"
                         },
                         {
+                          "id": "l1-b4-s1695-t2",
                           "text": "อยู่",
                           "kind": "word",
-                          "id": "l1-b4-s1695-t2",
                           "wordId": "word-b2-yuu"
                         },
                         {
+                          "id": "l1-b4-s1695-t3",
                           "text": "บ้าน",
                           "kind": "word",
-                          "id": "l1-b4-s1695-t3",
                           "wordId": "word-baan"
                         },
                         {
-                          "text": "ก็",
-                          "kind": "word",
                           "id": "l1-b4-s1695-t4",
-                          "wordId": "word-b2-kao-g-mai-bpai"
-                        },
-                        {
-                          "text": "ได้",
+                          "text": "ก็ได้",
                           "kind": "word",
-                          "id": "l1-b4-s1695-t5",
-                          "wordId": "word-b2-phrung-nii-g-bpai-dai"
+                          "wordId": "word-b4-ko-dai",
+                          "contextMeaning": "geht auch / okay"
                         }
                       ],
                       "audio": {
@@ -75404,48 +75404,43 @@
                       "numberInStory": 2,
                       "thai": "แม่ไม่ได้ทำอะไรเลยลูก",
                       "transliteration": "mɛ̂ɛ mâi dâi tham à-rai loei lûuk",
-                      "translation": "Mama macht gerade gar nichts, mein Kind.",
+                      "translation": "Mama, du machst gar nichts, mein Kind.",
                       "tokens": [
                         {
+                          "id": "l1-b4-s1702-t1",
                           "text": "แม่",
                           "kind": "word",
-                          "id": "l1-b4-s1702-t1",
                           "wordId": "word-mae"
                         },
                         {
-                          "text": "ไม่",
-                          "kind": "word",
                           "id": "l1-b4-s1702-t2",
-                          "wordId": "word-b2-mai"
-                        },
-                        {
-                          "text": "ได้",
+                          "text": "ไม่ได้",
                           "kind": "word",
-                          "id": "l1-b4-s1702-t3",
-                          "wordId": "word-b2-phrung-nii-g-bpai-dai"
+                          "wordId": "word-b4-mai-dai",
+                          "contextMeaning": "nicht tun / nicht machen"
                         },
                         {
+                          "id": "l1-b4-s1702-t3",
                           "text": "ทำ",
                           "kind": "word",
-                          "id": "l1-b4-s1702-t4",
                           "wordId": "word-b2-lo-khun-tham-a-rai"
                         },
                         {
+                          "id": "l1-b4-s1702-t4",
                           "text": "อะไร",
                           "kind": "word",
-                          "id": "l1-b4-s1702-t5",
                           "wordId": "word-a-rai"
                         },
                         {
+                          "id": "l1-b4-s1702-t5",
                           "text": "เลย",
                           "kind": "word",
-                          "id": "l1-b4-s1702-t6",
                           "wordId": "word-b2-mai-tham-a-rai-loei"
                         },
                         {
+                          "id": "l1-b4-s1702-t6",
                           "text": "ลูก",
                           "kind": "word",
-                          "id": "l1-b4-s1702-t7",
                           "wordId": "word-luuk"
                         }
                       ],
@@ -75683,43 +75678,38 @@
                       "numberInStory": 9,
                       "thai": "งั้นผมกินไข่ก็ได้",
                       "transliteration": "ngán phǒm gin khài gɔ̂ɔ dâi",
-                      "translation": "Dann esse ich eben Eier.",
+                      "translation": "Dann esse ich einfach Eier.",
                       "tokens": [
                         {
+                          "id": "l1-b4-s1709-t1",
                           "text": "งั้น",
                           "kind": "word",
-                          "id": "l1-b4-s1709-t1",
                           "wordId": "word-b2-ngan"
                         },
                         {
+                          "id": "l1-b4-s1709-t2",
                           "text": "ผม",
                           "kind": "word",
-                          "id": "l1-b4-s1709-t2",
                           "wordId": "word-phom"
                         },
                         {
+                          "id": "l1-b4-s1709-t3",
                           "text": "กิน",
                           "kind": "word",
-                          "id": "l1-b4-s1709-t3",
                           "wordId": "word-b2-gin"
                         },
                         {
+                          "id": "l1-b4-s1709-t4",
                           "text": "ไข่",
                           "kind": "word",
-                          "id": "l1-b4-s1709-t4",
                           "wordId": "word-b2-kh-i"
                         },
                         {
-                          "text": "ก็",
-                          "kind": "word",
                           "id": "l1-b4-s1709-t5",
-                          "wordId": "word-b2-kao-g-mai-bpai"
-                        },
-                        {
-                          "text": "ได้",
+                          "text": "ก็ได้",
                           "kind": "word",
-                          "id": "l1-b4-s1709-t6",
-                          "wordId": "word-b2-phrung-nii-g-bpai-dai"
+                          "wordId": "word-b4-ko-dai",
+                          "contextMeaning": "geht auch / okay"
                         }
                       ],
                       "audio": {
@@ -75814,7 +75804,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1711-t1",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": " ",
@@ -75865,7 +75855,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1712-t1",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "มี",
@@ -75904,7 +75894,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1713-t2",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "เหรอ",
@@ -75937,7 +75928,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1714-t2",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": " ",
@@ -76060,7 +76052,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1717-t2",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "ไป",
@@ -76111,7 +76103,7 @@
                       "numberInStory": 8,
                       "thai": "ได้ มินอยากไป",
                       "transliteration": "dâi Min yàak bpai",
-                      "translation": "Ja, Min möchte mitkommen.",
+                      "translation": "Ja, Min m?chte mitkommen.",
                       "tokens": [
                         {
                           "text": "ได้",
@@ -76129,7 +76121,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1718-t3",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "อยาก",
@@ -76183,36 +76175,31 @@
                       "numberInStory": 10,
                       "thai": "ได้เลย ร้านเดิมก็ได้",
                       "transliteration": "dâi loei ráan dəəm gɔ̂ɔ dâi",
-                      "translation": "Klar, das gleiche Restaurant geht auch.",
+                      "translation": "Klar, dasselbe Restaurant geht auch.",
                       "tokens": [
                         {
+                          "id": "l1-b4-s1720-t1",
                           "text": "ได้เลย",
                           "kind": "word",
-                          "id": "l1-b4-s1720-t1",
                           "wordId": "word-b2-dai-loei"
                         },
                         {
+                          "id": "l1-b4-s1720-t2",
                           "text": " ",
-                          "kind": "space",
-                          "id": "l1-b4-s1720-t2"
+                          "kind": "space"
                         },
                         {
+                          "id": "l1-b4-s1720-t3",
                           "text": "ร้านเดิม",
                           "kind": "word",
-                          "id": "l1-b4-s1720-t3",
                           "wordId": "word-b3-raan-dm"
                         },
                         {
-                          "text": "ก็",
-                          "kind": "word",
                           "id": "l1-b4-s1720-t4",
-                          "wordId": "word-b2-kao-g-mai-bpai"
-                        },
-                        {
-                          "text": "ได้",
+                          "text": "ก็ได้",
                           "kind": "word",
-                          "id": "l1-b4-s1720-t5",
-                          "wordId": "word-b2-phrung-nii-g-bpai-dai"
+                          "wordId": "word-b4-ko-dai",
+                          "contextMeaning": "geht auch / okay"
                         }
                       ],
                       "audio": {
@@ -76438,7 +76425,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1726-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "ค่ะ",
@@ -77121,7 +77109,7 @@
                       "numberInStory": 1,
                       "thai": "ลูก พ่อหากุญแจไม่เจอ",
                       "transliteration": "lûuk phɔ̂ɔ hǎa gun-jɛɛ mâi jəə",
-                      "translation": "Kind, Papa findet den Schlüssel nicht.",
+                      "translation": "Kind, Papa kann den Schl?ssel nicht finden.",
                       "tokens": [
                         {
                           "text": "ลูก",
@@ -77294,7 +77282,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1745-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": " ",
@@ -77688,7 +77677,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1754-t5",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "ผัก",
@@ -77715,7 +77705,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1755-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "ผัก",
@@ -77754,7 +77745,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1756-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         }
                       ],
                       "audio": {
@@ -77769,50 +77761,45 @@
                       "numberInStory": 7,
                       "thai": "งั้นมินไม่เอาผักก็ได้",
                       "transliteration": "ngán Min mâi ao phàk gɔ̂ɔ dâi",
-                      "translation": "Dann braucht Min eben kein Gemüse.",
+                      "translation": "Dann braucht Min eben kein Gem?se.",
                       "tokens": [
                         {
+                          "id": "l1-b4-s1757-t1",
                           "text": "งั้น",
                           "kind": "word",
-                          "id": "l1-b4-s1757-t1",
                           "wordId": "word-b2-ngan"
                         },
                         {
+                          "id": "l1-b4-s1757-t2",
                           "text": "มิน",
                           "kind": "word",
-                          "id": "l1-b4-s1757-t2",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
+                          "id": "l1-b4-s1757-t3",
                           "text": "ไม่",
                           "kind": "word",
-                          "id": "l1-b4-s1757-t3",
                           "wordId": "word-b2-mai"
                         },
                         {
+                          "id": "l1-b4-s1757-t4",
                           "text": "เอา",
                           "kind": "word",
-                          "id": "l1-b4-s1757-t4",
                           "wordId": "word-b2-ngan-ao-naam-rn-khrap"
                         },
                         {
+                          "id": "l1-b4-s1757-t5",
                           "text": "ผัก",
                           "kind": "word",
-                          "id": "l1-b4-s1757-t5",
                           "wordId": "word-b2-phak-2"
                         },
                         {
-                          "text": "ก็",
-                          "kind": "word",
                           "id": "l1-b4-s1757-t6",
-                          "wordId": "word-b2-kao-g-mai-bpai"
-                        },
-                        {
-                          "text": "ได้",
+                          "text": "ก็ได้",
                           "kind": "word",
-                          "id": "l1-b4-s1757-t7",
-                          "wordId": "word-b2-phrung-nii-g-bpai-dai"
+                          "wordId": "word-b4-ko-dai",
+                          "contextMeaning": "geht auch / okay"
                         }
                       ],
                       "audio": {
@@ -77844,7 +77831,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1758-t3",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "อยู่",
@@ -78106,7 +78094,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1764-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "ครับ",
@@ -78372,7 +78361,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1771-t1",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": " ",
@@ -78649,7 +78638,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1778-t3",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "อยาก",
@@ -78682,7 +78671,7 @@
                       "numberInStory": 9,
                       "thai": "ฉันก็อยากดื่มเหมือนกัน",
                       "transliteration": "chǎn gɔ̂ɔ yàak dʉ̀ʉm mʉ̌ʉan-kan",
-                      "translation": "Ich möchte auch einen trinken.",
+                      "translation": "Ich m?chte auch einen trinken.",
                       "tokens": [
                         {
                           "text": "ฉัน",
@@ -79294,7 +79283,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1794-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "ครับ",
@@ -79645,7 +79635,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1802-t2",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "ครับ",
@@ -80252,7 +80243,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1817-t1",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "ก็",
@@ -81031,7 +81022,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1836-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "ครับ",
@@ -81414,7 +81406,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1845-t2",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "ไหม",
@@ -81475,7 +81467,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1847-t2",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "รู้",
@@ -81580,49 +81572,44 @@
                       "numberInStory": 10,
                       "thai": "เดี๋ยวฉันบอกอีกครั้งก็ได้",
                       "transliteration": "dǐao chǎn bɔ̀ɔk ìik khráng gɔ̂ɔ dâi",
-                      "translation": "Ich kann es ihr später noch einmal sagen.",
+                      "translation": "Ich kann es ihr sp?ter noch einmal sagen.",
                       "tokens": [
                         {
+                          "id": "l1-b4-s1850-t1",
                           "text": "เดี๋ยว",
                           "kind": "word",
-                          "id": "l1-b4-s1850-t1",
                           "wordId": "word-b2-d-ao"
                         },
                         {
+                          "id": "l1-b4-s1850-t2",
                           "text": "ฉัน",
                           "kind": "word",
-                          "id": "l1-b4-s1850-t2",
                           "wordId": "word-b2-chan-nk-waa-khun-bpai"
                         },
                         {
+                          "id": "l1-b4-s1850-t3",
                           "text": "บอก",
                           "kind": "word",
-                          "id": "l1-b4-s1850-t3",
                           "wordId": "word-b2-bk"
                         },
                         {
+                          "id": "l1-b4-s1850-t4",
                           "text": "อีก",
                           "kind": "word",
-                          "id": "l1-b4-s1850-t4",
                           "wordId": "word-b2-khrap-iik-nit-diao"
                         },
                         {
+                          "id": "l1-b4-s1850-t5",
                           "text": "ครั้ง",
                           "kind": "word",
-                          "id": "l1-b4-s1850-t5",
                           "wordId": "word-b4-khrang"
                         },
                         {
-                          "text": "ก็",
-                          "kind": "word",
                           "id": "l1-b4-s1850-t6",
-                          "wordId": "word-b2-kao-g-mai-bpai"
-                        },
-                        {
-                          "text": "ได้",
+                          "text": "ก็ได้",
                           "kind": "word",
-                          "id": "l1-b4-s1850-t7",
-                          "wordId": "word-b2-phrung-nii-g-bpai-dai"
+                          "wordId": "word-b4-ko-dai",
+                          "contextMeaning": "geht auch / okay"
                         }
                       ],
                       "audio": {
@@ -81828,7 +81815,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1855-t2",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "เหรอ",
@@ -82927,7 +82915,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1881-t6",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "ไหม",
@@ -82954,7 +82942,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1882-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "นะ",
@@ -82982,7 +82971,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1883-t1",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "หา",
@@ -83054,7 +83043,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1885-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": " ",
@@ -83066,7 +83056,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1885-t3",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "ดู",
@@ -83138,7 +83128,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1887-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         }
                       ],
                       "audio": {
@@ -83553,7 +83544,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1898-t2",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "ค่ะ",
@@ -84244,38 +84236,33 @@
                       "numberInStory": 3,
                       "thai": "งั้นมินรอก็ได้",
                       "transliteration": "ngán Min rɔɔ gɔ̂ɔ dâi",
-                      "translation": "Dann kann Min warten.",
+                      "translation": "Dann ist es okay, wenn Min wartet.",
                       "tokens": [
                         {
+                          "id": "l1-b4-s1913-t1",
                           "text": "งั้น",
                           "kind": "word",
-                          "id": "l1-b4-s1913-t1",
                           "wordId": "word-b2-ngan"
                         },
                         {
+                          "id": "l1-b4-s1913-t2",
                           "text": "มิน",
                           "kind": "word",
-                          "id": "l1-b4-s1913-t2",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
+                          "id": "l1-b4-s1913-t3",
                           "text": "รอ",
                           "kind": "word",
-                          "id": "l1-b4-s1913-t3",
                           "wordId": "word-b2-r"
                         },
                         {
-                          "text": "ก็",
-                          "kind": "word",
                           "id": "l1-b4-s1913-t4",
-                          "wordId": "word-b2-kao-g-mai-bpai"
-                        },
-                        {
-                          "text": "ได้",
+                          "text": "ก็ได้",
                           "kind": "word",
-                          "id": "l1-b4-s1913-t5",
-                          "wordId": "word-b2-phrung-nii-g-bpai-dai"
+                          "wordId": "word-b4-ko-dai",
+                          "contextMeaning": "geht auch / okay"
                         }
                       ],
                       "audio": {
@@ -84347,7 +84334,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1915-t3",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "มี",
@@ -84387,7 +84374,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1916-t2",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "ไม่",
@@ -84528,7 +84515,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1919-t6",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "นะ",
@@ -84722,7 +84709,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1924-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "แล้ว",
@@ -84866,7 +84854,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1928-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "แล้ว",
@@ -85295,34 +85284,29 @@
                       "translation": "Ich kann es auch selbst tragen.",
                       "tokens": [
                         {
+                          "id": "l1-b4-s1939-t1",
                           "text": "ผม",
                           "kind": "word",
-                          "id": "l1-b4-s1939-t1",
                           "wordId": "word-phom"
                         },
                         {
+                          "id": "l1-b4-s1939-t2",
                           "text": "ถือ",
                           "kind": "word",
-                          "id": "l1-b4-s1939-t2",
                           "wordId": "word-b2-th"
                         },
                         {
+                          "id": "l1-b4-s1939-t3",
                           "text": "เอง",
                           "kind": "word",
-                          "id": "l1-b4-s1939-t3",
                           "wordId": "word-b3-eeng"
                         },
                         {
-                          "text": "ก็",
-                          "kind": "word",
                           "id": "l1-b4-s1939-t4",
-                          "wordId": "word-b2-kao-g-mai-bpai"
-                        },
-                        {
-                          "text": "ได้",
+                          "text": "ก็ได้",
                           "kind": "word",
-                          "id": "l1-b4-s1939-t5",
-                          "wordId": "word-b2-phrung-nii-g-bpai-dai"
+                          "wordId": "word-b4-ko-dai",
+                          "contextMeaning": "geht auch / okay"
                         }
                       ],
                       "audio": {
@@ -85588,7 +85572,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1946-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "ค่ะ",
@@ -85969,7 +85954,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1953-t3",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "เหรอ",
@@ -85996,7 +85982,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1954-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": " ",
@@ -86040,43 +86027,38 @@
                       "numberInStory": 5,
                       "thai": "งั้นเรากลับก่อนก็ได้",
                       "transliteration": "ngán rao glàp gɔ̀ɔn gɔ̂ɔ dâi",
-                      "translation": "Dann können wir schon mal zurückgehen.",
+                      "translation": "Dann k?nnen wir schon mal zur?ckgehen.",
                       "tokens": [
                         {
+                          "id": "l1-b4-s1955-t1",
                           "text": "งั้น",
                           "kind": "word",
-                          "id": "l1-b4-s1955-t1",
                           "wordId": "word-b2-ngan"
                         },
                         {
+                          "id": "l1-b4-s1955-t2",
                           "text": "เรา",
                           "kind": "word",
-                          "id": "l1-b4-s1955-t2",
                           "wordId": "word-rao"
                         },
                         {
+                          "id": "l1-b4-s1955-t3",
                           "text": "กลับ",
                           "kind": "word",
-                          "id": "l1-b4-s1955-t3",
                           "wordId": "word-b2-glap"
                         },
                         {
+                          "id": "l1-b4-s1955-t4",
                           "text": "ก่อน",
                           "kind": "word",
-                          "id": "l1-b4-s1955-t4",
                           "wordId": "word-b2-ngan-ao-naam-gn"
                         },
                         {
-                          "text": "ก็",
-                          "kind": "word",
                           "id": "l1-b4-s1955-t5",
-                          "wordId": "word-b2-kao-g-mai-bpai"
-                        },
-                        {
-                          "text": "ได้",
+                          "text": "ก็ได้",
                           "kind": "word",
-                          "id": "l1-b4-s1955-t6",
-                          "wordId": "word-b2-phrung-nii-g-bpai-dai"
+                          "wordId": "word-b4-ko-dai",
+                          "contextMeaning": "geht auch / okay"
                         }
                       ],
                       "audio": {
@@ -86169,7 +86151,7 @@
                       "numberInStory": 8,
                       "thai": "มี แต่ไม่รู้ว่าเหลืออะไรบ้าง",
                       "transliteration": "mii tɛ̀ɛ mâi rúu wâa lʉ̌a à-rai bâang",
-                      "translation": "Ja, aber ich weiß nicht, was noch übrig ist.",
+                      "translation": "Ja, aber ich wei? nicht, was noch ?brig ist.",
                       "tokens": [
                         {
                           "text": "มี",
@@ -86388,7 +86370,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1962-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "นะ",
@@ -86812,7 +86795,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1972-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "ค่ะ",
@@ -87185,7 +87169,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1981-t1",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "อยู่",
@@ -87252,7 +87236,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1983-t1",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "อยู่",
@@ -87349,7 +87333,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1985-t5",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "ไหม",
@@ -87376,7 +87360,8 @@
                           "text": "ไม่มี",
                           "kind": "word",
                           "id": "l1-b4-s1986-t1",
-                          "wordId": "word-b4-mai-mii"
+                          "wordId": "word-b4-mai-mii",
+                          "contextMeaning": "nicht haben / kein"
                         },
                         {
                           "text": "ค่ะ",
@@ -87394,7 +87379,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1986-t4",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "อยู่",
@@ -87424,34 +87409,29 @@
                       "translation": "Dann kann Tante warten.",
                       "tokens": [
                         {
+                          "id": "l1-b4-s1987-t1",
                           "text": "งั้น",
                           "kind": "word",
-                          "id": "l1-b4-s1987-t1",
                           "wordId": "word-b2-ngan"
                         },
                         {
+                          "id": "l1-b4-s1987-t2",
                           "text": "ป้า",
                           "kind": "word",
-                          "id": "l1-b4-s1987-t2",
                           "wordId": "word-b4-bpaa"
                         },
                         {
+                          "id": "l1-b4-s1987-t3",
                           "text": "รอ",
                           "kind": "word",
-                          "id": "l1-b4-s1987-t3",
                           "wordId": "word-b2-r"
                         },
                         {
-                          "text": "ก็",
-                          "kind": "word",
                           "id": "l1-b4-s1987-t4",
-                          "wordId": "word-b2-kao-g-mai-bpai"
-                        },
-                        {
-                          "text": "ได้",
+                          "text": "ก็ได้",
                           "kind": "word",
-                          "id": "l1-b4-s1987-t5",
-                          "wordId": "word-b2-phrung-nii-g-bpai-dai"
+                          "wordId": "word-b4-ko-dai",
+                          "contextMeaning": "geht auch / okay"
                         }
                       ],
                       "audio": {
@@ -87491,7 +87471,7 @@
                           "kind": "word",
                           "id": "l1-b4-s1988-t4",
                           "wordId": "word-b4-min",
-                          "contextMeaning": "Min"
+                          "contextMeaning": "Min (Name)"
                         },
                         {
                           "text": "ให้",
@@ -87748,33 +87728,28 @@
                       "translation": "Erzähl es einfach langsam.",
                       "tokens": [
                         {
+                          "id": "l1-b4-s1993-t1",
                           "text": "ค่อยๆ",
                           "kind": "word",
-                          "id": "l1-b4-s1993-t1",
                           "wordId": "word-b2-chai-khrap-khi-khi-bpai-g-dai"
                         },
                         {
+                          "id": "l1-b4-s1993-t2",
                           "text": " ",
-                          "kind": "space",
-                          "id": "l1-b4-s1993-t2"
+                          "kind": "space"
                         },
                         {
+                          "id": "l1-b4-s1993-t3",
                           "text": "เล่า",
                           "kind": "word",
-                          "id": "l1-b4-s1993-t3",
                           "wordId": "word-b4-lao"
                         },
                         {
-                          "text": "ก็",
-                          "kind": "word",
                           "id": "l1-b4-s1993-t4",
-                          "wordId": "word-b2-kao-g-mai-bpai"
-                        },
-                        {
-                          "text": "ได้",
+                          "text": "ก็ได้",
                           "kind": "word",
-                          "id": "l1-b4-s1993-t5",
-                          "wordId": "word-b2-phrung-nii-g-bpai-dai"
+                          "wordId": "word-b4-ko-dai",
+                          "contextMeaning": "geht auch / okay"
                         }
                       ],
                       "audio": {
@@ -88244,7 +88219,8 @@
       "meanings": [
         "Fragepartikel"
       ],
-      "firstSentenceId": "l1-b1-s021"
+      "firstSentenceId": "l1-b1-s021",
+      "note": "Verwendet am Satzende, um eine Ja-/Nein-Frage zu bilden."
     },
     {
       "id": "word-chai",
@@ -89690,7 +89666,8 @@
       "meanings": [
         "müssen"
       ],
-      "firstSentenceId": "l1-b2-s784"
+      "firstSentenceId": "l1-b2-s784",
+      "note": "?m?ssen / n?tig sein?; dr?ckt Pflicht oder Notwendigkeit aus."
     },
     {
       "id": "word-b2-tham-mai-thaam-bp-nan",
@@ -90224,7 +90201,8 @@
       "meanings": [
         "haben / es gibt"
       ],
-      "firstSentenceId": "l1-b2-s746"
+      "firstSentenceId": "l1-b2-s746",
+      "note": "?haben / es gibt?; bezeichnet das Vorhandensein oder Verf?gbarkeit von etwas."
     },
     {
       "id": "word-b2-yang-mai-nn",
@@ -92970,9 +92948,11 @@
       "thai": "ไม่มี",
       "transliteration": "mâi mii",
       "meanings": [
-        "nicht haben / es gibt nicht"
+        "nicht haben / kein",
+        "es gibt nicht / nicht vorhanden"
       ],
-      "firstSentenceId": "l1-b4-s1516"
+      "firstSentenceId": "l1-b4-s1516",
+      "note": "Im Satz bedeutet es ?es gibt nicht / kein ...?; oft ist das Objekt nach dem Satz oder im Kontext gemeint."
     },
     {
       "id": "word-b4-bat",
@@ -93177,10 +93157,11 @@
       "thai": "มิน",
       "transliteration": "Min",
       "meanings": [
-        "weiblich",
-        "Min"
+        "Min (Name)",
+        "weiblicher Name / Min"
       ],
-      "firstSentenceId": "l1-b4-s1711"
+      "firstSentenceId": "l1-b4-s1711",
+      "note": "Eigenname im Kontext; hier nicht als Adjektiv ?weiblich?, sondern als Personenname."
     },
     {
       "id": "word-b4-khuat",
@@ -93196,10 +93177,11 @@
       "thai": "ยาย",
       "transliteration": "yaai",
       "meanings": [
-        "Oma, mütterlicherseits",
-        "Oma (mütterlicherseits)"
+        "Oma (m?tterlicherseits)",
+        "Gro?mutter"
       ],
-      "firstSentenceId": "l1-b4-s1731"
+      "firstSentenceId": "l1-b4-s1731",
+      "note": "Als Anrede ?Oma?; im Familienkontext oft m?tterlicherseits gemeint."
     },
     {
       "id": "word-b4-bpaa",
@@ -93560,6 +93542,28 @@
         "unter"
       ],
       "firstSentenceId": "l1-b4-s1998"
+    },
+    {
+      "id": "word-b4-ko-dai",
+      "thai": "ก็ได้",
+      "transliteration": "kɔ̂ɔ dâi",
+      "meanings": [
+        "okay / geht auch",
+        "kann / darf / m?glich"
+      ],
+      "firstSentenceId": "l1-b4-s1649",
+      "note": "Feste Wendung: ?geht auch / okay? oder ?kann / darf? je nach Satzkontext."
+    },
+    {
+      "id": "word-b4-mai-dai",
+      "thai": "ไม่ได้",
+      "transliteration": "mâi dâi",
+      "meanings": [
+        "nicht tun / nicht machen",
+        "nicht k?nnen / nicht m?glich"
+      ],
+      "firstSentenceId": "l1-b4-s1702",
+      "note": "Hier oft ?nicht tun / nicht machen? oder ?nicht k?nnen?, je nachdem, was im Verb folgt."
     }
   ],
   "archivedIds": []

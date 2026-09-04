@@ -52,6 +52,7 @@
     let activeSentenceId = "";
     let activeBossId = "";
     let dictionaryAnchor = null;
+    let dictionaryDrag = null;
     let speedreadingReturnFocus = null;
     const DICTIONARY_VOICE_STORAGE_KEY = "thaiGigaDrill:v1:dictionary-voice";
 
@@ -1565,11 +1566,75 @@
 
     function closeDictionary() {
         dictionaryAnchor = null;
+        dictionaryDrag = null;
         elements.dictionary.hidden = true;
         elements.dictionary.removeAttribute("aria-labelledby");
         elements.dictionary.style.removeProperty("left");
         elements.dictionary.style.removeProperty("top");
+        elements.dictionary.classList.remove("is-dragging");
     }
+
+    function clampDictionaryPosition(left, top) {
+        if (!elements.dictionary) {
+            return { left, top };
+        }
+
+        const dictionaryRect = elements.dictionary.getBoundingClientRect();
+        const margin = 16;
+        const maxLeft = window.innerWidth - dictionaryRect.width - margin;
+        const maxTop = window.innerHeight - dictionaryRect.height - margin;
+
+        return {
+            left: Math.min(Math.max(left, margin), Math.max(margin, maxLeft)),
+            top: Math.min(Math.max(top, margin), Math.max(margin, maxTop))
+        };
+    }
+
+    function beginDictionaryDrag(event) {
+        if (!elements.dictionary || elements.dictionary.hidden) {
+            return;
+        }
+        if (event.target.closest("button, summary, input, select, textarea, a")) {
+            return;
+        }
+
+        const rect = elements.dictionary.getBoundingClientRect();
+        dictionaryDrag = {
+            offsetX: event.clientX - rect.left,
+            offsetY: event.clientY - rect.top
+        };
+        elements.dictionary.classList.add("is-dragging");
+        event.preventDefault();
+    }
+
+    function moveDictionaryDrag(event) {
+        if (!dictionaryDrag || !elements.dictionary) {
+            return;
+        }
+
+        const nextPosition = clampDictionaryPosition(
+            event.clientX - dictionaryDrag.offsetX,
+            event.clientY - dictionaryDrag.offsetY
+        );
+        elements.dictionary.style.left = `${nextPosition.left}px`;
+        elements.dictionary.style.top = `${nextPosition.top}px`;
+    }
+
+    function endDictionaryDrag() {
+        if (!elements.dictionary) {
+            return;
+        }
+        dictionaryDrag = null;
+        elements.dictionary.classList.remove("is-dragging");
+    }
+
+    window.addEventListener("pointermove", event => {
+        if (dictionaryDrag) {
+            moveDictionaryDrag(event);
+        }
+    });
+    window.addEventListener("pointerup", endDictionaryDrag);
+    window.addEventListener("pointercancel", endDictionaryDrag);
 
     function positionDictionary() {
         if (!dictionaryAnchor || elements.dictionary.hidden) {
@@ -1604,6 +1669,10 @@
 
         dictionaryAnchor = anchor;
         const sentenceIds = indexes.sentenceIdsByWordId.get(wordId) || [];
+        const meaningText = word.meanings.length > 0
+            ? word.meanings.join(" / ")
+            : "Keine deutsche Bedeutung hinterlegt.";
+
         elements.dictionary.innerHTML = `
             <div class="thai-giga-dictionary-header">
                 <p class="thai-giga-eyebrow">Wörterbuch</p>
@@ -1627,8 +1696,10 @@
                 `
                 : ""}
             <div class="thai-giga-dictionary-meaning">
-                <strong>Grundbedeutung:</strong>
-                ${word.meanings.map(meaning => `<div>${escapeHtml(meaning)}</div>`).join("")}
+                <div class="thai-giga-dictionary-meaning-header">DEUTSCHE BEDEUTUNG</div>
+                <div class="thai-giga-dictionary-meaning-body">
+                    <p class="thai-giga-dictionary-meaning-text">${escapeHtml(meaningText)}</p>
+                </div>
             </div>
             <details class="thai-giga-dictionary-examples">
                 <summary>Beispiele in ${sentenceIds.length} Sätzen</summary>
@@ -1637,10 +1708,16 @@
                         const sentence = indexes.sentencesById.get(sentenceId);
                         const story = indexes.storiesById.get(sentence.storyId);
                         return `
-                            <button class="thai-giga-dictionary-sentence"
-                                    type="button"
-                                    data-dictionary-sentence="${escapeHtml(sentenceId)}">
-                                ${escapeHtml(story.title)} · Satz ${sentence.numberInStory}
+                            <button
+                                class="thai-giga-dictionary-example"
+                                type="button"
+                                data-dictionary-sentence="${escapeHtml(sentenceId)}">
+                                <span class="thai-giga-dictionary-example-thai" lang="th">
+                                    ${renderSentenceTokenMarkup(sentence, false)}
+                                </span>
+                                <span class="thai-giga-dictionary-example-translation">
+                                    ${escapeHtml(sentence.translation)}
+                                </span>
                             </button>
                         `;
                     }).join("")}
@@ -1649,6 +1726,10 @@
         `;
         elements.dictionary.hidden = false;
         positionDictionary();
+        elements.dictionary.onpointerdown = beginDictionaryDrag;
+        elements.dictionary.onpointermove = moveDictionaryDrag;
+        elements.dictionary.onpointerup = endDictionaryDrag;
+        elements.dictionary.onpointercancel = endDictionaryDrag;
 
         elements.dictionary
             .querySelectorAll("[data-dictionary-sentence]")
@@ -1773,6 +1854,15 @@
     elements.dictionary?.addEventListener("click", event => {
         if (event.target.closest(".thai-giga-dictionary-close")) {
             closeDictionary();
+        }
+    });
+    document.addEventListener("pointerdown", event => {
+        if (elements.dictionary && !elements.dictionary.hidden) {
+            const clickedInsideDictionary = elements.dictionary.contains(event.target);
+            const clickedOnAnchor = dictionaryAnchor && dictionaryAnchor.contains(event.target);
+            if (!clickedInsideDictionary && !clickedOnAnchor) {
+                closeDictionary();
+            }
         }
     });
     elements.wordDictionaryBossFilter?.addEventListener(
