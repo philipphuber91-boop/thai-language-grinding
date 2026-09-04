@@ -432,6 +432,7 @@ module.exports = async function handler(request, response) {
             .setHeader("Content-Type", result.audio.contentType)
             .setHeader("Cache-Control", "private, max-age=31536000")
             .setHeader("X-TTS-Cache", result.cacheStatus)
+            .setHeader("X-TTS-Cache-Source", result.source)
             .end(result.audio.audio);
     }
 };
