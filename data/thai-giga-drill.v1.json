@@ -4349,7 +4349,7 @@
                       {
                         "thai": "ผม",
                         "transliteration": "phǒm",
-                        "translation": "ich / mich"
+                        "translation": "ich"
                       },
                       {
                         "thai": "เป็น",
@@ -4379,22 +4379,22 @@
                       {
                         "thai": "ครู",
                         "transliteration": "khruu",
-                        "translation": "Lehrer / Lehrerin"
+                        "translation": "Lehrer"
                       },
                       {
                         "thai": "นักเรียน",
                         "transliteration": "nák-rian",
-                        "translation": "Schüler / Schülerin"
+                        "translation": "Schüler"
                       },
                       {
                         "thai": "เป็นเพื่อน",
                         "transliteration": "bpen phʉ̂an",
-                        "translation": "Freunde sein / befreundet sein"
+                        "translation": "Freunde sein"
                       },
                       {
                         "thai": "คนไทย",
                         "transliteration": "khon Thai",
-                        "translation": "Thailänder / Thailänderin"
+                        "translation": "Thailänder"
                       },
                       {
                         "thai": "ไหม",
@@ -4404,37 +4404,37 @@
                       {
                         "thai": "ใช่",
                         "transliteration": "châi",
-                        "translation": "ja / richtig / stimmt"
+                        "translation": "ja / stimmt"
                       },
                       {
                         "thai": "ครับ",
                         "transliteration": "khráp",
-                        "translation": "Höflichkeitspartikel (männlich)"
+                        "translation": "Höflichkeit (m)"
                       },
                       {
                         "thai": "ค่ะ",
                         "transliteration": "khâ",
-                        "translation": "Höflichkeitspartikel (weiblich, Aussage)"
+                        "translation": "Höflichkeit (w)"
                       },
                       {
                         "thai": "ไม่ใช่",
                         "transliteration": "mâi châi",
-                        "translation": "nicht sein / nein"
+                        "translation": "nein / nicht sein"
                       },
                       {
                         "thai": "คนเยอรมัน",
                         "transliteration": "khon yoeraman",
-                        "translation": "Deutscher / Deutsche"
+                        "translation": "Deutscher"
                       },
                       {
                         "thai": "สวัสดี",
                         "transliteration": "sà-wàt-dii",
-                        "translation": "Hallo / Guten Tag"
+                        "translation": "Hallo"
                       },
                       {
                         "thai": "คะ",
                         "transliteration": "khá",
-                        "translation": "Höflichkeitspartikel (weiblich, Frage)"
+                        "translation": "Fragepartikel (w)"
                       },
                       {
                         "thai": "อ๋อ",
@@ -4486,7 +4486,7 @@
                       {
                         "thai": "หมอ",
                         "transliteration": "mɔ̌ɔ",
-                        "translation": "Arzt / Ärztin"
+                        "translation": "Arzt"
                       }
                     ],
                     "note": "In diesem zweiten 50er-Fenster kamen gezielte Personenfragen mit ใคร dazu."
@@ -9149,7 +9149,7 @@
                       {
                         "thai": "เหรอ",
                         "transliteration": "rǒ̌",
-                        "translation": "wirklich? / echt? (Fragepartikel)"
+                        "translation": "wirklich? / echt?"
                       },
                       {
                         "thai": "กัน",
@@ -13760,7 +13760,7 @@
                       {
                         "thai": "เข้าใจ",
                         "transliteration": "khâo-jai",
-                        "translation": "verstehen / begreifen"
+                        "translation": "verstehen"
                       }
                     ],
                     "note": "Das neue Wort เข้าใจ schließt Gespräche natürlich ab (อ๋อ เข้าใจแล้ว)."
@@ -18757,17 +18757,17 @@
                       {
                         "thai": "พนักงาน",
                         "transliteration": "phá-nák-ngaan",
-                        "translation": "Mitarbeiter / Angestellter"
+                        "translation": "Mitarbeiter"
                       },
                       {
                         "thai": "ลูกค้า",
                         "transliteration": "lûuk-kháa",
-                        "translation": "Kunde / Kundin"
+                        "translation": "Kunde"
                       },
                       {
                         "thai": "ตำรวจ",
                         "transliteration": "tam-rùat",
-                        "translation": "Polizist / Polizistin"
+                        "translation": "Polizist"
                       },
                       {
                         "thai": "นักท่องเที่ยว",
@@ -18777,12 +18777,12 @@
                       {
                         "thai": "คนจีน",
                         "transliteration": "khon jiin",
-                        "translation": "Chinese / Chinesin"
+                        "translation": "Chinese"
                       },
                       {
                         "thai": "คนญี่ปุ่น",
                         "transliteration": "khon yîi-pùn",
-                        "translation": "Japaner / Japanerin"
+                        "translation": "Japaner"
                       },
                       {
                         "thai": "พ่อ",
@@ -18792,7 +18792,7 @@
                       {
                         "thai": "เธอ",
                         "transliteration": "thəə",
-                        "translation": "sie (3. Pers.) / du"
+                        "translation": "sie / du"
                       },
                       {
                         "thai": "แม่",
@@ -18802,12 +18802,12 @@
                       {
                         "thai": "พี่",
                         "transliteration": "phîi",
-                        "translation": "älteres Geschwister / älterer Bruder"
+                        "translation": "älterer Bruder / älteres Geschwister"
                       },
                       {
                         "thai": "น้อง",
                         "transliteration": "nóng",
-                        "translation": "jüngeres Geschwister / jüngerer Bruder"
+                        "translation": "jüngerer Bruder / jüngeres Geschwister"
                       }
                     ],
                     "note": "Familienmitglieder, neue Berufsgruppen und Herkunftsländer im Gespräch."
@@ -18849,22 +18849,22 @@
                       {
                         "thai": "จริง",
                         "transliteration": "jing",
-                        "translation": "wirklich / tatsächlich"
+                        "translation": "wirklich / echt"
                       },
                       {
                         "thai": "พ่อครัว",
                         "transliteration": "phɔ̂ɔ-khrua",
-                        "translation": "Koch / Köchin"
+                        "translation": "Koch"
                       },
                       {
                         "thai": "นักข่าว",
                         "transliteration": "nák-khàao",
-                        "translation": "Journalist / Journalistin"
+                        "translation": "Journalist"
                       },
                       {
                         "thai": "ช่าง",
                         "transliteration": "châang",
-                        "translation": "Handwerker / Techniker"
+                        "translation": "Handwerker"
                       },
                       {
                         "thai": "และ",
@@ -23994,12 +23994,12 @@
                       {
                         "thai": "นี่",
                         "transliteration": "nîi",
-                        "translation": "dies / das hier / hier"
+                        "translation": "das hier / hier"
                       },
                       {
                         "thai": "บ้าน",
                         "transliteration": "bâan",
-                        "translation": "Haus / nach Hause"
+                        "translation": "Haus"
                       },
                       {
                         "thai": "ใหญ่",
@@ -24009,7 +24009,7 @@
                       {
                         "thai": "ห้อง",
                         "transliteration": "hɔ̂ng",
-                        "translation": "Zimmer / Raum"
+                        "translation": "Zimmer"
                       },
                       {
                         "thai": "เล็ก",
@@ -24019,7 +24019,7 @@
                       {
                         "thai": "นี้",
                         "transliteration": "níi",
-                        "translation": "dies / diese(s)"
+                        "translation": "dieses"
                       },
                       {
                         "thai": "ใหม่",
@@ -24034,7 +24034,7 @@
                       {
                         "thai": "ที่",
                         "transliteration": "thîi",
-                        "translation": "bei / an / in"
+                        "translation": "an / bei"
                       },
                       {
                         "thai": "ที่นี่",
@@ -24049,7 +24049,7 @@
                       {
                         "thai": "ร้าน",
                         "transliteration": "ráan",
-                        "translation": "Laden / Geschäft / Restaurant"
+                        "translation": "Laden / Lokal"
                       },
                       {
                         "thai": "แต่",
@@ -24059,7 +24059,7 @@
                       {
                         "thai": "อาหาร",
                         "transliteration": "aa-hǎan",
-                        "translation": "Essen / Gericht"
+                        "translation": "Essen"
                       },
                       {
                         "thai": "ข้าว",
@@ -24069,7 +24069,7 @@
                       {
                         "thai": "ไทย",
                         "transliteration": "Thai",
-                        "translation": "Thailand / thailändisch"
+                        "translation": "thailändisch"
                       },
                       {
                         "thai": "น้ำ",
@@ -24094,17 +24094,17 @@
                       {
                         "thai": "ของ",
                         "transliteration": "khɔ̌ɔng",
-                        "translation": "von / gehören zu"
+                        "translation": "gehören zu / von"
                       },
                       {
                         "thai": "บริษัท",
                         "transliteration": "bɔɔ-rí-sàt",
-                        "translation": "Firma / Unternehmen"
+                        "translation": "Firma"
                       },
                       {
                         "thai": "คนทำงาน",
                         "transliteration": "khon tham-ngaan",
-                        "translation": "berufstätige Person / Arbeiter"
+                        "translation": "Berufstätiger"
                       },
                       {
                         "thai": "โรงพยาบาล",
@@ -24119,7 +24119,7 @@
                       {
                         "thai": "ไกด์",
                         "transliteration": "gài",
-                        "translation": "Reiseleiter / Guide"
+                        "translation": "Reiseleiter"
                       },
                       {
                         "thai": "โรงแรม",
@@ -24161,7 +24161,7 @@
                       {
                         "thai": "แฟน",
                         "transliteration": "fɛɛn",
-                        "translation": "Partner/in (Freund/Freundin)"
+                        "translation": "Partner / Freund(in)"
                       },
                       {
                         "thai": "ภรรยา",
@@ -24201,7 +24201,7 @@
                       {
                         "thai": "ตอนนี้",
                         "transliteration": "ton-níi",
-                        "translation": "jetzt / im Moment"
+                        "translation": "jetzt"
                       },
                       {
                         "thai": "ที่นั่น",
@@ -24211,12 +24211,12 @@
                       {
                         "thai": "เฮ้ย",
                         "transliteration": "hə́əi",
-                        "translation": "Hey! (Ausruf)"
+                        "translation": "Hey!"
                       },
                       {
                         "thai": "นะ",
                         "transliteration": "ná",
-                        "translation": "weicher Satzpartikel (Bestätigung)"
+                        "translation": "ja? (weicher Partikel)"
                       }
                     ],
                     "note": "Partnerschaft, Kernfamilie, zeitliche Einordnung mit ตอนนี้ und echte Umgangssprache."
@@ -94758,7 +94758,7 @@
       "thai": "ผม",
       "transliteration": "phǒm",
       "meanings": [
-        "ich / mich / mein"
+        "ich"
       ],
       "firstSentenceId": "l1-b1-s001",
       "bossContexts": {
@@ -98764,7 +98764,7 @@
       "thai": "คน",
       "transliteration": "khon",
       "meanings": [
-        "Person / Mensch / Leute"
+        "Person / Mensch"
       ],
       "firstSentenceId": "l1-b1-s001",
       "bossContexts": {
@@ -99072,7 +99072,7 @@
       "thai": "คุณ",
       "transliteration": "khun",
       "meanings": [
-        "du / Sie / dein / Ihr"
+        "du / Sie"
       ],
       "firstSentenceId": "l1-b1-s002",
       "bossContexts": {
@@ -100477,7 +100477,7 @@
       "thai": "เขา",
       "transliteration": "kǎo",
       "meanings": [
-        "er / sie / sein / ihr"
+        "er / sie"
       ],
       "firstSentenceId": "l1-b1-s003",
       "bossContexts": {
@@ -102173,7 +102173,7 @@
       "thai": "เรา",
       "transliteration": "rao",
       "meanings": [
-        "wir / uns / unser"
+        "wir"
       ],
       "firstSentenceId": "l1-b1-s004",
       "bossContexts": {
@@ -107961,7 +107961,7 @@
       "thai": "ครับ",
       "transliteration": "khráp",
       "meanings": [
-        "männlicher Höflichkeitspartikel"
+        "Höflichkeitspartikel (m)"
       ],
       "firstSentenceId": "l1-b1-s022",
       "bossContexts": {
@@ -109818,7 +109818,7 @@
       "thai": "ค่ะ",
       "transliteration": "khâ",
       "meanings": [
-        "weiblicher Höflichkeitspartikel in Aussagen"
+        "Höflichkeitspartikel (w)"
       ],
       "firstSentenceId": "l1-b1-s026",
       "bossContexts": {
@@ -110804,7 +110804,7 @@
       "thai": "คะ",
       "transliteration": "ká",
       "meanings": [
-        "weiblicher Höflichkeitspartikel in Fragen"
+        "Fragepartikel (w)"
       ],
       "firstSentenceId": "l1-b1-s042",
       "bossContexts": {
@@ -112344,7 +112344,8 @@
       "thai": "แล้ว",
       "transliteration": "lɛ́ɛo",
       "meanings": [
-        "dann / und / schon / bereits / nicht mehr / jetzt / doch"
+        "und / dann",
+        "schon / bereits"
       ],
       "firstSentenceId": "l1-b1-s049",
       "bossContexts": {
@@ -114480,7 +114481,8 @@
       "thai": "เหรอ",
       "transliteration": "rǒ̌",
       "meanings": [
-        "etwa? / wirklich? / echt? / oder wie? / oder was? (Fragepartikel)"
+        "wirklich?",
+        "echt?"
       ],
       "infoSentence": "Informelle Satzendpartikel; die deutsche Wiedergabe hängt von Ton und Kontext ab: „wirklich?“, „echt?“, „etwa?“ oder „oder wie / oder was?“.",
       "firstSentenceId": "l1-b1-s120",
@@ -118176,7 +118178,7 @@
       "thai": "นี้",
       "transliteration": "níi",
       "meanings": [
-        "dies / diese(s) / dieser / hier"
+        "dies / diese(s)"
       ],
       "firstSentenceId": "l1-b1-s409",
       "bossContexts": {
@@ -118631,7 +118633,7 @@
       "thai": "ที่",
       "transliteration": "thîi",
       "meanings": [
-        "bei / an / in / was / wenn"
+        "an / bei / in"
       ],
       "firstSentenceId": "l1-b1-s413",
       "bossContexts": {
@@ -123154,7 +123156,8 @@
       "thai": "ก็",
       "transliteration": "gɔ̂ɔ",
       "meanings": [
-        "dann / also / auch / eben / schon / deshalb / okay / wohl / und"
+        "auch / dann",
+        "eben / also"
       ],
       "firstSentenceId": "l1-b2-s510",
       "bossContexts": {
@@ -124460,7 +124463,7 @@
       "thai": "ค่อย",
       "transliteration": "khɔ̂i",
       "meanings": [
-        "dann / später / allmählich / nicht besonders / erst"
+        "allmählich / erst"
       ],
       "firstSentenceId": "l1-b2-s898",
       "bossContexts": {
@@ -134697,7 +134700,8 @@
       "thai": "อยู่",
       "transliteration": "yùu",
       "meanings": [
-        "sich befinden / da sein / bleiben / gerade dabei sein"
+        "sich befinden / sein",
+        "gerade dabei sein"
       ],
       "firstSentenceId": "l1-b2-s501",
       "bossContexts": {
@@ -135941,7 +135945,7 @@
       "thai": "อีก",
       "transliteration": "ìik",
       "meanings": [
-        "noch / wieder / noch einmal / immer noch"
+        "noch / wieder"
       ],
       "firstSentenceId": "l1-b2-s670",
       "bossContexts": {
@@ -137905,7 +137909,8 @@
       "thai": "เลย",
       "transliteration": "loei",
       "meanings": [
-        "überhaupt / gar nicht / schon / deshalb / super"
+        "überhaupt (gar nicht)",
+        "direkt"
       ],
       "firstSentenceId": "l1-b2-s691",
       "bossContexts": {
@@ -139979,7 +139984,8 @@
       "thai": "ได้",
       "transliteration": "dâi",
       "meanings": [
-        "können / dürfen / bekommen / erhalten / okay"
+        "können",
+        "bekommen"
       ],
       "firstSentenceId": "l1-b2-s530",
       "bossContexts": {
@@ -143179,11 +143185,8 @@
       "thai": "ก็ได้",
       "transliteration": "gɔ̂ɔ dâi",
       "meanings": [
-        "können",
         "geht auch",
-        "na gut",
-        "meinetwegen",
-        "eben"
+        "na gut"
       ],
       "firstSentenceId": "l1-b2-s600",
       "phraseParts": [
@@ -150670,7 +150673,7 @@
       "thai": "ๆ",
       "transliteration": "máai-yá-mók",
       "meanings": [
-        "Wiederholungszeichen; wiederholt oder nuanciert das vorherige Wort"
+        "Wiederholungszeichen"
       ],
       "firstSentenceId": "l1-b2-s860",
       "infoSentence": "ๆ (ไม้ยมก) wiederholt oder nuanciert das unmittelbar vorherige Wort; getrennt geschrieben markiert es hier die Bedeutung „kurz / ein kurzer“.",

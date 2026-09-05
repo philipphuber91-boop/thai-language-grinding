@@ -597,7 +597,7 @@
                     ${renderReminderAudio(word.thai)}
                 </div>
                 <em>${escapeHtml(word.transliteration)}</em>
-                <span>${escapeHtml(word.translation)}</span>
+                <span class="thai-giga-reminder-word-translation">${escapeHtml(word.translation)}</span>
             </div>
         `;
     }
@@ -700,10 +700,14 @@
             .slice(0, REMINDER_WORD_LIMIT)
             .map(wordId => indexes.wordsById.get(wordId))
             .filter(Boolean)
-            .map(word => ({
-                ...word,
-                translation: word.meanings.join(" / ")
-            }));
+            .map(word => {
+                const firstMeaning = (word.meanings || [])[0] || "";
+                const cleanMeaning = firstMeaning.split("/").slice(0, 2).map(s => s.trim()).join(" / ");
+                return {
+                    ...word,
+                    translation: cleanMeaning || firstMeaning
+                };
+            });
     }
 
     function getReminderRangeLabel(sentences) {
@@ -729,11 +733,13 @@
             .filter(token => token.kind === "word" && token.wordId)
             .map(token => {
                 const word = indexes.wordsById.get(token.wordId);
+                const meaning = token.contextMeaning || (word?.meanings || [])[0] || "";
+                const cleanMeaning = meaning.split("/").slice(0, 2).map(s => s.trim()).join(" / ");
                 return word
                     ? {
                         thai: token.text,
                         transliteration: word.transliteration,
-                        translation: word.meanings.join(" / "),
+                        translation: cleanMeaning || meaning,
                         syllables: word.syllables
                     }
                     : null;
@@ -745,108 +751,79 @@
         const phrase = position === "first"
             ? source.pattern
             : source.question || source.systemExamples?.[0];
-        const parts = phrase ? getReminderPhraseParts(phrase) : [];
         const lead = position === "first"
-            ? source.patternLead || "Ein Beispiel aus diesem 50-Satz-Fenster"
-            : source.questionLead || "Ein Beispiel aus diesem 50-Satz-Fenster";
-        const closing = typeof source.closing === "string" && source.closing.length <= 140
-            ? source.closing
-            : "Achte darauf, wie die neuen Wörter hier mit bereits bekannten Strukturen verbunden werden.";
+            ? source.patternLead || "Wichtiges Muster"
+            : source.questionLead || "Zentrales Muster";
+        const closing = typeof source.closing === "string" && source.closing.trim()
+            ? source.closing.trim()
+            : "";
         const variations = position === "first"
             ? (source.discoveries || [])
                 .slice(0, 2)
-                .map(example => ({ example }))
+                .map(example => ({ example, lead: "Weiteres Beispiel" }))
             : [
-                { lead: source.answerLead, example: source.answer },
-                { lead: source.alternativeLead, example: source.alternative }
+                { lead: source.answerLead || "Echte Reaktion", example: source.answer },
+                { lead: source.alternativeLead || "Alternative", example: source.alternative }
             ].filter(item => item.example).slice(0, 2);
-        let previousVariationLead = lead;
         const variationMarkup = variations.length
             ? `
-                <p class="thai-giga-introduction-lead">
-                    ${escapeHtml(
-                        position === "first"
-                            ? "Weitere Verbindungen aus diesem Abschnitt:"
-                            : "So reagiert das Muster im Gespräch:"
-                    )}
-                </p>
                 <div class="thai-giga-reminder-examples">
-                    ${variations.map(({ lead: variationLead, example }) => {
-                        const leadMarkup = variationLead && variationLead !== previousVariationLead
-                            ? `<p class="thai-giga-reminder-lead">${escapeHtml(variationLead)}</p>`
-                            : "";
-                        previousVariationLead = variationLead || previousVariationLead;
-                        return `${leadMarkup}${renderThaiReminderExample(example)}`;
-                    }).join("")}
+                    ${variations.map(({ lead: variationLead, example }) => `
+                        <p class="thai-giga-reminder-lead">${escapeHtml(variationLead)}</p>
+                        ${renderThaiReminderExample(example)}
+                    `).join("")}
                 </div>
             `
             : "";
 
-        if (!phrase) {
-            return `<p class="thai-giga-reminder-explanation">${escapeHtml(closing)}</p>`;
+        if (!phrase && !variationMarkup && !closing) {
+            return "";
         }
 
         return `
             <div class="thai-giga-reminder-context">
-                <p class="thai-giga-reminder-lead">${escapeHtml(lead)}</p>
-                <div class="thai-giga-introduction-example">
-                    <div class="thai-giga-introduction-audio-line">
-                        <p class="thai-giga-introduction-thai" lang="th">
-                            ${renderToneMarkedPhrase(phrase)}
-                        </p>
-                        ${renderThaiIntroductionAudio(phrase.thai)}
-                    </div>
-                    <p class="thai-giga-introduction-transliteration">
-                        <em>${escapeHtml(phrase.transliteration)}</em>
-                    </p>
-                    <p class="thai-giga-introduction-translation">
-                        ${escapeHtml(phrase.translation)}
-                    </p>
-                </div>
-                ${parts.length
-                    ? `
-                        <p class="thai-giga-introduction-lead">
-                            Du kannst es hier als kleinen Baukasten sehen:
-                        </p>
-                        <div class="thai-giga-introduction-parts">
-                            ${parts.map(part => `
-                                <div class="thai-giga-introduction-part">
-                                    <div class="thai-giga-introduction-audio-line">
-                                        <strong lang="th">${renderIntroductionPart(part)}</strong>
-                                        ${renderThaiIntroductionAudio(part.thai)}
-                                    </div>
-                                    <em>${escapeHtml(part.transliteration)}</em>
-                                    <span>${escapeHtml(part.translation)}</span>
-                                </div>
-                            `).join("")}
-                        </div>
-                        <div class="thai-giga-introduction-assembly">
-                            <p class="thai-giga-pattern-label">Also:</p>
+                ${phrase ? `
+                    <p class="thai-giga-reminder-lead">${escapeHtml(lead)}</p>
+                    <div class="thai-giga-introduction-example">
+                        <div class="thai-giga-introduction-audio-line">
                             <p class="thai-giga-introduction-thai" lang="th">
-                                <strong>${parts.map(part => renderIntroductionPart(part)).join(" + ")}</strong>
+                                ${renderToneMarkedPhrase(phrase)}
                             </p>
-                            <p class="thai-giga-introduction-transliteration">
-                                <em>${escapeHtml(parts.map(part => part.transliteration).join(" + "))}</em>
-                            </p>
-                            <p class="thai-giga-introduction-translation">
-                                <strong>${escapeHtml(parts.map(part => part.translation).join(" + "))}</strong>
-                            </p>
+                            ${renderThaiIntroductionAudio(phrase.thai)}
                         </div>
-                    `
-                    : ""}
+                        <p class="thai-giga-introduction-transliteration">
+                            <em>${escapeHtml(phrase.transliteration)}</em>
+                        </p>
+                        <p class="thai-giga-introduction-translation">
+                            ${escapeHtml(phrase.translation)}
+                        </p>
+                    </div>
+                ` : ""}
                 ${variationMarkup}
-                <p class="thai-giga-introduction-warning">
-                    💡 <strong>Wichtig:</strong> ${escapeHtml(closing)}
-                </p>
+                ${closing ? `
+                    <p class="thai-giga-introduction-warning">
+                        💡 <strong>Wichtig:</strong> ${escapeHtml(closing)}
+                    </p>
+                ` : ""}
             </div>
         `;
     }
 
     function renderContextualReminder({ source, block, position, className, prefix }) {
         const sentences = getReminderWindow(block, position);
-        const words = getContextualReminderWords(sentences);
-        const rangeLabel = getReminderRangeLabel(sentences);
         const section = (source.sections || [])[0];
+        const explicitWords = Array.isArray(section?.words)
+            ? section.words.map(w => ({
+                thai: w.thai,
+                transliteration: w.transliteration,
+                translation: w.translation,
+                syllables: w.syllables || getWordSyllables(w.thai)
+            }))
+            : null;
+        const words = explicitWords !== null
+            ? explicitWords
+            : getContextualReminderWords(sentences);
+        const rangeLabel = getReminderRangeLabel(sentences);
         const note = (source.sections || [])
             .map(section => section.note)
             .find(note => typeof note === "string" && note.trim()) ||
@@ -869,9 +846,11 @@
                 <div class="thai-giga-midpoint-content">
                     <p class="thai-giga-reminder-lead">${escapeHtml(wordTitle)}</p>
                     <p class="thai-giga-reminder-explanation">${escapeHtml(note)}</p>
-                    <div class="thai-giga-reminder-words">
-                        ${words.map(renderThaiReminderWord).join("")}
-                    </div>
+                    ${words.length > 0 ? `
+                        <div class="thai-giga-reminder-words">
+                            ${words.map(renderThaiReminderWord).join("")}
+                        </div>
+                    ` : ""}
                     ${renderReminderContext(source, position)}
                 </div>
             </details>
