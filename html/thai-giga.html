@@ -11,7 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&family=Noto+Sans+Thai:wght@300;400&family=Noto+Serif+Thai:wght@300;400&family=Prompt:wght@300;400&family=Sarabun:wght@300;400&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../css/thai-giga.css?v=181">
+    <link rel="stylesheet" href="../css/thai-giga.css?v=190">
     <link rel="manifest" href="../manifest.json">
 </head>
 <body class="thai-giga-page">
@@ -368,6 +368,9 @@
                 <button id="thaiGigaAudioOpenTyping" type="button" disabled>
                     Playlist im Typing öffnen
                 </button>
+                <button id="thaiGigaAudioOpenRsvp" type="button" disabled>
+                    Playlist als RSVP
+                </button>
                 <button id="thaiGigaAudioClear" type="button" disabled>Playlist leeren</button>
             </div>
             <ol id="thaiGigaAudioPlaylist" class="thai-giga-audio-playlist" aria-label="Thai-Giga-Playlist"></ol>
@@ -432,15 +435,17 @@
             class="thai-giga-speedreading"
             role="dialog"
             aria-modal="true"
-            aria-labelledby="thaiGigaSpeedreadingTitle"
+            aria-labelledby="thaiGigaSpeedreadingScope"
             hidden>
             <div class="thai-giga-speedreading-panel">
                 <header class="thai-giga-speedreading-header">
                     <div>
-                        <p id="thaiGigaSpeedreadingScope" class="thai-giga-eyebrow">Speedreading</p>
-                        <h2 id="thaiGigaSpeedreadingTitle"></h2>
-                        <p id="thaiGigaSpeedreadingContext" class="thai-giga-speedreading-context"></p>
+                        <p id="thaiGigaSpeedreadingScope" class="thai-giga-eyebrow">Speed Reading</p>
                         <div class="thai-giga-speedreading-options" aria-label="Speedreading-Anzeige">
+                            <label>
+                                <input id="thaiGigaSpeedreadingThai" type="checkbox" checked>
+                                <span>Thai</span>
+                            </label>
                             <label>
                                 <input id="thaiGigaSpeedreadingTransliteration" type="checkbox" checked>
                                 <span>Umschrift</span>
@@ -451,22 +456,115 @@
                             </label>
                         </div>
                     </div>
-                    <button
-                        id="thaiGigaSpeedreadingClose"
-                        class="thai-giga-speedreading-close"
-                        type="button"
-                        aria-label="Speedreading schließen">✕</button>
+                    <div class="thai-giga-speedreading-header-actions">
+                        <details class="thai-giga-rsvp-font-settings">
+                            <summary aria-label="RSVP-Einstellungen öffnen" title="RSVP-Einstellungen">⚙</summary>
+                            <div class="thai-giga-rsvp-font-settings-panel" role="group" aria-label="RSVP-Einstellungen">
+                                <p class="thai-giga-rsvp-font-settings-title">Schriftgrößen</p>
+                                <label class="thai-giga-rsvp-font-setting" for="thaiGigaRsvpThaiFontSize">
+                                    <span>Thai <output id="thaiGigaRsvpThaiFontSizeValue">28 px</output></span>
+                                    <input
+                                        id="thaiGigaRsvpThaiFontSize"
+                                        type="range"
+                                        min="20"
+                                        max="48"
+                                        step="1"
+                                        value="28"
+                                        aria-label="Thai-Schriftgröße">
+                                </label>
+                                <label class="thai-giga-rsvp-font-setting" for="thaiGigaRsvpTransliterationFontSize">
+                                    <span>Umschrift <output id="thaiGigaRsvpTransliterationFontSizeValue">22 px</output></span>
+                                    <input
+                                        id="thaiGigaRsvpTransliterationFontSize"
+                                        type="range"
+                                        min="20"
+                                        max="36"
+                                        step="1"
+                                        value="22"
+                                        aria-label="Umschrift-Schriftgröße">
+                                </label>
+                                <label class="thai-giga-rsvp-font-setting" for="thaiGigaRsvpGermanFontSize">
+                                    <span>Deutsch <output id="thaiGigaRsvpGermanFontSizeValue">22 px</output></span>
+                                    <input
+                                        id="thaiGigaRsvpGermanFontSize"
+                                        type="range"
+                                        min="20"
+                                        max="36"
+                                        step="1"
+                                        value="22"
+                                        aria-label="Deutsche Schriftgröße">
+                                </label>
+                                <div class="thai-giga-rsvp-font-setting-options" aria-label="Weitere Anzeigeoptionen">
+                                    <label>
+                                        <input id="thaiGigaSpeedreadingWordSeparation" type="checkbox" checked>
+                                        <span>Wörter separieren</span>
+                                    </label>
+                                    <label>
+                                        <input id="thaiGigaSpeedreadingToneColors" type="checkbox" checked>
+                                        <span>Tonfarben</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </details>
+                        <button
+                            id="thaiGigaSpeedreadingClose"
+                            class="thai-giga-speedreading-close"
+                            type="button"
+                            aria-label="Speedreading schließen">✕</button>
+                    </div>
                 </header>
+                <div class="thai-giga-rsvp-header-divider" aria-hidden="true"></div>
+                <div class="thai-giga-rsvp-top-repetitions">
+                    <label class="thai-giga-rsvp-repetitions" title="Wiederholungen">
+                            <span class="thai-giga-rsvp-repeat-icon" aria-hidden="true">↻</span>
+                            <span class="sr-only">Wiederholungen</span>
+                            <select id="thaiGigaRsvpRepetitions" aria-label="Wiederholungen">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="infinite">∞</option>
+                            </select>
+                    </label>
+                </div>
                 <div id="thaiGigaSpeedreadingList" class="thai-giga-speedreading-list"></div>
+                <div class="thai-giga-rsvp-controls" aria-label="RSVP-Steuerung">
+                    <output id="thaiGigaRsvpProgress" class="thai-giga-rsvp-progress" aria-label="RSVP-Fortschritt">0/0</output>
+                    <div class="thai-giga-rsvp-mode" role="group" aria-label="RSVP-Modus">
+                           <button type="button" data-thai-giga-rsvp-mode="word" aria-pressed="true">WORD</button>
+                           <button type="button" data-thai-giga-rsvp-mode="chunk" aria-pressed="false">CHUNK</button>
+                    </div>
+                    <div class="thai-giga-rsvp-wpm">
+                           <button type="button" data-thai-giga-rsvp-wpm="-25" aria-label="WPM verringern">−</button>
+                           <output id="thaiGigaRsvpWpm" aria-live="polite">300 WPM</output>
+                           <button type="button" data-thai-giga-rsvp-wpm="25" aria-label="WPM erhöhen">+</button>
+                    </div>
+                    <label class="thai-giga-rsvp-wpm-slider" for="thaiGigaRsvpWpmSlider">
+                           <span class="sr-only">RSVP-Geschwindigkeit</span>
+                           <input
+                               id="thaiGigaRsvpWpmSlider"
+                               type="range"
+                               min="25"
+                               max="800"
+                               step="25"
+                               value="300"
+                               aria-label="RSVP-Geschwindigkeit in Wörtern pro Minute">
+                    </label>
+                   <div class="thai-giga-rsvp-transport" role="group" aria-label="RSVP-Navigation">
+                          <button type="button" data-thai-giga-rsvp-action="previous" aria-label="Vorherige Einheit">⏮</button>
+                          <button type="button" class="is-primary" data-thai-giga-rsvp-action="play" aria-label="Abspielen">▶</button>
+                          <button type="button" data-thai-giga-rsvp-action="next" aria-label="Nächste Einheit">⏭</button>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <script src="../js/thai-giga-tts-config.js"></script>
     <script src="../js/quest-audio.js?v=150"></script>
-    <script src="../js/thai-giga-drill.js?v=143"></script>
+    <script src="../js/thai-giga-drill.js?v=144"></script>
     <script src="../js/thai-giga-audio.js?v=147"></script>
-    <script src="../js/thai-giga-reader.js?v=162"></script>
+    <script src="../js/thai-giga-rsvp.js?v=11"></script>
+    <script src="../js/thai-giga-reader.js?v=163"></script>
     <script src="../js/thai-giga-settings.js?v=153"></script>
     <script src="../js/pwa-register.js"></script>
 </body>

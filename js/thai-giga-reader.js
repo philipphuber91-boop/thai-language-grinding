@@ -35,8 +35,6 @@
         ),
         speedreading: document.getElementById("thaiGigaSpeedreading"),
         speedreadingScope: document.getElementById("thaiGigaSpeedreadingScope"),
-        speedreadingTitle: document.getElementById("thaiGigaSpeedreadingTitle"),
-        speedreadingContext: document.getElementById("thaiGigaSpeedreadingContext"),
         speedreadingList: document.getElementById("thaiGigaSpeedreadingList"),
         speedreadingClose: document.getElementById("thaiGigaSpeedreadingClose"),
         speedreadingTransliteration: document.getElementById(
@@ -1303,6 +1301,12 @@
                     title="Satz zur Playlist hinzufügen">
                     + Playlist
                 </button>
+                <button
+                    class="thai-giga-rsvp-sentence-button"
+                    type="button"
+                    data-thai-giga-rsvp-sentence="${escapeHtml(sentence.id)}"
+                    aria-label="Satz im RSVP öffnen"
+                    title="Satz im RSVP öffnen">▶ RSVP</button>
             </article>
         `;
     }
@@ -1365,8 +1369,6 @@
         if (
             !elements.speedreading ||
             !elements.speedreadingScope ||
-            !elements.speedreadingTitle ||
-            !elements.speedreadingContext ||
             !elements.speedreadingList ||
             !indexes
         ) {
@@ -1378,12 +1380,19 @@
             return;
         }
 
+        if (window.thaiGigaRsvp?.open) {
+            window.thaiGigaRsvp.open(
+                speedreadingScope.sentences,
+                speedreadingScope.title,
+                `${speedreadingScope.sentences.length} Sätze · ${speedreadingScope.boss.title}`,
+                trigger
+            );
+            return;
+        }
+
         speedreadingReturnFocus = trigger || document.activeElement;
         syncSpeedreadingVisibility();
-        elements.speedreadingScope.textContent = `Speedreading · ${speedreadingScope.scopeLabel}`;
-        elements.speedreadingTitle.textContent = speedreadingScope.title;
-        elements.speedreadingContext.textContent =
-            `${speedreadingScope.sentences.length} Sätze · ${speedreadingScope.boss.title}`;
+        elements.speedreadingScope.textContent = "Speed Reading";
         elements.speedreadingList.innerHTML = speedreadingScope.sentences
             .map((sentence, index) => renderSpeedreadingSentence(sentence, index + 1))
             .join("");
@@ -1398,6 +1407,7 @@
             return;
         }
 
+        window.thaiGigaRsvp?.close();
         window.questAudio.stopSpeech();
         window.questAudio.stopNativeAudioPlayers();
         elements.speedreading.hidden = true;
@@ -1495,6 +1505,18 @@
                         window.thaiGigaAudio.addSentence(sentenceId);
                     }
                     updatePlaylistButtons();
+                });
+            });
+
+        elements.sentenceList
+            .querySelectorAll("[data-thai-giga-rsvp-sentence]")
+            .forEach(button => {
+                button.addEventListener("click", event => {
+                    event.stopPropagation();
+                    window.thaiGigaRsvp?.openSentence(
+                        button.dataset.thaiGigaRsvpSentence,
+                        button
+                    );
                 });
             });
 
@@ -1912,6 +1934,7 @@
             } else if (window.thaiGigaAudio) {
                 await window.thaiGigaAudio.loadVoiceConfig();
             }
+            window.thaiGigaRsvp?.initialize(indexes);
             renderWordDictionaryVoiceOptions();
             renderWordDictionaryFilters();
             renderWordDictionary();
