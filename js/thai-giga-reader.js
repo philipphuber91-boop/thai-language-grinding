@@ -1301,12 +1301,6 @@
                     title="Satz zur Playlist hinzufügen">
                     + Playlist
                 </button>
-                <button
-                    class="thai-giga-rsvp-sentence-button"
-                    type="button"
-                    data-thai-giga-rsvp-sentence="${escapeHtml(sentence.id)}"
-                    aria-label="Satz im RSVP öffnen"
-                    title="Satz im RSVP öffnen">▶ RSVP</button>
             </article>
         `;
     }
@@ -1505,18 +1499,6 @@
                         window.thaiGigaAudio.addSentence(sentenceId);
                     }
                     updatePlaylistButtons();
-                });
-            });
-
-        elements.sentenceList
-            .querySelectorAll("[data-thai-giga-rsvp-sentence]")
-            .forEach(button => {
-                button.addEventListener("click", event => {
-                    event.stopPropagation();
-                    window.thaiGigaRsvp?.openSentence(
-                        button.dataset.thaiGigaRsvpSentence,
-                        button
-                    );
                 });
             });
 

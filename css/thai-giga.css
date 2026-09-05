@@ -36,26 +36,6 @@
     --thai-playlist-added-background: rgba(155, 224, 189, .1);
 }
 
-.thai-giga-rsvp-sentence-button {
-    width: auto;
-    min-width: 0;
-    padding: 8px 9px;
-    border: 1px solid var(--thai-card-border);
-    border-radius: 8px;
-    color: var(--thai-gold);
-    background: var(--thai-panel);
-    cursor: pointer;
-    font: inherit;
-    font-size: .83rem;
-    white-space: nowrap;
-}
-
-.thai-giga-rsvp-sentence-button:hover,
-.thai-giga-rsvp-sentence-button:focus-visible {
-    border-color: var(--thai-gold);
-    background: var(--thai-hover-background);
-}
-
 * {
     box-sizing: border-box;
 }
