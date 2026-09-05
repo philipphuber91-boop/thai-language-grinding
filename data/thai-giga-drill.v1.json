@@ -143871,7 +143871,17 @@
           ],
           "infoSentence": "ก็ได้ bildet auch hier eine feste Einheit. Nach einer Handlung oder Option drückt sie aus, dass etwas möglich oder akzeptabel ist."
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "ก็",
+          "transliteration": "gɔ̂ɔ"
+        },
+        {
+          "thai": "ได้",
+          "transliteration": "dâi"
+        }
+      ]
     },
     {
       "id": "word-b3-125",
@@ -148093,7 +148103,17 @@
           ],
           "infoSentence": "Ortsangabe für „neben dem Haus / beim Haus“."
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "ข้าง",
+          "transliteration": "khâang"
+        },
+        {
+          "thai": "บ้าน",
+          "transliteration": "bâan"
+        }
+      ]
     },
     {
       "id": "word-b4-ngoen",
@@ -148467,7 +148487,17 @@
           ],
           "infoSentence": "Verneinte Existenz oder verneinter Besitz: „nicht haben / es gibt nicht / ist nicht da / niemand“."
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "ไม่",
+          "transliteration": "mâi"
+        },
+        {
+          "thai": "มี",
+          "transliteration": "mii"
+        }
+      ]
     },
     {
       "id": "word-b4-bat",
@@ -148545,7 +148575,17 @@
           ],
           "infoSentence": "Nomen für Schlüssel."
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "กุญ",
+          "transliteration": "gun"
+        },
+        {
+          "thai": "แจ",
+          "transliteration": "jɛɛ"
+        }
+      ]
     },
     {
       "id": "word-b4-thii-nang",
@@ -148612,7 +148652,17 @@
           ],
           "infoSentence": "Zusammengesetztes Nomen für Sitzplatz (wörtlich: Ort zum Sitzen)."
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "ที่",
+          "transliteration": "thîi"
+        },
+        {
+          "thai": "นั่ง",
+          "transliteration": "nâng"
+        }
+      ]
     },
     {
       "id": "word-b4-thao-rai",
@@ -148639,7 +148689,17 @@
           ],
           "infoSentence": "Fragewort nach Preisen oder unbestimmten Mengen („wie viel?“)."
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "เท่า",
+          "transliteration": "thâo"
+        },
+        {
+          "thai": "ไหร่",
+          "transliteration": "rài"
+        }
+      ]
     },
     {
       "id": "word-b4-fng",
@@ -148779,7 +148839,17 @@
           ],
           "infoSentence": "Zusammengesetztes Nomen für Ladegerät / Ladekabel."
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "ที่",
+          "transliteration": "thîi"
+        },
+        {
+          "thai": "ชาร์จ",
+          "transliteration": "châat"
+        }
+      ]
     },
     {
       "id": "word-b4-kh-ym",
@@ -148806,7 +148876,17 @@
           ],
           "infoSentence": "Zusammengesetztes Verb aus ขอ (bitten) und ยืม (leihen): „ausleihen möchten / darf ich leihen“."
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "ขอ",
+          "transliteration": "khɔ̌ɔ"
+        },
+        {
+          "thai": "ยืม",
+          "transliteration": "yʉʉm"
+        }
+      ]
     },
     {
       "id": "word-b4-sa-waai-naam",
@@ -148833,7 +148913,21 @@
           ],
           "infoSentence": "Zusammengesetztes Nomen für Swimmingpool / Schwimmbecken."
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "สระ",
+          "transliteration": "sà"
+        },
+        {
+          "thai": "ว่าย",
+          "transliteration": "wâai"
+        },
+        {
+          "thai": "น้ำ",
+          "transliteration": "náam"
+        }
+      ]
     },
     {
       "id": "word-b4-term",
@@ -148914,7 +149008,17 @@
           ],
           "infoSentence": "Benefaktive Verbindung aus ดู (schauen/prüfen) und ให้ (für jemanden): „sich für jemanden darum kümmern / nachsehen“."
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "ดู",
+          "transliteration": "duu"
+        },
+        {
+          "thai": "ให้",
+          "transliteration": "hâi"
+        }
+      ]
     },
     {
       "id": "word-b4-dtua",
@@ -148976,7 +149080,17 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "เก้า",
+          "transliteration": "gâo"
+        },
+        {
+          "thai": "อี้",
+          "transliteration": "îi"
+        }
+      ]
     },
     {
       "id": "word-b4-haai",
@@ -149073,7 +149187,17 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "เม",
+          "transliteration": "mee"
+        },
+        {
+          "thai": "นู",
+          "transliteration": "nuu"
+        }
+      ]
     },
     {
       "id": "word-b4-laai-yaang",
@@ -149108,7 +149232,17 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "หลาย",
+          "transliteration": "lǎai"
+        },
+        {
+          "thai": "อย่าง",
+          "transliteration": "yàang"
+        }
+      ]
     },
     {
       "id": "word-b4-dtuu-yen",
@@ -149143,7 +149277,17 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "ตู้",
+          "transliteration": "dtûu"
+        },
+        {
+          "thai": "เย็น",
+          "transliteration": "yen"
+        }
+      ]
     },
     {
       "id": "word-b4-la",
@@ -149732,7 +149876,17 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "ไม่",
+          "transliteration": "mâi"
+        },
+        {
+          "thai": "เจอ",
+          "transliteration": "jəə"
+        }
+      ]
     },
     {
       "id": "word-b4-haa-gun-j",
@@ -149759,7 +149913,21 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "หา",
+          "transliteration": "hǎa"
+        },
+        {
+          "thai": "กุญ",
+          "transliteration": "gun"
+        },
+        {
+          "thai": "แจ",
+          "transliteration": "jɛɛ"
+        }
+      ]
     },
     {
       "id": "word-b4-jing-jing",
@@ -149795,7 +149963,17 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "จริง",
+          "transliteration": "jing"
+        },
+        {
+          "thai": "ๆ",
+          "transliteration": "jing"
+        }
+      ]
     },
     {
       "id": "word-b4-nat",
@@ -149897,7 +150075,17 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "การ",
+          "transliteration": "gaan"
+        },
+        {
+          "thai": "บ้าน",
+          "transliteration": "bâan"
+        }
+      ]
     },
     {
       "id": "word-b4-thung",
@@ -149959,7 +150147,21 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "ไม่",
+          "transliteration": "mâi"
+        },
+        {
+          "thai": "ส",
+          "transliteration": "sà"
+        },
+        {
+          "thai": "บาย",
+          "transliteration": "baai"
+        }
+      ]
     },
     {
       "id": "word-b4-un",
@@ -150013,7 +150215,17 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "มะ",
+          "transliteration": "má"
+        },
+        {
+          "thai": "ม่วง",
+          "transliteration": "mûang"
+        }
+      ]
     },
     {
       "id": "word-b4-moong",
@@ -150067,7 +150279,21 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "หลัง",
+          "transliteration": "lǎng"
+        },
+        {
+          "thai": "จาก",
+          "transliteration": "jàak"
+        },
+        {
+          "thai": "นั้น",
+          "transliteration": "nán"
+        }
+      ]
     },
     {
       "id": "word-b4-bpra-chum",
@@ -150094,7 +150320,17 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "ประ",
+          "transliteration": "bprà"
+        },
+        {
+          "thai": "ชุม",
+          "transliteration": "chum"
+        }
+      ]
     },
     {
       "id": "word-b4-thiim",
@@ -150202,7 +150438,17 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "ห้อง",
+          "transliteration": "hɔ̂ng"
+        },
+        {
+          "thai": "ว่าง",
+          "transliteration": "wâang"
+        }
+      ]
     },
     {
       "id": "word-b4-nng",
@@ -150291,7 +150537,17 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "ผ้า",
+          "transliteration": "phâa"
+        },
+        {
+          "thai": "ห่ม",
+          "transliteration": "hòm"
+        }
+      ]
     },
     {
       "id": "word-b4-baang",
@@ -150563,7 +150819,17 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "แน่",
+          "transliteration": "nâe"
+        },
+        {
+          "thai": "ใจ",
+          "transliteration": "jai"
+        }
+      ]
     },
     {
       "id": "word-b4-rk",
@@ -150795,7 +151061,17 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "ยัง",
+          "transliteration": "yang"
+        },
+        {
+          "thai": "ไง",
+          "transliteration": "ngai"
+        }
+      ]
     },
     {
       "id": "word-b4-haa-j",
@@ -150822,7 +151098,17 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "หา",
+          "transliteration": "hǎa"
+        },
+        {
+          "thai": "เจอ",
+          "transliteration": "jəə"
+        }
+      ]
     },
     {
       "id": "word-b4-dtai",
@@ -150903,7 +151189,17 @@
           ],
           "infoSentence": "เงียบๆ bedeutet hier „ruhig“."
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "เงียบ",
+          "transliteration": "ngîap"
+        },
+        {
+          "thai": "ๆ",
+          "transliteration": "ngîap"
+        }
+      ]
     },
     {
       "id": "word-b3-glai-glai",
@@ -150913,7 +151209,17 @@
         "in der Nähe / ganz in der Nähe"
       ],
       "firstSentenceId": "l1-b3-s1048",
-      "infoSentence": "Wiederholungsform von ใกล้; als Ortsangabe „in der Nähe / ganz in der Nähe“."
+      "infoSentence": "Wiederholungsform von ใกล้; als Ortsangabe „in der Nähe / ganz in der Nähe“.",
+      "syllables": [
+        {
+          "thai": "ใกล้",
+          "transliteration": "glâi"
+        },
+        {
+          "thai": "ๆ",
+          "transliteration": "glâi"
+        }
+      ]
     },
     {
       "id": "word-b4-ngaai-ngaai",
@@ -150941,7 +151247,17 @@
           ],
           "infoSentence": "Redupliziertes Adjektiv für „ganz einfach / unkompliziert“."
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "ง่าย",
+          "transliteration": "ngâai"
+        },
+        {
+          "thai": "ๆ",
+          "transliteration": "ngâai"
+        }
+      ]
     },
     {
       "id": "word-b4-waan-waan",
@@ -150969,7 +151285,17 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "หวาน",
+          "transliteration": "wǎan"
+        },
+        {
+          "thai": "ๆ",
+          "transliteration": "wǎan"
+        }
+      ]
     },
     {
       "id": "word-b4-a-ri-a-ri",
@@ -150997,7 +151323,21 @@
             }
           ]
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "อ",
+          "transliteration": "a"
+        },
+        {
+          "thai": "ร่อย",
+          "transliteration": "rɔ̀i"
+        },
+        {
+          "thai": "ๆ",
+          "transliteration": "a-rɔ̀i"
+        }
+      ]
     }
   ],
   "archivedIds": []
