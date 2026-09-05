@@ -40426,7 +40426,7 @@
                       "numberInStory": 3,
                       "thai": "มีแล้วไม่ใช่เหรอ",
                       "transliteration": "mii lɛ́ɛo mâi châi rǒ̌",
-                      "translation": "Haben wir das nicht schon?",
+                      "translation": "Das haben wir doch schon, oder?",
                       "tokens": [
                         {
                           "text": "มี",
@@ -40440,7 +40440,7 @@
                           "kind": "word",
                           "id": "l1-b2-s823-t2",
                           "wordId": "word-lo",
-                          "contextMeaning": "und"
+                          "contextMeaning": "schon"
                         },
                         {
                           "text": "ไม่ใช่",
@@ -41348,7 +41348,7 @@
                       "numberInStory": 3,
                       "thai": "มีอะไรในบ้านบ้าง",
                       "transliteration": "mii à-rai nai bâan bâang",
-                      "translation": "Was haben wir denn zu Hause?",
+                      "translation": "Was haben wir denn alles zu Hause?",
                       "tokens": [
                         {
                           "text": "มี",
@@ -107586,7 +107586,7 @@
             {
               "sentenceId": "l1-b2-s823",
               "thai": "มีแล้วไม่ใช่เหรอ",
-              "sentenceTranslation": "Haben wir das nicht schon?",
+              "sentenceTranslation": "Das haben wir doch schon, oder?",
               "entryMeaningInSentence": "nicht sein",
               "matchedToken": "ไม่ใช่"
             },
@@ -109186,8 +109186,8 @@
             {
               "sentenceId": "l1-b2-s823",
               "thai": "มีแล้วไม่ใช่เหรอ",
-              "sentenceTranslation": "Haben wir das nicht schon?",
-              "entryMeaningInSentence": "und",
+              "sentenceTranslation": "Das haben wir doch schon, oder?",
+              "entryMeaningInSentence": "schon",
               "matchedToken": "แล้ว"
             },
             {
@@ -110081,7 +110081,7 @@
             {
               "sentenceId": "l1-b2-s843",
               "thai": "มีอะไรในบ้านบ้าง",
-              "sentenceTranslation": "Was haben wir denn zu Hause?",
+              "sentenceTranslation": "Was haben wir denn alles zu Hause?",
               "entryMeaningInSentence": "was",
               "matchedToken": "อะไร"
             },
@@ -110496,7 +110496,7 @@
             {
               "sentenceId": "l1-b2-s823",
               "thai": "มีแล้วไม่ใช่เหรอ",
-              "sentenceTranslation": "Haben wir das nicht schon?",
+              "sentenceTranslation": "Das haben wir doch schon, oder?",
               "entryMeaningInSentence": "oder wie? / oder was?",
               "matchedToken": "เหรอ"
             },
@@ -112893,7 +112893,7 @@
             {
               "sentenceId": "l1-b2-s843",
               "thai": "มีอะไรในบ้านบ้าง",
-              "sentenceTranslation": "Was haben wir denn zu Hause?",
+              "sentenceTranslation": "Was haben wir denn alles zu Hause?",
               "entryMeaningInSentence": "Haus",
               "matchedToken": "บ้าน"
             },
@@ -120748,12 +120748,12 @@
             {
               "sentenceId": "l1-b2-s843",
               "thai": "มีอะไรในบ้านบ้าง",
-              "sentenceTranslation": "Was haben wir denn zu Hause?",
+              "sentenceTranslation": "Was haben wir denn alles zu Hause?",
               "entryMeaningInSentence": "alles",
               "matchedToken": "บ้าง"
             }
           ],
-          "infoSentence": "บ้าง schränkt die Aussage auf einige Beispiele ein und entspricht hier „auch ein paar / alles Mögliche“."
+          "infoSentence": "บ้าง fragt hier nach den einzelnen Dingen, die insgesamt infrage kommen; in diesen Fragen entspricht es „alles“."
         }
       }
     },
@@ -121637,7 +121637,7 @@
             {
               "sentenceId": "l1-b2-s823",
               "thai": "มีแล้วไม่ใช่เหรอ",
-              "sentenceTranslation": "Haben wir das nicht schon?",
+              "sentenceTranslation": "Das haben wir doch schon, oder?",
               "entryMeaningInSentence": "haben",
               "matchedToken": "มี"
             },
@@ -121658,7 +121658,7 @@
             {
               "sentenceId": "l1-b2-s843",
               "thai": "มีอะไรในบ้านบ้าง",
-              "sentenceTranslation": "Was haben wir denn zu Hause?",
+              "sentenceTranslation": "Was haben wir denn alles zu Hause?",
               "entryMeaningInSentence": "haben",
               "matchedToken": "มี"
             },
@@ -126606,7 +126606,7 @@
             {
               "sentenceId": "l1-b2-s843",
               "thai": "มีอะไรในบ้านบ้าง",
-              "sentenceTranslation": "Was haben wir denn zu Hause?",
+              "sentenceTranslation": "Was haben wir denn alles zu Hause?",
               "entryMeaningInSentence": "in",
               "matchedToken": "ใน"
             }
