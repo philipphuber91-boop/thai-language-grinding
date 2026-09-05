@@ -25,6 +25,8 @@
         wordSeparation: document.getElementById("thaiGigaSpeedreadingWordSeparation"),
         toneColors: document.getElementById("thaiGigaSpeedreadingToneColors"),
         progress: document.getElementById("thaiGigaRsvpProgress"),
+        positionSlider: document.getElementById("thaiGigaRsvpPositionSlider"),
+        stopwatch: document.getElementById("thaiGigaRsvpStopwatch"),
         wpm: document.getElementById("thaiGigaRsvpWpm"),
         wpmSlider: document.getElementById("thaiGigaRsvpWpmSlider"),
         repetitions: document.getElementById("thaiGigaRsvpRepetitions"),
@@ -46,7 +48,9 @@
     let unitIndex = 0;
     let playing = false;
     let timer = null;
-    let startedAt = 0;
+    let elapsedMs = 0;
+    let elapsedStartedAt = 0;
+    let stopwatchTimer = null;
     let completedUnits = 0;
     let completedWords = 0;
     let completedSentences = 0;
@@ -204,18 +208,61 @@
         return result;
     }
 
-    function toneClass(word) {
+    function toneClass(transliteration) {
         if (elements.toneColors?.checked === false) {
             return "thai-tone-rsvp-neutral";
         }
         const marks = new Set();
-        for (const character of [...String(word?.transliteration || "").normalize("NFD")]) {
+        for (const character of [...String(transliteration || "").normalize("NFD")]) {
             if (character === "\u0300") marks.add("low");
             if (character === "\u0301") marks.add("high");
             if (character === "\u0302") marks.add("falling");
             if (character === "\u030c") marks.add("rising");
         }
-        return marks.size === 1 ? `thai-tone-${Array.from(marks)[0]}` : "thai-tone-mid";
+        if (marks.size === 0) {
+            return "thai-tone-mid";
+        }
+        return marks.size === 1
+            ? `thai-tone-${Array.from(marks)[0]}`
+            : "thai-tone-mixed";
+    }
+
+    function hasValidSyllables(word) {
+        const syllables = word?.syllables;
+        return Array.isArray(syllables) &&
+            syllables.length > 1 &&
+            syllables.every(syllable =>
+                syllable &&
+                typeof syllable.thai === "string" &&
+                typeof syllable.transliteration === "string"
+            ) &&
+            syllables.map(syllable => syllable.thai).join("") === word.thai;
+    }
+
+    function getToneSegments(item) {
+        const tokenText = String(item.token?.text || "");
+        const wordThai = typeof item.word?.thai === "string" ? item.word.thai : "";
+        if (!wordThai || !tokenText.startsWith(wordThai)) {
+            return [{
+                text: tokenText,
+                transliteration: item.word?.transliteration || ""
+            }];
+        }
+
+        const segments = hasValidSyllables(item.word)
+            ? item.word.syllables.map(syllable => ({
+                text: syllable.thai,
+                transliteration: syllable.transliteration
+            }))
+            : [{
+                text: wordThai,
+                transliteration: item.word?.transliteration || ""
+            }];
+        const punctuation = tokenText.slice(wordThai.length);
+        if (punctuation) {
+            segments.push({ text: punctuation, transliteration: "" });
+        }
+        return segments;
     }
 
     function getWordTranslation(item) {
@@ -291,12 +338,13 @@
         const orpIndex = Math.floor(Math.max(0, allGraphemes.length - 1) / 2);
         let offset = 0;
         const renderToken = (item, includeSpacing = false) => {
-            const parts = graphemes(item.token.text);
-            const markup = parts.map(part => {
-                const isOrp = offset === orpIndex;
-                offset += 1;
-                return `<span class="${isOrp ? "thai-giga-rsvp-orp " : ""}${toneClass(item.word)}">${escapeHtml(part)}</span>`;
-            }).join("");
+            const markup = getToneSegments(item).map(segment =>
+                graphemes(segment.text).map(part => {
+                    const isOrp = offset === orpIndex;
+                    offset += 1;
+                    return `<span class="${isOrp ? "thai-giga-rsvp-orp " : ""}${toneClass(segment.transliteration)}">${escapeHtml(part)}</span>`;
+                }).join("")
+            ).join("");
             return `<span class="thai-giga-rsvp-word">${markup}</span>${includeSpacing ? " " : ""}`;
         };
 
@@ -398,12 +446,99 @@
     }
 
     function formatMetrics() {
-        const elapsed = startedAt ? Math.max(0, (Date.now() - startedAt) / 1000) : 0;
+        const elapsed = getElapsedMs() / 1000;
         const effectiveWpm = elapsed > 0 ? Math.round(completedWords / (elapsed / 60)) : 0;
         return `${completedSentences} Sätze · ${completedUnits} Einheiten · ${completedWords} Wörter · ${effectiveWpm} WPM · ${Math.round(elapsed)} s · ${completedRepetitions} Wdh.`;
     }
 
+    function getElapsedMs() {
+        return elapsedMs + (
+            elapsedStartedAt
+                ? Math.max(0, Date.now() - elapsedStartedAt)
+                : 0
+        );
+    }
+
+    function formatStopwatch() {
+        const totalSeconds = Math.floor(getElapsedMs() / 1000);
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor(totalSeconds / 60) % 60;
+        const seconds = totalSeconds % 60;
+        const pad = value => String(value).padStart(2, "0");
+        return hours > 0
+            ? `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`
+            : `${pad(minutes)}:${pad(seconds)}`;
+    }
+
+    function getSeekableUnitIndices() {
+        return units
+            .map((unit, index) => unit.sentenceGap ? null : index)
+            .filter(index => index !== null);
+    }
+
+    function getSeekPosition(seekableUnitIndices) {
+        if (!seekableUnitIndices.length) {
+            return 0;
+        }
+        const exactIndex = seekableUnitIndices.indexOf(unitIndex);
+        if (exactIndex >= 0) {
+            return exactIndex;
+        }
+        const nextIndex = seekableUnitIndices.findIndex(index => index > unitIndex);
+        return nextIndex >= 0 ? nextIndex : seekableUnitIndices.length - 1;
+    }
+
+    function renderStopwatch() {
+        if (elements.stopwatch) {
+            elements.stopwatch.textContent = `⏱ ${formatStopwatch()}`;
+        }
+    }
+
+    function updateStopwatch() {
+        renderStopwatch();
+        if (playing) {
+            stopwatchTimer = window.setTimeout(updateStopwatch, 250);
+        } else {
+            stopwatchTimer = null;
+        }
+    }
+
+    function startStopwatch() {
+        if (!elapsedStartedAt) {
+            elapsedStartedAt = Date.now();
+        }
+        if (!stopwatchTimer) {
+            updateStopwatch();
+        }
+    }
+
+    function pauseStopwatch() {
+        if (elapsedStartedAt) {
+            elapsedMs += Math.max(0, Date.now() - elapsedStartedAt);
+            elapsedStartedAt = 0;
+        }
+        if (stopwatchTimer) {
+            window.clearTimeout(stopwatchTimer);
+            stopwatchTimer = null;
+        }
+        renderStopwatch();
+    }
+
+    function resetStopwatch() {
+        pauseStopwatch();
+        elapsedMs = 0;
+        renderStopwatch();
+    }
+
     function formatProgress() {
+        if (mode === "word") {
+            const totalWords = units.reduce((total, unit) => total + unit.wordCount, 0);
+            const currentWords = units
+                .slice(0, unitIndex + 1)
+                .reduce((total, unit) => total + unit.wordCount, 0);
+            return `${Math.min(currentWords, totalWords)}/${totalWords}`;
+        }
+
         const currentSentence = currentUnit()?.sentence;
         const sentenceIndex = currentSentence
             ? sentences.findIndex(sentence => sentence.id === currentSentence.id)
@@ -411,8 +546,28 @@
         return `${sentenceIndex >= 0 ? sentenceIndex + 1 : 0}/${sentences.length}`;
     }
 
+    function setPosition(value) {
+        const seekableUnitIndices = getSeekableUnitIndices();
+        if (!seekableUnitIndices.length) {
+            return;
+        }
+        const position = Math.min(
+            seekableUnitIndices.length - 1,
+            Math.max(0, Math.round(Number(value)))
+        );
+        const nextUnitIndex = seekableUnitIndices[position];
+        if (!Number.isInteger(nextUnitIndex)) {
+            return;
+        }
+        pause();
+        unitIndex = nextUnitIndex;
+        sessionComplete = false;
+        render();
+    }
+
     function render() {
         const unit = currentUnit();
+        const seekableUnitIndices = getSeekableUnitIndices();
         syncDisplaySettings();
         syncFontSizeSettings();
         if (!elements.list) return;
@@ -444,6 +599,11 @@
             elements.wpmSlider.max = String(getMaxWpm());
             elements.wpmSlider.value = String(wpm);
         }
+        if (elements.positionSlider) {
+            elements.positionSlider.max = String(Math.max(0, seekableUnitIndices.length - 1));
+            elements.positionSlider.value = String(getSeekPosition(seekableUnitIndices));
+        }
+        renderStopwatch();
         document.querySelectorAll("[data-thai-giga-rsvp-action='play']").forEach(button => {
             button.textContent = playing ? "⏸" : "▶";
             button.setAttribute("aria-label", playing ? "Pausieren" : "Abspielen");
@@ -454,6 +614,7 @@
         playing = false;
         if (timer) window.clearTimeout(timer);
         timer = null;
+        pauseStopwatch();
         render();
     }
 
@@ -504,11 +665,11 @@
             completedWords = 0;
             completedSentences = 0;
             completedRepetitions = 0;
-            startedAt = 0;
+            resetStopwatch();
             sessionComplete = false;
         }
-        if (!startedAt) startedAt = Date.now();
         playing = true;
+        startStopwatch();
         render();
         schedule();
     }
@@ -535,6 +696,10 @@
         saveSettings();
     }
 
+    function setPositionFromSlider(value) {
+        setPosition(value);
+    }
+
     function open(nextSentences, title, context, trigger) {
         sentences = Array.from(new Map(
             (Array.isArray(nextSentences) ? nextSentences : []).map(sentence => [sentence.id, sentence])
@@ -549,7 +714,7 @@
         completedSentences = 0;
         completedRepetitions = 0;
         sessionComplete = false;
-        startedAt = 0;
+        resetStopwatch();
         elements.overlay.hidden = false;
         document.body.classList.add("thai-giga-speedreading-open");
         syncDisplaySettings(true);
@@ -578,7 +743,7 @@
         pause();
         sentences = [];
         units = [];
-        startedAt = 0;
+        resetStopwatch();
         if (elements.overlay) {
             elements.overlay.hidden = true;
         }
@@ -612,6 +777,10 @@
         saveSettings();
     });
     elements.wpmSlider?.addEventListener("input", event => setWpm(event.target.value));
+    elements.positionSlider?.addEventListener(
+        "input",
+        event => setPositionFromSlider(event.target.value)
+    );
     elements.thaiFontSize?.addEventListener("input", event => setFontSize("thai", event.target.value));
     elements.transliterationFontSize?.addEventListener(
         "input",
