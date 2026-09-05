@@ -11,7 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&family=Noto+Sans+Thai:wght@300;400&family=Noto+Serif+Thai:wght@300;400&family=Prompt:wght@300;400&family=Sarabun:wght@300;400&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../css/thai-giga.css?v=191">
+    <link rel="stylesheet" href="../css/thai-giga.css?v=198">
     <link rel="manifest" href="../manifest.json">
 </head>
 <body class="thai-giga-page">
@@ -554,6 +554,22 @@
                           <button type="button" class="is-primary" data-thai-giga-rsvp-action="play" aria-label="Abspielen">▶</button>
                           <button type="button" data-thai-giga-rsvp-action="next" aria-label="Nächste Einheit">⏭</button>
                     </div>
+                   <output
+                       id="thaiGigaRsvpStopwatch"
+                       class="thai-giga-rsvp-stopwatch"
+                       aria-label="Verstrichene Zeit"
+                       title="Verstrichene Zeit">⏱ 00:00</output>
+                   <label class="thai-giga-rsvp-position-slider" for="thaiGigaRsvpPositionSlider">
+                       <span class="sr-only">Position in der RSVP-Wiedergabe</span>
+                       <input
+                           id="thaiGigaRsvpPositionSlider"
+                           type="range"
+                           min="0"
+                           max="0"
+                           step="1"
+                           value="0"
+                           aria-label="Position in der RSVP-Wiedergabe">
+                   </label>
                 </div>
             </div>
         </section>
@@ -563,7 +579,7 @@
     <script src="../js/quest-audio.js?v=150"></script>
     <script src="../js/thai-giga-drill.js?v=144"></script>
     <script src="../js/thai-giga-audio.js?v=147"></script>
-    <script src="../js/thai-giga-rsvp.js?v=11"></script>
+    <script src="../js/thai-giga-rsvp.js?v=15"></script>
     <script src="../js/thai-giga-reader.js?v=164"></script>
     <script src="../js/thai-giga-settings.js?v=153"></script>
     <script src="../js/pwa-register.js"></script>
