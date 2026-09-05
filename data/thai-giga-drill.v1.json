@@ -11711,7 +11711,7 @@
                           "text": "ใช่",
                           "kind": "word",
                           "wordId": "word-chai",
-                          "contextMeaning": "oder?"
+                          "contextMeaning": "stimmt / ja"
                         },
                         {
                           "id": "l1-b1-s252-t5",
@@ -11816,7 +11816,7 @@
                           "text": "ใช่",
                           "kind": "word",
                           "wordId": "word-chai",
-                          "contextMeaning": "richtig?"
+                          "contextMeaning": "stimmt / ja"
                         },
                         {
                           "id": "l1-b1-s254-t5",
@@ -11921,7 +11921,7 @@
                           "text": "ใช่",
                           "kind": "word",
                           "wordId": "word-chai",
-                          "contextMeaning": "stimmt das?"
+                          "contextMeaning": "stimmt / ja"
                         },
                         {
                           "id": "l1-b1-s256-t5",
@@ -12081,7 +12081,7 @@
                           "text": "ไหม",
                           "kind": "word",
                           "wordId": "word-mai-4a80f2d0",
-                          "contextMeaning": "Fragepartikel"
+                          "contextMeaning": "stimmt / ja"
                         }
                       ],
                       "audio": {
@@ -12250,7 +12250,7 @@
                           "text": "ใช่",
                           "kind": "word",
                           "wordId": "word-chai",
-                          "contextMeaning": "richtig?"
+                          "contextMeaning": "stimmt / ja"
                         },
                         {
                           "id": "l1-b1-s262-t5",
@@ -12329,7 +12329,7 @@
                           "text": "ใช่",
                           "kind": "word",
                           "wordId": "word-chai",
-                          "contextMeaning": "stimmt das?"
+                          "contextMeaning": "stimmt / ja"
                         },
                         {
                           "id": "l1-b1-s264-t5",
@@ -12415,7 +12415,7 @@
                           "text": "ไหม",
                           "kind": "word",
                           "wordId": "word-mai-4a80f2d0",
-                          "contextMeaning": "Fragepartikel"
+                          "contextMeaning": "stimmt / ja"
                         }
                       ],
                       "audio": {
@@ -12487,7 +12487,7 @@
                           "text": "ใช่",
                           "kind": "word",
                           "wordId": "word-chai",
-                          "contextMeaning": "stimmt das?"
+                          "contextMeaning": "stimmt / ja"
                         },
                         {
                           "id": "l1-b1-s268-t5",
@@ -13539,7 +13539,7 @@
                           "text": "ใช่",
                           "kind": "word",
                           "wordId": "word-chai",
-                          "contextMeaning": "richtig?"
+                          "contextMeaning": "stimmt / ja"
                         },
                         {
                           "id": "l1-b1-s292-t5",
@@ -13644,7 +13644,7 @@
                           "text": "ใช่",
                           "kind": "word",
                           "wordId": "word-chai",
-                          "contextMeaning": "oder?"
+                          "contextMeaning": "stimmt / ja"
                         },
                         {
                           "id": "l1-b1-s294-t5",
@@ -13756,7 +13756,7 @@
                           "text": "ไหม",
                           "kind": "word",
                           "wordId": "word-mai-4a80f2d0",
-                          "contextMeaning": "Fragepartikel"
+                          "contextMeaning": "stimmt / ja"
                         }
                       ],
                       "audio": {
@@ -16966,14 +16966,14 @@
                           "text": "จริง",
                           "kind": "word",
                           "wordId": "word-b3-038",
-                          "contextMeaning": "wirklich"
+                          "contextMeaning": "wahr / echt"
                         },
                         {
                           "id": "l1-b1-s356-t2",
                           "text": "เหรอ",
                           "kind": "word",
                           "wordId": "word-ro",
-                          "contextMeaning": "echt?"
+                          "contextMeaning": "wirklich? / etwa? (Rückfragepartikel)"
                         }
                       ],
                       "audio": {
@@ -17209,7 +17209,7 @@
                           "text": "ใช่",
                           "kind": "word",
                           "wordId": "word-chai",
-                          "contextMeaning": "oder?"
+                          "contextMeaning": "stimmt / ja"
                         },
                         {
                           "id": "l1-b1-s361-t5",
@@ -17328,7 +17328,7 @@
                           "text": "ไหม",
                           "kind": "word",
                           "wordId": "word-mai-4a80f2d0",
-                          "contextMeaning": "Fragepartikel"
+                          "contextMeaning": "stimmt / ja"
                         }
                       ],
                       "audio": {
@@ -18604,7 +18604,7 @@
                           "text": "ไหม",
                           "kind": "word",
                           "wordId": "word-mai-4a80f2d0",
-                          "contextMeaning": "Fragepartikel"
+                          "contextMeaning": "stimmt / ja"
                         }
                       ],
                       "audio": {
@@ -23295,7 +23295,7 @@
                           "text": "ไหม",
                           "kind": "word",
                           "wordId": "word-mai-4a80f2d0",
-                          "contextMeaning": "Fragepartikel"
+                          "contextMeaning": "stimmt / ja"
                         }
                       ],
                       "audio": {
@@ -23638,7 +23638,7 @@
                           "text": "ไหม",
                           "kind": "word",
                           "wordId": "word-mai-4a80f2d0",
-                          "contextMeaning": "Fragepartikel"
+                          "contextMeaning": "stimmt / ja"
                         }
                       ],
                       "audio": {
@@ -32370,7 +32370,7 @@
                           "kind": "word",
                           "id": "l1-b2-s659-t1",
                           "wordId": "word-b2-yuu",
-                          "contextMeaning": "zu Hause bleiben"
+                          "contextMeaning": "bleiben / sein"
                         },
                         {
                           "text": "บ้าน",
@@ -32505,7 +32505,7 @@
                           "kind": "word",
                           "id": "l1-b2-s661-t4",
                           "wordId": "word-b2-dton-nii-khun-nn-r-yang",
-                          "contextMeaning": "schon?"
+                          "contextMeaning": "oder noch nicht? (Frageeinheit)"
                         }
                       ],
                       "audio": {
@@ -34256,7 +34256,7 @@
                           "kind": "word",
                           "id": "l1-b2-s700-t4",
                           "wordId": "word-b2-ngan-g-phak-hai-dtem-thii-na",
-                          "contextMeaning": "richtig"
+                          "contextMeaning": "sodass / bis hin zu (Adverbialisierungsauxiliar)"
                         },
                         {
                           "text": "เต็มที่",
@@ -37857,7 +37857,7 @@
                           "kind": "word",
                           "id": "l1-b2-s771-t4",
                           "wordId": "word-b2-dton-nii-khun-nn-r-yang",
-                          "contextMeaning": "schon?"
+                          "contextMeaning": "oder noch nicht? (Frageeinheit)"
                         }
                       ],
                       "audio": {
@@ -38092,14 +38092,14 @@
                           "kind": "word",
                           "id": "l1-b2-s777-t1",
                           "wordId": "word-b3-038",
-                          "contextMeaning": "wirklich"
+                          "contextMeaning": "wahr / echt"
                         },
                         {
                           "text": "เหรอ",
                           "kind": "word",
                           "id": "l1-b2-s777-t2",
                           "wordId": "word-ro",
-                          "contextMeaning": "echt?"
+                          "contextMeaning": "wirklich? / etwa? (Rückfragepartikel)"
                         }
                       ],
                       "audio": {
@@ -39813,7 +39813,7 @@
                           "kind": "word",
                           "id": "l1-b2-s810-t2",
                           "wordId": "word-b2-lo-naam-la",
-                          "contextMeaning": "nein"
+                          "contextMeaning": "eher / doch (Milderungspartikel nach Negation)"
                         },
                         {
                           "text": " ",
@@ -40154,7 +40154,7 @@
                           "kind": "word",
                           "id": "l1-b2-s817-t5",
                           "wordId": "word-b2-dton-nii-khun-nn-r-yang",
-                          "contextMeaning": "schon?"
+                          "contextMeaning": "oder noch nicht? (Frageeinheit)"
                         }
                       ],
                       "audio": {
@@ -40820,7 +40820,7 @@
                           "kind": "word",
                           "id": "l1-b2-s831-t3",
                           "wordId": "word-b2-dton-nii-khun-nn-r-yang",
-                          "contextMeaning": "schon?"
+                          "contextMeaning": "oder noch nicht? (Frageeinheit)"
                         }
                       ],
                       "audio": {
@@ -42042,7 +42042,7 @@
                           "kind": "word",
                           "id": "l1-b2-s857-t2",
                           "wordId": "word-b2-yuu",
-                          "contextMeaning": "zu Hause bleiben"
+                          "contextMeaning": "bleiben / sein"
                         },
                         {
                           "text": "บ้าน",
@@ -43946,7 +43946,7 @@
                           "kind": "word",
                           "id": "l1-b2-s897-t3",
                           "wordId": "word-b2-ngan-g-phak-hai-dtem-thii-na",
-                          "contextMeaning": "richtig"
+                          "contextMeaning": "sodass / bis hin zu (Adverbialisierungsauxiliar)"
                         },
                         {
                           "text": "เต็มที่",
@@ -46596,7 +46596,7 @@
                           "kind": "word",
                           "id": "l1-b2-s938-t4",
                           "wordId": "word-b2-yuu",
-                          "contextMeaning": "zu Hause bleiben"
+                          "contextMeaning": "bleiben / sein"
                         },
                         {
                           "text": "บ้าน",
@@ -51612,7 +51612,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1033-t3",
                           "wordId": "word-b2-dton-nii-khun-nn-r-yang",
-                          "contextMeaning": "schon? / noch nicht?"
+                          "contextMeaning": "oder noch nicht? (Frageeinheit)"
                         }
                       ],
                       "audio": {
@@ -52738,14 +52738,14 @@
                           "kind": "word",
                           "id": "l1-b3-s1059-t5",
                           "wordId": "word-b2-bpai",
-                          "contextMeaning": "kommen"
+                          "contextMeaning": "gehen / hingehen"
                         },
                         {
                           "text": "หา",
                           "kind": "word",
                           "id": "l1-b3-s1059-t6",
                           "wordId": "word-b2-haa",
-                          "contextMeaning": "zu dir"
+                          "contextMeaning": "besuchen / zu jemandem gehen"
                         }
                       ],
                       "audio": {
@@ -53414,7 +53414,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1075-t1",
                           "wordId": "word-b2-chai-wan-nii-ngaan-y",
-                          "contextMeaning": "zu tun"
+                          "contextMeaning": "Arbeit / Aufgabe"
                         },
                         {
                           "text": "เยอะ",
@@ -53486,7 +53486,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1077-t2",
                           "wordId": "word-b2-dton-nii-khun-nn-r-yang",
-                          "contextMeaning": "schon? / noch nicht?"
+                          "contextMeaning": "oder noch nicht? (Frageeinheit)"
                         }
                       ],
                       "audio": {
@@ -55164,14 +55164,14 @@
                           "kind": "word",
                           "id": "l1-b3-s1109-t5",
                           "wordId": "word-b2-bpai",
-                          "contextMeaning": "zu dir gehen"
+                          "contextMeaning": "gehen / hin"
                         },
                         {
                           "text": "หา",
                           "kind": "word",
                           "id": "l1-b3-s1109-t6",
                           "wordId": "word-b2-haa",
-                          "contextMeaning": "dich treffen"
+                          "contextMeaning": "aufsuchen / besuchen"
                         }
                       ],
                       "audio": {
@@ -55866,7 +55866,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1124-t3",
                           "wordId": "word-b2-yuu",
-                          "contextMeaning": "bist"
+                          "contextMeaning": "sich befinden / sein"
                         },
                         {
                           "text": "ที่",
@@ -56217,7 +56217,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1132-t1",
                           "wordId": "word-b2-yuu",
-                          "contextMeaning": "bist"
+                          "contextMeaning": "sich befinden / sein"
                         },
                         {
                           "text": "ข้างนอก",
@@ -56423,7 +56423,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1137-t1",
                           "wordId": "word-b2-phom-ja-bpai-haa-mae",
-                          "contextMeaning": "werden/gleich"
+                          "contextMeaning": "werden / vorhaben zu"
                         },
                         {
                           "text": "ไป",
@@ -56459,7 +56459,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1138-t1",
                           "wordId": "word-b2-phom-ja-bpai-haa-mae",
-                          "contextMeaning": "werden/gleich"
+                          "contextMeaning": "werden / vorhaben zu"
                         },
                         {
                           "text": "ไป",
@@ -57348,7 +57348,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1159-t1",
                           "wordId": "word-b2-phom-ja-bpai-haa-mae",
-                          "contextMeaning": "willst/werden"
+                          "contextMeaning": "werden / vorhaben zu"
                         },
                         {
                           "text": "ซื้อ",
@@ -57692,14 +57692,14 @@
                           "kind": "word",
                           "id": "l1-b3-s1167-t1",
                           "wordId": "word-b3-038",
-                          "contextMeaning": "echt"
+                          "contextMeaning": "wahr / echt"
                         },
                         {
                           "text": "เหรอ",
                           "kind": "word",
                           "id": "l1-b3-s1167-t2",
                           "wordId": "word-ro",
-                          "contextMeaning": "echt?"
+                          "contextMeaning": "wirklich? / etwa? (Rückfragepartikel)"
                         }
                       ],
                       "audio": {
@@ -58978,7 +58978,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1196-t2",
                           "wordId": "word-b2-phom-ja-bpai-haa-mae",
-                          "contextMeaning": "werden/gleich"
+                          "contextMeaning": "werden / vorhaben zu"
                         },
                         {
                           "text": "นอน",
@@ -61203,7 +61203,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1243-t1",
                           "wordId": "word-b2-yuu",
-                          "contextMeaning": "bin zusammen mit"
+                          "contextMeaning": "zusammen sein / sein"
                         },
                         {
                           "text": "กับ",
@@ -61239,7 +61239,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1244-t1",
                           "wordId": "word-b2-yuu",
-                          "contextMeaning": "bin zusammen mit"
+                          "contextMeaning": "zusammen sein / sein"
                         },
                         {
                           "text": "กับ",
@@ -63001,7 +63001,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1286-t3",
                           "wordId": "word-b2-yuu",
-                          "contextMeaning": "bin zusammen mit"
+                          "contextMeaning": "zusammen sein / sein"
                         },
                         {
                           "text": "กับ",
@@ -63211,7 +63211,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1291-t3",
                           "wordId": "word-lo",
-                          "contextMeaning": "schon"
+                          "contextMeaning": "zu Hause / Haus"
                         },
                         {
                           "text": "เหรอ",
@@ -64138,7 +64138,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1307-t3",
                           "wordId": "word-b2-dton-nii-khun-nn-r-yang",
-                          "contextMeaning": "schon? / noch?"
+                          "contextMeaning": "oder noch nicht? (Frageeinheit)"
                         }
                       ],
                       "audio": {
@@ -65258,7 +65258,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1333-t2",
                           "wordId": "word-b2-dton-nii-khun-nn-r-yang",
-                          "contextMeaning": "schon? / noch?"
+                          "contextMeaning": "oder noch nicht? (Frageeinheit)"
                         }
                       ],
                       "audio": {
@@ -66779,7 +66779,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1369-t5",
                           "wordId": "word-b2-dton-nii-khun-nn-r-yang",
-                          "contextMeaning": "schon? / noch?"
+                          "contextMeaning": "oder noch nicht? (Frageeinheit)"
                         }
                       ],
                       "audio": {
@@ -66972,7 +66972,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1373-t2",
                           "wordId": "word-b2-dton-nii-khun-nn-r-yang",
-                          "contextMeaning": "schon? / noch?"
+                          "contextMeaning": "oder noch nicht? (Frageeinheit)"
                         }
                       ],
                       "audio": {
@@ -69751,7 +69751,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1432-t1",
                           "wordId": "word-b2-yuu",
-                          "contextMeaning": "zu Hause sein"
+                          "contextMeaning": "sein / sich aufhalten"
                         },
                         {
                           "text": "บ้าน",
@@ -70758,7 +70758,7 @@
                           "kind": "word",
                           "id": "l1-b3-s1455-t5",
                           "wordId": "word-b2-ngan-g-phak-hai-dtem-thii-na",
-                          "contextMeaning": "für mich / bitte"
+                          "contextMeaning": "für jemanden (Benefaktiv)"
                         },
                         {
                           "text": "หน่อย",
@@ -89467,14 +89467,14 @@
                           "kind": "word",
                           "id": "l1-b4-s1880-t1",
                           "wordId": "word-b3-028",
-                          "contextMeaning": "Zimmer / Raum (in ???????)"
+                          "contextMeaning": "Zimmer / Raum (in ห้องน้ำ)"
                         },
                         {
                           "text": "น้ำ",
                           "kind": "word",
                           "id": "l1-b4-s1880-t2",
                           "wordId": "word-naam",
-                          "contextMeaning": "Wasser (in ???????: Badezimmer)"
+                          "contextMeaning": "Wasser (in ห้องน้ำ: Badezimmer)"
                         },
                         {
                           "text": "อยู่",
@@ -105338,7 +105338,7 @@
               "sentenceId": "l1-b1-s259",
               "thai": "เขาเป็นเพื่อนคุณใช่ไหม",
               "sentenceTranslation": "Er ist dein Freund, oder?",
-              "entryMeaningInSentence": "Fragepartikel",
+              "entryMeaningInSentence": "stimmt / ja",
               "matchedToken": "ไหม"
             },
             {
@@ -105359,7 +105359,7 @@
               "sentenceId": "l1-b1-s266",
               "thai": "เราเป็นเพื่อนกันใช่ไหม",
               "sentenceTranslation": "Wir sind Freunde, oder?",
-              "entryMeaningInSentence": "Fragepartikel",
+              "entryMeaningInSentence": "stimmt / ja",
               "matchedToken": "ไหม"
             },
             {
@@ -105394,7 +105394,7 @@
               "sentenceId": "l1-b1-s296",
               "thai": "คุณเป็นเพื่อนผมใช่ไหม",
               "sentenceTranslation": "Du bist mein Freund, oder?",
-              "entryMeaningInSentence": "Fragepartikel",
+              "entryMeaningInSentence": "stimmt / ja",
               "matchedToken": "ไหม"
             },
             {
@@ -105492,7 +105492,7 @@
               "sentenceId": "l1-b1-s363",
               "thai": "แล้วเขาเป็นคนไทยใช่ไหม",
               "sentenceTranslation": "Und er ist Thailänder, oder?",
-              "entryMeaningInSentence": "Fragepartikel",
+              "entryMeaningInSentence": "stimmt / ja",
               "matchedToken": "ไหม"
             },
             {
@@ -105520,7 +105520,7 @@
               "sentenceId": "l1-b1-s389",
               "thai": "เธอเป็นคนจีนใช่ไหม",
               "sentenceTranslation": "Sie ist Chinesin, oder?",
-              "entryMeaningInSentence": "Fragepartikel",
+              "entryMeaningInSentence": "stimmt / ja",
               "matchedToken": "ไหม"
             },
             {
@@ -105597,7 +105597,7 @@
               "sentenceId": "l1-b1-s477",
               "thai": "ที่นี่เป็นโรงแรมใช่ไหม",
               "sentenceTranslation": "Das hier ist ein Hotel, oder?",
-              "entryMeaningInSentence": "Fragepartikel",
+              "entryMeaningInSentence": "stimmt / ja",
               "matchedToken": "ไหม"
             },
             {
@@ -105611,7 +105611,7 @@
               "sentenceId": "l1-b1-s483",
               "thai": "แล้วเขาเป็นไกด์ใช่ไหม",
               "sentenceTranslation": "Und er ist Reiseleiter, oder?",
-              "entryMeaningInSentence": "Fragepartikel",
+              "entryMeaningInSentence": "stimmt / ja",
               "matchedToken": "ไหม"
             }
           ],
@@ -108367,7 +108367,7 @@
               "sentenceId": "l1-b2-s502",
               "thai": "คุณเป็นลูกค้าใช่ไหม",
               "sentenceTranslation": "Du bist Kunde, oder?",
-              "entryMeaningInSentence": "stimmt? / oder?",
+              "entryMeaningInSentence": "stimmt",
               "matchedToken": "ใช่ไหม",
               "matchedTokenId": "l1-b2-s502-t4"
             },
@@ -108375,7 +108375,7 @@
               "sentenceId": "l1-b2-s535",
               "thai": "เขาเป็นเพื่อนคุณใช่ไหม",
               "sentenceTranslation": "Er ist dein Freund, oder?",
-              "entryMeaningInSentence": "stimmt? / oder?",
+              "entryMeaningInSentence": "stimmt",
               "matchedToken": "ใช่ไหม",
               "matchedTokenId": "l1-b2-s535-t4"
             },
@@ -115050,7 +115050,7 @@
               "sentenceId": "l1-b1-s356",
               "thai": "จริงเหรอ",
               "sentenceTranslation": "Wirklich?",
-              "entryMeaningInSentence": "echt?",
+              "entryMeaningInSentence": "wirklich? / etwa? (Rückfragepartikel)",
               "matchedToken": "เหรอ"
             },
             {
@@ -115249,7 +115249,7 @@
               "sentenceId": "l1-b2-s777",
               "thai": "จริงเหรอ",
               "sentenceTranslation": "Wirklich?",
-              "entryMeaningInSentence": "echt?",
+              "entryMeaningInSentence": "wirklich? / etwa? (Rückfragepartikel)",
               "matchedToken": "เหรอ"
             },
             {
@@ -120614,7 +120614,7 @@
               "sentenceTranslation": "Das Badezimmer ist draußen.",
               "matchedToken": "น้ำ",
               "matchedTokenId": "l1-b4-s1880-t2",
-              "entryMeaningInSentence": "Wasser (in ???????: Badezimmer)"
+              "entryMeaningInSentence": "Wasser (in ห้องน้ำ: Badezimmer)"
             }
           ],
           "infoSentence": "Nomen für Wasser oder Getränk."
@@ -133680,7 +133680,7 @@
               "sentenceId": "l1-b2-s810",
               "thai": "ไม่ล่ะ เดี๋ยวสาย",
               "sentenceTranslation": "Nein, sonst komme ich zu spät.",
-              "entryMeaningInSentence": "nein",
+              "entryMeaningInSentence": "eher / doch (Milderungspartikel nach Negation)",
               "matchedToken": "ล่ะ"
             },
             {
@@ -134095,21 +134095,21 @@
               "sentenceId": "l1-b2-s597",
               "thai": "ผมไม่สบายครับ",
               "sentenceTranslation": "Mir geht es nicht gut.",
-              "entryMeaningInSentence": "sich wohl fühlen",
+              "entryMeaningInSentence": "wohl",
               "matchedToken": "สบาย"
             },
             {
               "sentenceId": "l1-b2-s624",
               "thai": "ผมไม่สบาย",
               "sentenceTranslation": "Mir geht es nicht gut.",
-              "entryMeaningInSentence": "sich wohl fühlen",
+              "entryMeaningInSentence": "wohl",
               "matchedToken": "สบาย"
             },
             {
               "sentenceId": "l1-b2-s725",
               "thai": "อ๋อ ไม่สบายเหรอ",
               "sentenceTranslation": "Ach so, geht es ihm nicht gut?",
-              "entryMeaningInSentence": "sich wohl fühlen",
+              "entryMeaningInSentence": "wohl",
               "matchedToken": "สบาย"
             }
           ],
@@ -134450,7 +134450,7 @@
       "thai": "หรือยัง",
       "transliteration": "rʉ̌ʉ yang",
       "meanings": [
-        "schon? / noch?"
+        "oder noch nicht? / schon?"
       ],
       "firstSentenceId": "l1-b2-s661",
       "syllables": [
@@ -134466,45 +134466,89 @@
       "bossContexts": {
         "level-1-grammar-boss-3": {
           "meanings": [
-            "schon? / noch?"
+            "oder noch nicht? / schon?"
           ],
-          "infoSentence": "Fragt, ob etwas bereits geschehen ist; die Antwort kann noch nicht sein."
+          "infoSentence": "Frageeinheit am Satzende für „schon oder noch nicht?“ („... oder noch nicht?“).",
+          "contextExamples": [
+            {
+              "sentenceId": "l1-b3-s1033",
+              "thai": "โทรหาเขาหรือยัง",
+              "sentenceTranslation": "Hast du ihn schon angerufen?",
+              "entryMeaningInSentence": "oder noch nicht? (Frageeinheit)",
+              "matchedToken": "หรือยัง"
+            },
+            {
+              "sentenceId": "l1-b3-s1077",
+              "thai": "เสร็จหรือยัง",
+              "sentenceTranslation": "Bist du schon fertig?",
+              "entryMeaningInSentence": "oder noch nicht? (Frageeinheit)",
+              "matchedToken": "หรือยัง"
+            },
+            {
+              "sentenceId": "l1-b3-s1307",
+              "thai": "กินข้าวหรือยัง",
+              "sentenceTranslation": "Hast du schon gegessen?",
+              "entryMeaningInSentence": "oder noch nicht? (Frageeinheit)",
+              "matchedToken": "หรือยัง"
+            },
+            {
+              "sentenceId": "l1-b3-s1333",
+              "thai": "เข้าไปหรือยัง",
+              "sentenceTranslation": "Bist du schon reingegangen?",
+              "entryMeaningInSentence": "oder noch nicht? (Frageeinheit)",
+              "matchedToken": "หรือยัง"
+            },
+            {
+              "sentenceId": "l1-b3-s1369",
+              "thai": "คุณอยู่บ้านแล้วหรือยัง",
+              "sentenceTranslation": "Bist du schon zu Hause?",
+              "entryMeaningInSentence": "oder noch nicht? (Frageeinheit)",
+              "matchedToken": "หรือยัง"
+            },
+            {
+              "sentenceId": "l1-b3-s1373",
+              "thai": "ใกล้ถึงหรือยัง",
+              "sentenceTranslation": "Bist du schon fast da?",
+              "entryMeaningInSentence": "oder noch nicht? (Frageeinheit)",
+              "matchedToken": "หรือยัง"
+            }
+          ]
         },
         "level-1-grammar-boss-2": {
           "meanings": [
-            "schon?"
+            "oder noch nicht? / schon?"
           ],
           "contextExamples": [
             {
               "sentenceId": "l1-b2-s661",
               "thai": "ตอนนี้คุณนอนหรือยัง",
               "sentenceTranslation": "Schläfst du schon?",
-              "entryMeaningInSentence": "schon?",
+              "entryMeaningInSentence": "oder noch nicht? (Frageeinheit)",
               "matchedToken": "หรือยัง"
             },
             {
               "sentenceId": "l1-b2-s771",
               "thai": "คุณกินข้าวหรือยัง",
               "sentenceTranslation": "Hast du schon gegessen?",
-              "entryMeaningInSentence": "schon?",
+              "entryMeaningInSentence": "oder noch nicht? (Frageeinheit)",
               "matchedToken": "หรือยัง"
             },
             {
               "sentenceId": "l1-b2-s817",
               "thai": "เขาส่งข้อความมาหรือยัง",
               "sentenceTranslation": "Hat er schon eine Nachricht geschickt?",
-              "entryMeaningInSentence": "schon?",
+              "entryMeaningInSentence": "oder noch nicht? (Frageeinheit)",
               "matchedToken": "หรือยัง"
             },
             {
               "sentenceId": "l1-b2-s831",
               "thai": "รถเมล์มาหรือยัง",
               "sentenceTranslation": "Ist der Bus schon gekommen?",
-              "entryMeaningInSentence": "schon?",
+              "entryMeaningInSentence": "oder noch nicht? (Frageeinheit)",
               "matchedToken": "หรือยัง"
             }
           ],
-          "infoSentence": "หรือยัง bedeutet hier „schon?“."
+          "infoSentence": "Frageeinheit am Satzende für „schon oder noch nicht?“ („... oder noch nicht?“)."
         },
         "level-1-grammar-boss-4": {
           "meanings": [
@@ -135257,7 +135301,7 @@
               "sentenceId": "l1-b2-s659",
               "thai": "อยู่บ้านเหรอ",
               "sentenceTranslation": "Bleibst du zu Hause?",
-              "entryMeaningInSentence": "zu Hause bleiben",
+              "entryMeaningInSentence": "bleiben / sein",
               "matchedToken": "อยู่"
             },
             {
@@ -135355,7 +135399,7 @@
               "sentenceId": "l1-b2-s857",
               "thai": "งั้นอยู่บ้านก็ได้",
               "sentenceTranslation": "Dann können wir auch zu Hause bleiben.",
-              "entryMeaningInSentence": "zu Hause bleiben",
+              "entryMeaningInSentence": "bleiben / sein",
               "matchedToken": "อยู่"
             },
             {
@@ -135383,7 +135427,7 @@
               "sentenceId": "l1-b2-s938",
               "thai": "โอเค งั้นอยู่บ้าน",
               "sentenceTranslation": "Okay, dann bleiben wir zu Hause.",
-              "entryMeaningInSentence": "zu Hause bleiben",
+              "entryMeaningInSentence": "bleiben / sein",
               "matchedToken": "อยู่"
             },
             {
@@ -140099,7 +140143,7 @@
               "sentenceId": "l1-b2-s700",
               "thai": "งั้นก็พักให้เต็มที่นะ",
               "sentenceTranslation": "Dann ruh dich richtig aus.",
-              "entryMeaningInSentence": "richtig",
+              "entryMeaningInSentence": "sodass / bis hin zu (Adverbialisierungsauxiliar)",
               "matchedToken": "ให้"
             },
             {
@@ -140113,7 +140157,7 @@
               "sentenceId": "l1-b2-s897",
               "thai": "งั้นพักให้เต็มที่นะ",
               "sentenceTranslation": "Dann ruh dich richtig aus.",
-              "entryMeaningInSentence": "richtig",
+              "entryMeaningInSentence": "sodass / bis hin zu (Adverbialisierungsauxiliar)",
               "matchedToken": "ให้"
             }
           ],
@@ -143732,24 +143776,24 @@
               "sentenceId": "l1-b4-s1649",
               "thai": "งั้นทำก่อนก็ได้",
               "sentenceTranslation": "Dann kann ich es erst mal machen.",
-              "entryMeaningInSentence": "geht auch / k?nnen",
-              "matchedToken": "?????",
+              "entryMeaningInSentence": "geht auch / können",
+              "matchedToken": "ก็ได้",
               "matchedTokenId": "l1-b4-s1649-t4"
             },
             {
               "sentenceId": "l1-b4-s1679",
               "thai": "งั้นยืนก็ได้",
               "sentenceTranslation": "Dann kann ich auch stehen.",
-              "entryMeaningInSentence": "geht auch / k?nnen",
-              "matchedToken": "?????",
+              "entryMeaningInSentence": "geht auch / können",
+              "matchedToken": "ก็ได้",
               "matchedTokenId": "l1-b4-s1679-t3"
             },
             {
               "sentenceId": "l1-b4-s1695",
               "thai": "งั้นอยู่บ้านก็ได้",
               "sentenceTranslation": "Dann können wir auch zu Hause bleiben.",
-              "entryMeaningInSentence": "geht auch / k?nnen",
-              "matchedToken": "?????",
+              "entryMeaningInSentence": "geht auch / können",
+              "matchedToken": "ก็ได้",
               "matchedTokenId": "l1-b4-s1695-t4"
             },
             {
@@ -143922,7 +143966,7 @@
               "sentenceId": "l1-b1-s356",
               "thai": "จริงเหรอ",
               "sentenceTranslation": "Wirklich?",
-              "entryMeaningInSentence": "wirklich",
+              "entryMeaningInSentence": "wahr / echt",
               "matchedToken": "จริง"
             },
             {
@@ -143952,7 +143996,7 @@
               "sentenceId": "l1-b2-s777",
               "thai": "จริงเหรอ",
               "sentenceTranslation": "Wirklich?",
-              "entryMeaningInSentence": "wirklich",
+              "entryMeaningInSentence": "wahr / echt",
               "matchedToken": "จริง"
             },
             {
@@ -144160,7 +144204,7 @@
               "sentenceId": "l1-b4-s1880",
               "thai": "ห้องน้ำอยู่ข้างนอก",
               "sentenceTranslation": "Das Badezimmer ist draußen.",
-              "entryMeaningInSentence": "Zimmer / Raum (in ???????)",
+              "entryMeaningInSentence": "Zimmer / Raum (in ห้องน้ำ)",
               "matchedToken": "ห้อง",
               "matchedTokenId": "l1-b4-s1880-t1"
             },
