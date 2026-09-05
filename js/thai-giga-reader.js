@@ -1379,11 +1379,14 @@
                 word?.transliteration,
                 word?.syllables
             );
+            const tokenAttribute = renderedToken.id
+                ? ` data-token-id="${escapeHtml(renderedToken.id)}"`
+                : "";
             tokenMarkup.push(
                 interactive
                     ? `<button class="thai-giga-word-button" type="button" data-word-id="${escapeHtml(
                         renderedToken.wordId
-                    )}"${sentenceAttribute}${contextAttribute}${phraseAttributes} title="${contextTitle}">${toneMarkup}</button>`
+                    )}"${tokenAttribute}${sentenceAttribute}${contextAttribute}${phraseAttributes} title="${contextTitle}">${toneMarkup}</button>`
                     : `<span>${toneMarkup}</span>`
             );
             previousToken = renderedToken;
@@ -1555,6 +1558,7 @@
                     button,
                     button.dataset.contextMeaning || "",
                     button.dataset.sentenceId || "",
+                    button.dataset.tokenId || "",
                     button.dataset.phraseThai
                         ? {
                             thai: button.dataset.phraseThai,
@@ -1883,6 +1887,7 @@
         anchor,
         contextMeaning = "",
         sentenceId = "",
+        tokenId = "",
         phrase = null
     ) {
         const word = indexes.wordsById.get(wordId);
@@ -1902,6 +1907,7 @@
             word.infoSentence;
         const contextExample = bossContext?.contextExamples?.find(example =>
             example.sentenceId === sentenceId &&
+            (!example.matchedTokenId || example.matchedTokenId === tokenId) &&
             (!example.matchedToken ||
                 example.matchedToken === (phrase?.contextToken || anchor.textContent.trim()))
         );
