@@ -19,7 +19,7 @@
           "grammarFocus": "เป็น · Identität, Zuordnung & einfache Aussagen",
           "contentStatus": "complete",
           "introduction": {
-            "description": "เป็น bildet grundlegende Aussagen über Identität, Zuordnung, Rollen, Herkunft und Beziehungen. Fragen, Verneinungen und Bestätigungen erweitern die Struktur Schritt für Schritt in echter Kommunikation.",
+            "description": "เป็น verbindet eine Person oder Sache direkt mit ihrer Identität, Rolle, Herkunft oder Eigenschaft. In Boss 1 baust du das Fundament für einfache Aussagen, Fragen und Reaktionen im Thailändischen auf.",
             "example": {
               "thai": "ผมเป็นคนไทย",
               "transliteration": "phǒm bpen khon Thai",
@@ -29,17 +29,17 @@
               {
                 "thai": "ผม",
                 "transliteration": "phǒm",
-                "translation": "ich / mich"
+                "translation": "ich"
               },
               {
                 "thai": "เป็น",
                 "transliteration": "bpen",
-                "translation": "sein / jemand sein"
+                "translation": "sein / bin"
               },
               {
                 "thai": "คนไทย",
                 "transliteration": "khon Thai",
-                "translation": "Thailänder / thailändische Person"
+                "translation": "Thailänder"
               }
             ],
             "assembly": {
@@ -47,7 +47,7 @@
               "transliteration": "phǒm + bpen + khon Thai",
               "translation": "Ich + bin + Thailänder."
             },
-            "warning": "เป็น steht hier vor einem Nomen und beschreibt Identität, Beruf, Herkunft oder Zuordnung. Fragen werden häufig mit ไหม gebildet; für die nominale Verneinung wird ไม่ใช่ verwendet."
+            "warning": "Grundmuster: Wer + เป็น + Was/Rolle. Für Fragen hängst du einfach ไหม ans Satzende, zur Verneinung antwortest du mit ไม่ใช่."
           },
           "blocks": [
             {
@@ -4340,11 +4340,11 @@
               ],
               "midpointReminder": {
                 "title": "💎 REMINDER · SÄTZE 1–50",
-                "message": "Was du gerade gesehen hast",
-                "lead": "Bekannte Wörter und Muster kehren in neuen Verbindungen zurück.",
+                "message": "Die ersten Minimalstrukturen & Reaktionen",
+                "lead": "Was du gerade gelernt hast",
                 "sections": [
                   {
-                    "title": "Wörter und Wendungen",
+                    "title": "Neue Wörter",
                     "words": [
                       {
                         "thai": "ผม",
@@ -4382,196 +4382,129 @@
                         "translation": "Lehrer / Lehrerin"
                       },
                       {
+                        "thai": "นักเรียน",
+                        "transliteration": "nák-rian",
+                        "translation": "Schüler / Schülerin"
+                      },
+                      {
+                        "thai": "เป็นเพื่อน",
+                        "transliteration": "bpen phʉ̂an",
+                        "translation": "Freunde sein / befreundet sein"
+                      },
+                      {
+                        "thai": "คนไทย",
+                        "transliteration": "khon Thai",
+                        "translation": "Thailänder / Thailänderin"
+                      },
+                      {
                         "thai": "ไหม",
                         "transliteration": "mái",
-                        "translation": "Fragepartikel; bildet am Satzende eine Ja-/Nein-Frage"
+                        "translation": "Fragepartikel (Ja/Nein)"
+                      },
+                      {
+                        "thai": "ใช่",
+                        "transliteration": "châi",
+                        "translation": "ja / richtig / stimmt"
                       },
                       {
                         "thai": "ครับ",
                         "transliteration": "khráp",
-                        "translation": "männlicher Höflichkeitspartikel"
+                        "translation": "Höflichkeitspartikel (männlich)"
                       },
                       {
                         "thai": "ค่ะ",
                         "transliteration": "khâ",
-                        "translation": "weiblicher Höflichkeitspartikel in Aussagen"
+                        "translation": "Höflichkeitspartikel (weiblich, Aussage)"
+                      },
+                      {
+                        "thai": "ไม่ใช่",
+                        "transliteration": "mâi châi",
+                        "translation": "nicht sein / nein"
+                      },
+                      {
+                        "thai": "คนเยอรมัน",
+                        "transliteration": "khon yoeraman",
+                        "translation": "Deutscher / Deutsche"
+                      },
+                      {
+                        "thai": "สวัสดี",
+                        "transliteration": "sà-wàt-dii",
+                        "translation": "Hallo / Guten Tag"
                       },
                       {
                         "thai": "คะ",
-                        "transliteration": "ká",
-                        "translation": "weiblicher Höflichkeitspartikel in Fragen"
+                        "transliteration": "khá",
+                        "translation": "Höflichkeitspartikel (weiblich, Frage)"
+                      },
+                      {
+                        "thai": "อ๋อ",
+                        "transliteration": "ɔ̌ɔ",
+                        "translation": "ach so"
+                      },
+                      {
+                        "thai": "แล้ว",
+                        "transliteration": "lɛ́ɛo",
+                        "translation": "und / dann"
                       }
                     ],
-                    "note": "ไหม steht am Satzende und macht aus einer Aussage eine Ja-/Nein-Frage. Die Höflichkeitspartikel richten sich nach der sprechenden Person: ครับ wird von Männern verwendet, ค่ะ von Frauen in Aussagen und คะ von Frauen in Fragen."
+                    "note": "Die ersten 20 Grundbausteine für einfache Identifikationen und Ja/Nein-Dialoge."
                   }
                 ],
-                "patternLead": "Ein Muster aus diesem Abschnitt",
+                "patternLead": "Wichtiges Muster",
                 "pattern": {
-                  "thai": "ผมเป็นคน",
-                  "transliteration": "phǒm bpen khon",
-                  "translation": "Ich bin ein Mensch"
+                  "thai": "คุณเป็นครูไหม",
+                  "transliteration": "khun bpen khruu mái",
+                  "translation": "Bist du Lehrer?"
                 },
                 "discoveries": [
                   {
-                    "thai": "คุณเป็นคน",
-                    "transliteration": "khun bpen khon",
-                    "translation": "Du bist ein Mensch"
+                    "thai": "ใช่ครับ ผมเป็นครู",
+                    "transliteration": "châi khráp phǒm bpen khruu",
+                    "translation": "Ja, ich bin Lehrer."
                   },
                   {
-                    "thai": "เขาเป็นคน",
-                    "transliteration": "kǎo bpen khon",
-                    "translation": "Er ist ein Mensch"
-                  },
-                  {
-                    "thai": "เราเป็นคน",
-                    "transliteration": "rao bpen khon",
-                    "translation": "Wir sind Menschen"
+                    "thai": "ไม่ใช่ครับ เขาเป็นนักเรียน",
+                    "transliteration": "mâi châi khráp kǎo bpen nák-rian",
+                    "translation": "Nein, er ist Schüler."
                   }
                 ],
-                "closing": "Nicht abhaken: wiedererkennen, verstehen und reagieren."
+                "closing": "Mit Subjekt + เป็น + Rolle bildest du Aussagen. Ein ไหม am Satzende macht daraus sofort eine Ja-/Nein-Frage."
               },
               "completion": {
-                "title": "🏆 100 / 500 — FOUNDATION BLOCK 1 COMPLETE",
-                "heading": "🧠 Grammatikboss 1 · เป็น",
-                "message": "Du hast jetzt 100 von 500 Sätzen gegrindet.",
-                "lead": "Wörter und Muster aus diesem Foundation-Block",
-                "wordSectionTitle": "Aktiv gefestigte Wörter",
-                "words": [
+                "title": "🏆 100 / 500 · FOUNDATION BLOCK 1 COMPLETE",
+                "sentenceRange": "1–100",
+                "progress": "Minimalstrukturen, Rollen & Ja/Nein-Dialoge sitzen fest",
+                "sections": [
                   {
-                    "thai": "ผม",
-                    "transliteration": "phǒm",
-                    "translation": "ich / mich"
-                  },
-                  {
-                    "thai": "เป็น",
-                    "transliteration": "bpen",
-                    "translation": "sein / ist"
-                  },
-                  {
-                    "thai": "คน",
-                    "transliteration": "khon",
-                    "translation": "Person / Mensch"
-                  },
-                  {
-                    "thai": "คุณ",
-                    "transliteration": "khun",
-                    "translation": "du / Sie"
-                  },
-                  {
-                    "thai": "เขา",
-                    "transliteration": "kǎo",
-                    "translation": "er / sie"
-                  },
-                  {
-                    "thai": "เรา",
-                    "transliteration": "rao",
-                    "translation": "wir"
-                  },
-                  {
-                    "thai": "ครู",
-                    "transliteration": "khruu",
-                    "translation": "Lehrer / Lehrerin"
-                  },
-                  {
-                    "thai": "นักเรียน",
-                    "transliteration": "nák-rian",
-                    "translation": "Schüler / Schülerin"
-                  },
-                  {
-                    "thai": "เป็นเพื่อน",
-                    "transliteration": "bpen phʉ̂an",
-                    "translation": "Freunde sein"
-                  },
-                  {
-                    "thai": "คนไทย",
-                    "transliteration": "khon Thai",
-                    "translation": "Thailänder"
-                  },
-                  {
-                    "thai": "ไหม",
-                    "transliteration": "mái",
-                    "translation": "Fragepartikel"
-                  },
-                  {
-                    "thai": "ใช่",
-                    "transliteration": "châi",
-                    "translation": "ja / richtig"
-                  },
-                  {
-                    "thai": "ไม่ใช่",
-                    "transliteration": "mâi châi",
-                    "translation": "nicht sein / nein"
-                  },
-                  {
-                    "thai": "คนเยอรมัน",
-                    "transliteration": "khon yoeraman",
-                    "translation": "Deutscher"
-                  },
-                  {
-                    "thai": "สวัสดี",
-                    "transliteration": "sà-wàt-dii",
-                    "translation": "hallo"
-                  },
-                  {
-                    "thai": "อ๋อ",
-                    "transliteration": "ɔ̌ɔ",
-                    "translation": "ach so"
-                  },
-                  {
-                    "thai": "แล้ว",
-                    "transliteration": "lɛ́ɛo",
-                    "translation": "dann / und / schon"
+                    "title": "Neue Wörter (Sätze 51–100)",
+                    "words": [
+                      {
+                        "thai": "ใคร",
+                        "transliteration": "khrai",
+                        "translation": "wer"
+                      },
+                      {
+                        "thai": "หมอ",
+                        "transliteration": "mɔ̌ɔ",
+                        "translation": "Arzt / Ärztin"
+                      }
+                    ],
+                    "note": "In diesem zweiten 50er-Fenster kamen gezielte Personenfragen mit ใคร dazu."
                   }
                 ],
-                "questionLead": "Ein wiederkehrendes Fragemuster",
+                "questionLead": "Zentrales Fragemuster",
                 "question": {
-                  "thai": "ไม่ใช่ครับ ผมเป็นนักเรียน",
-                  "transliteration": "mâi châi khráp phǒm bpen nák-rian",
-                  "translation": "Nein, ich bin Schüler."
+                  "thai": "แล้วใครเป็นครู",
+                  "transliteration": "lɛ́ɛo khrai bpen khruu",
+                  "translation": "Und wer ist Lehrer?"
                 },
-                "answerLead": "Eine passende Antwort",
+                "answerLead": "Echte Reaktion",
                 "answer": {
-                  "thai": "อ๋อ คุณเป็นนักเรียน",
-                  "transliteration": "ɔ̌ɔ khun bpen nák-rian",
-                  "translation": "Ach so, du bist Schüler."
+                  "thai": "ผมเป็นครูครับ",
+                  "transliteration": "phǒm bpen khruu khráp",
+                  "translation": "Ich bin Lehrer."
                 },
-                "alternativeLead": "Eine weitere Variation",
-                "alternative": {
-                  "thai": "เขาเป็นหมอ",
-                  "transliteration": "kǎo bpen mɔ̌ɔ",
-                  "translation": "Er ist Arzt."
-                },
-                "possessionLead": "Beziehung und Zuordnung bleiben aktiv",
-                "possession": {
-                  "thai": "ไม่ใช่ครับ ผมเป็นนักเรียน",
-                  "transliteration": "mâi châi khráp phǒm bpen nák-rian",
-                  "translation": "Nein, ich bin Schüler."
-                },
-                "progressTitle": "Foundation-Fortschritt",
-                "progress": "100 / 500 · Foundation 1 / 5",
-                "progressSummary": "Der Lernpfad verbindet sehen, verstehen, wiedererkennen und reagieren.",
-                "systemLead": "Das System nimmt die Wörter und Muster in den nächsten Block mit.",
-                "systemExamples": [
-                  {
-                    "thai": "ไม่ใช่ครับ ผมเป็นนักเรียน",
-                    "transliteration": "mâi châi khráp phǒm bpen nák-rian",
-                    "translation": "Nein, ich bin Schüler."
-                  },
-                  {
-                    "thai": "อ๋อ คุณเป็นนักเรียน",
-                    "transliteration": "ɔ̌ɔ khun bpen nák-rian",
-                    "translation": "Ach so, du bist Schüler."
-                  },
-                  {
-                    "thai": "เขาเป็นหมอ",
-                    "transliteration": "kǎo bpen mɔ̌ɔ",
-                    "translation": "Er ist Arzt."
-                  }
-                ],
-                "final": "Foundation Block abgeschlossen.",
-                "finalProgress": "FOUNDATION BLOCK 1 COMPLETE → NÄCHSTER BLOCK",
-                "politenessLead": "Warum diese Partikel hier auftauchen",
-                "politenessExplanation": "Ab diesem Abschnitt stehen Höflichkeitspartikel in echten Antworten und Begrüßungen. ครับ wird von Männern verwendet, ค่ะ von Frauen in Aussagen und คะ von Frauen in Fragen. Sie stehen meist am Satzende oder nach einer kurzen Antwort und machen die Äußerung höflich."
+                "closing": "Das Fundament steht: Du kannst in echten Mini-Dialogen Rollen klären und sicher mit Ja/Nein antworten."
               }
             },
             {
@@ -9202,235 +9135,75 @@
               ],
               "midpointReminder": {
                 "title": "💎 REMINDER · SÄTZE 101–150",
-                "message": "Was du gerade gesehen hast",
-                "lead": "Bekannte Wörter und Muster kehren in neuen Verbindungen zurück.",
+                "message": "Offene Fragen mit อะไร & Beziehungen mit กัน",
+                "lead": "Was du gerade gelernt hast",
                 "sections": [
                   {
-                    "title": "Wörter und Wendungen",
+                    "title": "Neue Wörter",
                     "words": [
                       {
-                        "thai": "เขา",
-                        "transliteration": "kǎo",
-                        "translation": "er / sie"
+                        "thai": "อะไร",
+                        "transliteration": "à-rai",
+                        "translation": "was"
                       },
                       {
-                        "thai": "เป็น",
-                        "transliteration": "bpen",
-                        "translation": "sein / ist"
+                        "thai": "เหรอ",
+                        "transliteration": "rǒ̌",
+                        "translation": "wirklich? / echt? (Fragepartikel)"
                       },
                       {
-                        "thai": "ครู",
-                        "transliteration": "khruu",
-                        "translation": "Lehrer / Lehrerin"
-                      },
-                      {
-                        "thai": "ไหม",
-                        "transliteration": "mái",
-                        "translation": "Fragepartikel"
-                      },
-                      {
-                        "thai": "ไม่ใช่",
-                        "transliteration": "mâi châi",
-                        "translation": "nicht sein / nein"
-                      },
-                      {
-                        "thai": "ครับ",
-                        "transliteration": "khráp",
-                        "translation": "Höflichkeitspartikel"
-                      },
-                      {
-                        "thai": "หมอ",
-                        "transliteration": "mɔ̌ɔ",
-                        "translation": "Arzt / Ärztin"
-                      },
-                      {
-                        "thai": "อ๋อ",
-                        "transliteration": "ɔ̌ɔ",
-                        "translation": "ach so"
-                      },
-                      {
-                        "thai": "คุณ",
-                        "transliteration": "khun",
-                        "translation": "du / Sie"
-                      },
-                      {
-                        "thai": "ผม",
-                        "transliteration": "phǒm",
-                        "translation": "ich / mich"
+                        "thai": "กัน",
+                        "transliteration": "kan",
+                        "translation": "zusammen / miteinander"
                       }
-                    ]
+                    ],
+                    "note": "Offene Fragen nach Rollen und das Zusammensein als Freunde."
                   }
                 ],
-                "patternLead": "Ein Muster aus diesem Abschnitt",
+                "patternLead": "Wichtiges Muster",
                 "pattern": {
-                  "thai": "เขาเป็นครูไหม",
-                  "transliteration": "kǎo bpen khruu mái",
-                  "translation": "Ist er Lehrer?"
+                  "thai": "คุณเป็นอะไร",
+                  "transliteration": "khun bpen à-rai",
+                  "translation": "Was bist du?"
                 },
                 "discoveries": [
                   {
-                    "thai": "ไม่ใช่ครับ เขาเป็นหมอ",
-                    "transliteration": "mâi châi khráp kǎo bpen mɔ̌ɔ",
-                    "translation": "Nein, er ist Arzt."
+                    "thai": "เราเป็นเพื่อนกัน",
+                    "transliteration": "rao bpen phʉ̂an kan",
+                    "translation": "Wir sind Freunde."
                   },
                   {
-                    "thai": "อ๋อ เขาเป็นหมอ",
-                    "transliteration": "ɔ̌ɔ kǎo bpen mɔ̌ɔ",
-                    "translation": "Ach so, er ist Arzt."
-                  },
-                  {
-                    "thai": "คุณเป็นหมอไหม",
-                    "transliteration": "khun bpen mɔ̌ɔ mái",
-                    "translation": "Bist du Arzt?"
+                    "thai": "เขาเป็นเพื่อนเหรอ",
+                    "transliteration": "kǎo bpen phʉ̂an rǒ̌",
+                    "translation": "Ist er ein Freund? / Wirklich?"
                   }
                 ],
-                "closing": "Nicht abhaken: wiedererkennen, verstehen und reagieren."
+                "closing": "Mit อะไร fragst du nach der Rolle (Was bist du?). Das Wörtchen กัน verbindet Personen zu einer gemeinsamen Beziehung."
               },
               "completion": {
-                "title": "🏆 200 / 500 — FOUNDATION BLOCK 2 COMPLETE",
-                "heading": "🧠 Grammatikboss 1 · เป็น",
-                "message": "Du hast jetzt 200 von 500 Sätzen gegrindet.",
-                "lead": "Wörter und Muster aus diesem Foundation-Block",
-                "wordSectionTitle": "Aktiv gefestigte Wörter",
-                "words": [
+                "title": "🏆 200 / 500 · FOUNDATION BLOCK 2 COMPLETE",
+                "sentenceRange": "101–200",
+                "progress": "Flüssige Rollenklärungen & Beziehungsdialoge zwischen 3 Personen",
+                "sections": [
                   {
-                    "thai": "เขา",
-                    "transliteration": "kǎo",
-                    "translation": "er / sie"
-                  },
-                  {
-                    "thai": "เป็น",
-                    "transliteration": "bpen",
-                    "translation": "sein / ist"
-                  },
-                  {
-                    "thai": "ครู",
-                    "transliteration": "khruu",
-                    "translation": "Lehrer / Lehrerin"
-                  },
-                  {
-                    "thai": "ไหม",
-                    "transliteration": "mái",
-                    "translation": "Fragepartikel"
-                  },
-                  {
-                    "thai": "ไม่ใช่",
-                    "transliteration": "mâi châi",
-                    "translation": "nicht sein / nein"
-                  },
-                  {
-                    "thai": "ครับ",
-                    "transliteration": "khráp",
-                    "translation": "Höflichkeitspartikel"
-                  },
-                  {
-                    "thai": "หมอ",
-                    "transliteration": "mɔ̌ɔ",
-                    "translation": "Arzt / Ärztin"
-                  },
-                  {
-                    "thai": "อ๋อ",
-                    "transliteration": "ɔ̌ɔ",
-                    "translation": "ach so"
-                  },
-                  {
-                    "thai": "คุณ",
-                    "transliteration": "khun",
-                    "translation": "du / Sie"
-                  },
-                  {
-                    "thai": "ผม",
-                    "transliteration": "phǒm",
-                    "translation": "ich / mich"
-                  },
-                  {
-                    "thai": "แล้ว",
-                    "transliteration": "lɛ́ɛo",
-                    "translation": "dann / und / schon"
-                  },
-                  {
-                    "thai": "อะไร",
-                    "transliteration": "à-rai",
-                    "translation": "was"
-                  },
-                  {
-                    "thai": "นักเรียน",
-                    "transliteration": "nák-rian",
-                    "translation": "Schüler / Schülerin"
-                  },
-                  {
-                    "thai": "ใช่",
-                    "transliteration": "châi",
-                    "translation": "ja / richtig"
-                  },
-                  {
-                    "thai": "เป็นเพื่อน",
-                    "transliteration": "bpen phʉ̂an",
-                    "translation": "Freunde sein"
-                  },
-                  {
-                    "thai": "เหรอ",
-                    "transliteration": "rǒ̌",
-                    "translation": "etwa? / Fragepartikel"
-                  },
-                  {
-                    "thai": "เรา",
-                    "transliteration": "rao",
-                    "translation": "wir"
-                  },
-                  {
-                    "thai": "กัน",
-                    "transliteration": "kan",
-                    "translation": "zusammen / einander"
+                    "title": "Neue Wörter (Sätze 151–200)",
+                    "words": [],
+                    "note": "Keine neuen Wörter – dieser Abschnitt diente vollkommen der Festigung und Automatisierung im Dreipersonen-Dialog."
                   }
                 ],
-                "questionLead": "Ein wiederkehrendes Fragemuster",
+                "questionLead": "Zentrales Muster",
                 "question": {
-                  "thai": "ใช่ครับ เราเป็นเพื่อนกัน",
-                  "transliteration": "châi khráp rao bpen phʉ̂an kan",
-                  "translation": "Ja, wir sind Freunde."
+                  "thai": "ผมเป็นครู เขาเป็นนักเรียน",
+                  "transliteration": "phǒm bpen khruu kǎo bpen nák-rian",
+                  "translation": "Ich bin Lehrer, er ist Schüler."
                 },
-                "answerLead": "Eine passende Antwort",
+                "answerLead": "Echte Reaktion",
                 "answer": {
-                  "thai": "เขาเป็นคนไทยไหม",
-                  "transliteration": "kǎo bpen khon Thai mái",
-                  "translation": "Ist er Thailänder?"
+                  "thai": "เราเป็นเพื่อนกัน",
+                  "transliteration": "rao bpen phʉ̂an kan",
+                  "translation": "Wir sind Freunde."
                 },
-                "alternativeLead": "Eine weitere Variation",
-                "alternative": {
-                  "thai": "ไม่ใช่ครับ เขาเป็นคนเยอรมัน",
-                  "transliteration": "mâi châi khráp kǎo bpen khon yoeraman",
-                  "translation": "Nein, er ist Deutscher."
-                },
-                "possessionLead": "Beziehung und Zuordnung bleiben aktiv",
-                "possession": {
-                  "thai": "ใช่ครับ เราเป็นเพื่อนกัน",
-                  "transliteration": "châi khráp rao bpen phʉ̂an kan",
-                  "translation": "Ja, wir sind Freunde."
-                },
-                "progressTitle": "Foundation-Fortschritt",
-                "progress": "200 / 500 · Foundation 2 / 5",
-                "progressSummary": "Der Lernpfad verbindet sehen, verstehen, wiedererkennen und reagieren.",
-                "systemLead": "Das System nimmt die Wörter und Muster in den nächsten Block mit.",
-                "systemExamples": [
-                  {
-                    "thai": "ใช่ครับ เราเป็นเพื่อนกัน",
-                    "transliteration": "châi khráp rao bpen phʉ̂an kan",
-                    "translation": "Ja, wir sind Freunde."
-                  },
-                  {
-                    "thai": "เขาเป็นคนไทยไหม",
-                    "transliteration": "kǎo bpen khon Thai mái",
-                    "translation": "Ist er Thailänder?"
-                  },
-                  {
-                    "thai": "ไม่ใช่ครับ เขาเป็นคนเยอรมัน",
-                    "transliteration": "mâi châi khráp kǎo bpen khon yoeraman",
-                    "translation": "Nein, er ist Deutscher."
-                  }
-                ],
-                "final": "Foundation Block abgeschlossen.",
-                "finalProgress": "FOUNDATION BLOCK 2 COMPLETE → NÄCHSTER BLOCK"
+                "closing": "200 Sätze geschafft: Du musst nicht mehr über die Satzstellung nachdenken – Rollen- und Personenwechsel laufen automatisch ab."
               }
             },
             {
@@ -13947,245 +13720,65 @@
               ],
               "midpointReminder": {
                 "title": "💎 REMINDER · SÄTZE 201–250",
-                "message": "Was du gerade gesehen hast",
-                "lead": "Bekannte Wörter und Muster kehren in neuen Verbindungen zurück.",
+                "message": "Reaktionssicherheit & Verankerung bekannter Muster",
+                "lead": "Was du gerade gelernt hast",
                 "sections": [
                   {
-                    "title": "Wörter und Wendungen",
-                    "words": [
-                      {
-                        "thai": "อ๋อ",
-                        "transliteration": "ɔ̌ɔ",
-                        "translation": "ach so"
-                      },
-                      {
-                        "thai": "เขา",
-                        "transliteration": "kǎo",
-                        "translation": "er / sie"
-                      },
-                      {
-                        "thai": "เป็น",
-                        "transliteration": "bpen",
-                        "translation": "sein / ist"
-                      },
-                      {
-                        "thai": "คนเยอรมัน",
-                        "transliteration": "khon yoeraman",
-                        "translation": "Deutscher"
-                      },
-                      {
-                        "thai": "ใช่",
-                        "transliteration": "châi",
-                        "translation": "ja / richtig"
-                      },
-                      {
-                        "thai": "ครับ",
-                        "transliteration": "khráp",
-                        "translation": "Höflichkeitspartikel"
-                      },
-                      {
-                        "thai": "เรา",
-                        "transliteration": "rao",
-                        "translation": "wir"
-                      },
-                      {
-                        "thai": "เป็นเพื่อน",
-                        "transliteration": "bpen phʉ̂an",
-                        "translation": "Freunde sein"
-                      },
-                      {
-                        "thai": "กัน",
-                        "transliteration": "kan",
-                        "translation": "zusammen / einander"
-                      },
-                      {
-                        "thai": "ผม",
-                        "transliteration": "phǒm",
-                        "translation": "ich / mich"
-                      },
-                      {
-                        "thai": "ครู",
-                        "transliteration": "khruu",
-                        "translation": "Lehrer / Lehrerin"
-                      },
-                      {
-                        "thai": "คุณ",
-                        "transliteration": "khun",
-                        "translation": "du / Sie"
-                      }
-                    ]
+                    "title": "Neue Wörter",
+                    "words": [],
+                    "note": "Keine neuen Wörter – dieser Abschnitt diente vor allem der Festigung von Minimaldialogen und Rückfragen."
                   }
                 ],
-                "patternLead": "Ein Muster aus diesem Abschnitt",
+                "patternLead": "Wichtiges Muster",
                 "pattern": {
-                  "thai": "อ๋อ เขาเป็นคนเยอรมัน",
-                  "transliteration": "ɔ̌ɔ kǎo bpen khon yoeraman",
-                  "translation": "Ach so, er ist Deutscher."
+                  "thai": "เขาเป็นเพื่อนเราไหม",
+                  "transliteration": "kǎo bpen phʉ̂an rao mái",
+                  "translation": "Ist er unser Freund?"
                 },
                 "discoveries": [
                   {
-                    "thai": "ใช่ครับ เราเป็นเพื่อนกัน",
-                    "transliteration": "châi khráp rao bpen phʉ̂an kan",
-                    "translation": "Ja, wir sind Freunde."
+                    "thai": "ใช่ครับ เขาเป็นเพื่อนเรา",
+                    "transliteration": "châi khráp kǎo bpen phʉ̂an rao",
+                    "translation": "Ja, er ist unser Freund."
                   },
                   {
-                    "thai": "ผมเป็นครู",
-                    "transliteration": "phǒm bpen khruu",
-                    "translation": "Ich bin Lehrer."
-                  },
-                  {
-                    "thai": "คุณเป็นนักเรียน",
-                    "transliteration": "khun bpen nák-rian",
-                    "translation": "Du bist Schüler."
+                    "thai": "คุณเป็นคนไทยไหม",
+                    "transliteration": "khun bpen khon Thai mái",
+                    "translation": "Bist du Thailänder?"
                   }
                 ],
-                "closing": "Nicht abhaken: wiedererkennen, verstehen und reagieren."
+                "closing": "Ohne neue Vokabeln hat dein Gehirn die bisherigen Wörter in unterschiedlichsten Fragesituationen tief verankert."
               },
               "completion": {
-                "title": "🏆 300 / 500 — FOUNDATION BLOCK 3 COMPLETE",
-                "heading": "🧠 Grammatikboss 1 · เป็น",
-                "message": "Du hast jetzt 300 von 500 Sätzen gegrindet.",
-                "lead": "Wörter und Muster aus diesem Foundation-Block",
-                "wordSectionTitle": "Aktiv gefestigte Wörter",
-                "words": [
+                "title": "🏆 300 / 500 · FOUNDATION BLOCK 3 COMPLETE",
+                "sentenceRange": "201–300",
+                "progress": "Bestätigungsfragen mit ใช่ไหม & Gesprächsabschluss mit เข้าใจแล้ว",
+                "sections": [
                   {
-                    "thai": "อ๋อ",
-                    "transliteration": "ɔ̌ɔ",
-                    "translation": "ach so"
-                  },
-                  {
-                    "thai": "เขา",
-                    "transliteration": "kǎo",
-                    "translation": "er / sie"
-                  },
-                  {
-                    "thai": "เป็น",
-                    "transliteration": "bpen",
-                    "translation": "sein / ist"
-                  },
-                  {
-                    "thai": "คนเยอรมัน",
-                    "transliteration": "khon yoeraman",
-                    "translation": "Deutscher"
-                  },
-                  {
-                    "thai": "ใช่",
-                    "transliteration": "châi",
-                    "translation": "ja / richtig"
-                  },
-                  {
-                    "thai": "ครับ",
-                    "transliteration": "khráp",
-                    "translation": "Höflichkeitspartikel"
-                  },
-                  {
-                    "thai": "เรา",
-                    "transliteration": "rao",
-                    "translation": "wir"
-                  },
-                  {
-                    "thai": "เป็นเพื่อน",
-                    "transliteration": "bpen phʉ̂an",
-                    "translation": "Freunde sein"
-                  },
-                  {
-                    "thai": "กัน",
-                    "transliteration": "kan",
-                    "translation": "zusammen / einander"
-                  },
-                  {
-                    "thai": "ผม",
-                    "transliteration": "phǒm",
-                    "translation": "ich / mich"
-                  },
-                  {
-                    "thai": "ครู",
-                    "transliteration": "khruu",
-                    "translation": "Lehrer / Lehrerin"
-                  },
-                  {
-                    "thai": "คุณ",
-                    "transliteration": "khun",
-                    "translation": "du / Sie"
-                  },
-                  {
-                    "thai": "นักเรียน",
-                    "transliteration": "nák-rian",
-                    "translation": "Schüler / Schülerin"
-                  },
-                  {
-                    "thai": "หมอ",
-                    "transliteration": "mɔ̌ɔ",
-                    "translation": "Arzt / Ärztin"
-                  },
-                  {
-                    "thai": "ไหม",
-                    "transliteration": "mái",
-                    "translation": "Fragepartikel"
-                  },
-                  {
-                    "thai": "ไม่ใช่",
-                    "transliteration": "mâi châi",
-                    "translation": "nicht sein / nein"
-                  },
-                  {
-                    "thai": "แล้ว",
-                    "transliteration": "lɛ́ɛo",
-                    "translation": "dann / und / schon"
-                  },
-                  {
-                    "thai": "อะไร",
-                    "transliteration": "à-rai",
-                    "translation": "was"
+                    "title": "Neue Wörter (Sätze 251–300)",
+                    "words": [
+                      {
+                        "thai": "เข้าใจ",
+                        "transliteration": "khâo-jai",
+                        "translation": "verstehen / begreifen"
+                      }
+                    ],
+                    "note": "Das neue Wort เข้าใจ schließt Gespräche natürlich ab (อ๋อ เข้าใจแล้ว)."
                   }
                 ],
-                "questionLead": "Ein wiederkehrendes Fragemuster",
+                "questionLead": "Neuer Fragetyp: Bestätigung",
                 "question": {
-                  "thai": "อ๋อ เข้าใจแล้ว",
-                  "transliteration": "ɔ̌ɔ khâo-jai lɛ́ɛo",
-                  "translation": "Ach so, jetzt verstehe ich."
+                  "thai": "คุณเป็นครูใช่ไหม",
+                  "transliteration": "khun bpen khruu châi mái",
+                  "translation": "Du bist Lehrer, oder?"
                 },
-                "answerLead": "Eine passende Antwort",
+                "answerLead": "Abschluss einer Unterhaltung",
                 "answer": {
-                  "thai": "เราเป็นเพื่อนกัน",
-                  "transliteration": "rao bpen phʉ̂an kan",
-                  "translation": "Wir sind Freunde."
-                },
-                "alternativeLead": "Eine weitere Variation",
-                "alternative": {
-                  "thai": "ใช่ครับ",
-                  "transliteration": "châi khráp",
-                  "translation": "Ja."
-                },
-                "possessionLead": "Beziehung und Zuordnung bleiben aktiv",
-                "possession": {
                   "thai": "อ๋อ เข้าใจแล้ว",
                   "transliteration": "ɔ̌ɔ khâo-jai lɛ́ɛo",
                   "translation": "Ach so, jetzt verstehe ich."
                 },
-                "progressTitle": "Foundation-Fortschritt",
-                "progress": "300 / 500 · Foundation 3 / 5",
-                "progressSummary": "Der Lernpfad verbindet sehen, verstehen, wiedererkennen und reagieren.",
-                "systemLead": "Das System nimmt die Wörter und Muster in den nächsten Block mit.",
-                "systemExamples": [
-                  {
-                    "thai": "อ๋อ เข้าใจแล้ว",
-                    "transliteration": "ɔ̌ɔ khâo-jai lɛ́ɛo",
-                    "translation": "Ach so, jetzt verstehe ich."
-                  },
-                  {
-                    "thai": "เราเป็นเพื่อนกัน",
-                    "transliteration": "rao bpen phʉ̂an kan",
-                    "translation": "Wir sind Freunde."
-                  },
-                  {
-                    "thai": "ใช่ครับ",
-                    "transliteration": "châi khráp",
-                    "translation": "Ja."
-                  }
-                ],
-                "final": "Foundation Block abgeschlossen.",
-                "finalProgress": "FOUNDATION BLOCK 3 COMPLETE → NÄCHSTER BLOCK"
+                "closing": "Über die Hälfte geschafft! Du beherrschst nun alle drei Fragetypen mit เป็น: ไหม (Ja/Nein), อะไร (Was) und ใช่ไหม (..., oder?)."
               }
             },
             {
@@ -19155,235 +18748,146 @@
               ],
               "midpointReminder": {
                 "title": "💎 REMINDER · SÄTZE 301–350",
-                "message": "Was du gerade gesehen hast",
-                "lead": "Bekannte Wörter und Muster kehren in neuen Verbindungen zurück.",
+                "message": "Neue Rollen, Nationalitäten & Familie",
+                "lead": "Was du gerade gelernt hast",
                 "sections": [
                   {
-                    "title": "Wörter und Wendungen",
+                    "title": "Neue Wörter",
                     "words": [
-                      {
-                        "thai": "เขา",
-                        "transliteration": "kǎo",
-                        "translation": "er / sie"
-                      },
-                      {
-                        "thai": "เป็น",
-                        "transliteration": "bpen",
-                        "translation": "sein / ist"
-                      },
                       {
                         "thai": "พนักงาน",
                         "transliteration": "phá-nák-ngaan",
-                        "translation": "Mitarbeiter / Mitarbeiterin"
-                      },
-                      {
-                        "thai": "คุณ",
-                        "transliteration": "khun",
-                        "translation": "du / Sie"
-                      },
-                      {
-                        "thai": "ไหม",
-                        "transliteration": "mái",
-                        "translation": "Fragepartikel"
-                      },
-                      {
-                        "thai": "ใช่",
-                        "transliteration": "châi",
-                        "translation": "ja / richtig"
-                      },
-                      {
-                        "thai": "ครับ",
-                        "transliteration": "khráp",
-                        "translation": "Höflichkeitspartikel"
-                      },
-                      {
-                        "thai": "ผม",
-                        "transliteration": "phǒm",
-                        "translation": "ich / mich"
-                      },
-                      {
-                        "thai": "อ๋อ",
-                        "transliteration": "ɔ̌ɔ",
-                        "translation": "ach so"
+                        "translation": "Mitarbeiter / Angestellter"
                       },
                       {
                         "thai": "ลูกค้า",
                         "transliteration": "lûuk-kháa",
                         "translation": "Kunde / Kundin"
+                      },
+                      {
+                        "thai": "ตำรวจ",
+                        "transliteration": "tam-rùat",
+                        "translation": "Polizist / Polizistin"
+                      },
+                      {
+                        "thai": "นักท่องเที่ยว",
+                        "transliteration": "nák-thɔ̂ng-thîao",
+                        "translation": "Tourist"
+                      },
+                      {
+                        "thai": "คนจีน",
+                        "transliteration": "khon jiin",
+                        "translation": "Chinese / Chinesin"
+                      },
+                      {
+                        "thai": "คนญี่ปุ่น",
+                        "transliteration": "khon yîi-pùn",
+                        "translation": "Japaner / Japanerin"
+                      },
+                      {
+                        "thai": "พ่อ",
+                        "transliteration": "phɔ̂ɔ",
+                        "translation": "Vater"
+                      },
+                      {
+                        "thai": "เธอ",
+                        "transliteration": "thəə",
+                        "translation": "sie (3. Pers.) / du"
+                      },
+                      {
+                        "thai": "แม่",
+                        "transliteration": "mɛ̂ɛ",
+                        "translation": "Mutter"
+                      },
+                      {
+                        "thai": "พี่",
+                        "transliteration": "phîi",
+                        "translation": "älteres Geschwister / älterer Bruder"
+                      },
+                      {
+                        "thai": "น้อง",
+                        "transliteration": "nóng",
+                        "translation": "jüngeres Geschwister / jüngerer Bruder"
                       }
-                    ]
+                    ],
+                    "note": "Familienmitglieder, neue Berufsgruppen und Herkunftsländer im Gespräch."
                   }
                 ],
-                "patternLead": "Ein Muster aus diesem Abschnitt",
+                "patternLead": "Wichtiges Muster",
                 "pattern": {
-                  "thai": "เขาเป็นพนักงาน",
-                  "transliteration": "kǎo bpen phá-nák-ngaan",
-                  "translation": "Er ist Angestellter."
+                  "thai": "เขาเป็นพ่อผม",
+                  "transliteration": "kǎo bpen phɔ̂ɔ phǒm",
+                  "translation": "Er ist mein Vater."
                 },
                 "discoveries": [
                   {
-                    "thai": "คุณเป็นพนักงานไหม",
-                    "transliteration": "khun bpen phá-nák-ngaan mái",
-                    "translation": "Bist du Angestellter?"
+                    "thai": "เธอเป็นแม่คุณเหรอ",
+                    "transliteration": "thəə bpen mɛ̂ɛ khun rǒ̌",
+                    "translation": "Sie ist deine Mutter?"
                   },
                   {
-                    "thai": "ใช่ครับ ผมเป็นพนักงาน",
-                    "transliteration": "châi khráp phǒm bpen phá-nák-ngaan",
-                    "translation": "Ja, ich bin Angestellter."
-                  },
-                  {
-                    "thai": "อ๋อ คุณเป็นพนักงาน",
-                    "transliteration": "ɔ̌ɔ khun bpen phá-nák-ngaan",
-                    "translation": "Ach so, du bist Angestellter."
+                    "thai": "คุณเป็นนักท่องเที่ยวไหม",
+                    "transliteration": "khun bpen nák-thɔ̂ng-thîao mái",
+                    "translation": "Bist du Tourist?"
                   }
                 ],
-                "closing": "Nicht abhaken: wiedererkennen, verstehen und reagieren."
+                "closing": "Mit พ่อ, แม่, พี่, น้อง sprichst du über Familie. Neue Berufe und Herkunftsländer erweitern deine Dialoge."
               },
               "completion": {
-                "title": "🏆 400 / 500 — FOUNDATION BLOCK 4 COMPLETE",
-                "heading": "🧠 Grammatikboss 1 · เป็น",
-                "message": "Du hast jetzt 400 von 500 Sätzen gegrindet.",
-                "lead": "Wörter und Muster aus diesem Foundation-Block",
-                "wordSectionTitle": "Aktiv gefestigte Wörter",
-                "words": [
+                "title": "🏆 400 / 500 · FOUNDATION BLOCK 4 COMPLETE",
+                "sentenceRange": "301–400",
+                "progress": "Charakterisierung mit คนดี, Satzverbindung mit และ & reichhaltige Berufswelt",
+                "sections": [
                   {
-                    "thai": "เขา",
-                    "transliteration": "kǎo",
-                    "translation": "er / sie"
-                  },
-                  {
-                    "thai": "เป็น",
-                    "transliteration": "bpen",
-                    "translation": "sein / ist"
-                  },
-                  {
-                    "thai": "พนักงาน",
-                    "transliteration": "phá-nák-ngaan",
-                    "translation": "Mitarbeiter / Mitarbeiterin"
-                  },
-                  {
-                    "thai": "คุณ",
-                    "transliteration": "khun",
-                    "translation": "du / Sie"
-                  },
-                  {
-                    "thai": "ไหม",
-                    "transliteration": "mái",
-                    "translation": "Fragepartikel"
-                  },
-                  {
-                    "thai": "ใช่",
-                    "transliteration": "châi",
-                    "translation": "ja / richtig"
-                  },
-                  {
-                    "thai": "ครับ",
-                    "transliteration": "khráp",
-                    "translation": "Höflichkeitspartikel"
-                  },
-                  {
-                    "thai": "ผม",
-                    "transliteration": "phǒm",
-                    "translation": "ich / mich"
-                  },
-                  {
-                    "thai": "อ๋อ",
-                    "transliteration": "ɔ̌ɔ",
-                    "translation": "ach so"
-                  },
-                  {
-                    "thai": "ลูกค้า",
-                    "transliteration": "lûuk-kháa",
-                    "translation": "Kunde / Kundin"
-                  },
-                  {
-                    "thai": "แล้ว",
-                    "transliteration": "lɛ́ɛo",
-                    "translation": "dann / und / schon"
-                  },
-                  {
-                    "thai": "ไม่ใช่",
-                    "transliteration": "mâi châi",
-                    "translation": "nicht sein / nein"
-                  },
-                  {
-                    "thai": "เป็นเพื่อน",
-                    "transliteration": "bpen phʉ̂an",
-                    "translation": "Freunde sein"
-                  },
-                  {
-                    "thai": "ตำรวจ",
-                    "transliteration": "tam-rùat",
-                    "translation": "Polizist"
-                  },
-                  {
-                    "thai": "นักท่องเที่ยว",
-                    "transliteration": "nák-thɔ̂ng-thîao",
-                    "translation": "Tourist"
-                  },
-                  {
-                    "thai": "เหรอ",
-                    "transliteration": "rǒ̌",
-                    "translation": "etwa? / Fragepartikel"
-                  },
-                  {
-                    "thai": "คนไทย",
-                    "transliteration": "khon Thai",
-                    "translation": "Thailänder"
-                  },
-                  {
-                    "thai": "คนจีน",
-                    "transliteration": "khon jiin",
-                    "translation": "Chinese / Chinese Person"
+                    "title": "Neue Wörter (Sätze 351–400)",
+                    "words": [
+                      {
+                        "thai": "ดี",
+                        "transliteration": "dii",
+                        "translation": "gut"
+                      },
+                      {
+                        "thai": "จริง",
+                        "transliteration": "jing",
+                        "translation": "wirklich / tatsächlich"
+                      },
+                      {
+                        "thai": "พ่อครัว",
+                        "transliteration": "phɔ̂ɔ-khrua",
+                        "translation": "Koch / Köchin"
+                      },
+                      {
+                        "thai": "นักข่าว",
+                        "transliteration": "nák-khàao",
+                        "translation": "Journalist / Journalistin"
+                      },
+                      {
+                        "thai": "ช่าง",
+                        "transliteration": "châang",
+                        "translation": "Handwerker / Techniker"
+                      },
+                      {
+                        "thai": "และ",
+                        "transliteration": "lɛ́",
+                        "translation": "und"
+                      }
+                    ],
+                    "note": "Eigenschaften, Bestätigungen und Satzverbindungen mit และ."
                   }
                 ],
-                "questionLead": "Ein wiederkehrendes Fragemuster",
+                "questionLead": "Zentrales Verbindungsmuster",
                 "question": {
-                  "thai": "ใช่ครับ",
-                  "transliteration": "châi khráp",
-                  "translation": "Ja."
+                  "thai": "คุณเป็นนักท่องเที่ยว เขาเป็นพนักงาน และเธอเป็นหมอ",
+                  "transliteration": "khun bpen nák-thɔ̂ng-thîao kǎo bpen phá-nák-ngaan lɛ́ thəə bpen mɔ̂ɔ",
+                  "translation": "Du bist Tourist, er ist Angestellter und sie ist Ärztin."
                 },
-                "answerLead": "Eine passende Antwort",
+                "answerLead": "Charakterisierung",
                 "answer": {
-                  "thai": "เราเป็นเพื่อนกัน",
-                  "transliteration": "rao bpen phʉ̂an kan",
-                  "translation": "Wir sind Freunde."
+                  "thai": "เขาเป็นคนดี",
+                  "transliteration": "kǎo bpen khon dii",
+                  "translation": "Er ist ein guter Mensch."
                 },
-                "alternativeLead": "Eine weitere Variation",
-                "alternative": {
-                  "thai": "อ๋อ เข้าใจแล้ว",
-                  "transliteration": "ɔ̌ɔ khâo-jai lɛ́ɛo",
-                  "translation": "Ach so, jetzt verstehe ich."
-                },
-                "possessionLead": "Beziehung und Zuordnung bleiben aktiv",
-                "possession": {
-                  "thai": "ใช่ครับ",
-                  "transliteration": "châi khráp",
-                  "translation": "Ja."
-                },
-                "progressTitle": "Foundation-Fortschritt",
-                "progress": "400 / 500 · Foundation 4 / 5",
-                "progressSummary": "Der Lernpfad verbindet sehen, verstehen, wiedererkennen und reagieren.",
-                "systemLead": "Das System nimmt die Wörter und Muster in den nächsten Block mit.",
-                "systemExamples": [
-                  {
-                    "thai": "ใช่ครับ",
-                    "transliteration": "châi khráp",
-                    "translation": "Ja."
-                  },
-                  {
-                    "thai": "เราเป็นเพื่อนกัน",
-                    "transliteration": "rao bpen phʉ̂an kan",
-                    "translation": "Wir sind Freunde."
-                  },
-                  {
-                    "thai": "อ๋อ เข้าใจแล้ว",
-                    "transliteration": "ɔ̌ɔ khâo-jai lɛ́ɛo",
-                    "translation": "Ach so, jetzt verstehe ich."
-                  }
-                ],
-                "final": "Foundation Block abgeschlossen.",
-                "finalProgress": "FOUNDATION BLOCK 4 COMPLETE → NÄCHSTER BLOCK"
+                "closing": "400 Sätze im Gepäck: Dein Wortschatz reicht nun von Alltag und Beruf bis hin zu familiären und persönlichen Einschätzungen."
               }
             },
             {
@@ -24481,36 +23985,21 @@
               ],
               "midpointReminder": {
                 "title": "💎 REMINDER · SÄTZE 401–450",
-                "message": "Was du gerade gesehen hast",
-                "lead": "Bekannte Wörter und Muster kehren in neuen Verbindungen zurück.",
+                "message": "Orte, Gegenstände, Eigenschaften & Alltagsszenen",
+                "lead": "Was du gerade gelernt hast",
                 "sections": [
                   {
-                    "title": "Wörter und Wendungen",
+                    "title": "Neue Wörter",
                     "words": [
                       {
                         "thai": "นี่",
                         "transliteration": "nîi",
-                        "translation": "dies / hier"
-                      },
-                      {
-                        "thai": "เป็น",
-                        "transliteration": "bpen",
-                        "translation": "sein / ist"
+                        "translation": "dies / das hier / hier"
                       },
                       {
                         "thai": "บ้าน",
                         "transliteration": "bâan",
-                        "translation": "Haus / zu Hause"
-                      },
-                      {
-                        "thai": "ผม",
-                        "transliteration": "phǒm",
-                        "translation": "ich / mich"
-                      },
-                      {
-                        "thai": "คุณ",
-                        "transliteration": "khun",
-                        "translation": "du / Sie"
+                        "translation": "Haus / nach Hause"
                       },
                       {
                         "thai": "ใหญ่",
@@ -24518,34 +24007,130 @@
                         "translation": "groß"
                       },
                       {
-                        "thai": "ไหม",
-                        "transliteration": "mái",
-                        "translation": "Fragepartikel"
-                      },
-                      {
-                        "thai": "ใช่",
-                        "transliteration": "châi",
-                        "translation": "ja / richtig"
-                      },
-                      {
-                        "thai": "ครับ",
-                        "transliteration": "khráp",
-                        "translation": "Höflichkeitspartikel"
-                      },
-                      {
-                        "thai": "อ๋อ",
-                        "transliteration": "ɔ̌ɔ",
-                        "translation": "ach so"
-                      },
-                      {
                         "thai": "ห้อง",
                         "transliteration": "hɔ̂ng",
-                        "translation": "Raum / Zimmer"
+                        "translation": "Zimmer / Raum"
+                      },
+                      {
+                        "thai": "เล็ก",
+                        "transliteration": "lék",
+                        "translation": "klein"
+                      },
+                      {
+                        "thai": "นี้",
+                        "transliteration": "níi",
+                        "translation": "dies / diese(s)"
+                      },
+                      {
+                        "thai": "ใหม่",
+                        "transliteration": "mài",
+                        "translation": "neu"
+                      },
+                      {
+                        "thai": "โรงเรียน",
+                        "transliteration": "rooŋ-rian",
+                        "translation": "Schule"
+                      },
+                      {
+                        "thai": "ที่",
+                        "transliteration": "thîi",
+                        "translation": "bei / an / in"
+                      },
+                      {
+                        "thai": "ที่นี่",
+                        "transliteration": "thîi-nîi",
+                        "translation": "hier"
+                      },
+                      {
+                        "thai": "ร้านอาหาร",
+                        "transliteration": "ráan aa-hǎan",
+                        "translation": "Restaurant"
+                      },
+                      {
+                        "thai": "ร้าน",
+                        "transliteration": "ráan",
+                        "translation": "Laden / Geschäft / Restaurant"
+                      },
+                      {
+                        "thai": "แต่",
+                        "transliteration": "tɛ̀ɛ",
+                        "translation": "aber"
+                      },
+                      {
+                        "thai": "อาหาร",
+                        "transliteration": "aa-hǎan",
+                        "translation": "Essen / Gericht"
+                      },
+                      {
+                        "thai": "ข้าว",
+                        "transliteration": "khâao",
+                        "translation": "Reis / Mahlzeit"
+                      },
+                      {
+                        "thai": "ไทย",
+                        "transliteration": "Thai",
+                        "translation": "Thailand / thailändisch"
+                      },
+                      {
+                        "thai": "น้ำ",
+                        "transliteration": "náam",
+                        "translation": "Wasser"
+                      },
+                      {
+                        "thai": "กาแฟ",
+                        "transliteration": "gaa-fɛɛ",
+                        "translation": "Kaffee"
+                      },
+                      {
+                        "thai": "ร้อน",
+                        "transliteration": "rɔ́ɔn",
+                        "translation": "heiß"
+                      },
+                      {
+                        "thai": "ชา",
+                        "transliteration": "chaa",
+                        "translation": "Tee"
+                      },
+                      {
+                        "thai": "ของ",
+                        "transliteration": "khɔ̌ɔng",
+                        "translation": "von / gehören zu"
+                      },
+                      {
+                        "thai": "บริษัท",
+                        "transliteration": "bɔɔ-rí-sàt",
+                        "translation": "Firma / Unternehmen"
+                      },
+                      {
+                        "thai": "คนทำงาน",
+                        "transliteration": "khon tham-ngaan",
+                        "translation": "berufstätige Person / Arbeiter"
+                      },
+                      {
+                        "thai": "โรงพยาบาล",
+                        "transliteration": "rooŋ-phá-yaa-baan",
+                        "translation": "Krankenhaus"
+                      },
+                      {
+                        "thai": "วันนี้",
+                        "transliteration": "wan-níi",
+                        "translation": "heute"
+                      },
+                      {
+                        "thai": "ไกด์",
+                        "transliteration": "gài",
+                        "translation": "Reiseleiter / Guide"
+                      },
+                      {
+                        "thai": "โรงแรม",
+                        "transliteration": "rooŋ-rɛɛm",
+                        "translation": "Hotel"
                       }
-                    ]
+                    ],
+                    "note": "Orte, Gegenstände, Essen & Trinken sowie erste Beschreibungen."
                   }
                 ],
-                "patternLead": "Ein Muster aus diesem Abschnitt",
+                "patternLead": "Wichtiges Muster",
                 "pattern": {
                   "thai": "นี่เป็นบ้านผม",
                   "transliteration": "nîi bpen bâan phǒm",
@@ -24553,175 +24138,118 @@
                 },
                 "discoveries": [
                   {
-                    "thai": "บ้านคุณเป็นบ้านใหญ่ไหม",
-                    "transliteration": "bâan khun bpen bâan yài mái",
-                    "translation": "Ist dein Haus ein großes Haus?"
+                    "thai": "ห้องนี้เป็นห้องใหม่",
+                    "transliteration": "hɔ̂ng níi bpen hɔ̂ng mài",
+                    "translation": "Dieses Zimmer ist ein neues Zimmer."
                   },
                   {
-                    "thai": "ใช่ครับ บ้านผมเป็นบ้านใหญ่",
-                    "transliteration": "châi khráp bâan phǒm bpen bâan yài",
-                    "translation": "Ja, mein Haus ist ein großes Haus."
-                  },
-                  {
-                    "thai": "อ๋อ บ้านคุณเป็นบ้านใหญ่",
-                    "transliteration": "ɔ̌ɔ bâan khun bpen bâan yài",
-                    "translation": "Ach so, dein Haus ist ein großes Haus."
+                    "thai": "ที่นี่เป็นโรงแรม",
+                    "transliteration": "thîi-nîi bpen rooŋ-rɛɛm",
+                    "translation": "Hier ist ein Hotel."
                   }
                 ],
-                "closing": "Nicht abhaken: wiedererkennen, verstehen und reagieren."
+                "closing": "เป็น funktioniert genauso für Dinge und Orte: นี่เป็น... (Das ist ein...) plus passende Beschreibungen wie ใหญ่ (groß) oder ใหม่ (neu)."
               },
               "completion": {
-                "title": "🏆 500 / 500 — FOUNDATION BLOCK 5 COMPLETE",
-                "heading": "🧠 Grammatikboss 1 · เป็น",
-                "message": "Du hast jetzt 500 von 500 Sätzen gegrindet.",
-                "lead": "Wörter und Muster aus diesem Foundation-Block",
-                "wordSectionTitle": "Aktiv gefestigte Wörter",
-                "words": [
+                "title": "🏆 500 / 500 · BOSS COMPLETE",
+                "sentenceRange": "451–500",
+                "progress": "Enge Beziehungen, Zeitbezug mit ตอนนี้ & lebendige Alltagsszenen gemeistert",
+                "sections": [
                   {
-                    "thai": "นี่",
-                    "transliteration": "nîi",
-                    "translation": "dies / hier"
-                  },
-                  {
-                    "thai": "เป็น",
-                    "transliteration": "bpen",
-                    "translation": "sein / ist"
-                  },
-                  {
-                    "thai": "บ้าน",
-                    "transliteration": "bâan",
-                    "translation": "Haus / zu Hause"
-                  },
-                  {
-                    "thai": "ผม",
-                    "transliteration": "phǒm",
-                    "translation": "ich / mich"
-                  },
-                  {
-                    "thai": "คุณ",
-                    "transliteration": "khun",
-                    "translation": "du / Sie"
-                  },
-                  {
-                    "thai": "ใหญ่",
-                    "transliteration": "yài",
-                    "translation": "groß"
-                  },
-                  {
-                    "thai": "ไหม",
-                    "transliteration": "mái",
-                    "translation": "Fragepartikel"
-                  },
-                  {
-                    "thai": "ใช่",
-                    "transliteration": "châi",
-                    "translation": "ja / richtig"
-                  },
-                  {
-                    "thai": "ครับ",
-                    "transliteration": "khráp",
-                    "translation": "Höflichkeitspartikel"
-                  },
-                  {
-                    "thai": "อ๋อ",
-                    "transliteration": "ɔ̌ɔ",
-                    "translation": "ach so"
-                  },
-                  {
-                    "thai": "ห้อง",
-                    "transliteration": "hɔ̂ng",
-                    "translation": "Raum / Zimmer"
-                  },
-                  {
-                    "thai": "เล็ก",
-                    "transliteration": "lék",
-                    "translation": "klein"
-                  },
-                  {
-                    "thai": "นี้",
-                    "transliteration": "níi",
-                    "translation": "dies / hier"
-                  },
-                  {
-                    "thai": "ใหม่",
-                    "transliteration": "mài",
-                    "translation": "neu"
-                  },
-                  {
-                    "thai": "โรงเรียน",
-                    "transliteration": "rooŋ-rian",
-                    "translation": "Schule"
-                  },
-                  {
-                    "thai": "นักเรียน",
-                    "transliteration": "nák-rian",
-                    "translation": "Schüler / Schülerin"
-                  },
-                  {
-                    "thai": "ที่",
-                    "transliteration": "thîi",
-                    "translation": "bei / an / in"
-                  },
-                  {
-                    "thai": "ที่นี่",
-                    "transliteration": "thîi-nîi",
-                    "translation": "hier"
+                    "title": "Neue Wörter (Sätze 451–500)",
+                    "words": [
+                      {
+                        "thai": "แฟน",
+                        "transliteration": "fɛɛn",
+                        "translation": "Partner/in (Freund/Freundin)"
+                      },
+                      {
+                        "thai": "ภรรยา",
+                        "transliteration": "phan-rá-yaa",
+                        "translation": "Ehefrau"
+                      },
+                      {
+                        "thai": "สามี",
+                        "transliteration": "sǎa-mii",
+                        "translation": "Ehemann"
+                      },
+                      {
+                        "thai": "ลูก",
+                        "transliteration": "lûuk",
+                        "translation": "Kind"
+                      },
+                      {
+                        "thai": "ลูกชาย",
+                        "transliteration": "lûuk-chaai",
+                        "translation": "Sohn"
+                      },
+                      {
+                        "thai": "ลูกสาว",
+                        "transliteration": "lûuk-sǎao",
+                        "translation": "Tochter"
+                      },
+                      {
+                        "thai": "พี่สาว",
+                        "transliteration": "phîi-sǎao",
+                        "translation": "ältere Schwester"
+                      },
+                      {
+                        "thai": "น้องสาว",
+                        "transliteration": "nóng-sǎao",
+                        "translation": "jüngere Schwester"
+                      },
+                      {
+                        "thai": "ตอนนี้",
+                        "transliteration": "ton-níi",
+                        "translation": "jetzt / im Moment"
+                      },
+                      {
+                        "thai": "ที่นั่น",
+                        "transliteration": "thîi-nân",
+                        "translation": "dort"
+                      },
+                      {
+                        "thai": "เฮ้ย",
+                        "transliteration": "hə́əi",
+                        "translation": "Hey! (Ausruf)"
+                      },
+                      {
+                        "thai": "นะ",
+                        "transliteration": "ná",
+                        "translation": "weicher Satzpartikel (Bestätigung)"
+                      }
+                    ],
+                    "note": "Partnerschaft, Kernfamilie, zeitliche Einordnung mit ตอนนี้ und echte Umgangssprache."
                   }
                 ],
-                "questionLead": "Ein wiederkehrendes Fragemuster",
+                "questionLead": "Zeitliches Situationsmuster",
                 "question": {
-                  "thai": "เขาเป็นครู แล้วเธอเป็นหมอ",
-                  "transliteration": "kǎo bpen khruu lɛ́ɛo thəə bpen mɔ̌ɔ",
-                  "translation": "Er ist Lehrer und sie ist Ärztin."
+                  "thai": "ตอนนี้ผมเป็นนักท่องเที่ยว",
+                  "transliteration": "ton-níi phǒm bpen nák-thɔ̂ng-thîao",
+                  "translation": "Jetzt bin ich Tourist."
                 },
-                "answerLead": "Eine passende Antwort",
+                "answerLead": "Echte Abschlussreaktion",
                 "answer": {
-                  "thai": "อ๋อ เข้าใจแล้ว เราเป็นเพื่อนกัน",
-                  "transliteration": "ɔ̌ɔ khâo-jai lɛ́ɛo rao bpen phʉ̂an kan",
-                  "translation": "Ach so, jetzt verstehe ich. Wir sind Freunde."
+                  "thai": "เราเป็นเพื่อนกันนะ",
+                  "transliteration": "rao bpen phʉ̂an kan ná",
+                  "translation": "Wir sind Freunde, ja?"
                 },
-                "alternativeLead": "Eine weitere Variation",
-                "alternative": {
-                  "thai": "ใช่ครับ เราเป็นเพื่อนกัน",
-                  "transliteration": "châi khráp rao bpen phʉ̂an kan",
-                  "translation": "Ja, wir sind Freunde."
-                },
-                "possessionLead": "Beziehung und Zuordnung bleiben aktiv",
-                "possession": {
-                  "thai": "เขาเป็นครู แล้วเธอเป็นหมอ",
-                  "transliteration": "kǎo bpen khruu lɛ́ɛo thəə bpen mɔ̌ɔ",
-                  "translation": "Er ist Lehrer und sie ist Ärztin."
-                },
-                "progressTitle": "Foundation-Fortschritt",
-                "progress": "500 / 500 · Foundation 5 / 5",
-                "progressSummary": "Der Lernpfad verbindet sehen, verstehen, wiedererkennen und reagieren.",
-                "systemLead": "Das System nimmt die Wörter und Muster in den nächsten Block mit.",
-                "systemExamples": [
-                  {
-                    "thai": "เขาเป็นครู แล้วเธอเป็นหมอ",
-                    "transliteration": "kǎo bpen khruu lɛ́ɛo thəə bpen mɔ̌ɔ",
-                    "translation": "Er ist Lehrer und sie ist Ärztin."
-                  },
-                  {
-                    "thai": "อ๋อ เข้าใจแล้ว เราเป็นเพื่อนกัน",
-                    "transliteration": "ɔ̌ɔ khâo-jai lɛ́ɛo rao bpen phʉ̂an kan",
-                    "translation": "Ach so, jetzt verstehe ich. Wir sind Freunde."
-                  },
-                  {
-                    "thai": "ใช่ครับ เราเป็นเพื่อนกัน",
-                    "transliteration": "châi khráp rao bpen phʉ̂an kan",
-                    "translation": "Ja, wir sind Freunde."
-                  }
-                ],
-                "final": "Foundation Block abgeschlossen.",
-                "finalProgress": "FOUNDATION BLOCK 5 COMPLETE → NÄCHSTER BLOCK"
+                "closing": "500 Sätze abgeschlossen. Du hast เป็น nicht theoretisch gelernt, sondern in 500 echten Situationen erlebt. Das Fundament der Flow Machine steht felsenfest!"
               }
             }
           ],
           "completion": {
             "title": "⚔️ BOSS 1 DEFEATED",
             "sentenceRange": "500 / 500 Sätze",
-            "progress": "เป็น · Identität, Zuordnung & einfache Aussagen"
+            "progress": "เป็น · Identität, Rollen & echte Alltagskommunikation abgeschlossen",
+            "summary": [
+              "🏆 500 / 500 Sätze gemeistert!",
+              "Aussagen: ผมเป็น... / คุณเป็น... / เขาเป็น... (Wer ist wer)",
+              "Offene Fragen: คุณเป็นอะไร (Was bist du?) / ใครเป็น... (Wer ist...)",
+              "Ja/Nein- & Bestätigungsfragen: ...ไหม / ...ใช่ไหม / ...เหรอ",
+              "Reaktionen: ใช่ครับ / ไม่ใช่ครับ / อ๋อ เข้าใจแล้ว",
+              "Beziehungen & Alltag: เราเป็นเพื่อนกัน / นี่เป็นบ้านผม / ตอนนี้ผมเป็น..."
+            ]
           }
         },
         {
