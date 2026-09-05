@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#15110d">
+    <title>Satzmix · Thai Language Grinding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&family=Noto+Sans+Thai:wght@300;400;500&family=Prompt:wght@300;400&family=Sarabun:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/sentence-mix.css">
+    <link rel="manifest" href="../manifest.json">
+</head>
+<body class="sentence-mix-body">
+    <header class="sentence-mix-header">
+        <div class="sentence-mix-header-left">
+            <a class="sentence-mix-back-button" href="index.html" aria-label="Zurück zum Hauptmenü">
+                ← Zurück
+            </a>
+            <div class="sentence-mix-title-box">
+                <h1>🎲 Satzmix</h1>
+                <p>Speed Typing &amp; Satzstruktur</p>
+            </div>
+        </div>
+        <div class="sentence-mix-header-stats">
+            <div class="sentence-mix-stat-badge">
+                <span>Gelöst:</span>
+                <strong id="statSolvedCount">0</strong>
+            </div>
+            <div class="sentence-mix-stat-badge">
+                <span>Ø Zeit:</span>
+                <strong id="statAvgTime">--:--</strong>
+            </div>
+        </div>
+    </header>
+
+    <main class="sentence-mix-main">
+        <div id="sentenceMixStageContainer" class="sentence-mix-stage-container" role="region" aria-label="Satzmix Spielfeld"></div>
+    </main>
+
+    <footer class="sentence-mix-footer">
+        <div class="sentence-mix-shortcuts-hint">
+            <span><span class="kbd-badge">1–9</span> / <span class="kbd-badge">Numpad</span> Wort wählen</span>
+            <span><span class="kbd-badge">Backspace</span> Letzte Ziffer löschen</span>
+            <span><span class="kbd-badge">Enter</span> Prüfen / Weiter</span>
+            <span><span class="kbd-badge">Esc</span> Eingabe leeren</span>
+        </div>
+        <div id="mobileNumpad" class="sentence-mix-mobile-numpad" aria-label="Touch-Zahlenblock">
+            <div class="numpad-grid">
+                <button type="button" class="numpad-key" data-key="1">1</button>
+                <button type="button" class="numpad-key" data-key="2">2</button>
+                <button type="button" class="numpad-key" data-key="3">3</button>
+                <button type="button" class="numpad-key" data-key="4">4</button>
+                <button type="button" class="numpad-key" data-key="5">5</button>
+                <button type="button" class="numpad-key" data-key="6">6</button>
+                <button type="button" class="numpad-key" data-key="7">7</button>
+                <button type="button" class="numpad-key" data-key="8">8</button>
+                <button type="button" class="numpad-key" data-key="9">9</button>
+                <button type="button" class="numpad-key fn-key backspace" data-action="backspace" aria-label="Ziffer löschen">⌫</button>
+                <button type="button" class="numpad-key fn-key escape" data-action="escape" aria-label="Zurücksetzen">Esc</button>
+                <button type="button" class="numpad-key fn-key enter" data-action="enter" aria-label="Prüfen oder Weiter">↵ Enter</button>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/thai-giga-drill.js"></script>
+    <script src="../js/games/sentence-mix/adapter.js"></script>
+    <script src="../js/games/sentence-mix/engine.js"></script>
+    <script src="../js/games/sentence-mix/input.js"></script>
+    <script src="../js/games/sentence-mix/ui.js"></script>
+    <script src="../js/pwa-register.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            window.SentenceMixUI.init({
+                contentUrl: "../data/thai-giga-drill.v1.json"
+            });
+        });
+    </script>
+</body>
+</html>

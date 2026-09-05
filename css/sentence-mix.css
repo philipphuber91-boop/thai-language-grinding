@@ -1,0 +1,591 @@
+@charset "UTF-8";
+
+/* =========================================================
+   SATZMIX / WORDMIX – FOCUSED STAGE & BUTLER UI
+   ========================================================= */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.sentence-mix-body {
+    background-color: var(--bg, #15110d);
+    color: var(--text, #f3e5c0);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Header */
+.sentence-mix-header {
+    background: linear-gradient(180deg, #2a2017 0%, #1c150f 100%);
+    border-bottom: 2px solid var(--gold, #c89b3c);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0;
+    z-index: 10;
+}
+
+.sentence-mix-header-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.sentence-mix-back-button {
+    background: #3b2a1a;
+    border: 1px solid var(--gold, #c89b3c);
+    color: var(--gold-light, #f3d17a);
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sentence-mix-back-button:hover {
+    background: var(--gold, #c89b3c);
+    color: #15110d;
+}
+
+.sentence-mix-title-box h1 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: var(--gold-light, #f3d17a);
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.sentence-mix-title-box p {
+    margin: 2px 0 0;
+    font-size: 0.78rem;
+    color: #a8947c;
+}
+
+.sentence-mix-header-stats {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.sentence-mix-stat-badge {
+    background: rgba(42, 32, 23, 0.85);
+    border: 1px solid rgba(200, 155, 60, 0.4);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sentence-mix-stat-badge strong {
+    color: var(--gold-light, #f3d17a);
+}
+
+/* Haupt-Bühne (Fixed Viewport Stage) */
+.sentence-mix-main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.sentence-mix-stage {
+    background: linear-gradient(145deg, #2b2017 0%, #1e1610 100%);
+    border: 2px solid var(--gold, #c89b3c);
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    max-width: 850px;
+    width: 100%;
+    padding: 24px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    box-sizing: border-box;
+    animation: stageFadeIn 0.2s ease-out;
+}
+
+@keyframes stageFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Stage Header mit Butler Info */
+.stage-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(200, 155, 60, 0.25);
+    padding-bottom: 14px;
+    gap: 16px;
+}
+
+.stage-butler-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.stage-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #3b2a1a;
+    border: 2px solid var(--gold, #c89b3c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+    flex-shrink: 0;
+}
+
+.stage-butler-info h2 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--gold-light, #f3d17a);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.stage-butler-info span {
+    font-size: 0.82rem;
+    color: #a8947c;
+}
+
+.stage-translation-badge {
+    background: rgba(200, 155, 60, 0.12);
+    border: 1px solid rgba(200, 155, 60, 0.3);
+    color: #f3e5c0;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-style: italic;
+    max-width: 50%;
+    text-align: right;
+}
+
+/* Aufgaben-Prompt */
+.stage-prompt {
+    font-size: 0.95rem;
+    color: #cbb493;
+    margin: 0;
+}
+
+/* Tokens Grid */
+.stage-tokens-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
+    padding: 10px 0;
+}
+
+.token-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #17110c;
+    border: 2px solid #543e2a;
+    border-radius: 14px;
+    padding: 10px 18px 10px 12px;
+    cursor: default;
+    user-select: none;
+    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+}
+
+.token-pill-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #362617;
+    border: 1px solid var(--gold, #c89b3c);
+    color: var(--gold-light, #f3d17a);
+    font-size: 1rem;
+    font-weight: 800;
+    font-family: monospace;
+}
+
+.token-pill-thai {
+    font-family: "Sarabun", "Noto Sans Thai", sans-serif;
+    font-size: 1.6rem;
+    color: #f3e5c0;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+}
+
+.token-pill.is-selected {
+    background: #3f3120;
+    border-color: var(--gold-light, #f3d17a);
+    box-shadow: 0 0 16px rgba(243, 209, 122, 0.45);
+    transform: translateY(-3px);
+}
+
+.token-pill.is-selected .token-pill-num {
+    background: var(--gold, #c89b3c);
+    color: #15110d;
+}
+
+/* Eingabe-Bereich */
+.stage-input-section {
+    background: #19120c;
+    border: 1px solid rgba(200, 155, 60, 0.35);
+    border-radius: 12px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stage-input-label {
+    font-size: 0.85rem;
+    color: #a8947c;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.stage-input-display {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--gold-light, #f3d17a);
+    letter-spacing: 0.2em;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 42px;
+}
+
+.player-cursor {
+    display: inline-block;
+    width: 10px;
+    height: 1.2em;
+    background: var(--gold-light, #f3d17a);
+    animation: cursorBlink 0.9s infinite;
+}
+
+@keyframes cursorBlink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+}
+
+/* Feedback-Container */
+.stage-feedback {
+    border-radius: 12px;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: feedbackSlideIn 0.2s ease-out;
+}
+
+@keyframes feedbackSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.stage-feedback.correct {
+    background: rgba(37, 208, 195, 0.12);
+    border: 1px solid var(--turquoise, #25d0c3);
+    color: #6ef4ea;
+}
+
+.stage-feedback.wrong {
+    background: rgba(220, 53, 69, 0.15);
+    border: 1px solid #e74c3c;
+    color: #ff9999;
+}
+
+.feedback-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.feedback-headline {
+    font-size: 1.25rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.feedback-details {
+    font-size: 0.95rem;
+    color: #f3e5c0;
+}
+
+.feedback-thai-text {
+    font-family: "Sarabun", "Noto Sans Thai", sans-serif;
+    font-size: 1.45rem;
+    color: var(--gold-light, #f3d17a);
+}
+
+.feedback-next-prompt {
+    font-size: 0.9rem;
+    color: #cbb493;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Footer & Mobile Numpad */
+.sentence-mix-footer {
+    background: #1c150f;
+    border-top: 1px solid rgba(200, 155, 60, 0.3);
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.sentence-mix-shortcuts-hint {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 0.85rem;
+    color: #bfa88d;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.kbd-badge {
+    background: #2a2017;
+    border: 1px solid var(--gold, #c89b3c);
+    color: var(--gold-light, #f3d17a);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-family: monospace;
+}
+
+/* Auf Desktop ist der Bildschirm-Zahlenblock komplett ausgeblendet */
+.sentence-mix-mobile-numpad {
+    display: none !important;
+}
+
+/* Mobile & Tablet Ansicht */
+@media (max-width: 900px) {
+    .sentence-mix-body {
+        height: 100vh;
+        height: 100dvh;
+    }
+
+    .sentence-mix-main {
+        padding: 10px 12px;
+        align-items: center;
+        justify-content: center;
+        overflow-y: auto;
+    }
+
+    .sentence-mix-stage {
+        padding: 16px 18px;
+        gap: 14px;
+        border-radius: 16px;
+        max-width: 560px;
+        width: 100%;
+    }
+
+    .stage-header {
+        padding-bottom: 10px;
+    }
+
+    .stage-avatar {
+        width: 40px;
+        height: 40px;
+        font-size: 1.35rem;
+    }
+
+    .stage-butler-info h2 {
+        font-size: 1rem;
+    }
+
+    .stage-translation-badge {
+        font-size: 0.9rem;
+        padding: 5px 12px;
+    }
+
+    .stage-tokens-grid {
+        gap: 10px;
+        padding: 6px 0;
+    }
+
+    .token-pill {
+        padding: 8px 14px 8px 10px;
+        gap: 10px;
+        border-radius: 12px;
+    }
+
+    .token-pill-num {
+        width: 28px;
+        height: 28px;
+        font-size: 0.95rem;
+    }
+
+    .token-pill-thai {
+        font-size: 1.5rem;
+    }
+
+    .stage-input-section {
+        padding: 10px 16px;
+    }
+
+    .stage-input-display {
+        font-size: 1.6rem;
+        min-height: 38px;
+    }
+
+    .stage-feedback {
+        padding: 12px 16px;
+        gap: 8px;
+    }
+
+    .feedback-headline {
+        font-size: 1.15rem;
+    }
+
+    .feedback-thai-text {
+        font-size: 1.4rem;
+    }
+
+    /* Auf Mobile Tastaturhinweis ausblenden und Touch-Numpad einblenden */
+    .sentence-mix-shortcuts-hint {
+        display: none !important;
+    }
+
+    .sentence-mix-footer {
+        padding: 12px 16px;
+        padding-bottom: max(12px, env(safe-area-inset-bottom));
+        background: #150e09;
+        border-top: 2px solid var(--gold, #c89b3c);
+    }
+
+    .sentence-mix-mobile-numpad {
+        display: block !important;
+        width: 100%;
+        max-width: 520px;
+        margin: 0 auto;
+    }
+
+    .numpad-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 8px;
+    }
+
+    .numpad-key {
+        height: clamp(52px, 7.5vh, 64px);
+        min-height: 52px;
+        border-radius: 12px;
+        background: linear-gradient(180deg, #36271c 0%, #251a11 100%);
+        border: 2px solid #5a432d;
+        color: var(--gold-light, #f3d17a);
+        font-size: 1.55rem;
+        font-weight: 800;
+        font-family: inherit;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        user-select: none;
+        touch-action: manipulation;
+        transition: transform 0.08s ease, background 0.12s ease, border-color 0.12s ease;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.45);
+    }
+
+    .numpad-key:active:not(:disabled) {
+        transform: scale(0.95);
+        background: var(--gold, #c89b3c);
+        color: #15110d;
+        border-color: #fff;
+    }
+
+    .numpad-key.is-used {
+        opacity: 0.35;
+        background: #19120c;
+        border-color: #3d2d1f;
+        color: #7a6855;
+    }
+
+    .numpad-key:disabled:not(.is-used) {
+        opacity: 0.25;
+        background: #15110d;
+        border-color: #2b2017;
+        color: #554433;
+        cursor: not-allowed;
+    }
+
+    .numpad-key.fn-key {
+        font-size: 1.1rem;
+        font-weight: 700;
+    }
+
+    .numpad-key.fn-key.backspace {
+        background: linear-gradient(180deg, #42251a 0%, #2e1911 100%);
+        border-color: #7d4934;
+        color: #fca58e;
+        font-size: 1.35rem;
+    }
+
+    .numpad-key.fn-key.escape {
+        background: linear-gradient(180deg, #3d271e 0%, #2a1a13 100%);
+        border-color: #6b4635;
+        color: #d6bcb0;
+        font-size: 1rem;
+    }
+
+    .numpad-key.fn-key.enter {
+        background: linear-gradient(180deg, #4d3b27 0%, #322517 100%);
+        border-color: var(--gold, #c89b3c);
+        color: var(--gold-light, #f3d17a);
+        font-size: 1.05rem;
+    }
+
+    .numpad-key.fn-key.enter.highlight-next {
+        background: linear-gradient(180deg, #d8ac45 0%, #b88a28 100%);
+        color: #15110d;
+        border-color: #fff;
+        box-shadow: 0 0 16px rgba(243, 209, 122, 0.7);
+        font-weight: 800;
+    }
+}
