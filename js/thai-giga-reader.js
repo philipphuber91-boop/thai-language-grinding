@@ -35,8 +35,6 @@
         ),
         speedreading: document.getElementById("thaiGigaSpeedreading"),
         speedreadingScope: document.getElementById("thaiGigaSpeedreadingScope"),
-        speedreadingTitle: document.getElementById("thaiGigaSpeedreadingTitle"),
-        speedreadingContext: document.getElementById("thaiGigaSpeedreadingContext"),
         speedreadingList: document.getElementById("thaiGigaSpeedreadingList"),
         speedreadingClose: document.getElementById("thaiGigaSpeedreadingClose"),
         speedreadingTransliteration: document.getElementById(
@@ -1494,8 +1492,6 @@
         if (
             !elements.speedreading ||
             !elements.speedreadingScope ||
-            !elements.speedreadingTitle ||
-            !elements.speedreadingContext ||
             !elements.speedreadingList ||
             !indexes
         ) {
@@ -1507,12 +1503,19 @@
             return;
         }
 
+        if (window.thaiGigaRsvp?.open) {
+            window.thaiGigaRsvp.open(
+                speedreadingScope.sentences,
+                speedreadingScope.title,
+                `${speedreadingScope.sentences.length} Sätze · ${speedreadingScope.boss.title}`,
+                trigger
+            );
+            return;
+        }
+
         speedreadingReturnFocus = trigger || document.activeElement;
         syncSpeedreadingVisibility();
-        elements.speedreadingScope.textContent = `Speedreading · ${speedreadingScope.scopeLabel}`;
-        elements.speedreadingTitle.textContent = speedreadingScope.title;
-        elements.speedreadingContext.textContent =
-            `${speedreadingScope.sentences.length} Sätze · ${speedreadingScope.boss.title}`;
+        elements.speedreadingScope.textContent = "Speed Reading";
         elements.speedreadingList.innerHTML = speedreadingScope.sentences
             .map((sentence, index) => renderSpeedreadingSentence(sentence, index + 1))
             .join("");
@@ -1527,6 +1530,7 @@
             return;
         }
 
+        window.thaiGigaRsvp?.close();
         window.questAudio.stopSpeech();
         window.questAudio.stopNativeAudioPlayers();
         elements.speedreading.hidden = true;
@@ -2056,6 +2060,7 @@
             } else if (window.thaiGigaAudio) {
                 await window.thaiGigaAudio.loadVoiceConfig();
             }
+            window.thaiGigaRsvp?.initialize(indexes);
             renderWordDictionaryVoiceOptions();
             renderWordDictionaryFilters();
             renderWordDictionary();

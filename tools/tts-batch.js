@@ -104,12 +104,34 @@ function resolveVoiceId(sentence, voiceConfig) {
         voiceId;
 }
 
+function getProfileAudioOptions(profileId, voiceConfig) {
+    const profile = profileId && voiceConfig.voiceProfiles?.[profileId];
+    if (!profile || typeof profile !== "object") {
+        return {};
+    }
+
+    return {
+        modelId: profile.modelId || modelId,
+        language: profile.language || "th-TH",
+        speakingRate: profile.speakingRate,
+        deliveryMode: profile.deliveryMode
+    };
+}
+
 async function synthesize(sentence, voiceConfig) {
+    const profileId = getSentenceVoiceProfileId(sentence, voiceConfig);
+    const profileOptions = getProfileAudioOptions(profileId, voiceConfig);
     const body = {
         text: sentence.thai,
-        language: "th-TH",
-        modelId
+        language: profileOptions.language || "th-TH",
+        modelId: profileOptions.modelId || modelId
     };
+    if (Number.isFinite(Number(profileOptions.speakingRate))) {
+        body.speakingRate = Number(profileOptions.speakingRate);
+    }
+    if (typeof profileOptions.deliveryMode === "string" && profileOptions.deliveryMode.trim()) {
+        body.deliveryMode = profileOptions.deliveryMode.trim();
+    }
     const resolvedVoiceId = resolveVoiceId(sentence, voiceConfig);
     if (resolvedVoiceId) {
         body.voiceId = resolvedVoiceId;

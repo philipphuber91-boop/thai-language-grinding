@@ -249,6 +249,9 @@
         elements.next.disabled = entries.length === 0;
         elements.clear.disabled = entries.length === 0;
         elements.openTyping.disabled = entries.length === 0;
+        if (elements.openRsvp) {
+            elements.openRsvp.disabled = entries.length === 0;
+        }
         elements.playPause.textContent = state.playing ? "⏸ Pause" : "▶ Abspielen";
         elements.loop.checked = state.loop;
         elements.shuffle.checked = state.shuffle;
@@ -396,6 +399,15 @@
         return window.thaiGigaDrill.openTypingPlaylistInTyping(sentenceIds);
     }
 
+    function openRsvpPlaylist() {
+        const sentenceIds = controller.state.playlist.map(entry => entry.id);
+        if (sentenceIds.length === 0) {
+            setStatus("Füge zuerst Sätze zur Playlist hinzu.");
+            return false;
+        }
+        return window.thaiGigaRsvp?.openPlaylist(elements.openRsvp) || false;
+    }
+
     function addBlock(blockId) {
         controller.addMany(getEntriesForBlock(blockId));
     }
@@ -429,6 +441,7 @@
             player: document.getElementById("thaiGigaAudioPlayer"),
             playerToggle: document.getElementById("thaiGigaPlayerToggle"),
             openTyping: document.getElementById("thaiGigaAudioOpenTyping"),
+            openRsvp: document.getElementById("thaiGigaAudioOpenRsvp"),
             count: document.getElementById("thaiGigaAudioCount"),
             nowPlaying: document.getElementById("thaiGigaAudioNowPlaying"),
             previous: document.getElementById("thaiGigaAudioPrevious"),
@@ -472,6 +485,7 @@
         elements.speed.addEventListener("input", () => controller.setPlaybackRate(elements.speed.value));
         elements.clear.addEventListener("click", () => controller.clear());
         elements.openTyping.addEventListener("click", openTypingPlaylist);
+        elements.openRsvp?.addEventListener("click", openRsvpPlaylist);
         controller.load();
 
         if (window.ResizeObserver) {
@@ -492,6 +506,7 @@
         addStory,
         addBlock,
         openTypingPlaylist,
+        openRsvpPlaylist,
         removeSentence,
         removeSentences,
         getAudioForSentence,

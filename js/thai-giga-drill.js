@@ -1033,7 +1033,7 @@
         );
         localStorage.setItem("contentMode", "thai-giga");
         localStorage.setItem("aktuelleQuest", typingPlaylist.id);
-        localStorage.setItem("questMode", "learning");
+        localStorage.setItem("questMode", "challenge");
         window.location.href = "typing.html";
         return true;
     }
