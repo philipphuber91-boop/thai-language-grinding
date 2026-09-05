@@ -10,9 +10,9 @@
     const SETTINGS_STORAGE_KEY = "thaiGigaRsvpSettings";
     const MIN_FONT_SIZE = 20;
     const MAX_FONT_SIZES = {
-        thai: 48,
-        transliteration: 36,
-        german: 36
+        thai: 88,
+        transliteration: 76,
+        german: 76
     };
     const elements = {
         overlay: document.getElementById("thaiGigaSpeedreading"),

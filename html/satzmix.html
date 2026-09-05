@@ -11,13 +11,13 @@
         href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&family=Noto+Sans+Thai:wght@300;400;500&family=Prompt:wght@300;400&family=Sarabun:wght@300;400;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../css/sentence-mix.css">
+    <link rel="stylesheet" href="../css/sentence-mix.css?v=9">
     <link rel="manifest" href="../manifest.json">
 </head>
 <body class="sentence-mix-body">
     <header class="sentence-mix-header">
         <div class="sentence-mix-header-left">
-            <a class="sentence-mix-back-button" href="index.html" aria-label="Zurück zum Hauptmenü">
+            <a class="sentence-mix-back-button" href="thai-giga.html" aria-label="Zurück zum Thai Giga Drill">
                 ← Zurück
             </a>
             <div class="sentence-mix-title-box">
@@ -25,15 +25,18 @@
                 <p>Speed Typing &amp; Satzstruktur</p>
             </div>
         </div>
-        <div class="sentence-mix-header-stats">
-            <div class="sentence-mix-stat-badge">
-                <span>Gelöst:</span>
-                <strong id="statSolvedCount">0</strong>
+        <div class="sentence-mix-header-right">
+            <div class="sentence-mix-header-stats">
+                <div class="sentence-mix-stat-badge">
+                    <span>Gelöst:</span>
+                    <strong id="statSolvedCount">0</strong>
+                </div>
+                <div class="sentence-mix-stat-badge">
+                    <span>Ø Zeit:</span>
+                    <strong id="statAvgTime">--:--</strong>
+                </div>
             </div>
-            <div class="sentence-mix-stat-badge">
-                <span>Ø Zeit:</span>
-                <strong id="statAvgTime">--:--</strong>
-            </div>
+            <button id="sentenceMixSettingsButton" class="sentence-mix-settings-button" type="button" aria-label="Satzmix-Einstellungen" aria-controls="sentenceMixSettings" aria-expanded="false">⚙</button>
         </div>
     </header>
 
@@ -66,6 +69,37 @@
         </div>
     </footer>
 
+    <div id="sentenceMixSettings" class="sentence-mix-settings" hidden>
+        <div class="sentence-mix-settings-card" role="dialog" aria-modal="true" aria-labelledby="sentenceMixSettingsTitle">
+            <div class="sentence-mix-settings-header">
+                <h2 id="sentenceMixSettingsTitle">Satzmix-Einstellungen</h2>
+                <button id="sentenceMixSettingsClose" class="sentence-mix-settings-close" type="button" aria-label="Einstellungen schließen">×</button>
+            </div>
+            <fieldset class="sentence-mix-settings-group">
+                <legend>Nummernblock</legend>
+                <label>
+                    <input type="radio" name="sentenceMixNumpadLayout" value="standard">
+                    <span>Touch-Layout (1–2–3 oben)</span>
+                </label>
+                <label>
+                    <input type="radio" name="sentenceMixNumpadLayout" value="laptop">
+                    <span>Laptop-Layout (7–8–9 oben)</span>
+                </label>
+            </fieldset>
+            <fieldset class="sentence-mix-settings-group">
+                <legend>Satzreihenfolge</legend>
+                <label>
+                    <input type="radio" name="sentenceMixSentenceOrder" value="original">
+                    <span>Originalreihenfolge</span>
+                </label>
+                <label>
+                    <input type="radio" name="sentenceMixSentenceOrder" value="shuffle">
+                    <span>Shuffle-Modus (Sätze mischen)</span>
+                </label>
+            </fieldset>
+        </div>
+    </div>
+
     <script src="../js/thai-giga-drill.js"></script>
     <script src="../js/games/sentence-mix/adapter.js"></script>
     <script src="../js/games/sentence-mix/engine.js"></script>
@@ -75,7 +109,8 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             window.SentenceMixUI.init({
-                contentUrl: "../data/thai-giga-drill.v1.json"
+                contentUrl: "../data/thai-giga-drill.v1.json",
+                source: new URLSearchParams(window.location.search).get("source") || "all"
             });
         });
     </script>
