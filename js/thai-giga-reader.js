@@ -56,6 +56,9 @@
     let speedreadingReturnFocus = null;
     const DICTIONARY_VOICE_STORAGE_KEY = "thaiGigaDrill:v1:dictionary-voice";
     const GRAMMAR_BOSS_1_ID = "level-1-grammar-boss-1";
+    const GRAMMAR_BOSS_3_ID = "level-1-grammar-boss-3";
+    const CHAI_MAI_PHRASE_ID = "word-chai-mai";
+    const KO_DAI_PHRASE_ID = "word-ko-dai";
 
     function escapeHtml(value) {
         return String(value ?? "")
@@ -1142,33 +1145,150 @@
     function getChaiMaiPhrase(sentence, tokenIndex) {
         const token = sentence.tokens[tokenIndex];
         const nextToken = sentence.tokens[tokenIndex + 1];
+        const thirdToken = sentence.tokens[tokenIndex + 2];
         if (
-            sentence.bossId !== GRAMMAR_BOSS_1_ID ||
-            token?.kind !== "word" ||
-            nextToken?.kind !== "word" ||
-            token.text !== "ใช่" ||
-            nextToken.text !== "ไหม" ||
-            !token.wordId ||
-            !nextToken.wordId
+            sentence.id === "l1-b3-s1008" &&
+            sentence.bossId === GRAMMAR_BOSS_3_ID &&
+            token?.kind === "word" &&
+            nextToken?.kind === "word" &&
+            thirdToken?.kind === "word" &&
+            token.text === "ไม่" &&
+            nextToken.text === "ได้" &&
+            thirdToken.text === "ไป" &&
+            token.wordId &&
+            nextToken.wordId &&
+            thirdToken.wordId
+        ) {
+            const phraseTokens = [token, nextToken, thirdToken];
+            const words = phraseTokens.map(currentToken =>
+                indexes.wordsById.get(currentToken.wordId)
+            );
+            return {
+                endIndex: tokenIndex + 2,
+                wordId: token.wordId,
+                thai: phraseTokens.map(currentToken => currentToken.text).join(""),
+                transliteration: words
+                    .map(word => word?.transliteration)
+                    .filter(Boolean)
+                    .join(" "),
+                contextToken: token.text,
+                contextMeaning: "nicht gehen / nicht mitgehen",
+                meanings: ["nicht gehen / nicht mitgehen"],
+                infoSentence:
+                    "Verneint die vorangehende Frage; hier bedeutet die feste Einheit „nicht gehen / nicht mitgehen“.",
+                toneMarkup: phraseTokens.map((currentToken, index) =>
+                    renderToneMarkup(
+                        currentToken.text,
+                        words[index]?.transliteration,
+                        words[index]?.syllables
+                    )
+                ).join("")
+            };
+        }
+        const phraseDefinition = indexes.wordsById.get(CHAI_MAI_PHRASE_ID);
+        const phraseParts = phraseDefinition?.phraseParts;
+        const phraseTokens = Array.isArray(phraseParts)
+            ? phraseParts.map((part, index) => sentence.tokens[tokenIndex + index])
+            : [];
+        if (
+            !phraseDefinition ||
+            !Array.isArray(phraseParts) ||
+            phraseParts.length < 2 ||
+            phraseTokens.length !== phraseParts.length ||
+            phraseParts.some((part, index) => {
+                const phraseToken = phraseTokens[index];
+                return (
+                    !phraseToken ||
+                    phraseToken.kind !== "word" ||
+                    phraseToken.text !== part.thai ||
+                    phraseToken.wordId !== part.wordId
+                );
+            })
         ) {
             return null;
         }
 
-        const words = [token, nextToken].map(currentToken =>
+        const words = phraseTokens.map(currentToken =>
             indexes.wordsById.get(currentToken.wordId)
         );
+        const phraseBossContext = phraseDefinition.bossContexts?.[sentence.bossId];
+        const contextExample = phraseBossContext?.contextExamples?.find(
+            example => example.sentenceId === sentence.id
+        );
         return {
-            endIndex: tokenIndex + 1,
-            wordId: nextToken.wordId,
-            thai: `${token.text}${nextToken.text}`,
-            transliteration: words
-                .map(word => word?.transliteration)
-                .filter(Boolean)
-                .join(" "),
-            contextToken: nextToken.text,
+            endIndex: tokenIndex + phraseParts.length - 1,
+            wordId: phraseDefinition.id,
+            thai: phraseDefinition.thai,
+            transliteration: phraseDefinition.transliteration,
+            contextToken: phraseDefinition.thai,
+            contextMeaning:
+                contextExample?.entryMeaningInSentence ||
+                phraseTokens.map(currentToken => currentToken.contextMeaning).find(Boolean) ||
+                "",
+            meanings: phraseBossContext?.meanings || phraseDefinition.meanings || [],
+            infoSentence:
+                phraseBossContext?.infoSentence ||
+                phraseDefinition.infoSentence ||
+                "",
             toneMarkup: words
                 .map((word, index) => renderToneMarkup(
-                    [token, nextToken][index].text,
+                    phraseTokens[index].text,
+                    word?.transliteration,
+                    word?.syllables
+                ))
+                .join("")
+        };
+    }
+
+    function getKoDaiPhrase(sentence, tokenIndex) {
+        const phraseDefinition = indexes.wordsById.get(KO_DAI_PHRASE_ID);
+        const phraseParts = phraseDefinition?.phraseParts;
+        const phraseTokens = Array.isArray(phraseParts)
+            ? phraseParts.map((part, index) => sentence.tokens[tokenIndex + index])
+            : [];
+        if (
+            !phraseDefinition ||
+            !Array.isArray(phraseParts) ||
+            phraseParts.length < 2 ||
+            phraseTokens.length !== phraseParts.length ||
+            phraseParts.some((part, index) => {
+                const phraseToken = phraseTokens[index];
+                return (
+                    !phraseToken ||
+                    phraseToken.kind !== "word" ||
+                    phraseToken.text !== part.thai ||
+                    phraseToken.wordId !== part.wordId
+                );
+            })
+        ) {
+            return null;
+        }
+
+        const words = phraseTokens.map(currentToken =>
+            indexes.wordsById.get(currentToken.wordId)
+        );
+        const phraseBossContext = phraseDefinition.bossContexts?.[sentence.bossId];
+        const contextExample = phraseBossContext?.contextExamples?.find(
+            example => example.sentenceId === sentence.id
+        );
+        return {
+            endIndex: tokenIndex + phraseParts.length - 1,
+            wordId: phraseDefinition.id,
+            thai: phraseDefinition.thai,
+            transliteration: phraseDefinition.transliteration,
+            contextToken: phraseDefinition.thai,
+            contextMeaning:
+                contextExample?.entryMeaningInSentence ||
+                phraseTokens.map(currentToken => currentToken.contextMeaning).find(Boolean) ||
+                "",
+            meanings: phraseBossContext?.meanings || phraseDefinition.meanings || [],
+            infoSentence:
+                phraseBossContext?.infoSentence ||
+                phraseDefinition.infoSentence ||
+                "",
+            toneMarkup: words
+                .map((word, index) => renderToneMarkup(
+                    phraseTokens[index].text,
                     word?.transliteration,
                     word?.syllables
                 ))
@@ -1183,7 +1303,9 @@
 
         for (let tokenIndex = 0; tokenIndex < sentence.tokens.length; tokenIndex += 1) {
             const token = sentence.tokens[tokenIndex];
-            const phrase = getChaiMaiPhrase(sentence, tokenIndex);
+            const phrase =
+                getChaiMaiPhrase(sentence, tokenIndex) ||
+                getKoDaiPhrase(sentence, tokenIndex);
             const renderedToken = phrase
                 ? {
                     ...token,
@@ -1231,14 +1353,21 @@
                 token.text === "ไหม"
                     ? "?"
                     : "";
-            const contextMeaning = standaloneQuestionMeaning || token.contextMeaning || "";
+            const contextMeaning =
+                standaloneQuestionMeaning ||
+                phrase?.contextMeaning ||
+                token.contextMeaning ||
+                "";
             const contextAttribute = contextMeaning
                 ? ` data-context-meaning="${escapeHtml(contextMeaning)}"`
                 : "";
             const phraseAttributes = phrase
                 ? ` data-phrase-thai="${escapeHtml(phrase.thai)}"` +
                     ` data-phrase-transliteration="${escapeHtml(phrase.transliteration)}"` +
-                    ` data-phrase-context-token="${escapeHtml(phrase.contextToken)}"`
+                    ` data-phrase-context-token="${escapeHtml(phrase.contextToken)}"` +
+                    ` data-phrase-context-meaning="${escapeHtml(phrase.contextMeaning || "")}"` +
+                    ` data-phrase-meaning="${escapeHtml(phrase.meanings?.[0] || "")}"` +
+                    ` data-phrase-info-sentence="${escapeHtml(phrase.infoSentence || "")}"`
                 : "";
             const contextTitle = phrase
                 ? "Wörterbuch öffnen – feste Einheit anzeigen"
@@ -1426,7 +1555,12 @@
                         ? {
                             thai: button.dataset.phraseThai,
                             transliteration: button.dataset.phraseTransliteration || "",
-                            contextToken: button.dataset.phraseContextToken || ""
+                            contextToken: button.dataset.phraseContextToken || "",
+                            contextMeaning: button.dataset.phraseContextMeaning || "",
+                            meanings: button.dataset.phraseMeaning
+                                ? [button.dataset.phraseMeaning]
+                                : [],
+                            infoSentence: button.dataset.phraseInfoSentence || ""
                         }
                         : null
                 )
@@ -1755,19 +1889,29 @@
         const bossContext = activeBossId && word.bossContexts
             ? word.bossContexts[activeBossId]
             : null;
-        const meanings = bossContext?.meanings || word.meanings;
-        const infoSentence = bossContext?.infoSentence || word.infoSentence;
+        const meanings = phrase?.meanings?.length
+            ? phrase.meanings
+            : bossContext?.meanings || word.meanings;
+        const infoSentence =
+            phrase?.infoSentence ||
+            bossContext?.infoSentence ||
+            word.infoSentence;
         const contextExample = bossContext?.contextExamples?.find(example =>
             example.sentenceId === sentenceId &&
             (!example.matchedToken ||
                 example.matchedToken === (phrase?.contextToken || anchor.textContent.trim()))
         );
-        const sentenceMeaning = contextExample?.entryMeaningInSentence || contextMeaning || "";
+        const sentenceMeaning =
+            phrase?.contextMeaning ||
+            contextMeaning ||
+            contextExample?.entryMeaningInSentence ||
+            "";
         const distinctMeanings = Array.from(new Set(
             meanings.map(meaning => meaning.trim()).filter(Boolean)
         ));
         const hasInfoSentence = infoSentence && infoSentence !== "Keine erforderlich.";
-        const showSingleGlobalMeaning = !bossContext && distinctMeanings.length > 0;
+        const showSingleGlobalMeaning =
+            distinctMeanings.length > 0;
         const generalMeaningMarkup = distinctMeanings.length > 1 ||
             showSingleGlobalMeaning ||
             hasInfoSentence

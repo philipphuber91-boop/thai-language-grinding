@@ -1,0 +1,980 @@
+{
+  "fixtureVersion": 1,
+  "testOnly": true,
+  "title": "Grammar Boss 3 Editorial Pilot",
+  "topic": "อยู่ · Ort und laufende Handlung",
+  "sourceBasis": [
+    "Grammar Boss 3, Mini-Situation 1: คุณอยู่ที่ไหน / ผมอยู่ที่บ้าน",
+    "Grammar Boss 3, Mini-Situation 3: อยู่บ้านไหม / อยู่ที่ไหนคะ / ทำอะไรอยู่",
+    "Grammar Boss 3: location and ongoing-action uses of อยู่"
+  ],
+  "editorialBrief": "Dreißig neue, dialogische Sätze behandeln อยู่ als zusammenhängendes Muster. Die deutsche Zeile übersetzt die konkrete Situation, nicht ein isoliertes Wörterbuchlemma.",
+  "vocabulary": [
+    {
+      "id": "gb3-pilot-word-khun",
+      "thai": "คุณ",
+      "transliteration": "khun",
+      "meanings": ["du", "Sie"],
+      "note": "Höfliche Anrede; das Pronomen wird im Gespräch oft weggelassen."
+    },
+    {
+      "id": "gb3-pilot-word-yuu",
+      "thai": "อยู่",
+      "transliteration": "yùu",
+      "meanings": ["sich befinden", "da sein", "gerade dabei sein", "bleiben"],
+      "note": "Der Kontext entscheidet: อยู่ที่บ้าน bezeichnet einen Ort, Verb + อยู่ eine laufende Handlung."
+    },
+    {
+      "id": "gb3-pilot-word-thii",
+      "thai": "ที่",
+      "transliteration": "thîi",
+      "meanings": ["bei", "an", "in", "der/die/das"],
+      "note": "Hier markiert ที่ den Ort in อยู่ที่บ้าน; in anderen Sätzen kann es ein Relativmarker sein."
+    },
+    {
+      "id": "gb3-pilot-word-thii-nai",
+      "thai": "ที่ไหน",
+      "transliteration": "thîi-nǎi",
+      "meanings": ["wo", "an welchem Ort"],
+      "note": "Feste Ortsfrage mit อยู่."
+    },
+    {
+      "id": "gb3-pilot-word-phom",
+      "thai": "ผม",
+      "transliteration": "phǒm",
+      "meanings": ["ich"],
+      "note": "Höfliches Ich-Pronomen, typischerweise von Männern verwendet."
+    },
+    {
+      "id": "gb3-pilot-word-baan",
+      "thai": "บ้าน",
+      "transliteration": "bâan",
+      "meanings": ["Haus", "zu Hause"],
+      "note": "Mit อยู่บ้าน wird natürlich „zu Hause sein“ gesagt."
+    },
+    {
+      "id": "gb3-pilot-word-ton-nii",
+      "thai": "ตอนนี้",
+      "transliteration": "dton-níi",
+      "meanings": ["jetzt", "gerade"],
+      "note": "Zeitangabe; macht in อยู่บ้าน die aktuelle Situation ausdrücklich."
+    },
+    {
+      "id": "gb3-pilot-word-ro",
+      "thai": "เหรอ",
+      "transliteration": "rǒ̌",
+      "meanings": ["wirklich?", "echt?"],
+      "note": "Umgangssprachliche Rückfrage am Satzende."
+    },
+    {
+      "id": "gb3-pilot-word-chai",
+      "thai": "ใช่",
+      "transliteration": "châi",
+      "meanings": ["ja", "stimmt"],
+      "note": "Bestätigt die vorherige Frage."
+    },
+    {
+      "id": "gb3-pilot-word-khrap",
+      "thai": "ครับ",
+      "transliteration": "khráp",
+      "meanings": ["höfliches Satzendpartikel"],
+      "note": "Höfliche Form von Männern."
+    },
+    {
+      "id": "gb3-pilot-word-tae",
+      "thai": "แต่",
+      "transliteration": "dtɛ̀ɛ",
+      "meanings": ["aber"],
+      "note": "Leitet den Kontrast zur vorherigen Ortsangabe ein."
+    },
+    {
+      "id": "gb3-pilot-word-mae",
+      "thai": "แม่",
+      "transliteration": "mɛ̂ɛ",
+      "meanings": ["Mutter", "Mama"],
+      "note": "Im familiären Kontext natürlich als „Mama“ übersetzt."
+    },
+    {
+      "id": "gb3-pilot-word-khao",
+      "thai": "เขา",
+      "transliteration": "kǎo",
+      "meanings": ["er", "sie", "ihn", "sie"],
+      "note": "Das Pronomen ist im Thai nicht nach Geschlecht unterschieden; der Dialogkontext entscheidet."
+    },
+    {
+      "id": "gb3-pilot-word-laeo",
+      "thai": "แล้ว",
+      "transliteration": "lɛ́ɛo",
+      "meanings": ["schon", "und dann"],
+      "note": "Hier leitet es eine Anschlussfrage ein: „und jetzt …?“."
+    },
+    {
+      "id": "gb3-pilot-word-mai",
+      "thai": "ไม่",
+      "transliteration": "mâi",
+      "meanings": ["nicht"],
+      "note": "Steht hier vor อยู่ und verneint die Anwesenheit."
+    },
+    {
+      "id": "gb3-pilot-word-mai-question",
+      "thai": "ไหม",
+      "transliteration": "mǎi",
+      "meanings": ["Ja/Nein-Fragepartikel"],
+      "note": "Bildet hier eine Ja/Nein-Frage; die konkrete deutsche Entsprechung ist meist nur das Fragezeichen."
+    },
+    {
+      "id": "gb3-pilot-word-kha-question",
+      "thai": "คะ",
+      "transliteration": "ká",
+      "meanings": ["höfliches Fragepartikel"],
+      "note": "Wird von Frauen in Fragen verwendet."
+    },
+    {
+      "id": "gb3-pilot-word-nai",
+      "thai": "ใน",
+      "transliteration": "nai",
+      "meanings": ["in", "innerhalb"],
+      "note": "Ortspräposition für einen Innenraum."
+    },
+    {
+      "id": "gb3-pilot-word-hong",
+      "thai": "ห้อง",
+      "transliteration": "hɔ̂ng",
+      "meanings": ["Zimmer", "Raum"],
+      "note": "อยู่ในห้อง = sich im Zimmer befinden."
+    },
+    {
+      "id": "gb3-pilot-word-chan",
+      "thai": "ฉัน",
+      "transliteration": "chǎn",
+      "meanings": ["ich"],
+      "note": "Informelles Ich-Pronomen; hier spricht eine Frau."
+    },
+    {
+      "id": "gb3-pilot-word-khaang-nok",
+      "thai": "ข้างนอก",
+      "transliteration": "khâang-nɔ̂ɔk",
+      "meanings": ["draußen", "außen"],
+      "note": "Gegenstück zu ข้างใน."
+    },
+    {
+      "id": "gb3-pilot-word-naa",
+      "thai": "หน้า",
+      "transliteration": "nâa",
+      "meanings": ["vor", "Vorderseite", "Gesicht"],
+      "note": "หน้าบ้าน = vor dem Haus."
+    },
+    {
+      "id": "gb3-pilot-word-roo",
+      "thai": "รอ",
+      "transliteration": "rɔɔ",
+      "meanings": ["warten"],
+      "note": "Mit อยู่ markiert es die gerade laufende Handlung."
+    },
+    {
+      "id": "gb3-pilot-word-khrai",
+      "thai": "ใคร",
+      "transliteration": "khrai",
+      "meanings": ["wer", "wen"],
+      "note": "หลัง รอใครอยู่ fragt nach der Person, auf die gewartet wird."
+    },
+    {
+      "id": "gb3-pilot-word-phuean",
+      "thai": "เพื่อน",
+      "transliteration": "phʉ̂an",
+      "meanings": ["Freund", "Freundin"],
+      "note": "Das Geschlecht bleibt im Thai offen."
+    },
+    {
+      "id": "gb3-pilot-word-kap",
+      "thai": "กับ",
+      "transliteration": "gàp",
+      "meanings": ["mit", "bei"],
+      "note": "อยู่กับ jemandem beschreibt gemeinsames Dabeisein."
+    },
+    {
+      "id": "gb3-pilot-word-khaang-nai",
+      "thai": "ข้างใน",
+      "transliteration": "khâang-nai",
+      "meanings": ["drinnen", "innen"],
+      "note": "Ortsangabe für einen Innenbereich."
+    },
+    {
+      "id": "gb3-pilot-word-tham",
+      "thai": "ทำ",
+      "transliteration": "tham",
+      "meanings": ["machen", "tun"],
+      "note": "ทำอะไรอยู่ fragt mit อยู่ nach einer laufenden Tätigkeit."
+    },
+    {
+      "id": "gb3-pilot-word-arai",
+      "thai": "อะไร",
+      "transliteration": "à-rai",
+      "meanings": ["was"],
+      "note": "Zusammen mit ทำ nach der aktuellen Tätigkeit."
+    },
+    {
+      "id": "gb3-pilot-word-kamlang",
+      "thai": "กำลัง",
+      "transliteration": "gam-lang",
+      "meanings": ["gerade dabei sein"],
+      "note": "กำลัง + Verb + อยู่ verstärkt den Verlauf, ist aber nicht immer nötig."
+    },
+    {
+      "id": "gb3-pilot-word-tham-ngaan",
+      "thai": "ทำงาน",
+      "transliteration": "tham-ngaan",
+      "meanings": ["arbeiten"],
+      "note": "ทำงานอยู่ = gerade arbeiten."
+    },
+    {
+      "id": "gb3-pilot-word-wan-nii",
+      "thai": "วันนี้",
+      "transliteration": "wan-níi",
+      "meanings": ["heute"],
+      "note": "Zeitangabe für die aktuelle Orts- oder Handlungssituation."
+    },
+    {
+      "id": "gb3-pilot-word-yang",
+      "thai": "ยัง",
+      "transliteration": "yang",
+      "meanings": ["noch", "immer noch"],
+      "note": "ยัง + Verb + อยู่ fragt oder sagt, dass die Handlung fortdauert."
+    },
+    {
+      "id": "gb3-pilot-word-kha",
+      "thai": "ค่ะ",
+      "transliteration": "kâ",
+      "meanings": ["höfliches Satzendpartikel"],
+      "note": "Höfliche Form von Frauen in Aussagen."
+    },
+    {
+      "id": "gb3-pilot-word-kho",
+      "thai": "ขอ",
+      "transliteration": "khɔ̌ɔ",
+      "meanings": ["bitten um", "dürfen"],
+      "note": "ขออีกห้านาทีนะ ist eine freundliche Bitte um etwas Zeit."
+    },
+    {
+      "id": "gb3-pilot-word-iik",
+      "thai": "อีก",
+      "transliteration": "ìik",
+      "meanings": ["noch", "weitere"],
+      "note": "Mit einer Zeitangabe: noch fünf Minuten."
+    },
+    {
+      "id": "gb3-pilot-word-haa",
+      "thai": "ห้า",
+      "transliteration": "hâa",
+      "meanings": ["fünf"],
+      "note": "Zahlwort."
+    },
+    {
+      "id": "gb3-pilot-word-naathii",
+      "thai": "นาที",
+      "transliteration": "naa-thii",
+      "meanings": ["Minute"],
+      "note": "Zeiteinheit."
+    },
+    {
+      "id": "gb3-pilot-word-kin",
+      "thai": "กิน",
+      "transliteration": "gin",
+      "meanings": ["essen", "trinken"],
+      "note": "กินข้าวอยู่ ist im Gespräch „gerade essen“."
+    },
+    {
+      "id": "gb3-pilot-word-khaao",
+      "thai": "ข้าว",
+      "transliteration": "khâao",
+      "meanings": ["Reis", "Mahlzeit"],
+      "note": "กินข้าว ist die alltägliche Wendung für essen."
+    },
+    {
+      "id": "gb3-pilot-word-khui",
+      "thai": "คุย",
+      "transliteration": "khui",
+      "meanings": ["sich unterhalten", "reden"],
+      "note": "คุยได้ = man kann trotzdem reden."
+    },
+    {
+      "id": "gb3-pilot-word-raan-kafae",
+      "thai": "ร้านกาแฟ",
+      "transliteration": "ráan gaa-fɛɛ",
+      "meanings": ["Café", "Kaffeeladen"],
+      "note": "Konkreter Aufenthaltsort."
+    },
+    {
+      "id": "gb3-pilot-word-khon-diao",
+      "thai": "คนเดียว",
+      "transliteration": "khon-diao",
+      "meanings": ["allein", "eine Person allein"],
+      "note": "Mit อยู่ fragt es nach Begleitung, nicht nach dem Aufenthaltsort."
+    },
+    {
+      "id": "gb3-pilot-word-fon",
+      "thai": "ฝน",
+      "transliteration": "fǒn",
+      "meanings": ["Regen"],
+      "note": "ฝนตกอยู่ beschreibt aktuell fallenden Regen."
+    },
+    {
+      "id": "gb3-pilot-word-tok",
+      "thai": "ตก",
+      "transliteration": "dtòk",
+      "meanings": ["fallen", "regnen"],
+      "note": "Mit อยู่ wird der gerade laufende Regen bezeichnet."
+    },
+    {
+      "id": "gb3-pilot-word-raeng",
+      "thai": "แรง",
+      "transliteration": "rɛɛng",
+      "meanings": ["stark", "heftig"],
+      "note": "ไม่แรง = nicht stark/heftig."
+    },
+    {
+      "id": "gb3-pilot-word-ngan",
+      "thai": "งั้น",
+      "transliteration": "ngán",
+      "meanings": ["dann", "also in dem Fall"],
+      "note": "Leitet eine Folgerung ein."
+    },
+    {
+      "id": "gb3-pilot-word-ja",
+      "thai": "จะ",
+      "transliteration": "jà",
+      "meanings": ["werden", "vorhaben zu"],
+      "note": "Markiert Vorhaben oder nahe Zukunft."
+    },
+    {
+      "id": "gb3-pilot-word-klap",
+      "thai": "กลับ",
+      "transliteration": "glàp",
+      "meanings": ["zurückkehren", "nach Hause gehen"],
+      "note": "กลับบ้าน kann im Kontext „nach Hause gehen“ bedeuten."
+    },
+    {
+      "id": "gb3-pilot-word-hai",
+      "thai": "ให้",
+      "transliteration": "hâi",
+      "meanings": ["lassen", "geben", "damit"],
+      "note": "ขอรอให้ฝนหยุด = warten, bis der Regen aufhört."
+    },
+    {
+      "id": "gb3-pilot-word-yut",
+      "thai": "หยุด",
+      "transliteration": "yùt",
+      "meanings": ["aufhören", "anhalten"],
+      "note": "หยุดฝน wäre unnatürlich; hier beendet der Regen selbst das Fallen."
+    },
+    {
+      "id": "gb3-pilot-word-kon",
+      "thai": "ก่อน",
+      "transliteration": "gɔ̀ɔn",
+      "meanings": ["zuerst", "erst einmal", "vorher"],
+      "note": "อยู่ที่นี่ก่อน = erst einmal hierbleiben."
+    },
+    {
+      "id": "gb3-pilot-word-dai",
+      "thai": "ได้",
+      "transliteration": "dâi",
+      "meanings": ["können", "in Ordnung"],
+      "note": "Als Antwort allein: „Okay / geht klar“."
+    },
+    {
+      "id": "gb3-pilot-word-thii-nii",
+      "thai": "ที่นี่",
+      "transliteration": "thîi-nîi",
+      "meanings": ["hier", "an diesem Ort"],
+      "note": "Feste Ortsangabe; อยู่ที่นี่ heißt „hierbleiben / hier sein“."
+    },
+    {
+      "id": "gb3-pilot-word-na",
+      "thai": "นะ",
+      "transliteration": "ná",
+      "meanings": ["weiches Betonungspartikel", "okay?"],
+      "note": "Macht die Bitte freundlich und weniger schroff."
+    }
+  ],
+  "dialogue": [
+    {
+      "id": "gb3-pilot-01",
+      "scene": 1,
+      "sceneTitle": "Zu Hause oder nicht?",
+      "context": "Nok schreibt ihrem Freund am frühen Abend und sucht ihn.",
+      "speaker": "Nok",
+      "thai": "คุณอยู่ที่ไหน",
+      "transliteration": "khun yùu thîi-nǎi",
+      "translation": "Wo bist du?",
+      "usage": "location",
+      "contextNote": "อยู่ fragt hier nach dem Aufenthaltsort, nicht nach einer laufenden Tätigkeit.",
+      "tokens": [
+        {"id": "gb3-pilot-01-t01", "text": "คุณ", "kind": "word", "wordId": "gb3-pilot-word-khun", "contextMeaning": "du"},
+        {"id": "gb3-pilot-01-t02", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "sich befinden"},
+        {"id": "gb3-pilot-01-t03", "text": "ที่ไหน", "kind": "word", "wordId": "gb3-pilot-word-thii-nai", "contextMeaning": "wo"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-02",
+      "scene": 1,
+      "sceneTitle": "Zu Hause oder nicht?",
+      "context": "Nok schreibt ihrem Freund am frühen Abend und sucht ihn.",
+      "speaker": "Ton",
+      "thai": "ผมอยู่ที่บ้าน",
+      "transliteration": "phǒm yùu thîi bâan",
+      "translation": "Ich bin zu Hause.",
+      "usage": "location",
+      "contextNote": "Die natürliche deutsche Ortsangabe lautet „zu Hause“, obwohl ที่ wörtlich einen Ort markiert.",
+      "tokens": [
+        {"id": "gb3-pilot-02-t01", "text": "ผม", "kind": "word", "wordId": "gb3-pilot-word-phom", "contextMeaning": "ich"},
+        {"id": "gb3-pilot-02-t02", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "sich befinden"},
+        {"id": "gb3-pilot-02-t03", "text": "ที่", "kind": "word", "wordId": "gb3-pilot-word-thii", "contextMeaning": "bei / an / in"},
+        {"id": "gb3-pilot-02-t04", "text": "บ้าน", "kind": "word", "wordId": "gb3-pilot-word-baan", "contextMeaning": "zu Hause"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-03",
+      "scene": 1,
+      "sceneTitle": "Zu Hause oder nicht?",
+      "context": "Nok schreibt ihrem Freund am frühen Abend und sucht ihn.",
+      "speaker": "Nok",
+      "thai": "ตอนนี้อยู่บ้านเหรอ",
+      "transliteration": "dton-níi yùu bâan rǒ̌",
+      "translation": "Bist du gerade zu Hause?",
+      "usage": "location",
+      "contextNote": "ตอนนี้ liefert die Zeitangabe „gerade“; อยู่ bleibt die Ortsbedeutung.",
+      "tokens": [
+        {"id": "gb3-pilot-03-t01", "text": "ตอนนี้", "kind": "word", "wordId": "gb3-pilot-word-ton-nii", "contextMeaning": "jetzt / gerade"},
+        {"id": "gb3-pilot-03-t02", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "sich befinden"},
+        {"id": "gb3-pilot-03-t03", "text": "บ้าน", "kind": "word", "wordId": "gb3-pilot-word-baan", "contextMeaning": "zu Hause"},
+        {"id": "gb3-pilot-03-t04", "text": "เหรอ", "kind": "word", "wordId": "gb3-pilot-word-ro", "contextMeaning": "wirklich?"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-04",
+      "scene": 1,
+      "sceneTitle": "Zu Hause oder nicht?",
+      "context": "Nok schreibt ihrem Freund am frühen Abend und sucht ihn.",
+      "speaker": "Ton",
+      "thai": "ใช่ครับ แต่แม่ไม่อยู่",
+      "transliteration": "châi khráp dtɛ̀ɛ mɛ̂ɛ mâi yùu",
+      "translation": "Ja, aber Mama ist nicht da.",
+      "usage": "location",
+      "contextNote": "ไม่อยู่ bedeutet hier Abwesenheit; es ist nicht die Verneinung einer laufenden Handlung.",
+      "tokens": [
+        {"id": "gb3-pilot-04-t01", "text": "ใช่", "kind": "word", "wordId": "gb3-pilot-word-chai", "contextMeaning": "ja"},
+        {"id": "gb3-pilot-04-t02", "text": "ครับ", "kind": "word", "wordId": "gb3-pilot-word-khrap", "contextMeaning": "höfliches Männerpartikel"},
+        {"id": "gb3-pilot-04-t03", "text": " ", "kind": "space"},
+        {"id": "gb3-pilot-04-t04", "text": "แต่", "kind": "word", "wordId": "gb3-pilot-word-tae", "contextMeaning": "aber"},
+        {"id": "gb3-pilot-04-t05", "text": "แม่", "kind": "word", "wordId": "gb3-pilot-word-mae", "contextMeaning": "Mama"},
+        {"id": "gb3-pilot-04-t06", "text": "ไม่", "kind": "word", "wordId": "gb3-pilot-word-mai", "contextMeaning": "nicht"},
+        {"id": "gb3-pilot-04-t07", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "nicht da sein"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-05",
+      "scene": 1,
+      "sceneTitle": "Zu Hause oder nicht?",
+      "context": "Nok schreibt ihrem Freund am frühen Abend und sucht ihn.",
+      "speaker": "Nok",
+      "thai": "แม่อยู่ที่ไหนคะ",
+      "transliteration": "mɛ̂ɛ yùu thîi-nǎi ká",
+      "translation": "Wo ist Mama?",
+      "usage": "location",
+      "contextNote": "Das weibliche Fragepartikel คะ macht die Rückfrage höflich.",
+      "tokens": [
+        {"id": "gb3-pilot-05-t01", "text": "แม่", "kind": "word", "wordId": "gb3-pilot-word-mae", "contextMeaning": "Mama"},
+        {"id": "gb3-pilot-05-t02", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "sich befinden"},
+        {"id": "gb3-pilot-05-t03", "text": "ที่ไหน", "kind": "word", "wordId": "gb3-pilot-word-thii-nai", "contextMeaning": "wo"},
+        {"id": "gb3-pilot-05-t04", "text": "คะ", "kind": "word", "wordId": "gb3-pilot-word-kha-question", "contextMeaning": "höfliches Fragepartikel"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-06",
+      "scene": 1,
+      "sceneTitle": "Zu Hause oder nicht?",
+      "context": "Nok schreibt ihrem Freund am frühen Abend und sucht ihn.",
+      "speaker": "Ton",
+      "thai": "แม่อยู่ในห้องครับ",
+      "transliteration": "mɛ̂ɛ yùu nai hɔ̂ng khráp",
+      "translation": "Mama ist im Zimmer.",
+      "usage": "location",
+      "contextNote": "อยู่ในห้อง setzt den Aufenthaltsort mit einer Innenpräposition genauer fest.",
+      "tokens": [
+        {"id": "gb3-pilot-06-t01", "text": "แม่", "kind": "word", "wordId": "gb3-pilot-word-mae", "contextMeaning": "Mama"},
+        {"id": "gb3-pilot-06-t02", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "sich befinden"},
+        {"id": "gb3-pilot-06-t03", "text": "ใน", "kind": "word", "wordId": "gb3-pilot-word-nai", "contextMeaning": "in"},
+        {"id": "gb3-pilot-06-t04", "text": "ห้อง", "kind": "word", "wordId": "gb3-pilot-word-hong", "contextMeaning": "Zimmer"},
+        {"id": "gb3-pilot-06-t05", "text": "ครับ", "kind": "word", "wordId": "gb3-pilot-word-khrap", "contextMeaning": "höfliches Männerpartikel"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-07",
+      "scene": 2,
+      "sceneTitle": "Vor dem Haus",
+      "context": "Nok ist inzwischen vor dem Haus und wartet auf ihren Freund.",
+      "speaker": "Ton",
+      "thai": "คุณอยู่ข้างนอกไหม",
+      "transliteration": "khun yùu khâang-nɔ̂ɔk mái",
+      "translation": "Bist du draußen?",
+      "usage": "location",
+      "contextNote": "ไหม bildet die Ja/Nein-Frage; อยู่ beschreibt weiterhin den Ort.",
+      "tokens": [
+        {"id": "gb3-pilot-07-t01", "text": "คุณ", "kind": "word", "wordId": "gb3-pilot-word-khun", "contextMeaning": "du"},
+        {"id": "gb3-pilot-07-t02", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "sich befinden"},
+        {"id": "gb3-pilot-07-t03", "text": "ข้างนอก", "kind": "word", "wordId": "gb3-pilot-word-khaang-nok", "contextMeaning": "draußen"},
+        {"id": "gb3-pilot-07-t04", "text": "ไหม", "kind": "word", "wordId": "gb3-pilot-word-mai-question", "contextMeaning": "Ja/Nein-Fragepartikel"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-08",
+      "scene": 2,
+      "sceneTitle": "Vor dem Haus",
+      "context": "Nok ist inzwischen vor dem Haus und wartet auf ihren Freund.",
+      "speaker": "Nok",
+      "thai": "อยู่ค่ะ ฉันอยู่หน้าบ้าน",
+      "transliteration": "yùu kâ chǎn yùu nâa bâan",
+      "translation": "Ja, ich bin vor dem Haus.",
+      "usage": "location",
+      "contextNote": "Das allein stehende อยู่ค่ะ ist eine natürliche elliptische Antwort: „Ja, ich bin da.“",
+      "tokens": [
+        {"id": "gb3-pilot-08-t01", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "da sein"},
+        {"id": "gb3-pilot-08-t02", "text": "ค่ะ", "kind": "word", "wordId": "gb3-pilot-word-kha", "contextMeaning": "höfliches Frauenpartikel"},
+        {"id": "gb3-pilot-08-t03", "text": " ", "kind": "space"},
+        {"id": "gb3-pilot-08-t04", "text": "ฉัน", "kind": "word", "wordId": "gb3-pilot-word-chan", "contextMeaning": "ich"},
+        {"id": "gb3-pilot-08-t05", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "sich befinden"},
+        {"id": "gb3-pilot-08-t06", "text": "หน้า", "kind": "word", "wordId": "gb3-pilot-word-naa", "contextMeaning": "vor"},
+        {"id": "gb3-pilot-08-t07", "text": "บ้าน", "kind": "word", "wordId": "gb3-pilot-word-baan", "contextMeaning": "Haus"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-09",
+      "scene": 2,
+      "sceneTitle": "Vor dem Haus",
+      "context": "Nok ist inzwischen vor dem Haus und wartet auf ihren Freund.",
+      "speaker": "Ton",
+      "thai": "รอใครอยู่เหรอ",
+      "transliteration": "rɔɔ khrai yùu rǒ̌",
+      "translation": "Auf wen wartest du?",
+      "usage": "ongoing-action",
+      "contextNote": "Hier steht อยู่ hinter dem Verb รอ und markiert die laufende Handlung „gerade warten“.",
+      "tokens": [
+        {"id": "gb3-pilot-09-t01", "text": "รอ", "kind": "word", "wordId": "gb3-pilot-word-roo", "contextMeaning": "warten"},
+        {"id": "gb3-pilot-09-t02", "text": "ใคร", "kind": "word", "wordId": "gb3-pilot-word-khrai", "contextMeaning": "wen"},
+        {"id": "gb3-pilot-09-t03", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "gerade (warten)"},
+        {"id": "gb3-pilot-09-t04", "text": "เหรอ", "kind": "word", "wordId": "gb3-pilot-word-ro", "contextMeaning": "wirklich?"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-10",
+      "scene": 2,
+      "sceneTitle": "Vor dem Haus",
+      "context": "Nok ist inzwischen vor dem Haus und wartet auf ihren Freund.",
+      "speaker": "Nok",
+      "thai": "รอเพื่อนอยู่ค่ะ",
+      "transliteration": "rɔɔ phʉ̂an yùu kâ",
+      "translation": "Ich warte gerade auf einen Freund.",
+      "usage": "ongoing-action",
+      "contextNote": "Das deutsche Präsens mit „gerade“ gibt die Verlaufsbedeutung von รออยู่ wieder.",
+      "tokens": [
+        {"id": "gb3-pilot-10-t01", "text": "รอ", "kind": "word", "wordId": "gb3-pilot-word-roo", "contextMeaning": "warten"},
+        {"id": "gb3-pilot-10-t02", "text": "เพื่อน", "kind": "word", "wordId": "gb3-pilot-word-phuean", "contextMeaning": "Freund"},
+        {"id": "gb3-pilot-10-t03", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "gerade (warten)"},
+        {"id": "gb3-pilot-10-t04", "text": "ค่ะ", "kind": "word", "wordId": "gb3-pilot-word-kha", "contextMeaning": "höfliches Frauenpartikel"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-11",
+      "scene": 2,
+      "sceneTitle": "Vor dem Haus",
+      "context": "Nok ist inzwischen vor dem Haus und wartet auf ihren Freund.",
+      "speaker": "Ton",
+      "thai": "เพื่อนอยู่กับคุณไหม",
+      "transliteration": "phʉ̂an yùu gàp khun mái",
+      "translation": "Ist dein Freund bei dir?",
+      "usage": "location",
+      "contextNote": "อยู่กับ bedeutet hier gemeinsames Dabeisein, nicht „gerade mit jemandem tun“.",
+      "tokens": [
+        {"id": "gb3-pilot-11-t01", "text": "เพื่อน", "kind": "word", "wordId": "gb3-pilot-word-phuean", "contextMeaning": "Freund"},
+        {"id": "gb3-pilot-11-t02", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "sich befinden / sein"},
+        {"id": "gb3-pilot-11-t03", "text": "กับ", "kind": "word", "wordId": "gb3-pilot-word-kap", "contextMeaning": "bei / mit"},
+        {"id": "gb3-pilot-11-t04", "text": "คุณ", "kind": "word", "wordId": "gb3-pilot-word-khun", "contextMeaning": "dir"},
+        {"id": "gb3-pilot-11-t05", "text": "ไหม", "kind": "word", "wordId": "gb3-pilot-word-mai-question", "contextMeaning": "Ja/Nein-Fragepartikel"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-12",
+      "scene": 2,
+      "sceneTitle": "Vor dem Haus",
+      "context": "Nok ist inzwischen vor dem Haus und wartet auf ihren Freund.",
+      "speaker": "Nok",
+      "thai": "อยู่ค่ะ เขาอยู่ข้างใน",
+      "transliteration": "yùu kâ kǎo yùu khâang-nai",
+      "translation": "Ja, er ist drinnen.",
+      "usage": "location",
+      "contextNote": "Der Chatkontext klärt, dass เขา sich auf den zuvor erwähnten Freund bezieht; das Pronomen selbst ist nicht geschlechtsspezifisch.",
+      "tokens": [
+        {"id": "gb3-pilot-12-t01", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "da sein"},
+        {"id": "gb3-pilot-12-t02", "text": "ค่ะ", "kind": "word", "wordId": "gb3-pilot-word-kha", "contextMeaning": "höfliches Frauenpartikel"},
+        {"id": "gb3-pilot-12-t03", "text": " ", "kind": "space"},
+        {"id": "gb3-pilot-12-t04", "text": "เขา", "kind": "word", "wordId": "gb3-pilot-word-khao", "contextMeaning": "sie"},
+        {"id": "gb3-pilot-12-t05", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "sich befinden"},
+        {"id": "gb3-pilot-12-t06", "text": "ข้างใน", "kind": "word", "wordId": "gb3-pilot-word-khaang-nai", "contextMeaning": "drinnen"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-13",
+      "scene": 3,
+      "sceneTitle": "Arbeit zu Hause",
+      "context": "Am nächsten Morgen telefonieren beide; Ton ist zu Hause am Computer.",
+      "speaker": "Nok",
+      "thai": "ทำอะไรอยู่คะ",
+      "transliteration": "tham à-rai yùu ká",
+      "translation": "Was machst du gerade?",
+      "usage": "ongoing-action",
+      "contextNote": "Verb + อยู่ fragt nach einer im Moment laufenden Handlung.",
+      "tokens": [
+        {"id": "gb3-pilot-13-t01", "text": "ทำ", "kind": "word", "wordId": "gb3-pilot-word-tham", "contextMeaning": "machen"},
+        {"id": "gb3-pilot-13-t02", "text": "อะไร", "kind": "word", "wordId": "gb3-pilot-word-arai", "contextMeaning": "was"},
+        {"id": "gb3-pilot-13-t03", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "gerade (tun)"},
+        {"id": "gb3-pilot-13-t04", "text": "คะ", "kind": "word", "wordId": "gb3-pilot-word-kha-question", "contextMeaning": "höfliches Fragepartikel"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-14",
+      "scene": 3,
+      "sceneTitle": "Arbeit zu Hause",
+      "context": "Am nächsten Morgen telefonieren beide; Ton ist zu Hause am Computer.",
+      "speaker": "Ton",
+      "thai": "ผมกำลังทำงานอยู่",
+      "transliteration": "phǒm gam-lang tham-ngaan yùu",
+      "translation": "Ich arbeite gerade.",
+      "usage": "ongoing-action",
+      "contextNote": "กำลัง und อยู่ rahmen dieselbe laufende Handlung; die deutsche Übersetzung braucht keine Verdopplung.",
+      "tokens": [
+        {"id": "gb3-pilot-14-t01", "text": "ผม", "kind": "word", "wordId": "gb3-pilot-word-phom", "contextMeaning": "ich"},
+        {"id": "gb3-pilot-14-t02", "text": "กำลัง", "kind": "word", "wordId": "gb3-pilot-word-kamlang", "contextMeaning": "gerade dabei sein"},
+        {"id": "gb3-pilot-14-t03", "text": "ทำงาน", "kind": "word", "wordId": "gb3-pilot-word-tham-ngaan", "contextMeaning": "arbeiten"},
+        {"id": "gb3-pilot-14-t04", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "gerade (arbeiten)"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-15",
+      "scene": 3,
+      "sceneTitle": "Arbeit zu Hause",
+      "context": "Am nächsten Morgen telefonieren beide; Ton ist zu Hause am Computer.",
+      "speaker": "Nok",
+      "thai": "ทำงานที่บ้านเหรอ",
+      "transliteration": "tham-ngaan thîi bâan rǒ̌",
+      "translation": "Arbeitest du von zu Hause?",
+      "usage": "location",
+      "contextNote": "ที่ markiert hier den Arbeitsort; อยู่ ist nicht nötig, weil ทำงาน bereits das Verb der Frage ist.",
+      "tokens": [
+        {"id": "gb3-pilot-15-t01", "text": "ทำงาน", "kind": "word", "wordId": "gb3-pilot-word-tham-ngaan", "contextMeaning": "arbeiten"},
+        {"id": "gb3-pilot-15-t02", "text": "ที่", "kind": "word", "wordId": "gb3-pilot-word-thii", "contextMeaning": "an / bei"},
+        {"id": "gb3-pilot-15-t03", "text": "บ้าน", "kind": "word", "wordId": "gb3-pilot-word-baan", "contextMeaning": "zu Hause"},
+        {"id": "gb3-pilot-15-t04", "text": "เหรอ", "kind": "word", "wordId": "gb3-pilot-word-ro", "contextMeaning": "wirklich?"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-16",
+      "scene": 3,
+      "sceneTitle": "Arbeit zu Hause",
+      "context": "Am nächsten Morgen telefonieren beide; Ton ist zu Hause am Computer.",
+      "speaker": "Ton",
+      "thai": "ใช่ครับ วันนี้ผมอยู่บ้าน",
+      "transliteration": "châi khráp wan-níi phǒm yùu bâan",
+      "translation": "Ja, heute bin ich zu Hause.",
+      "usage": "location",
+      "contextNote": "Im zweiten Teilsatz ist อยู่ wieder eine Ortsangabe; der Zeitbezug kommt von วันนี้.",
+      "tokens": [
+        {"id": "gb3-pilot-16-t01", "text": "ใช่", "kind": "word", "wordId": "gb3-pilot-word-chai", "contextMeaning": "ja"},
+        {"id": "gb3-pilot-16-t02", "text": "ครับ", "kind": "word", "wordId": "gb3-pilot-word-khrap", "contextMeaning": "höfliches Männerpartikel"},
+        {"id": "gb3-pilot-16-t03", "text": " ", "kind": "space"},
+        {"id": "gb3-pilot-16-t04", "text": "วันนี้", "kind": "word", "wordId": "gb3-pilot-word-wan-nii", "contextMeaning": "heute"},
+        {"id": "gb3-pilot-16-t05", "text": "ผม", "kind": "word", "wordId": "gb3-pilot-word-phom", "contextMeaning": "ich"},
+        {"id": "gb3-pilot-16-t06", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "sich befinden"},
+        {"id": "gb3-pilot-16-t07", "text": "บ้าน", "kind": "word", "wordId": "gb3-pilot-word-baan", "contextMeaning": "zu Hause"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-17",
+      "scene": 3,
+      "sceneTitle": "Arbeit zu Hause",
+      "context": "Am nächsten Morgen telefonieren beide; Ton ist zu Hause am Computer.",
+      "speaker": "Nok",
+      "thai": "ยังทำงานอยู่ไหม",
+      "transliteration": "yang tham-ngaan yùu mái",
+      "translation": "Arbeitest du noch?",
+      "usage": "ongoing-action",
+      "contextNote": "ยัง + Verb + อยู่ macht die Fortdauer der Arbeit zum Gesprächspunkt.",
+      "tokens": [
+        {"id": "gb3-pilot-17-t01", "text": "ยัง", "kind": "word", "wordId": "gb3-pilot-word-yang", "contextMeaning": "noch"},
+        {"id": "gb3-pilot-17-t02", "text": "ทำงาน", "kind": "word", "wordId": "gb3-pilot-word-tham-ngaan", "contextMeaning": "arbeiten"},
+        {"id": "gb3-pilot-17-t03", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "immer noch (arbeiten)"},
+        {"id": "gb3-pilot-17-t04", "text": "ไหม", "kind": "word", "wordId": "gb3-pilot-word-mai-question", "contextMeaning": "Ja/Nein-Fragepartikel"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-18",
+      "scene": 3,
+      "sceneTitle": "Arbeit zu Hause",
+      "context": "Am nächsten Morgen telefonieren beide; Ton ist zu Hause am Computer.",
+      "speaker": "Ton",
+      "thai": "ยังทำงานอยู่ครับ ขออีกห้านาทีนะ",
+      "transliteration": "yang tham-ngaan yùu khráp khɔ̌ɔ ìik hâa naa-thii ná",
+      "translation": "Ich arbeite noch. Gib mir bitte noch fünf Minuten.",
+      "usage": "ongoing-action",
+      "contextNote": "Die Bitte ist eine eigene Gesprächsbewegung;นะ macht sie weich statt befehlend.",
+      "tokens": [
+        {"id": "gb3-pilot-18-t01", "text": "ยัง", "kind": "word", "wordId": "gb3-pilot-word-yang", "contextMeaning": "noch"},
+        {"id": "gb3-pilot-18-t02", "text": "ทำงาน", "kind": "word", "wordId": "gb3-pilot-word-tham-ngaan", "contextMeaning": "arbeiten"},
+        {"id": "gb3-pilot-18-t03", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "immer noch (arbeiten)"},
+        {"id": "gb3-pilot-18-t04", "text": "ครับ", "kind": "word", "wordId": "gb3-pilot-word-khrap", "contextMeaning": "höfliches Männerpartikel"},
+        {"id": "gb3-pilot-18-t05", "text": " ", "kind": "space"},
+        {"id": "gb3-pilot-18-t06", "text": "ขอ", "kind": "word", "wordId": "gb3-pilot-word-kho", "contextMeaning": "bitte um"},
+        {"id": "gb3-pilot-18-t07", "text": "อีก", "kind": "word", "wordId": "gb3-pilot-word-iik", "contextMeaning": "noch"},
+        {"id": "gb3-pilot-18-t08", "text": "ห้า", "kind": "word", "wordId": "gb3-pilot-word-haa", "contextMeaning": "fünf"},
+        {"id": "gb3-pilot-18-t09", "text": "นาที", "kind": "word", "wordId": "gb3-pilot-word-naathii", "contextMeaning": "Minuten"},
+        {"id": "gb3-pilot-18-t10", "text": "นะ", "kind": "word", "wordId": "gb3-pilot-word-na", "contextMeaning": "weiche Bitte"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-19",
+      "scene": 4,
+      "sceneTitle": "Im Café",
+      "context": "Später treffen sie sich in einem Café; Ton isst, während Nok anruft.",
+      "speaker": "Nok",
+      "thai": "กินข้าวอยู่ไหม",
+      "transliteration": "gin khâao yùu mái",
+      "translation": "Isst du gerade?",
+      "usage": "ongoing-action",
+      "contextNote": "กินข้าวอยู่ ist die Handlungslesart von อยู่; der Ort ist aus dieser Zeile nicht abzuleiten.",
+      "tokens": [
+        {"id": "gb3-pilot-19-t01", "text": "กิน", "kind": "word", "wordId": "gb3-pilot-word-kin", "contextMeaning": "essen"},
+        {"id": "gb3-pilot-19-t02", "text": "ข้าว", "kind": "word", "wordId": "gb3-pilot-word-khaao", "contextMeaning": "Mahlzeit"},
+        {"id": "gb3-pilot-19-t03", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "gerade (essen)"},
+        {"id": "gb3-pilot-19-t04", "text": "ไหม", "kind": "word", "wordId": "gb3-pilot-word-mai-question", "contextMeaning": "Ja/Nein-Fragepartikel"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-20",
+      "scene": 4,
+      "sceneTitle": "Im Café",
+      "context": "Später treffen sie sich in einem Café; Ton isst, während Nok anruft.",
+      "speaker": "Ton",
+      "thai": "กินอยู่ครับ แต่คุยได้",
+      "transliteration": "gin yùu khráp dtɛ̀ɛ khui dâi",
+      "translation": "Ja, ich esse gerade, aber ich kann reden.",
+      "usage": "ongoing-action",
+      "contextNote": "กินอยู่ ist ohne Ortsangabe eindeutig verlaufsbezogen; der Kontrast folgt mit แต่.",
+      "tokens": [
+        {"id": "gb3-pilot-20-t01", "text": "กิน", "kind": "word", "wordId": "gb3-pilot-word-kin", "contextMeaning": "essen"},
+        {"id": "gb3-pilot-20-t02", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "gerade (essen)"},
+        {"id": "gb3-pilot-20-t03", "text": "ครับ", "kind": "word", "wordId": "gb3-pilot-word-khrap", "contextMeaning": "höfliches Männerpartikel"},
+        {"id": "gb3-pilot-20-t04", "text": " ", "kind": "space"},
+        {"id": "gb3-pilot-20-t05", "text": "แต่", "kind": "word", "wordId": "gb3-pilot-word-tae", "contextMeaning": "aber"},
+        {"id": "gb3-pilot-20-t06", "text": "คุย", "kind": "word", "wordId": "gb3-pilot-word-khui", "contextMeaning": "reden"},
+        {"id": "gb3-pilot-20-t07", "text": "ได้", "kind": "word", "wordId": "gb3-pilot-word-dai", "contextMeaning": "können"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-21",
+      "scene": 4,
+      "sceneTitle": "Im Café",
+      "context": "Später treffen sie sich in einem Café; Ton isst, während Nok anruft.",
+      "speaker": "Nok",
+      "thai": "แล้วตอนนี้คุณอยู่ที่ไหน",
+      "transliteration": "lɛ́ɛo dton-níi khun yùu thîi-nǎi",
+      "translation": "Und wo bist du jetzt?",
+      "usage": "location",
+      "contextNote": "Nach der Handlungsfrage wechselt der Kontext sichtbar zurück zur Ortsfrage mit อยู่.",
+      "tokens": [
+        {"id": "gb3-pilot-21-t01", "text": "แล้ว", "kind": "word", "wordId": "gb3-pilot-word-laeo", "contextMeaning": "und dann"},
+        {"id": "gb3-pilot-21-t02", "text": "ตอนนี้", "kind": "word", "wordId": "gb3-pilot-word-ton-nii", "contextMeaning": "jetzt"},
+        {"id": "gb3-pilot-21-t03", "text": "คุณ", "kind": "word", "wordId": "gb3-pilot-word-khun", "contextMeaning": "du"},
+        {"id": "gb3-pilot-21-t04", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "sich befinden"},
+        {"id": "gb3-pilot-21-t05", "text": "ที่ไหน", "kind": "word", "wordId": "gb3-pilot-word-thii-nai", "contextMeaning": "wo"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-22",
+      "scene": 4,
+      "sceneTitle": "Im Café",
+      "context": "Später treffen sie sich in einem Café; Ton isst, während Nok anruft.",
+      "speaker": "Ton",
+      "thai": "ผมอยู่ที่ร้านกาแฟ",
+      "transliteration": "phǒm yùu thîi ráan gaa-fɛɛ",
+      "translation": "Ich bin im Café.",
+      "usage": "location",
+      "contextNote": "Die Ortsangabe beantwortet die unmittelbar vorherige Frage; อยู่ bedeutet nicht „gerade sein“ als Handlung.",
+      "tokens": [
+        {"id": "gb3-pilot-22-t01", "text": "ผม", "kind": "word", "wordId": "gb3-pilot-word-phom", "contextMeaning": "ich"},
+        {"id": "gb3-pilot-22-t02", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "sich befinden"},
+        {"id": "gb3-pilot-22-t03", "text": "ที่", "kind": "word", "wordId": "gb3-pilot-word-thii", "contextMeaning": "in"},
+        {"id": "gb3-pilot-22-t04", "text": "ร้านกาแฟ", "kind": "word", "wordId": "gb3-pilot-word-raan-kafae", "contextMeaning": "Café"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-23",
+      "scene": 4,
+      "sceneTitle": "Im Café",
+      "context": "Später treffen sie sich in einem Café; Ton isst, während Nok anruft.",
+      "speaker": "Nok",
+      "thai": "อยู่คนเดียวไหม",
+      "transliteration": "yùu khon-diao mái",
+      "translation": "Bist du allein?",
+      "usage": "location",
+      "contextNote": "อยู่ fragt hier nach dem sozialen Zustand beziehungsweise der Begleitung, nicht nach einem Gebäude.",
+      "tokens": [
+        {"id": "gb3-pilot-23-t01", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "sein / sich aufhalten"},
+        {"id": "gb3-pilot-23-t02", "text": "คนเดียว", "kind": "word", "wordId": "gb3-pilot-word-khon-diao", "contextMeaning": "allein"},
+        {"id": "gb3-pilot-23-t03", "text": "ไหม", "kind": "word", "wordId": "gb3-pilot-word-mai-question", "contextMeaning": "Ja/Nein-Fragepartikel"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-24",
+      "scene": 4,
+      "sceneTitle": "Im Café",
+      "context": "Später treffen sie sich in einem Café; Ton isst, während Nok anruft.",
+      "speaker": "Ton",
+      "thai": "ไม่ครับ ผมอยู่กับเพื่อน",
+      "transliteration": "mâi khráp phǒm yùu gàp phʉ̂an",
+      "translation": "Nein, ich bin mit einem Freund zusammen.",
+      "usage": "location",
+      "contextNote": "อยู่กับ verbindet den Sprecher mit einer Person; die deutsche Fassung macht diese Begleitung explizit.",
+      "tokens": [
+        {"id": "gb3-pilot-24-t01", "text": "ไม่", "kind": "word", "wordId": "gb3-pilot-word-mai", "contextMeaning": "nein"},
+        {"id": "gb3-pilot-24-t02", "text": "ครับ", "kind": "word", "wordId": "gb3-pilot-word-khrap", "contextMeaning": "höfliches Männerpartikel"},
+        {"id": "gb3-pilot-24-t03", "text": " ", "kind": "space"},
+        {"id": "gb3-pilot-24-t04", "text": "ผม", "kind": "word", "wordId": "gb3-pilot-word-phom", "contextMeaning": "ich"},
+        {"id": "gb3-pilot-24-t05", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "bei jemandem sein"},
+        {"id": "gb3-pilot-24-t06", "text": "กับ", "kind": "word", "wordId": "gb3-pilot-word-kap", "contextMeaning": "mit / bei"},
+        {"id": "gb3-pilot-24-t07", "text": "เพื่อน", "kind": "word", "wordId": "gb3-pilot-word-phuean", "contextMeaning": "Freund"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-25",
+      "scene": 5,
+      "sceneTitle": "Der Regen kommt",
+      "context": "Auf dem Heimweg beginnt es zu regnen; beide suchen einen trockenen Platz.",
+      "speaker": "Nok",
+      "thai": "ฝนตกอยู่ไหม",
+      "transliteration": "fǒn dtòk yùu mái",
+      "translation": "Regnet es gerade?",
+      "usage": "ongoing-action",
+      "contextNote": "ตกอยู่ ist eine laufende Naturhandlung; อยู่ hat hier nicht die Ortslesart.",
+      "tokens": [
+        {"id": "gb3-pilot-25-t01", "text": "ฝน", "kind": "word", "wordId": "gb3-pilot-word-fon", "contextMeaning": "Regen"},
+        {"id": "gb3-pilot-25-t02", "text": "ตก", "kind": "word", "wordId": "gb3-pilot-word-tok", "contextMeaning": "regnen"},
+        {"id": "gb3-pilot-25-t03", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "gerade (regnen)"},
+        {"id": "gb3-pilot-25-t04", "text": "ไหม", "kind": "word", "wordId": "gb3-pilot-word-mai-question", "contextMeaning": "Ja/Nein-Fragepartikel"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-26",
+      "scene": 5,
+      "sceneTitle": "Der Regen kommt",
+      "context": "Auf dem Heimweg beginnt es zu regnen; beide suchen einen trockenen Platz.",
+      "speaker": "Ton",
+      "thai": "ตกอยู่ครับ แต่ไม่แรง",
+      "transliteration": "dtòk yùu khráp dtɛ̀ɛ mâi rɛɛng",
+      "translation": "Ja, aber nicht stark.",
+      "usage": "ongoing-action",
+      "contextNote": "Das Subjekt ฝน bleibt aus dem Vorlauf erhalten; die knappe Antwort ist im Dialog natürlich.",
+      "tokens": [
+        {"id": "gb3-pilot-26-t01", "text": "ตก", "kind": "word", "wordId": "gb3-pilot-word-tok", "contextMeaning": "regnen"},
+        {"id": "gb3-pilot-26-t02", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "gerade (regnen)"},
+        {"id": "gb3-pilot-26-t03", "text": "ครับ", "kind": "word", "wordId": "gb3-pilot-word-khrap", "contextMeaning": "höfliches Männerpartikel"},
+        {"id": "gb3-pilot-26-t04", "text": " ", "kind": "space"},
+        {"id": "gb3-pilot-26-t05", "text": "แต่", "kind": "word", "wordId": "gb3-pilot-word-tae", "contextMeaning": "aber"},
+        {"id": "gb3-pilot-26-t06", "text": "ไม่", "kind": "word", "wordId": "gb3-pilot-word-mai", "contextMeaning": "nicht"},
+        {"id": "gb3-pilot-26-t07", "text": "แรง", "kind": "word", "wordId": "gb3-pilot-word-raeng", "contextMeaning": "stark"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-27",
+      "scene": 5,
+      "sceneTitle": "Der Regen kommt",
+      "context": "Auf dem Heimweg beginnt es zu regnen; beide suchen einen trockenen Platz.",
+      "speaker": "Nok",
+      "thai": "งั้นคุณจะกลับบ้านไหม",
+      "transliteration": "ngán khun jà glàp bâan mái",
+      "translation": "Gehst du dann nach Hause?",
+      "usage": "location",
+      "contextNote": "Der Ort liegt hier inกลับบ้าน; อยู่ ist im Satz nicht ausgesprochen, bleibt aber das Gesprächsthema.",
+      "tokens": [
+        {"id": "gb3-pilot-27-t01", "text": "งั้น", "kind": "word", "wordId": "gb3-pilot-word-ngan", "contextMeaning": "dann"},
+        {"id": "gb3-pilot-27-t02", "text": "คุณ", "kind": "word", "wordId": "gb3-pilot-word-khun", "contextMeaning": "du"},
+        {"id": "gb3-pilot-27-t03", "text": "จะ", "kind": "word", "wordId": "gb3-pilot-word-ja", "contextMeaning": "wirst / vorhaben"},
+        {"id": "gb3-pilot-27-t04", "text": "กลับ", "kind": "word", "wordId": "gb3-pilot-word-klap", "contextMeaning": "nach Hause gehen"},
+        {"id": "gb3-pilot-27-t05", "text": "บ้าน", "kind": "word", "wordId": "gb3-pilot-word-baan", "contextMeaning": "nach Hause"},
+        {"id": "gb3-pilot-27-t06", "text": "ไหม", "kind": "word", "wordId": "gb3-pilot-word-mai-question", "contextMeaning": "Ja/Nein-Fragepartikel"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-28",
+      "scene": 5,
+      "sceneTitle": "Der Regen kommt",
+      "context": "Auf dem Heimweg beginnt es zu regnen; beide suchen einen trockenen Platz.",
+      "speaker": "Ton",
+      "thai": "จะกลับครับ แต่ขอรอให้ฝนหยุดก่อน",
+      "transliteration": "jà glàp khráp dtɛ̀ɛ khɔ̌ɔ rɔɔ hâi fǒn yùt gɔ̀ɔn",
+      "translation": "Ja, aber ich warte, bis der Regen aufhört.",
+      "usage": "ongoing-action",
+      "contextNote": "รอ ist die aktuelle Handlung; อยู่ wird durch den vorausgehenden Kontext nicht wiederholt.",
+      "tokens": [
+        {"id": "gb3-pilot-28-t01", "text": "จะ", "kind": "word", "wordId": "gb3-pilot-word-ja", "contextMeaning": "werde / vorhaben"},
+        {"id": "gb3-pilot-28-t02", "text": "กลับ", "kind": "word", "wordId": "gb3-pilot-word-klap", "contextMeaning": "zurückkehren"},
+        {"id": "gb3-pilot-28-t03", "text": "ครับ", "kind": "word", "wordId": "gb3-pilot-word-khrap", "contextMeaning": "höfliches Männerpartikel"},
+        {"id": "gb3-pilot-28-t04", "text": " ", "kind": "space"},
+        {"id": "gb3-pilot-28-t05", "text": "แต่", "kind": "word", "wordId": "gb3-pilot-word-tae", "contextMeaning": "aber"},
+        {"id": "gb3-pilot-28-t06", "text": "ขอ", "kind": "word", "wordId": "gb3-pilot-word-kho", "contextMeaning": "bitte um"},
+        {"id": "gb3-pilot-28-t07", "text": "รอ", "kind": "word", "wordId": "gb3-pilot-word-roo", "contextMeaning": "warten"},
+        {"id": "gb3-pilot-28-t08", "text": "ให้", "kind": "word", "wordId": "gb3-pilot-word-hai", "contextMeaning": "bis / damit"},
+        {"id": "gb3-pilot-28-t09", "text": "ฝน", "kind": "word", "wordId": "gb3-pilot-word-fon", "contextMeaning": "Regen"},
+        {"id": "gb3-pilot-28-t10", "text": "หยุด", "kind": "word", "wordId": "gb3-pilot-word-yut", "contextMeaning": "aufhört"},
+        {"id": "gb3-pilot-28-t11", "text": "ก่อน", "kind": "word", "wordId": "gb3-pilot-word-kon", "contextMeaning": "erst / vorher"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-29",
+      "scene": 5,
+      "sceneTitle": "Der Regen kommt",
+      "context": "Auf dem Heimweg beginnt es zu regnen; beide suchen einen trockenen Platz.",
+      "speaker": "Nok",
+      "thai": "อยู่ที่นี่ก่อนนะ",
+      "transliteration": "yùu thîi-nîi gɔ̀ɔn ná",
+      "translation": "Bleib erst einmal hier, okay?",
+      "usage": "location",
+      "contextNote": "อยู่ bedeutet hier „bleiben“; ที่นี่ legt den sicheren Aufenthaltsort fest.",
+      "tokens": [
+        {"id": "gb3-pilot-29-t01", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "bleiben"},
+        {"id": "gb3-pilot-29-t02", "text": "ที่นี่", "kind": "word", "wordId": "gb3-pilot-word-thii-nii", "contextMeaning": "hier"},
+        {"id": "gb3-pilot-29-t03", "text": "ก่อน", "kind": "word", "wordId": "gb3-pilot-word-kon", "contextMeaning": "erst einmal"},
+        {"id": "gb3-pilot-29-t04", "text": "นะ", "kind": "word", "wordId": "gb3-pilot-word-na", "contextMeaning": "okay? / freundlich"}
+      ]
+    },
+    {
+      "id": "gb3-pilot-30",
+      "scene": 5,
+      "sceneTitle": "Der Regen kommt",
+      "context": "Auf dem Heimweg beginnt es zu regnen; beide suchen einen trockenen Platz.",
+      "speaker": "Ton",
+      "thai": "ได้ครับ อยู่กับคุณก่อน",
+      "transliteration": "dâi khráp yùu gàp khun gɔ̀ɔn",
+      "translation": "Okay, ich bleibe erst einmal bei dir.",
+      "usage": "location",
+      "contextNote": "Zum Schluss verbindet อยู่ die Lesarten „bleiben“ und „bei jemandem sein“; der Dialogkontext macht beides klar.",
+      "tokens": [
+        {"id": "gb3-pilot-30-t01", "text": "ได้", "kind": "word", "wordId": "gb3-pilot-word-dai", "contextMeaning": "okay"},
+        {"id": "gb3-pilot-30-t02", "text": "ครับ", "kind": "word", "wordId": "gb3-pilot-word-khrap", "contextMeaning": "höfliches Männerpartikel"},
+        {"id": "gb3-pilot-30-t03", "text": " ", "kind": "space"},
+        {"id": "gb3-pilot-30-t04", "text": "อยู่", "kind": "word", "wordId": "gb3-pilot-word-yuu", "contextMeaning": "bleiben / bei jemandem sein"},
+        {"id": "gb3-pilot-30-t05", "text": "กับ", "kind": "word", "wordId": "gb3-pilot-word-kap", "contextMeaning": "bei / mit"},
+        {"id": "gb3-pilot-30-t06", "text": "คุณ", "kind": "word", "wordId": "gb3-pilot-word-khun", "contextMeaning": "dir"},
+        {"id": "gb3-pilot-30-t07", "text": "ก่อน", "kind": "word", "wordId": "gb3-pilot-word-kon", "contextMeaning": "erst einmal"}
+      ]
+    }
+  ]
+}
