@@ -16,7 +16,7 @@
  * müssen den Cache in Safari nicht manuell löschen.
  */
 
-const CACHE_VERSION = 'v151';
+const CACHE_VERSION = 'v152';
 const CACHE_NAME = `thai-language-grinding-${CACHE_VERSION}`;
 
 // App-Shell: alles, was für Start und Offline-Betrieb gebraucht wird.
@@ -31,12 +31,14 @@ const PRECACHE_ASSETS = [
     'html/thai-giga.html',
     'html/thai-giga-dictionary.html',
     'html/inworld-voice-comparison.html',
+    'html/satzmix.html',
 
     'style.css',
     'css/mobile.css',
     'css/japanese.css',
     'css/thai-giga.css',
     'css/comedy-reader.css',
+    'css/sentence-mix.css',
     'assets/fonts/noto-sans-thai-400.woff2',
     'assets/fonts/noto-sans-thai-500.woff2',
     'assets/fonts/sarabun-400.woff2',
@@ -77,6 +79,10 @@ const PRECACHE_ASSETS = [
     'js/thai-giga-audio.js',
     'js/thai-giga-reader.js',
     'js/thai-giga-settings.js',
+    'js/games/sentence-mix/adapter.js',
+    'js/games/sentence-mix/engine.js',
+    'js/games/sentence-mix/input.js',
+    'js/games/sentence-mix/ui.js',
 
     'assets/ui/logo.png',
     'assets/ui/logo1.png',

@@ -1252,6 +1252,11 @@ function switchContent(mode) {
         return;
     }
 
+    if (mode === "satzmix") {
+        window.location.href = "satzmix.html";
+        return;
+    }
+
     contentMode = mode;
     document.body.classList.toggle(
         "worldmap-view-mode",
