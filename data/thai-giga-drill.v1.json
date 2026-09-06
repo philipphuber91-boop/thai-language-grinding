@@ -193007,8 +193007,9 @@
       "thai": "พัก",
       "transliteration": "phák",
       "meanings": [
-        "sich ausruhen"
+        "sich ausruhen / Pause machen / übernachten / wohnen (im Hotel)"
       ],
+      "infoSentence": "Vielseitiges Verb für sich ausruhen, eine Pause machen oder vorübergehend wohnen/übernachten (z. B. พักที่โรงแรม = im Hotel übernachten).",
       "firstSentenceId": "l1-b2-s629",
       "bossContexts": {
         "level-1-grammar-boss-3": {
@@ -193066,6 +193067,30 @@
               "entryMeaningInSentence": "ausruhen",
               "matchedToken": "พัก",
               "matchedTokenId": "l1-b4-s1795-t2"
+            }
+          ]
+        },
+        "level-1-grammar-boss-6": {
+          "meanings": [
+            "übernachten / verweilen / sich ausruhen"
+          ],
+          "infoSentence": "Wird in Boss 6 sowohl für Ausruhen/Verschnaufen als auch für das Übernachten in einer Unterkunft verwendet.",
+          "contextExamples": [
+            {
+              "sentenceId": "l1-b6-s2657",
+              "thai": "ผมไม่อยากกางเต็นท์ครับพักที่โรงแรมสบายกว่า",
+              "sentenceTranslation": "Ich möchte nicht zelten, im Hotel zu übernachten ist bequemer.",
+              "entryMeaningInSentence": "übernachten",
+              "matchedToken": "พัก",
+              "matchedTokenId": "l1-b6-s2657-t6"
+            },
+            {
+              "sentenceId": "l1-b6-s2733",
+              "thai": "ฉันขอพักสักนิดหน่อยก่อนนะคะ",
+              "sentenceTranslation": "Lass mich kurz ein wenig verschnaufen.",
+              "entryMeaningInSentence": "verschnaufen / ausruhen",
+              "matchedToken": "พัก",
+              "matchedTokenId": "l1-b6-s2733-t3"
             }
           ]
         }
