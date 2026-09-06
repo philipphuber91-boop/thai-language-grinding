@@ -30,7 +30,8 @@
                 tokenId: tokens[0].id,
                 text: tokens[0].text,
                 wordId: tokens[0].wordId,
-                transliteration: tokens[0].transliteration
+                transliteration: tokens[0].transliteration,
+                syllables: tokens[0].syllables
             }];
         }
 
@@ -64,7 +65,8 @@
                 tokenId: token.id,
                 text: token.text,
                 wordId: token.wordId,
-                transliteration: token.transliteration
+                transliteration: token.transliteration,
+                syllables: token.syllables
             };
         });
     }

@@ -8,10 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&family=Noto+Sans+Thai:wght@300;400;500&family=Prompt:wght@300;400&family=Sarabun:wght@300;400;600&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&family=Noto+Sans+Thai:wght@300;400;500&family=Noto+Serif+Thai:wght@300;400&family=Prompt:wght@300;400&family=Sarabun:wght@300;400;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../css/sentence-mix.css?v=17">
+    <link rel="stylesheet" href="../css/sentence-mix.css?v=18">
     <link rel="manifest" href="../manifest.json">
 </head>
 <body class="sentence-mix-body">
@@ -36,6 +36,14 @@
                     <strong id="statAvgTime">--:--</strong>
                 </div>
             </div>
+            <button
+                id="sentenceMixConfigurationButton"
+                class="sentence-mix-configuration-button"
+                type="button"
+                aria-label="Spieleinstellungen und Inhalte öffnen"
+                aria-controls="sentenceMixConfiguration"
+                aria-expanded="false"
+                title="Spieleinstellungen und Inhalte">🎲</button>
             <button
                 id="sentenceMixProfileButton"
                 class="sentence-mix-profile-button"
@@ -96,17 +104,6 @@
                 </label>
             </fieldset>
             <fieldset class="sentence-mix-settings-group">
-                <legend>Satzreihenfolge</legend>
-                <label>
-                    <input type="radio" name="sentenceMixSentenceOrder" value="original">
-                    <span>Originalreihenfolge</span>
-                </label>
-                <label>
-                    <input type="radio" name="sentenceMixSentenceOrder" value="shuffle">
-                    <span>Shuffle-Modus (Sätze mischen)</span>
-                </label>
-            </fieldset>
-            <fieldset class="sentence-mix-settings-group">
                 <legend>Wortdarstellung</legend>
                 <label>
                     <input type="radio" name="sentenceMixTransliterationMode" value="thai">
@@ -121,7 +118,73 @@
                     <span>Thai + Umschrift</span>
                 </label>
             </fieldset>
+            <fieldset class="sentence-mix-settings-group">
+                <legend>Thai-Anzeige</legend>
+                <label class="sentence-mix-settings-row" for="sentenceMixToneColorsToggle">
+                    <span>Tonfarben anzeigen</span>
+                    <input id="sentenceMixToneColorsToggle" type="checkbox" checked>
+                </label>
+                <label class="sentence-mix-settings-row" for="sentenceMixFontSelect">
+                    <span>Thai-Schrift</span>
+                    <select id="sentenceMixFontSelect" class="sentence-mix-settings-select" aria-label="Thai-Schrift auswählen">
+                        <option value="standard">Standard Serif</option>
+                        <option value="noto-sans-thai">Noto Sans Thai</option>
+                        <option value="sarabun">Sarabun</option>
+                        <option value="prompt">Prompt</option>
+                        <option value="kanit">Kanit</option>
+                    </select>
+                </label>
+            </fieldset>
         </div>
+    </div>
+
+    <div id="sentenceMixConfiguration" class="sentence-mix-configuration" hidden>
+        <section class="sentence-mix-configuration-card" role="dialog" aria-modal="true" aria-labelledby="sentenceMixConfigurationTitle">
+            <div class="sentence-mix-configuration-header">
+                <div>
+                    <p class="sentence-mix-configuration-eyebrow">Spielauswahl</p>
+                    <h2 id="sentenceMixConfigurationTitle">Spieleinstellungen</h2>
+                </div>
+                <button id="sentenceMixConfigurationClose" class="sentence-mix-settings-close" type="button" aria-label="Spieleinstellungen schließen">×</button>
+            </div>
+            <p class="sentence-mix-configuration-summary" id="sentenceMixConfigurationSummary"></p>
+            <fieldset class="sentence-mix-settings-group">
+                <legend>Inhalt</legend>
+                <label>
+                    <input type="radio" name="sentenceMixContentMode" value="all">
+                    <span>Gesamten Content spielen</span>
+                </label>
+                <div id="sentenceMixBossOptions" class="sentence-mix-boss-options" aria-label="Grammar-Bosse"></div>
+            </fieldset>
+            <fieldset class="sentence-mix-settings-group">
+                <legend>Satzreihenfolge</legend>
+                <label>
+                    <input type="radio" name="sentenceMixSentenceOrder" value="original">
+                    <span>Originalreihenfolge</span>
+                </label>
+                <label>
+                    <input type="radio" name="sentenceMixSentenceOrder" value="shuffle">
+                    <span>Shuffle-Modus (Sätze mischen)</span>
+                </label>
+            </fieldset>
+            <fieldset class="sentence-mix-settings-group sentence-mix-length-group">
+                <legend>Wortanzahl pro Satz</legend>
+                <p class="sentence-mix-settings-help">Lege mit den beiden Skalen den gewünschten Bereich fest.</p>
+                <label class="sentence-mix-range-label" for="sentenceMixMinWords">
+                    <span>Von <output id="sentenceMixMinWordsValue" for="sentenceMixMinWords">2</output> Wörtern</span>
+                    <input id="sentenceMixMinWords" type="range" min="2" max="12" step="1" value="2">
+                </label>
+                <label class="sentence-mix-range-label" for="sentenceMixMaxWords">
+                    <span>Bis <output id="sentenceMixMaxWordsValue" for="sentenceMixMaxWords">12</output> Wörtern</span>
+                    <input id="sentenceMixMaxWords" type="range" min="2" max="12" step="1" value="12">
+                </label>
+                <strong class="sentence-mix-range-summary" id="sentenceMixRangeSummary">2–12 Wörter</strong>
+            </fieldset>
+            <div class="sentence-mix-configuration-actions">
+                <button id="sentenceMixConfigurationReset" class="sentence-mix-configuration-reset" type="button">Zurücksetzen</button>
+                <button id="sentenceMixConfigurationApply" class="sentence-mix-configuration-apply" type="button">Übernehmen</button>
+            </div>
+        </section>
     </div>
 
     <div id="sentenceMixProfile" class="sentence-mix-profile" hidden>

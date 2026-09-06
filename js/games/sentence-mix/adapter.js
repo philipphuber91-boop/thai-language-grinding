@@ -36,6 +36,37 @@
         return transliterations;
     }
 
+    function createWordDetailsMap(content) {
+        const details = new Map();
+        if (!content || !Array.isArray(content.words)) {
+            return details;
+        }
+
+        content.words.forEach(function (word) {
+            if (!word || typeof word.id !== "string" || word.id.trim() === "") {
+                return;
+            }
+
+            details.set(word.id, {
+                transliteration:
+                    typeof word.transliteration === "string"
+                        ? word.transliteration.trim()
+                        : "",
+                syllables: Array.isArray(word.syllables)
+                    ? word.syllables.map(syllable => ({
+                        thai: typeof syllable?.thai === "string" ? syllable.thai : "",
+                        transliteration:
+                            typeof syllable?.transliteration === "string"
+                                ? syllable.transliteration
+                                : ""
+                    }))
+                    : []
+            });
+        });
+
+        return details;
+    }
+
     /**
      * Konvertiert einen Giga-Drill-Satz in das standardisierte Wortmix-Runden-Format.
      */
@@ -54,6 +85,12 @@
         });
 
         const words = wordTokens.map(function (token) {
+            const wordDetails = wordTransliterations instanceof Map
+                ? wordTransliterations.get(token.wordId)
+                : null;
+            const fallbackTransliteration = typeof wordDetails === "string"
+                ? wordDetails
+                : wordDetails?.transliteration || "";
             return {
                 id: token.id,
                 text: token.text,
@@ -61,9 +98,12 @@
                 transliteration:
                     (typeof token.transliteration === "string" && token.transliteration.trim() !== ""
                         ? token.transliteration.trim()
-                        : wordTransliterations instanceof Map
-                            ? wordTransliterations.get(token.wordId) || ""
-                            : "")
+                        : fallbackTransliteration),
+                syllables: Array.isArray(token.syllables) && token.syllables.length > 0
+                    ? token.syllables
+                    : wordDetails && Array.isArray(wordDetails.syllables)
+                        ? wordDetails.syllables
+                        : []
             };
         });
 
@@ -77,7 +117,10 @@
             tokenCount: words.length,
             meta: {
                 levelId: storyMeta?.levelId || sentence.levelId || "",
+                levelTitle: storyMeta?.levelTitle || "",
                 bossId: storyMeta?.bossId || sentence.bossId || "",
+                bossTitle: storyMeta?.bossTitle || "",
+                grammarFocus: storyMeta?.grammarFocus || "",
                 storyId: storyMeta?.id || sentence.storyId || "",
                 storyTitle: storyMeta?.title || ""
             }
@@ -92,7 +135,7 @@
         if (!content || !Array.isArray(content.levels)) {
             return playable;
         }
-        const wordTransliterations = createWordTransliterationMap(content);
+        const wordTransliterations = createWordDetailsMap(content);
 
         content.levels.forEach(function (level) {
             if (!Array.isArray(level.bosses)) return;
@@ -107,7 +150,10 @@
                                 id: story.id,
                                 title: story.title,
                                 levelId: level.id,
+                                levelTitle: level.title,
                                 bossId: boss.id,
+                                bossTitle: boss.title,
+                                grammarFocus: boss.grammarFocus,
                                 blockId: block.id
                             }, wordTransliterations);
                             if (roundModel && roundModel.tokenCount >= 2) {
@@ -128,6 +174,7 @@
     const SentenceMixAdapter = {
         extractPlayableTokens: extractPlayableTokens,
         createWordTransliterationMap: createWordTransliterationMap,
+        createWordDetailsMap: createWordDetailsMap,
         createRoundModelFromSentence: createRoundModelFromSentence,
         extractAllPlayableSentences: extractAllPlayableSentences,
 

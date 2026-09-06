@@ -7,6 +7,33 @@
     const NUMPAD_LAYOUT_STORAGE_KEY = "thaiGigaDrill:v1:sentence-mix-numpad-layout";
     const SENTENCE_ORDER_STORAGE_KEY = "thaiGigaDrill:v1:sentence-mix-sentence-order";
     const TRANSLITERATION_MODE_STORAGE_KEY = "thaiGigaDrill:v1:wordmix-transliteration-mode";
+    const WORDMIX_CONFIGURATION_STORAGE_KEY = "thaiGigaDrill:v1:wordmix-configuration";
+    const WORDMIX_CONTENT_MODES = ["all", "bosses"];
+    const WORDMIX_MIN_WORDS = 2;
+    const WORDMIX_MAX_WORDS = 12;
+    const DEFAULT_WORDMIX_CONFIGURATION = {
+        contentMode: "all",
+        bossIds: [],
+        minWords: WORDMIX_MIN_WORDS,
+        maxWords: WORDMIX_MAX_WORDS
+    };
+    const FONT_STORAGE_KEY = "thaiFontFamily";
+    const TONE_COLORS_STORAGE_KEY = "thaiGigaToneColors";
+    const DEFAULT_FONT = "sarabun";
+    const FONT_FAMILIES = {
+        standard: '"Noto Serif Thai", "Times New Roman", Times, serif',
+        "noto-sans-thai": '"Noto Sans Thai", sans-serif',
+        sarabun: '"Sarabun", sans-serif',
+        prompt: '"Prompt", sans-serif',
+        kanit: '"Kanit", sans-serif'
+    };
+    const FONT_OPTIONS = Object.keys(FONT_FAMILIES);
+    const TONE_MARKS = new Map([
+        ["\u0300", "low"],
+        ["\u0301", "high"],
+        ["\u0302", "falling"],
+        ["\u030c", "rising"]
+    ]);
     const PROFILE_AVATAR_STORAGE_KEY = "profileAvatar";
     const DEFAULT_PROFILE_AVATAR_ID = "avatar10";
     const DESKTOP_WORD_SHORTCUTS = {
@@ -115,6 +142,171 @@
         }
     }
 
+    function normalizeWordMixConfiguration(value, bounds) {
+        const limits = bounds || {
+            min: WORDMIX_MIN_WORDS,
+            max: WORDMIX_MAX_WORDS
+        };
+        const minLimit = Math.max(WORDMIX_MIN_WORDS, Math.floor(Number(limits.min) || WORDMIX_MIN_WORDS));
+        const maxLimit = Math.min(WORDMIX_MAX_WORDS, Math.max(minLimit, Math.floor(Number(limits.max) || WORDMIX_MAX_WORDS)));
+        const contentMode = value && WORDMIX_CONTENT_MODES.includes(value.contentMode)
+            ? value.contentMode
+            : DEFAULT_WORDMIX_CONFIGURATION.contentMode;
+        const bossIds = value && Array.isArray(value.bossIds)
+            ? value.bossIds.filter(bossId => typeof bossId === "string" && bossId.trim() !== "")
+            : [];
+        const requestedMin = value && Number.isFinite(Number(value.minWords))
+            ? Math.floor(Number(value.minWords))
+            : DEFAULT_WORDMIX_CONFIGURATION.minWords;
+        const requestedMax = value && Number.isFinite(Number(value.maxWords))
+            ? Math.floor(Number(value.maxWords))
+            : DEFAULT_WORDMIX_CONFIGURATION.maxWords;
+        const minWords = Math.min(maxLimit, Math.max(minLimit, requestedMin));
+        const maxWords = Math.max(minWords, Math.min(maxLimit, Math.max(minLimit, requestedMax)));
+
+        return {
+            contentMode: contentMode,
+            bossIds: Array.from(new Set(bossIds)),
+            minWords: minWords,
+            maxWords: maxWords
+        };
+    }
+
+    function readWordMixConfiguration() {
+        if (typeof window === "undefined" || !window.localStorage) {
+            return normalizeWordMixConfiguration(DEFAULT_WORDMIX_CONFIGURATION);
+        }
+
+        try {
+            const savedConfiguration = window.localStorage.getItem(WORDMIX_CONFIGURATION_STORAGE_KEY);
+            return savedConfiguration
+                ? normalizeWordMixConfiguration(JSON.parse(savedConfiguration))
+                : normalizeWordMixConfiguration(DEFAULT_WORDMIX_CONFIGURATION);
+        } catch (error) {
+            console.warn("Wortmix-Spieleinstellungen konnten nicht gelesen werden.", error);
+            return normalizeWordMixConfiguration(DEFAULT_WORDMIX_CONFIGURATION);
+        }
+    }
+
+    function writeWordMixConfiguration(configuration) {
+        if (typeof window === "undefined" || !window.localStorage) {
+            return;
+        }
+
+        try {
+            window.localStorage.setItem(
+                WORDMIX_CONFIGURATION_STORAGE_KEY,
+                JSON.stringify(configuration)
+            );
+        } catch (error) {
+            console.warn("Wortmix-Spieleinstellungen konnten nicht gespeichert werden.", error);
+        }
+    }
+
+    function readThaiFont() {
+        if (typeof window === "undefined" || !window.localStorage) {
+            return DEFAULT_FONT;
+        }
+
+        try {
+            const savedFont = window.localStorage.getItem(FONT_STORAGE_KEY);
+            return FONT_OPTIONS.includes(savedFont) ? savedFont : DEFAULT_FONT;
+        } catch (error) {
+            console.warn("Wortmix-Schrift konnte nicht gelesen werden.", error);
+            return DEFAULT_FONT;
+        }
+    }
+
+    function writeThaiFont(font) {
+        if (typeof window === "undefined" || !window.localStorage) {
+            return;
+        }
+
+        try {
+            window.localStorage.setItem(FONT_STORAGE_KEY, font);
+        } catch (error) {
+            console.warn("Wortmix-Schrift konnte nicht gespeichert werden.", error);
+        }
+    }
+
+    function readToneColorsEnabled() {
+        if (typeof window === "undefined" || !window.localStorage) {
+            return true;
+        }
+
+        try {
+            const savedToneColors = window.localStorage.getItem(TONE_COLORS_STORAGE_KEY);
+            return savedToneColors === null || savedToneColors === "true";
+        } catch (error) {
+            console.warn("Wortmix-Tonfarben konnten nicht gelesen werden.", error);
+            return true;
+        }
+    }
+
+    function writeToneColorsEnabled(enabled) {
+        if (typeof window === "undefined" || !window.localStorage) {
+            return;
+        }
+
+        try {
+            window.localStorage.setItem(TONE_COLORS_STORAGE_KEY, String(enabled));
+        } catch (error) {
+            console.warn("Wortmix-Tonfarben konnten nicht gespeichert werden.", error);
+        }
+    }
+
+    function applyThaiFont(font) {
+        const normalizedFont = FONT_OPTIONS.includes(font) ? font : DEFAULT_FONT;
+        document.body.style.setProperty("--thai-font-family", FONT_FAMILIES[normalizedFont]);
+        return normalizedFont;
+    }
+
+    function applyToneColors(enabled) {
+        document.body.dataset.thaiToneColors = String(enabled !== false);
+        return enabled !== false;
+    }
+
+    function getToneClass(transliteration) {
+        const tones = [...String(transliteration || "").normalize("NFD")]
+            .map(character => TONE_MARKS.get(character))
+            .filter(Boolean);
+        const uniqueTones = [...new Set(tones)];
+
+        if (uniqueTones.length === 0) {
+            return "thai-tone-mid";
+        }
+        if (uniqueTones.length === 1) {
+            return `thai-tone-${uniqueTones[0]}`;
+        }
+        return "thai-tone-mixed";
+    }
+
+    function appendToneMarkup(element, thai, transliteration, syllables) {
+        const validSyllables = Array.isArray(syllables) &&
+            syllables.length > 1 &&
+            syllables.every(syllable =>
+                syllable &&
+                typeof syllable.thai === "string" &&
+                typeof syllable.transliteration === "string"
+            ) &&
+            syllables.map(syllable => syllable.thai).join("") === thai;
+
+        if (validSyllables) {
+            syllables.forEach(syllable => {
+                const syllableElement = document.createElement("span");
+                syllableElement.className = getToneClass(syllable.transliteration);
+                syllableElement.textContent = syllable.thai;
+                element.appendChild(syllableElement);
+            });
+            return;
+        }
+
+        const wordElement = document.createElement("span");
+        wordElement.className = getToneClass(transliteration);
+        wordElement.textContent = thai;
+        element.appendChild(wordElement);
+    }
+
     function shuffleArray(array) {
         const shuffled = array.slice();
         for (let index = shuffled.length - 1; index > 0; index -= 1) {
@@ -128,6 +320,7 @@
 
     function SentenceMixUI() {
         this.sentences = [];
+        this.filteredSentences = [];
         this.allSentences = [];
         this.currentIndex = 0;
         this.stageContainer = null;
@@ -141,6 +334,14 @@
         this.numpadLayout = readNumpadLayout();
         this.sentenceOrder = readSentenceOrder();
         this.transliterationMode = readTransliterationMode();
+        this.thaiFont = readThaiFont();
+        this.toneColorsEnabled = readToneColorsEnabled();
+        this.wordMixConfiguration = readWordMixConfiguration();
+        this.pendingWordMixConfiguration = null;
+        this.configurationBosses = [];
+        this.configurationPanel = null;
+        this.configurationOpenButton = null;
+        this.configurationCloseButton = null;
     }
 
     SentenceMixUI.prototype.init = async function (options) {
@@ -156,8 +357,10 @@
             this.allSentences = source === "playlist"
                 ? await window.SentenceMixAdapter.loadPlaylist(contentUrl)
                 : await window.SentenceMixAdapter.loadContent(contentUrl);
-            this.applySentenceOrder();
             this.setupSettings();
+            this.setupConfiguration();
+            this.applySentenceConfiguration();
+            this.applySentenceOrder();
             this.applyNumpadLayout();
 
             if (this.sentences.length === 0) {
@@ -224,13 +427,348 @@
         }, { capture: true });
     };
 
+    SentenceMixUI.prototype.getWordMixConfigurationBounds = function () {
+        const wordCounts = this.allSentences
+            .map(sentence => Number(sentence.tokenCount))
+            .filter(count => Number.isInteger(count) && count >= WORDMIX_MIN_WORDS);
+
+        if (wordCounts.length === 0) {
+            return {
+                min: WORDMIX_MIN_WORDS,
+                max: WORDMIX_MAX_WORDS
+            };
+        }
+
+        return {
+            min: Math.max(WORDMIX_MIN_WORDS, Math.min(...wordCounts)),
+            max: Math.min(WORDMIX_MAX_WORDS, Math.max(...wordCounts))
+        };
+    };
+
+    SentenceMixUI.prototype.getConfigurationBosses = function () {
+        const bosses = new Map();
+
+        this.allSentences.forEach(sentence => {
+            const meta = sentence.meta || {};
+            const bossId = typeof meta.bossId === "string" ? meta.bossId.trim() : "";
+            if (!bossId || bosses.has(bossId)) {
+                return;
+            }
+
+            bosses.set(bossId, {
+                id: bossId,
+                title: meta.bossTitle || bossId,
+                grammarFocus: meta.grammarFocus || ""
+            });
+        });
+
+        return Array.from(bosses.values()).sort((left, right) =>
+            left.title.localeCompare(right.title, "de", { numeric: true })
+        );
+    };
+
+    SentenceMixUI.prototype.getConfigurationSummary = function (configuration) {
+        const contentLabel = configuration.contentMode === "all"
+            ? "Gesamter Content"
+            : `${configuration.bossIds.length} Grammar-Boss${configuration.bossIds.length === 1 ? "" : "e"}`;
+        const orderLabel = (configuration.sentenceOrder || this.sentenceOrder) === "shuffle"
+            ? "Shuffle"
+            : "Originalreihenfolge";
+        return `${contentLabel} · ${configuration.minWords}–${configuration.maxWords} Wörter · ${orderLabel}`;
+    };
+
+    SentenceMixUI.prototype.renderConfigurationForm = function () {
+        if (!this.configurationPanel) {
+            return;
+        }
+
+        const configuration = this.pendingWordMixConfiguration || this.wordMixConfiguration;
+        const bounds = this.getWordMixConfigurationBounds();
+        const allContentInput = this.configurationPanel.querySelector('input[name="sentenceMixContentMode"][value="all"]');
+        const bossOptions = this.configurationPanel.querySelector("#sentenceMixBossOptions");
+        const orderInputs = this.configurationPanel.querySelectorAll('input[name="sentenceMixSentenceOrder"]');
+        const minWordsInput = this.configurationPanel.querySelector("#sentenceMixMinWords");
+        const maxWordsInput = this.configurationPanel.querySelector("#sentenceMixMaxWords");
+        const minWordsValue = this.configurationPanel.querySelector("#sentenceMixMinWordsValue");
+        const maxWordsValue = this.configurationPanel.querySelector("#sentenceMixMaxWordsValue");
+        const rangeSummary = this.configurationPanel.querySelector("#sentenceMixRangeSummary");
+        const summary = this.configurationPanel.querySelector("#sentenceMixConfigurationSummary");
+
+        if (allContentInput) {
+            allContentInput.checked = configuration.contentMode === "all";
+        }
+        orderInputs.forEach(input => {
+            input.checked = input.value === (configuration.sentenceOrder || this.sentenceOrder);
+        });
+
+        if (bossOptions) {
+            bossOptions.innerHTML = "";
+            this.configurationBosses.forEach(boss => {
+                const label = document.createElement("label");
+                label.className = "sentence-mix-boss-option";
+
+                const input = document.createElement("input");
+                input.type = "checkbox";
+                input.value = boss.id;
+                input.checked = configuration.contentMode === "bosses" &&
+                    configuration.bossIds.includes(boss.id);
+
+                const text = document.createElement("span");
+                text.textContent = boss.title;
+                if (boss.grammarFocus) {
+                    text.title = boss.grammarFocus;
+                }
+
+                label.appendChild(input);
+                label.appendChild(text);
+                bossOptions.appendChild(label);
+            });
+        }
+
+        if (minWordsInput && maxWordsInput) {
+            minWordsInput.min = String(bounds.min);
+            minWordsInput.max = String(bounds.max);
+            maxWordsInput.min = String(bounds.min);
+            maxWordsInput.max = String(bounds.max);
+            minWordsInput.value = String(configuration.minWords);
+            maxWordsInput.value = String(configuration.maxWords);
+        }
+        if (minWordsValue) {
+            minWordsValue.textContent = configuration.minWords;
+        }
+        if (maxWordsValue) {
+            maxWordsValue.textContent = configuration.maxWords;
+        }
+        if (rangeSummary) {
+            rangeSummary.textContent = `${configuration.minWords}–${configuration.maxWords} Wörter`;
+        }
+        if (summary) {
+            summary.textContent = `Aktuelle Auswahl: ${this.getConfigurationSummary(configuration)}`;
+        }
+    };
+
+    SentenceMixUI.prototype.setupConfiguration = function () {
+        const panel = document.getElementById("sentenceMixConfiguration");
+        const openButton = document.getElementById("sentenceMixConfigurationButton");
+        const closeButton = document.getElementById("sentenceMixConfigurationClose");
+        const applyButton = document.getElementById("sentenceMixConfigurationApply");
+        const resetButton = document.getElementById("sentenceMixConfigurationReset");
+        const bossOptions = document.getElementById("sentenceMixBossOptions");
+        const allContentInput = document.querySelector('input[name="sentenceMixContentMode"][value="all"]');
+        const orderInputs = document.querySelectorAll('input[name="sentenceMixSentenceOrder"]');
+        const minWordsInput = document.getElementById("sentenceMixMinWords");
+        const maxWordsInput = document.getElementById("sentenceMixMaxWords");
+
+        if (
+            !panel ||
+            !openButton ||
+            !closeButton ||
+            !applyButton ||
+            !resetButton ||
+            !bossOptions ||
+            !allContentInput ||
+            !minWordsInput ||
+            !maxWordsInput
+        ) {
+            return;
+        }
+
+        this.configurationPanel = panel;
+        this.configurationOpenButton = openButton;
+        this.configurationCloseButton = closeButton;
+        this.configurationBosses = this.getConfigurationBosses();
+
+        const availableBossIds = new Set(this.configurationBosses.map(boss => boss.id));
+        this.wordMixConfiguration = normalizeWordMixConfiguration(
+            this.wordMixConfiguration,
+            this.getWordMixConfigurationBounds()
+        );
+        this.wordMixConfiguration.bossIds = this.wordMixConfiguration.bossIds
+            .filter(bossId => availableBossIds.has(bossId));
+        if (
+            this.wordMixConfiguration.contentMode === "bosses" &&
+            this.wordMixConfiguration.bossIds.length === 0
+        ) {
+            this.wordMixConfiguration.contentMode = "all";
+        }
+
+        const closePanel = () => {
+            panel.hidden = true;
+            openButton.setAttribute("aria-expanded", "false");
+            this.pendingWordMixConfiguration = null;
+            openButton.focus();
+        };
+
+        openButton.addEventListener("click", () => {
+            this.pendingWordMixConfiguration = normalizeWordMixConfiguration(
+                this.wordMixConfiguration,
+                this.getWordMixConfigurationBounds()
+            );
+            this.pendingWordMixConfiguration.sentenceOrder = this.sentenceOrder;
+            this.renderConfigurationForm();
+            panel.hidden = false;
+            openButton.setAttribute("aria-expanded", "true");
+            closeButton.focus();
+        });
+        closeButton.addEventListener("click", closePanel);
+        panel.addEventListener("click", event => {
+            if (event.target === panel) {
+                closePanel();
+            }
+        });
+        window.addEventListener("keydown", event => {
+            if (event.key === "Escape" && !panel.hidden) {
+                event.preventDefault();
+                event.stopPropagation();
+                closePanel();
+            }
+        }, { capture: true });
+
+        allContentInput.addEventListener("change", () => {
+            if (!allContentInput.checked) {
+                return;
+            }
+            this.pendingWordMixConfiguration = Object.assign(
+                {},
+                this.pendingWordMixConfiguration || this.wordMixConfiguration,
+                { contentMode: "all", bossIds: [] }
+            );
+            this.renderConfigurationForm();
+        });
+
+        bossOptions.addEventListener("change", event => {
+            const changedInput = event.target.closest('input[type="checkbox"]');
+            if (!changedInput) {
+                return;
+            }
+
+            const selectedBossIds = Array.from(
+                bossOptions.querySelectorAll('input[type="checkbox"]:checked')
+            ).map(input => input.value);
+            this.pendingWordMixConfiguration = Object.assign(
+                {},
+                this.pendingWordMixConfiguration || this.wordMixConfiguration,
+                {
+                    contentMode: selectedBossIds.length > 0 ? "bosses" : "all",
+                    bossIds: selectedBossIds
+                }
+            );
+            this.renderConfigurationForm();
+        });
+
+        orderInputs.forEach(input => {
+            input.addEventListener("change", () => {
+                if (!input.checked) {
+                    return;
+                }
+                this.pendingWordMixConfiguration = Object.assign(
+                    {},
+                    this.pendingWordMixConfiguration || this.wordMixConfiguration,
+                    { sentenceOrder: input.value }
+                );
+                this.renderConfigurationForm();
+            });
+        });
+
+        const updateRange = changedInput => {
+            const current = this.pendingWordMixConfiguration || this.wordMixConfiguration;
+            let minWords = Number(minWordsInput.value);
+            let maxWords = Number(maxWordsInput.value);
+
+            if (changedInput === minWordsInput && minWords > maxWords) {
+                maxWords = minWords;
+            }
+            if (changedInput === maxWordsInput && maxWords < minWords) {
+                minWords = maxWords;
+            }
+
+            this.pendingWordMixConfiguration = Object.assign({}, current, {
+                minWords: minWords,
+                maxWords: maxWords
+            });
+            this.renderConfigurationForm();
+        };
+        minWordsInput.addEventListener("input", () => updateRange(minWordsInput));
+        maxWordsInput.addEventListener("input", () => updateRange(maxWordsInput));
+
+        resetButton.addEventListener("click", () => {
+            const bounds = this.getWordMixConfigurationBounds();
+            this.pendingWordMixConfiguration = normalizeWordMixConfiguration({
+                contentMode: "all",
+                bossIds: [],
+                minWords: bounds.min,
+                maxWords: bounds.max,
+                sentenceOrder: "original"
+            }, bounds);
+            this.renderConfigurationForm();
+        });
+        applyButton.addEventListener("click", () => {
+            this.applyWordMixConfiguration(
+                this.pendingWordMixConfiguration || this.wordMixConfiguration
+            );
+        });
+
+        this.renderConfigurationForm();
+    };
+
+    SentenceMixUI.prototype.applyWordMixConfiguration = function (configuration) {
+        const bounds = this.getWordMixConfigurationBounds();
+        const availableBossIds = new Set(this.configurationBosses.map(boss => boss.id));
+        const nextConfiguration = normalizeWordMixConfiguration(configuration, bounds);
+        const nextSentenceOrder = SENTENCE_ORDERS.includes(configuration.sentenceOrder)
+            ? configuration.sentenceOrder
+            : this.sentenceOrder;
+        nextConfiguration.bossIds = nextConfiguration.bossIds
+            .filter(bossId => availableBossIds.has(bossId));
+        if (
+            nextConfiguration.contentMode === "bosses" &&
+            nextConfiguration.bossIds.length === 0
+        ) {
+            nextConfiguration.contentMode = "all";
+        }
+
+        this.wordMixConfiguration = nextConfiguration;
+        this.sentenceOrder = nextSentenceOrder;
+        this.pendingWordMixConfiguration = null;
+        writeWordMixConfiguration(nextConfiguration);
+        writeSentenceOrder(nextSentenceOrder);
+        this.applySentenceConfiguration();
+        this.applySentenceOrder();
+        this.currentIndex = 0;
+        this.roundState = "idle";
+
+        if (window.SentenceMixInput) {
+            window.SentenceMixInput.clear();
+            window.SentenceMixInput.setEnabled(false);
+        }
+
+        this.closeConfigurationPanel();
+        if (this.sentences.length === 0) {
+            this.renderSystemMessage("Keine Sätze passen zu dieser Auswahl. Bitte wähle einen größeren Bereich oder anderen Content.");
+            return;
+        }
+        this.startNextRound();
+    };
+
+    SentenceMixUI.prototype.closeConfigurationPanel = function () {
+        if (!this.configurationPanel) {
+            return;
+        }
+        this.configurationPanel.hidden = true;
+        if (this.configurationOpenButton) {
+            this.configurationOpenButton.setAttribute("aria-expanded", "false");
+            this.configurationOpenButton.focus();
+        }
+    };
+
     SentenceMixUI.prototype.setupSettings = function () {
         const panel = document.getElementById("sentenceMixSettings");
         const openButton = document.getElementById("sentenceMixSettingsButton");
         const closeButton = document.getElementById("sentenceMixSettingsClose");
         const layoutInputs = document.querySelectorAll('input[name="sentenceMixNumpadLayout"]');
-        const orderInputs = document.querySelectorAll('input[name="sentenceMixSentenceOrder"]');
         const transliterationInputs = document.querySelectorAll('input[name="sentenceMixTransliterationMode"]');
+        const toneColorsToggle = document.getElementById("sentenceMixToneColorsToggle");
+        const fontSelect = document.getElementById("sentenceMixFontSelect");
 
         if (!panel || !openButton || !closeButton) {
             return;
@@ -259,19 +797,29 @@
             }
         }, { capture: true });
 
+        this.thaiFont = applyThaiFont(this.thaiFont);
+        this.toneColorsEnabled = applyToneColors(this.toneColorsEnabled);
+        if (toneColorsToggle) {
+            toneColorsToggle.checked = this.toneColorsEnabled;
+            toneColorsToggle.addEventListener("change", event => {
+                this.toneColorsEnabled = applyToneColors(event.target.checked);
+                writeToneColorsEnabled(this.toneColorsEnabled);
+            });
+        }
+        if (fontSelect) {
+            fontSelect.value = this.thaiFont;
+            fontSelect.addEventListener("change", event => {
+                this.thaiFont = applyThaiFont(event.target.value);
+                fontSelect.value = this.thaiFont;
+                writeThaiFont(this.thaiFont);
+            });
+        }
+
         layoutInputs.forEach(input => {
             input.checked = input.value === this.numpadLayout;
             input.addEventListener("change", () => {
                 if (input.checked) {
                     this.setNumpadLayout(input.value);
-                }
-            });
-        });
-        orderInputs.forEach(input => {
-            input.checked = input.value === this.sentenceOrder;
-            input.addEventListener("change", () => {
-                if (input.checked) {
-                    this.setSentenceOrder(input.value);
                 }
             });
         });
@@ -328,11 +876,25 @@
         }
     };
 
+    SentenceMixUI.prototype.applySentenceConfiguration = function () {
+        const configuration = this.wordMixConfiguration;
+        const selectedBossIds = new Set(configuration.bossIds);
+
+        this.filteredSentences = this.allSentences.filter(sentence => {
+            const tokenCount = Number(sentence.tokenCount);
+            const matchesLength = tokenCount >= configuration.minWords &&
+                tokenCount <= configuration.maxWords;
+            const matchesContent = configuration.contentMode === "all" ||
+                selectedBossIds.has(sentence.meta?.bossId);
+            return matchesLength && matchesContent;
+        });
+    };
+
     SentenceMixUI.prototype.applySentenceOrder = function () {
         if (this.sentenceOrder === "shuffle") {
-            this.sentences = shuffleArray(this.allSentences);
+            this.sentences = shuffleArray(this.filteredSentences);
         } else {
-            this.sentences = this.allSentences.slice();
+            this.sentences = this.filteredSentences.slice();
         }
     };
 
@@ -584,11 +1146,14 @@
 
             const thaiSpan = document.createElement("span");
             thaiSpan.className = "token-pill-thai";
-            thaiSpan.textContent = pill.text;
+            appendToneMarkup(thaiSpan, pill.text, pill.transliteration, pill.syllables);
 
             const transliterationSpan = document.createElement("span");
             transliterationSpan.className = "token-pill-transliteration";
-            transliterationSpan.textContent = pill.transliteration || pill.text;
+            const transliterationToneSpan = document.createElement("span");
+            transliterationToneSpan.className = getToneClass(pill.transliteration);
+            transliterationToneSpan.textContent = pill.transliteration || pill.text;
+            transliterationSpan.appendChild(transliterationToneSpan);
 
             const contentSpan = document.createElement("span");
             contentSpan.className = "token-pill-content";
