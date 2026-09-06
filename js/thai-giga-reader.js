@@ -381,28 +381,65 @@
             .replace(/\r?\n/g, " ");
     }
 
-    function buildWordListDocument() {
-        const entries = getWordDictionaryEntries().sort((left, right) => {
+    function getExportSelection() {
+        const selectedBossId = elements.wordDictionaryBossFilter?.value || "all";
+        const selectedScope = elements.wordDictionaryScopeFilter?.value || "all";
+        return {
+            selectedBossId,
+            selectedScope: selectedBossId === "all" ? "all" : selectedScope,
+            bosses: content.levels.flatMap(level => level.bosses)
+        };
+    }
+
+    function getExportFilenamePart(boss) {
+        return boss
+            ? boss.title
+                .toLocaleLowerCase("de-DE")
+                .replace(/grammatikboss\s*/i, "boss-")
+                .replace(/[^a-z0-9]+/gi, "-")
+                .replace(/^-+|-+$/g, "")
+            : "alle-bosse";
+    }
+
+    function buildWordListDocument(selection = getExportSelection()) {
+        const selectedBoss = selection.bosses.find(
+            boss => boss.id === selection.selectedBossId
+        );
+        const allEntries = getWordDictionaryEntries();
+        const entries = allEntries
+            .filter(entry => selection.selectedBossId === "all" ||
+                entry.appearsInBossIds.has(selection.selectedBossId))
+            .filter(entry => selection.selectedScope !== "new" ||
+                entry.firstBoss?.id === selection.selectedBossId)
+            .sort((left, right) => {
             const leftBoss = left.firstBoss?.id || "";
             const rightBoss = right.firstBoss?.id || "";
             return leftBoss.localeCompare(rightBoss) ||
                 (left.firstSentence?.number || 0) -
                     (right.firstSentence?.number || 0);
-        });
-        const bosses = content.levels.flatMap(level => level.bosses);
+            });
         const lines = [
-            "# Thai Super Ultra Mega Giga Drill – vollständige Wortliste",
+            `# Thai Super Ultra Mega Giga Drill – ${
+                selectedBoss ? selectedBoss.title : "vollständige Wortliste"
+            }`,
             "",
             `Stand: ${new Date().toISOString().slice(0, 10)}`,
             `Content-Version: ${content.contentVersion}`,
             `Eindeutige Wörter: ${entries.length}`,
             "",
-            "Diese Liste enthält alle eindeutigen Wörter des aktiven Contents. " +
+            selectedBoss
+                ? `Diese Liste enthält ${selection.selectedScope === "new"
+                    ? "die neu eingeführten"
+                    : "alle im Boss verwendeten"} eindeutigen Wörter aus ${
+                    selectedBoss.title
+                }.`
+                : "Diese Liste enthält alle eindeutigen Wörter des aktiven Contents. " +
                 "Neue Wörter sollen vor dem Ergänzen neuer Inhalte gegen diese " +
                 "Liste geprüft werden.",
             ""
         ];
 
+        const bosses = selectedBoss ? [selectedBoss] : selection.bosses;
         bosses.forEach(boss => {
             const bossEntries = entries.filter(entry => entry.firstBoss?.id === boss.id);
             if (bossEntries.length === 0) {
@@ -427,7 +464,9 @@
             lines.push("");
         });
 
-        const unassignedEntries = entries.filter(entry => !entry.firstBoss);
+        const unassignedEntries = selection.selectedBossId === "all"
+            ? entries.filter(entry => !entry.firstBoss)
+            : [];
         if (unassignedEntries.length > 0) {
             lines.push("## Noch keinem Grammatikboss zugeordnet", "");
             unassignedEntries.forEach(entry => {
@@ -442,23 +481,43 @@
         return lines.join("\n");
     }
 
-    function buildSentenceListDocument() {
+    function buildSentenceListDocument(selection = getExportSelection()) {
+        const selectedBoss = selection.bosses.find(
+                boss => boss.id === selection.selectedBossId
+        );
+        const bosses = selectedBoss ? [selectedBoss] : selection.bosses;
+        const sentenceCount = bosses.reduce(
+                (count, boss) => count + boss.blocks.reduce(
+                    (blockCount, block) => blockCount + block.miniStories.reduce(
+                        (storyCount, story) => storyCount + story.sentences.length,
+                        0
+                    ),
+                    0
+                ),
+                0
+        );
         const lines = [
-            "# Thai Super Ultra Mega Giga Drill – vollständige Satzliste",
-            "",
-            `Stand: ${new Date().toISOString().slice(0, 10)}`,
-            `Content-Version: ${content.contentVersion}`,
-            `Sätze: ${indexes.sentencesById.size}`,
-            "",
-            "Diese Liste enthält alle Sätze des aktiven Contents in der Reihenfolge " +
-                "des Curriculums. Sie dient als Referenz für die Erstellung neuer Inhalte.",
-            ""
+                `# Thai Super Ultra Mega Giga Drill – ${
+                    selectedBoss ? selectedBoss.title : "vollständige Satzliste"
+                }`,
+                "",
+                `Stand: ${new Date().toISOString().slice(0, 10)}`,
+                `Content-Version: ${content.contentVersion}`,
+                `Sätze: ${sentenceCount}`,
+                "",
+                selectedBoss
+                    ? `Diese Liste enthält alle Sätze aus ${selectedBoss.title} in der Reihenfolge des Curriculums.`
+                    : "Diese Liste enthält alle Sätze des aktiven Contents in der Reihenfolge " +
+                        "des Curriculums. Sie dient als Referenz für die Erstellung neuer Inhalte.",
+                ""
         ];
 
         content.levels.forEach(level => {
-            level.bosses.forEach(boss => {
-                lines.push(`## ${boss.title} – ${boss.grammarFocus}`, "");
-                boss.blocks.forEach(block => {
+                level.bosses
+                    .filter(boss => bosses.includes(boss))
+                    .forEach(boss => {
+                    lines.push(`## ${boss.title} – ${boss.grammarFocus}`, "");
+                    boss.blocks.forEach(block => {
                     lines.push(`### ${block.title}`, "");
                     block.miniStories.forEach(story => {
                         lines.push(`#### ${story.title}`, "");
@@ -473,7 +532,7 @@
                             );
                         });
                         lines.push("");
-                    });
+                        });
                 });
             });
         });
@@ -501,12 +560,16 @@
         }
 
         try {
+            const selection = getExportSelection();
+            const selectedBoss = selection.bosses.find(
+                boss => boss.id === selection.selectedBossId
+            );
             downloadMarkdownDocument(
-                buildWordListDocument(),
-                "thai-giga-woerterliste.md"
+                buildWordListDocument(selection),
+                `thai-giga-woerterliste-${getExportFilenamePart(selectedBoss)}.md`
             );
             elements.wordDictionaryExportStatus.textContent =
-                "Vollständige Wortliste wurde heruntergeladen.";
+                `${selectedBoss ? selectedBoss.title : "Vollständige Wortliste"} wurde heruntergeladen.`;
         } catch (error) {
             console.error("Thai-Giga-Wortliste konnte nicht exportiert werden.", error);
             elements.wordDictionaryExportStatus.textContent =
@@ -520,12 +583,16 @@
         }
 
         try {
+            const selection = getExportSelection();
+            const selectedBoss = selection.bosses.find(
+                boss => boss.id === selection.selectedBossId
+            );
             downloadMarkdownDocument(
-                buildSentenceListDocument(),
-                "thai-giga-satzliste.md"
+                buildSentenceListDocument(selection),
+                `thai-giga-satzliste-${getExportFilenamePart(selectedBoss)}.md`
             );
             elements.wordDictionaryExportStatus.textContent =
-                "Vollständige Satzliste wurde heruntergeladen.";
+                `${selectedBoss ? selectedBoss.title : "Vollständige Satzliste"} wurde heruntergeladen.`;
         } catch (error) {
             console.error("Thai-Giga-Satzliste konnte nicht exportiert werden.", error);
             elements.wordDictionaryExportStatus.textContent =
