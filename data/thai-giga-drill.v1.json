@@ -123965,142 +123965,122 @@
               "title": "Foundation Block 1 — Sätze 2501–2600",
               "description": "Wünsche äußern, höflich ablehnen und gemeinsam beim Essen sowie beim Einkaufen entscheiden.",
               "midpointReminder": {
-                "title": "?? REMINDER ? S?TZE 2501?2550",
-                "message": "W?nsche beim Essen, Trinken & Bestellen",
+                "title": "💎 REMINDER · SÄTZE 2501–2550",
+                "message": "Wünsche beim Essen, Trinken & Bestellen",
                 "lead": "Was du gerade gelernt hast",
                 "sections": [
                   {
-                    "title": "Neue W?rter",
+                    "title": "Neue Wörter",
                     "words": [
                       {
-                        "thai": "?????????",
-                        "transliteration": "aa-h?an ch?o",
-                        "translation": "Fr?hst?ck"
+                        "thai": "อาหารเช้า",
+                        "transliteration": "aa-hǎan-cháo",
+                        "translation": "Frühstück"
                       },
                       {
-                        "thai": "????",
-                        "transliteration": "?m",
+                        "thai": "อิ่ม",
+                        "transliteration": "ìm",
                         "translation": "satt"
                       },
                       {
-                        "thai": "???????",
-                        "transliteration": "kh?ao ph?t",
+                        "thai": "ข้าวผัด",
+                        "transliteration": "khâao-phàt",
                         "translation": "gebratener Reis"
                       },
                       {
-                        "thai": "??????????",
-                        "transliteration": "g?ai-dt?ao",
+                        "thai": "ก๋วยเตี๋ยว",
+                        "transliteration": "gǔai-dtǐao",
                         "translation": "Nudeln / Nudelsuppe"
                       },
                       {
-                        "thai": "????",
+                        "thai": "เค็ม",
                         "transliteration": "khem",
                         "translation": "salzig"
                       },
                       {
-                        "thai": "???",
+                        "thai": "จาน",
                         "transliteration": "jaan",
                         "translation": "Teller / Portion"
                       },
                       {
-                        "thai": "???",
-                        "transliteration": "h???",
+                        "thai": "ห่อ",
+                        "transliteration": "hɔ̀ɔ",
                         "translation": "einpacken / zum Mitnehmen"
                       },
                       {
-                        "thai": "????",
-                        "transliteration": "s?ng",
+                        "thai": "สั่ง",
+                        "transliteration": "sàng",
                         "translation": "bestellen"
                       }
                     ],
-                    "note": "Mit ???? + Verb beschreibst du eigene Vorhaben und Handlungen. F?r Speisen und Gegenst?nde verwendest du ??????? + Nomen."
+                    "note": "Mit อยาก + Verb beschreibst du eigene Vorhaben und Handlungen. Für Speisen und Gegenstände verwendest du อยากได้ + Nomen."
                   }
                 ],
                 "patternLead": "Wichtiges Muster",
                 "pattern": {
-                  "thai": "????????????????????????????",
-                  "transliteration": "ch?n m?i y?ak d???m gaa-fae dt??n yen kh?",
-                  "translation": "Abends m?chte ich keinen Kaffee trinken."
+                  "thai": "ฉันไม่อยากดื่มกาแฟตอนเย็นค่ะ",
+                  "transliteration": "chǎn mâi yàak dʉ̀ʉm gaa-fae dtaawn-yen khâ",
+                  "translation": "Abends möchte ich keinen Kaffee trinken."
                 },
                 "discoveries": [
                   {
-                    "thai": "????????????????",
-                    "transliteration": "ph?m y?ak gin kh?ao ph?t",
-                    "translation": "Ich m?chte gebratenen Reis essen."
+                    "thai": "ฉันอยากกินข้าวผัดค่ะ",
+                    "transliteration": "chǎn yàak gin khâao-phàt khâ",
+                    "translation": "Ich möchte gebratenen Reis essen."
                   },
                   {
-                    "thai": "???????????????????????",
-                    "transliteration": "ch?n y?ak d?i g?ai-dt?ao kh?",
-                    "translation": "Ich h?tte gern Nudeln."
+                    "thai": "ฉันอยากได้ก๋วยเตี๋ยวค่ะ",
+                    "transliteration": "chǎn yàak dâi gǔai-dtǐao khâ",
+                    "translation": "Ich hätte gern Nudeln."
                   }
                 ],
-                "closing": "Mit ???? + Verb dr?ckst du eigene Handlungen aus (m?chte tun); mit ??????? + Nomen ?u?erst du W?nsche nach konkreten Speisen oder Dingen."
+                "closing": "Nutze อยาก für eigene Wünsche und ไม่อยาก für freundliche Ablehnung."
               },
               "completion": {
-                "title": "?? 2600 / 3000 ? FOUNDATION BLOCK 1 COMPLETE",
-                "sentenceRange": "2501?2600",
-                "progress": "W?nsche, Zur?ckhaltung, Auswahl (?????) & Preise (????, ???, ???)",
+                "title": "🏆 2600 / 3000 · FOUNDATION BLOCK 1 COMPLETE",
+                "sentenceRange": "2501–2600",
+                "progress": "Auswahl treffen (เลือก), Missverständnisse klären (เข้าใจผิด) & Rabatte ansprechen (ลด, ถูก)",
                 "sections": [
                   {
-                    "title": "Neue W?rter (S?tze 2551?2600)",
+                    "title": "Neue Wörter (Sätze 2551–2600)",
                     "words": [
                       {
-                        "thai": "??",
-                        "transliteration": "s?i",
-                        "translation": "Farbe"
+                        "thai": "เลือก",
+                        "transliteration": "lʉ̂ak",
+                        "translation": "auswählen / aussuchen"
                       },
                       {
-                        "thai": "????",
-                        "transliteration": "kh?-n?at",
-                        "translation": "Gr??e"
-                      },
-                      {
-                        "thai": "?????",
-                        "transliteration": "l??ak",
-                        "translation": "ausw?hlen / aussuchen"
-                      },
-                      {
-                        "thai": "????",
-                        "transliteration": "raa-khaa",
-                        "translation": "Preis"
-                      },
-                      {
-                        "thai": "???",
-                        "transliteration": "th?uk",
-                        "translation": "g?nstig / preiswert"
-                      },
-                      {
-                        "thai": "???",
-                        "transliteration": "phaaeng",
-                        "translation": "teuer"
-                      },
-                      {
-                        "thai": "?????????",
-                        "transliteration": "kh?o-jai-ph?t",
+                        "thai": "เข้าใจผิด",
+                        "transliteration": "khâo-jai-phìt",
                         "translation": "missverstehen"
                       },
                       {
-                        "thai": "??",
-                        "transliteration": "l?t",
-                        "translation": "reduzieren / senken"
+                        "thai": "ลด",
+                        "transliteration": "lót",
+                        "translation": "reduzieren / Rabatt geben"
+                      },
+                      {
+                        "thai": "ถูก",
+                        "transliteration": "thùuk",
+                        "translation": "günstig / billig"
                       }
                     ],
-                    "note": "Beim Einkaufen helfen Farbe, Gr??e und Preis, konkrete W?nsche und Entscheidungen pr?zise zu formulieren."
+                    "note": "Präzise Vorlieben äußern, Preise verhandeln und bei Bestellungen souverän nachfragen."
                   }
                 ],
                 "questionLead": "Zentrales Fragemuster",
                 "question": {
-                  "thai": "????????????????????",
-                  "transliteration": "khun y?ak d?i s?i ?-rai khr?p",
-                  "translation": "Welche Farbe m?chtest du?"
+                  "thai": "คุณอยากได้จานนี้ไหมครับ",
+                  "transliteration": "khun yàak dâi jaan níi mái khráp",
+                  "translation": "Möchtest du diese Portion haben?"
                 },
                 "answerLead": "Echte Reaktion",
                 "answer": {
-                  "thai": "??????????????????????",
-                  "transliteration": "ch?n m?i y?ak d?i s?i n?i l???o",
-                  "translation": "Ich m?chte diese Farbe doch nicht mehr."
+                  "thai": "ฉันอยากสั่งข้าวผัดสองจานค่ะ",
+                  "transliteration": "chǎn yàak sàng khâao-phàt sɔ̌ɔng jaan khâ",
+                  "translation": "Ich möchte zwei Portionen gebratenen Reis bestellen."
                 },
-                "closing": "2.600 S?tze: Du ?u?erst klare W?nsche mit ????, lehnst h?flich ab mit ??????? und triffst Kauf- und Essensentscheidungen mit ???????."
+                "closing": "2.600 Sätze: Du meisterst Bestellungen, Wünsche und Preisabsprachen im Alltag mühelos."
               },
               "miniStories": [
                 {
@@ -137303,41 +137283,26 @@
               ],
               "midpointReminder": {
                 "title": "💎 REMINDER · SÄTZE 2601–2650",
-                "message": "Reiseplanung, Berge & praktische Reisevorbereitungen",
+                "message": "Reisepläne, Transportmittel & Hotelbuchung",
                 "lead": "Was du gerade gelernt hast",
                 "sections": [
                   {
                     "title": "Neue Wörter",
                     "words": [
                       {
+                        "thai": "เที่ยว",
+                        "transliteration": "thîao",
+                        "translation": "reisen / ausgehen"
+                      },
+                      {
+                        "thai": "ทะเล",
+                        "transliteration": "thá-lee",
+                        "translation": "Meer / Strand"
+                      },
+                      {
                         "thai": "ภูเขา",
                         "transliteration": "phuu-khǎo",
-                        "translation": "Berg / Gebirge"
-                      },
-                      {
-                        "thai": "แผนที่",
-                        "transliteration": "phɛ̌ɛn-thîi",
-                        "translation": "Landkarte / Karte"
-                      },
-                      {
-                        "thai": "ชายหาด",
-                        "transliteration": "chaai-hàat",
-                        "translation": "Strand / Küste"
-                      },
-                      {
-                        "thai": "ว่ายน้ำ",
-                        "transliteration": "wâai-náam",
-                        "translation": "schwimmen"
-                      },
-                      {
-                        "thai": "คลื่น",
-                        "transliteration": "khlʉ̂ʉn",
-                        "translation": "Welle / Meereswellen"
-                      },
-                      {
-                        "thai": "ถ่ายรูป",
-                        "transliteration": "thàai-rûup",
-                        "translation": "fotografieren"
+                        "translation": "Berge / Berg"
                       },
                       {
                         "thai": "กล้อง",
@@ -137345,119 +137310,129 @@
                         "translation": "Kamera"
                       },
                       {
+                        "thai": "รูป",
+                        "transliteration": "rûup",
+                        "translation": "Bild / Foto"
+                      },
+                      {
+                        "thai": "ถ่ายรูป",
+                        "transliteration": "thàai-rûup",
+                        "translation": "fotografieren"
+                      },
+                      {
                         "thai": "ตั๋ว",
                         "transliteration": "dtǔa",
-                        "translation": "Fahrkarte / Ticket"
+                        "translation": "Ticket / Fahrkarte"
                       },
                       {
-                        "thai": "เช่ารถ",
-                        "transliteration": "châo-rót",
-                        "translation": "Auto mieten"
+                        "thai": "จอง",
+                        "transliteration": "jɔɔng",
+                        "translation": "buchen / reservieren"
                       },
                       {
-                        "thai": "ที่พัก",
-                        "transliteration": "thîi-phák",
-                        "translation": "Unterkunft"
+                        "thai": "บิน",
+                        "transliteration": "bin",
+                        "translation": "fliegen"
+                      },
+                      {
+                        "thai": "โรงแรม",
+                        "transliteration": "roong-raem",
+                        "translation": "Hotel"
                       }
                     ],
-                    "note": "Mit อยาก + Verb planst du deine Reise (อยากไปเที่ยว, อยากถ่ายรูป, อยากว่ายน้ำ) und mit อยากได้ nennst du Wünsche wie Zimmer oder Kamera."
+                    "note": "Reisewünsche und Urlaubsaktivitäten formulierst du sicher mit อยาก + Verb oder อยากได้ + Nomen."
                   }
                 ],
                 "patternLead": "Wichtiges Muster",
                 "pattern": {
-                  "thai": "ผมอยากไปที่ที่มีภูเขาครับ",
-                  "transliteration": "phǒm yàak bpai thîi thîi mii phuu-khǎo khráp",
-                  "translation": "Ich möchte an einen Ort mit Bergen."
+                  "thai": "ผมอยากไปเที่ยวทะเลกับคุณครับ",
+                  "transliteration": "phǒm yàak bpai thîao thá-lee gàp khun khráp",
+                  "translation": "Ich möchte mit dir ans Meer reisen."
                 },
                 "discoveries": [
                   {
-                    "thai": "ฉันอยากได้ที่พักที่มีวิวภูเขาค่ะ",
-                    "transliteration": "chǎn yàak dâi thîi-phák thîi mii wiu phuu-khǎo khâ",
-                    "translation": "Ich hätte gern eine Unterkunft mit Bergblick."
+                    "thai": "ฉันอยากได้ห้องพักวิวสวยๆ ค่ะ",
+                    "transliteration": "chǎn yàak dâi hɔ̂ng-phák wio sǔai-sǔai khâ",
+                    "translation": "Ich hätte gern ein Zimmer mit schöner Aussicht."
                   },
                   {
-                    "thai": "ผมไม่อยากขับรถเหนื่อยๆ ครับ",
-                    "transliteration": "phǒm mâi yàak khàp rót nʉ̀ai-nʉ̀ai khráp",
-                    "translation": "Ich möchte nicht erschöpft Auto fahren."
+                    "thai": "ผมไม่อยากบินตอนกลางคืนครับ",
+                    "transliteration": "phǒm mâi yàak bin dtaawn glaang-khʉʉn khráp",
+                    "translation": "Ich möchte nicht nachts fliegen."
                   }
                 ],
-                "closing": "Reiseentscheidungen triffst du im Thai ganz natürlich mit อยาก + Verb oder อยากได้ + Nomen."
+                "closing": "Reiseziele verhandeln, Tickets buchen und persönliche Vorlieben harmonisch abstimmen."
               },
               "completion": {
                 "title": "🏆 2700 / 3000 · FOUNDATION BLOCK 2 COMPLETE",
                 "sentenceRange": "2601–2700",
-                "progress": "Koffer packen (กระเป๋าเดินทาง), Nebel (หมอก), Wolkenmeer (ทะเลหมอก), Wandern (เดินป่า) & Sonnenuntergang (พระอาทิตย์ตก)",
+                "progress": "Aussicht (วิว), Sonnenuntergang (พระอาทิตย์ตก), Wolkenmeer (ทะเลหมอก) & Zelten (นอนเต็นท์)",
                 "sections": [
                   {
                     "title": "Neue Wörter (Sätze 2651–2700)",
                     "words": [
                       {
-                        "thai": "กระเป๋าเดินทาง",
-                        "transliteration": "grà-bpǎo doon-thaang",
-                        "translation": "Reisekoffer"
+                        "thai": "วิว",
+                        "transliteration": "wio",
+                        "translation": "Aussicht / View"
                       },
                       {
-                        "thai": "เตรียม",
-                        "transliteration": "dtriiam",
-                        "translation": "vorbereiten"
-                      },
-                      {
-                        "thai": "เต็นท์",
-                        "transliteration": "dten",
-                        "translation": "Zelt"
-                      },
-                      {
-                        "thai": "กางเต็นท์",
-                        "transliteration": "gaang-dten",
-                        "translation": "zelten / campen"
-                      },
-                      {
-                        "thai": "หมอก",
-                        "transliteration": "mɔ̀ɔk",
-                        "translation": "Nebel"
-                      },
-                      {
-                        "thai": "ชมวิว",
-                        "transliteration": "chom-wiu",
-                        "translation": "Aussicht genießen"
+                        "thai": "สวยงาม",
+                        "transliteration": "sǔai-ngaam",
+                        "translation": "wunderschön"
                       },
                       {
                         "thai": "ทะเลหมอก",
-                        "transliteration": "thá-lee mɔ̀ɔk",
-                        "translation": "Nebelmeer / Wolkenmeer"
-                      },
-                      {
-                        "thai": "เดินป่า",
-                        "transliteration": "doon-bpàa",
-                        "translation": "wandern"
-                      },
-                      {
-                        "thai": "พระอาทิตย์",
-                        "transliteration": "phrá-aa-thít",
-                        "translation": "Sonne"
+                        "transliteration": "thá-lee-mɔ̀ɔk",
+                        "translation": "Wolkenmeer"
                       },
                       {
                         "thai": "พระอาทิตย์ตก",
-                        "transliteration": "phrá-aa-thít dtòk",
+                        "transliteration": "phrá-aa-thít-dtòk",
                         "translation": "Sonnenuntergang"
+                      },
+                      {
+                        "thai": "เต็นท์",
+                        "transliteration": "dtén",
+                        "translation": "Zelt"
+                      },
+                      {
+                        "thai": "นอนเต็นท์",
+                        "transliteration": "nɔɔn-dtén",
+                        "translation": "zelten"
+                      },
+                      {
+                        "thai": "บรรยากาศ",
+                        "transliteration": "ban-yaa-gàat",
+                        "translation": "Atmosphäre / Stimmung"
+                      },
+                      {
+                        "thai": "กระเป๋าเดินทาง",
+                        "transliteration": "grà-bpǎo-dəən-thaang",
+                        "translation": "Reisekoffer"
+                      },
+                      {
+                        "thai": "พร้อม",
+                        "transliteration": "phrɔ́ɔm",
+                        "translation": "bereit / startklar"
                       }
                     ],
-                    "note": "Natur- und Reisebeschreibungen verbinden sich flüssig mit deinen Wünschen und Erlebnissen."
+                    "note": "Naturerlebnisse teilen, Ausflugsziele planen und Reisevorbereitungen treffen."
                   }
                 ],
                 "questionLead": "Zentrales Fragemuster",
                 "question": {
-                  "thai": "คุณอยากเอาเต็นท์ไปด้วยไหมคะ",
-                  "transliteration": "khun yàak ao dten bpai dûai mái khá",
-                  "translation": "Möchtest du ein Zelt mitnehmen?"
+                  "thai": "คุณอยากดูพระอาทิตย์ตกด้วยกันไหมคะ",
+                  "transliteration": "khun yàak duu phrá-aa-thít-dtòk dûai-gan mái khá",
+                  "translation": "Möchtest du dir den Sonnenuntergang zusammen ansehen?"
                 },
                 "answerLead": "Echte Reaktion",
                 "answer": {
-                  "thai": "ผมไม่อยากกางเต็นท์ครับ พักที่โรงแรมสบายกว่า",
-                  "transliteration": "phǒm mâi yàak gaang-dten khráp phák thîi roong-raem sà-baai gwàa",
-                  "translation": "Ich möchte nicht zelten, im Hotel zu übernachten ist bequemer."
+                  "thai": "ผมอยากดูทะเลหมอกตอนเช้ามากกว่าครับ",
+                  "transliteration": "phǒm yàak duu thá-lee-mɔ̀ɔk dtaawn cháo mâak gwàa khráp",
+                  "translation": "Ich möchte mir lieber morgens das Wolkenmeer ansehen."
                 },
-                "closing": "2.700 Sätze: Du planst Reisen, äußerst Vorlieben und Wünsche in der Natur und beschreibst deine Erlebnisse fließend."
+                "closing": "2.700 Sätze: Du planst komplette Ausflüge und Reisen sicher auf gesprochenem Thai."
               }
             },
             {
