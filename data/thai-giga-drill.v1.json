@@ -24258,22 +24258,22 @@
           "grammarFocus": "ไม่ · Verneinung",
           "contentStatus": "complete",
           "introduction": {
-            "description": "ไม่ · Verneinung",
+            "description": "ไม่ verneint Verben und Zustände direkt. In Boss 2 lernst du, Handlungen abzulehnen, Zustände zu verneinen, Begründungen zu geben und Wünsche im Alltag auszudrücken.",
             "example": {
-              "thai": "ตอนนี้ผมไม่ไป",
-              "transliteration": "dton-níi phǒm mâi bpai",
-              "translation": "Jetzt gehe ich nicht."
+              "thai": "วันนี้ผมไม่ไป",
+              "transliteration": "wan-níi phǒm mâi bpai",
+              "translation": "Heute gehe ich nicht."
             },
             "parts": [
               {
-                "thai": "ตอนนี้",
-                "transliteration": "ton-níi",
-                "translation": "jetzt"
+                "thai": "วันนี้",
+                "transliteration": "wan-níi",
+                "translation": "heute"
               },
               {
                 "thai": "ผม",
                 "transliteration": "phǒm",
-                "translation": "ich / mich"
+                "translation": "ich"
               },
               {
                 "thai": "ไม่",
@@ -24287,23 +24287,11 @@
               }
             ],
             "assembly": {
-              "thai": "ตอนนี้ + ผม + ไม่ + ไป",
-              "transliteration": "ton-níi + phǒm + mâi + bpai",
-              "translation": "jetzt + ich / mich + nicht + gehen"
+              "thai": "วันนี้ + ผม + ไม่ + ไป",
+              "transliteration": "wan-níi + phǒm + mâi + bpai",
+              "translation": "Heute + ich + nicht + gehen"
             },
-            "warning": "hinein in die neue Frage:",
-            "sourceText": [
-              "⚔️ GRAMMATIKBOSS 2",
-              "ไม่ · Verneinung",
-              "Foundation 1 · Gesamtsätze 501–600",
-              "Boss 2 · Satz 501 = Gesamtsatz 501",
-              "Der Lerner kommt direkt aus:",
-              "ตอนนี้ผมเป็นนักท่องเที่ยวJetzt bin ich Tourist.",
-              "und:",
-              "ที่นั่นเป็นร้านอาหารไหมIst das dort ein Restaurant?",
-              "hinein in die neue Frage:",
-              "ตอนนี้ผมไม่ไปJetzt gehe ich nicht."
-            ]
+            "warning": "Grundmuster: Subjekt + ไม่ + Verb/Zustand. Das Wörtchen ไม่ steht immer direkt vor dem Wort, das verneint wird (z. B. ไม่กิน = nicht essen, ไม่หิว = keinen Hunger haben)."
           },
           "blocks": [
             {
@@ -29068,16 +29056,16 @@
               ],
               "midpointReminder": {
                 "title": "💎 REMINDER · SÄTZE 501–550",
-                "message": "Neue Wörter dieses Blocks",
-                "lead": "Einige davon sind bewusst in sehr kleinen Dosen eingeführt worden. Das Ziel ist nicht, in 50 Sätzen möglichst viele Wörter abzuhaken, sondern sie sofort mehrfach zu erleben. Genau das verlangt das Masterkonzept. ",
+                "message": "Die ersten Alltagsverben & einfache Verneinung",
+                "lead": "Was du gerade gelernt hast",
                 "sections": [
                   {
-                    "title": "Neue Wörter dieses Blocks",
+                    "title": "Neue Wörter",
                     "words": [
                       {
-                        "thai": "ไม่",
-                        "transliteration": "mâi",
-                        "translation": "nicht"
+                        "thai": "อยู่",
+                        "transliteration": "yùu",
+                        "translation": "sein / sich befinden"
                       },
                       {
                         "thai": "กิน",
@@ -29085,19 +29073,34 @@
                         "translation": "essen"
                       },
                       {
-                        "thai": "ดื่ม",
-                        "transliteration": "dʉ̀ʉm",
-                        "translation": "trinken"
-                      },
-                      {
-                        "thai": "อยู่",
-                        "transliteration": "yùu",
-                        "translation": "sein / sich befinden"
+                        "thai": "ไม่",
+                        "transliteration": "mâi",
+                        "translation": "nicht"
                       },
                       {
                         "thai": "หิว",
                         "transliteration": "hǐu",
                         "translation": "Hunger haben"
+                      },
+                      {
+                        "thai": "งั้น",
+                        "transliteration": "ngán",
+                        "translation": "dann / in dem Fall"
+                      },
+                      {
+                        "thai": "ดื่ม",
+                        "transliteration": "dʉ̀ʉm",
+                        "translation": "trinken"
+                      },
+                      {
+                        "thai": "ก็",
+                        "transliteration": "gɔ̂ɔ",
+                        "translation": "auch / dann"
+                      },
+                      {
+                        "thai": "ไป",
+                        "transliteration": "bpai",
+                        "translation": "gehen"
                       },
                       {
                         "thai": "ทำไม",
@@ -29110,178 +29113,154 @@
                         "translation": "nicht gut"
                       },
                       {
+                        "thai": "ไม่เป็นไร",
+                        "transliteration": "mâi bpen rai",
+                        "translation": "kein Problem"
+                      },
+                      {
+                        "thai": "พรุ่งนี้",
+                        "transliteration": "phrûng-níi",
+                        "translation": "morgen"
+                      },
+                      {
+                        "thai": "ได้",
+                        "transliteration": "dâi",
+                        "translation": "können"
+                      },
+                      {
                         "thai": "มา",
                         "transliteration": "maa",
                         "translation": "kommen"
                       },
                       {
-                        "thai": "ไป",
-                        "transliteration": "bpai",
-                        "translation": "gehen"
-                      },
-                      {
                         "thai": "สบาย",
                         "transliteration": "sà-baai",
-                        "translation": "gut / wohl"
+                        "translation": "gesund / wohl"
                       },
                       {
-                        "thai": "ที่ไหน",
-                        "transliteration": "thîi-nǎi",
-                        "translation": "wo"
+                        "thai": "จะ",
+                        "transliteration": "jà",
+                        "translation": "werden / vorhaben"
                       },
                       {
                         "thai": "หา",
                         "transliteration": "hǎa",
-                        "translation": "suchen / zu jemandem gehen"
+                        "translation": "besuchen / zu jemandem gehen"
                       },
                       {
-                        "thai": "งั้น",
-                        "transliteration": "ngán",
-                        "translation": "dann / in diesem Fall"
+                        "thai": "ที่ไหน",
+                        "transliteration": "thîi-nǎi",
+                        "translation": "wo / wohin"
                       }
-                    ]
+                    ],
+                    "note": "Die ersten wichtigen Alltagsverben und das Grundprinzip der Verneinung mit ไม่."
                   }
                 ],
-                "patternLead": "🧠 Das neue automatische Muster",
+                "patternLead": "Wichtiges Muster",
                 "pattern": {
-                  "thai": "ตอนนี้ผมอยู่ที่ร้านอาหาร",
-                  "transliteration": "dton-níi phǒm yùu thîi ráan aa-hǎan",
-                  "translation": "Jetzt bin ich im Restaurant."
+                  "thai": "ผมไม่กินครับ",
+                  "transliteration": "phǒm mâi gin khráp",
+                  "translation": "Ich esse nicht."
                 },
                 "discoveries": [
                   {
-                    "thai": "คุณเป็นลูกค้าใช่ไหม",
-                    "transliteration": "khun bpen lûuk-kháa châi mái",
-                    "translation": "Du bist Kunde, oder?"
+                    "thai": "คุณไม่ไปโรงเรียนเหรอ",
+                    "transliteration": "khun mâi bpai rooŋ-rian rǒ̌",
+                    "translation": "Gehst du nicht zur Schule?"
+                  },
+                  {
+                    "thai": "เขาไม่สบาย วันนี้เขาไม่มา",
+                    "transliteration": "kǎo mâi sà-baai wan-níi kǎo mâi maa",
+                    "translation": "Ihm geht es nicht gut, heute kommt er nicht."
                   }
                 ],
-                "closing": "Und jetzt schon mit alter Grammatik:"
+                "closing": "Das Verneinungswort ไม่ steht direkt vor dem Verb oder dem Zustandswort (nicht essen, nicht gehen, nicht gut)."
               },
               "completion": {
-                "title": "FOUNDATION BLOCK 1 COMPLETE",
-                "heading": "Neue Wörter dieses Blocks",
-                "message": "Einige davon sind bewusst in sehr kleinen Dosen eingeführt worden. Das Ziel ist nicht, in 50 Sätzen möglichst viele Wörter abzuhaken, sondern sie sofort mehrfach zu erleben. Genau das verlangt das Masterkonzept. ",
-                "lead": "🧠 Das neue automatische Muster",
-                "wordSectionTitle": "Und jetzt schon mit alter Grammatik:",
-                "words": [
+                "title": "🏆 600 / 1000 · FOUNDATION BLOCK 1 COMPLETE",
+                "sentenceRange": "501–600",
+                "progress": "Verneinung von Verben, Fragen mit ทำไม & Antworten mit ยังไม่",
+                "sections": [
                   {
-                    "thai": "ไม่",
-                    "transliteration": "mâi",
-                    "translation": "nicht"
-                  },
-                  {
-                    "thai": "กิน",
-                    "transliteration": "gin",
-                    "translation": "essen"
-                  },
-                  {
-                    "thai": "ดื่ม",
-                    "transliteration": "dʉ̀ʉm",
-                    "translation": "trinken"
-                  },
-                  {
-                    "thai": "อยู่",
-                    "transliteration": "yùu",
-                    "translation": "sein / sich befinden"
-                  },
-                  {
-                    "thai": "หิว",
-                    "transliteration": "hǐu",
-                    "translation": "Hunger haben"
-                  },
-                  {
-                    "thai": "ทำไม",
-                    "transliteration": "tham-mai",
-                    "translation": "warum"
-                  },
-                  {
-                    "thai": "ไม่ดี",
-                    "transliteration": "mâi dii",
-                    "translation": "nicht gut"
-                  },
-                  {
-                    "thai": "มา",
-                    "transliteration": "maa",
-                    "translation": "kommen"
-                  },
-                  {
-                    "thai": "ไป",
-                    "transliteration": "bpai",
-                    "translation": "gehen"
-                  },
-                  {
-                    "thai": "สบาย",
-                    "transliteration": "sà-baai",
-                    "translation": "gut / wohl"
-                  },
-                  {
-                    "thai": "ที่ไหน",
-                    "transliteration": "thîi-nǎi",
-                    "translation": "wo"
-                  },
-                  {
-                    "thai": "หา",
-                    "transliteration": "hǎa",
-                    "translation": "suchen / zu jemandem gehen"
-                  },
-                  {
-                    "thai": "งั้น",
-                    "transliteration": "ngán",
-                    "translation": "dann / in diesem Fall"
+                    "title": "Neue Wörter (Sätze 551–600)",
+                    "words": [
+                      {
+                        "thai": "ทำงาน",
+                        "transliteration": "tham-ngaan",
+                        "translation": "arbeiten"
+                      },
+                      {
+                        "thai": "นอน",
+                        "transliteration": "nɔɔn",
+                        "translation": "schlafen"
+                      },
+                      {
+                        "thai": "ยัง",
+                        "transliteration": "yang",
+                        "translation": "noch"
+                      },
+                      {
+                        "thai": "ทำ",
+                        "transliteration": "tham",
+                        "translation": "machen / tun"
+                      },
+                      {
+                        "thai": "อ่านภาษา",
+                        "transliteration": "àan phaa-sǎa",
+                        "translation": "Sprache lernen"
+                      },
+                      {
+                        "thai": "เหนื่อย",
+                        "transliteration": "nʉ̀ai",
+                        "translation": "müde / erschöpft"
+                      },
+                      {
+                        "thai": "รู้",
+                        "transliteration": "rúu",
+                        "translation": "wissen"
+                      },
+                      {
+                        "thai": "เดี๋ยว",
+                        "transliteration": "dǐao",
+                        "translation": "gleich / bald"
+                      },
+                      {
+                        "thai": "อยาก",
+                        "transliteration": "yàak",
+                        "translation": "wollen / möchten"
+                      },
+                      {
+                        "thai": "อ้าว",
+                        "transliteration": "âao",
+                        "translation": "oh! / nanu!"
+                      },
+                      {
+                        "thai": "ด้วย",
+                        "transliteration": "dûai",
+                        "translation": "mit / auch"
+                      },
+                      {
+                        "thai": "ค่อยๆ",
+                        "transliteration": "khɔ̂i-khɔ̂i",
+                        "translation": "langsam / in Ruhe"
+                      }
+                    ],
+                    "note": "Erweiterung um Alltagsaktivitäten, Wissen, Wollen und Zustände wie müde sein."
                   }
                 ],
-                "questionLead": "🧠 Das neue automatische Muster",
+                "questionLead": "Zentrales Fragemuster",
                 "question": {
-                  "thai": "วันนี้เราเป็นเพื่อนกัน",
-                  "transliteration": "wan-níi rao bpen phʉ̂an kan",
-                  "translation": "Heute sind wir Freunde."
+                  "thai": "ทำไมเขาไม่มา",
+                  "transliteration": "tham-mai kǎo mâi maa",
+                  "translation": "Warum kommt er nicht?"
                 },
-                "answerLead": "🧠 Das neue automatische Muster",
+                "answerLead": "Echte Reaktion",
                 "answer": {
-                  "thai": "เราจะไปกินอาหารกัน",
-                  "transliteration": "rao jà bpai gin aa-hǎan kan",
-                  "translation": "Wir werden zusammen etwas essen gehen."
+                  "thai": "เขาเหนื่อย ยังไม่มาครับ",
+                  "transliteration": "kǎo nʉ̀ai yang mâi maa khráp",
+                  "translation": "Er ist erschöpft, er kommt noch nicht."
                 },
-                "alternativeLead": "🧠 Das neue automatische Muster",
-                "alternative": {
-                  "thai": "คุณอยากไปไหม",
-                  "transliteration": "khun yàak bpai mái",
-                  "translation": "Willst du mitgehen?"
-                },
-                "possessionLead": "🧠 Das neue automatische Muster",
-                "possession": {
-                  "thai": "อยากไปครับ",
-                  "transliteration": "yàak bpai khráp",
-                  "translation": "Ja, ich möchte gehen."
-                },
-                "progressTitle": "Neue Wörter dieses Blocks",
-                "progress": "Einige davon sind bewusst in sehr kleinen Dosen eingeführt worden. Das Ziel ist nicht, in 50 Sätzen möglichst viele Wörter abzuhaken, sondern sie sofort mehrfach zu erleben. Genau das verlangt das Masterkonzept. ",
-                "progressSummary": "Und jetzt schon mit alter Grammatik:",
-                "systemLead": "Und jetzt schon mit alter Grammatik:",
-                "systemExamples": [
-                  {
-                    "thai": "ผมไม่สบายครับ",
-                    "transliteration": "phǒm mâi sà-baai khráp",
-                    "translation": "Mir geht es nicht gut."
-                  },
-                  {
-                    "thai": "อ๋อ ก็ไม่เป็นไรนะ",
-                    "transliteration": "ɔ̌ɔ gɔ̂ɔ mâi bpen-rai ná",
-                    "translation": "Ach so, auch kein Problem."
-                  },
-                  {
-                    "thai": "เดี๋ยวเราไปด้วยกัน",
-                    "transliteration": "dǐao rao bpai dûai-kan",
-                    "translation": "Dann gehen wir später zusammen."
-                  },
-                  {
-                    "thai": "ใช่ครับ ค่อยๆ ไปก็ได้",
-                    "transliteration": "châi khráp khɔ̂i-khɔ̂i bpai gɔ̂ɔ dâi",
-                    "translation": "Ja, wir können es langsam angehen."
-                  }
-                ],
-                "final": "Neue Wörter dieses Blocks",
-                "finalProgress": "Einige davon sind bewusst in sehr kleinen Dosen eingeführt worden. Das Ziel ist nicht, in 50 Sätzen möglichst viele Wörter abzuhaken, sondern sie sofort mehrfach zu erleben. Genau das verlangt das Masterkonzept. "
+                "closing": "600 Sätze: Du kannst jetzt nicht nur Identitäten benennen, sondern Verben verneinen und nach Gründen fragen."
               }
             },
             {
@@ -33827,37 +33806,47 @@
                 }
               ],
               "midpointReminder": {
-                "title": "💎 REMINDER · 601–650",
-                "message": "🆕 Neue Wörter dieses Abschnitts",
-                "lead": "Diese Wörter sind jetzt nicht isoliert eingeführt worden, sondern direkt in bereits bekannte Strukturen eingebaut. Das entspricht dem MasterPrompt: neue Wörter mit bereits bekannter Grammatik, während ไม่ gleichzeitig mit bekannten Mustern weiterläuft. ",
+                "title": "💎 REMINDER · SÄTZE 601–650",
+                "message": "Vorlieben mit ชอบ & Handlungen mit ไม่ต้อง",
+                "lead": "Was du gerade gelernt hast",
                 "sections": [
                   {
-                    "title": "🆕 Neue Wörter dieses Abschnitts",
+                    "title": "Neue Wörter",
                     "words": [
                       {
-                        "thai": "กิน",
-                        "transliteration": "gin",
-                        "translation": "essen"
+                        "thai": "ตอน",
+                        "transliteration": "dton",
+                        "translation": "Zeit / zur Zeit"
                       },
                       {
-                        "thai": "ดื่ม",
-                        "transliteration": "dʉ̀ʉm",
-                        "translation": "trinken"
+                        "thai": "เช้า",
+                        "transliteration": "cháo",
+                        "translation": "Morgen / morgens"
                       },
                       {
-                        "thai": "นอน",
-                        "transliteration": "nɔɔn",
-                        "translation": "schlafen"
+                        "thai": "ง่าย",
+                        "transliteration": "ngâai",
+                        "translation": "einfach / leicht"
                       },
                       {
-                        "thai": "หิว",
-                        "transliteration": "hǐu",
-                        "translation": "Hunger haben"
+                        "thai": "ชอบ",
+                        "transliteration": "chɔ̂ɔp",
+                        "translation": "mögen / gern haben"
+                      },
+                      {
+                        "thai": "ล่ะ",
+                        "transliteration": "lâ",
+                        "translation": "und ...? / was ist mit ...?"
                       },
                       {
                         "thai": "พัก",
                         "transliteration": "phák",
-                        "translation": "sich ausruhen"
+                        "translation": "sich ausruhen / Pause"
+                      },
+                      {
+                        "thai": "ขอบคุณ",
+                        "transliteration": "khɔ̀ɔp-khun",
+                        "translation": "danke"
                       },
                       {
                         "thai": "รอ",
@@ -33865,153 +33854,184 @@
                         "translation": "warten"
                       },
                       {
-                        "thai": "กลับ",
-                        "transliteration": "glàp",
-                        "translation": "zurückgehen / zurückkommen"
+                        "thai": "เพื่อน",
+                        "transliteration": "phʉ̂an",
+                        "translation": "Freund"
                       },
                       {
-                        "thai": "ต้อง",
-                        "transliteration": "dtɔ̂ng",
-                        "translation": "müssen"
+                        "thai": "อาจ",
+                        "transliteration": "àat",
+                        "translation": "vielleicht"
+                      },
+                      {
+                        "thai": "กลับ",
+                        "transliteration": "glàp",
+                        "translation": "zurückgehen"
+                      },
+                      {
+                        "thai": "เหมือนกัน",
+                        "transliteration": "mʉ̌ʉan-kan",
+                        "translation": "auch / ebenfalls"
+                      },
+                      {
+                        "thai": "ไม่ต้อง",
+                        "transliteration": "mâi dtɔ̂ng",
+                        "translation": "nicht müssen / brauchst nicht"
                       },
                       {
                         "thai": "รีบ",
                         "transliteration": "rîip",
                         "translation": "sich beeilen"
-                      },
-                      {
-                        "thai": "เหมือนกัน",
-                        "transliteration": "mʉ̌ʉan-kan",
-                        "translation": "auch / ebenfalls / gleich"
                       }
-                    ]
+                    ],
+                    "note": "Vorlieben verneinen (nicht mögen) und ausdrücken, dass man etwas nicht tun muss."
                   }
                 ],
-                "patternLead": "🧠 Was wir inzwischen verbinden können",
+                "patternLead": "Wichtiges Muster",
                 "pattern": {
-                  "thai": "ตอนเช้าผมกินข้าว",
-                  "transliteration": "dton-cháo phǒm gin khâao",
-                  "translation": "Morgens esse ich Reis."
+                  "thai": "ไม่ต้องรีบ",
+                  "transliteration": "mâi dtɔ̂ng rîip",
+                  "translation": "Du brauchst dich nicht zu beeilen."
                 },
                 "discoveries": [
                   {
-                    "thai": "คุณกินข้าวไหม",
-                    "transliteration": "khun gin khâao mái",
-                    "translation": "Isst du?"
+                    "thai": "วันนี้ผมไม่กินกาแฟ",
+                    "transliteration": "wan-níi phǒm mâi gin gaa-fɛɛ",
+                    "translation": "Heute trinke ich keinen Kaffee."
+                  },
+                  {
+                    "thai": "เขาอาจไม่มา",
+                    "transliteration": "kǎo àat mâi maa",
+                    "translation": "Er kommt vielleicht nicht."
                   }
                 ],
-                "closing": "Und mit bereits bekannten Strukturen:"
+                "closing": "Mit ไม่ชอบ sagst du, was du nicht magst. Mit ไม่ต้อง drückst du aus, dass etwas nicht nötig ist."
               },
               "completion": {
-                "title": "FOUNDATION BLOCK 2 COMPLETE",
-                "heading": "🆕 Neue Wörter dieses Abschnitts",
-                "message": "Diese Wörter sind jetzt nicht isoliert eingeführt worden, sondern direkt in bereits bekannte Strukturen eingebaut. Das entspricht dem MasterPrompt: neue Wörter mit bereits bekannter Grammatik, während ไม่ gleichzeitig mit bekannten Mustern weiterläuft. ",
-                "lead": "🧠 Was wir inzwischen verbinden können",
-                "wordSectionTitle": "Und mit bereits bekannten Strukturen:",
-                "words": [
+                "title": "🏆 700 / 1000 · FOUNDATION BLOCK 2 COMPLETE",
+                "sentenceRange": "601–700",
+                "progress": "Zeitangaben, Geschmäcker, oder noch nicht? (หรือยัง) & volle Verneinung mit เลย",
+                "sections": [
                   {
-                    "thai": "กิน",
-                    "transliteration": "gin",
-                    "translation": "essen"
-                  },
-                  {
-                    "thai": "ดื่ม",
-                    "transliteration": "dʉ̀ʉm",
-                    "translation": "trinken"
-                  },
-                  {
-                    "thai": "นอน",
-                    "transliteration": "nɔɔn",
-                    "translation": "schlafen"
-                  },
-                  {
-                    "thai": "หิว",
-                    "transliteration": "hǐu",
-                    "translation": "Hunger haben"
-                  },
-                  {
-                    "thai": "พัก",
-                    "transliteration": "phák",
-                    "translation": "sich ausruhen"
-                  },
-                  {
-                    "thai": "รอ",
-                    "transliteration": "rɔɔ",
-                    "translation": "warten"
-                  },
-                  {
-                    "thai": "กลับ",
-                    "transliteration": "glàp",
-                    "translation": "zurückgehen / zurückkommen"
-                  },
-                  {
-                    "thai": "ต้อง",
-                    "transliteration": "dtɔ̂ng",
-                    "translation": "müssen"
-                  },
-                  {
-                    "thai": "รีบ",
-                    "transliteration": "rîip",
-                    "translation": "sich beeilen"
-                  },
-                  {
-                    "thai": "เหมือนกัน",
-                    "transliteration": "mʉ̌ʉan-kan",
-                    "translation": "auch / ebenfalls / gleich"
+                    "title": "Neue Wörter (Sätze 651–700)",
+                    "words": [
+                      {
+                        "thai": "เมื่อวาน",
+                        "transliteration": "mʉ̂a-waan",
+                        "translation": "gestern"
+                      },
+                      {
+                        "thai": "ทั้งวัน",
+                        "transliteration": "tháng-wan",
+                        "translation": "den ganzen Tag"
+                      },
+                      {
+                        "thai": "ถึง",
+                        "transliteration": "thʉ̌ng",
+                        "translation": "deshalb / bis"
+                      },
+                      {
+                        "thai": "ไหน",
+                        "transliteration": "nǎi",
+                        "translation": "wo / wohin"
+                      },
+                      {
+                        "thai": "หรือยัง",
+                        "transliteration": "rʉ̌ʉ yang",
+                        "translation": "oder noch nicht? (Frageeinheit)"
+                      },
+                      {
+                        "thai": "เถอะ",
+                        "transliteration": "thə̀",
+                        "translation": "los! / doch"
+                      },
+                      {
+                        "thai": "อีก",
+                        "transliteration": "ìik",
+                        "translation": "noch / wieder"
+                      },
+                      {
+                        "thai": "นิดเดียว",
+                        "transliteration": "nít-diao",
+                        "translation": "nur ein bisschen"
+                      },
+                      {
+                        "thai": "เผ็ด",
+                        "transliteration": "phèt",
+                        "translation": "scharf"
+                      },
+                      {
+                        "thai": "อัน",
+                        "transliteration": "an",
+                        "translation": "Stück / Ding"
+                      },
+                      {
+                        "thai": "อร่อย",
+                        "transliteration": "a-rɔ̀i",
+                        "translation": "lecker"
+                      },
+                      {
+                        "thai": "หมด",
+                        "transliteration": "mòt",
+                        "translation": "alle / leer"
+                      },
+                      {
+                        "thai": "เย็น",
+                        "transliteration": "yen",
+                        "translation": "kalt / Abend"
+                      },
+                      {
+                        "thai": "เอา",
+                        "transliteration": "ao",
+                        "translation": "nehmen / wollen"
+                      },
+                      {
+                        "thai": "เลย",
+                        "transliteration": "loei",
+                        "translation": "überhaupt (gar nicht)"
+                      },
+                      {
+                        "thai": "วัน",
+                        "transliteration": "wan",
+                        "translation": "Tag"
+                      },
+                      {
+                        "thai": "หยุด",
+                        "transliteration": "yùt",
+                        "translation": "frei haben / anhalten"
+                      },
+                      {
+                        "thai": "คืน",
+                        "transliteration": "khʉʉn",
+                        "translation": "Nacht"
+                      },
+                      {
+                        "thai": "ให้",
+                        "transliteration": "hâi",
+                        "translation": "sodass / für"
+                      },
+                      {
+                        "thai": "เต็มที่",
+                        "transliteration": "dtem-thîi",
+                        "translation": "voll und ganz"
+                      }
+                    ],
+                    "note": "Zeitangaben (gestern, heute, nachts), Geschmacksverneinung und Verstärkung mit เลย (gar nicht)."
                   }
                 ],
-                "questionLead": "🧠 Was wir inzwischen verbinden können",
+                "questionLead": "Zentrales Fragemuster",
                 "question": {
-                  "thai": "วันนี้คุณไม่ไปไหนเลยเหรอ",
-                  "transliteration": "wan-níi khun mâi bpai nǎi loei rǒ̌",
-                  "translation": "Gehst du heute wirklich nirgendwohin?"
+                  "thai": "ตอนนี้คุณนอนหรือยัง",
+                  "transliteration": "dton-níi khun nɔɔn rʉ̌ʉ yang",
+                  "translation": "Schläfst du jetzt oder noch nicht?"
                 },
-                "answerLead": "🧠 Was wir inzwischen verbinden können",
+                "answerLead": "Echte Reaktion",
                 "answer": {
-                  "thai": "ไม่ไปครับ",
-                  "transliteration": "mâi bpai khráp",
-                  "translation": "Nein, ich gehe nirgendwohin."
+                  "thai": "ยังไม่นอนครับ ไม่เหนื่อยเลย",
+                  "transliteration": "yang mâi nɔɔn khráp mâi nʉ̀ai loei",
+                  "translation": "Ich schlafe noch nicht, ich bin überhaupt nicht müde."
                 },
-                "alternativeLead": "🧠 Was wir inzwischen verbinden können",
-                "alternative": {
-                  "thai": "แล้วไม่ทำงานด้วยเหรอ",
-                  "transliteration": "lɛ́ɛo mâi tham-ngaan dûai rǒ̌",
-                  "translation": "Und du arbeitest auch nicht?"
-                },
-                "possessionLead": "🧠 Was wir inzwischen verbinden können",
-                "possession": {
-                  "thai": "ไม่ทำครับ",
-                  "transliteration": "mâi tham khráp",
-                  "translation": "Nein, mache ich nicht."
-                },
-                "progressTitle": "🆕 Neue Wörter dieses Abschnitts",
-                "progress": "Diese Wörter sind jetzt nicht isoliert eingeführt worden, sondern direkt in bereits bekannte Strukturen eingebaut. Das entspricht dem MasterPrompt: neue Wörter mit bereits bekannter Grammatik, während ไม่ gleichzeitig mit bekannten Mustern weiterläuft. ",
-                "progressSummary": "Und mit bereits bekannten Strukturen:",
-                "systemLead": "Und mit bereits bekannten Strukturen:",
-                "systemExamples": [
-                  {
-                    "thai": "แล้วคืนนี้ไม่นอนเหรอ",
-                    "transliteration": "lɛ́ɛo khʉʉn-níi mâi nɔɔn rǒ̌",
-                    "translation": "Und schläfst du heute Nacht nicht?"
-                  },
-                  {
-                    "thai": "นอนครับ แต่ยังไม่นอน",
-                    "transliteration": "nɔɔn khráp dtɛ̀ɛ yang mâi nɔɔn",
-                    "translation": "Doch, aber noch schlafe ich nicht."
-                  },
-                  {
-                    "thai": "อ๋อ เข้าใจแล้ว",
-                    "transliteration": "ɔ̌ɔ khâo-jai lɛ́ɛo",
-                    "translation": "Ach so, verstanden."
-                  },
-                  {
-                    "thai": "งั้นก็พักให้เต็มที่นะ",
-                    "transliteration": "ngán gɔ̂ɔ phák hâi dtem-thîi ná",
-                    "translation": "Dann ruh dich richtig aus.🏆 700 / 1000FOUNDATION BLOCK 2 COMPLETEHier merkt man hoffentlich jetzt deutlich den Unterschied zum ersten Versuch:ไม่ wird nicht mehr zwanghaft in eine Satzmatrix gedrückt. Es passiert einfach in Situationen:ไม่กินnicht essenไม่ไปnicht gehenไม่มาnicht kommenไม่ทำงานnicht arbeitenไม่นอนnicht schlafenund dann zunehmend als echte Gesprächsreaktion:ทำไมไม่ไปWarum gehst du nicht?ยังไม่กลับครับIch gehe noch nicht zurück.ไม่ไปไหนเลยเหรอDu gehst wirklich nirgendwohin?นอนครับ แต่ยังไม่นอนDoch, aber ich schlafe noch nicht.Genau diese Entwicklung — Grundstruktur → Variation → Kombination → natürliche Situation → etwas längere Äußerungen — ist die im MasterPrompt festgelegte Progression.Gesamtfortschritt: 700 / 15.000Gesamtsätze 701–800Foundation Block 3🧱 Mini-Situation 21 · Vor dem Restaurant701–710"
-                  }
-                ],
-                "final": "🆕 Neue Wörter dieses Abschnitts",
-                "finalProgress": "Diese Wörter sind jetzt nicht isoliert eingeführt worden, sondern direkt in bereits bekannte Strukturen eingebaut. Das entspricht dem MasterPrompt: neue Wörter mit bereits bekannter Grammatik, während ไม่ gleichzeitig mit bekannten Mustern weiterläuft. "
+                "closing": "700 Sätze gemeistert: Du verbindest Verneinungen nun mit präzisen Zeiten und drückst aus, ob etwas schon oder noch nicht geschehen ist."
               }
             },
             {
@@ -38829,89 +38849,212 @@
                 }
               ],
               "midpointReminder": {
-                "title": "💎 REMINDER · 701–750",
-                "message": "Hier wird ไม่ jetzt zunehmend weniger als isolierte „Verneinungsform“ wahrgenommen und mehr als ganz normales Teilchen im Gespräch:",
-                "lead": "Der aktuelle Boss bleibt dabei der Fokus, aber die alten Strukturen werden bewusst weiterverwendet. Das entspricht der Vorgabe, dass ein neuer Boss kein Neustart, sondern eine neue grammatische Schicht im bereits aufgebauten Netzwerk ist.",
+                "title": "💎 REMINDER · SÄTZE 701–750",
+                "message": "Noch nie getan (ไม่เคย) & Wünsche verneinen (ไม่อยาก)",
+                "lead": "Was du gerade gelernt hast",
                 "sections": [
                   {
-                    "title": "Hier wird ไม่ jetzt zunehmend weniger als isolierte „Verneinungsform“ wahrgenommen und mehr als ganz normales Teilchen im Gespräch:",
-                    "words": []
+                    "title": "Neue Wörter",
+                    "words": [
+                      {
+                        "thai": "เคย",
+                        "transliteration": "khoei",
+                        "translation": "schon einmal"
+                      },
+                      {
+                        "thai": "เยอะ",
+                        "transliteration": "yə́",
+                        "translation": "viel"
+                      },
+                      {
+                        "thai": "ก่อน",
+                        "transliteration": "gɔ̀ɔn",
+                        "translation": "vorher / erst mal"
+                      },
+                      {
+                        "thai": "กับ",
+                        "transliteration": "gàp",
+                        "translation": "mit / und"
+                      },
+                      {
+                        "thai": "โทรศัพท์",
+                        "transliteration": "thoo-rá-sàp",
+                        "translation": "Telefon"
+                      },
+                      {
+                        "thai": "ดัง",
+                        "transliteration": "dang",
+                        "translation": "klingeln / laut"
+                      },
+                      {
+                        "thai": "โทรมา",
+                        "transliteration": "thoo maa",
+                        "translation": "anrufen"
+                      },
+                      {
+                        "thai": "วันเกิด",
+                        "transliteration": "wan-gə̀ət",
+                        "translation": "Geburtstag"
+                      },
+                      {
+                        "thai": "ความลับ",
+                        "transliteration": "khwaam-láp",
+                        "translation": "Geheimnis"
+                      },
+                      {
+                        "thai": "มี",
+                        "transliteration": "mii",
+                        "translation": "haben / es gibt"
+                      },
+                      {
+                        "thai": "บอก",
+                        "transliteration": "bɔ̀ɔk",
+                        "translation": "sagen / verraten"
+                      },
+                      {
+                        "thai": "ฮ่าๆ",
+                        "transliteration": "hâa-hâa",
+                        "translation": "haha"
+                      }
+                    ],
+                    "note": "Erfahrungen mit เคย (schon mal / noch nie) und alltägliche Kommunikation am Telefon."
                   }
                 ],
-                "patternLead": "🧠 Und besonders wichtig:",
+                "patternLead": "Wichtiges Muster",
                 "pattern": {
-                  "thai": "วันนี้เราไปกินอาหารกันไหม",
-                  "transliteration": "wan-níi rao bpai gin aa-hǎan kan mái",
-                  "translation": "Wollen wir heute zusammen essen gehen?"
+                  "thai": "วันนี้ผมไม่อยากกินอาหารไทย",
+                  "transliteration": "wan-níi phǒm mâi yàak gin aa-hǎan Thai",
+                  "translation": "Heute möchte ich kein thailändisches Essen."
                 },
                 "discoveries": [
                   {
-                    "thai": "ไปครับ",
-                    "transliteration": "bpai khráp",
-                    "translation": "Ja, gehen wir."
+                    "thai": "ผมไม่เคยมาที่นี่",
+                    "transliteration": "phǒm mâi khoei maa thîi-nîi",
+                    "translation": "Ich war noch nie hier."
+                  },
+                  {
+                    "thai": "ผมไม่บอกครับ",
+                    "transliteration": "phǒm mâi bɔ̀ɔk khráp",
+                    "translation": "Ich verrate es nicht."
                   }
                 ],
-                "closing": "Der aktuelle Boss bleibt dabei der Fokus, aber die alten Strukturen werden bewusst weiterverwendet. Das entspricht der Vorgabe, dass ein neuer Boss kein Neustart, sondern eine neue grammatische Schicht im bereits aufgebauten Netzwerk ist."
+                "closing": "Mit ไม่เคย sagst du, dass du etwas noch nie gemacht hast. Mit ไม่อยาก verneinst du deinen Wunsch (keine Lust / nicht wollen)."
               },
               "completion": {
-                "title": "FOUNDATION BLOCK 3 COMPLETE",
-                "heading": "Hier wird ไม่ jetzt zunehmend weniger als isolierte „Verneinungsform“ wahrgenommen und mehr als ganz normales Teilchen im Gespräch:",
-                "message": "Der aktuelle Boss bleibt dabei der Fokus, aber die alten Strukturen werden bewusst weiterverwendet. Das entspricht der Vorgabe, dass ein neuer Boss kein Neustart, sondern eine neue grammatische Schicht im bereits aufgebauten Netzwerk ist.",
-                "lead": "🧠 Und besonders wichtig:",
-                "wordSectionTitle": "ก็ไม่...dann eben nicht ...",
-                "words": [],
-                "questionLead": "🧠 Und besonders wichtig:",
-                "question": {
-                  "thai": "เมื่อคืนคุณนอนไหม",
-                  "transliteration": "mʉ̂a-khʉʉn khun nɔɔn mái",
-                  "translation": "Hast du letzte Nacht geschlafen?"
-                },
-                "answerLead": "🧠 Und besonders wichtig:",
-                "answer": {
-                  "thai": "นอนครับ",
-                  "transliteration": "nɔɔn khráp",
-                  "translation": "Ja."
-                },
-                "alternativeLead": "🧠 Und besonders wichtig:",
-                "alternative": {
-                  "thai": "เมื่อคืนไม่ง่วงไม่ใช่เหรอ",
-                  "transliteration": "mʉ̂a-khʉʉn mâi ngûang mâi châi rǒ̌",
-                  "translation": "Du warst gestern Abend doch nicht müde, oder?"
-                },
-                "possessionLead": "🧠 Und besonders wichtig:",
-                "possession": {
-                  "thai": "ใช่ครับ แต่พอถึงเวลาผมก็นอน",
-                  "transliteration": "châi khráp dtɛ̀ɛ phɔɔ thʉ̌ng wee-laa phǒm gɔ̂ɔ nɔɔn",
-                  "translation": "Stimmt, aber als es Zeit war, bin ich schlafen gegangen."
-                },
-                "progressTitle": "Hier wird ไม่ jetzt zunehmend weniger als isolierte „Verneinungsform“ wahrgenommen und mehr als ganz normales Teilchen im Gespräch:",
-                "progress": "Der aktuelle Boss bleibt dabei der Fokus, aber die alten Strukturen werden bewusst weiterverwendet. Das entspricht der Vorgabe, dass ein neuer Boss kein Neustart, sondern eine neue grammatische Schicht im bereits aufgebauten Netzwerk ist.",
-                "progressSummary": "ก็ไม่...dann eben nicht ...",
-                "systemLead": "ก็ไม่...dann eben nicht ...",
-                "systemExamples": [
+                "title": "🏆 800 / 1000 · FOUNDATION BLOCK 3 COMPLETE",
+                "sentenceRange": "701–800",
+                "progress": "Öffnungszeiten, veränderte Pläne (ไม่...แล้ว) & Befindlichkeiten",
+                "sections": [
                   {
-                    "thai": "อ๋อ งั้นก็ดี",
-                    "transliteration": "ɔ̌ɔ ngán gɔ̂ɔ dii",
-                    "translation": "Ach so, dann ist ja gut."
-                  },
-                  {
-                    "thai": "วันนี้คุณจะกินข้าวไหม",
-                    "transliteration": "wan-níi khun jà gin khâao mái",
-                    "translation": "Wirst du heute etwas essen?"
-                  },
-                  {
-                    "thai": "กินครับ เมื่อเช้ายังไม่ได้กิน",
-                    "transliteration": "gin khráp mʉ̂a-cháo yang mâi dâi gin",
-                    "translation": "Ja. Heute Morgen habe ich noch nichts gegessen."
-                  },
-                  {
-                    "thai": "งั้นไปกินกันก่อนทำงานนะ",
-                    "transliteration": "ngán bpai gin kan gɔ̀ɔn tham-ngaan ná",
-                    "translation": "Dann lass uns vor der Arbeit erst etwas essen.🏆 800 / 1000FOUNDATION BLOCK 3 COMPLETEBoss 2 · ไม่: 300 / 500Gesamt: 800 SätzeDer wichtige Fortschritt in diesem Block ist, dass ไม่ jetzt mit immer mehr bereits bekannten Strukturen zusammenspielt:ไม่ + Verb → ไม่กิน, ไม่ไป, ไม่มา, ไม่ทำ ยังไม่ + Verb → ยังไม่ไป, ยังไม่มา, ยังไม่กิน ทำไมไม่ + Verb → ทำไมไม่กิน, ทำไมไม่ไป ไม่...เหรอ → ไม่เปิดเหรอ, ไม่ง่วงเหรอ ก็ไม่... → ก็ไม่ซื้อแล้ว, ก็ไม่เป็นไร ไม่ + Adjektiv/Zustand → ไม่หิว, ไม่สบาย, ไม่เหนื่อย ไม่ได้ beginnt jetzt ganz vorsichtig aufzutauchen, wie es die Roadmap für Boss 2 vorsieht.⚔️ GRAMMATIKBOSS 2 · ไม่Gesamtsätze 801–900Foundation Block 4🧱 Mini-Situation 31 · Frühstück vor der Arbeit801–810"
+                    "title": "Neue Wörter (Sätze 751–800)",
+                    "words": [
+                      {
+                        "thai": "ซื้อ",
+                        "transliteration": "sʉ́ʉ",
+                        "translation": "kaufen"
+                      },
+                      {
+                        "thai": "ปิด",
+                        "transliteration": "bpìt",
+                        "translation": "schließen / zu"
+                      },
+                      {
+                        "thai": "เปิด",
+                        "transliteration": "bpə̀ət",
+                        "translation": "öffnen / auf"
+                      },
+                      {
+                        "thai": "แทน",
+                        "transliteration": "thɛɛn",
+                        "translation": "stattdessen"
+                      },
+                      {
+                        "thai": "นั้น",
+                        "transliteration": "nán",
+                        "translation": "jener / das"
+                      },
+                      {
+                        "thai": "เมื่อกี้",
+                        "transliteration": "mʉ̂a-gîi",
+                        "translation": "vorhin / eben"
+                      },
+                      {
+                        "thai": "ว่า",
+                        "transliteration": "wâa",
+                        "translation": "dass / sagen"
+                      },
+                      {
+                        "thai": "คนเดียว",
+                        "transliteration": "khon-diao",
+                        "translation": "allein"
+                      },
+                      {
+                        "thai": "ต้อง",
+                        "transliteration": "dtɔ̂ng",
+                        "translation": "müssen"
+                      },
+                      {
+                        "thai": "ง่วง",
+                        "transliteration": "ngûang",
+                        "translation": "müde / schläfrig"
+                      },
+                      {
+                        "thai": "หวังว่า",
+                        "transliteration": "wǎng wâa",
+                        "translation": "hoffen, dass"
+                      },
+                      {
+                        "thai": "อย่างนั้น",
+                        "transliteration": "yàang nán",
+                        "translation": "so / auf die Art"
+                      },
+                      {
+                        "thai": "ฝัน",
+                        "transliteration": "fǎn",
+                        "translation": "träumen / Traum"
+                      },
+                      {
+                        "thai": "เมื่อคืน",
+                        "transliteration": "mʉ̂a-khʉʉn",
+                        "translation": "letzte Nacht"
+                      },
+                      {
+                        "thai": "พอ",
+                        "transliteration": "phɔɔ",
+                        "translation": "genug / als"
+                      },
+                      {
+                        "thai": "เวลา",
+                        "transliteration": "wee-laa",
+                        "translation": "Zeit"
+                      },
+                      {
+                        "thai": "ไหว",
+                        "transliteration": "wǎi",
+                        "translation": "schaffen / können"
+                      },
+                      {
+                        "thai": "เมื่อ",
+                        "transliteration": "mʉ̂a",
+                        "translation": "als / damals"
+                      }
+                    ],
+                    "note": "Über geschlossene Läden sprechen, Pläne abändern und körperliche Grenzen ausdrücken (nicht mehr schaffen)."
                   }
                 ],
-                "final": "Hier wird ไม่ jetzt zunehmend weniger als isolierte „Verneinungsform“ wahrgenommen und mehr als ganz normales Teilchen im Gespräch:",
-                "finalProgress": "Der aktuelle Boss bleibt dabei der Fokus, aber die alten Strukturen werden bewusst weiterverwendet. Das entspricht der Vorgabe, dass ein neuer Boss kein Neustart, sondern eine neue grammatische Schicht im bereits aufgebauten Netzwerk ist."
+                "questionLead": "Situatives Fragemuster",
+                "question": {
+                  "thai": "วันนี้ร้านไม่เปิดเหรอ",
+                  "transliteration": "wan-níi ráan mâi bpə̀ət rǒ̌",
+                  "translation": "Hat der Laden heute nicht geöffnet?"
+                },
+                "answerLead": "Echte Planänderung",
+                "answer": {
+                  "thai": "ไม่เปิดครับ เราไม่ซื้อแล้ว",
+                  "transliteration": "mâi bpə̀ət khráp rao mâi sʉ́ʉ lɛ́ɛo",
+                  "translation": "Nein, dann kaufen wir jetzt eben nichts mehr."
+                },
+                "closing": "800 Sätze geschafft: Du reagierst sicher auf spontane Situationen, geschlossene Geschäfte und Planänderungen."
               }
             },
             {
@@ -43675,32 +43818,42 @@
                 }
               ],
               "midpointReminder": {
-                "title": "🧠 REMINDER · Sätze 851–900",
-                "message": "In diesem Abschnitt wurde ไม่ immer stärker in echten Gesprächszusammenhängen verwendet, statt isoliert geübt zu werden.",
-                "lead": "Die wichtigsten Muster",
+                "title": "💎 REMINDER · SÄTZE 801–850",
+                "message": "Vergangenes verneinen (ไม่ได้) & Bedingungen (ถ้า...)",
+                "lead": "Was du gerade gelernt hast",
                 "sections": [
                   {
-                    "title": "Die wichtigsten Muster",
+                    "title": "Neue Wörter",
                     "words": [
                       {
-                        "thai": "เช้า",
-                        "transliteration": "cháo",
-                        "translation": "Morgen / früh"
+                        "thai": "ไข่",
+                        "transliteration": "khài",
+                        "translation": "Ei"
                       },
                       {
-                        "thai": "วันนี้",
-                        "transliteration": "wan-níi",
-                        "translation": "heute"
+                        "thai": "น้อยจัง",
+                        "transliteration": "nɔ́ɔi jang",
+                        "translation": "so wenig"
                       },
                       {
-                        "thai": "เมื่อกี้",
-                        "transliteration": "mʉ̂a-gîi",
-                        "translation": "gerade eben / vorhin"
+                        "thai": "งาน",
+                        "transliteration": "ngaan",
+                        "translation": "Arbeit"
                       },
                       {
-                        "thai": "ข้อความ",
-                        "transliteration": "khɔ̂ɔ-khwaam",
-                        "translation": "Nachricht / Textnachricht"
+                        "thai": "อีกหน่อย",
+                        "transliteration": "ìik nɔ̀i",
+                        "translation": "noch ein bisschen"
+                      },
+                      {
+                        "thai": "สาย",
+                        "transliteration": "sǎai",
+                        "translation": "spät / zu spät"
+                      },
+                      {
+                        "thai": "พูด",
+                        "transliteration": "phûut",
+                        "translation": "sprechen / sagen"
                       },
                       {
                         "thai": "ส่ง",
@@ -43708,19 +43861,29 @@
                         "translation": "schicken / senden"
                       },
                       {
-                        "thai": "เหมือนกัน",
-                        "transliteration": "mʉ̌ʉan-kan",
-                        "translation": "auch / ebenfalls / gleich"
+                        "thai": "ข้อความ",
+                        "transliteration": "khɔ̂ɔ-khwaam",
+                        "translation": "Nachricht"
+                      },
+                      {
+                        "thai": "คง",
+                        "transliteration": "khong",
+                        "translation": "wahrscheinlich"
                       },
                       {
                         "thai": "บ้าง",
                         "transliteration": "bâang",
-                        "translation": "alles / welche / denn (in Fragen)"
+                        "translation": "alles / welche"
                       },
                       {
                         "thai": "จริงด้วย",
                         "transliteration": "jing dûai",
-                        "translation": "stimmt / ach ja, stimmt"
+                        "translation": "stimmt / genau"
+                      },
+                      {
+                        "thai": "โอเค",
+                        "transliteration": "oo-khee",
+                        "translation": "okay"
                       },
                       {
                         "thai": "รถเมล์",
@@ -43728,9 +43891,19 @@
                         "translation": "Bus"
                       },
                       {
+                        "thai": "นาน",
+                        "transliteration": "naan",
+                        "translation": "lange (Dauer)"
+                      },
+                      {
                         "thai": "ประมาณ",
                         "transliteration": "bprà-maan",
                         "translation": "ungefähr"
+                      },
+                      {
+                        "thai": "สิบ",
+                        "transliteration": "sìp",
+                        "translation": "zehn"
                       },
                       {
                         "thai": "นาที",
@@ -43738,9 +43911,19 @@
                         "translation": "Minute"
                       },
                       {
+                        "thai": "ถ้า",
+                        "transliteration": "thâa",
+                        "translation": "wenn / falls"
+                      },
+                      {
+                        "thai": "กว่านี้",
+                        "transliteration": "gwàa níi",
+                        "translation": "länger / mehr"
+                      },
+                      {
                         "thai": "เดิน",
                         "transliteration": "dəən",
-                        "translation": "gehen / zu Fuß gehen"
+                        "translation": "zu Fuß gehen"
                       },
                       {
                         "thai": "ไกล",
@@ -43748,9 +43931,19 @@
                         "translation": "weit"
                       },
                       {
-                        "thai": "เย็น",
-                        "transliteration": "yen",
-                        "translation": "Abend / kühl"
+                        "thai": "นั่นไง",
+                        "transliteration": "nân ngai",
+                        "translation": "da ist es!"
+                      },
+                      {
+                        "thai": "รถ",
+                        "transliteration": "rót",
+                        "translation": "Fahrzeug / Bus"
+                      },
+                      {
+                        "thai": "ใน",
+                        "transliteration": "nai",
+                        "translation": "in / drinnen"
                       },
                       {
                         "thai": "ผัก",
@@ -43758,29 +43951,91 @@
                         "translation": "Gemüse"
                       },
                       {
+                        "thai": "ทุกครั้ง",
+                        "transliteration": "thúk khráng",
+                        "translation": "jedes Mal"
+                      },
+                      {
                         "thai": "ใส่",
                         "transliteration": "sài",
-                        "translation": "hinein tun / hinzufügen"
-                      },
+                        "translation": "hineintun / anziehen"
+                      }
+                    ],
+                    "note": "Vergangene Taten verneinen (nicht getan haben), Zeitspannen und Bedingungen mit ถ้า."
+                  }
+                ],
+                "patternLead": "Wichtiges Muster",
+                "pattern": {
+                  "thai": "เขาไม่ได้พูดอะไร",
+                  "transliteration": "kǎo mâi dâi phûut à-rai",
+                  "translation": "Er hat nichts gesagt."
+                },
+                "discoveries": [
+                  {
+                    "thai": "ถ้าไม่รีบ เดี๋ยวสาย",
+                    "transliteration": "thâa mâi rîip dǐao sǎai",
+                    "translation": "Wenn wir uns nicht beeilen, kommen wir zu spät."
+                  },
+                  {
+                    "thai": "รถเมล์ไม่มา นานแล้ว",
+                    "transliteration": "rót-mee mâi maa naan lɛ́ɛo",
+                    "translation": "Der Bus kommt schon lange nicht."
+                  }
+                ],
+                "closing": "Mit ไม่ได้ + Verb sagst du, dass etwas in der Vergangenheit nicht stattgefunden hat (nicht gesagt, nicht getan)."
+              },
+              "completion": {
+                "title": "🏆 900 / 1000 · FOUNDATION BLOCK 4 COMPLETE",
+                "sentenceRange": "801–900",
+                "progress": "Verneinte Bitten (อย่า...), Verfügbarkeit (ไม่ว่าง) & Nuancen im Alltag",
+                "sections": [
+                  {
+                    "title": "Neue Wörter (Sätze 851–900)",
+                    "words": [
                       {
                         "thai": "บ่าย",
                         "transliteration": "bàai",
                         "translation": "Nachmittag"
                       },
                       {
+                        "thai": "แผน",
+                        "transliteration": "phɛ̌ɛn",
+                        "translation": "Plan"
+                      },
+                      {
+                        "thai": "เล่น",
+                        "transliteration": "lên",
+                        "translation": "spielen / spazieren"
+                      },
+                      {
                         "thai": "ออกไป",
                         "transliteration": "ɔ̀ɔk bpai",
-                        "translation": "hinausgehen / rausgehen"
+                        "translation": "hinausgehen"
+                      },
+                      {
+                        "thai": "นิดหน่อย",
+                        "transliteration": "nít nɔ̀i",
+                        "translation": "ein bisschen"
                       },
                       {
                         "thai": "ดูหนัง",
                         "transliteration": "duu nǎng",
-                        "translation": "einen Film schauen"
+                        "translation": "Film schauen"
+                      },
+                      {
+                        "thai": "หนัง",
+                        "transliteration": "nǎng",
+                        "translation": "Film"
+                      },
+                      {
+                        "thai": "ยาว",
+                        "transliteration": "yaao",
+                        "translation": "lang"
                       },
                       {
                         "thai": "เรื่อง",
                         "transliteration": "rʉ̂ang",
-                        "translation": "Geschichte / Film / Sache"
+                        "translation": "Geschichte / Film"
                       },
                       {
                         "thai": "สั้น",
@@ -43788,74 +44043,24 @@
                         "translation": "kurz"
                       },
                       {
+                        "thai": "ๆ",
+                        "transliteration": "máai-yá-mók",
+                        "translation": "Wiederholung"
+                      },
+                      {
+                        "thai": "ฉัน",
+                        "transliteration": "chǎn",
+                        "translation": "ich"
+                      },
+                      {
                         "thai": "นึกว่า",
                         "transliteration": "nʉ́k wâa",
-                        "translation": "denken / annehmen, dass"
+                        "translation": "dachte, dass"
                       },
                       {
-                        "thai": "ถ้า",
-                        "transliteration": "thâa",
-                        "translation": "wenn / falls"
-                      },
-                      {
-                        "thai": "บอก",
-                        "transliteration": "bɔ̀ɔk",
-                        "translation": "sagen / Bescheid geben"
-                      },
-                      {
-                        "thai": "ด้วย",
-                        "transliteration": "dûai",
-                        "translation": "auch / ebenfalls; zusammen mit"
-                      },
-                      {
-                        "thai": "คราวนี้",
-                        "transliteration": "khraao-níi",
-                        "translation": "dieses Mal"
-                      },
-                      {
-                        "thai": "ลืม",
-                        "transliteration": "lʉʉm",
-                        "translation": "vergessen"
-                      },
-                      {
-                        "thai": "นัด",
-                        "transliteration": "nát",
-                        "translation": "sich verabreden / Termin vereinbaren"
-                      },
-                      {
-                        "thai": "ไหว",
-                        "transliteration": "wǎi",
-                        "translation": "schaffen / dazu in der Lage sein"
-                      },
-                      {
-                        "thai": "จริง",
-                        "transliteration": "jing",
-                        "translation": "wirklich / wahr"
-                      },
-                      {
-                        "thai": "เฉยๆ",
-                        "transliteration": "chʉ̌ʉi-chʉ̌ʉi",
-                        "translation": "einfach ruhig / nichts Besonderes tun"
-                      },
-                      {
-                        "thai": "เต็มที่",
-                        "transliteration": "dtem-thîi",
-                        "translation": "voll und ganz / richtig"
-                      },
-                      {
-                        "thai": "เพิ่ง",
-                        "transliteration": "phə̂ng",
-                        "translation": "gerade erst"
-                      },
-                      {
-                        "thai": "คง",
-                        "transliteration": "khong",
-                        "translation": "wahrscheinlich / wohl"
-                      },
-                      {
-                        "thai": "ทั้งวัน",
-                        "transliteration": "tháng-wan",
-                        "translation": "den ganzen Tag"
+                        "thai": "หวาน",
+                        "transliteration": "wǎan",
+                        "translation": "süß"
                       },
                       {
                         "thai": "สักครู่",
@@ -43863,323 +44068,82 @@
                         "translation": "einen Moment"
                       },
                       {
-                        "thai": "แทน",
-                        "transliteration": "thɛɛn",
-                        "translation": "anstelle von / stattdessen"
+                        "thai": "ว่าจะ",
+                        "transliteration": "wâa jà",
+                        "translation": "vorhaben zu"
                       },
                       {
-                        "thai": "กว่านี้",
-                        "transliteration": "gwàa níi",
-                        "translation": "mehr als das / länger als jetzt"
+                        "thai": "ว่าง",
+                        "transliteration": "wâang",
+                        "translation": "frei / Zeit haben"
                       },
                       {
-                        "thai": "พัก",
-                        "transliteration": "phák",
-                        "translation": "sich ausruhen"
+                        "thai": "เพิ่ง",
+                        "transliteration": "phə̂ng",
+                        "translation": "gerade erst"
                       },
                       {
-                        "thai": "รีบ",
-                        "transliteration": "rîip",
-                        "translation": "sich beeilen"
+                        "thai": "นัด",
+                        "transliteration": "nát",
+                        "translation": "verabredet sein"
                       },
                       {
-                        "thai": "ต้อง",
-                        "transliteration": "dtɔ̂ng",
-                        "translation": "müssen"
+                        "thai": "ได้เลย",
+                        "transliteration": "dâi loei",
+                        "translation": "gerne / abgemacht"
                       },
                       {
-                        "thai": "ไม่ต้อง",
-                        "transliteration": "mâi dtɔ̂ng",
-                        "translation": "nicht müssen / nicht brauchen"
+                        "thai": "คราวนี้",
+                        "transliteration": "khraao-níi",
+                        "translation": "dieses Mal"
+                      },
+                      {
+                        "thai": "อย่า",
+                        "transliteration": "yàa",
+                        "translation": "tu nicht...! / nicht...!"
+                      },
+                      {
+                        "thai": "ลืม",
+                        "transliteration": "lʉʉm",
+                        "translation": "vergessen"
+                      },
+                      {
+                        "thai": "วันอาทิตย์",
+                        "transliteration": "wan-aa-thít",
+                        "translation": "Sonntag"
+                      },
+                      {
+                        "thai": "ค่อย",
+                        "transliteration": "khɔ̂i",
+                        "translation": "erst / später"
+                      },
+                      {
+                        "thai": "ขอ",
+                        "transliteration": "khɔ̌ɔ",
+                        "translation": "bitten / möchten"
+                      },
+                      {
+                        "thai": "เฉยๆ",
+                        "transliteration": "chʉ̌ʉi-chʉ̌ʉi",
+                        "translation": "einfach ruhig bleiben"
                       }
-                    ]
+                    ],
+                    "note": "Negative Aufforderungen mit อย่า (tu nicht), Termine absprechen und Verfügbarkeit klären."
                   }
                 ],
-                "patternLead": "ไม่ + Verb",
-                "pattern": {
-                  "thai": "เช้านี้คุณกินอะไร",
-                  "transliteration": "cháo-níi khun gin à-rai",
-                  "translation": "Was isst du heute Morgen?"
-                },
-                "discoveries": [
-                  {
-                    "thai": "ผมกินข้าวกับไข่",
-                    "transliteration": "phǒm gin khâao gàp khài",
-                    "translation": "Ich esse Reis mit Ei."
-                  }
-                ],
-                "closing": "ไม่...→ nicht müssen ..."
-              },
-              "completion": {
-                "title": "🧠 STAND NACH SATZ 900",
-                "heading": "In diesem Abschnitt wurde ไม่ immer stärker in echten Gesprächszusammenhängen verwendet, statt isoliert geübt zu werden.",
-                "message": "Die wichtigsten Muster",
-                "lead": "ไม่ + Verb",
-                "wordSectionTitle": "ไม่...→ nicht müssen ...",
-                "words": [
-                  {
-                    "thai": "เช้า",
-                    "transliteration": "cháo",
-                    "translation": "Morgen / früh"
-                  },
-                  {
-                    "thai": "วันนี้",
-                    "transliteration": "wan-níi",
-                    "translation": "heute"
-                  },
-                  {
-                    "thai": "เมื่อกี้",
-                    "transliteration": "mʉ̂a-gîi",
-                    "translation": "gerade eben / vorhin"
-                  },
-                  {
-                    "thai": "ข้อความ",
-                    "transliteration": "khɔ̂ɔ-khwaam",
-                    "translation": "Nachricht / Textnachricht"
-                  },
-                  {
-                    "thai": "ส่ง",
-                    "transliteration": "sòng",
-                    "translation": "schicken / senden"
-                  },
-                  {
-                    "thai": "เหมือนกัน",
-                    "transliteration": "mʉ̌ʉan-kan",
-                    "translation": "auch / ebenfalls / gleich"
-                  },
-                  {
-                    "thai": "บ้าง",
-                    "transliteration": "bâang",
-                    "translation": "alles / welche / denn (in Fragen)"
-                  },
-                  {
-                    "thai": "จริงด้วย",
-                    "transliteration": "jing dûai",
-                    "translation": "stimmt / ach ja, stimmt"
-                  },
-                  {
-                    "thai": "รถเมล์",
-                    "transliteration": "rót-mee",
-                    "translation": "Bus"
-                  },
-                  {
-                    "thai": "ประมาณ",
-                    "transliteration": "bprà-maan",
-                    "translation": "ungefähr"
-                  },
-                  {
-                    "thai": "นาที",
-                    "transliteration": "naa-thii",
-                    "translation": "Minute"
-                  },
-                  {
-                    "thai": "เดิน",
-                    "transliteration": "dəən",
-                    "translation": "gehen / zu Fuß gehen"
-                  },
-                  {
-                    "thai": "ไกล",
-                    "transliteration": "glai",
-                    "translation": "weit"
-                  },
-                  {
-                    "thai": "เย็น",
-                    "transliteration": "yen",
-                    "translation": "Abend / kühl"
-                  },
-                  {
-                    "thai": "ผัก",
-                    "transliteration": "phàk",
-                    "translation": "Gemüse"
-                  },
-                  {
-                    "thai": "ใส่",
-                    "transliteration": "sài",
-                    "translation": "hinein tun / hinzufügen"
-                  },
-                  {
-                    "thai": "บ่าย",
-                    "transliteration": "bàai",
-                    "translation": "Nachmittag"
-                  },
-                  {
-                    "thai": "ออกไป",
-                    "transliteration": "ɔ̀ɔk bpai",
-                    "translation": "hinausgehen / rausgehen"
-                  },
-                  {
-                    "thai": "ดูหนัง",
-                    "transliteration": "duu nǎng",
-                    "translation": "einen Film schauen"
-                  },
-                  {
-                    "thai": "เรื่อง",
-                    "transliteration": "rʉ̂ang",
-                    "translation": "Geschichte / Film / Sache"
-                  },
-                  {
-                    "thai": "สั้น",
-                    "transliteration": "sân",
-                    "translation": "kurz"
-                  },
-                  {
-                    "thai": "นึกว่า",
-                    "transliteration": "nʉ́k wâa",
-                    "translation": "denken / annehmen, dass"
-                  },
-                  {
-                    "thai": "ถ้า",
-                    "transliteration": "thâa",
-                    "translation": "wenn / falls"
-                  },
-                  {
-                    "thai": "บอก",
-                    "transliteration": "bɔ̀ɔk",
-                    "translation": "sagen / Bescheid geben"
-                  },
-                  {
-                    "thai": "ด้วย",
-                    "transliteration": "dûai",
-                    "translation": "auch / ebenfalls; zusammen mit"
-                  },
-                  {
-                    "thai": "คราวนี้",
-                    "transliteration": "khraao-níi",
-                    "translation": "dieses Mal"
-                  },
-                  {
-                    "thai": "ลืม",
-                    "transliteration": "lʉʉm",
-                    "translation": "vergessen"
-                  },
-                  {
-                    "thai": "นัด",
-                    "transliteration": "nát",
-                    "translation": "sich verabreden / Termin vereinbaren"
-                  },
-                  {
-                    "thai": "ไหว",
-                    "transliteration": "wǎi",
-                    "translation": "schaffen / dazu in der Lage sein"
-                  },
-                  {
-                    "thai": "จริง",
-                    "transliteration": "jing",
-                    "translation": "wirklich / wahr"
-                  },
-                  {
-                    "thai": "เฉยๆ",
-                    "transliteration": "chʉ̌ʉi-chʉ̌ʉi",
-                    "translation": "einfach ruhig / nichts Besonderes tun"
-                  },
-                  {
-                    "thai": "เต็มที่",
-                    "transliteration": "dtem-thîi",
-                    "translation": "voll und ganz / richtig"
-                  },
-                  {
-                    "thai": "เพิ่ง",
-                    "transliteration": "phə̂ng",
-                    "translation": "gerade erst"
-                  },
-                  {
-                    "thai": "คง",
-                    "transliteration": "khong",
-                    "translation": "wahrscheinlich / wohl"
-                  },
-                  {
-                    "thai": "ทั้งวัน",
-                    "transliteration": "tháng-wan",
-                    "translation": "den ganzen Tag"
-                  },
-                  {
-                    "thai": "สักครู่",
-                    "transliteration": "sàk-khrûu",
-                    "translation": "einen Moment"
-                  },
-                  {
-                    "thai": "แทน",
-                    "transliteration": "thɛɛn",
-                    "translation": "anstelle von / stattdessen"
-                  },
-                  {
-                    "thai": "กว่านี้",
-                    "transliteration": "gwàa níi",
-                    "translation": "mehr als das / länger als jetzt"
-                  },
-                  {
-                    "thai": "พัก",
-                    "transliteration": "phák",
-                    "translation": "sich ausruhen"
-                  },
-                  {
-                    "thai": "รีบ",
-                    "transliteration": "rîip",
-                    "translation": "sich beeilen"
-                  },
-                  {
-                    "thai": "ต้อง",
-                    "transliteration": "dtɔ̂ng",
-                    "translation": "müssen"
-                  },
-                  {
-                    "thai": "ไม่ต้อง",
-                    "transliteration": "mâi dtɔ̂ng",
-                    "translation": "nicht müssen / nicht brauchen"
-                  }
-                ],
-                "questionLead": "ไม่ + Verb",
+                "questionLead": "Verneinte Aufforderung",
                 "question": {
-                  "thai": "วันนี้วันอาทิตย์ คุณทำอะไร",
-                  "transliteration": "wan-níi wan-aa-thít khun tham à-rai",
-                  "translation": "Heute ist Sonntag. Was machst du?"
+                  "thai": "คราวนี้อย่าลืมบอกผมนะ",
+                  "transliteration": "khraao-níi yàa lʉʉm bɔ̀ɔk phǒm ná",
+                  "translation": "Dieses Mal vergiss nicht, mir Bescheid zu sagen, ja?"
                 },
-                "answerLead": "ไม่ + Verb",
+                "answerLead": "Echte Absprache",
                 "answer": {
-                  "thai": "ไม่ทำอะไรเลย",
-                  "transliteration": "mâi tham à-rai loei",
-                  "translation": "Gar nichts."
+                  "thai": "ได้เลยครับ วันนี้ผมไม่ว่าง",
+                  "transliteration": "dâi loei khráp wan-níi phǒm mâi wâang",
+                  "translation": "Abgemacht! Heute habe ich leider keine Zeit."
                 },
-                "alternativeLead": "ไม่ + Verb",
-                "alternative": {
-                  "thai": "อยู่บ้านทั้งวันเหรอ",
-                  "transliteration": "yùu bâan tháng-wan rǒ̌",
-                  "translation": "Bleibst du den ganzen Tag zu Hause?"
-                },
-                "possessionLead": "ไม่ + Verb",
-                "possession": {
-                  "thai": "ใช่ค่ะ อยากพัก",
-                  "transliteration": "châi khâ yàak phák",
-                  "translation": "Ja. Ich möchte mich ausruhen."
-                },
-                "progressTitle": "In diesem Abschnitt wurde ไม่ immer stärker in echten Gesprächszusammenhängen verwendet, statt isoliert geübt zu werden.",
-                "progress": "Die wichtigsten Muster",
-                "progressSummary": "ไม่...→ nicht müssen ...",
-                "systemLead": "ไม่...→ nicht müssen ...",
-                "systemExamples": [
-                  {
-                    "thai": "งั้นพักให้เต็มที่นะ",
-                    "transliteration": "ngán phák hâi dtem-thîi ná",
-                    "translation": "Dann ruh dich richtig aus."
-                  },
-                  {
-                    "thai": "ค่ะ พรุ่งนี้ค่อยทำงาน",
-                    "transliteration": "khâ phrûng-níi khɔ̂i tham-ngaan",
-                    "translation": "Ja. Morgen arbeite ich wieder."
-                  },
-                  {
-                    "thai": "วันนี้ไม่ต้องรีบ",
-                    "transliteration": "wan-níi mâi dtɔ̂ng rîip",
-                    "translation": "Heute musst du dich nicht beeilen."
-                  },
-                  {
-                    "thai": "จริงค่ะ วันนี้ขออยู่เฉยๆ ก่อน",
-                    "transliteration": "jing khâ wan-níi khɔ̌ɔ yùu chʉ̌ʉi-chʉ̌ʉi gɔ̀ɔn",
-                    "translation": "Genau. Heute möchte ich einfach erst einmal nur entspannen.🧠 REMINDER · Sätze 851–900In diesem Abschnitt wurde ไม่ immer stärker in echten Gesprächszusammenhängen verwendet, statt isoliert geübt zu werden.Die wichtigsten Musterไม่ + Verbไม่กิน — nicht essenไม่ไป — nicht gehenไม่รู้ — nicht wissenไม่บอก — nicht sagenไม่ซื้อ — nicht kaufenไม่ + Zustand / Eigenschaftไม่หิว — keinen Hunger habenไม่เหนื่อย — nicht müde seinไม่ว่าง — keine Zeit haben / nicht frei seinไม่หวาน — nicht süßยังไม่ + Verb→ „noch nicht“ยังไม่กิน — noch nicht essenยังไม่มา — noch nicht kommenยังไม่รู้ — noch nicht wissenยังไม่ส่ง — noch nicht schickenทำไมไม่ + Verb→ „Warum ... nicht?“ทำไมไม่กิน — Warum isst du nicht?ทำไมไม่ไป — Warum gehst du nicht?ทำไมไม่บอก — Warum hast du es nicht gesagt?ไม่...เหรอ→ überrascht nachfragen / etwas überprüfenไม่เปิดเหรอ — Ist es nicht geöffnet?ไม่ไปเหรอ — Gehst du nicht?ไม่หิวเหรอ — Hast du keinen Hunger?ไม่ออกไปไหนเลยเหรอ — Gehst du wirklich nirgendwohin?ไม่ต้อง + Verb→ „nicht müssen / nicht brauchen“ไม่ต้องซื้อ — Du musst es nicht kaufen.ไม่ต้องรีบ — Du musst dich nicht beeilen.Besonders wichtig ist inzwischen die Kombination verschiedener bereits bekannter Strukturen:กาแฟยังมี ไม่ต้องซื้อKaffee ist noch da, den müssen wir nicht kaufen.วันนี้ไม่อยากออกไปHeute möchte ich nicht raus.พรุ่งนี้ยังไม่รู้Für morgen weiß ich es noch nicht.Das ist genau die Entwicklung, die wir wollen: Nicht wird nicht als isolierte Grammatikform behandelt, sondern als Teil normaler Kommunikation.🏆 BOSS-REMINDER · 850Wir befinden uns weiterhin bei Boss 2: ไม่.Der Lernfortschritt sieht inzwischen ungefähr so aus:nicht wollen→ ไม่อยาก...nicht sein / Zustand verneinen→ ไม่หิว / ไม่เหนื่อย / ไม่ว่างnoch nicht→ ยังไม่...nicht müssen→ ไม่ต้อง...warum nicht?→ ทำไมไม่...?wirklich nicht? / nicht ...?→ ไม่...เหรอDabei bleiben ältere Strukturen aktiv und werden nicht ersetzt.📚 NEUE WÖRTER & AUSDRÜCKE · 801–900Diese Wörter und Ausdrücke sind in diesem 100er neu bzw. wurden als neue aktive Bausteine eingeführt:♻️ Besonders wichtige neue Bausteineถ้า...→ wenn / fallsเพิ่ง...→ gerade erst ...ยังไม่...→ noch nicht ...ไม่ต้อง...→ nicht müssen ...คง...→ wahrscheinlich ......ด้วย→ auch / ebenfallsแทน→ stattdessenDiese Wörter werden in den kommenden Sätzen nicht einfach abgehakt, sondern wiederholt und miteinander kombiniert.📊 STAND NACH SATZ 900Boss 2 · ไม่: 400 / 500Gesamt: 900 / 1000Nächster Meilenstein901–950 → weiterer Ausbau von ไม่ + Wiederholung der bisherigen Muster951–1000 → Abschluss von Boss 2 + Vorbereitung auf den nächsten GrammatikbossDamit fehlen bis zum Ende von Boss 2 noch genau 100 Sätze.⚔️ GRAMMATIKBOSS 2 · ไม่Gesamtsätze 901–1000Mastery Block · letzter Block🌅 Mini-Situation 41 · Samstagmorgen901–910"
-                  }
-                ],
-                "final": "In diesem Abschnitt wurde ไม่ immer stärker in echten Gesprächszusammenhängen verwendet, statt isoliert geübt zu werden.",
-                "finalProgress": "Die wichtigsten Muster"
+                "closing": "900 Sätze: Dein Repertoire umfasst nun Warnungen, Bitten, Termine und feine Geschmacks- und Zeiteinschätzungen."
               }
             },
             {
@@ -49288,22 +49252,17 @@
                 }
               ],
               "midpointReminder": {
-                "title": "💎 REMINDER · 901–950",
-                "message": "Du bist jetzt bei 950 / 1000.",
-                "lead": "Noch 50 Sätze, dann ist Boss 2: ไม่ komplett besiegt.",
+                "title": "💎 REMINDER · SÄTZE 901–950",
+                "message": "Einschränkungen (ไม่ค่อย...) & Begründungen (เพราะ...)",
+                "lead": "Was du gerade gelernt hast",
                 "sections": [
                   {
-                    "title": "Du bist jetzt bei 950 / 1000.",
+                    "title": "Neue Wörter",
                     "words": [
                       {
                         "thai": "ตื่น",
                         "transliteration": "dtʉ̀ʉn",
-                        "translation": "aufwachen / aufstehen"
-                      },
-                      {
-                        "thai": "เช้า",
-                        "transliteration": "cháo",
-                        "translation": "Morgen / früh"
+                        "translation": "aufwachen"
                       },
                       {
                         "thai": "ลุก",
@@ -49313,12 +49272,17 @@
                       {
                         "thai": "ดึก",
                         "transliteration": "dʉ̀k",
-                        "translation": "spät in der Nacht"
+                        "translation": "spät nachts"
                       },
                       {
-                        "thai": "หยุด",
-                        "transliteration": "yùt",
-                        "translation": "frei haben / aufhören"
+                        "thai": "มาก",
+                        "transliteration": "mâak",
+                        "translation": "sehr / viel"
+                      },
+                      {
+                        "thai": "เพราะ",
+                        "transliteration": "phráw",
+                        "translation": "weil"
                       },
                       {
                         "thai": "ต่อ",
@@ -49333,12 +49297,7 @@
                       {
                         "thai": "ปกติ",
                         "transliteration": "bpòk-gà-dtì",
-                        "translation": "normalerweise / normal"
-                      },
-                      {
-                        "thai": "หวาน",
-                        "transliteration": "wǎan",
-                        "translation": "süß"
+                        "translation": "normalerweise"
                       },
                       {
                         "thai": "ลอง",
@@ -49353,7 +49312,7 @@
                       {
                         "thai": "เหมือน",
                         "transliteration": "mʉ̌ʉan",
-                        "translation": "ähnlich / wie"
+                        "translation": "wie / gleich"
                       },
                       {
                         "thai": "คราวหน้า",
@@ -49361,14 +49320,24 @@
                         "translation": "nächstes Mal"
                       },
                       {
-                        "thai": "ขนม",
-                        "transliteration": "khà-nǒm",
-                        "translation": "Snack / Süßigkeit"
+                        "thai": "เดิม",
+                        "transliteration": "dəəm",
+                        "translation": "wie gewohnt"
                       },
                       {
-                        "thai": "อัน",
-                        "transliteration": "an",
-                        "translation": "Stück / Exemplar"
+                        "thai": "ขนม",
+                        "transliteration": "khà-nǒm",
+                        "translation": "Snack / Süßes"
+                      },
+                      {
+                        "thai": "กว่า",
+                        "transliteration": "gwàa",
+                        "translation": "lieber / als"
+                      },
+                      {
+                        "thai": "อาจจะ",
+                        "transliteration": "àat jà",
+                        "translation": "vielleicht"
                       },
                       {
                         "thai": "ฝน",
@@ -49378,7 +49347,7 @@
                       {
                         "thai": "ตก",
                         "transliteration": "dtòk",
-                        "translation": "fallen"
+                        "translation": "regnen / fallen"
                       },
                       {
                         "thai": "ข้างนอก",
@@ -49396,14 +49365,29 @@
                         "translation": "Regenschirm"
                       },
                       {
-                        "thai": "หน้าบ้าน",
-                        "transliteration": "nâa-bâan",
-                        "translation": "vor dem Haus"
+                        "thai": "ถือ",
+                        "transliteration": "thʉ̌ʉ",
+                        "translation": "tragen / halten"
+                      },
+                      {
+                        "thai": "ถาม",
+                        "transliteration": "thǎam",
+                        "translation": "fragen"
+                      },
+                      {
+                        "thai": "แบบนั้น",
+                        "transliteration": "bɛ̀ɛp nán",
+                        "translation": "auf diese Art"
                       },
                       {
                         "thai": "เห็น",
                         "transliteration": "hěn",
                         "translation": "sehen"
+                      },
+                      {
+                        "thai": "หน้าบ้าน",
+                        "transliteration": "nâa-bâan",
+                        "translation": "vor dem Haus"
                       },
                       {
                         "thai": "แขก",
@@ -49413,275 +49397,131 @@
                       {
                         "thai": "คิด",
                         "transliteration": "khít",
-                        "translation": "denken"
-                      },
-                      {
-                        "thai": "มาก",
-                        "transliteration": "mâak",
-                        "translation": "sehr / viel"
-                      },
-                      {
-                        "thai": "จริง",
-                        "transliteration": "jing",
-                        "translation": "wirklich / wahr"
-                      },
-                      {
-                        "thai": "อาจจะ",
-                        "transliteration": "àat jà",
-                        "translation": "vielleicht"
-                      },
-                      {
-                        "thai": "แบบนั้น",
-                        "transliteration": "bɛ̀ɛp nán",
-                        "translation": "so / auf diese Art"
+                        "translation": "denken / meinen"
                       }
-                    ]
+                    ],
+                    "note": "Aussagen sanft abschwächen mit ไม่ค่อย (nicht wirklich / kaum) und begründen mit เพราะ."
                   }
                 ],
-                "patternLead": "🧠 Was du inzwischen automatisch erkennen solltest",
+                "patternLead": "Wichtiges Muster",
                 "pattern": {
-                  "thai": "วันนี้ตื่นเช้าไหม",
-                  "transliteration": "wan-níi dtʉ̀ʉn cháo mái",
-                  "translation": "Bist du heute früh aufgestanden?"
+                  "thai": "ผมไม่ค่อยอยากลุก",
+                  "transliteration": "phǒm mâi khɔ̂i yàak lúk",
+                  "translation": "Ich möchte nicht wirklich aufstehen."
                 },
                 "discoveries": [
                   {
-                    "thai": "ตื่นครับ แต่ไม่ค่อยอยากลุก",
-                    "transliteration": "dtʉ̀ʉn khráp dtɛ̀ɛ mâi khɔ̂i yàak lúk",
-                    "translation": "Ja, aber ich wollte nicht wirklich aufstehen."
+                    "thai": "ข้างนอกฝนตก ไม่ไปดีกว่า",
+                    "transliteration": "khâang-nɔ̂ɔk fǒn dtòk mâi bpai dii gwàa",
+                    "translation": "Draußen regnet es, besser nicht gehen."
+                  },
+                  {
+                    "thai": "ปกติผมไม่ใส่น้ำตาล",
+                    "transliteration": "bpòk-gà-dtì phǒm mâi sài náam-dtaan",
+                    "translation": "Normalerweise nehme ich keinen Zucker."
                   }
                 ],
-                "closing": "Hier begegnet dir ไม่ inzwischen nicht mehr als „Grammatikaufgabe“, sondern einfach als normaler Bestandteil eines Gesprächs."
+                "closing": "Mit ไม่ค่อย sagst du „nicht wirklich“ oder „kaum“. Mit ไม่...ดีกว่า entscheidest du dich lieber dagegen."
               },
               "completion": {
-                "title": "🏆 1000 / 1000 — BOSS 2 DEFEATED 🔥",
-                "heading": "Du bist jetzt bei 950 / 1000.",
-                "message": "Noch 50 Sätze, dann ist Boss 2: ไม่ komplett besiegt.",
-                "lead": "🧠 Was du inzwischen automatisch erkennen solltest",
-                "wordSectionTitle": "🧠 Was du inzwischen automatisch erkennen solltest",
-                "words": [
+                "title": "🏆 1000 / 1000 · BOSS 2 COMPLETE",
+                "sentenceRange": "951–1000",
+                "progress": "Entspannte Gespräche, Mengenangaben & 1.000 Sätze Gesamterfolg",
+                "sections": [
                   {
-                    "thai": "ตื่น",
-                    "transliteration": "dtʉ̀ʉn",
-                    "translation": "aufwachen / aufstehen"
-                  },
-                  {
-                    "thai": "เช้า",
-                    "transliteration": "cháo",
-                    "translation": "Morgen / früh"
-                  },
-                  {
-                    "thai": "ลุก",
-                    "transliteration": "lúk",
-                    "translation": "aufstehen"
-                  },
-                  {
-                    "thai": "ดึก",
-                    "transliteration": "dʉ̀k",
-                    "translation": "spät in der Nacht"
-                  },
-                  {
-                    "thai": "หยุด",
-                    "transliteration": "yùt",
-                    "translation": "frei haben / aufhören"
-                  },
-                  {
-                    "thai": "ต่อ",
-                    "transliteration": "dtɔ̀ɔ",
-                    "translation": "weiter / fortsetzen"
-                  },
-                  {
-                    "thai": "น้ำตาล",
-                    "transliteration": "náam-dtaan",
-                    "translation": "Zucker"
-                  },
-                  {
-                    "thai": "ปกติ",
-                    "transliteration": "bpòk-gà-dtì",
-                    "translation": "normalerweise / normal"
-                  },
-                  {
-                    "thai": "หวาน",
-                    "transliteration": "wǎan",
-                    "translation": "süß"
-                  },
-                  {
-                    "thai": "ลอง",
-                    "transliteration": "lɔɔng",
-                    "translation": "probieren / versuchen"
-                  },
-                  {
-                    "thai": "แบบ",
-                    "transliteration": "bɛ̀ɛp",
-                    "translation": "Art / Variante"
-                  },
-                  {
-                    "thai": "เหมือน",
-                    "transliteration": "mʉ̌ʉan",
-                    "translation": "ähnlich / wie"
-                  },
-                  {
-                    "thai": "คราวหน้า",
-                    "transliteration": "khraao-nâa",
-                    "translation": "nächstes Mal"
-                  },
-                  {
-                    "thai": "ขนม",
-                    "transliteration": "khà-nǒm",
-                    "translation": "Snack / Süßigkeit"
-                  },
-                  {
-                    "thai": "อัน",
-                    "transliteration": "an",
-                    "translation": "Stück / Exemplar"
-                  },
-                  {
-                    "thai": "ฝน",
-                    "transliteration": "fǒn",
-                    "translation": "Regen"
-                  },
-                  {
-                    "thai": "ตก",
-                    "transliteration": "dtòk",
-                    "translation": "fallen"
-                  },
-                  {
-                    "thai": "ข้างนอก",
-                    "transliteration": "khâang-nɔ̂ɔk",
-                    "translation": "draußen"
-                  },
-                  {
-                    "thai": "เปียก",
-                    "transliteration": "bpìak",
-                    "translation": "nass"
-                  },
-                  {
-                    "thai": "ร่ม",
-                    "transliteration": "rôm",
-                    "translation": "Regenschirm"
-                  },
-                  {
-                    "thai": "หน้าบ้าน",
-                    "transliteration": "nâa-bâan",
-                    "translation": "vor dem Haus"
-                  },
-                  {
-                    "thai": "เห็น",
-                    "transliteration": "hěn",
-                    "translation": "sehen"
-                  },
-                  {
-                    "thai": "แขก",
-                    "transliteration": "khɛ̀ɛk",
-                    "translation": "Gast"
-                  },
-                  {
-                    "thai": "คิด",
-                    "transliteration": "khít",
-                    "translation": "denken"
-                  },
-                  {
-                    "thai": "มาก",
-                    "transliteration": "mâak",
-                    "translation": "sehr / viel"
-                  },
-                  {
-                    "thai": "จริง",
-                    "transliteration": "jing",
-                    "translation": "wirklich / wahr"
-                  },
-                  {
-                    "thai": "อาจจะ",
-                    "transliteration": "àat jà",
-                    "translation": "vielleicht"
-                  },
-                  {
-                    "thai": "แบบนั้น",
-                    "transliteration": "bɛ̀ɛp nán",
-                    "translation": "so / auf diese Art"
+                    "title": "Neue Wörter (Sätze 951–1000)",
+                    "words": [
+                      {
+                        "thai": "คุย",
+                        "transliteration": "khui",
+                        "translation": "reden / unterhalten"
+                      },
+                      {
+                        "thai": "ตอนนั้น",
+                        "transliteration": "dton-nán",
+                        "translation": "damals"
+                      },
+                      {
+                        "thai": "ทีหลัง",
+                        "transliteration": "thii-lǎng",
+                        "translation": "später"
+                      },
+                      {
+                        "thai": "เพิ่ม",
+                        "transliteration": "phə̂əm",
+                        "translation": "mehr / dazu"
+                      },
+                      {
+                        "thai": "แค่นี้",
+                        "transliteration": "khɛ̂ɛ níi",
+                        "translation": "nur das / reicht"
+                      },
+                      {
+                        "thai": "แค่นิดเดียว",
+                        "transliteration": "khɛ̂ɛ nít-diao",
+                        "translation": "nur ein bisschen"
+                      },
+                      {
+                        "thai": "เอาน้อยๆ",
+                        "transliteration": "ao nɔ́ɔi-nɔ́ɔi",
+                        "translation": "nur wenig nehmen"
+                      },
+                      {
+                        "thai": "นั่ง",
+                        "transliteration": "nâng",
+                        "translation": "sitzen"
+                      },
+                      {
+                        "thai": "เงียบๆ",
+                        "transliteration": "ngîap-ngîap",
+                        "translation": "ruhig / still"
+                      },
+                      {
+                        "thai": "อื่น",
+                        "transliteration": "ʉ̀ʉn",
+                        "translation": "andere"
+                      },
+                      {
+                        "thai": "เกิดขึ้น",
+                        "transliteration": "gə̀ət khʉ̂n",
+                        "translation": "geschehen / passieren"
+                      },
+                      {
+                        "thai": "ทุกอย่าง",
+                        "transliteration": "thúk yàang",
+                        "translation": "alles"
+                      }
+                    ],
+                    "note": "Mengen dosieren, ruhige Momente und das Finale von Grammar Boss 2."
                   }
                 ],
-                "questionLead": "🧠 Was du inzwischen automatisch erkennen solltest",
+                "questionLead": "Zentrales Situationsmuster",
                 "question": {
-                  "thai": "วันนี้เหนื่อยไหม",
-                  "transliteration": "wan-níi nʉ̀ai mái",
-                  "translation": "Warst du heute müde?"
+                  "thai": "ไม่มีอะไรเกิดขึ้น ทุกอย่างโอเค",
+                  "transliteration": "mâi mii à-rai gə̀ət khʉ̂n thúk yàang oo-khee",
+                  "translation": "Es ist nichts passiert, alles ist in Ordnung."
                 },
-                "answerLead": "🧠 Was du inzwischen automatisch erkennen solltest",
+                "answerLead": "Echter Gesprächsabschluss",
                 "answer": {
-                  "thai": "นิดหน่อย แต่ไม่มาก",
-                  "transliteration": "nít nɔ̀i dtɛ̀ɛ mâi mâak",
-                  "translation": "Ein bisschen, aber nicht sehr."
+                  "thai": "อ๋อ เข้าใจแล้วครับ",
+                  "transliteration": "ɔ̌ɔ khâo-jai lɛ́ɛo khráp",
+                  "translation": "Ach so, jetzt verstehe ich!"
                 },
-                "alternativeLead": "🧠 Was du inzwischen automatisch erkennen solltest",
-                "alternative": {
-                  "thai": "วันนี้มีอะไรไม่ดีเกิดขึ้นไหม",
-                  "transliteration": "wan-níi mii à-rai mâi dii gə̀ət khʉ̂n mái",
-                  "translation": "Ist heute etwas Schlimmes passiert?"
-                },
-                "possessionLead": "🧠 Was du inzwischen automatisch erkennen solltest",
-                "possession": {
-                  "thai": "ไม่มีครับ ทุกอย่างโอเค",
-                  "transliteration": "mâi mii khráp thúk yàang oo-khee",
-                  "translation": "Nein, alles ist okay."
-                },
-                "progressTitle": "Du bist jetzt bei 950 / 1000.",
-                "progress": "Noch 50 Sätze, dann ist Boss 2: ไม่ komplett besiegt.",
-                "progressSummary": "🧠 Was du inzwischen automatisch erkennen solltest",
-                "systemLead": "🧠 Was du inzwischen automatisch erkennen solltest",
-                "systemExamples": [
-                  {
-                    "thai": "ยังไม่รู้เลย",
-                    "transliteration": "yang mâi rúu loei",
-                    "translation": "Ich weiß es noch gar nicht."
-                  },
-                  {
-                    "thai": "ถ้าไม่มีอะไร เราไปกินข้าวกันไหม",
-                    "transliteration": "thâa mâi mii à-rai rao bpai gin khâao kan mái",
-                    "translation": "Wenn nichts dazwischenkommt, wollen wir zusammen essen gehen?"
-                  },
-                  {
-                    "thai": "ได้ครับ แต่ผมไม่อยากกินเยอะ",
-                    "transliteration": "dâi khráp dtɛ̀ɛ phǒm mâi yàak gin yə́",
-                    "translation": "Gerne, aber ich möchte nicht viel essen."
-                  },
-                  {
-                    "thai": "ได้เลย งั้นกินนิดเดียวก็พอ",
-                    "transliteration": "dâi loei ngán gin nít-diao gɔ̂ɔ phɔɔ",
-                    "translation": "Alles klar, dann reicht eine Kleinigkeit.🏆 1000 / 1000 — BOSS 2 DEFEATED 🔥Boss 2 · ไม่ + Verben — abgeschlossen.Die letzten 500 Sätze haben ไม่ nicht einfach 500-mal wiederholt, sondern immer weiter in normale Gesprächsmuster eingebaut:ไม่ + Verb → ไม่กิน, ไม่ไป, ไม่ชอบ, ไม่อยาก ไม่ + Zustand → ไม่หิว, ไม่ง่วง, ไม่ว่าง, ไม่หวาน ไม่ใช่ → nicht sein / „nein, das ist es nicht“ ไม่รู้ → nicht wissen ไม่เป็นไร → kein Problem ไม่ค่อย... → nicht besonders ... ไม่...เลย → überhaupt nicht ... ไม่...แล้ว → nicht mehr ... ยังไม่... → noch nicht ... ไม่ได้... → nicht / nicht getan Das entspricht dem vorgesehenen Boss-Fokus: ไม่ systematisch, die zentralen Verneinungsmuster vertiefen und die ersten Alltagsverben damit verknüpfen, statt bereits auf spätere Grammatikbosse vorzugreifen. 📚 Neue Wörter · 951–1000⚔️ BOSS 2 — ENDSTAND1.000 / 1.000 🏆🔥Boss: ไม่ + VerbenStatus: DEFEATEDDu hast jetzt nicht nur gelernt, dass ไม่ = nicht bedeutet. Du hast es über 1.000 Sätze hinweg mit Verben, Zuständen, Fragen, Reaktionen, kleinen Konflikten, Entscheidungen und ganz normalen Alltagssituationen gesehen.Und genau das ist der Punkt des Systems: Wörter und Strukturen werden nicht gelöscht, sobald der nächste Boss beginnt. Sie bleiben Teil des Netzwerks und werden später wieder aufgegriffen. Quest Complete."
-                  }
-                ],
-                "final": "🧠 Was du inzwischen automatisch erkennen solltest",
-                "finalProgress": "Noch 50 Sätze, dann ist Boss 2: ไม่ komplett besiegt."
+                "closing": "1.000 Sätze gemeistert! Du beherrschst die Verneinung im Thailändischen in allen Nuancen – von einfachen Absagen bis hin zu feinen Gesprächsreaktionen."
               }
             }
           ],
           "completion": {
             "title": "⚔️ BOSS 2 DEFEATED",
             "sentenceRange": "1000 / 1000 Sätze",
-            "progress": "Boss 2 · ไม่ + Verben — abgeschlossen.",
+            "progress": "ไม่ · Verneinung, Verben & lebendige Alltagsdialoge abgeschlossen",
             "summary": [
-              "🏆 1000 / 1000 — BOSS 2 DEFEATED 🔥",
-              "Boss 2 · ไม่ + Verben — abgeschlossen.",
-              "Die letzten 500 Sätze haben ไม่ nicht einfach 500-mal wiederholt, sondern immer weiter in normale Gesprächsmuster eingebaut:",
-              "ไม่ + Verb → ไม่กิน, ไม่ไป, ไม่ชอบ, ไม่อยาก ",
-              "ไม่ + Zustand → ไม่หิว, ไม่ง่วง, ไม่ว่าง, ไม่หวาน ",
-              "ไม่ใช่ → nicht sein / „nein, das ist es nicht“ ",
-              "ไม่รู้ → nicht wissen ",
-              "ไม่เป็นไร → kein Problem ",
-              "ไม่ค่อย... → nicht besonders ... ",
-              "ไม่...เลย → überhaupt nicht ... ",
-              "ไม่...แล้ว → nicht mehr ... ",
-              "ยังไม่... → noch nicht ... ",
-              "ไม่ได้... → nicht / nicht getan ",
-              "Das entspricht dem vorgesehenen Boss-Fokus: ไม่ systematisch, die zentralen Verneinungsmuster vertiefen und die ersten Alltagsverben damit verknüpfen, statt bereits auf spätere Grammatikbosse vorzugreifen. ",
-              "📚 Neue Wörter · 951–1000",
-              "⚔️ BOSS 2 — ENDSTAND",
-              "1.000 / 1.000 🏆🔥",
-              "Boss: ไม่ + VerbenStatus: DEFEATED",
-              "Du hast jetzt nicht nur gelernt, dass ไม่ = nicht bedeutet. Du hast es über 1.000 Sätze hinweg mit Verben, Zuständen, Fragen, Reaktionen, kleinen Konflikten, Entscheidungen und ganz normalen Alltagssituationen gesehen.",
-              "Und genau das ist der Punkt des Systems: Wörter und Strukturen werden nicht gelöscht, sobald der nächste Boss beginnt. Sie bleiben Teil des Netzwerks und werden später wieder aufgegriffen. ",
-              "Quest Complete."
+              "🏆 1.000 / 1.000 Sätze im Gesamtsystem gemeistert!",
+              "Handlungen verneinen: ไม่กิน (nicht essen) / ไม่ไป (nicht gehen) / ไม่ทำงาน (nicht arbeiten)",
+              "Zustände verneinen: ไม่หิว (nicht hungrig) / ไม่เหนื่อย (nicht müde) / ไม่ว่าง (keine Zeit)",
+              "Zeitliche Aspekte: ยังไม่... (noch nicht) / ไม่ได้... (nicht getan) / ไม่...แล้ว (nicht mehr)",
+              "Nuancen & Wünsche: ไม่อยาก... (nicht wollen) / ไม่ต้อง... (nicht müssen) / ไม่ค่อย... (kaum)",
+              "Aufforderungen & Reaktionen: อย่าลืม (vergiss nicht!) / ไม่เป็นไร (kein Problem) / ไม่...เลย (gar nicht)"
             ]
           }
         },
