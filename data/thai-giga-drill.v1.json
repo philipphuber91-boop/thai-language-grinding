@@ -71782,7 +71782,7 @@
           "grammarFocus": "มี / ไม่มี · Haben, Existenz und Verfügbarkeit",
           "contentStatus": "complete",
           "introduction": {
-            "description": "มี und ไม่มี werden in Besitz-, Existenz- und Verfügbarkeitssituationen durch Gespräche aufgebaut.",
+            "description": "มี drückt sowohl Besitz (haben) als auch Existenz und Verfügbarkeit (es gibt / da sein) aus. Die Verneinung lautet immer ไม่มี.",
             "example": {
               "thai": "บ้านคุณมีห้องกี่ห้อง",
               "transliteration": "bâan khun mii hɔ̂ng gìi hɔ̂ng",
@@ -71790,22 +71790,32 @@
             },
             "parts": [
               {
-                "thai": "มี",
-                "transliteration": "mii",
-                "translation": "haben / es gibt"
+                "thai": "บ้านคุณ",
+                "transliteration": "bâan khun",
+                "translation": "dein Haus"
               },
               {
-                "thai": "ไม่มี",
-                "transliteration": "mâi mii",
-                "translation": "nicht haben / es gibt nicht"
+                "thai": "มี",
+                "transliteration": "mii",
+                "translation": "haben / gibt es"
+              },
+              {
+                "thai": "ห้อง",
+                "transliteration": "hɔ̂ng",
+                "translation": "Zimmer"
+              },
+              {
+                "thai": "กี่ห้อง",
+                "transliteration": "gìi hɔ̂ng",
+                "translation": "wie viele Zimmer"
               }
             ],
             "assembly": {
-              "thai": "มี + ไม่มี",
-              "transliteration": "mii + mâi mii",
-              "translation": "haben / es gibt + nicht haben / es gibt nicht"
+              "thai": "บ้านคุณ + มี + ห้อง + กี่ห้อง",
+              "transliteration": "bâan khun + mii + hɔ̂ng + gìi hɔ̂ng",
+              "translation": "Dein Haus + hat / gibt es + Zimmer + wie viele Zimmer"
             },
-            "warning": "มี beschreibt nicht nur Besitz, sondern auch Existenz und Verfügbarkeit; ไม่มี bildet die entsprechende Verneinung."
+            "warning": "Grundmuster 1 (Besitz): Subjekt + มี / ไม่มี + Sache (z. B. ผมมีเงิน = Ich habe Geld). Grundmuster 2 (Existenz): Ort + มี / ไม่มี + Sache (z. B. ที่นี่มีที่นั่ง = Hier gibt es Sitzplätze)."
           },
           "blocks": [
             {
@@ -75828,12 +75838,152 @@
                 }
               ],
               "midpointReminder": {
-                "title": "💎 REMINDER · 1540",
-                "message": "Hier beginnt die wichtigste Unterscheidung von Boss 4: มี→ haben / es gibt ไม่มี→ nicht haben / es gibt nicht Beispiele: มีเงิน→ Geld haben ไม่มีเงิน→ kein Geld haben มีคน→ es sind Leute da / es gibt Leute ไม่มีคน→ niemand ist da"
+                "title": "💎 REMINDER · SÄTZE 1501–1550",
+                "message": "Besitz & Existenz: haben vs. es gibt",
+                "lead": "Was du gerade gelernt hast",
+                "sections": [
+                  {
+                    "title": "Neue Wörter",
+                    "words": [
+                      {
+                        "thai": "กี่",
+                        "transliteration": "gìi",
+                        "translation": "wie viele"
+                      },
+                      {
+                        "thai": "สาม",
+                        "transliteration": "sǎam",
+                        "translation": "drei"
+                      },
+                      {
+                        "thai": "ข้างบ้าน",
+                        "transliteration": "khâang bâan",
+                        "translation": "neben dem Haus"
+                      },
+                      {
+                        "thai": "เงิน",
+                        "transliteration": "ngoen",
+                        "translation": "Geld"
+                      },
+                      {
+                        "thai": "ไม่มี",
+                        "transliteration": "mâi mii",
+                        "translation": "nicht haben / es gibt nicht"
+                      },
+                      {
+                        "thai": "บัตร",
+                        "transliteration": "bàt",
+                        "translation": "Karte (Karte/Ausweis)"
+                      },
+                      {
+                        "thai": "กุญแจ",
+                        "transliteration": "gun-jɛɛ",
+                        "translation": "Schlüssel"
+                      },
+                      {
+                        "thai": "เท่าไหร่",
+                        "transliteration": "thâo-rài",
+                        "translation": "wie viel"
+                      }
+                    ],
+                    "note": "Besitz erfragen (Geld, Schlüssel) und das Grundmuster von มี und ไม่มี verstehen."
+                  }
+                ],
+                "patternLead": "Wichtiges Muster",
+                "pattern": {
+                  "thai": "มีเงินไหม",
+                  "transliteration": "mii ngoen mái",
+                  "translation": "Hast du Geld?"
+                },
+                "discoveries": [
+                  {
+                    "thai": "มีนิดหน่อย ไม่มีเยอะ",
+                    "transliteration": "mii nít nɔ̀i mâi mii yə́",
+                    "translation": "Ich habe ein bisschen, nicht viel."
+                  },
+                  {
+                    "thai": "กุญแจมีไหม ไม่มีครับ",
+                    "transliteration": "gun-jɛɛ mii mái mâi mii khráp",
+                    "translation": "Hast du einen Schlüssel? - Nein."
+                  }
+                ],
+                "closing": "มี bedeutet sowohl „haben“ als auch „es gibt“. Die Verneinung lautet immer ไม่มี."
               },
               "completion": {
-                "title": "Foundation Block 1 abgeschlossen",
-                "sentenceRange": "1501–1600"
+                "title": "🏆 1600 / 2000 · FOUNDATION BLOCK 1 COMPLETE",
+                "sentenceRange": "1501–1600",
+                "progress": "Ausstattung, Akku laden & Ausleihen mit ขอยืม",
+                "sections": [
+                  {
+                    "title": "Neue Wörter (Sätze 1551–1600)",
+                    "words": [
+                      {
+                        "thai": "ฟอง",
+                        "transliteration": "fɔɔng",
+                        "translation": "Stück (bei Eiern)"
+                      },
+                      {
+                        "thai": "ง่ายๆ",
+                        "transliteration": "ngâai-ngâai",
+                        "translation": "einfach / unkompliziert"
+                      },
+                      {
+                        "thai": "แบต",
+                        "transliteration": "bɛ̀ɛt",
+                        "translation": "Akku / Batterie"
+                      },
+                      {
+                        "thai": "ชาร์จ",
+                        "transliteration": "châat",
+                        "translation": "laden"
+                      },
+                      {
+                        "thai": "ที่ชาร์จ",
+                        "transliteration": "thîi châat",
+                        "translation": "Ladegerät"
+                      },
+                      {
+                        "thai": "ขอยืม",
+                        "transliteration": "khɔ̌ɔ yʉʉm",
+                        "translation": "ausleihen möchten"
+                      },
+                      {
+                        "thai": "สระว่ายน้ำ",
+                        "transliteration": "sà-wâai-náam",
+                        "translation": "Swimmingpool"
+                      },
+                      {
+                        "thai": "แอร์",
+                        "transliteration": "ɛɛ",
+                        "translation": "Klimaanlage"
+                      },
+                      {
+                        "thai": "เต็ม",
+                        "transliteration": "dtem",
+                        "translation": "voll"
+                      },
+                      {
+                        "thai": "ดูให้",
+                        "transliteration": "duu hâi",
+                        "translation": "nachsehen"
+                      }
+                    ],
+                    "note": "Nach Ladegeräten fragen, Ausleihen und Hotel-Ausstattung beschreiben."
+                  }
+                ],
+                "questionLead": "Zentrales Fragemuster",
+                "question": {
+                  "thai": "มีที่ชาร์จไหม แบตจะหมดแล้ว",
+                  "transliteration": "mii thîi châat mái bɛ̀ɛt jà mòt lɛ́ɛo",
+                  "translation": "Hast du ein Ladegerät? Mein Akku ist fast leer."
+                },
+                "answerLead": "Echte Reaktion",
+                "answer": {
+                  "thai": "มีครับ ขอยืมได้เลย",
+                  "transliteration": "mii khráp khɔ̌ɔ yʉʉm dâi loei",
+                  "translation": "Ja, kannst du gerne ausleihen!"
+                },
+                "closing": "1.600 Sätze: Du klärst den Besitz alltäglicher Gegenstände und fragst nach Ausstattung."
               }
             },
             {
@@ -80114,12 +80264,107 @@
                 }
               ],
               "midpointReminder": {
-                "title": "💎 REMINDER · 1640",
-                "message": "Neue Wörter und Satzmuster dieses 50-Satz-Fensters."
+                "title": "💎 REMINDER · SÄTZE 1601–1650",
+                "message": "Zählwörter (ตัว), Stühle & Reservierungen",
+                "lead": "Was du gerade gelernt hast",
+                "sections": [
+                  {
+                    "title": "Neue Wörter",
+                    "words": [
+                      {
+                        "thai": "ตัว",
+                        "transliteration": "dtua",
+                        "translation": "Stück (Möbel/Tiere)"
+                      },
+                      {
+                        "thai": "เก้าอี้",
+                        "transliteration": "gâo-îi",
+                        "translation": "Stuhl"
+                      },
+                      {
+                        "thai": "หาย",
+                        "transliteration": "hǎai",
+                        "translation": "weg sein / verloren"
+                      },
+                      {
+                        "thai": "จอง",
+                        "transliteration": "jɔɔng",
+                        "translation": "reservieren"
+                      },
+                      {
+                        "thai": "เมนู",
+                        "transliteration": "mee-nuu",
+                        "translation": "Speisekarte"
+                      },
+                      {
+                        "thai": "หลายอย่าง",
+                        "transliteration": "lǎai yàang",
+                        "translation": "einiges / viele Dinge"
+                      }
+                    ],
+                    "note": "Möbelstücke mit dem Zählwort ตัว zählen und Tische im Restaurant reservieren."
+                  }
+                ],
+                "patternLead": "Wichtiges Muster",
+                "pattern": {
+                  "thai": "ที่นี่มีเก้าอี้กี่ตัว",
+                  "transliteration": "thîi-nîi mii gâo-îi gìi dtua",
+                  "translation": "Wie viele Stühle gibt es hier?"
+                },
+                "discoveries": [
+                  {
+                    "thai": "มีโต๊ะว่างไหมครับ",
+                    "transliteration": "mii tó wâang mái khráp",
+                    "translation": "Gibt es einen freien Tisch?"
+                  },
+                  {
+                    "thai": "จองไว้แล้วครับ",
+                    "transliteration": "jɔɔng wái lɛ́ɛo khráp",
+                    "translation": "Ich habe schon reserviert."
+                  }
+                ],
+                "closing": "Mit มีโต๊ะว่าง fragst du im Restaurant nach freien Plätzen. Mit ตัว zählst du Stühle und Tische."
               },
               "completion": {
-                "title": "Foundation Block 2 abgeschlossen",
-                "sentenceRange": "1601–1700"
+                "title": "🏆 1700 / 2000 · FOUNDATION BLOCK 2 COMPLETE",
+                "sentenceRange": "1601–1700",
+                "progress": "Vorräte im Kühlschrank & Restmengen mit เหลือ",
+                "sections": [
+                  {
+                    "title": "Neue Wörter (Sätze 1651–1700)",
+                    "words": [
+                      {
+                        "thai": "ตู้เย็น",
+                        "transliteration": "dtûu-yen",
+                        "translation": "Kühlschrank"
+                      },
+                      {
+                        "thai": "เหลือ",
+                        "transliteration": "lʉ̌a",
+                        "translation": "übrig sein"
+                      },
+                      {
+                        "thai": "น้อย",
+                        "transliteration": "nɔ́ɔi",
+                        "translation": "wenig"
+                      }
+                    ],
+                    "note": "Kühlschrankinhalte prüfen und Restmengen beschreiben."
+                  }
+                ],
+                "questionLead": "Zentrales Fragemuster",
+                "question": {
+                  "thai": "ในตู้เย็นมีอะไรเหลือบ้าง",
+                  "transliteration": "nai dtûu-yen mii à-rai lʉ̌a bâang",
+                  "translation": "Was ist im Kühlschrank noch übrig?"
+                },
+                "answerLead": "Echte Reaktion",
+                "answer": {
+                  "thai": "มีน้ำกับขนมนิดหน่อยครับ",
+                  "transliteration": "mii náam gàp khà-nǒm nít nɔ̀i khráp",
+                  "translation": "Nur noch etwas Wasser und Snacks."
+                },
+                "closing": "1.700 Sätze: Du verbindest Vorhandensein (มี) mit Restmengen (เหลือ) und Orten."
               }
             },
             {
@@ -84740,12 +84985,127 @@
                 }
               ],
               "midpointReminder": {
-                "title": "💎 REMINDER · 1740",
-                "message": "Neue Wörter und Satzmuster dieses 50-Satz-Fensters."
+                "title": "💎 REMINDER · SÄTZE 1701–1750",
+                "message": "Besuch von Verwandten & Flaschen (ขวด)",
+                "lead": "Was du gerade gelernt hast",
+                "sections": [
+                  {
+                    "title": "Neue Wörter",
+                    "words": [
+                      {
+                        "thai": "มิน",
+                        "transliteration": "Min",
+                        "translation": "Min (Name)"
+                      },
+                      {
+                        "thai": "ขวด",
+                        "transliteration": "khùat",
+                        "translation": "Flasche"
+                      },
+                      {
+                        "thai": "ยาย",
+                        "transliteration": "yaai",
+                        "translation": "Oma"
+                      },
+                      {
+                        "thai": "ลุง",
+                        "transliteration": "lung",
+                        "translation": "Onkel"
+                      },
+                      {
+                        "thai": "ป้า",
+                        "transliteration": "bpâa",
+                        "translation": "Tante"
+                      },
+                      {
+                        "thai": "หลาย",
+                        "transliteration": "lǎai",
+                        "translation": "mehrere / einige"
+                      },
+                      {
+                        "thai": "หากุญแจ",
+                        "transliteration": "hǎa gun-jɛɛ",
+                        "translation": "Schlüssel suchen"
+                      },
+                      {
+                        "thai": "ไม่เจอ",
+                        "transliteration": "mâi jəə",
+                        "translation": "nicht finden"
+                      }
+                    ],
+                    "note": "Besuch von Verwandten ankündigen und Flaschen zählen."
+                  }
+                ],
+                "patternLead": "Wichtiges Muster",
+                "pattern": {
+                  "thai": "วันนี้ที่บ้านมีลุงกับป้ามาหา",
+                  "transliteration": "wan-níi thîi bâan mii lung gàp bpâa maa hǎa",
+                  "translation": "Heute kommen Onkel und Tante zu Besuch."
+                },
+                "discoveries": [
+                  {
+                    "thai": "มีน้ำกี่ขวด",
+                    "transliteration": "mii náam gìi khùat",
+                    "translation": "Wie viele Flaschen Wasser gibt es?"
+                  },
+                  {
+                    "thai": "หากุญแจไม่เจอ",
+                    "transliteration": "hǎa gun-jɛɛ mâi jəə",
+                    "translation": "Ich kann den Schlüssel nicht finden."
+                  }
+                ],
+                "closing": "Mit มี drückst du auch aus, wer anwesend ist oder zu Besuch kommt."
               },
               "completion": {
-                "title": "Foundation Block 3 abgeschlossen",
-                "sentenceRange": "1701–1800"
+                "title": "🏆 1800 / 2000 · FOUNDATION BLOCK 3 COMPLETE",
+                "sentenceRange": "1701–1800",
+                "progress": "Verpflichtungen (การบ้าน), Tüten (ถุง) & Essen aufwärmen",
+                "sections": [
+                  {
+                    "title": "Neue Wörter (Sätze 1751–1800)",
+                    "words": [
+                      {
+                        "thai": "นัท",
+                        "transliteration": "Nát",
+                        "translation": "Nat (Name)"
+                      },
+                      {
+                        "thai": "การบ้าน",
+                        "transliteration": "gaan-bâan",
+                        "translation": "Hausaufgaben"
+                      },
+                      {
+                        "thai": "ถุง",
+                        "transliteration": "thǔng",
+                        "translation": "Tüte / Beutel"
+                      },
+                      {
+                        "thai": "ไม่สบาย",
+                        "transliteration": "mâi sà-baai",
+                        "translation": "unwohl / krank"
+                      },
+                      {
+                        "thai": "อุ่น",
+                        "transliteration": "ùn",
+                        "translation": "aufwärmen"
+                      }
+                    ],
+                    "note": "Aufgaben klären, Tüten an der Kasse verlangen und Mahlzeiten aufwärmen."
+                  }
+                ],
+                "questionLead": "Zentrales Fragemuster",
+                "question": {
+                  "thai": "วันนี้มีการบ้านเยอะไหม",
+                  "transliteration": "wan-níi mii gaan-bâan yə́ mái",
+                  "translation": "Gibt es heute viele Hausaufgaben?"
+                },
+                "answerLead": "Echte Reaktion",
+                "answer": {
+                  "thai": "ไม่มีครับ ทำเสร็จหมดแล้ว",
+                  "transliteration": "mâi mii khráp tham sèt mòt lɛ́ɛo",
+                  "translation": "Keine, ich bin schon mit allem fertig."
+                },
+                "closing": "1.800 Sätze: Du wendest มี ganz natürlich auf Verpflichtungen, Termine und Haushaltsdinge an."
               }
             },
             {
@@ -89218,12 +89578,147 @@
                 }
               ],
               "midpointReminder": {
-                "title": "💎 REMINDER · 1840",
-                "message": "Neue Wörter und Satzmuster dieses 50-Satz-Fensters."
+                "title": "💎 REMINDER · SÄTZE 1801–1850",
+                "message": "Besprechungen (ประชุม), Uhrzeiten & Meetings",
+                "lead": "Was du gerade gelernt hast",
+                "sections": [
+                  {
+                    "title": "Neue Wörter",
+                    "words": [
+                      {
+                        "thai": "มะม่วง",
+                        "transliteration": "má-mûang",
+                        "translation": "Mango"
+                      },
+                      {
+                        "thai": "หวานๆ",
+                        "transliteration": "wǎan-wǎan",
+                        "translation": "schön süß"
+                      },
+                      {
+                        "thai": "โมง",
+                        "transliteration": "moong",
+                        "translation": "Uhr (Uhrzeit)"
+                      },
+                      {
+                        "thai": "หลังจากนั้น",
+                        "transliteration": "lǎng-jàak-nán",
+                        "translation": "danach / nachher"
+                      },
+                      {
+                        "thai": "ประชุม",
+                        "transliteration": "bprà-chum",
+                        "translation": "Besprechung / Meeting"
+                      },
+                      {
+                        "thai": "ทีม",
+                        "transliteration": "thiim",
+                        "translation": "Team"
+                      },
+                      {
+                        "thai": "ครั้ง",
+                        "transliteration": "khráng",
+                        "translation": "Mal"
+                      }
+                    ],
+                    "note": "Meetings im Büro ankündigen und Zeitabläufe strukturieren."
+                  }
+                ],
+                "patternLead": "Wichtiges Muster",
+                "pattern": {
+                  "thai": "วันนี้มีประชุมกับทีมตอนบ่าย",
+                  "transliteration": "wan-níi mii bprà-chum gàp thiim dton bàai",
+                  "translation": "Heute Nachmittag gibt es ein Team-Meeting."
+                },
+                "discoveries": [
+                  {
+                    "thai": "หลังจากนั้นมีเวลาว่างไหม",
+                    "transliteration": "lǎng-jàak-nán mii wee-laa wâang mái",
+                    "translation": "Hast du danach Zeit?"
+                  },
+                  {
+                    "thai": "มีมะม่วงหวานๆ ไหม",
+                    "transliteration": "mii má-mûang wǎan-wǎan mái",
+                    "translation": "Gibt es schön süße Mangos?"
+                  }
+                ],
+                "closing": "มีประชุม (eine Besprechung haben) ist der thailändische Standard für berufliche Termine."
               },
               "completion": {
-                "title": "Foundation Block 4 abgeschlossen",
-                "sentenceRange": "1801–1900"
+                "title": "🏆 1900 / 2000 · FOUNDATION BLOCK 4 COMPLETE",
+                "sentenceRange": "1801–1900",
+                "progress": "Freie Zimmer (ห้องว่าง), Decken (ผ้าห่ม) & Zähleinheiten",
+                "sections": [
+                  {
+                    "title": "Neue Wörter (Sätze 1851–1900)",
+                    "words": [
+                      {
+                        "thai": "สี่",
+                        "transliteration": "sìi",
+                        "translation": "vier"
+                      },
+                      {
+                        "thai": "ห้องว่าง",
+                        "transliteration": "hɔ̂ng wâang",
+                        "translation": "freies Zimmer"
+                      },
+                      {
+                        "thai": "หนึ่ง",
+                        "transliteration": "nʉ̀ng",
+                        "translation": "eins"
+                      },
+                      {
+                        "thai": "เตียง",
+                        "transliteration": "dtiiang",
+                        "translation": "Bett"
+                      },
+                      {
+                        "thai": "ผ้าห่ม",
+                        "transliteration": "phâa-hòm",
+                        "translation": "Bettdecke"
+                      },
+                      {
+                        "thai": "ผืน",
+                        "transliteration": "phʉ̌ʉn",
+                        "translation": "Stück (für Decken)"
+                      },
+                      {
+                        "thai": "บาง",
+                        "transliteration": "baang",
+                        "translation": "dünn"
+                      },
+                      {
+                        "thai": "หนาว",
+                        "transliteration": "nǎao",
+                        "translation": "frieren / kalt"
+                      },
+                      {
+                        "thai": "คัน",
+                        "transliteration": "khan",
+                        "translation": "Stück (für Schirme)"
+                      },
+                      {
+                        "thai": "หนู",
+                        "transliteration": "nǔu",
+                        "translation": "ich (jüngere Personen)"
+                      }
+                    ],
+                    "note": "Im Hotel nach freien Zimmern und Bettdecken fragen."
+                  }
+                ],
+                "questionLead": "Zentrales Fragemuster",
+                "question": {
+                  "thai": "ที่โรงแรมมีห้องว่างไหม",
+                  "transliteration": "thîi rooŋ-rɛɛm mii hɔ̂ng wâang mái",
+                  "translation": "Gibt es im Hotel freie Zimmer?"
+                },
+                "answerLead": "Echte Reaktion",
+                "answer": {
+                  "thai": "มีห้องว่างหนึ่งห้องครับ",
+                  "transliteration": "mii hɔ̂ng wâang nʉ̀ng hɔ̂ng khráp",
+                  "translation": "Es gibt noch ein freies Zimmer."
+                },
+                "closing": "1.900 Sätze: Du meisterst Hotelbuchungen, Ausstattungsfragen und Zähleinheiten."
               }
             },
             {
@@ -94037,23 +94532,141 @@
                 }
               ],
               "midpointReminder": {
-                "title": "💎 REMINDER · 1950",
-                "message": "📚 Neue Wörter · 1901–1950 Thai Umschrift Deutsch นม nom Milch เหลือ"
+                "title": "💎 REMINDER · SÄTZE 1901–1950",
+                "message": "Alltagsnuancen: vermutlich (มั้ง) & doch nicht (หรอก)",
+                "lead": "Was du gerade gelernt hast",
+                "sections": [
+                  {
+                    "title": "Neue Wörter",
+                    "words": [
+                      {
+                        "thai": "นม",
+                        "transliteration": "nom",
+                        "translation": "Milch"
+                      },
+                      {
+                        "thai": "มั้ง",
+                        "transliteration": "máng",
+                        "translation": "vermutlich / wohl"
+                      },
+                      {
+                        "thai": "แน่ใจ",
+                        "transliteration": "nâe-jai",
+                        "translation": "sicher sein"
+                      },
+                      {
+                        "thai": "หรอก",
+                        "transliteration": "rɔ̀ɔk",
+                        "translation": "doch nicht / gar nicht"
+                      },
+                      {
+                        "thai": "หนัก",
+                        "transliteration": "nàk",
+                        "translation": "schwer (Gewicht)"
+                      },
+                      {
+                        "thai": "อร่อยๆ",
+                        "transliteration": "a-ròi-a-ròi",
+                        "translation": "schön lecker"
+                      }
+                    ],
+                    "note": "Feine Gesprächspartikel für Vermutungen und Beruhigungen."
+                  }
+                ],
+                "patternLead": "Wichtiges Muster",
+                "pattern": {
+                  "thai": "ไม่มีปัญหาอะไรหรอก",
+                  "transliteration": "mâi mii bpan-hǎa à-rai rɔ̀ɔk",
+                  "translation": "Da gibt es doch gar kein Problem!"
+                },
+                "discoveries": [
+                  {
+                    "thai": "ในตู้เย็นมีนมเหลือไหม",
+                    "transliteration": "nai dtûu-yen mii nom lʉ̌a mái",
+                    "translation": "Ist noch Milch im Kühlschrank?"
+                  },
+                  {
+                    "thai": "มีมั้ง ไม่แน่ใจ",
+                    "transliteration": "mii máng mâi nâe-jai",
+                    "translation": "Gibt es vermutlich, bin nicht ganz sicher."
+                  }
+                ],
+                "closing": "Partikel wie มั้ง (vermutlich) und หรอก (doch nicht) verleihen deinen Aussagen natürliche Sprachmelodie."
               },
               "completion": {
-                "title": "Foundation Block 5 abgeschlossen",
-                "sentenceRange": "1901–2000"
+                "title": "🏆 2000 / 2000 · LEVEL 1 COMPLETE 🔥",
+                "sentenceRange": "1951–2000",
+                "progress": "Alle 4 Grammatikbosse gemeistert · 2.000 Sätze Gesamterfolg",
+                "sections": [
+                  {
+                    "title": "Neue Wörter (Sätze 1951–2000)",
+                    "words": [
+                      {
+                        "thai": "เสาร์",
+                        "transliteration": "sǎo",
+                        "translation": "Samstag"
+                      },
+                      {
+                        "thai": "เรียก",
+                        "transliteration": "rîak",
+                        "translation": "rufen / nennen"
+                      },
+                      {
+                        "thai": "เล่า",
+                        "transliteration": "lâo",
+                        "translation": "erzählen"
+                      },
+                      {
+                        "thai": "ฟัง",
+                        "transliteration": "fang",
+                        "translation": "zuhören / hören"
+                      },
+                      {
+                        "thai": "เริ่ม",
+                        "transliteration": "rə̂əm",
+                        "translation": "anfangen"
+                      },
+                      {
+                        "thai": "ยังไง",
+                        "transliteration": "yang-ngai",
+                        "translation": "wie / auf welche Art"
+                      },
+                      {
+                        "thai": "หาเจอ",
+                        "transliteration": "hǎa jəə",
+                        "translation": "wiederfinden"
+                      }
+                    ],
+                    "note": "Geschichten erzählen, zuhören und das große Finale des gesamten 2.000-Satz-Systems!"
+                  }
+                ],
+                "questionLead": "Das vollendete Grundmuster",
+                "question": {
+                  "thai": "บ้านคุณมีห้องกี่ห้อง",
+                  "transliteration": "bâan khun mii hɔ̂ng gìi hɔ̂ng",
+                  "translation": "Wie viele Zimmer hat dein Haus?"
+                },
+                "answerLead": "Echter Gesprächsabschluss",
+                "answer": {
+                  "thai": "มีสามห้อง และอยู่สบายมากครับ",
+                  "transliteration": "mii sǎam hɔ̂ng lɛ́ yùu sà-baai mâak khráp",
+                  "translation": "Drei Zimmer, und man wohnt sehr angenehm darin!"
+                },
+                "closing": "2.000 Sätze gemeistert! Du beherrschst die 4 Grundsäulen des Thailändischen: เป็น (Identität), ไม่ (Verneinung), อยู่ (Ort & Verlauf) und มี/ไม่มี (Besitz & Existenz). Die Flow Machine steht!"
               }
             }
           ],
           "completion": {
-            "title": "GRAMMATIKBOSS 4 BESIEGT",
-            "sentenceRange": "500 / 500 · มี / ไม่มี",
-            "progress": "🏆 2.000 / 15.000+ Sätze · Boss 4 abgeschlossen.",
+            "title": "⚔️ BOSS 4 DEFEATED",
+            "sentenceRange": "2000 / 2000 Sätze",
+            "progress": "มี / ไม่มี · Besitz, Existenz & alle 4 Grammatikbosse gemeistert",
             "summary": [
-              "🏆 GRAMMATIKBOSS 4 BESIEGT",
-              "มี → haben / es gibt",
-              "ไม่มี → nicht haben / es gibt nicht"
+              "🏆 2.000 / 2.000 Sätze im Gesamtsystem gemeistert!",
+              "Besitz ausdrücken: มีเงิน (Geld haben) / ไม่มีบัตร (keine Karte haben) / มีกุญแจ (Schlüssel haben)",
+              "Existenz & Verfügbarkeit: มีคน (Leute sind da) / ไม่มีที่นั่ง (keine Plätze) / มีห้องว่าง (freie Zimmer)",
+              "Fragen nach Mengen: มีกี่อัน (Wie viele Stück gibt es?) / มีอะไรเหลือบ้าง (Was ist noch übrig?)",
+              "Ausstattung & Verabredungen: มีที่ชาร์จ (Ladegerät haben) / มีประชุม (Meeting haben)",
+              "Das Gesamtsystem steht: เป็น (Identität), ไม่ (Verneinung), อยู่ (Ort & Verlauf), มี/ไม่มี (Besitz & Existenz)"
             ]
           }
         }
