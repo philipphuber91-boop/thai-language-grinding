@@ -243,7 +243,7 @@
     function renderPlaylist() {
         const state = controller.state;
         const entries = state.playlist;
-        elements.count.textContent = `${entries.length} ${entries.length === 1 ? "Satz" : "Sätze"}`;
+        elements.count.textContent = `${entries.length > 0 ? state.currentIndex + 1 : 0}/${entries.length}`;
         elements.previous.disabled = entries.length === 0;
         elements.playPause.disabled = entries.length === 0;
         elements.next.disabled = entries.length === 0;

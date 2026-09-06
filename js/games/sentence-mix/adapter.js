@@ -15,10 +15,31 @@
         });
     }
 
+    function createWordTransliterationMap(content) {
+        const transliterations = new Map();
+        if (!content || !Array.isArray(content.words)) {
+            return transliterations;
+        }
+
+        content.words.forEach(function (word) {
+            if (
+                word &&
+                typeof word.id === "string" &&
+                word.id.trim() !== "" &&
+                typeof word.transliteration === "string" &&
+                word.transliteration.trim() !== ""
+            ) {
+                transliterations.set(word.id, word.transliteration.trim());
+            }
+        });
+
+        return transliterations;
+    }
+
     /**
-     * Konvertiert einen Giga-Drill-Satz in das standardisierte Satzmix-Runden-Format.
+     * Konvertiert einen Giga-Drill-Satz in das standardisierte Wortmix-Runden-Format.
      */
-    function createRoundModelFromSentence(sentence, storyMeta) {
+    function createRoundModelFromSentence(sentence, storyMeta, wordTransliterations) {
         if (!sentence) {
             return null;
         }
@@ -36,7 +57,13 @@
             return {
                 id: token.id,
                 text: token.text,
-                wordId: token.wordId || ""
+                wordId: token.wordId || "",
+                transliteration:
+                    (typeof token.transliteration === "string" && token.transliteration.trim() !== ""
+                        ? token.transliteration.trim()
+                        : wordTransliterations instanceof Map
+                            ? wordTransliterations.get(token.wordId) || ""
+                            : "")
             };
         });
 
@@ -65,6 +92,7 @@
         if (!content || !Array.isArray(content.levels)) {
             return playable;
         }
+        const wordTransliterations = createWordTransliterationMap(content);
 
         content.levels.forEach(function (level) {
             if (!Array.isArray(level.bosses)) return;
@@ -81,7 +109,7 @@
                                 levelId: level.id,
                                 bossId: boss.id,
                                 blockId: block.id
-                            });
+                            }, wordTransliterations);
                             if (roundModel && roundModel.tokenCount >= 2) {
                                 playable.push(roundModel);
                             }
@@ -99,6 +127,7 @@
      */
     const SentenceMixAdapter = {
         extractPlayableTokens: extractPlayableTokens,
+        createWordTransliterationMap: createWordTransliterationMap,
         createRoundModelFromSentence: createRoundModelFromSentence,
         extractAllPlayableSentences: extractAllPlayableSentences,
 

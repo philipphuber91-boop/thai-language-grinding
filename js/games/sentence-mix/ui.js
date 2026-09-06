@@ -3,8 +3,16 @@
 
     const NUMPAD_LAYOUTS = ["standard", "laptop"];
     const SENTENCE_ORDERS = ["original", "shuffle"];
+    const TRANSLITERATION_MODES = ["thai", "transliteration", "both"];
     const NUMPAD_LAYOUT_STORAGE_KEY = "thaiGigaDrill:v1:sentence-mix-numpad-layout";
     const SENTENCE_ORDER_STORAGE_KEY = "thaiGigaDrill:v1:sentence-mix-sentence-order";
+    const TRANSLITERATION_MODE_STORAGE_KEY = "thaiGigaDrill:v1:wordmix-transliteration-mode";
+
+    function formatWordMixPoints(value) {
+        return Math.max(0, Number(value) || 0)
+            .toFixed(2)
+            .replace(".", ",");
+    }
 
     function readNumpadLayout() {
         if (typeof window === "undefined" || !window.localStorage) {
@@ -15,7 +23,7 @@
             const savedLayout = window.localStorage.getItem(NUMPAD_LAYOUT_STORAGE_KEY);
             return NUMPAD_LAYOUTS.includes(savedLayout) ? savedLayout : "standard";
         } catch (error) {
-            console.warn("Satzmix-Numpad-Einstellung konnte nicht gelesen werden.", error);
+            console.warn("Wortmix-Numpad-Einstellung konnte nicht gelesen werden.", error);
             return "standard";
         }
     }
@@ -28,7 +36,7 @@
         try {
             window.localStorage.setItem(NUMPAD_LAYOUT_STORAGE_KEY, layout);
         } catch (error) {
-            console.warn("Satzmix-Numpad-Einstellung konnte nicht gespeichert werden.", error);
+            console.warn("Wortmix-Numpad-Einstellung konnte nicht gespeichert werden.", error);
         }
     }
 
@@ -41,7 +49,7 @@
             const savedOrder = window.localStorage.getItem(SENTENCE_ORDER_STORAGE_KEY);
             return SENTENCE_ORDERS.includes(savedOrder) ? savedOrder : "original";
         } catch (error) {
-            console.warn("Satzmix-Satzreihenfolge konnte nicht gelesen werden.", error);
+            console.warn("Wortmix-Reihenfolge konnte nicht gelesen werden.", error);
             return "original";
         }
     }
@@ -54,7 +62,33 @@
         try {
             window.localStorage.setItem(SENTENCE_ORDER_STORAGE_KEY, order);
         } catch (error) {
-            console.warn("Satzmix-Satzreihenfolge konnte nicht gespeichert werden.", error);
+            console.warn("Wortmix-Reihenfolge konnte nicht gespeichert werden.", error);
+        }
+    }
+
+    function readTransliterationMode() {
+        if (typeof window === "undefined" || !window.localStorage) {
+            return "thai";
+        }
+
+        try {
+            const savedMode = window.localStorage.getItem(TRANSLITERATION_MODE_STORAGE_KEY);
+            return TRANSLITERATION_MODES.includes(savedMode) ? savedMode : "thai";
+        } catch (error) {
+            console.warn("Wortmix-Umschrift-Einstellung konnte nicht gelesen werden.", error);
+            return "thai";
+        }
+    }
+
+    function writeTransliterationMode(mode) {
+        if (typeof window === "undefined" || !window.localStorage) {
+            return;
+        }
+
+        try {
+            window.localStorage.setItem(TRANSLITERATION_MODE_STORAGE_KEY, mode);
+        } catch (error) {
+            console.warn("Wortmix-Umschrift-Einstellung konnte nicht gespeichert werden.", error);
         }
     }
 
@@ -83,6 +117,7 @@
         this.totalDurationMs = 0;
         this.numpadLayout = readNumpadLayout();
         this.sentenceOrder = readSentenceOrder();
+        this.transliterationMode = readTransliterationMode();
     }
 
     SentenceMixUI.prototype.init = async function (options) {
@@ -104,7 +139,7 @@
             if (this.sentences.length === 0) {
                 this.renderSystemMessage(
                     source === "playlist"
-                        ? "Die Audio-Playlist enthält keine spielbaren Sätze für den Satzmix."
+                        ? "Die Audio-Playlist enthält keine spielbaren Sätze für den Wortmix."
                         : "Keine spielbaren Sätze im Giga-Drill gefunden."
                 );
                 return;
@@ -113,7 +148,7 @@
             this.setupInputHandlers();
             this.startNextRound();
         } catch (error) {
-            console.error("Fehler beim Initialisieren des Satzmix-Modus:", error);
+            console.error("Fehler beim Initialisieren des Wortmix-Modus:", error);
             this.renderSystemMessage("Fehler beim Laden der Spieldaten: " + error.message);
         }
     };
@@ -124,6 +159,7 @@
         const closeButton = document.getElementById("sentenceMixSettingsClose");
         const layoutInputs = document.querySelectorAll('input[name="sentenceMixNumpadLayout"]');
         const orderInputs = document.querySelectorAll('input[name="sentenceMixSentenceOrder"]');
+        const transliterationInputs = document.querySelectorAll('input[name="sentenceMixTransliterationMode"]');
 
         if (!panel || !openButton || !closeButton) {
             return;
@@ -168,6 +204,14 @@
                 }
             });
         });
+        transliterationInputs.forEach(input => {
+            input.checked = input.value === this.transliterationMode;
+            input.addEventListener("change", () => {
+                if (input.checked) {
+                    this.setTransliterationMode(input.value);
+                }
+            });
+        });
     };
 
     SentenceMixUI.prototype.setNumpadLayout = function (layout) {
@@ -192,6 +236,24 @@
         if (this.sentences.length > 0) {
             this.currentIndex = 0;
             this.startNextRound();
+        }
+    };
+
+    SentenceMixUI.prototype.setTransliterationMode = function (mode) {
+        if (!TRANSLITERATION_MODES.includes(mode)) {
+            return;
+        }
+
+        this.transliterationMode = mode;
+        writeTransliterationMode(mode);
+
+        // Die laufende Eingabe bleibt beim Umschalten erhalten; eine bereits
+        // ausgewertete Runde wird beim nächsten Satz mit dem neuen Modus gerendert.
+        if (this.roundState === "playing" && this.currentRound) {
+            const sequence = window.SentenceMixInput.getSequence();
+            this.renderStage(this.currentRound);
+            this.updateMobileNumpad(sequence);
+            this.handleInputChange(sequence);
         }
     };
 
@@ -370,6 +432,7 @@
         round.displayPills.forEach(pill => {
             const pillEl = document.createElement("div");
             pillEl.className = "token-pill";
+            pillEl.classList.add("token-pill--" + this.transliterationMode);
             pillEl.dataset.digit = pill.displayNumber;
 
             const numSpan = document.createElement("span");
@@ -380,8 +443,21 @@
             thaiSpan.className = "token-pill-thai";
             thaiSpan.textContent = pill.text;
 
+            const transliterationSpan = document.createElement("span");
+            transliterationSpan.className = "token-pill-transliteration";
+            transliterationSpan.textContent = pill.transliteration || pill.text;
+
+            const contentSpan = document.createElement("span");
+            contentSpan.className = "token-pill-content";
+            if (this.transliterationMode !== "transliteration") {
+                contentSpan.appendChild(thaiSpan);
+            }
+            if (this.transliterationMode !== "thai") {
+                contentSpan.appendChild(transliterationSpan);
+            }
+
             pillEl.appendChild(numSpan);
-            pillEl.appendChild(thaiSpan);
+            pillEl.appendChild(contentSpan);
             grid.appendChild(pillEl);
 
             this.activePillElements.set(pill.displayNumber, pillEl);
@@ -417,6 +493,10 @@
     SentenceMixUI.prototype.handleInputChange = function (sequence) {
         if (!this.currentLiveDisplayEl || this.roundState !== "playing") return;
 
+        if (this.feedbackContainerEl && sequence.length > 0) {
+            this.feedbackContainerEl.innerHTML = "";
+        }
+
         const seqText = sequence.length > 0 ? sequence.join(" ") : "";
         this.currentLiveDisplayEl.innerHTML = `<span class="player-seq">> ${seqText}</span><span class="player-cursor"></span>`;
 
@@ -450,8 +530,15 @@
         }
 
         const result = window.SentenceMixEngine.validate(sequence);
-        this.roundState = "evaluated";
         window.SentenceMixInput.setEnabled(false);
+
+        if (!result.isCorrect) {
+            window.SentenceMixInput.clear();
+            this.renderEvaluation(result);
+            return;
+        }
+
+        this.roundState = "evaluated";
 
         // Cursor entfernen
         if (this.currentLiveDisplayEl) {
@@ -469,6 +556,14 @@
         const feedback = document.createElement("div");
 
         if (result.isCorrect) {
+            if (
+                !window.wordMixPoints ||
+                typeof window.wordMixPoints.addExact !== "function"
+            ) {
+                throw new Error("Wortmix-Punktespeicher ist nicht verfügbar.");
+            }
+
+            window.wordMixPoints.addExact(result.pointsExact);
             this.solvedCount++;
             this.totalDurationMs += result.durationMs;
             feedback.className = "stage-feedback correct";
@@ -480,6 +575,11 @@
             headline.className = "feedback-headline";
             headline.textContent = `✓ Richtig! (${result.durationFormatted})`;
             row.appendChild(headline);
+
+            const points = document.createElement("div");
+            points.className = "feedback-points";
+            points.textContent = `+${formatWordMixPoints(result.pointsExact)} Punkte`;
+            row.appendChild(points);
 
             const nextPrompt = document.createElement("div");
             nextPrompt.className = "feedback-next-prompt";
@@ -499,12 +599,12 @@
 
             const headline = document.createElement("div");
             headline.className = "feedback-headline";
-            headline.textContent = "✗ Falsche Reihenfolge!";
+            headline.textContent = "✗ Noch nicht richtig!";
             row.appendChild(headline);
 
             const nextPrompt = document.createElement("div");
             nextPrompt.className = "feedback-next-prompt";
-            nextPrompt.innerHTML = 'Drücke <span class="kbd-badge">Enter ↵</span> zum Fortfahren';
+            nextPrompt.innerHTML = 'Die Zeit läuft weiter – versuche es erneut.';
             row.appendChild(nextPrompt);
             feedback.appendChild(row);
 
@@ -512,7 +612,8 @@
             details.className = "feedback-details";
             const enteredStr = result.enteredNumbers.join(" ");
             const expectedStr = result.expectedNumbers.join(" ");
-            details.textContent = `Deine Eingabe: [ ${enteredStr} ]  |  Richtig: [ ${expectedStr} ]`;
+            details.textContent =
+                `Deine Eingabe: [ ${enteredStr} ]  |  Richtig: [ ${expectedStr} ]`;
             feedback.appendChild(details);
 
             const thaiRow = document.createElement("div");

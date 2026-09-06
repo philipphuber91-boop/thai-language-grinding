@@ -10273,6 +10273,24 @@ body:has(#worldmapHome) .topbar{
     margin-top:14px;
 }
 
+.profile-wordmix-panel{
+    margin-top:14px;
+}
+
+.profile-wordmix-score{
+    display:block;
+    margin:2px 0 0 48px;
+    color:#a35f18;
+    font-size:2rem;
+    line-height:1;
+}
+
+.profile-wordmix-caption{
+    margin:8px 0 0 48px;
+    color:#765323;
+    font-size:.76rem;
+}
+
 .profile-badges-intro{
     margin:-5px 0 12px 48px;
     color:#765323;

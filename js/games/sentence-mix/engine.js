@@ -29,7 +29,8 @@
                 displayNumber: 1,
                 tokenId: tokens[0].id,
                 text: tokens[0].text,
-                wordId: tokens[0].wordId
+                wordId: tokens[0].wordId,
+                transliteration: tokens[0].transliteration
             }];
         }
 
@@ -62,9 +63,41 @@
                 displayNumber: index + 1,
                 tokenId: token.id,
                 text: token.text,
-                wordId: token.wordId
+                wordId: token.wordId,
+                transliteration: token.transliteration
             };
         });
+    }
+
+    const BASE_POINTS_FOR_THREE_WORDS = 30;
+    const POINTS_PER_ADDITIONAL_WORD = 10;
+    const POINTS_LOSS_PER_SECOND = 3;
+
+    function normalizeWordCount(value) {
+        return Math.max(0, Math.floor(Number(value) || 0));
+    }
+
+    function calculateMaxPoints(wordCount) {
+        const normalizedWordCount = normalizeWordCount(wordCount);
+        return Math.max(
+            0,
+            BASE_POINTS_FOR_THREE_WORDS +
+                (normalizedWordCount - 3) * POINTS_PER_ADDITIONAL_WORD
+        );
+    }
+
+    function calculatePoints(maxPoints, durationMs) {
+        const normalizedMaxPoints = Math.max(0, Number(maxPoints) || 0);
+        const normalizedDurationMs = Math.max(0, Number(durationMs) || 0);
+        return Math.max(
+            0,
+            normalizedMaxPoints - (normalizedDurationMs / 1000) * POINTS_LOSS_PER_SECOND
+        );
+    }
+
+    // Occurrence IDs remain unique for the display, while identical word texts share a match key.
+    function getTokenMatchKey(text) {
+        return String(text || "").normalize("NFC").trim();
     }
 
     /**
@@ -78,20 +111,25 @@
 
     SentenceMixEngine.prototype.startRound = function (roundModel) {
         if (!roundModel || !Array.isArray(roundModel.words) || roundModel.words.length === 0) {
-            throw new Error("Ungültiges RoundModel für Satzmix.");
+            throw new Error("Ungültiges RoundModel für Wortmix.");
         }
 
         const displayPills = createGuaranteedShuffle(roundModel.words);
         const numberToTokenIdMap = {};
         const tokenIdToNumberMap = {};
+        const tokenIdToMatchKeyMap = {};
 
         displayPills.forEach(function (pill) {
             numberToTokenIdMap[pill.displayNumber] = pill.tokenId;
             tokenIdToNumberMap[pill.tokenId] = pill.displayNumber;
+            tokenIdToMatchKeyMap[pill.tokenId] = getTokenMatchKey(pill.text);
         });
 
         const expectedNumbers = roundModel.expectedTokenIds.map(function (tokenId) {
             return tokenIdToNumberMap[tokenId];
+        });
+        const expectedTokenMatchKeys = roundModel.expectedTokenIds.map(function (tokenId) {
+            return tokenIdToMatchKeyMap[tokenId];
         });
 
         this.currentRound = {
@@ -104,7 +142,10 @@
             displayPills: displayPills,
             numberToTokenIdMap: numberToTokenIdMap,
             tokenIdToNumberMap: tokenIdToNumberMap,
+            tokenIdToMatchKeyMap: tokenIdToMatchKeyMap,
+            expectedTokenMatchKeys: expectedTokenMatchKeys,
             tokenCount: displayPills.length,
+            maxPoints: calculateMaxPoints(displayPills.length),
             isCompleted: false
         };
 
@@ -117,13 +158,14 @@
     };
 
     SentenceMixEngine.prototype.getElapsedTimeMs = function () {
-        if (!this.startTime) {
+        if (this.startTime === null) {
             return 0;
         }
         const now = (typeof performance !== "undefined" && typeof performance.now === "function")
             ? performance.now()
             : Date.now();
-        return Math.max(0, now - this.startTime);
+        const end = this.endTime === null ? now : this.endTime;
+        return Math.max(0, end - this.startTime);
     };
 
     SentenceMixEngine.prototype.formatDuration = function (ms) {
@@ -143,7 +185,7 @@
         const now = (typeof performance !== "undefined" && typeof performance.now === "function")
             ? performance.now()
             : Date.now();
-        const durationMs = Math.max(0, (this.endTime || now) - this.startTime);
+        const durationMs = this.getElapsedTimeMs();
 
         const normalizedNumbers = (Array.isArray(inputNumbers) ? inputNumbers : [])
             .map(function (n) { return Number(n); })
@@ -152,13 +194,21 @@
         const enteredTokenIds = normalizedNumbers.map(function (num) {
             return this.currentRound.numberToTokenIdMap[num] || null;
         }, this);
+        const enteredTokenMatchKeys = enteredTokenIds.map(function (tokenId) {
+            if (tokenId === null) {
+                return null;
+            }
+            return this.currentRound.tokenIdToMatchKeyMap[tokenId];
+        }, this);
 
-        const expectedIds = this.currentRound.expectedTokenIds;
+        const expectedMatchKeys = this.currentRound.expectedTokenMatchKeys;
         let isCorrect = false;
 
-        if (enteredTokenIds.length === expectedIds.length) {
-            isCorrect = enteredTokenIds.every(function (tokenId, index) {
-                return tokenId !== null && tokenId === expectedIds[index];
+        if (enteredTokenMatchKeys.length === expectedMatchKeys.length) {
+            isCorrect = enteredTokenMatchKeys.every(function (matchKey, index) {
+                return matchKey !== null &&
+                    matchKey !== undefined &&
+                    matchKey === expectedMatchKeys[index];
             });
         }
 
@@ -171,10 +221,14 @@
             isCorrect: isCorrect,
             enteredNumbers: normalizedNumbers,
             enteredTokenIds: enteredTokenIds,
+            enteredTokenMatchKeys: enteredTokenMatchKeys,
             expectedNumbers: this.currentRound.expectedNumbers,
-            expectedTokenIds: expectedIds,
+            expectedTokenIds: this.currentRound.expectedTokenIds,
+            expectedTokenMatchKeys: expectedMatchKeys,
             durationMs: durationMs,
-            durationFormatted: this.formatDuration(durationMs)
+            durationFormatted: this.formatDuration(durationMs),
+            maxPoints: this.currentRound.maxPoints,
+            pointsExact: calculatePoints(this.currentRound.maxPoints, durationMs)
         };
     };
 
@@ -191,6 +245,8 @@
     const sentenceMixEngineInstance = new SentenceMixEngine();
     sentenceMixEngineInstance.SentenceMixEngine = SentenceMixEngine;
     sentenceMixEngineInstance.createGuaranteedShuffle = createGuaranteedShuffle;
+    sentenceMixEngineInstance.calculateMaxPoints = calculateMaxPoints;
+    sentenceMixEngineInstance.calculatePoints = calculatePoints;
 
     if (typeof module !== "undefined" && module.exports) {
         module.exports = sentenceMixEngineInstance;

@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#15110d">
-    <title>Satzmix · Thai Language Grinding</title>
+    <title>Wortmix · Thai Language Grinding</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&family=Noto+Sans+Thai:wght@300;400;500&family=Prompt:wght@300;400&family=Sarabun:wght@300;400;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../css/sentence-mix.css?v=9">
+    <link rel="stylesheet" href="../css/sentence-mix.css?v=10">
     <link rel="manifest" href="../manifest.json">
 </head>
 <body class="sentence-mix-body">
@@ -21,8 +21,8 @@
                 ← Zurück
             </a>
             <div class="sentence-mix-title-box">
-                <h1>🎲 Satzmix</h1>
-                <p>Speed Typing &amp; Satzstruktur</p>
+                <h1>🎲 Wortmix</h1>
+                <p>Speed Typing &amp; Wortreihenfolge</p>
             </div>
         </div>
         <div class="sentence-mix-header-right">
@@ -36,12 +36,12 @@
                     <strong id="statAvgTime">--:--</strong>
                 </div>
             </div>
-            <button id="sentenceMixSettingsButton" class="sentence-mix-settings-button" type="button" aria-label="Satzmix-Einstellungen" aria-controls="sentenceMixSettings" aria-expanded="false">⚙</button>
+            <button id="sentenceMixSettingsButton" class="sentence-mix-settings-button" type="button" aria-label="Wortmix-Einstellungen" aria-controls="sentenceMixSettings" aria-expanded="false">⚙</button>
         </div>
     </header>
 
     <main class="sentence-mix-main">
-        <div id="sentenceMixStageContainer" class="sentence-mix-stage-container" role="region" aria-label="Satzmix Spielfeld"></div>
+        <div id="sentenceMixStageContainer" class="sentence-mix-stage-container" role="region" aria-label="Wortmix Spielfeld"></div>
     </main>
 
     <footer class="sentence-mix-footer">
@@ -72,7 +72,7 @@
     <div id="sentenceMixSettings" class="sentence-mix-settings" hidden>
         <div class="sentence-mix-settings-card" role="dialog" aria-modal="true" aria-labelledby="sentenceMixSettingsTitle">
             <div class="sentence-mix-settings-header">
-                <h2 id="sentenceMixSettingsTitle">Satzmix-Einstellungen</h2>
+                <h2 id="sentenceMixSettingsTitle">Wortmix-Einstellungen</h2>
                 <button id="sentenceMixSettingsClose" class="sentence-mix-settings-close" type="button" aria-label="Einstellungen schließen">×</button>
             </div>
             <fieldset class="sentence-mix-settings-group">
@@ -97,6 +97,21 @@
                     <span>Shuffle-Modus (Sätze mischen)</span>
                 </label>
             </fieldset>
+            <fieldset class="sentence-mix-settings-group">
+                <legend>Wortdarstellung</legend>
+                <label>
+                    <input type="radio" name="sentenceMixTransliterationMode" value="thai">
+                    <span>Thai-Schrift</span>
+                </label>
+                <label>
+                    <input type="radio" name="sentenceMixTransliterationMode" value="transliteration">
+                    <span>Umschrift</span>
+                </label>
+                <label>
+                    <input type="radio" name="sentenceMixTransliterationMode" value="both">
+                    <span>Thai + Umschrift</span>
+                </label>
+            </fieldset>
         </div>
     </div>
 
@@ -104,6 +119,7 @@
     <script src="../js/games/sentence-mix/adapter.js"></script>
     <script src="../js/games/sentence-mix/engine.js"></script>
     <script src="../js/games/sentence-mix/input.js"></script>
+    <script src="../js/games/sentence-mix/points.js"></script>
     <script src="../js/games/sentence-mix/ui.js"></script>
     <script src="../js/pwa-register.js"></script>
     <script>

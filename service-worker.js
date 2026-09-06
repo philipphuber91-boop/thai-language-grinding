@@ -16,7 +16,7 @@
  * müssen den Cache in Safari nicht manuell löschen.
  */
 
-const CACHE_VERSION = 'v181';
+const CACHE_VERSION = 'v194';
 const CACHE_NAME = `thai-language-grinding-${CACHE_VERSION}`;
 
 // App-Shell: alles, was für Start und Offline-Betrieb gebraucht wird.
@@ -82,6 +82,7 @@ const PRECACHE_ASSETS = [
     'js/games/sentence-mix/adapter.js',
     'js/games/sentence-mix/engine.js',
     'js/games/sentence-mix/input.js',
+    'js/games/sentence-mix/points.js',
     'js/games/sentence-mix/ui.js',
 
     'assets/ui/logo.png',

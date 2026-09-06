@@ -540,6 +540,9 @@ function renderProfile() {
     }
 
     const stats = player?.stats || {};
+    const wordMixPoints = typeof window.wordMixPoints?.getExact === "function"
+        ? window.wordMixPoints.getExact()
+        : 0;
     const xp = typeof getPlayerXpSummary === "function"
         ? getPlayerXpSummary()
         : {
@@ -619,6 +622,20 @@ function renderProfile() {
                 <div id="profileRankOverview" class="profile-rank-overview" hidden>
                     ${renderProfileRankOverview(rank.number)}
                 </div>
+            </section>
+
+            <section class="profile-panel profile-wordmix-panel" aria-labelledby="profileWordmixTitle">
+                <div class="profile-panel-heading">
+                    <span class="profile-panel-icon" aria-hidden="true">🎲</span>
+                    <div>
+                        <p class="profile-eyebrow">Wortmix</p>
+                        <h2 id="profileWordmixTitle">Wortmix-Punkte</h2>
+                    </div>
+                </div>
+                <strong class="profile-wordmix-score">${profileFormatNumber(Math.floor(wordMixPoints))}</strong>
+                <p class="profile-wordmix-caption">
+                    Gesammelte Punkte – unabhängig von XP und anderen Punktesystemen.
+                </p>
             </section>
 
             <section class="profile-panel profile-badges-panel" aria-labelledby="profileBadgesTitle">

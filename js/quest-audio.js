@@ -73,6 +73,15 @@
         }
     }
 
+    function updateActiveNativeAudioRate(rate) {
+        if (!activeNativeAudio || !Number.isFinite(rate)) {
+            return false;
+        }
+
+        activeNativeAudio.playbackRate = rate;
+        return true;
+    }
+
     function getRemoteTtsConfig() {
         const configured = window.THAI_GIGA_TTS_CONFIG;
         if (configured === false || configured?.enabled === false) {
@@ -211,6 +220,9 @@
         audio.pause();
         audio.src = cachedAudio.url;
         audio.load();
+        audio.playbackRate = Number.isFinite(options.rate)
+            ? options.rate
+            : getStoredPlaybackRate();
         audio.currentTime = 0;
         activeNativeAudio = audio;
         if (button) {
@@ -702,7 +714,6 @@
                     ? cached.element
                     : new Audio(audio.src);
                 nativeAudio.preload = "auto";
-                nativeAudio.playbackRate = state.playbackRate;
                 nativeAudio.currentTime = 0;
                 activeNativeAudio = nativeAudio;
                 nativeAudio.onended = () => {
@@ -724,6 +735,7 @@
                 if (!cached || cached.src !== audio.src) {
                     nativeAudio.load();
                 }
+                nativeAudio.playbackRate = state.playbackRate;
                 nativeAudio.play().catch(() => {
                     if (activeNativeAudio === nativeAudio) {
                         activeNativeAudio = null;
@@ -990,7 +1002,7 @@
             },
             setPlaybackRate(value) {
                 state.playbackRate = clampRate(value);
-                if (state.playing) {
+                if (state.playing && !updateActiveNativeAudioRate(state.playbackRate)) {
                     stopPlayback();
                     state.playing = true;
                     notify();

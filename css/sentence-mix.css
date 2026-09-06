@@ -349,6 +349,32 @@ html, body {
     letter-spacing: 0.02em;
 }
 
+.token-pill-content {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+}
+
+.token-pill-transliteration {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #d8c29c;
+    font-family: "Prompt", "Segoe UI", sans-serif;
+    font-size: 0.82rem;
+    line-height: 1.15;
+    letter-spacing: 0.01em;
+}
+
+.token-pill--transliteration .token-pill-transliteration {
+    color: #f3e5c0;
+    font-size: 1.2rem;
+}
+
 .token-pill.is-selected {
     background: #3f3120;
     border-color: var(--gold-light, #f3d17a);
@@ -401,6 +427,16 @@ html, body {
     overflow: hidden;
 }
 
+.stage-feedback-slot {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    flex: 0 0 132px;
+    height: 132px;
+    overflow: hidden;
+}
+
 .player-seq {
     min-width: 0;
     overflow: hidden;
@@ -424,6 +460,9 @@ html, body {
 
 /* Feedback-Container */
 .stage-feedback {
+    box-sizing: border-box;
+    height: 100%;
+    overflow: hidden;
     border-radius: 12px;
     padding: 16px 20px;
     display: flex;
@@ -469,6 +508,13 @@ html, body {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.feedback-points {
+    color: var(--gold-light, #f3d17a);
+    font-size: 1.1rem;
+    font-weight: 800;
+    white-space: nowrap;
 }
 
 .feedback-details {
@@ -596,8 +642,8 @@ html, body {
     .sentence-mix-stage {
         min-width: 0;
         max-height: 100%;
-        padding: 10px 12px;
-        gap: 8px;
+        padding: 16px 14px;
+        gap: 12px;
         border-radius: 16px;
         max-width: 560px;
         width: 100%;
@@ -605,8 +651,17 @@ html, body {
     }
 
     .stage-header {
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
+        align-items: flex-start;
         padding-bottom: 10px;
+    }
+
+    .stage-butler-profile {
+        min-width: 0;
+    }
+
+    .stage-butler-info {
+        min-width: 0;
     }
 
     .stage-avatar {
@@ -620,38 +675,43 @@ html, body {
     }
 
     .stage-translation-badge {
-        flex: 1 1 100%;
-        font-size: 0.9rem;
-        max-width: 100%;
+        flex: 0 1 auto;
+        font-size: 0.82rem;
+        max-width: 45%;
         overflow-wrap: anywhere;
-        padding: 5px 12px;
-        text-align: left;
+        padding: 5px 10px;
+        text-align: right;
     }
 
     .stage-tokens-grid {
-        gap: 6px;
-        padding: 4px 0;
+        gap: 8px;
+        padding: 8px 0;
     }
 
     .token-pill {
-        padding: 5px 9px 5px 7px;
-        gap: 7px;
-        border-radius: 10px;
+        padding: 7px 12px 7px 8px;
+        gap: 9px;
+        border-radius: 11px;
     }
 
     .token-pill-num {
-        width: 24px;
-        height: 24px;
-        font-size: 0.8rem;
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
     }
 
     .token-pill-thai {
-        font-size: 1.25rem;
+        font-size: clamp(1.4rem, 5.5vw, 1.65rem);
+    }
+
+    .token-pill--transliteration .token-pill-transliteration {
+        font-size: clamp(1rem, 4.5vw, 1.25rem);
     }
 
     .stage-input-section {
         gap: 4px;
         padding: 5px 8px;
+        margin-top: 10px;
     }
 
     .stage-input-display {
@@ -662,9 +722,19 @@ html, body {
         justify-content: flex-end;
     }
 
+    .stage-feedback-slot {
+        flex-basis: 96px;
+        height: 96px;
+    }
+
     .stage-feedback {
         padding: 8px 10px;
         gap: 5px;
+        width: 100%;
+        align-self: stretch;
+        height: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
     }
 
     .feedback-headline {
@@ -881,18 +951,23 @@ html, body {
     }
 
     .token-pill-num {
-        width: 20px;
-        height: 20px;
-        font-size: 0.7rem;
+        width: 26px;
+        height: 26px;
+        font-size: 0.82rem;
     }
 
     .token-pill-thai {
-        font-size: 1.05rem;
+        font-size: 1.3rem;
+    }
+
+    .token-pill--transliteration .token-pill-transliteration {
+        font-size: 1rem;
     }
 
     .stage-input-section {
         gap: 3px;
         padding: 4px 6px;
+        margin-top: 8px;
     }
 
     .stage-input-label {
@@ -905,9 +980,19 @@ html, body {
         font-size: 0.9rem;
     }
 
+    .stage-feedback-slot {
+        flex-basis: 76px;
+        height: 76px;
+    }
+
     .stage-feedback {
         padding: 5px 7px;
         gap: 3px;
+        width: 100%;
+        align-self: stretch;
+        height: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
     }
 
     .feedback-row {
