@@ -2609,6 +2609,10 @@ body.thai-giga-page[data-thai-translation-visible="false"]
 }
 
 @media (max-width: 580px) {
+    .thai-giga-audio-header {
+        margin-bottom: 14px;
+    }
+
     .thai-giga-introduction-parts {
         grid-template-columns: 1fr;
     }
@@ -2845,7 +2849,28 @@ body.thai-giga-page[data-thai-translation-visible="false"]
     }
 
     .thai-giga-audio-speed {
-        grid-template-columns: auto minmax(0, 1fr) auto;
+        grid-template-columns: minmax(0, 1fr) auto;
+        width: min(100%, 360px);
+        margin: 14px auto;
+    }
+
+    .thai-giga-audio-speed > span:first-child {
+        display: none;
+    }
+
+    .thai-giga-audio-controls {
+        justify-content: center;
+    }
+
+    .thai-giga-audio-controls + .thai-giga-audio-controls {
+        margin-top: 10px;
+    }
+
+    .thai-giga-audio-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: min(100%, 360px);
+        margin: 14px auto 0;
     }
 
     .thai-giga-level summary {

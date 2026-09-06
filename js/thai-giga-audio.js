@@ -264,11 +264,6 @@
             .replace(".", ",")
             .replace(",00", "")}×`;
 
-        const currentEntry = entries[state.currentIndex];
-        elements.nowPlaying.textContent = currentEntry
-            ? `${state.currentIndex + 1}/${entries.length} · ${getEntryLabel(currentEntry)}`
-            : "Füge Sätze über „+ Playlist“ hinzu.";
-
         elements.playlist.innerHTML = entries.length === 0
             ? "<li class=\"thai-giga-playlist-empty\">Noch keine Sätze ausgewählt.</li>"
             : entries.map((entry, index) => `
@@ -457,7 +452,6 @@
             openRsvp: document.getElementById("thaiGigaAudioOpenRsvp"),
             openSentenceMix: document.getElementById("thaiGigaAudioOpenSentenceMix"),
             count: document.getElementById("thaiGigaAudioCount"),
-            nowPlaying: document.getElementById("thaiGigaAudioNowPlaying"),
             previous: document.getElementById("thaiGigaAudioPrevious"),
             playPause: document.getElementById("thaiGigaAudioPlayPause"),
             next: document.getElementById("thaiGigaAudioNext"),
