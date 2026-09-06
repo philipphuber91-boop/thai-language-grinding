@@ -252,6 +252,9 @@
         if (elements.openRsvp) {
             elements.openRsvp.disabled = entries.length === 0;
         }
+        if (elements.openSentenceMix) {
+            elements.openSentenceMix.disabled = entries.length === 0;
+        }
         elements.playPause.textContent = state.playing ? "⏸ Pause" : "▶ Abspielen";
         elements.loop.checked = state.loop;
         elements.shuffle.checked = state.shuffle;
@@ -408,6 +411,16 @@
         return window.thaiGigaRsvp?.openPlaylist(elements.openRsvp) || false;
     }
 
+    function openSentenceMixPlaylist() {
+        if (controller.state.playlist.length === 0) {
+            setStatus("Füge zuerst Sätze zur Playlist hinzu.");
+            return false;
+        }
+
+        window.location.href = "satzmix.html?source=playlist";
+        return true;
+    }
+
     function addBlock(blockId) {
         controller.addMany(getEntriesForBlock(blockId));
     }
@@ -442,6 +455,7 @@
             playerToggle: document.getElementById("thaiGigaPlayerToggle"),
             openTyping: document.getElementById("thaiGigaAudioOpenTyping"),
             openRsvp: document.getElementById("thaiGigaAudioOpenRsvp"),
+            openSentenceMix: document.getElementById("thaiGigaAudioOpenSentenceMix"),
             count: document.getElementById("thaiGigaAudioCount"),
             nowPlaying: document.getElementById("thaiGigaAudioNowPlaying"),
             previous: document.getElementById("thaiGigaAudioPrevious"),
@@ -486,6 +500,7 @@
         elements.clear.addEventListener("click", () => controller.clear());
         elements.openTyping.addEventListener("click", openTypingPlaylist);
         elements.openRsvp?.addEventListener("click", openRsvpPlaylist);
+        elements.openSentenceMix?.addEventListener("click", openSentenceMixPlaylist);
         controller.load();
 
         if (window.ResizeObserver) {
@@ -507,6 +522,7 @@
         addBlock,
         openTypingPlaylist,
         openRsvpPlaylist,
+        openSentenceMixPlaylist,
         removeSentence,
         removeSentences,
         getAudioForSentence,

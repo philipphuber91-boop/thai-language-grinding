@@ -1,8 +1,77 @@
 (function () {
     "use strict";
 
+    const NUMPAD_LAYOUTS = ["standard", "laptop"];
+    const SENTENCE_ORDERS = ["original", "shuffle"];
+    const NUMPAD_LAYOUT_STORAGE_KEY = "thaiGigaDrill:v1:sentence-mix-numpad-layout";
+    const SENTENCE_ORDER_STORAGE_KEY = "thaiGigaDrill:v1:sentence-mix-sentence-order";
+
+    function readNumpadLayout() {
+        if (typeof window === "undefined" || !window.localStorage) {
+            return "standard";
+        }
+
+        try {
+            const savedLayout = window.localStorage.getItem(NUMPAD_LAYOUT_STORAGE_KEY);
+            return NUMPAD_LAYOUTS.includes(savedLayout) ? savedLayout : "standard";
+        } catch (error) {
+            console.warn("Satzmix-Numpad-Einstellung konnte nicht gelesen werden.", error);
+            return "standard";
+        }
+    }
+
+    function writeNumpadLayout(layout) {
+        if (typeof window === "undefined" || !window.localStorage) {
+            return;
+        }
+
+        try {
+            window.localStorage.setItem(NUMPAD_LAYOUT_STORAGE_KEY, layout);
+        } catch (error) {
+            console.warn("Satzmix-Numpad-Einstellung konnte nicht gespeichert werden.", error);
+        }
+    }
+
+    function readSentenceOrder() {
+        if (typeof window === "undefined" || !window.localStorage) {
+            return "original";
+        }
+
+        try {
+            const savedOrder = window.localStorage.getItem(SENTENCE_ORDER_STORAGE_KEY);
+            return SENTENCE_ORDERS.includes(savedOrder) ? savedOrder : "original";
+        } catch (error) {
+            console.warn("Satzmix-Satzreihenfolge konnte nicht gelesen werden.", error);
+            return "original";
+        }
+    }
+
+    function writeSentenceOrder(order) {
+        if (typeof window === "undefined" || !window.localStorage) {
+            return;
+        }
+
+        try {
+            window.localStorage.setItem(SENTENCE_ORDER_STORAGE_KEY, order);
+        } catch (error) {
+            console.warn("Satzmix-Satzreihenfolge konnte nicht gespeichert werden.", error);
+        }
+    }
+
+    function shuffleArray(array) {
+        const shuffled = array.slice();
+        for (let index = shuffled.length - 1; index > 0; index -= 1) {
+            const randomIndex = Math.floor(Math.random() * (index + 1));
+            const temporary = shuffled[index];
+            shuffled[index] = shuffled[randomIndex];
+            shuffled[randomIndex] = temporary;
+        }
+        return shuffled;
+    }
+
     function SentenceMixUI() {
         this.sentences = [];
+        this.allSentences = [];
         this.currentIndex = 0;
         this.stageContainer = null;
         this.currentRound = null;
@@ -12,6 +81,8 @@
         this.roundState = "idle"; // "idle" | "playing" | "evaluated"
         this.solvedCount = 0;
         this.totalDurationMs = 0;
+        this.numpadLayout = readNumpadLayout();
+        this.sentenceOrder = readSentenceOrder();
     }
 
     SentenceMixUI.prototype.init = async function (options) {
@@ -20,10 +91,22 @@
 
         try {
             const contentUrl = options.contentUrl || "../data/thai-giga-drill.v1.json";
-            this.sentences = await window.SentenceMixAdapter.loadContent(contentUrl);
+            const source = options.source ||
+                new URLSearchParams(window.location.search).get("source") ||
+                "all";
+            this.allSentences = source === "playlist"
+                ? await window.SentenceMixAdapter.loadPlaylist(contentUrl)
+                : await window.SentenceMixAdapter.loadContent(contentUrl);
+            this.applySentenceOrder();
+            this.setupSettings();
+            this.applyNumpadLayout();
 
             if (this.sentences.length === 0) {
-                this.renderSystemMessage("Keine spielbaren Sätze im Giga-Drill gefunden.");
+                this.renderSystemMessage(
+                    source === "playlist"
+                        ? "Die Audio-Playlist enthält keine spielbaren Sätze für den Satzmix."
+                        : "Keine spielbaren Sätze im Giga-Drill gefunden."
+                );
                 return;
             }
 
@@ -33,6 +116,117 @@
             console.error("Fehler beim Initialisieren des Satzmix-Modus:", error);
             this.renderSystemMessage("Fehler beim Laden der Spieldaten: " + error.message);
         }
+    };
+
+    SentenceMixUI.prototype.setupSettings = function () {
+        const panel = document.getElementById("sentenceMixSettings");
+        const openButton = document.getElementById("sentenceMixSettingsButton");
+        const closeButton = document.getElementById("sentenceMixSettingsClose");
+        const layoutInputs = document.querySelectorAll('input[name="sentenceMixNumpadLayout"]');
+        const orderInputs = document.querySelectorAll('input[name="sentenceMixSentenceOrder"]');
+
+        if (!panel || !openButton || !closeButton) {
+            return;
+        }
+
+        const closePanel = () => {
+            panel.hidden = true;
+            openButton.setAttribute("aria-expanded", "false");
+        };
+
+        openButton.addEventListener("click", () => {
+            panel.hidden = false;
+            openButton.setAttribute("aria-expanded", "true");
+        });
+        closeButton.addEventListener("click", closePanel);
+        panel.addEventListener("click", event => {
+            if (event.target === panel) {
+                closePanel();
+            }
+        });
+        window.addEventListener("keydown", event => {
+            if (event.key === "Escape" && !panel.hidden) {
+                event.preventDefault();
+                event.stopPropagation();
+                closePanel();
+            }
+        }, { capture: true });
+
+        layoutInputs.forEach(input => {
+            input.checked = input.value === this.numpadLayout;
+            input.addEventListener("change", () => {
+                if (input.checked) {
+                    this.setNumpadLayout(input.value);
+                }
+            });
+        });
+        orderInputs.forEach(input => {
+            input.checked = input.value === this.sentenceOrder;
+            input.addEventListener("change", () => {
+                if (input.checked) {
+                    this.setSentenceOrder(input.value);
+                }
+            });
+        });
+    };
+
+    SentenceMixUI.prototype.setNumpadLayout = function (layout) {
+        if (!NUMPAD_LAYOUTS.includes(layout)) {
+            return;
+        }
+
+        this.numpadLayout = layout;
+        writeNumpadLayout(layout);
+        this.applyNumpadLayout();
+    };
+
+    SentenceMixUI.prototype.setSentenceOrder = function (order) {
+        if (!SENTENCE_ORDERS.includes(order)) {
+            return;
+        }
+
+        this.sentenceOrder = order;
+        writeSentenceOrder(order);
+        this.applySentenceOrder();
+
+        if (this.sentences.length > 0) {
+            this.currentIndex = 0;
+            this.startNextRound();
+        }
+    };
+
+    SentenceMixUI.prototype.applySentenceOrder = function () {
+        if (this.sentenceOrder === "shuffle") {
+            this.sentences = shuffleArray(this.allSentences);
+        } else {
+            this.sentences = this.allSentences.slice();
+        }
+    };
+
+    SentenceMixUI.prototype.applyNumpadLayout = function () {
+        const grid = document.querySelector("#mobileNumpad .numpad-grid");
+        if (!grid) {
+            return;
+        }
+
+        const digitButtons = Array.from(grid.querySelectorAll(".numpad-key[data-key]"));
+        const actionButtons = Array.from(grid.querySelectorAll(".numpad-key[data-action]"));
+        const digitsByValue = new Map(digitButtons.map(button => [button.dataset.key, button]));
+        let digitOrder = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+        if (this.numpadLayout === "laptop") {
+            digitOrder = ["7", "8", "9", "4", "5", "6", "1", "2", "3"];
+        } else if (this.numpadLayout === "shuffle") {
+            digitOrder = shuffleArray(digitOrder);
+        }
+
+        digitOrder.forEach(digit => {
+            const button = digitsByValue.get(digit);
+            if (button) {
+                grid.appendChild(button);
+            }
+        });
+        actionButtons.forEach(button => grid.appendChild(button));
     };
 
     SentenceMixUI.prototype.setupInputHandlers = function () {
@@ -169,13 +363,7 @@
         }
         stage.appendChild(header);
 
-        // 2. Prompt
-        const prompt = document.createElement("p");
-        prompt.className = "stage-prompt";
-        prompt.textContent = "Bringe die Wörter per Zifferntasten / Nummernblock in die richtige Reihenfolge:";
-        stage.appendChild(prompt);
-
-        // 3. Tokens Grid
+        // 2. Tokens Grid
         const grid = document.createElement("div");
         grid.className = "stage-tokens-grid";
 
@@ -200,13 +388,13 @@
         });
         stage.appendChild(grid);
 
-        // 4. Live-Eingabe-Bereich
+        // 3. Kompakte Live-Eingabe
         const inputSection = document.createElement("div");
         inputSection.className = "stage-input-section";
 
         const inputLabel = document.createElement("span");
         inputLabel.className = "stage-input-label";
-        inputLabel.textContent = "Deine Eingabe:";
+        inputLabel.textContent = "Eingabe";
         inputSection.appendChild(inputLabel);
 
         const inputDisplay = document.createElement("div");
@@ -217,7 +405,7 @@
         stage.appendChild(inputSection);
         this.currentLiveDisplayEl = inputDisplay;
 
-        // 5. Feedback-Container (leer zur Initialisierung)
+        // 4. Feedback-Container (leer zur Initialisierung)
         const feedbackContainer = document.createElement("div");
         feedbackContainer.className = "stage-feedback-slot";
         stage.appendChild(feedbackContainer);

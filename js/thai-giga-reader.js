@@ -602,6 +602,79 @@
         `;
     }
 
+    function renderReminderSentenceTokens(sentence) {
+        let previousTokenWasWord = false;
+
+        return sentence.tokens.map(token => {
+            const isWord = token.kind === "word" && token.wordId;
+            const generatedSeparator = isWord && previousTokenWasWord
+                ? '<span class="thai-giga-space-token thai-giga-generated-space" aria-hidden="true"> </span>'
+                : "";
+            const word = isWord ? indexes.wordsById.get(token.wordId) : null;
+            const markup = word
+                ? renderToneMarkup(token.text, word.transliteration, word.syllables)
+                : escapeHtml(token.text);
+
+            previousTokenWasWord = Boolean(isWord);
+            return generatedSeparator + markup;
+        }).join("");
+    }
+
+    let reminderTokenCandidates = null;
+
+    function getReminderTokenCandidates() {
+        if (reminderTokenCandidates) {
+            return reminderTokenCandidates;
+        }
+
+        const candidates = new Map();
+        indexes.sentencesById.forEach(sentence => {
+            sentence.tokens.forEach(token => {
+                if (token.kind !== "word" || !token.wordId || candidates.has(token.text)) {
+                    return;
+                }
+
+                const word = indexes.wordsById.get(token.wordId);
+                if (word) {
+                    candidates.set(token.text, word);
+                }
+            });
+        });
+        reminderTokenCandidates = [...candidates.entries()]
+            .sort((left, right) => right[0].length - left[0].length);
+        return reminderTokenCandidates;
+    }
+
+    function renderReminderTextByCanonicalTokens(thai) {
+        const markup = [];
+        const candidates = getReminderTokenCandidates();
+        let offset = 0;
+        let previousTokenWasWord = false;
+
+        while (offset < thai.length) {
+            const candidate = candidates.find(([text]) => thai.startsWith(text, offset));
+            if (candidate) {
+                const [text, word] = candidate;
+                if (previousTokenWasWord) {
+                    markup.push(
+                        '<span class="thai-giga-space-token thai-giga-generated-space" aria-hidden="true"> </span>'
+                    );
+                }
+                markup.push(renderToneMarkup(text, word.transliteration, word.syllables));
+                offset += text.length;
+                previousTokenWasWord = true;
+                continue;
+            }
+
+            const [character] = Array.from(thai.slice(offset));
+            markup.push(escapeHtml(character));
+            offset += character.length;
+            previousTokenWasWord = false;
+        }
+
+        return markup.join("");
+    }
+
     function renderToneMarkedPhrase(phrase) {
         const matchingSentence = indexes &&
             Array.from(indexes.sentencesById.values()).find(sentence =>
@@ -609,26 +682,11 @@
                 sentence.transliteration === phrase.transliteration
             );
 
-        if (!matchingSentence) {
-            return renderToneMarkup(
-                phrase.thai,
-                phrase.transliteration,
-                phrase.syllables || getWordSyllables(phrase.thai)
-            );
+        if (matchingSentence) {
+            return renderReminderSentenceTokens(matchingSentence);
         }
 
-        return matchingSentence.tokens.map(token => {
-            if (token.kind !== "word" || !token.wordId) {
-                return escapeHtml(token.text);
-            }
-
-            const word = indexes.wordsById.get(token.wordId);
-            return renderToneMarkup(
-                token.text,
-                word?.transliteration,
-                word?.syllables
-            );
-        }).join("");
+        return renderReminderTextByCanonicalTokens(phrase.thai);
     }
 
     function renderReminderAudio(text) {

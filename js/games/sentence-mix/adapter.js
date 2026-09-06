@@ -120,6 +120,39 @@
             }
 
             return extractAllPlayableSentences(content);
+        },
+
+        async loadPlaylist(url) {
+            let raw = "";
+            try {
+                raw = localStorage.getItem("thaiGigaDrill:v1:audio-playlist") || "";
+            } catch (error) {
+                throw new Error("Die Audio-Playlist konnte nicht gelesen werden.", { cause: error });
+            }
+
+            if (!raw) {
+                return [];
+            }
+
+            let stored;
+            try {
+                stored = JSON.parse(raw);
+            } catch (error) {
+                throw new Error("Die gespeicherte Audio-Playlist ist ungültig.", { cause: error });
+            }
+
+            const sentenceIds = Array.isArray(stored?.playlist)
+                ? stored.playlist.filter(id => typeof id === "string" && id.trim() !== "")
+                : [];
+            if (sentenceIds.length === 0) {
+                return [];
+            }
+
+            const sentences = await this.loadContent(url);
+            const sentencesById = new Map(sentences.map(sentence => [sentence.sentenceId, sentence]));
+            return sentenceIds
+                .map(sentenceId => sentencesById.get(sentenceId))
+                .filter(Boolean);
         }
     };
 

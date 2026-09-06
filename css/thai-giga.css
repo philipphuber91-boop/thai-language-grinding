@@ -1012,8 +1012,6 @@ body.thai-giga-page {
 
     .thai-giga-rsvp-orp {
         display: inline-block;
-        color: var(--thai-gold);
-        text-shadow: 0 0 12px var(--thai-glow);
         transform: scale(1.08);
     }
 
@@ -1090,10 +1088,6 @@ body.thai-giga-page {
     .thai-giga-speedreading[data-speedreading-tone-colors="false"] .thai-tone-rising,
     .thai-giga-speedreading[data-speedreading-tone-colors="false"] .thai-tone-mixed {
         color: inherit;
-    }
-
-    .thai-giga-speedreading .thai-giga-rsvp-orp {
-        color: var(--thai-gold);
     }
 
     .thai-giga-speedreading-audio {
@@ -2142,6 +2136,15 @@ body.thai-giga-page[data-thai-tone-colors="true"] .thai-tone-mixed {
     color: var(--thai-tone-mixed);
 }
 
+body.thai-giga-page[data-thai-tone-colors="false"] .thai-tone-mid,
+body.thai-giga-page[data-thai-tone-colors="false"] .thai-tone-low,
+body.thai-giga-page[data-thai-tone-colors="false"] .thai-tone-falling,
+body.thai-giga-page[data-thai-tone-colors="false"] .thai-tone-high,
+body.thai-giga-page[data-thai-tone-colors="false"] .thai-tone-rising,
+body.thai-giga-page[data-thai-tone-colors="false"] .thai-tone-mixed {
+    color: inherit;
+}
+
 .thai-giga-transliteration {
     margin: 5px 0 0;
     color: var(--thai-accent);
@@ -3172,6 +3175,139 @@ body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reminder-discoveries > 
 
 body.thai-giga-page[data-thai-theme="desert"] .thai-giga-introduction-example {
     background: #f6e6c2;
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-dictionary {
+    border-color: #8d6428;
+    background:
+        linear-gradient(
+            180deg,
+            #f7e6bf 0%,
+            #edd3a0 45%,
+            #dfbc7d 100%
+        );
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .45),
+        inset 0 -2px 4px rgba(0, 0, 0, .08),
+        0 6px 14px rgba(0, 0, 0, .22);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-reader,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-menu-card,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-word-dictionary {
+    border-color: #8d6428;
+    background:
+        linear-gradient(
+            180deg,
+            #f7e6bf 0%,
+            #edd3a0 45%,
+            #dfbc7d 100%
+        );
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-menu-card {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .45),
+        inset 0 -2px 4px rgba(0, 0, 0, .08),
+        0 0 24px rgba(174, 115, 28, .24),
+        0 16px 40px rgba(91, 55, 17, .24);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-menu-link,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-chapter-button,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-foreword-menu-button {
+    border-color: #b88735;
+    background: #e7ca91;
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-menu-link:hover,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-menu-link:focus-visible,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-menu-link.is-active,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-chapter-button:hover,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-chapter-button:focus-visible,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-chapter-button.is-active,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-foreword-menu-button:hover,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-foreword-menu-button:focus-visible,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-foreword-menu-button.is-active {
+    border-color: var(--thai-gold);
+    background: var(--thai-hover-background);
+    box-shadow: 0 0 14px rgba(174, 115, 28, .32);
+}
+
+body.thai-giga-page:not([data-thai-theme="desert"]) .thai-giga-word-card-main > span {
+    color: #f0ddb5;
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-speedreading {
+    background: rgba(91, 55, 17, .3);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-speedreading-panel {
+    border-color: #8d6428;
+    background:
+        linear-gradient(
+            180deg,
+            #f7e6bf 0%,
+            #edd3a0 45%,
+            #dfbc7d 100%
+        );
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .45),
+        inset 0 -2px 4px rgba(0, 0, 0, .08),
+        0 6px 14px rgba(0, 0, 0, .22);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-speedreading-close,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-rsvp-font-settings summary {
+    border-color: #c69b5d;
+    color: #5a3514;
+    background: #f4dfb1;
+    box-shadow: 0 1px 2px rgba(91, 55, 17, .14);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-rsvp-font-settings-panel {
+    border-color: #b88735;
+    background: rgba(255, 244, 216, .94);
+    box-shadow: 0 8px 18px rgba(91, 55, 17, .22);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-dictionary-close {
+    border-color: #c69b5d;
+    color: #5a3514;
+    background: #f4dfb1;
+    box-shadow: 0 1px 2px rgba(91, 55, 17, .14);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-dictionary-meaning {
+    border-color: #b88735;
+    background: rgba(255, 244, 216, .72);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-dictionary-context {
+    border-left-color: #8d6428;
+    background: rgba(255, 244, 216, .58);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-dictionary-example:hover,
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-dictionary-example:focus-visible {
+    background: rgba(255, 255, 255, .22);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-dictionary-sentences {
+    scrollbar-color: rgba(180, 123, 41, .85) rgba(141, 100, 40, .18);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-dictionary-sentences::-webkit-scrollbar-track {
+    background: rgba(141, 100, 40, .18);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-dictionary-sentences::-webkit-scrollbar-thumb {
+    border-color: rgba(141, 100, 40, .18);
+    background: linear-gradient(180deg, #d8b15a, #8d6222);
+}
+
+body.thai-giga-page[data-thai-theme="desert"] .thai-giga-dictionary-sentences::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #e8c56c, #a87327);
 }
 
 body.thai-giga-page[data-thai-theme="desert"] .thai-giga-sentence {
