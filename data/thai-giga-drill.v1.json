@@ -95232,17 +95232,17 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-02-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
+                      "voiceProfileId": "M"
                     },
                     {
                       "id": "level-1-boss-5-story-02-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     }
                   ],
                   "sentences": [
@@ -95672,16 +95672,16 @@
                     {
                       "id": "level-1-boss-5-story-03-speaker-a",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     },
                     {
                       "id": "level-1-boss-5-story-03-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
                     }
                   ],
                   "sentences": [
@@ -96229,16 +96229,16 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-04-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     },
                     {
                       "id": "level-1-boss-5-story-04-speaker-b",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     }
                   ],
@@ -96752,17 +96752,17 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-05-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     },
                     {
                       "id": "level-1-boss-5-story-05-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
                     }
                   ],
                   "sentences": [
@@ -97819,10 +97819,10 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-07-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     },
                     {
                       "id": "level-1-boss-5-story-07-speaker-b",
@@ -98426,10 +98426,10 @@
                     },
                     {
                       "id": "level-1-boss-5-story-08-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     }
                   ],
                   "sentences": [
@@ -98992,16 +98992,16 @@
                     {
                       "id": "level-1-boss-5-story-09-speaker-a",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     },
                     {
                       "id": "level-1-boss-5-story-09-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     }
                   ],
                   "sentences": [
@@ -99570,10 +99570,10 @@
                     },
                     {
                       "id": "level-1-boss-5-story-10-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     }
                   ],
                   "sentences": [
@@ -100323,10 +100323,10 @@
                     },
                     {
                       "id": "level-1-boss-5-story-11-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     }
                   ],
                   "sentences": [
@@ -100846,17 +100846,17 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-12-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     },
                     {
                       "id": "level-1-boss-5-story-12-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     }
                   ],
                   "sentences": [
@@ -101377,16 +101377,16 @@
                     {
                       "id": "level-1-boss-5-story-13-speaker-a",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     },
                     {
                       "id": "level-1-boss-5-story-13-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     }
                   ],
                   "sentences": [
@@ -101928,16 +101928,16 @@
                     {
                       "id": "level-1-boss-5-story-14-speaker-a",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     },
                     {
                       "id": "level-1-boss-5-story-14-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
                     }
                   ],
                   "sentences": [
@@ -102471,10 +102471,10 @@
                     },
                     {
                       "id": "level-1-boss-5-story-15-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     }
                   ],
                   "sentences": [
@@ -103022,16 +103022,16 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-16-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     },
                     {
                       "id": "level-1-boss-5-story-16-speaker-b",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     }
                   ],
@@ -103566,17 +103566,17 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-17-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     },
                     {
                       "id": "level-1-boss-5-story-17-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     }
                   ],
                   "sentences": [
@@ -104139,16 +104139,16 @@
                     {
                       "id": "level-1-boss-5-story-18-speaker-a",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     },
                     {
                       "id": "level-1-boss-5-story-18-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
                     }
                   ],
                   "sentences": [
@@ -104689,17 +104689,17 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-19-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     },
                     {
                       "id": "level-1-boss-5-story-19-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     }
                   ],
                   "sentences": [
@@ -105296,10 +105296,10 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-20-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
                     },
                     {
                       "id": "level-1-boss-5-story-20-speaker-b",
@@ -105984,16 +105984,16 @@
                     {
                       "id": "level-1-boss-5-story-21-speaker-a",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     },
                     {
                       "id": "level-1-boss-5-story-21-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     }
                   ],
                   "sentences": [
@@ -106577,16 +106577,16 @@
                     {
                       "id": "level-1-boss-5-story-22-speaker-a",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     },
                     {
                       "id": "level-1-boss-5-story-22-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
                     }
                   ],
                   "sentences": [
@@ -107142,16 +107142,16 @@
                     {
                       "id": "level-1-boss-5-story-23-speaker-a",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     },
                     {
                       "id": "level-1-boss-5-story-23-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     }
                   ],
                   "sentences": [
@@ -107706,10 +107706,10 @@
                     },
                     {
                       "id": "level-1-boss-5-story-24-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     }
                   ],
                   "sentences": [
@@ -108237,16 +108237,16 @@
                     {
                       "id": "level-1-boss-5-story-25-speaker-a",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     },
                     {
                       "id": "level-1-boss-5-story-25-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     }
                   ],
                   "sentences": [
@@ -108809,8 +108809,8 @@
                     {
                       "id": "level-1-boss-5-story-26-speaker-a",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     },
                     {
@@ -109422,17 +109422,17 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-27-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
                     },
                     {
                       "id": "level-1-boss-5-story-27-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     }
                   ],
                   "sentences": [
@@ -109980,10 +109980,10 @@
                     },
                     {
                       "id": "level-1-boss-5-story-28-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     }
                   ],
                   "sentences": [
@@ -110573,17 +110573,17 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-29-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     },
                     {
                       "id": "level-1-boss-5-story-29-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
+                      "voiceProfileId": "M"
                     }
                   ],
                   "sentences": [
@@ -111117,17 +111117,17 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-30-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
                     },
                     {
                       "id": "level-1-boss-5-story-30-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     }
                   ],
                   "sentences": [
@@ -111837,10 +111837,10 @@
                     },
                     {
                       "id": "level-1-boss-5-story-31-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
                     }
                   ],
                   "sentences": [
@@ -112381,10 +112381,10 @@
                     },
                     {
                       "id": "level-1-boss-5-story-32-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     }
                   ],
                   "sentences": [
@@ -112988,17 +112988,17 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-33-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
+                      "voiceProfileId": "M"
                     },
                     {
                       "id": "level-1-boss-5-story-33-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     }
                   ],
                   "sentences": [
@@ -113560,10 +113560,10 @@
                     },
                     {
                       "id": "level-1-boss-5-story-34-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     }
                   ],
                   "sentences": [
@@ -114146,10 +114146,10 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-35-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     },
                     {
                       "id": "level-1-boss-5-story-35-speaker-b",
@@ -114725,17 +114725,17 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-36-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     },
                     {
                       "id": "level-1-boss-5-story-36-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
                     }
                   ],
                   "sentences": [
@@ -115339,17 +115339,17 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-37-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
+                      "voiceProfileId": "M"
                     },
                     {
                       "id": "level-1-boss-5-story-37-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
                     }
                   ],
                   "sentences": [
@@ -115898,16 +115898,16 @@
                     {
                       "id": "level-1-boss-5-story-38-speaker-a",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     },
                     {
                       "id": "level-1-boss-5-story-38-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     }
                   ],
                   "sentences": [
@@ -116490,10 +116490,10 @@
                     },
                     {
                       "id": "level-1-boss-5-story-39-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     }
                   ],
                   "sentences": [
@@ -117034,10 +117034,10 @@
                     },
                     {
                       "id": "level-1-boss-5-story-40-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     }
                   ],
                   "sentences": [
@@ -117768,16 +117768,16 @@
                     {
                       "id": "level-1-boss-5-story-41-speaker-a",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     },
                     {
                       "id": "level-1-boss-5-story-41-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     }
                   ],
                   "sentences": [
@@ -118332,17 +118332,17 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-42-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     },
                     {
                       "id": "level-1-boss-5-story-42-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     }
                   ],
                   "sentences": [
@@ -118939,17 +118939,17 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-43-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
                     },
                     {
                       "id": "level-1-boss-5-story-43-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     }
                   ],
                   "sentences": [
@@ -119596,16 +119596,16 @@
                     {
                       "id": "level-1-boss-5-story-44-speaker-a",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     },
                     {
                       "id": "level-1-boss-5-story-44-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     }
                   ],
                   "sentences": [
@@ -120245,16 +120245,16 @@
                     {
                       "id": "level-1-boss-5-story-45-speaker-a",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     },
                     {
                       "id": "level-1-boss-5-story-45-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
                     }
                   ],
                   "sentences": [
@@ -120781,17 +120781,17 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-46-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
+                      "voiceProfileId": "M2"
                     },
                     {
                       "id": "level-1-boss-5-story-46-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     }
                   ],
                   "sentences": [
@@ -121396,16 +121396,16 @@
                     {
                       "id": "level-1-boss-5-story-47-speaker-a",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     },
                     {
                       "id": "level-1-boss-5-story-47-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
                     }
                   ],
                   "sentences": [
@@ -122616,17 +122616,17 @@
                   "speakers": [
                     {
                       "id": "level-1-boss-5-story-49-speaker-a",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     },
                     {
                       "id": "level-1-boss-5-story-49-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
                     }
                   ],
                   "sentences": [
@@ -123147,16 +123147,16 @@
                     {
                       "id": "level-1-boss-5-story-50-speaker-a",
                       "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
+                      "assignmentSource": "contextual",
+                      "confidence": 0.8,
                       "voiceProfileId": "W"
                     },
                     {
                       "id": "level-1-boss-5-story-50-speaker-b",
-                      "role": "W",
-                      "assignmentSource": "uncertain",
-                      "confidence": 0.65,
-                      "voiceProfileId": "W"
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
                     }
                   ],
                   "sentences": [
