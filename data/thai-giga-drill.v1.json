@@ -95434,7 +95434,7 @@
                           "id": "l1-b5-s2016-t6",
                           "text": "เร็ว",
                           "kind": "word",
-                          "wordId": "word-b2-diao-fon-yut-khi-k-bpai",
+                          "wordId": "word-b5-reo",
                           "contextMeaning": "schnell"
                         },
                         {
@@ -95556,7 +95556,7 @@
                           "id": "l1-b5-s2019-t4",
                           "text": "กินข้าว",
                           "kind": "word",
-                          "wordId": "word-b2-dton-chao-phom-gin-khaao",
+                          "wordId": "word-b5-8404520",
                           "contextMeaning": "essen"
                         },
                         {
@@ -96305,7 +96305,7 @@
                           "id": "l1-b5-s2033-t6",
                           "text": "เยอรมนี",
                           "kind": "word",
-                          "wordId": "word-b1-khon-yoeraman",
+                          "wordId": "word-b5-7761131",
                           "contextMeaning": "Deutschland"
                         }
                       ],
@@ -96334,7 +96334,7 @@
                           "id": "l1-b5-s2034-t2",
                           "text": "มาถึง",
                           "kind": "word",
-                          "wordId": "word-b3-glap-thng",
+                          "wordId": "word-b5-8473318",
                           "contextMeaning": "ankommen"
                         },
                         {
@@ -96469,7 +96469,7 @@
                           "id": "l1-b5-s2036-t6",
                           "text": "รถไฟ",
                           "kind": "word",
-                          "wordId": "word-b4-khrang",
+                          "wordId": "word-b5-5309777",
                           "contextMeaning": "Zug"
                         },
                         {
@@ -96598,7 +96598,7 @@
                           "id": "l1-b5-s2039-t3",
                           "text": "ขับรถ",
                           "kind": "word",
-                          "wordId": "word-b2-nan-ngai-rot-maa-lo-2",
+                          "wordId": "word-b5-khap-rot",
                           "contextMeaning": "Auto fahren"
                         },
                         {
@@ -96698,7 +96698,7 @@
                           "id": "l1-b5-s2041-t1",
                           "text": "วันหยุด",
                           "kind": "word",
-                          "wordId": "word-b2-wan-yut-chai-mai",
+                          "wordId": "word-b5-372218",
                           "contextMeaning": "freier Tag"
                         },
                         {
@@ -96976,7 +96976,7 @@
                           "id": "l1-b5-s2046-t4",
                           "text": "ขับรถ",
                           "kind": "word",
-                          "wordId": "word-b2-nan-ngai-rot-maa-lo-2",
+                          "wordId": "word-b5-khap-rot",
                           "contextMeaning": "Auto fahren"
                         },
                         {
@@ -97126,14 +97126,14 @@
                           "id": "l1-b5-s2049-t3",
                           "text": "เดินทาง",
                           "kind": "word",
-                          "wordId": "word-b2-dn",
+                          "wordId": "word-b5-6591440",
                           "contextMeaning": "reisen"
                         },
                         {
                           "id": "l1-b5-s2049-t4",
                           "text": "ปลอดภัย",
                           "kind": "word",
-                          "wordId": "word-b2-sa-baai",
+                          "wordId": "word-b5-4452312",
                           "contextMeaning": "sicher"
                         },
                         {
@@ -97283,7 +97283,7 @@
                           "id": "l1-b5-s2052-t5",
                           "text": "บ่ายโมง",
                           "kind": "word",
-                          "wordId": "word-b2-baai",
+                          "wordId": "word-b5-8811647",
                           "contextMeaning": "ein Uhr nachmittags"
                         },
                         {
@@ -97326,7 +97326,7 @@
                           "id": "l1-b5-s2053-t3",
                           "text": "ใช่ไหม",
                           "kind": "word",
-                          "wordId": "word-chai",
+                          "wordId": "word-chai-mai",
                           "contextMeaning": "oder?"
                         }
                       ],
@@ -97896,7 +97896,7 @@
                           "id": "l1-b5-s2063-t6",
                           "text": "สัก",
                           "kind": "word",
-                          "wordId": "word-b2-sak-khruu",
+                          "wordId": "word-b5-9297718",
                           "contextMeaning": "etwa"
                         },
                         {
@@ -98096,7 +98096,7 @@
                           "id": "l1-b5-s2067-t2",
                           "text": "ขนมปัง",
                           "kind": "word",
-                          "wordId": "word-b2-kha-nom",
+                          "wordId": "word-b5-1819996",
                           "contextMeaning": "Brot"
                         },
                         {
@@ -98110,7 +98110,7 @@
                           "id": "l1-b5-s2067-t4",
                           "text": "เค้ก",
                           "kind": "word",
-                          "wordId": "word-b2-kha-nom",
+                          "wordId": "word-b5-8186029",
                           "contextMeaning": "Kuchen"
                         },
                         {
@@ -98509,7 +98509,7 @@
                           "id": "l1-b5-s2074-t4",
                           "text": "เที่ยว",
                           "kind": "word",
-                          "wordId": "word-b1-n-k-th-ng-th-ao",
+                          "wordId": "word-b5-thiao",
                           "contextMeaning": "reisen"
                         },
                         {
@@ -98787,7 +98787,7 @@
                           "id": "l1-b5-s2079-t5",
                           "text": "เที่ยว",
                           "kind": "word",
-                          "wordId": "word-b1-n-k-th-ng-th-ao",
+                          "wordId": "word-b5-thiao",
                           "contextMeaning": "reisen"
                         },
                         {
@@ -99051,7 +99051,7 @@
                           "id": "l1-b5-s2084-t5",
                           "text": "เหมือนเดิม",
                           "kind": "word",
-                          "wordId": "word-b2-man",
+                          "wordId": "word-b5-6426173",
                           "contextMeaning": "wie bisher"
                         }
                       ],
@@ -99144,7 +99144,7 @@
                           "id": "l1-b5-s2086-t5",
                           "text": "ทาง",
                           "kind": "word",
-                          "wordId": "word-b2-dn",
+                          "wordId": "word-b5-thaang",
                           "contextMeaning": "Weg"
                         },
                         {
@@ -99187,7 +99187,7 @@
                           "id": "l1-b5-s2087-t3",
                           "text": "เร็ว",
                           "kind": "word",
-                          "wordId": "word-b2-diao-fon-yut-khi-k-bpai",
+                          "wordId": "word-b5-reo",
                           "contextMeaning": "schnell / früh"
                         },
                         {
@@ -99201,7 +99201,7 @@
                           "id": "l1-b5-s2087-t5",
                           "text": "ดีกว่า",
                           "kind": "word",
-                          "wordId": "word-b2-mai-ao-dii-gwaa",
+                          "wordId": "word-b5-4459056",
                           "contextMeaning": "besser"
                         },
                         {
@@ -99400,7 +99400,7 @@
                           "id": "l1-b5-s2090-t5",
                           "text": "เป็นห่วง",
                           "kind": "word",
-                          "wordId": "word-b4-mai-sa-baai",
+                          "wordId": "word-b5-1109162",
                           "contextMeaning": "Sorgen machen"
                         }
                       ],
@@ -99471,7 +99471,7 @@
                           "id": "l1-b5-s2091-t7",
                           "text": "รถไฟ",
                           "kind": "word",
-                          "wordId": "word-b4-khrang",
+                          "wordId": "word-b5-5309777",
                           "contextMeaning": "Zug"
                         }
                       ],
@@ -99521,7 +99521,7 @@
                           "id": "l1-b5-s2092-t5",
                           "text": "เกรงใจ",
                           "kind": "word",
-                          "wordId": "word-b3-guan",
+                          "wordId": "word-b5-6677413",
                           "contextMeaning": "Rücksicht nehmen"
                         },
                         {
@@ -99557,21 +99557,21 @@
                           "id": "l1-b5-s2093-t2",
                           "text": "ทาง",
                           "kind": "word",
-                          "wordId": "word-b2-dn",
+                          "wordId": "word-b5-thaang",
                           "contextMeaning": "Weg"
                         },
                         {
                           "id": "l1-b5-s2093-t3",
                           "text": "ผ่าน",
                           "kind": "word",
-                          "wordId": "word-b2-bpai",
+                          "wordId": "word-b5-3309775",
                           "contextMeaning": "vorbei"
                         },
                         {
                           "id": "l1-b5-s2093-t4",
                           "text": "พอดี",
                           "kind": "word",
-                          "wordId": "word-b2-ph",
+                          "wordId": "word-b5-1518593",
                           "contextMeaning": "genau"
                         }
                       ],
@@ -99593,7 +99593,7 @@
                           "id": "l1-b5-s2094-t1",
                           "text": "รถไฟ",
                           "kind": "word",
-                          "wordId": "word-b4-khrang",
+                          "wordId": "word-b5-5309777",
                           "contextMeaning": "Zug"
                         },
                         {
@@ -99607,7 +99607,7 @@
                           "id": "l1-b5-s2094-t3",
                           "text": "ออก",
                           "kind": "word",
-                          "wordId": "word-b2-k-bpai",
+                          "wordId": "word-b5-4913103",
                           "contextMeaning": "abfahren"
                         },
                         {
@@ -99643,7 +99643,7 @@
                           "id": "l1-b5-s2095-t1",
                           "text": "รถไฟ",
                           "kind": "word",
-                          "wordId": "word-b4-khrang",
+                          "wordId": "word-b5-5309777",
                           "contextMeaning": "Zug"
                         },
                         {
@@ -99657,7 +99657,7 @@
                           "id": "l1-b5-s2095-t3",
                           "text": "ออก",
                           "kind": "word",
-                          "wordId": "word-b2-k-bpai",
+                          "wordId": "word-b5-4913103",
                           "contextMeaning": "abfahren"
                         },
                         {
@@ -99742,7 +99742,7 @@
                           "id": "l1-b5-s2096-t5",
                           "text": "ครึ่ง",
                           "kind": "word",
-                          "wordId": "word-b2-nit-diao",
+                          "wordId": "word-b5-9404081",
                           "contextMeaning": "halb"
                         },
                         {
@@ -99842,7 +99842,7 @@
                           "id": "l1-b5-s2098-t3",
                           "text": "แน่นอน",
                           "kind": "word",
-                          "wordId": "word-b4-nae-jai",
+                          "wordId": "word-b5-2603869",
                           "contextMeaning": "sicher"
                         },
                         {
@@ -100444,7 +100444,7 @@
                           "id": "l1-b5-s2106-t4",
                           "text": "ด้วยกัน",
                           "kind": "word",
-                          "wordId": "word-b5-bpai-duai-kan",
+                          "wordId": "word-b5-4979694",
                           "contextMeaning": "zusammen"
                         },
                         {
@@ -100480,7 +100480,7 @@
                           "id": "l1-b5-s2107-t2",
                           "text": "ขึ้น",
                           "kind": "word",
-                          "wordId": "word-b5-khuen-bpai",
+                          "wordId": "word-b5-3727722",
                           "contextMeaning": "hinaufgehen"
                         },
                         {
@@ -100501,7 +100501,7 @@
                           "id": "l1-b5-s2107-t5",
                           "text": "ขึ้น",
                           "kind": "word",
-                          "wordId": "word-b5-khuen-bpai",
+                          "wordId": "word-b5-3727722",
                           "contextMeaning": "nehmen"
                         },
                         {
@@ -100530,7 +100530,7 @@
                           "id": "l1-b5-s2108-t1",
                           "text": "ขึ้น",
                           "kind": "word",
-                          "wordId": "word-b5-khuen-bpai",
+                          "wordId": "word-b5-3727722",
                           "contextMeaning": "nehmen"
                         },
                         {
@@ -100544,7 +100544,7 @@
                           "id": "l1-b5-s2108-t3",
                           "text": "ดีกว่า",
                           "kind": "word",
-                          "wordId": "word-b2-mai-ao-dii-gwaa",
+                          "wordId": "word-b5-4459056",
                           "contextMeaning": "besser"
                         },
                         {
@@ -101015,7 +101015,7 @@
                           "id": "l1-b5-s2117-t5",
                           "text": "ดีกว่า",
                           "kind": "word",
-                          "wordId": "word-b2-mai-ao-dii-gwaa",
+                          "wordId": "word-b5-4459056",
                           "contextMeaning": "besser"
                         },
                         {
@@ -101294,7 +101294,7 @@
                           "id": "l1-b5-s2123-t2",
                           "text": "ห้องน้ำ",
                           "kind": "word",
-                          "wordId": "word-naam",
+                          "wordId": "word-b5-8436652",
                           "contextMeaning": "Toilette"
                         },
                         {
@@ -101344,7 +101344,7 @@
                           "id": "l1-b5-s2124-t2",
                           "text": "ทุก",
                           "kind": "word",
-                          "wordId": "word-b2-thuk-khrang-khun-mai-gin-phak",
+                          "wordId": "word-b5-1699640",
                           "contextMeaning": "jede"
                         },
                         {
@@ -101372,7 +101372,7 @@
                           "id": "l1-b5-s2124-t6",
                           "text": "ข้าง",
                           "kind": "word",
-                          "wordId": "word-b3-khaang-khaang",
+                          "wordId": "word-b5-8242812",
                           "contextMeaning": "neben"
                         },
                         {
@@ -101458,7 +101458,7 @@
                           "id": "l1-b5-s2126-t1",
                           "text": "ขึ้น",
                           "kind": "word",
-                          "wordId": "word-b5-khuen-bpai",
+                          "wordId": "word-b5-3727722",
                           "contextMeaning": "nehmen"
                         },
                         {
@@ -101793,7 +101793,7 @@
                           "id": "l1-b5-s2132-t3",
                           "text": "เครื่องดื่ม",
                           "kind": "word",
-                          "wordId": "word-b2-dm",
+                          "wordId": "word-b5-2021683",
                           "contextMeaning": "Getränke"
                         },
                         {
@@ -101822,7 +101822,7 @@
                           "id": "l1-b5-s2133-t1",
                           "text": "แถว",
                           "kind": "word",
-                          "wordId": "word-b5-khao-thaeo",
+                          "wordId": "word-b5-2542734",
                           "contextMeaning": "Schlange"
                         },
                         {
@@ -101886,7 +101886,7 @@
                           "id": "l1-b5-s2134-t5",
                           "text": "ไม่กี่",
                           "kind": "word",
-                          "wordId": "word-b4-gii",
+                          "wordId": "word-b5-8744040",
                           "contextMeaning": "nur ein paar"
                         },
                         {
@@ -101943,7 +101943,7 @@
                           "id": "l1-b5-s2135-t5",
                           "text": "ด้วยกัน",
                           "kind": "word",
-                          "wordId": "word-b5-bpai-duai-kan",
+                          "wordId": "word-b5-4979694",
                           "contextMeaning": "zusammen"
                         },
                         {
@@ -102207,7 +102207,7 @@
                           "id": "l1-b5-s2140-t4",
                           "text": "คิว",
                           "kind": "word",
-                          "wordId": "word-b5-khao-thaeo",
+                          "wordId": "word-b5-7999144",
                           "contextMeaning": "Reihe"
                         },
                         {
@@ -102364,7 +102364,7 @@
                           "id": "l1-b5-s2143-t2",
                           "text": "ฝนตก",
                           "kind": "word",
-                          "wordId": "word-b2-fon",
+                          "wordId": "word-b5-2773238",
                           "contextMeaning": "regnen"
                         },
                         {
@@ -102963,7 +102963,7 @@
                           "id": "l1-b5-s2154-t3",
                           "text": "ใช้เวลา",
                           "kind": "word",
-                          "wordId": "word-b2-wee-laa",
+                          "wordId": "word-b5-51497",
                           "contextMeaning": "dauern"
                         },
                         {
@@ -103013,7 +103013,7 @@
                           "id": "l1-b5-s2155-t3",
                           "text": "ห้า",
                           "kind": "word",
-                          "wordId": "word-b4-saam",
+                          "wordId": "word-b5-1478977",
                           "contextMeaning": "fünf"
                         },
                         {
@@ -103084,7 +103084,7 @@
                           "id": "l1-b5-s2156-t5",
                           "text": "คนขับ",
                           "kind": "word",
-                          "wordId": "word-khon",
+                          "wordId": "word-b5-8574557",
                           "contextMeaning": "Fahrer"
                         },
                         {
@@ -103177,7 +103177,7 @@
                           "id": "l1-b5-s2158-t1",
                           "text": "จอด",
                           "kind": "word",
-                          "wordId": "word-b2-yut",
+                          "wordId": "word-b5-5484123",
                           "contextMeaning": "anhalten"
                         },
                         {
@@ -103434,7 +103434,7 @@
                           "id": "l1-b5-s2163-t5",
                           "text": "ตรงไหน",
                           "kind": "word",
-                          "wordId": "word-b3-dtrong-nii",
+                          "wordId": "word-b5-947140",
                           "contextMeaning": "wo genau"
                         }
                       ],
@@ -103477,7 +103477,7 @@
                           "id": "l1-b5-s2164-t4",
                           "text": "โน่น",
                           "kind": "word",
-                          "wordId": "word-thii-nan",
+                          "wordId": "word-b5-7272690",
                           "contextMeaning": "dort drüben"
                         }
                       ],
@@ -103513,7 +103513,7 @@
                           "id": "l1-b5-s2165-t3",
                           "text": "ออก",
                           "kind": "word",
-                          "wordId": "word-b2-k-bpai",
+                          "wordId": "word-b5-4913103",
                           "contextMeaning": "hinaus"
                         },
                         {
@@ -103726,7 +103726,7 @@
                           "id": "l1-b5-s2168-t5",
                           "text": "ป้าย",
                           "kind": "word",
-                          "wordId": "word-b3-bpaai-rot",
+                          "wordId": "word-b5-4555695",
                           "contextMeaning": "Schild"
                         },
                         {
@@ -103819,7 +103819,7 @@
                           "id": "l1-b5-s2170-t1",
                           "text": "ยินดี",
                           "kind": "word",
-                          "wordId": "word-b2-sa-baai",
+                          "wordId": "word-b5-5036705",
                           "contextMeaning": "gerne"
                         },
                         {
@@ -103833,14 +103833,14 @@
                           "id": "l1-b5-s2170-t3",
                           "text": "เดินทาง",
                           "kind": "word",
-                          "wordId": "word-b2-dn",
+                          "wordId": "word-b5-6591440",
                           "contextMeaning": "reisen"
                         },
                         {
                           "id": "l1-b5-s2170-t4",
                           "text": "ปลอดภัย",
                           "kind": "word",
-                          "wordId": "word-b2-sa-baai",
+                          "wordId": "word-b5-4452312",
                           "contextMeaning": "sicher"
                         },
                         {
@@ -104125,14 +104125,14 @@
                           "id": "l1-b5-s2175-t5",
                           "text": "มือ",
                           "kind": "word",
-                          "wordId": "word-b3-gra-bpao",
+                          "wordId": "word-b5-627247",
                           "contextMeaning": "Hand"
                         },
                         {
                           "id": "l1-b5-s2175-t6",
                           "text": "ใช่ไหม",
                           "kind": "word",
-                          "wordId": "word-chai",
+                          "wordId": "word-chai-mai",
                           "contextMeaning": "oder?"
                         }
                       ],
@@ -104189,7 +104189,7 @@
                           "id": "l1-b5-s2176-t6",
                           "text": "มือ",
                           "kind": "word",
-                          "wordId": "word-b3-gra-bpao",
+                          "wordId": "word-b5-627247",
                           "contextMeaning": "Hand"
                         }
                       ],
@@ -104218,7 +104218,7 @@
                           "id": "l1-b5-s2177-t2",
                           "text": "ป้าย",
                           "kind": "word",
-                          "wordId": "word-b3-bpaai-rot",
+                          "wordId": "word-b5-4555695",
                           "contextMeaning": "Schild"
                         },
                         {
@@ -104275,14 +104275,14 @@
                           "id": "l1-b5-s2178-t4",
                           "text": "ป้าย",
                           "kind": "word",
-                          "wordId": "word-b3-bpaai-rot",
+                          "wordId": "word-b5-4555695",
                           "contextMeaning": "Schild"
                         },
                         {
                           "id": "l1-b5-s2178-t5",
                           "text": "สีแดง",
                           "kind": "word",
-                          "wordId": "word-dii",
+                          "wordId": "word-b5-2392889",
                           "contextMeaning": "rot"
                         }
                       ],
@@ -104382,7 +104382,7 @@
                           "id": "l1-b5-s2180-t4",
                           "text": "พอดี",
                           "kind": "word",
-                          "wordId": "word-b2-ph",
+                          "wordId": "word-b5-1518593",
                           "contextMeaning": "genau"
                         }
                       ],
@@ -104674,7 +104674,7 @@
                           "id": "l1-b5-s2185-t6",
                           "text": "นั้น",
                           "kind": "word",
-                          "wordId": "word-b2-thn",
+                          "wordId": "word-b2-raan-nan-khon-mai-y",
                           "contextMeaning": "jener"
                         },
                         {
@@ -104695,7 +104695,7 @@
                           "id": "l1-b5-s2185-t9",
                           "text": "ตัน",
                           "kind": "word",
-                          "wordId": "word-b3-dtit",
+                          "wordId": "word-b5-6977367",
                           "contextMeaning": "Sackgasse"
                         }
                       ],
@@ -104752,7 +104752,7 @@
                           "id": "l1-b5-s2186-t6",
                           "text": "เท่านั้น",
                           "kind": "word",
-                          "wordId": "word-b3-kh-nan",
+                          "wordId": "word-b5-6619610",
                           "contextMeaning": "nur"
                         }
                       ],
@@ -104802,14 +104802,14 @@
                           "id": "l1-b5-s2187-t5",
                           "text": "ร้อย",
                           "kind": "word",
-                          "wordId": "word-b4-saam",
+                          "wordId": "word-b5-9588352",
                           "contextMeaning": "hundert"
                         },
                         {
                           "id": "l1-b5-s2187-t6",
                           "text": "เมตร",
                           "kind": "word",
-                          "wordId": "word-b2-naa-thii",
+                          "wordId": "word-b5-8526945",
                           "contextMeaning": "Meter"
                         }
                       ],
@@ -104852,7 +104852,7 @@
                           "id": "l1-b5-s2188-t4",
                           "text": "ตรงข้าม",
                           "kind": "word",
-                          "wordId": "word-b5-fang-dtrong-khaam",
+                          "wordId": "word-b5-8419421",
                           "contextMeaning": "gegenüber"
                         },
                         {
@@ -105009,7 +105009,7 @@
                           "id": "l1-b5-s2191-t2",
                           "text": "มาถึง",
                           "kind": "word",
-                          "wordId": "word-b3-glap-thng",
+                          "wordId": "word-b5-8473318",
                           "contextMeaning": "ankommen"
                         },
                         {
@@ -105023,7 +105023,7 @@
                           "id": "l1-b5-s2191-t4",
                           "text": "ใช่ไหม",
                           "kind": "word",
-                          "wordId": "word-chai",
+                          "wordId": "word-chai-mai",
                           "contextMeaning": "oder?"
                         }
                       ],
@@ -105073,7 +105073,7 @@
                           "id": "l1-b5-s2192-t5",
                           "text": "คือ",
                           "kind": "word",
-                          "wordId": "word-bpen",
+                          "wordId": "word-b5-2919779",
                           "contextMeaning": "sein"
                         },
                         {
@@ -105487,7 +105487,7 @@
                           "id": "l1-b5-s2200-t4",
                           "text": "สบายใจ",
                           "kind": "word",
-                          "wordId": "word-b2-sa-baai",
+                          "wordId": "word-b5-281568",
                           "contextMeaning": "wohlfühlen"
                         },
                         {
@@ -105716,7 +105716,7 @@
                           "id": "l1-b5-s2202-t1",
                           "text": "ขับ",
                           "kind": "word",
-                          "wordId": "word-b5-khap-rot",
+                          "wordId": "word-b5-7348483",
                           "contextMeaning": "fahren"
                         },
                         {
@@ -105744,7 +105744,7 @@
                           "id": "l1-b5-s2202-t5",
                           "text": "ไม่ค่อย",
                           "kind": "word",
-                          "wordId": "word-b2-diao-fon-yut-khi-k-bpai",
+                          "wordId": "word-b5-1004936",
                           "contextMeaning": "nicht oft / kaum"
                         },
                         {
@@ -105758,7 +105758,7 @@
                           "id": "l1-b5-s2202-t7",
                           "text": "ขับ",
                           "kind": "word",
-                          "wordId": "word-b5-khap-rot",
+                          "wordId": "word-b5-7348483",
                           "contextMeaning": "fahren"
                         }
                       ],
@@ -105951,7 +105951,7 @@
                           "id": "l1-b5-s2206-t2",
                           "text": "ขับ",
                           "kind": "word",
-                          "wordId": "word-b5-khap-rot",
+                          "wordId": "word-b5-7348483",
                           "contextMeaning": "fahren"
                         },
                         {
@@ -105986,7 +105986,7 @@
                           "id": "l1-b5-s2206-t7",
                           "text": "ดีกว่า",
                           "kind": "word",
-                          "wordId": "word-b2-mai-ao-dii-gwaa",
+                          "wordId": "word-b5-4459056",
                           "contextMeaning": "besser"
                         }
                       ],
@@ -106107,7 +106107,7 @@
                           "id": "l1-b5-s2208-t7",
                           "text": "ขับ",
                           "kind": "word",
-                          "wordId": "word-b5-khap-rot",
+                          "wordId": "word-b5-7348483",
                           "contextMeaning": "fahren"
                         },
                         {
@@ -106328,7 +106328,7 @@
                           "id": "l1-b5-s2212-t6",
                           "text": "ทุก",
                           "kind": "word",
-                          "wordId": "word-b2-thuk-khrang-khun-mai-gin-phak",
+                          "wordId": "word-b5-1699640",
                           "contextMeaning": "jeder"
                         },
                         {
@@ -106521,7 +106521,7 @@
                           "id": "l1-b5-s2216-t1",
                           "text": "แน่นอน",
                           "kind": "word",
-                          "wordId": "word-b4-nae-jai",
+                          "wordId": "word-b5-2603869",
                           "contextMeaning": "sicher"
                         },
                         {
@@ -106592,7 +106592,7 @@
                           "id": "l1-b5-s2217-t2",
                           "text": "ฝนตก",
                           "kind": "word",
-                          "wordId": "word-b2-fon",
+                          "wordId": "word-b5-2773238",
                           "contextMeaning": "regnen"
                         },
                         {
@@ -106706,7 +106706,7 @@
                           "id": "l1-b5-s2219-t1",
                           "text": "ปลอดภัย",
                           "kind": "word",
-                          "wordId": "word-b2-sa-baai",
+                          "wordId": "word-b5-4452312",
                           "contextMeaning": "sicher"
                         },
                         {
@@ -106734,7 +106734,7 @@
                           "id": "l1-b5-s2219-t5",
                           "text": "ที่สุด",
                           "kind": "word",
-                          "wordId": "word-b2-maak",
+                          "wordId": "word-b5-820932",
                           "contextMeaning": "am meisten"
                         }
                       ],
@@ -106756,7 +106756,7 @@
                           "id": "l1-b5-s2220-t1",
                           "text": "ถูกต้อง",
                           "kind": "word",
-                          "wordId": "word-chai",
+                          "wordId": "word-b5-9420530",
                           "contextMeaning": "richtig"
                         },
                         {
@@ -106863,7 +106863,7 @@
                           "id": "l1-b5-s2222-t3",
                           "text": "ห้า",
                           "kind": "word",
-                          "wordId": "word-b4-saam",
+                          "wordId": "word-b5-1478977",
                           "contextMeaning": "fünf"
                         },
                         {
@@ -106941,7 +106941,7 @@
                           "id": "l1-b5-s2223-t4",
                           "text": "สยาม",
                           "kind": "word",
-                          "wordId": "word-thai",
+                          "wordId": "word-b5-7010385",
                           "contextMeaning": "Siam"
                         },
                         {
@@ -107077,7 +107077,7 @@
                           "id": "l1-b5-s2226-t1",
                           "text": "ตอนเช้า",
                           "kind": "word",
-                          "wordId": "word-b2-dton-chao-phom-gin-khaao",
+                          "wordId": "word-b5-7679471",
                           "contextMeaning": "morgens"
                         },
                         {
@@ -107498,14 +107498,14 @@
                           "id": "l1-b5-s2234-t3",
                           "text": "แม่น้ำ",
                           "kind": "word",
-                          "wordId": "word-naam",
+                          "wordId": "word-b5-944416",
                           "contextMeaning": "Fluss"
                         },
                         {
                           "id": "l1-b5-s2234-t4",
                           "text": "เจ้าพระยา",
                           "kind": "word",
-                          "wordId": "word-thai",
+                          "wordId": "word-b5-1756350",
                           "contextMeaning": "Chao Phraya"
                         },
                         {
@@ -107534,7 +107534,7 @@
                           "id": "l1-b5-s2235-t1",
                           "text": "วิว",
                           "kind": "word",
-                          "wordId": "word-b3-suai",
+                          "wordId": "word-b5-5242301",
                           "contextMeaning": "Aussicht"
                         },
                         {
@@ -107591,14 +107591,14 @@
                           "id": "l1-b5-s2236-t4",
                           "text": "ลม",
                           "kind": "word",
-                          "wordId": "word-b2-yen",
+                          "wordId": "word-b5-8093516",
                           "contextMeaning": "Wind"
                         },
                         {
                           "id": "l1-b5-s2236-t5",
                           "text": "พัด",
                           "kind": "word",
-                          "wordId": "word-b2-yen",
+                          "wordId": "word-b5-3609886",
                           "contextMeaning": "wehen"
                         },
                         {
@@ -107698,7 +107698,7 @@
                           "id": "l1-b5-s2238-t3",
                           "text": "ทุก",
                           "kind": "word",
-                          "wordId": "word-b2-thuk-khrang-khun-mai-gin-phak",
+                          "wordId": "word-b5-1699640",
                           "contextMeaning": "jede"
                         },
                         {
@@ -107748,7 +107748,7 @@
                           "id": "l1-b5-s2239-t1",
                           "text": "วันหลัง",
                           "kind": "word",
-                          "wordId": "word-b2-khraao-naa",
+                          "wordId": "word-b5-8266727",
                           "contextMeaning": "ein andermal"
                         },
                         {
@@ -107833,7 +107833,7 @@
                           "id": "l1-b5-s2240-t4",
                           "text": "แน่นอน",
                           "kind": "word",
-                          "wordId": "word-b4-nae-jai",
+                          "wordId": "word-b5-2603869",
                           "contextMeaning": "sicher"
                         }
                       ],
@@ -107897,7 +107897,7 @@
                           "id": "l1-b5-s2241-t6",
                           "text": "ที่สุด",
                           "kind": "word",
-                          "wordId": "word-b2-maak",
+                          "wordId": "word-b5-820932",
                           "contextMeaning": "am meisten"
                         }
                       ],
@@ -107947,7 +107947,7 @@
                           "id": "l1-b5-s2242-t5",
                           "text": "ที่สุด",
                           "kind": "word",
-                          "wordId": "word-b2-maak",
+                          "wordId": "word-b5-820932",
                           "contextMeaning": "am meisten"
                         },
                         {
@@ -108061,7 +108061,7 @@
                           "id": "l1-b5-s2244-t6",
                           "text": "ราคาถูก",
                           "kind": "word",
-                          "wordId": "word-b4-thao-rai",
+                          "wordId": "word-b5-1960739",
                           "contextMeaning": "günstig"
                         }
                       ],
@@ -108168,7 +108168,7 @@
                           "id": "l1-b5-s2246-t5",
                           "text": "ยี่สิบ",
                           "kind": "word",
-                          "wordId": "word-b2-bpra-maan-sip-naa-thii-lo",
+                          "wordId": "word-b5-1842476",
                           "contextMeaning": "zwanzig"
                         },
                         {
@@ -108218,7 +108218,7 @@
                           "id": "l1-b5-s2247-t4",
                           "text": "เกินไป",
                           "kind": "word",
-                          "wordId": "word-b2-maak",
+                          "wordId": "word-b5-4623965",
                           "contextMeaning": "zu sehr"
                         },
                         {
@@ -108560,7 +108560,7 @@
                           "id": "l1-b5-s2253-t3",
                           "text": "เอกสาร",
                           "kind": "word",
-                          "wordId": "word-b2-kh-khwaam",
+                          "wordId": "word-b5-eek-ga-saan",
                           "contextMeaning": "Dokumente"
                         },
                         {
@@ -108752,7 +108752,7 @@
                           "id": "l1-b5-s2256-t7",
                           "text": "แน่นอน",
                           "kind": "word",
-                          "wordId": "word-b4-nae-jai",
+                          "wordId": "word-b5-2603869",
                           "contextMeaning": "sicher"
                         }
                       ],
@@ -109101,7 +109101,7 @@
                           "id": "l1-b5-s2262-t4",
                           "text": "ตรงไหน",
                           "kind": "word",
-                          "wordId": "word-b3-dtrong-nii",
+                          "wordId": "word-b5-947140",
                           "contextMeaning": "wo genau"
                         },
                         {
@@ -109151,7 +109151,7 @@
                           "id": "l1-b5-s2263-t4",
                           "text": "ข้าง",
                           "kind": "word",
-                          "wordId": "word-b3-khaang-khaang",
+                          "wordId": "word-b5-8242812",
                           "contextMeaning": "neben"
                         },
                         {
@@ -109258,7 +109258,7 @@
                           "id": "l1-b5-s2265-t4",
                           "text": "ใจดี",
                           "kind": "word",
-                          "wordId": "word-dii",
+                          "wordId": "word-b5-4378228",
                           "contextMeaning": "nett"
                         },
                         {
@@ -109422,7 +109422,7 @@
                           "id": "l1-b5-s2268-t4",
                           "text": "ที่เดิม",
                           "kind": "word",
-                          "wordId": "word-b3-raan-dm",
+                          "wordId": "word-b5-694685",
                           "contextMeaning": "alter Platz"
                         },
                         {
@@ -109515,7 +109515,7 @@
                           "id": "l1-b5-s2270-t2",
                           "text": "เรียบร้อย",
                           "kind": "word",
-                          "wordId": "word-b3-set",
+                          "wordId": "word-b5-6794893",
                           "contextMeaning": "erledigt"
                         },
                         {
@@ -109978,14 +109978,14 @@
                           "id": "l1-b5-s2278-t1",
                           "text": "วาง",
                           "kind": "word",
-                          "wordId": "word-b5-waang-wai",
+                          "wordId": "word-b5-8564240",
                           "contextMeaning": "stellen"
                         },
                         {
                           "id": "l1-b5-s2278-t2",
                           "text": "เรียบร้อย",
                           "kind": "word",
-                          "wordId": "word-b3-set",
+                          "wordId": "word-b5-6794893",
                           "contextMeaning": "erledigt"
                         },
                         {
@@ -110028,7 +110028,7 @@
                           "id": "l1-b5-s2279-t2",
                           "text": "ดีๆ",
                           "kind": "word",
-                          "wordId": "word-dii",
+                          "wordId": "word-b5-4887899",
                           "contextMeaning": "gut"
                         },
                         {
@@ -110306,7 +110306,7 @@
                           "id": "l1-b5-s2284-t4",
                           "text": "น่ากิน",
                           "kind": "word",
-                          "wordId": "word-b2-gin",
+                          "wordId": "word-b5-4172913",
                           "contextMeaning": "lecker aussehen"
                         },
                         {
@@ -110349,7 +110349,7 @@
                           "id": "l1-b5-s2285-t3",
                           "text": "ผลไม้",
                           "kind": "word",
-                          "wordId": "word-b4-ma-muang",
+                          "wordId": "word-b5-5941182",
                           "contextMeaning": "Früchte"
                         },
                         {
@@ -110399,7 +110399,7 @@
                           "id": "l1-b5-s2286-t1",
                           "text": "ว้าว",
                           "kind": "word",
-                          "wordId": "word-b2-aao-tham-mai-mai-bpai",
+                          "wordId": "word-b5-3204570",
                           "contextMeaning": "wow"
                         },
                         {
@@ -110556,7 +110556,7 @@
                           "id": "l1-b5-s2289-t1",
                           "text": "ดีใจ",
                           "kind": "word",
-                          "wordId": "word-dii",
+                          "wordId": "word-b5-238606",
                           "contextMeaning": "freuen"
                         },
                         {
@@ -110613,7 +110613,7 @@
                           "id": "l1-b5-s2290-t3",
                           "text": "เที่ยว",
                           "kind": "word",
-                          "wordId": "word-b1-n-k-th-ng-th-ao",
+                          "wordId": "word-b5-thiao",
                           "contextMeaning": "reisen"
                         },
                         {
@@ -110955,7 +110955,7 @@
                           "id": "l1-b5-s2296-t5",
                           "text": "แน่นอน",
                           "kind": "word",
-                          "wordId": "word-b4-nae-jai",
+                          "wordId": "word-b5-2603869",
                           "contextMeaning": "sicher"
                         }
                       ],
@@ -111048,7 +111048,7 @@
                           "id": "l1-b5-s2298-t5",
                           "text": "จด",
                           "kind": "word",
-                          "wordId": "word-b2-phuut",
+                          "wordId": "word-b5-7548244",
                           "contextMeaning": "notieren"
                         },
                         {
@@ -111162,7 +111162,7 @@
                           "id": "l1-b5-s2300-t2",
                           "text": "ลุย",
                           "kind": "word",
-                          "wordId": "word-b2-dn",
+                          "wordId": "word-b5-212423",
                           "contextMeaning": "loslegen"
                         },
                         {
@@ -111417,7 +111417,7 @@
                           "id": "l1-b5-s2302-t3",
                           "text": "กินข้าว",
                           "kind": "word",
-                          "wordId": "word-b5-gin-khaao-maa",
+                          "wordId": "word-b5-8404520",
                           "contextMeaning": "essen"
                         },
                         {
@@ -111738,7 +111738,7 @@
                           "id": "l1-b5-s2308-t4",
                           "text": "ร่วมงาน",
                           "kind": "word",
-                          "wordId": "word-b1-khon-tham-ngaan",
+                          "wordId": "word-b5-8201970",
                           "contextMeaning": "Kollege"
                         },
                         {
@@ -111774,7 +111774,7 @@
                           "id": "l1-b5-s2309-t1",
                           "text": "วันหลัง",
                           "kind": "word",
-                          "wordId": "word-b2-khraao-naa",
+                          "wordId": "word-b5-8266727",
                           "contextMeaning": "ein andermal"
                         },
                         {
@@ -111916,7 +111916,7 @@
                           "id": "l1-b5-s2311-t5",
                           "text": "ใช่ไหม",
                           "kind": "word",
-                          "wordId": "word-chai",
+                          "wordId": "word-chai-mai",
                           "contextMeaning": "oder?"
                         }
                       ],
@@ -112080,7 +112080,7 @@
                           "id": "l1-b5-s2314-t4",
                           "text": "ตัด",
                           "kind": "word",
-                          "wordId": "word-b5-dtat-phom",
+                          "wordId": "word-b5-4169736",
                           "contextMeaning": "schneiden"
                         },
                         {
@@ -112123,7 +112123,7 @@
                           "id": "l1-b5-s2315-t1",
                           "text": "ดูดี",
                           "kind": "word",
-                          "wordId": "word-dii",
+                          "wordId": "word-b5-3285524",
                           "contextMeaning": "gut aussehen"
                         },
                         {
@@ -112137,7 +112137,7 @@
                           "id": "l1-b5-s2315-t3",
                           "text": "เหมาะ",
                           "kind": "word",
-                          "wordId": "word-dii",
+                          "wordId": "word-b5-136509",
                           "contextMeaning": "passen"
                         },
                         {
@@ -112208,7 +112208,7 @@
                           "id": "l1-b5-s2316-t5",
                           "text": "ตัด",
                           "kind": "word",
-                          "wordId": "word-b5-dtat-phom",
+                          "wordId": "word-b5-4169736",
                           "contextMeaning": "schneiden"
                         },
                         {
@@ -112258,7 +112258,7 @@
                           "id": "l1-b5-s2317-t3",
                           "text": "แถว",
                           "kind": "word",
-                          "wordId": "word-b3-tho-nii",
+                          "wordId": "word-b5-2542734",
                           "contextMeaning": "Gegend"
                         },
                         {
@@ -112294,7 +112294,7 @@
                           "id": "l1-b5-s2318-t2",
                           "text": "ตรงข้าม",
                           "kind": "word",
-                          "wordId": "word-b5-fang-dtrong-khaam",
+                          "wordId": "word-b5-8419421",
                           "contextMeaning": "gegenüber"
                         },
                         {
@@ -112372,7 +112372,7 @@
                           "id": "l1-b5-s2319-t6",
                           "text": "ตัด",
                           "kind": "word",
-                          "wordId": "word-b5-dtat-phom",
+                          "wordId": "word-b5-4169736",
                           "contextMeaning": "schneiden"
                         },
                         {
@@ -112450,7 +112450,7 @@
                           "id": "l1-b5-s2320-t7",
                           "text": "ใจดี",
                           "kind": "word",
-                          "wordId": "word-dii",
+                          "wordId": "word-b5-4378228",
                           "contextMeaning": "nett"
                         },
                         {
@@ -112486,7 +112486,7 @@
                           "id": "l1-b5-s2321-t1",
                           "text": "วันหยุด",
                           "kind": "word",
-                          "wordId": "word-b2-wan-yut-chai-mai",
+                          "wordId": "word-b5-372218",
                           "contextMeaning": "freier Tag"
                         },
                         {
@@ -112650,7 +112650,7 @@
                           "id": "l1-b5-s2324-t2",
                           "text": "พัทยา",
                           "kind": "word",
-                          "wordId": "word-b3-tha-lay",
+                          "wordId": "word-b5-5685828",
                           "contextMeaning": "Pattaya"
                         },
                         {
@@ -112728,7 +112728,7 @@
                           "id": "l1-b5-s2325-t4",
                           "text": "ช่วงนี้",
                           "kind": "word",
-                          "wordId": "word-dtn-nii",
+                          "wordId": "word-b5-6104404",
                           "contextMeaning": "zurzeit"
                         }
                       ],
@@ -112757,7 +112757,7 @@
                           "id": "l1-b5-s2326-t2",
                           "text": "ไม่ค่อย",
                           "kind": "word",
-                          "wordId": "word-b2-diao-fon-yut-khi-k-bpai",
+                          "wordId": "word-b5-1004936",
                           "contextMeaning": "nicht besonders"
                         },
                         {
@@ -112771,14 +112771,14 @@
                           "id": "l1-b5-s2326-t4",
                           "text": "เงียบ",
                           "kind": "word",
-                          "wordId": "word-b2-ngiap-ngiap",
+                          "wordId": "word-b2-ngiap",
                           "contextMeaning": "ruhig"
                         },
                         {
                           "id": "l1-b5-s2326-t5",
                           "text": "สงบ",
                           "kind": "word",
-                          "wordId": "word-b2-sa-baai",
+                          "wordId": "word-b5-6776541",
                           "contextMeaning": "friedlich"
                         },
                         {
@@ -112871,14 +112871,14 @@
                           "id": "l1-b5-s2328-t4",
                           "text": "น้ำทะเล",
                           "kind": "word",
-                          "wordId": "word-b3-tha-lay",
+                          "wordId": "word-b5-6327148",
                           "contextMeaning": "Meerwasser"
                         },
                         {
                           "id": "l1-b5-s2328-t5",
                           "text": "ใส",
                           "kind": "word",
-                          "wordId": "word-dii",
+                          "wordId": "word-b5-9037157",
                           "contextMeaning": "klar"
                         },
                         {
@@ -112935,7 +112935,7 @@
                           "id": "l1-b5-s2329-t3",
                           "text": "น่าสนุก",
                           "kind": "word",
-                          "wordId": "word-b3-sa-nuk",
+                          "wordId": "word-b5-7006574",
                           "contextMeaning": "Spaß machen"
                         },
                         {
@@ -112999,7 +112999,7 @@
                           "id": "l1-b5-s2330-t5",
                           "text": "พักผ่อน",
                           "kind": "word",
-                          "wordId": "word-b2-phak",
+                          "wordId": "word-b5-2050995",
                           "contextMeaning": "ausruhen"
                         },
                         {
@@ -113035,7 +113035,7 @@
                           "id": "l1-b5-s2331-t1",
                           "text": "เช้านี้",
                           "kind": "word",
-                          "wordId": "word-b2-chao",
+                          "wordId": "word-b5-1438983",
                           "contextMeaning": "heute Morgen"
                         },
                         {
@@ -113127,7 +113127,7 @@
                           "id": "l1-b5-s2332-t6",
                           "text": "ครอบครัว",
                           "kind": "word",
-                          "wordId": "word-baan",
+                          "wordId": "word-b5-5512480",
                           "contextMeaning": "Familie"
                         },
                         {
@@ -113270,7 +113270,7 @@
                           "id": "l1-b5-s2335-t3",
                           "text": "ทำบุญ",
                           "kind": "word",
-                          "wordId": "word-dii",
+                          "wordId": "word-b5-7906513",
                           "contextMeaning": "Verdienste erwerben"
                         },
                         {
@@ -113348,7 +113348,7 @@
                           "id": "l1-b5-s2336-t7",
                           "text": "วันพระ",
                           "kind": "word",
-                          "wordId": "word-b5-wat",
+                          "wordId": "word-b5-8958207",
                           "contextMeaning": "buddhistischer Feiertag"
                         }
                       ],
@@ -113398,7 +113398,7 @@
                           "id": "l1-b5-s2337-t5",
                           "text": "ทุก",
                           "kind": "word",
-                          "wordId": "word-b2-thuk-khrang-khun-mai-gin-phak",
+                          "wordId": "word-b5-1699640",
                           "contextMeaning": "jeder"
                         },
                         {
@@ -113455,14 +113455,14 @@
                           "id": "l1-b5-s2338-t5",
                           "text": "สงบ",
                           "kind": "word",
-                          "wordId": "word-b2-sa-baai",
+                          "wordId": "word-b5-6776541",
                           "contextMeaning": "ruhig"
                         },
                         {
                           "id": "l1-b5-s2338-t6",
                           "text": "ใจดี",
                           "kind": "word",
-                          "wordId": "word-dii",
+                          "wordId": "word-b5-4378228",
                           "contextMeaning": "gut"
                         }
                       ],
@@ -113548,7 +113548,7 @@
                           "id": "l1-b5-s2340-t1",
                           "text": "ยินดี",
                           "kind": "word",
-                          "wordId": "word-b2-sa-baai",
+                          "wordId": "word-b5-5036705",
                           "contextMeaning": "gerne"
                         },
                         {
@@ -113583,7 +113583,7 @@
                           "id": "l1-b5-s2340-t6",
                           "text": "ด้วยกัน",
                           "kind": "word",
-                          "wordId": "word-b5-bpai-duai-kan",
+                          "wordId": "word-b5-4979694",
                           "contextMeaning": "zusammen"
                         }
                       ],
@@ -113690,7 +113690,7 @@
                           "id": "l1-b5-s2342-t4",
                           "text": "มาถึง",
                           "kind": "word",
-                          "wordId": "word-b3-glap-thng",
+                          "wordId": "word-b5-8473318",
                           "contextMeaning": "ankommen"
                         },
                         {
@@ -113747,7 +113747,7 @@
                           "id": "l1-b5-s2343-t3",
                           "text": "ประเทศ",
                           "kind": "word",
-                          "wordId": "word-b5-dtaang-bpratheet",
+                          "wordId": "word-b5-4630103",
                           "contextMeaning": "Land"
                         },
                         {
@@ -113797,14 +113797,14 @@
                           "id": "l1-b5-s2344-t3",
                           "text": "ประเทศ",
                           "kind": "word",
-                          "wordId": "word-b5-dtaang-bpratheet",
+                          "wordId": "word-b5-4630103",
                           "contextMeaning": "Land"
                         },
                         {
                           "id": "l1-b5-s2344-t4",
                           "text": "ญี่ปุ่น",
                           "kind": "word",
-                          "wordId": "word-b1-khon-y-i-p-n",
+                          "wordId": "word-b5-7506939",
                           "contextMeaning": "Japan"
                         },
                         {
@@ -113897,7 +113897,7 @@
                           "id": "l1-b5-s2346-t3",
                           "text": "ครอบครัว",
                           "kind": "word",
-                          "wordId": "word-baan",
+                          "wordId": "word-b5-5512480",
                           "contextMeaning": "Familie"
                         },
                         {
@@ -114011,7 +114011,7 @@
                           "id": "l1-b5-s2348-t4",
                           "text": "ญี่ปุ่น",
                           "kind": "word",
-                          "wordId": "word-b1-khon-y-i-p-n",
+                          "wordId": "word-b5-7506939",
                           "contextMeaning": "japanisch"
                         },
                         {
@@ -114068,7 +114068,7 @@
                           "id": "l1-b5-s2349-t4",
                           "text": "แบ่ง",
                           "kind": "word",
-                          "wordId": "word-b2-duai",
+                          "wordId": "word-b5-3025284",
                           "contextMeaning": "teilen"
                         },
                         {
@@ -114082,7 +114082,7 @@
                           "id": "l1-b5-s2349-t6",
                           "text": "ชิม",
                           "kind": "word",
-                          "wordId": "word-b2-lng",
+                          "wordId": "word-b5-6046791",
                           "contextMeaning": "probieren"
                         },
                         {
@@ -114132,14 +114132,14 @@
                           "id": "l1-b5-s2350-t4",
                           "text": "ใจดี",
                           "kind": "word",
-                          "wordId": "word-dii",
+                          "wordId": "word-b5-4378228",
                           "contextMeaning": "nett"
                         },
                         {
                           "id": "l1-b5-s2350-t5",
                           "text": "เสมอ",
                           "kind": "word",
-                          "wordId": "word-b2-thuk-khrang-khun-mai-gin-phak",
+                          "wordId": "word-b5-3180883",
                           "contextMeaning": "immer"
                         },
                         {
@@ -114424,7 +114424,7 @@
                           "id": "l1-b5-s2355-t4",
                           "text": "ด่วน",
                           "kind": "word",
-                          "wordId": "word-b2-riip",
+                          "wordId": "word-b5-3553111",
                           "contextMeaning": "dringend"
                         },
                         {
@@ -114616,7 +114616,7 @@
                           "id": "l1-b5-s2358-t5",
                           "text": "พร้อมกัน",
                           "kind": "word",
-                          "wordId": "word-gan",
+                          "wordId": "word-b5-5685823",
                           "contextMeaning": "gemeinsam"
                         },
                         {
@@ -114694,7 +114694,7 @@
                           "id": "l1-b5-s2359-t6",
                           "text": "ด้วยกัน",
                           "kind": "word",
-                          "wordId": "word-b5-bpai-duai-kan",
+                          "wordId": "word-b5-4979694",
                           "contextMeaning": "zusammen"
                         }
                       ],
@@ -114730,7 +114730,7 @@
                           "id": "l1-b5-s2360-t3",
                           "text": "จะได้",
                           "kind": "word",
-                          "wordId": "word-b2-phrung-nii-g-bpai-dai",
+                          "wordId": "word-b5-7109591",
                           "contextMeaning": "damit"
                         },
                         {
@@ -114744,7 +114744,7 @@
                           "id": "l1-b5-s2360-t5",
                           "text": "เหงา",
                           "kind": "word",
-                          "wordId": "word-b2-khon-diao",
+                          "wordId": "word-b5-6974944",
                           "contextMeaning": "einsam sein"
                         }
                       ],
@@ -114944,7 +114944,7 @@
                           "id": "l1-b5-s2364-t3",
                           "text": "เดินทาง",
                           "kind": "word",
-                          "wordId": "word-b2-dn",
+                          "wordId": "word-b5-6591440",
                           "contextMeaning": "reisen / unterwegs sein"
                         },
                         {
@@ -114987,14 +114987,14 @@
                           "id": "l1-b5-s2365-t2",
                           "text": "อาบน้ำ",
                           "kind": "word",
-                          "wordId": "word-naam",
+                          "wordId": "word-b5-9528543",
                           "contextMeaning": "duschen"
                         },
                         {
                           "id": "l1-b5-s2365-t3",
                           "text": "พักผ่อน",
                           "kind": "word",
-                          "wordId": "word-b2-phak",
+                          "wordId": "word-b5-2050995",
                           "contextMeaning": "ausruhen"
                         },
                         {
@@ -115044,7 +115044,7 @@
                           "id": "l1-b5-s2366-t3",
                           "text": "กำลังจะ",
                           "kind": "word",
-                          "wordId": "word-b3-gam-lang",
+                          "wordId": "word-b5-1412780",
                           "contextMeaning": "im Begriff sein"
                         },
                         {
@@ -115058,14 +115058,14 @@
                           "id": "l1-b5-s2366-t5",
                           "text": "อาบน้ำ",
                           "kind": "word",
-                          "wordId": "word-naam",
+                          "wordId": "word-b5-9528543",
                           "contextMeaning": "duschen"
                         },
                         {
                           "id": "l1-b5-s2366-t6",
                           "text": "พอดี",
                           "kind": "word",
-                          "wordId": "word-b2-ph",
+                          "wordId": "word-b5-1518593",
                           "contextMeaning": "genau"
                         }
                       ],
@@ -115094,7 +115094,7 @@
                           "id": "l1-b5-s2367-t2",
                           "text": "ข้าวเย็น",
                           "kind": "word",
-                          "wordId": "word-b2-yen",
+                          "wordId": "word-b5-6977449",
                           "contextMeaning": "Abendessen"
                         },
                         {
@@ -115172,7 +115172,7 @@
                           "id": "l1-b5-s2368-t5",
                           "text": "หิวข้าว",
                           "kind": "word",
-                          "wordId": "word-b2-hiu",
+                          "wordId": "word-b5-6741316",
                           "contextMeaning": "Hunger haben"
                         },
                         {
@@ -115229,7 +115229,7 @@
                           "id": "l1-b5-s2369-t5",
                           "text": "นอนพัก",
                           "kind": "word",
-                          "wordId": "word-b2-nn",
+                          "wordId": "word-b5-9671904",
                           "contextMeaning": "ausruhen"
                         },
                         {
@@ -115279,7 +115279,7 @@
                           "id": "l1-b5-s2370-t4",
                           "text": "เป็นห่วง",
                           "kind": "word",
-                          "wordId": "word-b4-mai-sa-baai",
+                          "wordId": "word-b5-1109162",
                           "contextMeaning": "Sorgen machen"
                         },
                         {
@@ -115400,7 +115400,7 @@
                           "id": "l1-b5-s2372-t6",
                           "text": "อาหารทะเล",
                           "kind": "word",
-                          "wordId": "word-aa-haan",
+                          "wordId": "word-b5-3289419",
                           "contextMeaning": "Meeresfrüchte"
                         },
                         {
@@ -115429,7 +115429,7 @@
                           "id": "l1-b5-s2373-t1",
                           "text": "เดินทาง",
                           "kind": "word",
-                          "wordId": "word-b2-dn",
+                          "wordId": "word-b5-6591440",
                           "contextMeaning": "Reise"
                         },
                         {
@@ -115479,7 +115479,7 @@
                           "id": "l1-b5-s2374-t3",
                           "text": "ขากลับ",
                           "kind": "word",
-                          "wordId": "word-b2-glap",
+                          "wordId": "word-b5-3285147",
                           "contextMeaning": "Rückweg"
                         },
                         {
@@ -115529,7 +115529,7 @@
                           "id": "l1-b5-s2375-t3",
                           "text": "ด้วยกัน",
                           "kind": "word",
-                          "wordId": "word-b5-bpai-duai-kan",
+                          "wordId": "word-b5-4979694",
                           "contextMeaning": "zusammen"
                         },
                         {
@@ -115629,14 +115629,14 @@
                           "id": "l1-b5-s2377-t2",
                           "text": "รูป",
                           "kind": "word",
-                          "wordId": "word-b3-suai",
+                          "wordId": "word-b5-3932927",
                           "contextMeaning": "Fotos"
                         },
                         {
                           "id": "l1-b5-s2377-t3",
                           "text": "สวยๆ",
                           "kind": "word",
-                          "wordId": "word-b3-suai",
+                          "wordId": "word-b5-284105",
                           "contextMeaning": "schön"
                         },
                         {
@@ -115750,7 +115750,7 @@
                           "id": "l1-b5-s2379-t1",
                           "text": "ว้าว",
                           "kind": "word",
-                          "wordId": "word-b2-aao-tham-mai-mai-bpai",
+                          "wordId": "word-b5-3204570",
                           "contextMeaning": "wow"
                         },
                         {
@@ -115778,7 +115778,7 @@
                           "id": "l1-b5-s2379-t5",
                           "text": "ใส",
                           "kind": "word",
-                          "wordId": "word-dii",
+                          "wordId": "word-b5-9037157",
                           "contextMeaning": "klar"
                         },
                         {
@@ -115885,7 +115885,7 @@
                           "id": "l1-b5-s2381-t1",
                           "text": "วันเสาร์",
                           "kind": "word",
-                          "wordId": "word-b4-sao",
+                          "wordId": "word-b5-4400668",
                           "contextMeaning": "Samstag"
                         },
                         {
@@ -115920,7 +115920,7 @@
                           "id": "l1-b5-s2381-t6",
                           "text": "กินข้าว",
                           "kind": "word",
-                          "wordId": "word-b2-dton-chao-phom-gin-khaao",
+                          "wordId": "word-b5-8404520",
                           "contextMeaning": "essen"
                         }
                       ],
@@ -116006,7 +116006,7 @@
                           "id": "l1-b5-s2383-t4",
                           "text": "ริมน้ำ",
                           "kind": "word",
-                          "wordId": "word-naam",
+                          "wordId": "word-b5-4907500",
                           "contextMeaning": "Flussufer"
                         },
                         {
@@ -116085,7 +116085,7 @@
                           "id": "l1-b5-s2385-t3",
                           "text": "หก",
                           "kind": "word",
-                          "wordId": "word-b4-saam",
+                          "wordId": "word-b5-8246092",
                           "contextMeaning": "sechs"
                         },
                         {
@@ -116313,7 +116313,7 @@
                           "id": "l1-b5-s2389-t4",
                           "text": "ห้า",
                           "kind": "word",
-                          "wordId": "word-b4-saam",
+                          "wordId": "word-b5-1478977",
                           "contextMeaning": "fünf"
                         },
                         {
@@ -116327,7 +116327,7 @@
                           "id": "l1-b5-s2389-t6",
                           "text": "ครึ่ง",
                           "kind": "word",
-                          "wordId": "word-b2-nit-diao",
+                          "wordId": "word-b5-9404081",
                           "contextMeaning": "halb"
                         }
                       ],
@@ -116356,7 +116356,7 @@
                           "id": "l1-b5-s2390-t2",
                           "text": "แน่นอน",
                           "kind": "word",
-                          "wordId": "word-b4-nae-jai",
+                          "wordId": "word-b5-2603869",
                           "contextMeaning": "sicher"
                         },
                         {
@@ -116462,7 +116462,7 @@
                           "id": "l1-b5-s2391-t8",
                           "text": "รอบ",
                           "kind": "word",
-                          "wordId": "word-b4-khrang",
+                          "wordId": "word-b5-183160",
                           "contextMeaning": "Runde"
                         }
                       ],
@@ -116541,7 +116541,7 @@
                           "id": "l1-b5-s2393-t2",
                           "text": "อาทิตย์หน้า",
                           "kind": "word",
-                          "wordId": "word-b2-khraao-naa",
+                          "wordId": "word-b5-1570096",
                           "contextMeaning": "nächste Woche"
                         },
                         {
@@ -116591,7 +116591,7 @@
                           "id": "l1-b5-s2394-t3",
                           "text": "อาทิตย์หน้า",
                           "kind": "word",
-                          "wordId": "word-b2-khraao-naa",
+                          "wordId": "word-b5-1570096",
                           "contextMeaning": "nächste Woche"
                         },
                         {
@@ -116641,7 +116641,7 @@
                           "id": "l1-b5-s2395-t3",
                           "text": "คนอื่น",
                           "kind": "word",
-                          "wordId": "word-b2-n",
+                          "wordId": "word-b5-9885547",
                           "contextMeaning": "andere"
                         },
                         {
@@ -116712,7 +116712,7 @@
                           "id": "l1-b5-s2396-t5",
                           "text": "หลายๆ",
                           "kind": "word",
-                          "wordId": "word-b4-laai",
+                          "wordId": "word-b5-1036489",
                           "contextMeaning": "viele"
                         },
                         {
@@ -116911,7 +116911,7 @@
                           "id": "l1-b5-s2399-t3",
                           "text": "เดิม",
                           "kind": "word",
-                          "wordId": "word-b2-dm",
+                          "wordId": "word-b2-ngan-khraao-naa-gin-bp-dm-mai",
                           "contextMeaning": "wie bisher"
                         },
                         {
@@ -116968,7 +116968,7 @@
                           "id": "l1-b5-s2400-t4",
                           "text": "อาทิตย์หน้า",
                           "kind": "word",
-                          "wordId": "word-b2-khraao-naa",
+                          "wordId": "word-b5-1570096",
                           "contextMeaning": "nächste Woche"
                         }
                       ],
@@ -117201,7 +117201,7 @@
                           "id": "l1-b5-s2402-t2",
                           "text": "ไปมา",
                           "kind": "word",
-                          "wordId": "word-b2-bpai",
+                          "wordId": "word-b5-989590",
                           "contextMeaning": "unterwegs sein"
                         },
                         {
@@ -117265,14 +117265,14 @@
                           "id": "l1-b5-s2403-t4",
                           "text": "เยอะแยะ",
                           "kind": "word",
-                          "wordId": "word-b2-y",
+                          "wordId": "word-b5-346535",
                           "contextMeaning": "so viel"
                         },
                         {
                           "id": "l1-b5-s2403-t5",
                           "text": "ขนาดนั้น",
                           "kind": "word",
-                          "wordId": "word-b2-thn",
+                          "wordId": "word-b5-1336445",
                           "contextMeaning": "dermaßen"
                         }
                       ],
@@ -117415,7 +117415,7 @@
                           "id": "l1-b5-s2406-t3",
                           "text": "กินข้าว",
                           "kind": "word",
-                          "wordId": "word-b2-dton-chao-phom-gin-khaao",
+                          "wordId": "word-b5-8404520",
                           "contextMeaning": "essen"
                         },
                         {
@@ -117443,7 +117443,7 @@
                           "id": "l1-b5-s2406-t7",
                           "text": "สยาม",
                           "kind": "word",
-                          "wordId": "word-thai",
+                          "wordId": "word-b5-7010385",
                           "contextMeaning": "Siam"
                         }
                       ],
@@ -117465,7 +117465,7 @@
                           "id": "l1-b5-s2407-t1",
                           "text": "เดินทาง",
                           "kind": "word",
-                          "wordId": "word-b2-dn",
+                          "wordId": "word-b5-6591440",
                           "contextMeaning": "unterwegs sein"
                         },
                         {
@@ -117486,7 +117486,7 @@
                           "id": "l1-b5-s2407-t4",
                           "text": "แย่",
                           "kind": "word",
-                          "wordId": "word-b2-mai-dii",
+                          "wordId": "word-b5-8216278",
                           "contextMeaning": "schlimm"
                         },
                         {
@@ -117593,7 +117593,7 @@
                           "id": "l1-b5-s2409-t5",
                           "text": "พักผ่อน",
                           "kind": "word",
-                          "wordId": "word-b2-phak",
+                          "wordId": "word-b5-2050995",
                           "contextMeaning": "ausruhen"
                         },
                         {
@@ -117650,7 +117650,7 @@
                           "id": "l1-b5-s2410-t5",
                           "text": "ยาวๆ",
                           "kind": "word",
-                          "wordId": "word-b2-yaao",
+                          "wordId": "word-b5-6769116",
                           "contextMeaning": "lange"
                         },
                         {
@@ -117729,7 +117729,7 @@
                           "id": "l1-b5-s2412-t2",
                           "text": "หลง",
                           "kind": "word",
-                          "wordId": "word-b5-long-thaang",
+                          "wordId": "word-b5-8481267",
                           "contextMeaning": "verlaufen"
                         },
                         {
@@ -117764,7 +117764,7 @@
                           "id": "l1-b5-s2412-t7",
                           "text": "คุ้น",
                           "kind": "word",
-                          "wordId": "word-b2-dii-khrap-phom-khoei-maa-gin-thii-nii",
+                          "wordId": "word-b5-5137512",
                           "contextMeaning": "vertraut"
                         },
                         {
@@ -117878,7 +117878,7 @@
                           "id": "l1-b5-s2414-t4",
                           "text": "คนขายของ",
                           "kind": "word",
-                          "wordId": "word-khon",
+                          "wordId": "word-b5-4539862",
                           "contextMeaning": "Verkäufer"
                         },
                         {
@@ -117942,7 +117942,7 @@
                           "id": "l1-b5-s2415-t5",
                           "text": "รถไฟ",
                           "kind": "word",
-                          "wordId": "word-b4-khrang",
+                          "wordId": "word-b5-5309777",
                           "contextMeaning": "Zug"
                         },
                         {
@@ -118013,7 +118013,7 @@
                           "id": "l1-b5-s2416-t7",
                           "text": "หัวมุม",
                           "kind": "word",
-                          "wordId": "word-b5-thaang",
+                          "wordId": "word-b5-3440976",
                           "contextMeaning": "Ecke"
                         }
                       ],
@@ -118213,7 +118213,7 @@
                           "id": "l1-b5-s2420-t1",
                           "text": "ยินดี",
                           "kind": "word",
-                          "wordId": "word-b2-sa-baai",
+                          "wordId": "word-b5-5036705",
                           "contextMeaning": "gerne"
                         },
                         {
@@ -118369,7 +118369,7 @@
                           "id": "l1-b5-s2422-t5",
                           "text": "สุด",
                           "kind": "word",
-                          "wordId": "word-b2-thng-mai-tham-wan-nii",
+                          "wordId": "word-b5-9803591",
                           "contextMeaning": "Ende"
                         },
                         {
@@ -118405,7 +118405,7 @@
                           "id": "l1-b5-s2423-t1",
                           "text": "สุด",
                           "kind": "word",
-                          "wordId": "word-b2-thng-mai-tham-wan-nii",
+                          "wordId": "word-b5-9803591",
                           "contextMeaning": "Ende"
                         },
                         {
@@ -118504,7 +118504,7 @@
                           "id": "l1-b5-s2424-t6",
                           "text": "เซเว่น",
                           "kind": "word",
-                          "wordId": "word-raan",
+                          "wordId": "word-b5-7915752",
                           "contextMeaning": "7-Eleven"
                         }
                       ],
@@ -118554,7 +118554,7 @@
                           "id": "l1-b5-s2425-t5",
                           "text": "เซเว่น",
                           "kind": "word",
-                          "wordId": "word-raan",
+                          "wordId": "word-b5-7915752",
                           "contextMeaning": "7-Eleven"
                         },
                         {
@@ -118590,14 +118590,14 @@
                           "id": "l1-b5-s2426-t2",
                           "text": "ติดกับ",
                           "kind": "word",
-                          "wordId": "word-b3-dtit",
+                          "wordId": "word-b5-2522695",
                           "contextMeaning": "direkt neben"
                         },
                         {
                           "id": "l1-b5-s2426-t3",
                           "text": "เซเว่น",
                           "kind": "word",
-                          "wordId": "word-raan",
+                          "wordId": "word-b5-7915752",
                           "contextMeaning": "7-Eleven"
                         },
                         {
@@ -118732,7 +118732,7 @@
                           "id": "l1-b5-s2428-t4",
                           "text": "ห้า",
                           "kind": "word",
-                          "wordId": "word-b4-saam",
+                          "wordId": "word-b5-1478977",
                           "contextMeaning": "fünf"
                         },
                         {
@@ -118810,7 +118810,7 @@
                           "id": "l1-b5-s2429-t5",
                           "text": "ละเอียด",
                           "kind": "word",
-                          "wordId": "word-dii",
+                          "wordId": "word-b5-2633110",
                           "contextMeaning": "genau"
                         },
                         {
@@ -118846,7 +118846,7 @@
                           "id": "l1-b5-s2430-t1",
                           "text": "ยินดี",
                           "kind": "word",
-                          "wordId": "word-b2-sa-baai",
+                          "wordId": "word-b5-5036705",
                           "contextMeaning": "gerne"
                         },
                         {
@@ -118874,7 +118874,7 @@
                           "id": "l1-b5-s2430-t5",
                           "text": "พักผ่อน",
                           "kind": "word",
-                          "wordId": "word-b2-phak",
+                          "wordId": "word-b5-2050995",
                           "contextMeaning": "ausruhen"
                         },
                         {
@@ -119009,7 +119009,7 @@
                           "id": "l1-b5-s2432-t7",
                           "text": "นั้น",
                           "kind": "word",
-                          "wordId": "word-b2-thn",
+                          "wordId": "word-b2-raan-nan-khon-mai-y",
                           "contextMeaning": "jene"
                         }
                       ],
@@ -119137,7 +119137,7 @@
                           "id": "l1-b5-s2434-t7",
                           "text": "ข้าม",
                           "kind": "word",
-                          "wordId": "word-b5-khaam-thanon",
+                          "wordId": "word-b5-2694037",
                           "contextMeaning": "überqueren"
                         },
                         {
@@ -119194,7 +119194,7 @@
                           "id": "l1-b5-s2435-t5",
                           "text": "ข้าม",
                           "kind": "word",
-                          "wordId": "word-b5-khaam-thanon",
+                          "wordId": "word-b5-2694037",
                           "contextMeaning": "überqueren"
                         },
                         {
@@ -119443,7 +119443,7 @@
                           "id": "l1-b5-s2439-t4",
                           "text": "พอดี",
                           "kind": "word",
-                          "wordId": "word-b2-ph",
+                          "wordId": "word-b5-1518593",
                           "contextMeaning": "genau"
                         },
                         {
@@ -119564,7 +119564,7 @@
                           "id": "l1-b5-s2441-t3",
                           "text": "ฝั่ง",
                           "kind": "word",
-                          "wordId": "word-b5-fang-dtrong-khaam",
+                          "wordId": "word-b5-4674978",
                           "contextMeaning": "Seite"
                         },
                         {
@@ -119657,21 +119657,21 @@
                           "id": "l1-b5-s2443-t5",
                           "text": "ฝั่ง",
                           "kind": "word",
-                          "wordId": "word-b5-fang-dtrong-khaam",
+                          "wordId": "word-b5-4674978",
                           "contextMeaning": "Seite"
                         },
                         {
                           "id": "l1-b5-s2443-t6",
                           "text": "โน้น",
                           "kind": "word",
-                          "wordId": "word-thii-nan",
+                          "wordId": "word-b5-9542650",
                           "contextMeaning": "jene"
                         },
                         {
                           "id": "l1-b5-s2443-t7",
                           "text": "ใช่ไหม",
                           "kind": "word",
-                          "wordId": "word-chai",
+                          "wordId": "word-chai-mai",
                           "contextMeaning": "oder?"
                         }
                       ],
@@ -119714,7 +119714,7 @@
                           "id": "l1-b5-s2444-t4",
                           "text": "สะพานลอย",
                           "kind": "word",
-                          "wordId": "word-b5-ban-dai",
+                          "wordId": "word-b5-7409659",
                           "contextMeaning": "Überführung"
                         },
                         {
@@ -119750,21 +119750,21 @@
                           "id": "l1-b5-s2445-t1",
                           "text": "ข้าม",
                           "kind": "word",
-                          "wordId": "word-b5-khaam-thanon",
+                          "wordId": "word-b5-2694037",
                           "contextMeaning": "überqueren"
                         },
                         {
                           "id": "l1-b5-s2445-t2",
                           "text": "สะพานลอย",
                           "kind": "word",
-                          "wordId": "word-b5-ban-dai",
+                          "wordId": "word-b5-7409659",
                           "contextMeaning": "Brücke"
                         },
                         {
                           "id": "l1-b5-s2445-t3",
                           "text": "ปลอดภัย",
                           "kind": "word",
-                          "wordId": "word-b2-sa-baai",
+                          "wordId": "word-b5-4452312",
                           "contextMeaning": "sicher"
                         },
                         {
@@ -119828,7 +119828,7 @@
                           "id": "l1-b5-s2446-t6",
                           "text": "ตัดหน้า",
                           "kind": "word",
-                          "wordId": "word-b3-naa",
+                          "wordId": "word-b5-9936071",
                           "contextMeaning": "vorqueren"
                         },
                         {
@@ -119864,7 +119864,7 @@
                           "id": "l1-b5-s2447-t2",
                           "text": "ขึ้น",
                           "kind": "word",
-                          "wordId": "word-b5-khuen-bpai",
+                          "wordId": "word-b5-3727722",
                           "contextMeaning": "hinauf"
                         },
                         {
@@ -119907,7 +119907,7 @@
                           "id": "l1-b5-s2448-t1",
                           "text": "ข้าม",
                           "kind": "word",
-                          "wordId": "word-b5-khaam-thanon",
+                          "wordId": "word-b5-2694037",
                           "contextMeaning": "überqueren"
                         },
                         {
@@ -119928,7 +119928,7 @@
                           "id": "l1-b5-s2448-t4",
                           "text": "ฝั่ง",
                           "kind": "word",
-                          "wordId": "word-b5-fang-dtrong-khaam",
+                          "wordId": "word-b5-4674978",
                           "contextMeaning": "Seite"
                         },
                         {
@@ -119978,7 +119978,7 @@
                           "id": "l1-b5-s2449-t3",
                           "text": "ตรงหน้า",
                           "kind": "word",
-                          "wordId": "word-b3-naa",
+                          "wordId": "word-b5-3232545",
                           "contextMeaning": "genau vor uns"
                         },
                         {
@@ -120320,7 +120320,7 @@
                           "id": "l1-b5-s2455-t1",
                           "text": "ขากลับ",
                           "kind": "word",
-                          "wordId": "word-b2-glap",
+                          "wordId": "word-b5-3285147",
                           "contextMeaning": "Rückweg"
                         },
                         {
@@ -120377,7 +120377,7 @@
                           "id": "l1-b5-s2456-t1",
                           "text": "ขากลับ",
                           "kind": "word",
-                          "wordId": "word-b2-glap",
+                          "wordId": "word-b5-3285147",
                           "contextMeaning": "Rückweg"
                         },
                         {
@@ -120512,14 +120512,14 @@
                           "id": "l1-b5-s2458-t3",
                           "text": "ประหยัด",
                           "kind": "word",
-                          "wordId": "word-b2-sa-baai",
+                          "wordId": "word-b5-3233119",
                           "contextMeaning": "sparen"
                         },
                         {
                           "id": "l1-b5-s2458-t4",
                           "text": "แรง",
                           "kind": "word",
-                          "wordId": "word-b2-maak",
+                          "wordId": "word-b5-5596726",
                           "contextMeaning": "Kräfte"
                         },
                         {
@@ -120825,7 +120825,7 @@
                           "id": "l1-b5-s2463-t6",
                           "text": "จะได้",
                           "kind": "word",
-                          "wordId": "word-b2-phrung-nii-g-bpai-dai",
+                          "wordId": "word-b5-7109591",
                           "contextMeaning": "damit"
                         },
                         {
@@ -120882,7 +120882,7 @@
                           "id": "l1-b5-s2464-t4",
                           "text": "ออกกำลังกาย",
                           "kind": "word",
-                          "wordId": "word-b2-wan-nii-khun-tham-ngaan-mai",
+                          "wordId": "word-b5-9849693",
                           "contextMeaning": "Sport machen"
                         },
                         {
@@ -120939,7 +120939,7 @@
                           "id": "l1-b5-s2465-t5",
                           "text": "เพลิน",
                           "kind": "word",
-                          "wordId": "word-b3-sa-nuk",
+                          "wordId": "word-b5-7764635",
                           "contextMeaning": "unterhaltsam"
                         },
                         {
@@ -121039,7 +121039,7 @@
                           "id": "l1-b5-s2467-t2",
                           "text": "ตึก",
                           "kind": "word",
-                          "wordId": "word-b1-b-r-s-t",
+                          "wordId": "word-b5-9335329",
                           "contextMeaning": "Gebäude"
                         },
                         {
@@ -121060,7 +121060,7 @@
                           "id": "l1-b5-s2467-t5",
                           "text": "นั่นแหละ",
                           "kind": "word",
-                          "wordId": "word-nii-59a1a39d",
+                          "wordId": "word-b5-3510399",
                           "contextMeaning": "genau das"
                         }
                       ],
@@ -121146,7 +121146,7 @@
                           "id": "l1-b5-s2469-t1",
                           "text": "เก่ง",
                           "kind": "word",
-                          "wordId": "word-dii",
+                          "wordId": "word-b5-2854370",
                           "contextMeaning": "toll"
                         },
                         {
@@ -121167,7 +121167,7 @@
                           "id": "l1-b5-s2469-t4",
                           "text": "เก่ง",
                           "kind": "word",
-                          "wordId": "word-dii",
+                          "wordId": "word-b5-2854370",
                           "contextMeaning": "gut"
                         },
                         {
@@ -121694,14 +121694,14 @@
                           "id": "l1-b5-s2478-t2",
                           "text": "น้ำเปล่า",
                           "kind": "word",
-                          "wordId": "word-naam",
+                          "wordId": "word-b5-3401509",
                           "contextMeaning": "Trinkwasser"
                         },
                         {
                           "id": "l1-b5-s2478-t3",
                           "text": "เย็นๆ",
                           "kind": "word",
-                          "wordId": "word-b2-yen",
+                          "wordId": "word-b5-3718796",
                           "contextMeaning": "kühl"
                         },
                         {
@@ -121744,7 +121744,7 @@
                           "id": "l1-b5-s2479-t1",
                           "text": "แบ่ง",
                           "kind": "word",
-                          "wordId": "word-b2-duai",
+                          "wordId": "word-b5-3025284",
                           "contextMeaning": "teilen"
                         },
                         {
@@ -121822,7 +121822,7 @@
                           "id": "l1-b5-s2480-t4",
                           "text": "ชื่นใจ",
                           "kind": "word",
-                          "wordId": "word-b2-sa-baai",
+                          "wordId": "word-b5-2891851",
                           "contextMeaning": "erfrischend"
                         },
                         {
@@ -121858,7 +121858,7 @@
                           "id": "l1-b5-s2481-t1",
                           "text": "ในที่สุด",
                           "kind": "word",
-                          "wordId": "word-lo",
+                          "wordId": "word-b5-1070189",
                           "contextMeaning": "endlich"
                         },
                         {
@@ -121915,14 +121915,14 @@
                           "id": "l1-b5-s2482-t2",
                           "text": "ตรงเวลา",
                           "kind": "word",
-                          "wordId": "word-b2-wee-laa",
+                          "wordId": "word-b5-4399108",
                           "contextMeaning": "pünktlich"
                         },
                         {
                           "id": "l1-b5-s2482-t3",
                           "text": "พอดี",
                           "kind": "word",
-                          "wordId": "word-b2-ph",
+                          "wordId": "word-b5-1518593",
                           "contextMeaning": "genau"
                         },
                         {
@@ -121958,7 +121958,7 @@
                           "id": "l1-b5-s2483-t2",
                           "text": "มาถึง",
                           "kind": "word",
-                          "wordId": "word-b3-glap-thng",
+                          "wordId": "word-b5-8473318",
                           "contextMeaning": "ankommen"
                         },
                         {
@@ -122001,7 +122001,7 @@
                           "id": "l1-b5-s2484-t1",
                           "text": "มาถึง",
                           "kind": "word",
-                          "wordId": "word-b3-glap-thng",
+                          "wordId": "word-b5-8473318",
                           "contextMeaning": "ankommen"
                         },
                         {
@@ -122015,7 +122015,7 @@
                           "id": "l1-b5-s2484-t3",
                           "text": "เกือบ",
                           "kind": "word",
-                          "wordId": "word-b3-glai",
+                          "wordId": "word-b5-8821682",
                           "contextMeaning": "fast"
                         },
                         {
@@ -122150,7 +122150,7 @@
                           "id": "l1-b5-s2486-t6",
                           "text": "พวกเขา",
                           "kind": "word",
-                          "wordId": "word-khao",
+                          "wordId": "word-b5-3604385",
                           "contextMeaning": "sie"
                         },
                         {
@@ -122243,7 +122243,7 @@
                           "id": "l1-b5-s2488-t3",
                           "text": "มาถึง",
                           "kind": "word",
-                          "wordId": "word-b3-glap-thng",
+                          "wordId": "word-b5-8473318",
                           "contextMeaning": "ankommen"
                         },
                         {
@@ -122279,7 +122279,7 @@
                           "id": "l1-b5-s2489-t1",
                           "text": "ยินดีต้อนรับ",
                           "kind": "word",
-                          "wordId": "word-b2-sa-baai",
+                          "wordId": "word-b5-2835089",
                           "contextMeaning": "willkommen"
                         },
                         {
@@ -122293,7 +122293,7 @@
                           "id": "l1-b5-s2489-t3",
                           "text": "ด้วยกัน",
                           "kind": "word",
-                          "wordId": "word-b5-bpai-duai-kan",
+                          "wordId": "word-b5-4979694",
                           "contextMeaning": "zusammen"
                         },
                         {
@@ -122336,7 +122336,7 @@
                           "id": "l1-b5-s2490-t3",
                           "text": "มีความสุข",
                           "kind": "word",
-                          "wordId": "word-b2-sa-baai",
+                          "wordId": "word-b5-1035183",
                           "contextMeaning": "glücklich sein"
                         },
                         {
@@ -122720,7 +122720,7 @@
                           "id": "l1-b5-s2496-t3",
                           "text": "รถไม่ติด",
                           "kind": "word",
-                          "wordId": "word-b3-rot-dtit",
+                          "wordId": "word-b5-9264113",
                           "contextMeaning": "kein Stau"
                         },
                         {
@@ -122770,7 +122770,7 @@
                           "id": "l1-b5-s2497-t4",
                           "text": "ด้วยกัน",
                           "kind": "word",
-                          "wordId": "word-b5-bpai-duai-kan",
+                          "wordId": "word-b5-4979694",
                           "contextMeaning": "zusammen"
                         },
                         {
@@ -122806,7 +122806,7 @@
                           "id": "l1-b5-s2498-t1",
                           "text": "แน่นอน",
                           "kind": "word",
-                          "wordId": "word-b4-nae-jai",
+                          "wordId": "word-b5-2603869",
                           "contextMeaning": "sicher"
                         },
                         {
@@ -122841,7 +122841,7 @@
                           "id": "l1-b5-s2498-t6",
                           "text": "เสมอ",
                           "kind": "word",
-                          "wordId": "word-b2-thuk-khrang-khun-mai-gin-phak",
+                          "wordId": "word-b5-3180883",
                           "contextMeaning": "immer"
                         },
                         {
@@ -122891,14 +122891,14 @@
                           "id": "l1-b5-s2499-t4",
                           "text": "พักผ่อน",
                           "kind": "word",
-                          "wordId": "word-b2-phak",
+                          "wordId": "word-b5-2050995",
                           "contextMeaning": "ausruhen"
                         },
                         {
                           "id": "l1-b5-s2499-t5",
                           "text": "ให้เต็มที่",
                           "kind": "word",
-                          "wordId": "word-b2-dtem-thii",
+                          "wordId": "word-b5-8189029",
                           "contextMeaning": "voll und ganz"
                         },
                         {
@@ -122941,7 +122941,7 @@
                           "id": "l1-b5-s2500-t3",
                           "text": "ล่วงหน้า",
                           "kind": "word",
-                          "wordId": "word-b2-ngan-ao-naam-gn",
+                          "wordId": "word-b5-4590824",
                           "contextMeaning": "im Voraus"
                         },
                         {
@@ -136119,7 +136119,7 @@
           "transliteration": "mǎi"
         }
       ],
-      "firstSentenceId": "l1-b1-s252",
+      "firstSentenceId": "l1-b5-s2053",
       "bossContexts": {
         "level-1-grammar-boss-1": {
           "meanings": [
@@ -164808,7 +164808,7 @@
       "meanings": [
         "ruhig / still"
       ],
-      "firstSentenceId": "l1-b2-s984"
+      "firstSentenceId": "l1-b5-s2326"
     },
     {
       "id": "word-b2-chi-chi",
@@ -179981,7 +179981,7 @@
         "Weg",
         "Richtung"
       ],
-      "firstSentenceId": "l1-b5-s2161",
+      "firstSentenceId": "l1-b5-s2086",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180172,7 +180172,7 @@
           "transliteration": "rót"
         }
       ],
-      "firstSentenceId": "l1-b5-s2201",
+      "firstSentenceId": "l1-b5-s2039",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180322,7 +180322,7 @@
       "meanings": [
         "schnell"
       ],
-      "firstSentenceId": "l1-b5-s2108",
+      "firstSentenceId": "l1-b5-s2016",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180718,7 +180718,7 @@
         "Ausflug machen",
         "reisen"
       ],
-      "firstSentenceId": "l1-b5-s2321",
+      "firstSentenceId": "l1-b5-s2074",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181255,7 +181255,7 @@
           "transliteration": "khâam"
         }
       ],
-      "firstSentenceId": "l1-b5-s2188",
+      "firstSentenceId": "l1-b5-s2442",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181620,6 +181620,3883 @@
           "contextExamples": []
         }
       }
+    },
+    {
+      "id": "word-b5-3285147",
+      "thai": "ขากลับ",
+      "transliteration": "khǎa-glàp",
+      "meanings": [
+        "Rückweg"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Rückweg"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ขา",
+          "transliteration": "khǎa"
+        },
+        {
+          "thai": "กลับ",
+          "transliteration": "glàp"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2374"
+    },
+    {
+      "id": "word-b5-3233119",
+      "thai": "ประหยัด",
+      "transliteration": "bprà-yàt",
+      "meanings": [
+        "sparen",
+        "sparsam"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "sparen",
+            "sparsam"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ประ",
+          "transliteration": "bprà"
+        },
+        {
+          "thai": "หยัด",
+          "transliteration": "yàt"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2458"
+    },
+    {
+      "id": "word-b5-6619610",
+      "thai": "เท่านั้น",
+      "transliteration": "thâo-nán",
+      "meanings": [
+        "nur",
+        "lediglich"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "nur",
+            "lediglich"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "เท่า",
+          "transliteration": "thâo"
+        },
+        {
+          "thai": "นั้น",
+          "transliteration": "nán"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2186"
+    },
+    {
+      "id": "word-b5-2603869",
+      "thai": "แน่นอน",
+      "transliteration": "nɛ̂ɛ-nɔɔn",
+      "meanings": [
+        "sicher",
+        "auf jeden Fall"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "sicher",
+            "auf jeden Fall"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "แน่",
+          "transliteration": "nɛ̂ɛ"
+        },
+        {
+          "thai": "นอน",
+          "transliteration": "nɔɔn"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2098"
+    },
+    {
+      "id": "word-b5-4452312",
+      "thai": "ปลอดภัย",
+      "transliteration": "bplɔ̀ɔt-phai",
+      "meanings": [
+        "sicher",
+        "in Sicherheit"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "sicher",
+            "in Sicherheit"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ปลอด",
+          "transliteration": "bplɔ̀ɔt"
+        },
+        {
+          "thai": "ภัย",
+          "transliteration": "phai"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2049"
+    },
+    {
+      "id": "word-b5-5309777",
+      "thai": "รถไฟ",
+      "transliteration": "rót-fai",
+      "meanings": [
+        "Zug",
+        "Eisenbahn"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Zug",
+            "Eisenbahn"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "รถ",
+          "transliteration": "rót"
+        },
+        {
+          "thai": "ไฟ",
+          "transliteration": "fai"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2036"
+    },
+    {
+      "id": "word-b5-1478977",
+      "thai": "ห้า",
+      "transliteration": "hâa",
+      "meanings": [
+        "fünf"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "fünf"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2155"
+    },
+    {
+      "id": "word-b5-8246092",
+      "thai": "หก",
+      "transliteration": "hòk",
+      "meanings": [
+        "sechs"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "sechs"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2385"
+    },
+    {
+      "id": "word-b5-1842476",
+      "thai": "ยี่สิบ",
+      "transliteration": "yîi-sìp",
+      "meanings": [
+        "zwanzig"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "zwanzig"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ยี่",
+          "transliteration": "yîi"
+        },
+        {
+          "thai": "สิบ",
+          "transliteration": "sìp"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2246"
+    },
+    {
+      "id": "word-b5-9588352",
+      "thai": "ร้อย",
+      "transliteration": "rɔ́ɔi",
+      "meanings": [
+        "hundert"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "hundert"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2187"
+    },
+    {
+      "id": "word-b5-8526945",
+      "thai": "เมตร",
+      "transliteration": "méet",
+      "meanings": [
+        "Meter"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Meter"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2187"
+    },
+    {
+      "id": "word-b5-5036705",
+      "thai": "ยินดี",
+      "transliteration": "yin-dii",
+      "meanings": [
+        "gerne",
+        "erfreut"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "gerne",
+            "erfreut"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ยิน",
+          "transliteration": "yin"
+        },
+        {
+          "thai": "ดี",
+          "transliteration": "dii"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2170"
+    },
+    {
+      "id": "word-b5-2835089",
+      "thai": "ยินดีต้อนรับ",
+      "transliteration": "yin-dii dtɔ̂ɔn-ráp",
+      "meanings": [
+        "herzlich willkommen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "herzlich willkommen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ยิน",
+          "transliteration": "yin"
+        },
+        {
+          "thai": "ดี",
+          "transliteration": "dii"
+        },
+        {
+          "thai": "ต้อน",
+          "transliteration": "dtɔ̂ɔn"
+        },
+        {
+          "thai": "รับ",
+          "transliteration": "ráp"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2489"
+    },
+    {
+      "id": "word-b5-1035183",
+      "thai": "มีความสุข",
+      "transliteration": "mii khwaam-sùk",
+      "meanings": [
+        "glücklich sein",
+        "Freude haben"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "glücklich sein",
+            "Freude haben"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "มี",
+          "transliteration": "mii"
+        },
+        {
+          "thai": "ความ",
+          "transliteration": "khwaam"
+        },
+        {
+          "thai": "สุข",
+          "transliteration": "sùk"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2490"
+    },
+    {
+      "id": "word-b5-2891851",
+      "thai": "ชื่นใจ",
+      "transliteration": "chʉ̂ʉn-jai",
+      "meanings": [
+        "erfrischend",
+        "wohltuend"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "erfrischend",
+            "wohltuend"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ชื่น",
+          "transliteration": "chʉ̂ʉn"
+        },
+        {
+          "thai": "ใจ",
+          "transliteration": "jai"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2480"
+    },
+    {
+      "id": "word-b5-281568",
+      "thai": "สบายใจ",
+      "transliteration": "sà-baai jai",
+      "meanings": [
+        "sich wohlfühlen",
+        "beruhigt sein"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "sich wohlfühlen",
+            "beruhigt sein"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ส",
+          "transliteration": "sà"
+        },
+        {
+          "thai": "บาย",
+          "transliteration": "baai"
+        },
+        {
+          "thai": "ใจ",
+          "transliteration": "jai"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2200"
+    },
+    {
+      "id": "word-b5-7915752",
+      "thai": "เซเว่น",
+      "transliteration": "See-wên",
+      "meanings": [
+        "7-Eleven",
+        "Convenience Store"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "7-Eleven",
+            "Convenience Store"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "เซ",
+          "transliteration": "See"
+        },
+        {
+          "thai": "เว่น",
+          "transliteration": "wên"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2424"
+    },
+    {
+      "id": "word-b5-7409659",
+      "thai": "สะพานลอย",
+      "transliteration": "sà-phaan-lɔɔi",
+      "meanings": [
+        "Fußgängerbrücke",
+        "Überführung"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Fußgängerbrücke",
+            "Überführung"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "สะ",
+          "transliteration": "sà"
+        },
+        {
+          "thai": "พาน",
+          "transliteration": "phaan"
+        },
+        {
+          "thai": "ลอย",
+          "transliteration": "lɔɔi"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2444"
+    },
+    {
+      "id": "word-b5-3440976",
+      "thai": "หัวมุม",
+      "transliteration": "hǔa-mum",
+      "meanings": [
+        "Straßenecke",
+        "Ecke"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Straßenecke",
+            "Ecke"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "หัว",
+          "transliteration": "hǔa"
+        },
+        {
+          "thai": "มุม",
+          "transliteration": "mum"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2416"
+    },
+    {
+      "id": "word-b5-7999144",
+      "thai": "คิว",
+      "transliteration": "khiu",
+      "meanings": [
+        "Warteschlange",
+        "Reihe"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Warteschlange",
+            "Reihe"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2140"
+    },
+    {
+      "id": "word-b5-5484123",
+      "thai": "จอด",
+      "transliteration": "jɔ̀ɔt",
+      "meanings": [
+        "anhalten",
+        "parken"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "anhalten",
+            "parken"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2158"
+    },
+    {
+      "id": "word-b5-627247",
+      "thai": "มือ",
+      "transliteration": "mʉʉ",
+      "meanings": [
+        "Hand",
+        "Seite"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Hand",
+            "Seite"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2175"
+    },
+    {
+      "id": "word-b5-2392889",
+      "thai": "สีแดง",
+      "transliteration": "sǐi-dɛɛng",
+      "meanings": [
+        "rot",
+        "rote Farbe"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "rot",
+            "rote Farbe"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "สี",
+          "transliteration": "sǐi"
+        },
+        {
+          "thai": "แดง",
+          "transliteration": "dɛɛng"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2178"
+    },
+    {
+      "id": "word-b5-6977367",
+      "thai": "ตัน",
+      "transliteration": "dtan",
+      "meanings": [
+        "verstopft",
+        "Sackgasse"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "verstopft",
+            "Sackgasse"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2185"
+    },
+    {
+      "id": "word-b5-2919779",
+      "thai": "คือ",
+      "transliteration": "khʉʉ",
+      "meanings": [
+        "sein",
+        "ist nämlich"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "sein",
+            "ist nämlich"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2192"
+    },
+    {
+      "id": "word-b5-3025284",
+      "thai": "แบ่ง",
+      "transliteration": "bɛ̀ɛng",
+      "meanings": [
+        "teilen",
+        "aufteilen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "teilen",
+            "aufteilen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2349"
+    },
+    {
+      "id": "word-b5-6046791",
+      "thai": "ชิม",
+      "transliteration": "chim",
+      "meanings": [
+        "probieren",
+        "kosten"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "probieren",
+            "kosten"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2349"
+    },
+    {
+      "id": "word-b5-3180883",
+      "thai": "เสมอ",
+      "transliteration": "sà-mə̌ə",
+      "meanings": [
+        "immer",
+        "stets"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "immer",
+            "stets"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "เส",
+          "transliteration": "sà"
+        },
+        {
+          "thai": "มอ",
+          "transliteration": "mə̌ə"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2350"
+    },
+    {
+      "id": "word-b5-3553111",
+      "thai": "ด่วน",
+      "transliteration": "dùan",
+      "meanings": [
+        "dringend",
+        "eilig"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "dringend",
+            "eilig"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2355"
+    },
+    {
+      "id": "word-b5-5685823",
+      "thai": "พร้อมกัน",
+      "transliteration": "phrɔ́ɔm-kan",
+      "meanings": [
+        "zusammen",
+        "gleichzeitig"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "zusammen",
+            "gleichzeitig"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "พร้อม",
+          "transliteration": "phrɔ́ɔm"
+        },
+        {
+          "thai": "กัน",
+          "transliteration": "kan"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2358"
+    },
+    {
+      "id": "word-b5-6974944",
+      "thai": "เหงา",
+      "transliteration": "ngǎo",
+      "meanings": [
+        "einsam sein",
+        "einsam"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "einsam sein",
+            "einsam"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2360"
+    },
+    {
+      "id": "word-b5-9528543",
+      "thai": "อาบน้ำ",
+      "transliteration": "àap-náam",
+      "meanings": [
+        "duschen",
+        "baden"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "duschen",
+            "baden"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "อาบ",
+          "transliteration": "àap"
+        },
+        {
+          "thai": "น้ำ",
+          "transliteration": "náam"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2365"
+    },
+    {
+      "id": "word-b5-2050995",
+      "thai": "พักผ่อน",
+      "transliteration": "phák-phɔ̀ɔn",
+      "meanings": [
+        "sich ausruhen",
+        "erholen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "sich ausruhen",
+            "erholen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "พัก",
+          "transliteration": "phák"
+        },
+        {
+          "thai": "ผ่อน",
+          "transliteration": "phɔ̀ɔn"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2330"
+    },
+    {
+      "id": "word-b5-9671904",
+      "thai": "นอนพัก",
+      "transliteration": "nɔɔn phák",
+      "meanings": [
+        "ausruhen",
+        "schlafen legen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "ausruhen",
+            "schlafen legen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "นอน",
+          "transliteration": "nɔɔn"
+        },
+        {
+          "thai": "พัก",
+          "transliteration": "phák"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2369"
+    },
+    {
+      "id": "word-b5-6977449",
+      "thai": "ข้าวเย็น",
+      "transliteration": "khâao-yen",
+      "meanings": [
+        "Abendessen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Abendessen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ข้าว",
+          "transliteration": "khâao"
+        },
+        {
+          "thai": "เย็น",
+          "transliteration": "yen"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2367"
+    },
+    {
+      "id": "word-b5-3289419",
+      "thai": "อาหารทะเล",
+      "transliteration": "aa-hǎan thá-lay",
+      "meanings": [
+        "Meeresfrüchte",
+        "Seafood"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Meeresfrüchte",
+            "Seafood"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "อา",
+          "transliteration": "aa"
+        },
+        {
+          "thai": "หาร",
+          "transliteration": "hǎan"
+        },
+        {
+          "thai": "ทะ",
+          "transliteration": "thá"
+        },
+        {
+          "thai": "เล",
+          "transliteration": "lay"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2372"
+    },
+    {
+      "id": "word-b5-3932927",
+      "thai": "รูป",
+      "transliteration": "rûup",
+      "meanings": [
+        "Foto",
+        "Bild"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Foto",
+            "Bild"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2377"
+    },
+    {
+      "id": "word-b5-4907500",
+      "thai": "ริมน้ำ",
+      "transliteration": "rim náam",
+      "meanings": [
+        "Flussufer",
+        "am Wasser"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Flussufer",
+            "am Wasser"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ริม",
+          "transliteration": "rim"
+        },
+        {
+          "thai": "น้ำ",
+          "transliteration": "náam"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2383"
+    },
+    {
+      "id": "word-b5-183160",
+      "thai": "รอบ",
+      "transliteration": "rɔ̂ɔp",
+      "meanings": [
+        "Runde",
+        "Durchgang"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Runde",
+            "Durchgang"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2391"
+    },
+    {
+      "id": "word-b5-1570096",
+      "thai": "อาทิตย์หน้า",
+      "transliteration": "aa-thít nâa",
+      "meanings": [
+        "nächste Woche"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "nächste Woche"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "อา",
+          "transliteration": "aa"
+        },
+        {
+          "thai": "ทิตย์",
+          "transliteration": "thít"
+        },
+        {
+          "thai": "หน้า",
+          "transliteration": "nâa"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2393"
+    },
+    {
+      "id": "word-b5-9885547",
+      "thai": "คนอื่น",
+      "transliteration": "khon ʉ̀ʉn",
+      "meanings": [
+        "andere Leute",
+        "andere"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "andere Leute",
+            "andere"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "คน",
+          "transliteration": "khon"
+        },
+        {
+          "thai": "อื่น",
+          "transliteration": "ʉ̀ʉn"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2395"
+    },
+    {
+      "id": "word-b5-1336445",
+      "thai": "ขนาดนั้น",
+      "transliteration": "khà-nàat nán",
+      "meanings": [
+        "dermaßen",
+        "so sehr"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "dermaßen",
+            "so sehr"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ข",
+          "transliteration": "khà"
+        },
+        {
+          "thai": "นาด",
+          "transliteration": "nàat"
+        },
+        {
+          "thai": "นั้น",
+          "transliteration": "nán"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2403"
+    },
+    {
+      "id": "word-b5-346535",
+      "thai": "เยอะแยะ",
+      "transliteration": "yə́-yɛ́",
+      "meanings": [
+        "jede Menge",
+        "sehr viel"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "jede Menge",
+            "sehr viel"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "เยอะ",
+          "transliteration": "yə́"
+        },
+        {
+          "thai": "แยะ",
+          "transliteration": "yɛ́"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2403"
+    },
+    {
+      "id": "word-b5-989590",
+      "thai": "ไปมา",
+      "transliteration": "bpai maa",
+      "meanings": [
+        "unterwegs sein",
+        "hin und her gehen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "unterwegs sein",
+            "hin und her gehen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ไป",
+          "transliteration": "bpai"
+        },
+        {
+          "thai": "มา",
+          "transliteration": "maa"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2402"
+    },
+    {
+      "id": "word-b5-5137512",
+      "thai": "คุ้น",
+      "transliteration": "khún",
+      "meanings": [
+        "vertraut sein",
+        "kennen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "vertraut sein",
+            "kennen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2412"
+    },
+    {
+      "id": "word-b5-4539862",
+      "thai": "คนขายของ",
+      "transliteration": "khon khǎai khɔ̌ɔng",
+      "meanings": [
+        "Verkäufer",
+        "Händler"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Verkäufer",
+            "Händler"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "คน",
+          "transliteration": "khon"
+        },
+        {
+          "thai": "ขาย",
+          "transliteration": "khǎai"
+        },
+        {
+          "thai": "ของ",
+          "transliteration": "khɔ̌ɔng"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2414"
+    },
+    {
+      "id": "word-b5-9936071",
+      "thai": "ตัดหน้า",
+      "transliteration": "dtàt nâa",
+      "meanings": [
+        "vorqueren",
+        "vor die Nase fahren"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "vorqueren",
+            "vor die Nase fahren"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ตัด",
+          "transliteration": "dtàt"
+        },
+        {
+          "thai": "หน้า",
+          "transliteration": "nâa"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2446"
+    },
+    {
+      "id": "word-b5-5596726",
+      "thai": "แรง",
+      "transliteration": "rɛɛng",
+      "meanings": [
+        "Kräfte",
+        "Energie"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Kräfte",
+            "Energie"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2458"
+    },
+    {
+      "id": "word-b5-9849693",
+      "thai": "ออกกำลังกาย",
+      "transliteration": "ɔ̀ɔk-gam-lang-gaai",
+      "meanings": [
+        "Sport machen",
+        "trainieren"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Sport machen",
+            "trainieren"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ออก",
+          "transliteration": "ɔ̀ɔk"
+        },
+        {
+          "thai": "กำ",
+          "transliteration": "gam"
+        },
+        {
+          "thai": "ลัง",
+          "transliteration": "lang"
+        },
+        {
+          "thai": "กาย",
+          "transliteration": "gaai"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2464"
+    },
+    {
+      "id": "word-b5-7764635",
+      "thai": "เพลิน",
+      "transliteration": "phləən",
+      "meanings": [
+        "unterhaltsam",
+        "die Zeit vergessen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "unterhaltsam",
+            "die Zeit vergessen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2465"
+    },
+    {
+      "id": "word-b5-9335329",
+      "thai": "ตึก",
+      "transliteration": "dtʉ̀k",
+      "meanings": [
+        "Gebäude",
+        "Haus"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Gebäude",
+            "Haus"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2467"
+    },
+    {
+      "id": "word-b5-3510399",
+      "thai": "นั่นแหละ",
+      "transliteration": "nân-lɛ̀",
+      "meanings": [
+        "genau das",
+        "eben das"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "genau das",
+            "eben das"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "นั่น",
+          "transliteration": "nân"
+        },
+        {
+          "thai": "แหละ",
+          "transliteration": "lɛ̀"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2467"
+    },
+    {
+      "id": "word-b5-2854370",
+      "thai": "เก่ง",
+      "transliteration": "gèng",
+      "meanings": [
+        "gut",
+        "tüchtig",
+        "geschickt"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "gut",
+            "tüchtig",
+            "geschickt"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2469"
+    },
+    {
+      "id": "word-b5-3401509",
+      "thai": "น้ำเปล่า",
+      "transliteration": "náam-bplào",
+      "meanings": [
+        "Trinkwasser",
+        "stilles Wasser"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Trinkwasser",
+            "stilles Wasser"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "น้ำ",
+          "transliteration": "náam"
+        },
+        {
+          "thai": "เปล่า",
+          "transliteration": "bplào"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2478"
+    },
+    {
+      "id": "word-b5-3718796",
+      "thai": "เย็นๆ",
+      "transliteration": "yen-yen",
+      "meanings": [
+        "schön kühl",
+        "kalt"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "schön kühl",
+            "kalt"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "เย็น",
+          "transliteration": "yen"
+        },
+        {
+          "thai": "ๆ",
+          "transliteration": "yen"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2478"
+    },
+    {
+      "id": "word-b5-1070189",
+      "thai": "ในที่สุด",
+      "transliteration": "nai thîi-sùt",
+      "meanings": [
+        "schließlich",
+        "endlich"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "schließlich",
+            "endlich"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ใน",
+          "transliteration": "nai"
+        },
+        {
+          "thai": "ที่",
+          "transliteration": "thîi"
+        },
+        {
+          "thai": "สุด",
+          "transliteration": "sùt"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2481"
+    },
+    {
+      "id": "word-b5-4399108",
+      "thai": "ตรงเวลา",
+      "transliteration": "dtrong wee-laa",
+      "meanings": [
+        "pünktlich"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "pünktlich"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ตรง",
+          "transliteration": "dtrong"
+        },
+        {
+          "thai": "เว",
+          "transliteration": "wee"
+        },
+        {
+          "thai": "ลา",
+          "transliteration": "laa"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2482"
+    },
+    {
+      "id": "word-b5-8821682",
+      "thai": "เกือบ",
+      "transliteration": "gʉ̀ap",
+      "meanings": [
+        "fast",
+        "beinahe"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "fast",
+            "beinahe"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2484"
+    },
+    {
+      "id": "word-b5-3604385",
+      "thai": "พวกเขา",
+      "transliteration": "phûak kǎo",
+      "meanings": [
+        "sie (Mehrzahl)"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "sie (Mehrzahl)"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "พวก",
+          "transliteration": "phûak"
+        },
+        {
+          "thai": "เขา",
+          "transliteration": "kǎo"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2486"
+    },
+    {
+      "id": "word-b5-9264113",
+      "thai": "รถไม่ติด",
+      "transliteration": "rót mâi dtìt",
+      "meanings": [
+        "kein Stau"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "kein Stau"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "รถ",
+          "transliteration": "rót"
+        },
+        {
+          "thai": "ไม่",
+          "transliteration": "mâi"
+        },
+        {
+          "thai": "ติด",
+          "transliteration": "dtìt"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2496"
+    },
+    {
+      "id": "word-b5-4590824",
+      "thai": "ล่วงหน้า",
+      "transliteration": "lûang-nâa",
+      "meanings": [
+        "im Voraus",
+        "vorab"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "im Voraus",
+            "vorab"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ล่วง",
+          "transliteration": "lûang"
+        },
+        {
+          "thai": "หน้า",
+          "transliteration": "nâa"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2500"
+    },
+    {
+      "id": "word-b5-1412780",
+      "thai": "กำลังจะ",
+      "transliteration": "gam-lang jà",
+      "meanings": [
+        "im Begriff sein",
+        "gerade wollen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "im Begriff sein",
+            "gerade wollen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "กำ",
+          "transliteration": "gam"
+        },
+        {
+          "thai": "ลัง",
+          "transliteration": "lang"
+        },
+        {
+          "thai": "จะ",
+          "transliteration": "jà"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2366"
+    },
+    {
+      "id": "word-b5-8404520",
+      "thai": "กินข้าว",
+      "transliteration": "gin khâao",
+      "meanings": [
+        "essen",
+        "Mahlzeit einnehmen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "essen",
+            "Mahlzeit einnehmen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "กิน",
+          "transliteration": "gin"
+        },
+        {
+          "thai": "ข้าว",
+          "transliteration": "khâao"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2019"
+    },
+    {
+      "id": "word-b5-1819996",
+      "thai": "ขนมปัง",
+      "transliteration": "khà-nǒm-bpang",
+      "meanings": [
+        "Brot"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Brot"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ข",
+          "transliteration": "khà"
+        },
+        {
+          "thai": "นม",
+          "transliteration": "nǒm"
+        },
+        {
+          "thai": "ปัง",
+          "transliteration": "bpang"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2067"
+    },
+    {
+      "id": "word-b5-7348483",
+      "thai": "ขับ",
+      "transliteration": "khàp",
+      "meanings": [
+        "fahren",
+        "lenken"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "fahren",
+            "lenken"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2202"
+    },
+    {
+      "id": "word-b5-3727722",
+      "thai": "ขึ้น",
+      "transliteration": "khʉ̂n",
+      "meanings": [
+        "hinauf",
+        "einsteigen",
+        "hoch"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "hinauf",
+            "einsteigen",
+            "hoch"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2107"
+    },
+    {
+      "id": "word-b5-8242812",
+      "thai": "ข้าง",
+      "transliteration": "khâang",
+      "meanings": [
+        "neben",
+        "Seite"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "neben",
+            "Seite"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2124"
+    },
+    {
+      "id": "word-b5-2694037",
+      "thai": "ข้าม",
+      "transliteration": "khâam",
+      "meanings": [
+        "überqueren",
+        "hinübergehen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "überqueren",
+            "hinübergehen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2434"
+    },
+    {
+      "id": "word-b5-8574557",
+      "thai": "คนขับ",
+      "transliteration": "khon khàp",
+      "meanings": [
+        "Fahrer"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Fahrer"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "คน",
+          "transliteration": "khon"
+        },
+        {
+          "thai": "ขับ",
+          "transliteration": "khàp"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2156"
+    },
+    {
+      "id": "word-b5-5512480",
+      "thai": "ครอบครัว",
+      "transliteration": "khrɔ̂ɔp-khrua",
+      "meanings": [
+        "Familie"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Familie"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ครอบ",
+          "transliteration": "khrɔ̂ɔp"
+        },
+        {
+          "thai": "ครัว",
+          "transliteration": "khrua"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2332"
+    },
+    {
+      "id": "word-b5-9404081",
+      "thai": "ครึ่ง",
+      "transliteration": "khrʉ̂ng",
+      "meanings": [
+        "halb",
+        "Hälfte"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "halb",
+            "Hälfte"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2096"
+    },
+    {
+      "id": "word-b5-4459056",
+      "thai": "ดีกว่า",
+      "transliteration": "dii gwàa",
+      "meanings": [
+        "besser",
+        "lieber"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "besser",
+            "lieber"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ดี",
+          "transliteration": "dii"
+        },
+        {
+          "thai": "กว่า",
+          "transliteration": "gwàa"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2087"
+    },
+    {
+      "id": "word-b5-238606",
+      "thai": "ดีใจ",
+      "transliteration": "dii-jai",
+      "meanings": [
+        "sich freuen",
+        "froh sein"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "sich freuen",
+            "froh sein"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ดี",
+          "transliteration": "dii"
+        },
+        {
+          "thai": "ใจ",
+          "transliteration": "jai"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2289"
+    },
+    {
+      "id": "word-b5-4887899",
+      "thai": "ดีๆ",
+      "transliteration": "dii-dii",
+      "meanings": [
+        "gut",
+        "vorsichtig"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "gut",
+            "vorsichtig"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ดี",
+          "transliteration": "dii"
+        },
+        {
+          "thai": "ๆ",
+          "transliteration": "dii"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2279"
+    },
+    {
+      "id": "word-b5-3285524",
+      "thai": "ดูดี",
+      "transliteration": "duu dii",
+      "meanings": [
+        "gut aussehen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "gut aussehen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ดู",
+          "transliteration": "duu"
+        },
+        {
+          "thai": "ดี",
+          "transliteration": "dii"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2315"
+    },
+    {
+      "id": "word-b5-4979694",
+      "thai": "ด้วยกัน",
+      "transliteration": "dûai-kan",
+      "meanings": [
+        "zusammen",
+        "gemeinsam"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "zusammen",
+            "gemeinsam"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ด้วย",
+          "transliteration": "dûai"
+        },
+        {
+          "thai": "กัน",
+          "transliteration": "kan"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2106"
+    },
+    {
+      "id": "word-b5-3232545",
+      "thai": "ตรงหน้า",
+      "transliteration": "dtrong nâa",
+      "meanings": [
+        "direkt vor uns"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "direkt vor uns"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ตรง",
+          "transliteration": "dtrong"
+        },
+        {
+          "thai": "หน้า",
+          "transliteration": "nâa"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2449"
+    },
+    {
+      "id": "word-b5-947140",
+      "thai": "ตรงไหน",
+      "transliteration": "dtrong nǎi",
+      "meanings": [
+        "wo genau"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "wo genau"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ตรง",
+          "transliteration": "dtrong"
+        },
+        {
+          "thai": "ไหน",
+          "transliteration": "nǎi"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2163"
+    },
+    {
+      "id": "word-b5-7679471",
+      "thai": "ตอนเช้า",
+      "transliteration": "dton-cháo",
+      "meanings": [
+        "morgens",
+        "am Morgen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "morgens",
+            "am Morgen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ตอน",
+          "transliteration": "dton"
+        },
+        {
+          "thai": "เช้า",
+          "transliteration": "cháo"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2226"
+    },
+    {
+      "id": "word-b5-4169736",
+      "thai": "ตัด",
+      "transliteration": "dtàt",
+      "meanings": [
+        "schneiden"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "schneiden"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2314"
+    },
+    {
+      "id": "word-b5-2522695",
+      "thai": "ติดกับ",
+      "transliteration": "dtìt gàp",
+      "meanings": [
+        "direkt neben"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "direkt neben"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ติด",
+          "transliteration": "dtìt"
+        },
+        {
+          "thai": "กับ",
+          "transliteration": "gàp"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2426"
+    },
+    {
+      "id": "word-b5-9420530",
+      "thai": "ถูกต้อง",
+      "transliteration": "thùuk-dtɔ̂ng",
+      "meanings": [
+        "richtig",
+        "korrekt"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "richtig",
+            "korrekt"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ถูก",
+          "transliteration": "thùuk"
+        },
+        {
+          "thai": "ต้อง",
+          "transliteration": "dtɔ̂ng"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2220"
+    },
+    {
+      "id": "word-b5-7906513",
+      "thai": "ทำบุญ",
+      "transliteration": "tham-bun",
+      "meanings": [
+        "Gutes tun",
+        "Verdienste erwerben"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Gutes tun",
+            "Verdienste erwerben"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ทำ",
+          "transliteration": "tham"
+        },
+        {
+          "thai": "บุญ",
+          "transliteration": "bun"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2335"
+    },
+    {
+      "id": "word-b5-820932",
+      "thai": "ที่สุด",
+      "transliteration": "thîi-sùt",
+      "meanings": [
+        "am meisten",
+        "-ste (Superlativ)"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "am meisten",
+            "-ste (Superlativ)"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ที่",
+          "transliteration": "thîi"
+        },
+        {
+          "thai": "สุด",
+          "transliteration": "sùt"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2219"
+    },
+    {
+      "id": "word-b5-694685",
+      "thai": "ที่เดิม",
+      "transliteration": "thîi dəəm",
+      "meanings": [
+        "am selben Platz"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "am selben Platz"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ที่",
+          "transliteration": "thîi"
+        },
+        {
+          "thai": "เดิม",
+          "transliteration": "dəəm"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2268"
+    },
+    {
+      "id": "word-b5-1699640",
+      "thai": "ทุก",
+      "transliteration": "thúk",
+      "meanings": [
+        "jeder",
+        "alle"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "jeder",
+            "alle"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2124"
+    },
+    {
+      "id": "word-b5-4172913",
+      "thai": "น่ากิน",
+      "transliteration": "nâa gin",
+      "meanings": [
+        "lecker aussehen",
+        "appetitlich"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "lecker aussehen",
+            "appetitlich"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "น่า",
+          "transliteration": "nâa"
+        },
+        {
+          "thai": "กิน",
+          "transliteration": "gin"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2284"
+    },
+    {
+      "id": "word-b5-7006574",
+      "thai": "น่าสนุก",
+      "transliteration": "nâa sà-nùk",
+      "meanings": [
+        "spaßig aussehen",
+        "klingt gut"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "spaßig aussehen",
+            "klingt gut"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "น่า",
+          "transliteration": "nâa"
+        },
+        {
+          "thai": "ส",
+          "transliteration": "sà"
+        },
+        {
+          "thai": "นุก",
+          "transliteration": "nùk"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2329"
+    },
+    {
+      "id": "word-b5-6327148",
+      "thai": "น้ำทะเล",
+      "transliteration": "náam thá-lay",
+      "meanings": [
+        "Meerwasser"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Meerwasser"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "น้ำ",
+          "transliteration": "náam"
+        },
+        {
+          "thai": "ทะ",
+          "transliteration": "thá"
+        },
+        {
+          "thai": "เล",
+          "transliteration": "lay"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2328"
+    },
+    {
+      "id": "word-b5-8811647",
+      "thai": "บ่ายโมง",
+      "transliteration": "bàai moong",
+      "meanings": [
+        "ein Uhr nachmittags"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "ein Uhr nachmittags"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "บ่าย",
+          "transliteration": "bàai"
+        },
+        {
+          "thai": "โมง",
+          "transliteration": "moong"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2052"
+    },
+    {
+      "id": "word-b5-4630103",
+      "thai": "ประเทศ",
+      "transliteration": "bprà-thêet",
+      "meanings": [
+        "Land",
+        "Staat"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Land",
+            "Staat"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ประ",
+          "transliteration": "bprà"
+        },
+        {
+          "thai": "เทศ",
+          "transliteration": "thêet"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2343"
+    },
+    {
+      "id": "word-b5-4555695",
+      "thai": "ป้าย",
+      "transliteration": "bpâai",
+      "meanings": [
+        "Schild"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Schild"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2168"
+    },
+    {
+      "id": "word-b5-5941182",
+      "thai": "ผลไม้",
+      "transliteration": "phǒn-lá-mái",
+      "meanings": [
+        "Obst",
+        "Früchte"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Obst",
+            "Früchte"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ผล",
+          "transliteration": "phǒn-lá"
+        },
+        {
+          "thai": "ไม้",
+          "transliteration": "mái"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2285"
+    },
+    {
+      "id": "word-b5-3309775",
+      "thai": "ผ่าน",
+      "transliteration": "phàan",
+      "meanings": [
+        "vorbeigehen",
+        "passieren"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "vorbeigehen",
+            "passieren"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2093"
+    },
+    {
+      "id": "word-b5-2773238",
+      "thai": "ฝนตก",
+      "transliteration": "fǒn dtòk",
+      "meanings": [
+        "regnen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "regnen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ฝน",
+          "transliteration": "fǒn"
+        },
+        {
+          "thai": "ตก",
+          "transliteration": "dtòk"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2143"
+    },
+    {
+      "id": "word-b5-4674978",
+      "thai": "ฝั่ง",
+      "transliteration": "fàng",
+      "meanings": [
+        "Ufer",
+        "Seite"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Ufer",
+            "Seite"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2441"
+    },
+    {
+      "id": "word-b5-1518593",
+      "thai": "พอดี",
+      "transliteration": "phɔɔ-dii",
+      "meanings": [
+        "genau",
+        "gerade recht"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "genau",
+            "gerade recht"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "พอ",
+          "transliteration": "phɔɔ"
+        },
+        {
+          "thai": "ดี",
+          "transliteration": "dii"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2093"
+    },
+    {
+      "id": "word-b5-3609886",
+      "thai": "พัด",
+      "transliteration": "phát",
+      "meanings": [
+        "wehen",
+        "fächeln"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "wehen",
+            "fächeln"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2236"
+    },
+    {
+      "id": "word-b5-5685828",
+      "thai": "พัทยา",
+      "transliteration": "Phat-thá-yaa",
+      "meanings": [
+        "Pattaya"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Pattaya"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2324"
+    },
+    {
+      "id": "word-b5-8473318",
+      "thai": "มาถึง",
+      "transliteration": "maa thʉ̌ng",
+      "meanings": [
+        "ankommen",
+        "eintreffen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "ankommen",
+            "eintreffen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "มา",
+          "transliteration": "maa"
+        },
+        {
+          "thai": "ถึง",
+          "transliteration": "thʉ̌ng"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2034"
+    },
+    {
+      "id": "word-b5-6769116",
+      "thai": "ยาวๆ",
+      "transliteration": "yaao-yaao",
+      "meanings": [
+        "schön lange"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "schön lange"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ยาว",
+          "transliteration": "yaao"
+        },
+        {
+          "thai": "ๆ",
+          "transliteration": "yaao"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2410"
+    },
+    {
+      "id": "word-b5-1960739",
+      "thai": "ราคาถูก",
+      "transliteration": "raa-khaa thùuk",
+      "meanings": [
+        "günstig",
+        "billig"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "günstig",
+            "billig"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "รา",
+          "transliteration": "raa"
+        },
+        {
+          "thai": "คา",
+          "transliteration": "khaa"
+        },
+        {
+          "thai": "ถูก",
+          "transliteration": "thùuk"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2244"
+    },
+    {
+      "id": "word-b5-8201970",
+      "thai": "ร่วมงาน",
+      "transliteration": "rûam-ngaan",
+      "meanings": [
+        "zusammenarbeiten",
+        "Kollege"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "zusammenarbeiten",
+            "Kollege"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ร่วม",
+          "transliteration": "rûam"
+        },
+        {
+          "thai": "งาน",
+          "transliteration": "ngaan"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2308"
+    },
+    {
+      "id": "word-b5-8093516",
+      "thai": "ลม",
+      "transliteration": "lom",
+      "meanings": [
+        "Wind"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Wind"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2236"
+    },
+    {
+      "id": "word-b5-2633110",
+      "thai": "ละเอียด",
+      "transliteration": "lá-ìat",
+      "meanings": [
+        "detailliert",
+        "genau"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "detailliert",
+            "genau"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ละ",
+          "transliteration": "lá"
+        },
+        {
+          "thai": "เอียด",
+          "transliteration": "ìat"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2429"
+    },
+    {
+      "id": "word-b5-212423",
+      "thai": "ลุย",
+      "transliteration": "lui",
+      "meanings": [
+        "loslegen",
+        "anpacken"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "loslegen",
+            "anpacken"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2300"
+    },
+    {
+      "id": "word-b5-8958207",
+      "thai": "วันพระ",
+      "transliteration": "wan phrá",
+      "meanings": [
+        "buddhistischer Feiertag"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "buddhistischer Feiertag"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "วัน",
+          "transliteration": "wan"
+        },
+        {
+          "thai": "พระ",
+          "transliteration": "phrá"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2336"
+    },
+    {
+      "id": "word-b5-372218",
+      "thai": "วันหยุด",
+      "transliteration": "wan-yùt",
+      "meanings": [
+        "freier Tag",
+        "Feiertag"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "freier Tag",
+            "Feiertag"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "วัน",
+          "transliteration": "wan"
+        },
+        {
+          "thai": "หยุด",
+          "transliteration": "yùt"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2041"
+    },
+    {
+      "id": "word-b5-8266727",
+      "thai": "วันหลัง",
+      "transliteration": "wan-lǎng",
+      "meanings": [
+        "ein andermal",
+        "später"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "ein andermal",
+            "später"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "วัน",
+          "transliteration": "wan"
+        },
+        {
+          "thai": "หลัง",
+          "transliteration": "lǎng"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2239"
+    },
+    {
+      "id": "word-b5-4400668",
+      "thai": "วันเสาร์",
+      "transliteration": "wan-sǎo",
+      "meanings": [
+        "Samstag"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Samstag"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "วัน",
+          "transliteration": "wan"
+        },
+        {
+          "thai": "เสาร์",
+          "transliteration": "sǎo"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2381"
+    },
+    {
+      "id": "word-b5-8564240",
+      "thai": "วาง",
+      "transliteration": "waang",
+      "meanings": [
+        "stellen",
+        "hinlegen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "stellen",
+            "hinlegen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2278"
+    },
+    {
+      "id": "word-b5-5242301",
+      "thai": "วิว",
+      "transliteration": "wiu",
+      "meanings": [
+        "Aussicht",
+        "View"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Aussicht",
+            "View"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2235"
+    },
+    {
+      "id": "word-b5-3204570",
+      "thai": "ว้าว",
+      "transliteration": "wáao",
+      "meanings": [
+        "wow!"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "wow!"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2286"
+    },
+    {
+      "id": "word-b5-6776541",
+      "thai": "สงบ",
+      "transliteration": "sà-ngòp",
+      "meanings": [
+        "friedlich",
+        "ruhig"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "friedlich",
+            "ruhig"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ส",
+          "transliteration": "sà"
+        },
+        {
+          "thai": "งบ",
+          "transliteration": "ngòp"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2326"
+    },
+    {
+      "id": "word-b5-7010385",
+      "thai": "สยาม",
+      "transliteration": "Sà-yǎam",
+      "meanings": [
+        "Siam"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Siam"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ส",
+          "transliteration": "Sà"
+        },
+        {
+          "thai": "ยาม",
+          "transliteration": "yǎam"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2223"
+    },
+    {
+      "id": "word-b5-284105",
+      "thai": "สวยๆ",
+      "transliteration": "sǔai-sǔai",
+      "meanings": [
+        "schön"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "schön"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "สวย",
+          "transliteration": "sǔai"
+        },
+        {
+          "thai": "ๆ",
+          "transliteration": "sǔai"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2377"
+    },
+    {
+      "id": "word-b5-9297718",
+      "thai": "สัก",
+      "transliteration": "sàk",
+      "meanings": [
+        "etwa",
+        "circa"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "etwa",
+            "circa"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2063"
+    },
+    {
+      "id": "word-b5-9803591",
+      "thai": "สุด",
+      "transliteration": "sùt",
+      "meanings": [
+        "Ende",
+        "äußerst"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Ende",
+            "äußerst"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2422"
+    },
+    {
+      "id": "word-b5-8481267",
+      "thai": "หลง",
+      "transliteration": "lǒng",
+      "meanings": [
+        "verlaufen",
+        "verirrt"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "verlaufen",
+            "verirrt"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2412"
+    },
+    {
+      "id": "word-b5-1036489",
+      "thai": "หลายๆ",
+      "transliteration": "lǎai-lǎai",
+      "meanings": [
+        "viele",
+        "mehrere"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "viele",
+            "mehrere"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "หลาย",
+          "transliteration": "lǎai"
+        },
+        {
+          "thai": "ๆ",
+          "transliteration": "lǎai"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2396"
+    },
+    {
+      "id": "word-b5-6741316",
+      "thai": "หิวข้าว",
+      "transliteration": "hǐu khâao",
+      "meanings": [
+        "Hunger haben"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Hunger haben"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "หิว",
+          "transliteration": "hǐu"
+        },
+        {
+          "thai": "ข้าว",
+          "transliteration": "khâao"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2368"
+    },
+    {
+      "id": "word-b5-8436652",
+      "thai": "ห้องน้ำ",
+      "transliteration": "hɔ̂ng-náam",
+      "meanings": [
+        "Toilette",
+        "Bad"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Toilette",
+            "Bad"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ห้อง",
+          "transliteration": "hɔ̂ng"
+        },
+        {
+          "thai": "น้ำ",
+          "transliteration": "náam"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2123"
+    },
+    {
+      "id": "word-b5-4913103",
+      "thai": "ออก",
+      "transliteration": "ɔ̀ɔk",
+      "meanings": [
+        "hinaus",
+        "abfahren"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "hinaus",
+            "abfahren"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2094"
+    },
+    {
+      "id": "word-b5-8186029",
+      "thai": "เค้ก",
+      "transliteration": "khéek",
+      "meanings": [
+        "Kuchen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Kuchen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2067"
+    },
+    {
+      "id": "word-b5-1756350",
+      "thai": "เจ้าพระยา",
+      "transliteration": "Jâo-phrá-yaa",
+      "meanings": [
+        "Chao Phraya"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Chao Phraya"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "เจ้า",
+          "transliteration": "Jâo"
+        },
+        {
+          "thai": "พระ",
+          "transliteration": "phrá"
+        },
+        {
+          "thai": "ยา",
+          "transliteration": "yaa"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2234"
+    },
+    {
+      "id": "word-b5-1438983",
+      "thai": "เช้านี้",
+      "transliteration": "cháo-níi",
+      "meanings": [
+        "heute Morgen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "heute Morgen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "เช้า",
+          "transliteration": "cháo"
+        },
+        {
+          "thai": "นี้",
+          "transliteration": "níi"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2331"
+    },
+    {
+      "id": "word-b5-6591440",
+      "thai": "เดินทาง",
+      "transliteration": "dəən-thaang",
+      "meanings": [
+        "reisen",
+        "unterwegs sein"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "reisen",
+            "unterwegs sein"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "เดิน",
+          "transliteration": "dəən"
+        },
+        {
+          "thai": "ทาง",
+          "transliteration": "thaang"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2049"
+    },
+    {
+      "id": "word-b5-1109162",
+      "thai": "เป็นห่วง",
+      "transliteration": "bpen hùang",
+      "meanings": [
+        "sich Sorgen machen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "sich Sorgen machen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "เป็น",
+          "transliteration": "bpen"
+        },
+        {
+          "thai": "ห่วง",
+          "transliteration": "hùang"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2090"
+    },
+    {
+      "id": "word-b5-7761131",
+      "thai": "เยอรมนี",
+      "transliteration": "Yoe-rá-má-nii",
+      "meanings": [
+        "Deutschland"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Deutschland"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2033"
+    },
+    {
+      "id": "word-b5-6794893",
+      "thai": "เรียบร้อย",
+      "transliteration": "rîap-rɔ́ɔi",
+      "meanings": [
+        "erledigt",
+        "in Ordnung"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "erledigt",
+            "in Ordnung"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "เรียบ",
+          "transliteration": "rîap"
+        },
+        {
+          "thai": "ร้อย",
+          "transliteration": "rɔ́ɔi"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2270"
+    },
+    {
+      "id": "word-b5-136509",
+      "thai": "เหมาะ",
+      "transliteration": "mɔ̀",
+      "meanings": [
+        "passen",
+        "geeignet"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "passen",
+            "geeignet"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2315"
+    },
+    {
+      "id": "word-b5-6426173",
+      "thai": "เหมือนเดิม",
+      "transliteration": "mʉ̌ʉan-dəəm",
+      "meanings": [
+        "wie bisher",
+        "wie gewohnt"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "wie bisher",
+            "wie gewohnt"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "เหมือน",
+          "transliteration": "mʉ̌ʉan"
+        },
+        {
+          "thai": "เดิม",
+          "transliteration": "dəəm"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2084"
+    },
+    {
+      "id": "word-b5-2542734",
+      "thai": "แถว",
+      "transliteration": "thɛ̌ɛo",
+      "meanings": [
+        "Schlange",
+        "Reihe",
+        "Gegend"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Schlange",
+            "Reihe",
+            "Gegend"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2133"
+    },
+    {
+      "id": "word-b5-944416",
+      "thai": "แม่น้ำ",
+      "transliteration": "mɛ̂ɛ-náam",
+      "meanings": [
+        "Fluss"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Fluss"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "แม่",
+          "transliteration": "mɛ̂ɛ"
+        },
+        {
+          "thai": "น้ำ",
+          "transliteration": "náam"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2234"
+    },
+    {
+      "id": "word-b5-8216278",
+      "thai": "แย่",
+      "transliteration": "yɛ̂ɛ",
+      "meanings": [
+        "schlimm",
+        "schlecht"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "schlimm",
+            "schlecht"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2407"
+    },
+    {
+      "id": "word-b5-7272690",
+      "thai": "โน่น",
+      "transliteration": "nôon",
+      "meanings": [
+        "dort drüben"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "dort drüben"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2164"
+    },
+    {
+      "id": "word-b5-9542650",
+      "thai": "โน้น",
+      "transliteration": "nôon",
+      "meanings": [
+        "jene(r)"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "jene(r)"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2443"
+    },
+    {
+      "id": "word-b5-4378228",
+      "thai": "ใจดี",
+      "transliteration": "jai-dii",
+      "meanings": [
+        "herzlich",
+        "nett"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "herzlich",
+            "nett"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ใจ",
+          "transliteration": "jai"
+        },
+        {
+          "thai": "ดี",
+          "transliteration": "dii"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2265"
+    },
+    {
+      "id": "word-b5-51497",
+      "thai": "ใช้เวลา",
+      "transliteration": "chái wee-laa",
+      "meanings": [
+        "Zeit brauchen",
+        "dauern"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Zeit brauchen",
+            "dauern"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ใช้",
+          "transliteration": "chái"
+        },
+        {
+          "thai": "เว",
+          "transliteration": "wee"
+        },
+        {
+          "thai": "ลา",
+          "transliteration": "laa"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2154"
+    },
+    {
+      "id": "word-b5-9037157",
+      "thai": "ใส",
+      "transliteration": "sǎi",
+      "meanings": [
+        "klar",
+        "durchsichtig"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "klar",
+            "durchsichtig"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2328"
+    },
+    {
+      "id": "word-b5-8189029",
+      "thai": "ให้เต็มที่",
+      "transliteration": "hâi dtem-thîi",
+      "meanings": [
+        "voll und ganz"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "voll und ganz"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ให้",
+          "transliteration": "hâi"
+        },
+        {
+          "thai": "เต็ม",
+          "transliteration": "dtem"
+        },
+        {
+          "thai": "ที่",
+          "transliteration": "thîi"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2499"
+    },
+    {
+      "id": "word-b5-8744040",
+      "thai": "ไม่กี่",
+      "transliteration": "mâi gìi",
+      "meanings": [
+        "nur ein paar",
+        "wenige"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "nur ein paar",
+            "wenige"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ไม่",
+          "transliteration": "mâi"
+        },
+        {
+          "thai": "กี่",
+          "transliteration": "gìi"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2134"
+    },
+    {
+      "id": "word-b5-1004936",
+      "thai": "ไม่ค่อย",
+      "transliteration": "mâi khɔ̂i",
+      "meanings": [
+        "nicht besonders",
+        "kaum"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "nicht besonders",
+            "kaum"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ไม่",
+          "transliteration": "mâi"
+        },
+        {
+          "thai": "ค่อย",
+          "transliteration": "khɔ̂i"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2202"
+    },
+    {
+      "id": "word-b5-6677413",
+      "thai": "เกรงใจ",
+      "transliteration": "greeng-jai",
+      "meanings": [
+        "Rücksicht nehmen",
+        "nicht zur Last fallen wollen"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Rücksicht nehmen",
+            "nicht zur Last fallen wollen"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "เกรง",
+          "transliteration": "greeng"
+        },
+        {
+          "thai": "ใจ",
+          "transliteration": "jai"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2092"
+    },
+    {
+      "id": "word-b5-2021683",
+      "thai": "เครื่องดื่ม",
+      "transliteration": "khrʉ̂ang-dʉ̀ʉm",
+      "meanings": [
+        "Getränke"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Getränke"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "เครื่อง",
+          "transliteration": "khrʉ̂ang"
+        },
+        {
+          "thai": "ดื่ม",
+          "transliteration": "dʉ̀ʉm"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2132"
+    },
+    {
+      "id": "word-b5-8419421",
+      "thai": "ตรงข้าม",
+      "transliteration": "dtrong-khâam",
+      "meanings": [
+        "gegenüber"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "gegenüber"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ตรง",
+          "transliteration": "dtrong"
+        },
+        {
+          "thai": "ข้าม",
+          "transliteration": "khâam"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2188"
+    },
+    {
+      "id": "word-b5-4623965",
+      "thai": "เกินไป",
+      "transliteration": "gəən-bpai",
+      "meanings": [
+        "zu sehr",
+        "übermäßig"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "zu sehr",
+            "übermäßig"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "เกิน",
+          "transliteration": "gəən"
+        },
+        {
+          "thai": "ไป",
+          "transliteration": "bpai"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2247"
+    },
+    {
+      "id": "word-b5-7548244",
+      "thai": "จด",
+      "transliteration": "jòt",
+      "meanings": [
+        "notieren",
+        "aufschreiben"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "notieren",
+            "aufschreiben"
+          ],
+          "contextExamples": []
+        }
+      },
+      "firstSentenceId": "l1-b5-s2298"
+    },
+    {
+      "id": "word-b5-6104404",
+      "thai": "ช่วงนี้",
+      "transliteration": "chûang níi",
+      "meanings": [
+        "zurzeit",
+        "in dieser Zeit"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "zurzeit",
+            "in dieser Zeit"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ช่วง",
+          "transliteration": "chûang"
+        },
+        {
+          "thai": "นี้",
+          "transliteration": "níi"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2325"
+    },
+    {
+      "id": "word-b5-7506939",
+      "thai": "ญี่ปุ่น",
+      "transliteration": "Yîi-pùn",
+      "meanings": [
+        "Japan",
+        "japanisch"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "Japan",
+            "japanisch"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "ญี่",
+          "transliteration": "Yîi"
+        },
+        {
+          "thai": "ปุ่น",
+          "transliteration": "pùn"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2344"
+    },
+    {
+      "id": "word-b5-7109591",
+      "thai": "จะได้",
+      "transliteration": "jà dâi",
+      "meanings": [
+        "damit",
+        "sodass"
+      ],
+      "bossContexts": {
+        "level-1-grammar-boss-5": {
+          "meanings": [
+            "damit",
+            "sodass"
+          ],
+          "contextExamples": []
+        }
+      },
+      "syllables": [
+        {
+          "thai": "จะ",
+          "transliteration": "jà"
+        },
+        {
+          "thai": "ได้",
+          "transliteration": "dâi"
+        }
+      ],
+      "firstSentenceId": "l1-b5-s2360"
     }
   ],
   "archivedIds": []
