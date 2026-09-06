@@ -1938,10 +1938,22 @@
         const meanings = phrase?.meanings?.length
             ? phrase.meanings
             : bossContext?.meanings || word.meanings;
+        const firstBossMatch = word.firstSentenceId?.match(/^l(\d+)-b(\d+)-/);
+        const firstBossId = firstBossMatch
+            ? `level-${firstBossMatch[1]}-grammar-boss-${firstBossMatch[2]}`
+            : "";
+        const firstBossHint = firstBossId
+            ? word.bossContexts?.[firstBossId]?.infoSentence
+            : "";
+        const inheritedInfoSentence = firstBossHint ||
+            Object.values(word.bossContexts || {})
+                .find(context => context.infoSentence)?.infoSentence ||
+            "";
         const infoSentence =
             phrase?.infoSentence ||
             bossContext?.infoSentence ||
-            word.infoSentence;
+            word.infoSentence ||
+            inheritedInfoSentence;
         const contextExample = bossContext?.contextExamples?.find(example =>
             example.sentenceId === sentenceId &&
             (!example.matchedTokenId || example.matchedTokenId === tokenId) &&

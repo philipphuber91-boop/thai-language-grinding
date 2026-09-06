@@ -94734,6 +94734,22 @@
                   "id": "level-1-boss-5-story-01",
                   "title": "Mini-Story 1 — Aufbruch zum Markt (Sätze 2001–2010)",
                   "context": "Wohin gehst du? (ไปไหน)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-01-speaker-a",
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-01-speaker-b",
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2001",
@@ -95213,6 +95229,22 @@
                   "id": "level-1-boss-5-story-02",
                   "title": "Mini-Story 2 — Woher kommst du gerade? (Sätze 2011–2020)",
                   "context": "Herkunft & Ankunft (มาจากไหน)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-02-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-02-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2011",
@@ -95636,6 +95668,22 @@
                   "id": "level-1-boss-5-story-03",
                   "title": "Mini-Story 3 — Zum Einkaufszentrum (Sätze 2021–2030)",
                   "context": "Einkaufen & Verabredung in der Mall (ไปห้าง)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-03-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-03-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2021",
@@ -96178,6 +96226,22 @@
                   "id": "level-1-boss-5-story-04",
                   "title": "Mini-Story 4 — Zum Flughafen & Bahnhof (Sätze 2031–2040)",
                   "context": "Abholen & Verreisen (สนามบิน / สถานี)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-04-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-04-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2031",
@@ -96685,6 +96749,22 @@
                   "id": "level-1-boss-5-story-05",
                   "title": "Mini-Story 5 — In die Provinz fahren (Sätze 2041–2050)",
                   "context": "Reise aufs Land & Familie besuchen (ไปต่างจังหวัด)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-05-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-05-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2041",
@@ -97192,6 +97272,22 @@
                   "id": "level-1-boss-5-story-06",
                   "title": "Mini-Story 6 — Um wie viel Uhr kommst du? (Sätze 2051–2060)",
                   "context": "Verabredung & Uhrzeit (มากี่โมง)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-06-speaker-a",
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-06-speaker-b",
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2051",
@@ -97720,6 +97816,22 @@
                   "id": "level-1-boss-5-story-07",
                   "title": "Mini-Story 7 — Unterwegs kurz anhalten (Sätze 2061–2070)",
                   "context": "Abstecher & Mitbringsel (แวะ)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-07-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-07-speaker-b",
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2061",
@@ -98304,6 +98416,22 @@
                   "id": "level-1-boss-5-story-08",
                   "title": "Mini-Story 8 — Herkunft & Reise nach Chiang Mai / Phuket (Sätze 2071–2080)",
                   "context": "Herkunft & Weiterreise (มาจากเชียงใหม่ / ไปภูเก็ต)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-08-speaker-a",
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-08-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2071",
@@ -98860,6 +98988,22 @@
                   "id": "level-1-boss-5-story-09",
                   "title": "Mini-Story 9 — Heimweg & Wann fährst du zurück? (Sätze 2081–2090)",
                   "context": "Rückkehr & Uhrzeit (เมื่อไหร่ / กลับบ้าน)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-09-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-09-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2081",
@@ -99416,6 +99560,22 @@
                   "id": "level-1-boss-5-story-10",
                   "title": "Mini-Story 10 — Hinbringen, Abholen & Pünktlichkeit (Sätze 2091–2100)",
                   "context": "Fahrt zum Bahnhof & pünktlich ankommen (ไปส่ง / ทัน)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-10-speaker-a",
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-10-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2091",
@@ -100153,6 +100313,22 @@
                   "id": "level-1-boss-5-story-11",
                   "title": "Mini-Story 11 — Hinaufgehen & Herunterkommen (Sätze 2101–2110)",
                   "context": "Richtung im Gebäude (ขึ้นไป / ลงมา)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-11-speaker-a",
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-11-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2101",
@@ -100667,6 +100843,22 @@
                   "id": "level-1-boss-5-story-12",
                   "title": "Mini-Story 12 — Hineingehen & Herauskommen (Sätze 2111–2120)",
                   "context": "Herein & Hinaus (เข้าไป / ออกมา)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-12-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-12-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2111",
@@ -101181,6 +101373,22 @@
                   "id": "level-1-boss-5-story-13",
                   "title": "Mini-Story 13 — Stockwerke & Etagen (Sätze 2121–2130)",
                   "context": "Etagen & Orientierung (ชั้น)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-13-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-13-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2121",
@@ -101716,6 +101924,22 @@
                   "id": "level-1-boss-5-story-14",
                   "title": "Mini-Story 14 — Anstehen am Schalter (Sätze 2131–2140)",
                   "context": "Warteschlange (เข้าแถว)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-14-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-14-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2131",
@@ -102237,6 +102461,22 @@
                   "id": "level-1-boss-5-story-15",
                   "title": "Mini-Story 15 — Kurz an die Luft (Sätze 2141–2150)",
                   "context": "Hinausgehen (ออกไปข้างนอก)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-15-speaker-a",
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-15-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2141",
@@ -102779,6 +103019,22 @@
                   "id": "level-1-boss-5-story-16",
                   "title": "Mini-Story 16 — Ein- und Aussteigen (Sätze 2151–2160)",
                   "context": "Fahrzeuge (ขึ้นรถ / ลงรถ)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-16-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-16-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2151",
@@ -103307,6 +103563,22 @@
                   "id": "level-1-boss-5-story-17",
                   "title": "Mini-Story 17 — Eingang & Ausgang suchen (Sätze 2161–2170)",
                   "context": "Orientierung (ทางเข้า / ทางออก)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-17-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-17-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2161",
@@ -103863,6 +104135,22 @@
                   "id": "level-1-boss-5-story-18",
                   "title": "Mini-Story 18 — Links, rechts, geradeaus (Sätze 2171–2180)",
                   "context": "Richtungsangaben (ซ้าย / ขวา / ตรงไป)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-18-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-18-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2171",
@@ -104398,6 +104686,22 @@
                   "id": "level-1-boss-5-story-19",
                   "title": "Mini-Story 19 — Abbiegen an der Kreuzung (Sätze 2181–2190)",
                   "context": "Abbiegen (เลี้ยว)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-19-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-19-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2181",
@@ -104989,6 +105293,22 @@
                   "id": "level-1-boss-5-story-20",
                   "title": "Mini-Story 20 — Angekommen am Ziel (Sätze 2191–2200)",
                   "context": "Ankommen & Block 2 Complete (ถึงแล้ว)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-20-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-20-speaker-b",
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2191",
@@ -105660,6 +105980,22 @@
                   "id": "level-1-boss-5-story-21",
                   "title": "Mini-Story 21 — Auto fahren (Sätze 2201–2210)",
                   "context": "Auto & Verkehr (ขับรถ)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-21-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-21-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2201",
@@ -106237,6 +106573,22 @@
                   "id": "level-1-boss-5-story-22",
                   "title": "Mini-Story 22 — Motorrad fahren (Sätze 2211–2220)",
                   "context": "Motorrad & Moped (มอเตอร์ไซค์ / ขี่)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-22-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-22-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2211",
@@ -106786,6 +107138,22 @@
                   "id": "level-1-boss-5-story-23",
                   "title": "Mini-Story 23 — Mit dem Skytrain fahren (Sätze 2221–2230)",
                   "context": "Metro & Skytrain (รถไฟฟ้า)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-23-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-23-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2221",
@@ -107328,6 +107696,22 @@
                   "id": "level-1-boss-5-story-24",
                   "title": "Mini-Story 24 — Mit dem Boot auf dem Fluss (Sätze 2231–2240)",
                   "context": "Boot fahren (เรือ / นั่งเรือ)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-24-speaker-a",
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-24-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2231",
@@ -107849,6 +108233,22 @@
                   "id": "level-1-boss-5-story-25",
                   "title": "Mini-Story 25 — Schnell, langsam, praktisch (Sätze 2241–2250)",
                   "context": "Verkehrsmittel vergleichen (เร็ว / ช้า / สะดวก)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-25-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-25-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2241",
@@ -108405,6 +108805,22 @@
                   "id": "level-1-boss-5-story-26",
                   "title": "Mini-Story 26 — Hinbringen & Mitbringen (Sätze 2251–2260)",
                   "context": "Richtung von Objekten (เอาไป / เอามา)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-26-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-26-speaker-b",
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2251",
@@ -109003,6 +109419,22 @@
                   "id": "level-1-boss-5-story-27",
                   "title": "Mini-Story 27 — Greifen & Abstellen (Sätze 2261–2270)",
                   "context": "Handlungen mit Dingen (หยิบ / วางไว้)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-27-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-27-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2261",
@@ -109538,6 +109970,22 @@
                   "id": "level-1-boss-5-story-28",
                   "title": "Mini-Story 28 — Mitgeben & Tragen helfen (Sätze 2271–2280)",
                   "context": "Anvertrauen & Mitnehmen (ฝาก / ช่วยถือ)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-28-speaker-a",
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-28-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2271",
@@ -110122,6 +110570,22 @@
                   "id": "level-1-boss-5-story-29",
                   "title": "Mini-Story 29 — Souvenirs & Mitbringsel (Sätze 2281–2290)",
                   "context": "Geschenke von Reisen (ของฝาก / ซื้อมาฝาก)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-29-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-29-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2281",
@@ -110650,6 +111114,22 @@
                   "id": "level-1-boss-5-story-30",
                   "title": "Mini-Story 30 — Vergessen mitzubringen (Sätze 2291–2300)",
                   "context": "Vergessen & Block 3 Complete (ลืมเอามา)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-30-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-30-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2291",
@@ -111347,6 +111827,22 @@
                   "id": "level-1-boss-5-story-31",
                   "title": "Mini-Story 31 — Gerade beim Essen gewesen (Sätze 2301–2310)",
                   "context": "Erfahrungsbewegung (ไปกินข้าวมา)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-31-speaker-a",
+                      "role": "M",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-31-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2301",
@@ -111875,6 +112371,22 @@
                   "id": "level-1-boss-5-story-32",
                   "title": "Mini-Story 32 — Beim Friseur gewesen (Sätze 2311–2320)",
                   "context": "Haare schneiden (ตัดผม / ร้านตัดผม)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-32-speaker-a",
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-32-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2311",
@@ -112473,6 +112985,22 @@
                   "id": "level-1-boss-5-story-33",
                   "title": "Mini-Story 33 — Ausflug & Reisen (Sätze 2321–2330)",
                   "context": "Verreisen (เที่ยว / ไปเที่ยว)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-33-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-33-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2321",
@@ -113022,6 +113550,22 @@
                   "id": "level-1-boss-5-story-34",
                   "title": "Mini-Story 34 — Im Tempel beten (Sätze 2331–2340)",
                   "context": "Tempel & Kultur (วัด / ไหว้พระ)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-34-speaker-a",
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-34-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2331",
@@ -113599,6 +114143,22 @@
                   "id": "level-1-boss-5-story-35",
                   "title": "Mini-Story 35 — Aus dem Ausland zurück (Sätze 2341–2350)",
                   "context": "Auslandsreise (ต่างประเทศ)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-35-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-35-speaker-b",
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2341",
@@ -114162,6 +114722,22 @@
                   "id": "level-1-boss-5-story-36",
                   "title": "Mini-Story 36 — Zurückkehren & Wieder hingehen (Sätze 2351–2360)",
                   "context": "Richtung der Rückkehr (กลับไป / กลับมา)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-36-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-36-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2351",
@@ -114760,6 +115336,22 @@
                   "id": "level-1-boss-5-story-37",
                   "title": "Mini-Story 37 — Frisch zurückgekehrt (Sätze 2361–2370)",
                   "context": "Ankunft zu Hause (เพิ่งกลับมา)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-37-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-37-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2361",
@@ -115302,6 +115894,22 @@
                   "id": "level-1-boss-5-story-38",
                   "title": "Mini-Story 38 — Wie war der Ausflug? (Sätze 2371–2380)",
                   "context": "Reise-Erlebnisse (สนุกมาก / เหนื่อยไหม)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-38-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-38-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2371",
@@ -115872,6 +116480,22 @@
                   "id": "level-1-boss-5-story-39",
                   "title": "Mini-Story 39 — Verabreden & Einladen (Sätze 2381–2390)",
                   "context": "Freunde einladen (ชวน / นัดกัน)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-39-speaker-a",
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-39-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2381",
@@ -116400,6 +117024,22 @@
                   "id": "level-1-boss-5-story-40",
                   "title": "Mini-Story 40 — Noch einmal hingehen (Sätze 2391–2400)",
                   "context": "Wiederholung von Ausflügen & Block 4 Complete (ไปใหม่)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-40-speaker-a",
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-40-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2391",
@@ -117124,6 +117764,22 @@
                   "id": "level-1-boss-5-story-41",
                   "title": "Mini-Story 41 — Quer durch die Stadt (Sätze 2401–2410)",
                   "context": "Unterwegs in Bangkok (ทั่วเมือง)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-41-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-41-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2401",
@@ -117673,6 +118329,22 @@
                   "id": "level-1-boss-5-story-42",
                   "title": "Mini-Story 42 — Verlaufen & nach dem Weg fragen (Sätze 2411–2420)",
                   "context": "Weg suchen (หลงทาง / ถามทาง)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-42-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-42-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2411",
@@ -118264,6 +118936,22 @@
                   "id": "level-1-boss-5-story-43",
                   "title": "Mini-Story 43 — Den Weg beschreiben (Sätze 2421–2430)",
                   "context": "Wegweisung (บอกทาง)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-43-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-43-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2421",
@@ -118904,6 +119592,22 @@
                   "id": "level-1-boss-5-story-44",
                   "title": "Mini-Story 44 — Straße & Soi überqueren (Sätze 2431–2440)",
                   "context": "Straßenverkehr (ข้ามถนน / ซอย)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-44-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-44-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2431",
@@ -119537,6 +120241,22 @@
                   "id": "level-1-boss-5-story-45",
                   "title": "Mini-Story 45 — Gegenüberliegende Seite (Sätze 2441–2450)",
                   "context": "Gegenüber (ฝั่งตรงข้าม)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-45-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-45-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2441",
@@ -120058,6 +120778,22 @@
                   "id": "level-1-boss-5-story-46",
                   "title": "Mini-Story 46 — Den ganzen Weg laufen (Sätze 2451–2460)",
                   "context": "Fußweg (ตลอดทาง)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-46-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-46-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2451",
@@ -120656,6 +121392,22 @@
                   "id": "level-1-boss-5-story-47",
                   "title": "Mini-Story 47 — Den Fußweg schaffen (Sätze 2461–2470)",
                   "context": "Ausdauer beim Laufen (เดินไหว)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-47-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-47-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2461",
@@ -121233,6 +121985,22 @@
                   "id": "level-1-boss-5-story-48",
                   "title": "Mini-Story 48 — Hinterherkommen & kurz warten (Sätze 2471–2480)",
                   "context": "Nachfolgen & Warten (ตามมา / แป๊บเดียว)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-48-speaker-a",
+                      "role": "M1",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M1"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-48-speaker-b",
+                      "role": "M2",
+                      "assignmentSource": "explicit",
+                      "confidence": 1,
+                      "voiceProfileId": "M2"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2471",
@@ -121845,6 +122613,22 @@
                   "id": "level-1-boss-5-story-49",
                   "title": "Mini-Story 49 — Am Ziel angekommen (Sätze 2481–2490)",
                   "context": "Ankommen am Zielort (ถึงที่หมาย)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-49-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-49-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2481",
@@ -122359,6 +123143,22 @@
                   "id": "level-1-boss-5-story-50",
                   "title": "Mini-Story 50 — BOSS-FINALE: 2.500 Sätze Meilenstein (Sätze 2491–2500)",
                   "context": "Vollendete Fusion & Level 1 Finale (กลับกันเถอะ)",
+                  "speakers": [
+                    {
+                      "id": "level-1-boss-5-story-50-speaker-a",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    },
+                    {
+                      "id": "level-1-boss-5-story-50-speaker-b",
+                      "role": "W",
+                      "assignmentSource": "uncertain",
+                      "confidence": 0.65,
+                      "voiceProfileId": "W"
+                    }
+                  ],
                   "sentences": [
                     {
                       "id": "l1-b5-s2491",
@@ -136120,6 +136920,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2053",
+      "infoSentence": "Frageanhängsel nach einer Aussage; erwartet meist Bestätigung und entspricht oft „stimmt’s?“ oder „oder?“.",
       "bossContexts": {
         "level-1-grammar-boss-1": {
           "meanings": [
@@ -164808,7 +165609,8 @@
       "meanings": [
         "ruhig / still"
       ],
-      "firstSentenceId": "l1-b5-s2326"
+      "firstSentenceId": "l1-b5-s2326",
+      "infoSentence": "Beschreibt Stille oder Ruhe; kann sowohl Orte als auch Menschen charakterisieren."
     },
     {
       "id": "word-b2-chi-chi",
@@ -179243,6 +180045,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2002",
+      "infoSentence": "Bezeichnet einen Markt; oft auch in Zusammensetzungen für bestimmte Marktarten.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179271,6 +180074,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2005",
+      "infoSentence": "Wörtlich „Sachen kaufen“; gebräuchlich für Einkaufen oder Besorgungen machen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179304,6 +180108,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2010",
+      "infoSentence": "Verbindet ไป mit ด้วยกัน und bedeutet, gemeinsam mit jemandem zu gehen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179333,6 +180138,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2011",
+      "infoSentence": "Bezeichnet Herkunft oder Ausgangspunkt: „aus/von … kommen“.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179352,6 +180158,7 @@
         "Mall"
       ],
       "firstSentenceId": "l1-b5-s2021",
+      "infoSentence": "Umgangssprachliche Kurzform für ein Einkaufszentrum oder eine Mall.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179384,6 +180191,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2031",
+      "infoSentence": "Wörtlich ein Ort für Flugzeuge; das übliche Wort für Flughafen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179416,6 +180224,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2036",
+      "infoSentence": "Allgemeines Wort für Station; mit รถไฟ auch Bahnhof.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179444,6 +180253,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2035",
+      "infoSentence": "Wörtlich „Flug-Maschine“; das übliche Wort für Flugzeug.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179476,6 +180286,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2042",
+      "infoSentence": "Bezeichnet Gebiete außerhalb Bangkoks, oft einfach „Provinz“ oder „aufs Land“.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179504,6 +180315,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2046",
+      "infoSentence": "Zeitmaß „Stunde“; steht nach einer Zahl.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179532,6 +180344,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2027",
+      "infoSentence": "Fragt nach der Uhrzeit; wörtlich „wie viele Uhr?“.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179551,6 +180364,7 @@
         "Abstecher machen"
       ],
       "firstSentenceId": "l1-b5-s2061",
+      "infoSentence": "Bedeutet, kurz irgendwo anzuhalten oder einen kleinen Abstecher zu machen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179570,6 +180384,7 @@
         "Becher"
       ],
       "firstSentenceId": "l1-b5-s2063",
+      "infoSentence": "Bezeichnet Glas oder Becher und dient auch als Zählwort für Getränke.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179598,6 +180413,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2071",
+      "infoSentence": "Name der nordthailändischen Stadt Chiang Mai.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179625,6 +180441,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2074",
+      "infoSentence": "Name der Insel und Provinz Phuket.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179652,6 +180469,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2081",
+      "infoSentence": "Fragewort für einen Zeitpunkt: „wann?“.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179680,6 +180498,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2091",
+      "infoSentence": "Bedeutet, jemanden zu einem Ziel zu bringen oder zu begleiten.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179699,6 +180518,7 @@
         "pünktlich sein"
       ],
       "firstSentenceId": "l1-b5-s2098",
+      "infoSentence": "Drückt aus, dass etwas rechtzeitig gelingt oder noch möglich ist.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179727,6 +180547,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2099",
+      "infoSentence": "Bedeutet, in ein Fahrzeug einzusteigen; รถ kann durch andere Fahrzeuge ersetzt werden.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179755,6 +180576,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2101",
+      "infoSentence": "Richtungsverb: nach oben oder hinauf gehen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179784,6 +180606,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2103",
+      "infoSentence": "Richtungsverb: nach unten oder herunterkommen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179842,6 +180665,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2113",
+      "infoSentence": "Richtungsverb für Bewegung nach außen oder heraus.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179861,6 +180685,7 @@
         "Etage"
       ],
       "firstSentenceId": "l1-b5-s2121",
+      "infoSentence": "Bezeichnet ein Stockwerk oder eine Etage; auch Klassifikator für Schichten.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179889,6 +180714,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2107",
+      "infoSentence": "Das übliche Wort für Treppe.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179907,6 +180733,7 @@
         "Fahrstuhl"
       ],
       "firstSentenceId": "l1-b5-s2107",
+      "infoSentence": "Lehnwort für Aufzug oder Fahrstuhl.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179936,6 +180763,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2131",
+      "infoSentence": "Bedeutet, sich anzustellen oder in einer Schlange zu stehen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179964,6 +180792,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2152",
+      "infoSentence": "Bedeutet, aus einem Fahrzeug auszusteigen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -179982,6 +180811,7 @@
         "Richtung"
       ],
       "firstSentenceId": "l1-b5-s2086",
+      "infoSentence": "Bezeichnet Weg, Richtung oder Art und Weise; die Bedeutung ergibt sich aus der Verbindung.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180010,6 +180840,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2161",
+      "infoSentence": "Zusammensetzung aus „Weg“ und „hinaus“: Ausgang.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180037,6 +180868,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2163",
+      "infoSentence": "Zusammensetzung aus „Weg“ und „hinein“: Eingang.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180054,6 +180886,7 @@
         "links"
       ],
       "firstSentenceId": "l1-b5-s2171",
+      "infoSentence": "Richtungsangabe „links“; auch die linke Seite.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180071,6 +180904,7 @@
         "rechts"
       ],
       "firstSentenceId": "l1-b5-s2171",
+      "infoSentence": "Richtungsangabe „rechts“; auch die rechte Seite.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180099,6 +180933,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2173",
+      "infoSentence": "Bedeutet als Aufforderung oder Wegangabe „geradeaus (gehen)“.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180117,6 +180952,7 @@
         "abbiegen"
       ],
       "firstSentenceId": "l1-b5-s2181",
+      "infoSentence": "Bedeutet abbiegen; die Richtung folgt meist mit ซ้าย oder ขวา.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180145,6 +180981,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2159",
+      "infoSentence": "Kombiniert „ankommen“ mit แล้ว und sagt, dass man bereits da ist.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180173,6 +181010,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2039",
+      "infoSentence": "Wörtlich „Auto fahren“; bezeichnet das Fahren eines Autos.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180205,6 +181043,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2211",
+      "infoSentence": "Lehnwort für Motorrad oder Moped.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180224,6 +181063,7 @@
         "reiten"
       ],
       "firstSentenceId": "l1-b5-s2212",
+      "infoSentence": "Verwendet man für Zweiräder und Tiere: Motorrad fahren oder reiten.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180257,6 +181097,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2206",
+      "infoSentence": "Wörtlich „elektrischer Zug“; bezeichnet Skytrain oder Metro.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180276,6 +181117,7 @@
         "Schiff"
       ],
       "firstSentenceId": "l1-b5-s2237",
+      "infoSentence": "Allgemeines Wort für Boot oder Schiff.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180305,6 +181147,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2231",
+      "infoSentence": "Bedeutet, mit dem Boot zu fahren oder ein Boot zu nehmen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180323,6 +181166,7 @@
         "schnell"
       ],
       "firstSentenceId": "l1-b5-s2016",
+      "infoSentence": "Adjektiv und Adverb für „schnell“; kann auch „bald“ bedeuten.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180340,6 +181184,7 @@
         "langsam"
       ],
       "firstSentenceId": "l1-b5-s2058",
+      "infoSentence": "Adjektiv und Adverb für „langsam“ oder „spät“.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180368,6 +181213,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2040",
+      "infoSentence": "Beschreibt etwas als bequem, passend oder praktisch.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180397,6 +181243,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2251",
+      "infoSentence": "Bedeutet, etwas von hier weg mitzunehmen oder hinzubringen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180426,6 +181273,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2253",
+      "infoSentence": "Bedeutet, etwas hierher zu bringen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180445,6 +181293,7 @@
         "nehmen"
       ],
       "firstSentenceId": "l1-b5-s2150",
+      "infoSentence": "Bedeutet, etwas mit der Hand zu greifen oder zu nehmen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180464,6 +181313,7 @@
         "mitgeben"
       ],
       "firstSentenceId": "l1-b5-s2271",
+      "infoSentence": "Bedeutet, etwas jemandem anzuvertrauen, mitzugeben oder für ihn zu hinterlegen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180493,6 +181343,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2273",
+      "infoSentence": "Bedeutet, etwas in der Hand tragend mitzunehmen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180521,6 +181372,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2257",
+      "infoSentence": "Kombination mit ช่วย: jemandem beim Tragen helfen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180549,6 +181401,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2281",
+      "infoSentence": "Wörtlich „anvertraute Sache“; ein Mitbringsel oder Souvenir.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180581,6 +181434,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2282",
+      "infoSentence": "Bedeutet, etwas als Mitbringsel gekauft zu haben.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180609,6 +181463,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2262",
+      "infoSentence": "Bedeutet, etwas abzulegen oder abzustellen und dort zu lassen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180642,6 +181497,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2302",
+      "infoSentence": "Bedeutet, bereits gegessen zu haben; oft als Antwort auf eine Essenseinladung.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180670,6 +181526,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2311",
+      "infoSentence": "Wörtlich „Haare schneiden“; die übliche Wendung für einen Haarschnitt.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180701,6 +181558,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2312",
+      "infoSentence": "Wörtlich „Laden zum Haareschneiden“; Friseursalon.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180719,6 +181577,7 @@
         "reisen"
       ],
       "firstSentenceId": "l1-b5-s2074",
+      "infoSentence": "Bedeutet, einen Ausflug zu machen, zu reisen oder Sehenswürdigkeiten zu besuchen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180748,6 +181607,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2321",
+      "infoSentence": "Bedeutet, verreisen, einen Ausflug machen oder ausgehen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180766,6 +181626,7 @@
         "Tempel"
       ],
       "firstSentenceId": "l1-b5-s2331",
+      "infoSentence": "Bezeichnet einen buddhistischen Tempel; nicht nur ein Gebäude, sondern oft die ganze Anlage.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180794,6 +181655,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2332",
+      "infoSentence": "Bedeutet, Buddha respektvoll zu verehren, meist in einem Tempel.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180826,6 +181688,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2341",
+      "infoSentence": "Bezeichnet das Ausland oder ein anderes Land.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180854,6 +181717,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2351",
+      "infoSentence": "Bedeutet, zurück- oder wieder hinzugehen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180915,6 +181779,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2361",
+      "infoSentence": "Bedeutet, gerade erst zurückgekommen zu sein; เพิ่ง betont die Kürze der vergangenen Zeit.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180943,6 +181808,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2375",
+      "infoSentence": "Zeitangabe für ein nächstes oder späteres Mal.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180962,6 +181828,7 @@
         "vorschlagen"
       ],
       "firstSentenceId": "l1-b5-s2309",
+      "infoSentence": "Bedeutet, jemanden einzuladen oder ihm etwas vorzuschlagen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -180990,6 +181857,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2382",
+      "infoSentence": "Bedeutet, miteinander einen Termin oder Treffpunkt zu vereinbaren.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181018,6 +181886,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2391",
+      "infoSentence": "Bedeutet, erneut oder noch einmal hinzugehen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181037,6 +181906,7 @@
         "ganz"
       ],
       "firstSentenceId": "l1-b5-s2401",
+      "infoSentence": "Bedeutet „überall“ oder „ganz“ und steht oft vor einem Nomen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181065,6 +181935,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2402",
+      "infoSentence": "Wörtlich „durch die ganze Stadt“; beschreibt Bewegung oder Verteilung in der ganzen Stadt.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181093,6 +181964,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2411",
+      "infoSentence": "Bedeutet, den Weg zu verlieren oder sich zu verlaufen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181121,6 +181993,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2413",
+      "infoSentence": "Bedeutet, nach dem Weg zu fragen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181148,6 +182021,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2421",
+      "infoSentence": "Bedeutet, jemandem den Weg zu beschreiben oder zu zeigen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181179,6 +182053,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2431",
+      "infoSentence": "Wörtlich „die Straße überqueren“.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181206,6 +182081,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2422",
+      "infoSentence": "Allgemeines Wort für Straße; in Thailand auch Teil vieler Ortsangaben.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181224,6 +182100,7 @@
         "Soi"
       ],
       "firstSentenceId": "l1-b5-s2185",
+      "infoSentence": "Bezeichnet eine kleine Seitenstraße; typisch für thailändische Adressen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181256,6 +182133,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2442",
+      "infoSentence": "Wörtlich „gegenüberliegende Seite“; bezeichnet die andere Seite einer Straße oder eines Gewässers.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181287,6 +182165,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2451",
+      "infoSentence": "Zeit- oder Streckenangabe: den gesamten Weg entlang.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181314,6 +182193,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2462",
+      "infoSentence": "Bedeutet, das Gehen körperlich noch zu schaffen; ไหว drückt Fähigkeit oder Belastbarkeit aus.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181342,6 +182222,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2471",
+      "infoSentence": "Bedeutet, jemandem hinterher- oder nachzukommen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181371,6 +182252,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2138",
+      "infoSentence": "Umgangssprachlich für einen sehr kurzen Augenblick.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181403,6 +182285,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2470",
+      "infoSentence": "Bedeutet, das Reiseziel zu erreichen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181434,6 +182317,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2495",
+      "infoSentence": "Einladende Aufforderung: „Lass uns zurückgehen.“",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181452,6 +182336,7 @@
         "aus"
       ],
       "firstSentenceId": "l1-b5-s2282",
+      "infoSentence": "Präposition für Ursprung oder Ausgangspunkt: „von, aus, seit“.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181480,6 +182365,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2324",
+      "infoSentence": "Kurzform des offiziellen Namens von Bangkok; im Alltag sehr gebräuchlich.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181498,6 +182384,7 @@
         "Sonne"
       ],
       "firstSentenceId": "l1-b5-s2118",
+      "infoSentence": "Bezeichnet Sonne, Sonnenschein oder direkte Sonne.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181516,6 +182403,7 @@
         "Abend / dunkel"
       ],
       "firstSentenceId": "l1-b5-s2353",
+      "infoSentence": "Bezeichnet Abendzeit oder Dunkelheit; oft als Adjektiv nach einem Nomen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181533,6 +182421,7 @@
         "dunkel"
       ],
       "firstSentenceId": "l1-b5-s2494",
+      "infoSentence": "Adjektiv für dunkel, etwa bei Nacht, Raum oder Farbe.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181564,6 +182453,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2255",
+      "infoSentence": "Lehnwort für Computer, oft auch für einen Laptop verwendet.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181592,6 +182482,7 @@
         }
       ],
       "firstSentenceId": "l1-b5-s2184",
+      "infoSentence": "Wiederholung drückt einen fortlaufenden, entspannten Verlauf aus: immer weiter oder gemütlich.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181611,6 +182502,7 @@
         "Unterlagen"
       ],
       "firstSentenceId": "l1-b5-s2253",
+      "infoSentence": "Sammelbegriff für Dokumente und Unterlagen.",
       "bossContexts": {
         "level-1-grammar-boss-5": {
           "meanings": [
@@ -181646,7 +182538,8 @@
           "transliteration": "glàp"
         }
       ],
-      "firstSentenceId": "l1-b5-s2374"
+      "firstSentenceId": "l1-b5-s2374",
+      "infoSentence": "Wörtlich „Bein zurück“; die Rückfahrt oder der Rückweg."
     },
     {
       "id": "word-b5-3233119",
@@ -181675,7 +182568,8 @@
           "transliteration": "yàt"
         }
       ],
-      "firstSentenceId": "l1-b5-s2458"
+      "firstSentenceId": "l1-b5-s2458",
+      "infoSentence": "Bedeutet sparen oder sparsam sein."
     },
     {
       "id": "word-b5-6619610",
@@ -181704,7 +182598,8 @@
           "transliteration": "nán"
         }
       ],
-      "firstSentenceId": "l1-b5-s2186"
+      "firstSentenceId": "l1-b5-s2186",
+      "infoSentence": "Betont eine Begrenzung: „nur, lediglich“; steht meist am Ende der Wortgruppe."
     },
     {
       "id": "word-b5-2603869",
@@ -181733,7 +182628,8 @@
           "transliteration": "nɔɔn"
         }
       ],
-      "firstSentenceId": "l1-b5-s2098"
+      "firstSentenceId": "l1-b5-s2098",
+      "infoSentence": "Drückt Sicherheit oder Gewissheit aus: „sicher, bestimmt“."
     },
     {
       "id": "word-b5-4452312",
@@ -181762,7 +182658,8 @@
           "transliteration": "phai"
         }
       ],
-      "firstSentenceId": "l1-b5-s2049"
+      "firstSentenceId": "l1-b5-s2049",
+      "infoSentence": "Bedeutet sicher oder in Sicherheit; kann körperliche und allgemeine Sicherheit beschreiben."
     },
     {
       "id": "word-b5-5309777",
@@ -181791,7 +182688,8 @@
           "transliteration": "fai"
         }
       ],
-      "firstSentenceId": "l1-b5-s2036"
+      "firstSentenceId": "l1-b5-s2036",
+      "infoSentence": "Wörtlich „Feuerwagen“; das übliche Wort für Zug oder Eisenbahn."
     },
     {
       "id": "word-b5-1478977",
@@ -181808,7 +182706,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2155"
+      "firstSentenceId": "l1-b5-s2155",
+      "infoSentence": "Die Zahl fünf; Zahlen stehen vor ihrem Klassifikator."
     },
     {
       "id": "word-b5-8246092",
@@ -181825,7 +182724,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2385"
+      "firstSentenceId": "l1-b5-s2385",
+      "infoSentence": "Die Zahl sechs; Zahlen stehen vor ihrem Klassifikator."
     },
     {
       "id": "word-b5-1842476",
@@ -181852,7 +182752,8 @@
           "transliteration": "sìp"
         }
       ],
-      "firstSentenceId": "l1-b5-s2246"
+      "firstSentenceId": "l1-b5-s2246",
+      "infoSentence": "Die Zahl zwanzig; ยี่สิบ wird als ein Wort gesprochen."
     },
     {
       "id": "word-b5-9588352",
@@ -181869,7 +182770,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2187"
+      "firstSentenceId": "l1-b5-s2187",
+      "infoSentence": "Die Zahl hundert; bildet mit anderen Zahlen Hunderterangaben."
     },
     {
       "id": "word-b5-8526945",
@@ -181886,7 +182788,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2187"
+      "firstSentenceId": "l1-b5-s2187",
+      "infoSentence": "Lehnwort für Meter, die metrische Längeneinheit."
     },
     {
       "id": "word-b5-5036705",
@@ -181915,7 +182818,8 @@
           "transliteration": "dii"
         }
       ],
-      "firstSentenceId": "l1-b5-s2170"
+      "firstSentenceId": "l1-b5-s2170",
+      "infoSentence": "Bedeutet gern, erfreut oder willkommen; die genaue Wiedergabe folgt dem Kontext."
     },
     {
       "id": "word-b5-2835089",
@@ -181950,7 +182854,8 @@
           "transliteration": "ráp"
         }
       ],
-      "firstSentenceId": "l1-b5-s2489"
+      "firstSentenceId": "l1-b5-s2489",
+      "infoSentence": "Feste höfliche Begrüßung für „herzlich willkommen“."
     },
     {
       "id": "word-b5-1035183",
@@ -181983,7 +182888,8 @@
           "transliteration": "sùk"
         }
       ],
-      "firstSentenceId": "l1-b5-s2490"
+      "firstSentenceId": "l1-b5-s2490",
+      "infoSentence": "Wörtlich „Glück haben“; bedeutet glücklich sein oder Freude empfinden."
     },
     {
       "id": "word-b5-2891851",
@@ -182012,7 +182918,8 @@
           "transliteration": "jai"
         }
       ],
-      "firstSentenceId": "l1-b5-s2480"
+      "firstSentenceId": "l1-b5-s2480",
+      "infoSentence": "Beschreibt ein wohltuendes, erfrischendes oder herzerwärmendes Gefühl."
     },
     {
       "id": "word-b5-281568",
@@ -182045,7 +182952,8 @@
           "transliteration": "jai"
         }
       ],
-      "firstSentenceId": "l1-b5-s2200"
+      "firstSentenceId": "l1-b5-s2200",
+      "infoSentence": "Beschreibt innere Ruhe, Erleichterung oder ein gutes Gefühl."
     },
     {
       "id": "word-b5-7915752",
@@ -182074,7 +182982,8 @@
           "transliteration": "wên"
         }
       ],
-      "firstSentenceId": "l1-b5-s2424"
+      "firstSentenceId": "l1-b5-s2424",
+      "infoSentence": "Umgangssprachliche Bezeichnung für einen 7-Eleven oder ähnlichen Convenience Store."
     },
     {
       "id": "word-b5-7409659",
@@ -182107,7 +183016,8 @@
           "transliteration": "lɔɔi"
         }
       ],
-      "firstSentenceId": "l1-b5-s2444"
+      "firstSentenceId": "l1-b5-s2444",
+      "infoSentence": "Fußgängerbrücke oder Überführung, besonders zum Überqueren großer Straßen."
     },
     {
       "id": "word-b5-3440976",
@@ -182136,7 +183046,8 @@
           "transliteration": "mum"
         }
       ],
-      "firstSentenceId": "l1-b5-s2416"
+      "firstSentenceId": "l1-b5-s2416",
+      "infoSentence": "Bezeichnet eine Ecke, besonders eine Straßen- oder Gebäudeecke."
     },
     {
       "id": "word-b5-7999144",
@@ -182155,7 +183066,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2140"
+      "firstSentenceId": "l1-b5-s2140",
+      "infoSentence": "Lehnwort für Warteschlange; auch die eigene Nummer in der Reihenfolge."
     },
     {
       "id": "word-b5-5484123",
@@ -182174,7 +183086,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2158"
+      "firstSentenceId": "l1-b5-s2158",
+      "infoSentence": "Bedeutet anhalten oder parken, besonders bei Fahrzeugen."
     },
     {
       "id": "word-b5-627247",
@@ -182193,7 +183106,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2175"
+      "firstSentenceId": "l1-b5-s2175",
+      "infoSentence": "Bedeutet Hand; mit Klassifikator auch eine Seite oder ein Exemplar."
     },
     {
       "id": "word-b5-2392889",
@@ -182222,7 +183136,8 @@
           "transliteration": "dɛɛng"
         }
       ],
-      "firstSentenceId": "l1-b5-s2178"
+      "firstSentenceId": "l1-b5-s2178",
+      "infoSentence": "Wörtlich „rote Farbe“; bezeichnet die Farbe Rot."
     },
     {
       "id": "word-b5-6977367",
@@ -182241,7 +183156,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2185"
+      "firstSentenceId": "l1-b5-s2185",
+      "infoSentence": "Bedeutet blockiert oder Sackgasse; bei Straßen auch Stau."
     },
     {
       "id": "word-b5-2919779",
@@ -182260,7 +183176,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2192"
+      "firstSentenceId": "l1-b5-s2192",
+      "infoSentence": "Verbindet eine Erklärung mit dem zuvor Gesagten: „ist nämlich / das heißt“."
     },
     {
       "id": "word-b5-3025284",
@@ -182279,7 +183196,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2349"
+      "firstSentenceId": "l1-b5-s2349",
+      "infoSentence": "Bedeutet teilen, aufteilen oder verteilen."
     },
     {
       "id": "word-b5-6046791",
@@ -182298,7 +183216,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2349"
+      "firstSentenceId": "l1-b5-s2349",
+      "infoSentence": "Bedeutet probieren oder kosten, vor allem Essen und Getränke."
     },
     {
       "id": "word-b5-3180883",
@@ -182327,7 +183246,8 @@
           "transliteration": "mə̌ə"
         }
       ],
-      "firstSentenceId": "l1-b5-s2350"
+      "firstSentenceId": "l1-b5-s2350",
+      "infoSentence": "Bedeutet immer oder regelmäßig; steht häufig am Satzende."
     },
     {
       "id": "word-b5-3553111",
@@ -182346,7 +183266,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2355"
+      "firstSentenceId": "l1-b5-s2355",
+      "infoSentence": "Beschreibt Dringlichkeit oder Schnelligkeit: dringend, eilig, Express-."
     },
     {
       "id": "word-b5-5685823",
@@ -182375,7 +183296,8 @@
           "transliteration": "kan"
         }
       ],
-      "firstSentenceId": "l1-b5-s2358"
+      "firstSentenceId": "l1-b5-s2358",
+      "infoSentence": "Bedeutet zusammen oder gleichzeitig."
     },
     {
       "id": "word-b5-6974944",
@@ -182394,7 +183316,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2360"
+      "firstSentenceId": "l1-b5-s2360",
+      "infoSentence": "Beschreibt Einsamkeit oder das Gefühl, allein zu sein."
     },
     {
       "id": "word-b5-9528543",
@@ -182423,7 +183346,8 @@
           "transliteration": "náam"
         }
       ],
-      "firstSentenceId": "l1-b5-s2365"
+      "firstSentenceId": "l1-b5-s2365",
+      "infoSentence": "Wörtlich „Wasser baden“; bedeutet duschen oder baden."
     },
     {
       "id": "word-b5-2050995",
@@ -182452,7 +183376,8 @@
           "transliteration": "phɔ̀ɔn"
         }
       ],
-      "firstSentenceId": "l1-b5-s2330"
+      "firstSentenceId": "l1-b5-s2330",
+      "infoSentence": "Bedeutet sich ausruhen oder erholen."
     },
     {
       "id": "word-b5-9671904",
@@ -182481,7 +183406,8 @@
           "transliteration": "phák"
         }
       ],
-      "firstSentenceId": "l1-b5-s2369"
+      "firstSentenceId": "l1-b5-s2369",
+      "infoSentence": "Bedeutet, sich zum Ausruhen hinzulegen oder zu schlafen."
     },
     {
       "id": "word-b5-6977449",
@@ -182508,6 +183434,7 @@
           "transliteration": "yen"
         }
       ],
+      "infoSentence": "Wörtlich „Abendreis“; bezeichnet Abendessen.",
       "firstSentenceId": "l1-b5-s2367"
     },
     {
@@ -182545,7 +183472,8 @@
           "transliteration": "lay"
         }
       ],
-      "firstSentenceId": "l1-b5-s2372"
+      "firstSentenceId": "l1-b5-s2372",
+      "infoSentence": "Sammelbegriff für Meeresfrüchte."
     },
     {
       "id": "word-b5-3932927",
@@ -182564,7 +183492,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2377"
+      "firstSentenceId": "l1-b5-s2377",
+      "infoSentence": "Bezeichnet Foto, Bild oder Abbildung; auch als Klassifikator für Bilder."
     },
     {
       "id": "word-b5-4907500",
@@ -182593,7 +183522,8 @@
           "transliteration": "náam"
         }
       ],
-      "firstSentenceId": "l1-b5-s2383"
+      "firstSentenceId": "l1-b5-s2383",
+      "infoSentence": "Wörtlich „Wasserrand“; Ufer oder Lage direkt am Wasser."
     },
     {
       "id": "word-b5-183160",
@@ -182612,7 +183542,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2391"
+      "firstSentenceId": "l1-b5-s2391",
+      "infoSentence": "Bezeichnet eine Runde, einen Umlauf oder eine Umgebung."
     },
     {
       "id": "word-b5-1570096",
@@ -182643,7 +183574,8 @@
           "transliteration": "nâa"
         }
       ],
-      "firstSentenceId": "l1-b5-s2393"
+      "firstSentenceId": "l1-b5-s2393",
+      "infoSentence": "Zeitangabe für die kommende Woche."
     },
     {
       "id": "word-b5-9885547",
@@ -182672,6 +183604,7 @@
           "transliteration": "ʉ̀ʉn"
         }
       ],
+      "infoSentence": "Bezeichnet andere Personen oder Leute.",
       "firstSentenceId": "l1-b5-s2395"
     },
     {
@@ -182705,7 +183638,8 @@
           "transliteration": "nán"
         }
       ],
-      "firstSentenceId": "l1-b5-s2403"
+      "firstSentenceId": "l1-b5-s2403",
+      "infoSentence": "Verstärkt eine Menge oder einen Grad: „so groß/viel“."
     },
     {
       "id": "word-b5-346535",
@@ -182734,7 +183668,8 @@
           "transliteration": "yɛ́"
         }
       ],
-      "firstSentenceId": "l1-b5-s2403"
+      "firstSentenceId": "l1-b5-s2403",
+      "infoSentence": "Umgangssprachliche Verstärkung für „sehr viel, jede Menge“."
     },
     {
       "id": "word-b5-989590",
@@ -182763,7 +183698,8 @@
           "transliteration": "maa"
         }
       ],
-      "firstSentenceId": "l1-b5-s2402"
+      "firstSentenceId": "l1-b5-s2402",
+      "infoSentence": "Beschreibt Hin-und-her-Bewegung oder das Unterwegssein."
     },
     {
       "id": "word-b5-5137512",
@@ -182782,7 +183718,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2412"
+      "firstSentenceId": "l1-b5-s2412",
+      "infoSentence": "Bedeutet vertraut sein oder etwas/jemanden kennen."
     },
     {
       "id": "word-b5-4539862",
@@ -182815,6 +183752,7 @@
           "transliteration": "khɔ̌ɔng"
         }
       ],
+      "infoSentence": "Wörtlich „Person, die Sachen verkauft“; Verkäufer oder Händler.",
       "firstSentenceId": "l1-b5-s2414"
     },
     {
@@ -182844,7 +183782,8 @@
           "transliteration": "nâa"
         }
       ],
-      "firstSentenceId": "l1-b5-s2446"
+      "firstSentenceId": "l1-b5-s2446",
+      "infoSentence": "Bedeutet, vor jemandem vorbeizuziehen oder ihm den Weg abzuschneiden."
     },
     {
       "id": "word-b5-5596726",
@@ -182863,7 +183802,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2458"
+      "firstSentenceId": "l1-b5-s2458",
+      "infoSentence": "Bezeichnet Kraft, Energie oder Intensität."
     },
     {
       "id": "word-b5-9849693",
@@ -182900,7 +183840,8 @@
           "transliteration": "gaai"
         }
       ],
-      "firstSentenceId": "l1-b5-s2464"
+      "firstSentenceId": "l1-b5-s2464",
+      "infoSentence": "Wörtlich „Kraft herausbringen“; bedeutet Sport machen oder trainieren."
     },
     {
       "id": "word-b5-7764635",
@@ -182919,7 +183860,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2465"
+      "firstSentenceId": "l1-b5-s2465",
+      "infoSentence": "Beschreibt angenehme Beschäftigung oder dass man die Zeit vergisst."
     },
     {
       "id": "word-b5-9335329",
@@ -182938,7 +183880,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2467"
+      "firstSentenceId": "l1-b5-s2467",
+      "infoSentence": "Allgemeines Wort für Gebäude oder mehrstöckiges Haus."
     },
     {
       "id": "word-b5-3510399",
@@ -182967,7 +183910,8 @@
           "transliteration": "lɛ̀"
         }
       ],
-      "firstSentenceId": "l1-b5-s2467"
+      "firstSentenceId": "l1-b5-s2467",
+      "infoSentence": "Betont genau das Gemeinte: „genau das / eben das“."
     },
     {
       "id": "word-b5-2854370",
@@ -182988,7 +183932,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2469"
+      "firstSentenceId": "l1-b5-s2469",
+      "infoSentence": "Beschreibt Fähigkeit oder Geschick: gut, tüchtig, talentiert."
     },
     {
       "id": "word-b5-3401509",
@@ -183017,7 +183962,8 @@
           "transliteration": "bplào"
         }
       ],
-      "firstSentenceId": "l1-b5-s2478"
+      "firstSentenceId": "l1-b5-s2478",
+      "infoSentence": "Wörtlich „blankes Wasser“; stilles Trinkwasser ohne Kohlensäure."
     },
     {
       "id": "word-b5-3718796",
@@ -183046,7 +183992,8 @@
           "transliteration": "yen"
         }
       ],
-      "firstSentenceId": "l1-b5-s2478"
+      "firstSentenceId": "l1-b5-s2478",
+      "infoSentence": "Wiederholung mildert die Beschreibung: angenehm kühl, nicht eiskalt."
     },
     {
       "id": "word-b5-1070189",
@@ -183079,7 +184026,8 @@
           "transliteration": "sùt"
         }
       ],
-      "firstSentenceId": "l1-b5-s2481"
+      "firstSentenceId": "l1-b5-s2481",
+      "infoSentence": "Zeitliche Schlussfolgerung: „schließlich, endlich“."
     },
     {
       "id": "word-b5-4399108",
@@ -183110,7 +184058,8 @@
           "transliteration": "laa"
         }
       ],
-      "firstSentenceId": "l1-b5-s2482"
+      "firstSentenceId": "l1-b5-s2482",
+      "infoSentence": "Bedeutet pünktlich oder genau zur vereinbarten Zeit."
     },
     {
       "id": "word-b5-8821682",
@@ -183129,7 +184078,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2484"
+      "firstSentenceId": "l1-b5-s2484",
+      "infoSentence": "Drückt aus, dass etwas beinahe geschieht oder zutrifft."
     },
     {
       "id": "word-b5-3604385",
@@ -183156,7 +184106,8 @@
           "transliteration": "kǎo"
         }
       ],
-      "firstSentenceId": "l1-b5-s2486"
+      "firstSentenceId": "l1-b5-s2486",
+      "infoSentence": "Pronomen für „sie“ im Plural; umfasst Personen unabhängig vom Geschlecht."
     },
     {
       "id": "word-b5-9264113",
@@ -183187,7 +184138,8 @@
           "transliteration": "dtìt"
         }
       ],
-      "firstSentenceId": "l1-b5-s2496"
+      "firstSentenceId": "l1-b5-s2496",
+      "infoSentence": "Wörtlich „Autos kleben nicht“; übliche Aussage für staufreien Verkehr."
     },
     {
       "id": "word-b5-4590824",
@@ -183216,6 +184168,7 @@
           "transliteration": "nâa"
         }
       ],
+      "infoSentence": "Zeitangabe für eine Vorbereitung oder Handlung im Voraus.",
       "firstSentenceId": "l1-b5-s2500"
     },
     {
@@ -183249,7 +184202,8 @@
           "transliteration": "jà"
         }
       ],
-      "firstSentenceId": "l1-b5-s2366"
+      "firstSentenceId": "l1-b5-s2366",
+      "infoSentence": "Drückt eine unmittelbar bevorstehende Handlung aus: „gerade im Begriff sein zu“."
     },
     {
       "id": "word-b5-8404520",
@@ -183278,6 +184232,7 @@
           "transliteration": "khâao"
         }
       ],
+      "infoSentence": "Wörtlich „Reis essen“; die übliche Wendung für essen oder eine Mahlzeit einnehmen.",
       "firstSentenceId": "l1-b5-s2019"
     },
     {
@@ -183309,7 +184264,8 @@
           "transliteration": "bpang"
         }
       ],
-      "firstSentenceId": "l1-b5-s2067"
+      "firstSentenceId": "l1-b5-s2067",
+      "infoSentence": "Das allgemeine Wort für Brot."
     },
     {
       "id": "word-b5-7348483",
@@ -183328,7 +184284,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2202"
+      "firstSentenceId": "l1-b5-s2202",
+      "infoSentence": "Bedeutet ein Fahrzeug fahren oder lenken."
     },
     {
       "id": "word-b5-3727722",
@@ -183349,7 +184306,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2107"
+      "firstSentenceId": "l1-b5-s2107",
+      "infoSentence": "Bedeutet hinaufsteigen, hochgehen oder in ein Fahrzeug einsteigen."
     },
     {
       "id": "word-b5-8242812",
@@ -183368,6 +184326,7 @@
           "contextExamples": []
         }
       },
+      "infoSentence": "Bezeichnet die Seite oder Nähe von etwas: „neben, an der Seite von“.",
       "firstSentenceId": "l1-b5-s2124"
     },
     {
@@ -183387,7 +184346,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2434"
+      "firstSentenceId": "l1-b5-s2434",
+      "infoSentence": "Bedeutet überqueren, hinübergehen oder überschreiten."
     },
     {
       "id": "word-b5-8574557",
@@ -183414,7 +184374,8 @@
           "transliteration": "khàp"
         }
       ],
-      "firstSentenceId": "l1-b5-s2156"
+      "firstSentenceId": "l1-b5-s2156",
+      "infoSentence": "Wörtlich „fahrende Person“; Fahrer oder Fahrerin."
     },
     {
       "id": "word-b5-5512480",
@@ -183441,6 +184402,7 @@
           "transliteration": "khrua"
         }
       ],
+      "infoSentence": "Bezeichnet die Familie oder den Haushalt.",
       "firstSentenceId": "l1-b5-s2332"
     },
     {
@@ -183460,7 +184422,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2096"
+      "firstSentenceId": "l1-b5-s2096",
+      "infoSentence": "Bedeutet halb oder die Hälfte."
     },
     {
       "id": "word-b5-4459056",
@@ -183489,7 +184452,8 @@
           "transliteration": "gwàa"
         }
       ],
-      "firstSentenceId": "l1-b5-s2087"
+      "firstSentenceId": "l1-b5-s2087",
+      "infoSentence": "Vergleichsform von ดี: „besser, lieber“."
     },
     {
       "id": "word-b5-238606",
@@ -183518,7 +184482,8 @@
           "transliteration": "jai"
         }
       ],
-      "firstSentenceId": "l1-b5-s2289"
+      "firstSentenceId": "l1-b5-s2289",
+      "infoSentence": "Bedeutet sich freuen oder froh sein."
     },
     {
       "id": "word-b5-4887899",
@@ -183547,7 +184512,8 @@
           "transliteration": "dii"
         }
       ],
-      "firstSentenceId": "l1-b5-s2279"
+      "firstSentenceId": "l1-b5-s2279",
+      "infoSentence": "Wiederholung kann „gut“ verstärken oder eine freundliche Aufforderung wie „schön vorsichtig“ bilden."
     },
     {
       "id": "word-b5-3285524",
@@ -183574,7 +184540,8 @@
           "transliteration": "dii"
         }
       ],
-      "firstSentenceId": "l1-b5-s2315"
+      "firstSentenceId": "l1-b5-s2315",
+      "infoSentence": "Bedeutet gut oder passend aussehen."
     },
     {
       "id": "word-b5-4979694",
@@ -183603,7 +184570,8 @@
           "transliteration": "kan"
         }
       ],
-      "firstSentenceId": "l1-b5-s2106"
+      "firstSentenceId": "l1-b5-s2106",
+      "infoSentence": "Bedeutet zusammen oder gemeinsam und steht oft nach einem Verb."
     },
     {
       "id": "word-b5-3232545",
@@ -183630,6 +184598,7 @@
           "transliteration": "nâa"
         }
       ],
+      "infoSentence": "Bezeichnet etwas direkt vor einem oder unmittelbar voraus.",
       "firstSentenceId": "l1-b5-s2449"
     },
     {
@@ -183657,7 +184626,8 @@
           "transliteration": "nǎi"
         }
       ],
-      "firstSentenceId": "l1-b5-s2163"
+      "firstSentenceId": "l1-b5-s2163",
+      "infoSentence": "Fragt nach einer genauen Stelle: „wo genau?“."
     },
     {
       "id": "word-b5-7679471",
@@ -183686,6 +184656,7 @@
           "transliteration": "cháo"
         }
       ],
+      "infoSentence": "Zeitangabe für morgens oder am Morgen.",
       "firstSentenceId": "l1-b5-s2226"
     },
     {
@@ -183703,7 +184674,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2314"
+      "firstSentenceId": "l1-b5-s2314",
+      "infoSentence": "Bedeutet schneiden oder abschneiden."
     },
     {
       "id": "word-b5-2522695",
@@ -183730,7 +184702,8 @@
           "transliteration": "gàp"
         }
       ],
-      "firstSentenceId": "l1-b5-s2426"
+      "firstSentenceId": "l1-b5-s2426",
+      "infoSentence": "Bedeutet direkt an etwas angrenzen oder neben etwas liegen."
     },
     {
       "id": "word-b5-9420530",
@@ -183759,7 +184732,8 @@
           "transliteration": "dtɔ̂ng"
         }
       ],
-      "firstSentenceId": "l1-b5-s2220"
+      "firstSentenceId": "l1-b5-s2220",
+      "infoSentence": "Bedeutet richtig, korrekt oder genau."
     },
     {
       "id": "word-b5-7906513",
@@ -183788,7 +184762,8 @@
           "transliteration": "bun"
         }
       ],
-      "firstSentenceId": "l1-b5-s2335"
+      "firstSentenceId": "l1-b5-s2335",
+      "infoSentence": "Buddhistische Wendung für Verdienste erwerben oder Gutes tun."
     },
     {
       "id": "word-b5-820932",
@@ -183817,7 +184792,8 @@
           "transliteration": "sùt"
         }
       ],
-      "firstSentenceId": "l1-b5-s2219"
+      "firstSentenceId": "l1-b5-s2219",
+      "infoSentence": "Bildet nach Adjektiven den Superlativ: „am …sten“."
     },
     {
       "id": "word-b5-694685",
@@ -183844,6 +184820,7 @@
           "transliteration": "dəəm"
         }
       ],
+      "infoSentence": "Bezeichnet denselben früheren Ort oder Platz.",
       "firstSentenceId": "l1-b5-s2268"
     },
     {
@@ -183863,7 +184840,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2124"
+      "firstSentenceId": "l1-b5-s2124",
+      "infoSentence": "Steht vor einem Nomen und bedeutet „jeder, alle“."
     },
     {
       "id": "word-b5-4172913",
@@ -183892,7 +184870,8 @@
           "transliteration": "gin"
         }
       ],
-      "firstSentenceId": "l1-b5-s2284"
+      "firstSentenceId": "l1-b5-s2284",
+      "infoSentence": "Mit น่า-: sieht appetitlich aus oder macht Lust zu essen."
     },
     {
       "id": "word-b5-7006574",
@@ -183925,7 +184904,8 @@
           "transliteration": "nùk"
         }
       ],
-      "firstSentenceId": "l1-b5-s2329"
+      "firstSentenceId": "l1-b5-s2329",
+      "infoSentence": "Mit น่า-: sieht nach Spaß aus oder klingt unterhaltsam."
     },
     {
       "id": "word-b5-6327148",
@@ -183956,7 +184936,8 @@
           "transliteration": "lay"
         }
       ],
-      "firstSentenceId": "l1-b5-s2328"
+      "firstSentenceId": "l1-b5-s2328",
+      "infoSentence": "Wörtlich „Meerwasser“."
     },
     {
       "id": "word-b5-8811647",
@@ -183983,6 +184964,7 @@
           "transliteration": "moong"
         }
       ],
+      "infoSentence": "Feste Zeitangabe für 13 Uhr.",
       "firstSentenceId": "l1-b5-s2052"
     },
     {
@@ -184012,7 +184994,8 @@
           "transliteration": "thêet"
         }
       ],
-      "firstSentenceId": "l1-b5-s2343"
+      "firstSentenceId": "l1-b5-s2343",
+      "infoSentence": "Bezeichnet ein Land oder einen Staat."
     },
     {
       "id": "word-b5-4555695",
@@ -184029,7 +185012,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2168"
+      "firstSentenceId": "l1-b5-s2168",
+      "infoSentence": "Bezeichnet ein Schild, Zeichen oder Hinweisschild."
     },
     {
       "id": "word-b5-5941182",
@@ -184058,7 +185042,8 @@
           "transliteration": "mái"
         }
       ],
-      "firstSentenceId": "l1-b5-s2285"
+      "firstSentenceId": "l1-b5-s2285",
+      "infoSentence": "Sammelbegriff für Obst und Früchte."
     },
     {
       "id": "word-b5-3309775",
@@ -184077,6 +185062,7 @@
           "contextExamples": []
         }
       },
+      "infoSentence": "Bedeutet vorbeigehen, passieren oder durch etwas hindurchgehen.",
       "firstSentenceId": "l1-b5-s2093"
     },
     {
@@ -184104,7 +185090,8 @@
           "transliteration": "dtòk"
         }
       ],
-      "firstSentenceId": "l1-b5-s2143"
+      "firstSentenceId": "l1-b5-s2143",
+      "infoSentence": "Wörtlich „Regen fällt“; die übliche Aussage „es regnet“."
     },
     {
       "id": "word-b5-4674978",
@@ -184123,7 +185110,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2441"
+      "firstSentenceId": "l1-b5-s2441",
+      "infoSentence": "Bezeichnet ein Ufer, eine Seite oder einen Rand."
     },
     {
       "id": "word-b5-1518593",
@@ -184152,7 +185140,8 @@
           "transliteration": "dii"
         }
       ],
-      "firstSentenceId": "l1-b5-s2093"
+      "firstSentenceId": "l1-b5-s2093",
+      "infoSentence": "Bedeutet genau passend, gerade recht oder zufällig."
     },
     {
       "id": "word-b5-3609886",
@@ -184171,6 +185160,7 @@
           "contextExamples": []
         }
       },
+      "infoSentence": "Bedeutet wehen oder fächeln; etwa Wind oder ein Ventilator.",
       "firstSentenceId": "l1-b5-s2236"
     },
     {
@@ -184188,7 +185178,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2324"
+      "firstSentenceId": "l1-b5-s2324",
+      "infoSentence": "Name der thailändischen Küstenstadt Pattaya."
     },
     {
       "id": "word-b5-8473318",
@@ -184217,7 +185208,8 @@
           "transliteration": "thʉ̌ng"
         }
       ],
-      "firstSentenceId": "l1-b5-s2034"
+      "firstSentenceId": "l1-b5-s2034",
+      "infoSentence": "Bedeutet ankommen oder eintreffen."
     },
     {
       "id": "word-b5-6769116",
@@ -184244,7 +185236,8 @@
           "transliteration": "yaao"
         }
       ],
-      "firstSentenceId": "l1-b5-s2410"
+      "firstSentenceId": "l1-b5-s2410",
+      "infoSentence": "Wiederholung macht die Beschreibung weich: schön lang oder eine ganze Weile."
     },
     {
       "id": "word-b5-1960739",
@@ -184277,7 +185270,8 @@
           "transliteration": "thùuk"
         }
       ],
-      "firstSentenceId": "l1-b5-s2244"
+      "firstSentenceId": "l1-b5-s2244",
+      "infoSentence": "Wörtlich „Preis billig“; günstig oder preiswert."
     },
     {
       "id": "word-b5-8201970",
@@ -184306,6 +185300,7 @@
           "transliteration": "ngaan"
         }
       ],
+      "infoSentence": "Bedeutet zusammenzuarbeiten; kann auch Mitarbeit bei einer Veranstaltung meinen.",
       "firstSentenceId": "l1-b5-s2308"
     },
     {
@@ -184323,7 +185318,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2236"
+      "firstSentenceId": "l1-b5-s2236",
+      "infoSentence": "Das allgemeine Wort für Wind."
     },
     {
       "id": "word-b5-2633110",
@@ -184352,7 +185348,8 @@
           "transliteration": "ìat"
         }
       ],
-      "firstSentenceId": "l1-b5-s2429"
+      "firstSentenceId": "l1-b5-s2429",
+      "infoSentence": "Beschreibt etwas als detailliert, fein oder genau."
     },
     {
       "id": "word-b5-212423",
@@ -184371,7 +185368,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2300"
+      "firstSentenceId": "l1-b5-s2300",
+      "infoSentence": "Umgangssprachlich: entschlossen loslegen, anpacken oder sich hineinstürzen."
     },
     {
       "id": "word-b5-8958207",
@@ -184398,6 +185396,7 @@
           "transliteration": "phrá"
         }
       ],
+      "infoSentence": "Buddhistischer Feiertag nach dem Mondkalender; viele Menschen besuchen dann den Tempel.",
       "firstSentenceId": "l1-b5-s2336"
     },
     {
@@ -184427,7 +185426,8 @@
           "transliteration": "yùt"
         }
       ],
-      "firstSentenceId": "l1-b5-s2041"
+      "firstSentenceId": "l1-b5-s2041",
+      "infoSentence": "Bezeichnet einen freien Tag oder Feiertag."
     },
     {
       "id": "word-b5-8266727",
@@ -184456,7 +185456,8 @@
           "transliteration": "lǎng"
         }
       ],
-      "firstSentenceId": "l1-b5-s2239"
+      "firstSentenceId": "l1-b5-s2239",
+      "infoSentence": "Bedeutet ein andermal oder später."
     },
     {
       "id": "word-b5-4400668",
@@ -184483,6 +185484,7 @@
           "transliteration": "sǎo"
         }
       ],
+      "infoSentence": "Der Wochentag Samstag.",
       "firstSentenceId": "l1-b5-s2381"
     },
     {
@@ -184502,7 +185504,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2278"
+      "firstSentenceId": "l1-b5-s2278",
+      "infoSentence": "Bedeutet hinlegen, hinstellen oder platzieren."
     },
     {
       "id": "word-b5-5242301",
@@ -184521,7 +185524,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2235"
+      "firstSentenceId": "l1-b5-s2235",
+      "infoSentence": "Lehnwort für Aussicht oder Ausblick, besonders bei Landschaften."
     },
     {
       "id": "word-b5-3204570",
@@ -184538,6 +185542,7 @@
           "contextExamples": []
         }
       },
+      "infoSentence": "Ausruf des Erstaunens oder der Begeisterung: „wow!“.",
       "firstSentenceId": "l1-b5-s2286"
     },
     {
@@ -184567,6 +185572,7 @@
           "transliteration": "ngòp"
         }
       ],
+      "infoSentence": "Beschreibt Ruhe, Frieden oder Gelassenheit.",
       "firstSentenceId": "l1-b5-s2326"
     },
     {
@@ -184594,7 +185600,8 @@
           "transliteration": "yǎam"
         }
       ],
-      "firstSentenceId": "l1-b5-s2223"
+      "firstSentenceId": "l1-b5-s2223",
+      "infoSentence": "Historischer und poetischer Name für Thailand; auch Teil vieler Eigennamen."
     },
     {
       "id": "word-b5-284105",
@@ -184621,7 +185628,8 @@
           "transliteration": "sǔai"
         }
       ],
-      "firstSentenceId": "l1-b5-s2377"
+      "firstSentenceId": "l1-b5-s2377",
+      "infoSentence": "Wiederholung mildert oder betont „schön“: „schön, hübsch“."
     },
     {
       "id": "word-b5-9297718",
@@ -184640,6 +185648,7 @@
           "contextExamples": []
         }
       },
+      "infoSentence": "Unbestimmte Mengenangabe: etwa, ungefähr; auch „ein(e)“.",
       "firstSentenceId": "l1-b5-s2063"
     },
     {
@@ -184659,7 +185668,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2422"
+      "firstSentenceId": "l1-b5-s2422",
+      "infoSentence": "Bedeutet Ende oder äußerster Grad; nach Adjektiven oft „sehr/äußerst“."
     },
     {
       "id": "word-b5-8481267",
@@ -184678,7 +185688,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2412"
+      "firstSentenceId": "l1-b5-s2412",
+      "infoSentence": "Bedeutet sich verirren oder den Überblick über den Weg verlieren."
     },
     {
       "id": "word-b5-1036489",
@@ -184707,7 +185718,8 @@
           "transliteration": "lǎai"
         }
       ],
-      "firstSentenceId": "l1-b5-s2396"
+      "firstSentenceId": "l1-b5-s2396",
+      "infoSentence": "Wiederholung betont eine größere, aber nicht genaue Menge: viele, mehrere."
     },
     {
       "id": "word-b5-6741316",
@@ -184734,7 +185746,8 @@
           "transliteration": "khâao"
         }
       ],
-      "firstSentenceId": "l1-b5-s2368"
+      "firstSentenceId": "l1-b5-s2368",
+      "infoSentence": "Wörtlich „Hunger auf Reis“; bedeutet Hunger haben."
     },
     {
       "id": "word-b5-8436652",
@@ -184763,6 +185776,7 @@
           "transliteration": "náam"
         }
       ],
+      "infoSentence": "Wörtlich „Wasserraum“; Toilette oder Badezimmer.",
       "firstSentenceId": "l1-b5-s2123"
     },
     {
@@ -184782,7 +185796,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2094"
+      "firstSentenceId": "l1-b5-s2094",
+      "infoSentence": "Bedeutet hinausgehen, herauskommen oder losfahren; die Ergänzung bestimmt die Richtung."
     },
     {
       "id": "word-b5-8186029",
@@ -184799,6 +185814,7 @@
           "contextExamples": []
         }
       },
+      "infoSentence": "Lehnwort für Kuchen oder Torte.",
       "firstSentenceId": "l1-b5-s2067"
     },
     {
@@ -184830,7 +185846,8 @@
           "transliteration": "yaa"
         }
       ],
-      "firstSentenceId": "l1-b5-s2234"
+      "firstSentenceId": "l1-b5-s2234",
+      "infoSentence": "Name des wichtigsten Flusses durch Bangkok."
     },
     {
       "id": "word-b5-1438983",
@@ -184857,7 +185874,8 @@
           "transliteration": "níi"
         }
       ],
-      "firstSentenceId": "l1-b5-s2331"
+      "firstSentenceId": "l1-b5-s2331",
+      "infoSentence": "Zeitangabe für den heutigen Morgen."
     },
     {
       "id": "word-b5-6591440",
@@ -184886,6 +185904,7 @@
           "transliteration": "thaang"
         }
       ],
+      "infoSentence": "Bedeutet reisen oder unterwegs sein.",
       "firstSentenceId": "l1-b5-s2049"
     },
     {
@@ -184913,7 +185932,8 @@
           "transliteration": "hùang"
         }
       ],
-      "firstSentenceId": "l1-b5-s2090"
+      "firstSentenceId": "l1-b5-s2090",
+      "infoSentence": "Bedeutet, sich um jemanden oder etwas Sorgen zu machen."
     },
     {
       "id": "word-b5-7761131",
@@ -184930,6 +185950,7 @@
           "contextExamples": []
         }
       },
+      "infoSentence": "Der Ländername Deutschland.",
       "firstSentenceId": "l1-b5-s2033"
     },
     {
@@ -184959,7 +185980,8 @@
           "transliteration": "rɔ́ɔi"
         }
       ],
-      "firstSentenceId": "l1-b5-s2270"
+      "firstSentenceId": "l1-b5-s2270",
+      "infoSentence": "Bedeutet ordentlich, fertig oder in Ordnung; die genaue Bedeutung ist kontextabhängig."
     },
     {
       "id": "word-b5-136509",
@@ -184978,7 +186000,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2315"
+      "firstSentenceId": "l1-b5-s2315",
+      "infoSentence": "Bedeutet passend, geeignet oder angemessen."
     },
     {
       "id": "word-b5-6426173",
@@ -185007,6 +186030,7 @@
           "transliteration": "dəəm"
         }
       ],
+      "infoSentence": "Bedeutet wie früher oder wie gewohnt: unverändert.",
       "firstSentenceId": "l1-b5-s2084"
     },
     {
@@ -185028,7 +186052,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2133"
+      "firstSentenceId": "l1-b5-s2133",
+      "infoSentence": "Bezeichnet eine Reihe oder Schlange, aber auch eine Gegend oder Nähe."
     },
     {
       "id": "word-b5-944416",
@@ -185055,7 +186080,8 @@
           "transliteration": "náam"
         }
       ],
-      "firstSentenceId": "l1-b5-s2234"
+      "firstSentenceId": "l1-b5-s2234",
+      "infoSentence": "Wörtlich „Mutterwasser“; das allgemeine Wort für Fluss."
     },
     {
       "id": "word-b5-8216278",
@@ -185074,7 +186100,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2407"
+      "firstSentenceId": "l1-b5-s2407",
+      "infoSentence": "Beschreibt etwas als schlecht, unerquicklich oder unangenehm."
     },
     {
       "id": "word-b5-7272690",
@@ -185091,7 +186118,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2164"
+      "firstSentenceId": "l1-b5-s2164",
+      "infoSentence": "Zeigt auf etwas weit Entferntes: dort drüben."
     },
     {
       "id": "word-b5-9542650",
@@ -185108,6 +186136,7 @@
           "contextExamples": []
         }
       },
+      "infoSentence": "Zeigt auf etwas weiter Entferntes: jener, jene, jenes dort.",
       "firstSentenceId": "l1-b5-s2443"
     },
     {
@@ -185137,7 +186166,8 @@
           "transliteration": "dii"
         }
       ],
-      "firstSentenceId": "l1-b5-s2265"
+      "firstSentenceId": "l1-b5-s2265",
+      "infoSentence": "Wörtlich „gutes Herz“; beschreibt einen freundlichen, hilfsbereiten Menschen."
     },
     {
       "id": "word-b5-51497",
@@ -185170,6 +186200,7 @@
           "transliteration": "laa"
         }
       ],
+      "infoSentence": "Bedeutet, Zeit zu benötigen oder zu dauern.",
       "firstSentenceId": "l1-b5-s2154"
     },
     {
@@ -185189,7 +186220,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2328"
+      "firstSentenceId": "l1-b5-s2328",
+      "infoSentence": "Beschreibt klares, durchsichtiges oder reines Wasser bzw. Material."
     },
     {
       "id": "word-b5-8189029",
@@ -185220,6 +186252,7 @@
           "transliteration": "thîi"
         }
       ],
+      "infoSentence": "Verstärkt eine Aufforderung oder Handlung: „ganz/voll und ganz“.",
       "firstSentenceId": "l1-b5-s2499"
     },
     {
@@ -185249,6 +186282,7 @@
           "transliteration": "gìi"
         }
       ],
+      "infoSentence": "Bedeutet nur wenige oder nicht viele; steht vor einem Nomen.",
       "firstSentenceId": "l1-b5-s2134"
     },
     {
@@ -185278,6 +186312,7 @@
           "transliteration": "khɔ̂i"
         }
       ],
+      "infoSentence": "Schwächt eine Verneinung ab: „nicht besonders, nicht oft, kaum“.",
       "firstSentenceId": "l1-b5-s2202"
     },
     {
@@ -185307,7 +186342,8 @@
           "transliteration": "jai"
         }
       ],
-      "firstSentenceId": "l1-b5-s2092"
+      "firstSentenceId": "l1-b5-s2092",
+      "infoSentence": "Beschreibt Rücksicht aus Sorge, anderen zur Last zu fallen; typisch thailändisches Höflichkeitskonzept."
     },
     {
       "id": "word-b5-2021683",
@@ -185334,7 +186370,8 @@
           "transliteration": "dʉ̀ʉm"
         }
       ],
-      "firstSentenceId": "l1-b5-s2132"
+      "firstSentenceId": "l1-b5-s2132",
+      "infoSentence": "Sammelbegriff für Getränke."
     },
     {
       "id": "word-b5-8419421",
@@ -185361,7 +186398,8 @@
           "transliteration": "khâam"
         }
       ],
-      "firstSentenceId": "l1-b5-s2188"
+      "firstSentenceId": "l1-b5-s2188",
+      "infoSentence": "Bedeutet gegenüber oder auf der anderen Seite."
     },
     {
       "id": "word-b5-4623965",
@@ -185390,7 +186428,8 @@
           "transliteration": "bpai"
         }
       ],
-      "firstSentenceId": "l1-b5-s2247"
+      "firstSentenceId": "l1-b5-s2247",
+      "infoSentence": "Bedeutet zu sehr oder übermäßig; steht nach dem, was über das Maß geht."
     },
     {
       "id": "word-b5-7548244",
@@ -185409,7 +186448,8 @@
           "contextExamples": []
         }
       },
-      "firstSentenceId": "l1-b5-s2298"
+      "firstSentenceId": "l1-b5-s2298",
+      "infoSentence": "Bedeutet notieren, aufschreiben oder einen Vermerk machen."
     },
     {
       "id": "word-b5-6104404",
@@ -185438,7 +186478,8 @@
           "transliteration": "níi"
         }
       ],
-      "firstSentenceId": "l1-b5-s2325"
+      "firstSentenceId": "l1-b5-s2325",
+      "infoSentence": "Zeitangabe für die gegenwärtige Phase: derzeit, in letzter Zeit."
     },
     {
       "id": "word-b5-7506939",
@@ -185467,7 +186508,8 @@
           "transliteration": "pùn"
         }
       ],
-      "firstSentenceId": "l1-b5-s2344"
+      "firstSentenceId": "l1-b5-s2344",
+      "infoSentence": "Der Ländername Japan; als Adjektiv auch „japanisch“."
     },
     {
       "id": "word-b5-7109591",
@@ -185496,7 +186538,8 @@
           "transliteration": "dâi"
         }
       ],
-      "firstSentenceId": "l1-b5-s2360"
+      "firstSentenceId": "l1-b5-s2360",
+      "infoSentence": "Verbindet eine beabsichtigte Handlung mit ihrem Zweck oder Ergebnis: „damit/sodass“."
     }
   ],
   "archivedIds": []
