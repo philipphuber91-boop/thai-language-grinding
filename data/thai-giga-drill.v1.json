@@ -49531,35 +49531,40 @@
           "grammarFocus": "อยู่ · Ort und laufende Handlung",
           "contentStatus": "complete",
           "introduction": {
-            "description": "Die gelieferten Sätze fuehren das Muster in Ortsangaben und laufenden Handlungen durch echte Gespraechssituationen.",
+            "description": "อยู่ hat zwei zentrale Funktionen: Es gibt den Aufenthaltsort an (sich befinden / sein) oder markiert eine laufende Handlung (gerade tun / am Tun sein).",
             "example": {
-              "thai": "คุณอยู่ที่ไหน",
-              "transliteration": "khun yùu thîi-nǎi",
-              "translation": "Wo bist du?"
+              "thai": "ผมกำลังทำกาแฟอยู่",
+              "transliteration": "phǒm gam-lang tham gaa-fɛɛ yùu",
+              "translation": "Ich mache gerade Kaffee."
             },
             "parts": [
               {
-                "thai": "คุณ",
-                "transliteration": "khun",
-                "translation": "du / Sie"
+                "thai": "ผม",
+                "transliteration": "phǒm",
+                "translation": "ich"
+              },
+              {
+                "thai": "กำลัง",
+                "transliteration": "gam-lang",
+                "translation": "gerade dabei"
+              },
+              {
+                "thai": "ทำกาแฟ",
+                "transliteration": "tham gaa-fɛɛ",
+                "translation": "Kaffee machen"
               },
               {
                 "thai": "อยู่",
                 "transliteration": "yùu",
-                "translation": "sein / sich befinden"
-              },
-              {
-                "thai": "ที่ไหน",
-                "transliteration": "thîi-nǎi",
-                "translation": "wo"
+                "translation": "am Tun sein"
               }
             ],
             "assembly": {
-              "thai": "คุณ + อยู่ + ที่ไหน",
-              "transliteration": "khun + yùu + thîi-nǎi",
-              "translation": "du / Sie + sein / sich befinden + wo"
+              "thai": "ผม + กำลัง + ทำกาแฟ + อยู่",
+              "transliteration": "phǒm + gam-lang + tham gaa-fɛɛ + yùu",
+              "translation": "Ich + gerade dabei + Kaffee machen + am Tun sein"
             },
-            "warning": "Der zentrale Punkt dieses Bosses war nicht, 500-mal dieselbe Konstruktion auswendig zu lernen, sondern อยู่ in echten Gesprächssituationen wieder und wieder zu erkennen, bis Ort und laufende Handlung nicht mehr künstlich getrennt werden müssen."
+            "warning": "Grundmuster 1 (Ort): Subjekt + อยู่ + Ort (z. B. ผมอยู่ที่บ้าน = Ich bin zu Hause). Grundmuster 2 (Verlaufsform): Subjekt + (กำลัง) + Verb + อยู่ (z. B. ผมกินข้าวอยู่ = Ich esse gerade)."
           },
           "blocks": [
             {
@@ -53936,58 +53941,37 @@
                 }
               ],
               "midpointReminder": {
-                "title": "💎 REMINDER · 1050",
-                "message": "Neue Wörter dieses 50-Satz-Fensters",
-                "lead": "Bis hierhin haben wir อยู่ zuerst als „sich befinden / irgendwo sein“ aufgebaut: Danach kommt die zweite Funktion dazu:",
+                "title": "💎 REMINDER · SÄTZE 1001–1050",
+                "message": "Aufenthaltsort & erste Verlaufsformen",
+                "lead": "Was du gerade gelernt hast",
                 "sections": [
                   {
-                    "title": "Neue Wörter dieses 50-Satz-Fensters",
-                    "note": "Bis hierhin haben wir อยู่ zuerst als „sich befinden / irgendwo sein“ aufgebaut: Danach kommt die zweite Funktion dazu:",
+                    "title": "Neue Wörter",
                     "words": [
-                      {
-                        "thai": "อยู่",
-                        "transliteration": "yùu",
-                        "translation": "sich befinden / sein / gerade tun"
-                      },
-                      {
-                        "thai": "ที่ไหน",
-                        "transliteration": "thîi-nǎi",
-                        "translation": "wo"
-                      },
-                      {
-                        "thai": "ข้างนอก",
-                        "transliteration": "khâang-nɔ̂ɔk",
-                        "translation": "draußen"
-                      },
                       {
                         "thai": "ข้างใน",
                         "transliteration": "khâang-nai",
                         "translation": "drinnen"
                       },
                       {
-                        "thai": "ใน",
-                        "transliteration": "nai",
-                        "translation": "in / innerhalb"
+                        "thai": "กำลัง",
+                        "transliteration": "gam-lang",
+                        "translation": "gerade dabei sein"
                       },
                       {
-                        "thai": "กับ",
-                        "transliteration": "gàp",
-                        "translation": "mit"
+                        "thai": "เสร็จ",
+                        "transliteration": "sèt",
+                        "translation": "fertig"
                       },
                       {
-                        "thai": "คนเดียว",
-                        "transliteration": "khon-diao",
-                        "translation": "allein"
+                        "thai": "ช่วย",
+                        "transliteration": "chûai",
+                        "translation": "helfen"
                       },
                       {
-                        "thai": "ตอนนี้",
-                        "transliteration": "dton-níi",
-                        "translation": "jetzt / gerade"
-                      },
-                      {
-                        "thai": "ห้อง",
-                        "transliteration": "hɔ̂ng",
-                        "translation": "Zimmer"
+                        "thai": "ใกล้",
+                        "transliteration": "glâi",
+                        "translation": "nah / in der Nähe"
                       },
                       {
                         "thai": "ดูทีวี",
@@ -54002,37 +53986,94 @@
                       {
                         "thai": "หมดเลย",
                         "transliteration": "mòt loei",
-                        "translation": "alle / vollständig"
+                        "translation": "alle / komplett"
                       },
                       {
                         "thai": "โทรหา",
                         "transliteration": "thoo hǎa",
-                        "translation": "jemanden anrufen"
+                        "translation": "anrufen"
+                      },
+                      {
+                        "thai": "โทร",
+                        "transliteration": "thoo",
+                        "translation": "anrufen"
+                      },
+                      {
+                        "thai": "ดู",
+                        "transliteration": "duu",
+                        "translation": "schauen / sehen"
+                      },
+                      {
+                        "thai": "สิ",
+                        "transliteration": "sì",
+                        "translation": "doch / mach ruhig"
                       },
                       {
                         "thai": "รับ",
                         "transliteration": "ráp",
-                        "translation": "annehmen / entgegennehmen"
+                        "translation": "rangehen / annehmen"
                       },
                       {
-                        "thai": "ใกล้",
-                        "transliteration": "glâi",
-                        "translation": "nah"
+                        "thai": "ที่ทำงาน",
+                        "transliteration": "thîi tham-ngaan",
+                        "translation": "bei der Arbeit"
+                      },
+                      {
+                        "thai": "ไว้",
+                        "transliteration": "wái",
+                        "translation": "für später / lassen"
+                      },
+                      {
+                        "thai": "ใกล้ๆ",
+                        "transliteration": "glâi-glâi",
+                        "translation": "ganz in der Nähe"
                       },
                       {
                         "thai": "ตรงนั้น",
                         "transliteration": "dtrong nán",
                         "translation": "dort drüben"
+                      }
+                    ],
+                    "note": "Orte benennen (drinnen, bei der Arbeit) und Handlungen im Moment beschreiben (กำลัง...อยู่)."
+                  }
+                ],
+                "patternLead": "Wichtiges Muster",
+                "pattern": {
+                  "thai": "คุณทำอะไรอยู่",
+                  "transliteration": "khun tham à-rai yùu",
+                  "translation": "Was machst du gerade?"
+                },
+                "discoveries": [
+                  {
+                    "thai": "ผมกำลังทำกาแฟอยู่",
+                    "transliteration": "phǒm gam-lang tham gaa-fɛɛ yùu",
+                    "translation": "Ich mache gerade Kaffee."
+                  },
+                  {
+                    "thai": "เขาอยู่ข้างใน",
+                    "transliteration": "kǎo yùu khâang-nai",
+                    "translation": "Er ist drinnen."
+                  }
+                ],
+                "closing": "อยู่ am Satzende zeigt eine laufende Handlung an (Was machst du gerade? - Ich mache gerade Kaffee)."
+              },
+              "completion": {
+                "title": "🏆 1100 / 1500 · FOUNDATION BLOCK 1 COMPLETE",
+                "sentenceRange": "1001–1100",
+                "progress": "Orte lokalisieren, Verlaufsformen & Rückfragen mit หรือเปล่า",
+                "sections": [
+                  {
+                    "title": "Neue Wörter (Sätze 1051–1100)",
+                    "words": [
+                      {
+                        "thai": "ตรง",
+                        "transliteration": "dtrong",
+                        "translation": "an / genau"
                       },
                       {
-                        "thai": "ร้านอาหาร",
-                        "transliteration": "ráan aa-hǎan",
-                        "translation": "Restaurant"
-                      },
-                      {
-                        "thai": "นั่ง",
-                        "transliteration": "nâng",
-                        "translation": "sitzen"
+                        "thai": "โต๊ะ",
+                        "transliteration": "tó",
+                        "translation": "Tisch"
                       },
                       {
                         "thai": "ข้างหน้า",
@@ -54047,7 +54088,7 @@
                       {
                         "thai": "คืนนี้",
                         "transliteration": "kʉʉn-níi",
-                        "translation": "heute Nacht / heute Abend"
+                        "translation": "heute Abend"
                       },
                       {
                         "thai": "กลัว",
@@ -54055,24 +54096,9 @@
                         "translation": "Angst haben"
                       },
                       {
-                        "thai": "โทรศัพท์",
-                        "transliteration": "thoo-rá-sàp",
-                        "translation": "Telefon / Handy"
-                      },
-                      {
-                        "thai": "ที่ทำงาน",
-                        "transliteration": "thîi tham-ngaan",
-                        "translation": "Arbeitsplatz / Arbeit"
-                      },
-                      {
-                        "thai": "งาน",
-                        "transliteration": "ngaan",
-                        "translation": "Arbeit"
-                      },
-                      {
                         "thai": "กวน",
                         "transliteration": "guan",
-                        "translation": "stören / nerven"
+                        "translation": "stören"
                       },
                       {
                         "thai": "ในรถ",
@@ -54080,79 +54106,27 @@
                         "translation": "im Auto"
                       },
                       {
-                        "thai": "รอ",
-                        "transliteration": "rɔɔ",
-                        "translation": "warten"
-                      },
-                      {
                         "thai": "หรือเปล่า",
                         "transliteration": "rʉ̌ʉ-bplào",
-                        "translation": "oder? / etwa?"
-                      },
-                      {
-                        "thai": "ด้วย",
-                        "transliteration": "dûai",
-                        "translation": "auch / ebenfalls"
-                      },
-                      {
-                        "thai": "ดึก",
-                        "transliteration": "dʉ̀k",
-                        "translation": "spät"
-                      },
-                      {
-                        "thai": "ง่วง",
-                        "transliteration": "ngûang",
-                        "translation": "müde / schläfrig"
+                        "translation": "oder nicht? / etwa?"
                       }
-                    ]
+                    ],
+                    "note": "Konkrete Plätze am Tisch, vor dem Haus und Rückfragen im Gespräch."
                   }
                 ],
-                "patternLead": "Muster aus dem gelieferten Abschnitt",
-                "pattern": {
-                  "thai": "คุณอยู่ที่ไหน",
-                  "transliteration": "khun yùu thîi-nǎi",
-                  "translation": "Wo bist du?"
-                },
-                "discoveries": [
-                  {
-                    "thai": "ผมอยู่ที่บ้าน",
-                    "transliteration": "phǒm yùu thîi bâan",
-                    "translation": "Ich bin zu Hause."
-                  },
-                  {
-                    "thai": "ฉันอยู่ข้างนอก",
-                    "transliteration": "chǎn yùu khâang-nɔ̂ɔk",
-                    "translation": "Ich bin draußen."
-                  }
-                ],
-                "closing": "Danach kommt die zweite Funktion dazu:"
-              },
-              "completion": {
-                "title": "FOUNDATION BLOCK 1 COMPLETE",
-                "heading": "FOUNDATION BLOCK COMPLETE",
-                "message": "FOUNDATION BLOCK 1 COMPLETE",
-                "lead": "Kontext aus den letzten 50 Sätzen",
-                "wordSectionTitle": "Neue Wörter aus den letzten 50 Sätzen",
-                "words": [],
-                "progress": "Die letzten 50 Sätze fuehren die gelieferten Muster im Gespraech weiter.",
-                "questionLead": "Frage aus dem gelieferten Abschnitt",
+                "questionLead": "Zentrales Fragemuster",
                 "question": {
-                  "thai": "คุณอยู่ไหนแล้ว",
-                  "transliteration": "khun yùu nǎi lɛ́ɛo",
-                  "translation": "Wo bist du jetzt?"
+                  "thai": "อยู่คนเดียวหรือเปล่า",
+                  "transliteration": "yùu khon-diao rʉ̌ʉ-bplào",
+                  "translation": "Bist du allein oder nicht?"
                 },
-                "answerLead": "Passende Antwort aus dem gelieferten Abschnitt",
+                "answerLead": "Echte Reaktion",
                 "answer": {
-                  "thai": "อยู่ร้านอาหาร",
-                  "transliteration": "yùu ráan aa-hǎan",
-                  "translation": "Ich bin im Restaurant."
+                  "thai": "ไม่อยู่คนเดียว มีเพื่อนอยู่ด้วย",
+                  "transliteration": "mâi yùu khon-diao mii phʉ̂an yùu dûai",
+                  "translation": "Nicht allein, ein Freund ist auch da."
                 },
-                "alternativeLead": "Weitere Variation aus dem gelieferten Abschnitt",
-                "alternative": {
-                  "thai": "กำลังทำงานอยู่",
-                  "transliteration": "gam-lang tham-ngaan yùu",
-                  "translation": "Ich arbeite gerade."
-                }
+                "closing": "1.100 Sätze: Du beherrschst die beiden Grundpfeiler von อยู่ – den Aufenthaltsort und die laufende Handlung."
               }
             },
             {
@@ -58538,13 +58512,12 @@
                 }
               ],
               "midpointReminder": {
-                "title": "💎 REMINDER · 1150",
-                "message": "Neue Wörter dieses 50-Satz-Fensters",
-                "lead": "อยู่ sitzt inzwischen in mehreren natürlichen Mustern:",
+                "title": "💎 REMINDER · SÄTZE 1101–1150",
+                "message": "Räumliche Ebenen: oben & unten",
+                "lead": "Was du gerade gelernt hast",
                 "sections": [
                   {
-                    "title": "Neue Wörter dieses 50-Satz-Fensters",
-                    "note": "อยู่ sitzt inzwischen in mehreren natürlichen Mustern:",
+                    "title": "Neue Wörter",
                     "words": [
                       {
                         "thai": "ข้างบน",
@@ -58559,22 +58532,7 @@
                       {
                         "thai": "ลง",
                         "transliteration": "long",
-                        "translation": "hinunter / herunter"
-                      },
-                      {
-                        "thai": "เดิน",
-                        "transliteration": "dəən",
-                        "translation": "gehen / laufen"
-                      },
-                      {
-                        "thai": "ฝน",
-                        "transliteration": "fǒn",
-                        "translation": "Regen"
-                      },
-                      {
-                        "thai": "ตก",
-                        "transliteration": "dtòk",
-                        "translation": "fallen"
+                        "translation": "hinunter"
                       },
                       {
                         "thai": "ยืน",
@@ -58582,170 +58540,99 @@
                         "translation": "stehen"
                       },
                       {
-                        "thai": "ทำไม",
-                        "transliteration": "tham-mai",
-                        "translation": "warum"
-                      },
-                      {
-                        "thai": "สิ",
-                        "transliteration": "sì",
-                        "translation": "doch / mach ruhig"
-                      },
-                      {
-                        "thai": "เถอะ",
-                        "transliteration": "thə̀",
-                        "translation": "ruhig / nur zu"
-                      },
-                      {
                         "thai": "เข้าไป",
                         "transliteration": "khâo bpai",
                         "translation": "hineingehen"
-                      },
-                      {
-                        "thai": "จะ",
-                        "transliteration": "jà",
-                        "translation": "werden / vorhaben zu"
-                      },
-                      {
-                        "thai": "ยัง",
-                        "transliteration": "yang",
-                        "translation": "noch / immer noch"
                       }
-                    ]
+                    ],
+                    "note": "Stockwerke und Positionen im Gebäude (oben sein, unten warten)."
                   }
                 ],
-                "patternLead": "Muster aus dem gelieferten Abschnitt",
+                "patternLead": "Wichtiges Muster",
                 "pattern": {
-                  "thai": "คุณอยู่ที่นี่เหรอ",
-                  "transliteration": "khun yùu thîi-nîi rǒ̌",
-                  "translation": "Bist du hier?"
+                  "thai": "เขาอยู่ข้างบนหรือข้างล่าง",
+                  "transliteration": "kǎo yùu khâang-bon rʉ̌ʉ khâang-lâang",
+                  "translation": "Ist er oben oder unten?"
                 },
                 "discoveries": [
                   {
-                    "thai": "เขาอยู่ที่นั่น",
-                    "transliteration": "kǎo yùu thîi-nân",
-                    "translation": "Er ist dort."
+                    "thai": "ฉันอยู่ข้างล่าง เดี๋ยวรออยู่ตรงนี้",
+                    "transliteration": "chǎn yùu khâang-lâang dǐao rɔɔ yùu dtrong níi",
+                    "translation": "Ich bin unten, ich warte hier."
                   },
                   {
-                    "thai": "อยู่ข้างบนเหรอ",
-                    "transliteration": "yùu khâang-bon rǒ̌",
-                    "translation": "Ist er oben?"
+                    "thai": "พ่ออยู่ข้างบนครับ",
+                    "transliteration": "phɔ̂ɔ yùu khâang-bon khráp",
+                    "translation": "Papa ist oben."
                   }
                 ],
-                "closing": "อยู่ sitzt inzwischen in mehreren natürlichen Mustern:"
+                "closing": "Mit ข้างบน (oben) und ข้างล่าง (unten) verortest du Personen in Gebäuden ganz einfach."
               },
               "completion": {
-                "title": "FOUNDATION BLOCK 2 COMPLETE",
-                "heading": "FOUNDATION BLOCK COMPLETE",
-                "message": "FOUNDATION BLOCK 2 COMPLETE",
-                "lead": "Kontext aus den letzten 50 Sätzen",
-                "wordSectionTitle": "Neue Wörter aus den letzten 50 Sätzen",
-                "words": [
+                "title": "🏆 1200 / 1500 · FOUNDATION BLOCK 2 COMPLETE",
+                "sentenceRange": "1101–1200",
+                "progress": "Positionen im Raum (vorne, hinten), Oder-Fragen & Alltag im Laden",
+                "sections": [
                   {
-                    "thai": "ร้านนี้",
-                    "transliteration": "ráan níi",
-                    "translation": "dieser Laden"
-                  },
-                  {
-                    "thai": "ของ",
-                    "transliteration": "khɔ̌ɔng",
-                    "translation": "Sache / Gegenstand"
-                  },
-                  {
-                    "thai": "ซื้อ",
-                    "transliteration": "sʉ́ʉ",
-                    "translation": "kaufen"
-                  },
-                  {
-                    "thai": "หน้า",
-                    "transliteration": "nâa",
-                    "translation": "vorne / vor"
-                  },
-                  {
-                    "thai": "หน้าบ้าน",
-                    "transliteration": "nâa bâan",
-                    "translation": "vor dem Haus"
-                  },
-                  {
-                    "thai": "หลัง",
-                    "transliteration": "lǎng",
-                    "translation": "hinten / hinter"
-                  },
-                  {
-                    "thai": "ข้างหลัง",
-                    "transliteration": "khâang-lǎng",
-                    "translation": "hinter"
-                  },
-                  {
-                    "thai": "หันมา",
-                    "transliteration": "hǎn maa",
-                    "translation": "sich umdrehen"
-                  },
-                  {
-                    "thai": "เห็น",
-                    "transliteration": "hěn",
-                    "translation": "sehen"
-                  },
-                  {
-                    "thai": "เหมือนกัน",
-                    "transliteration": "mʉ̌ʉan-kan",
-                    "translation": "ebenfalls / auch"
-                  },
-                  {
-                    "thai": "ต่อ",
-                    "transliteration": "dtɔ̀ɔ",
-                    "translation": "weiter"
-                  },
-                  {
-                    "thai": "แค่นั้น",
-                    "transliteration": "khɛ̂ɛ nán",
-                    "translation": "nur das"
-                  },
-                  {
-                    "thai": "ประมาณ",
-                    "transliteration": "bprà-maan",
-                    "translation": "ungefähr"
-                  },
-                  {
-                    "thai": "เบื่อ",
-                    "transliteration": "bʉ̀a",
-                    "translation": "gelangweilt sein"
-                  },
-                  {
-                    "thai": "สบาย",
-                    "transliteration": "sà-baai",
-                    "translation": "angenehm / gemütlich"
-                  },
-                  {
-                    "thai": "กลับมา",
-                    "transliteration": "glàp maa",
-                    "translation": "zurückkommen"
-                  },
-                  {
-                    "thai": "ฝันดี",
-                    "transliteration": "fǎn dii",
-                    "translation": "gute Nacht / schöne Träume"
+                    "title": "Neue Wörter (Sätze 1151–1200)",
+                    "words": [
+                      {
+                        "thai": "ร้านนี้",
+                        "transliteration": "ráan níi",
+                        "translation": "dieser Laden"
+                      },
+                      {
+                        "thai": "หรือ",
+                        "transliteration": "rʉ̌ʉ",
+                        "translation": "oder"
+                      },
+                      {
+                        "thai": "ข้างหลัง",
+                        "transliteration": "khâang-lǎng",
+                        "translation": "hinten / hinter"
+                      },
+                      {
+                        "thai": "หันมา",
+                        "transliteration": "hǎn maa",
+                        "translation": "umdrehen / hersehen"
+                      },
+                      {
+                        "thai": "แค่นั้น",
+                        "transliteration": "khɛ̂ɛ nán",
+                        "translation": "nur das"
+                      },
+                      {
+                        "thai": "เบื่อ",
+                        "transliteration": "bʉ̀a",
+                        "translation": "gelangweilt sein"
+                      },
+                      {
+                        "thai": "กลับมา",
+                        "transliteration": "glàp maa",
+                        "translation": "zurückkommen"
+                      },
+                      {
+                        "thai": "ฝันดี",
+                        "transliteration": "fǎn dii",
+                        "translation": "gute Nacht"
+                      }
+                    ],
+                    "note": "Auswahlfragen mit หรือ (oder) und Aktivitäten im Geschäft (กำลังดูของอยู่)."
                   }
                 ],
-                "progress": "Die letzten 50 Sätze fuehren die gelieferten Muster im Gespraech weiter.",
-                "questionLead": "Frage aus dem gelieferten Abschnitt",
+                "questionLead": "Zentrales Fragemuster",
                 "question": {
-                  "thai": "คุณอยู่ร้านไหน",
-                  "transliteration": "khun yùu ráan nǎi",
-                  "translation": "In welchem Laden bist du?"
+                  "thai": "คุณอยู่ข้างในหรือข้างนอก",
+                  "transliteration": "khun yùu khâang-nai rʉ̌ʉ khâang-nɔ̂ɔk",
+                  "translation": "Bist du drinnen oder draußen?"
                 },
-                "answerLead": "Passende Antwort aus dem gelieferten Abschnitt",
+                "answerLead": "Echte Reaktion",
                 "answer": {
-                  "thai": "อยู่ร้านนี้",
-                  "transliteration": "yùu ráan níi",
-                  "translation": "In diesem Laden."
+                  "thai": "อยู่ข้างใน กำลังดูของอยู่ครับ",
+                  "transliteration": "yùu khâang-nai gam-lang duu khɔ̂ɔng yùu khráp",
+                  "translation": "Drinnen, ich schaue mir gerade Sachen an."
                 },
-                "alternativeLead": "Weitere Variation aus dem gelieferten Abschnitt",
-                "alternative": {
-                  "thai": "กำลังดูอะไรอยู่",
-                  "transliteration": "gam-lang duu à-rai yùu",
-                  "translation": "Was schaust du gerade an?"
-                }
+                "closing": "1.200 Sätze gemeistert: Räumliche Orientierung im Raum und gleichzeitige Handlungen laufen nahtlos zusammen."
               }
             },
             {
@@ -63007,13 +62894,12 @@
                 }
               ],
               "midpointReminder": {
-                "title": "💎 REMINDER · 1250",
-                "message": "Neue Wörter dieses 50-Satz-Fensters",
-                "lead": "Jetzt kommt อยู่ immer häufiger ganz selbstverständlich in normalen Gesprächen vor: Wichtig ist dabei die Unterscheidung: Nicht jede laufende Handlung braucht zwingend กำลัง. Im gesprochenen Thai ist Verb + อยู่ selbst schon sehr natürlich.",
+                "title": "💎 REMINDER · SÄTZE 1201–1250",
+                "message": "Café, Park & Höflichkeit im Alltag",
+                "lead": "Was du gerade gelernt hast",
                 "sections": [
                   {
-                    "title": "Neue Wörter dieses 50-Satz-Fensters",
-                    "note": "Jetzt kommt อยู่ immer häufiger ganz selbstverständlich in normalen Gesprächen vor: Wichtig ist dabei die Unterscheidung: Nicht jede laufende Handlung braucht zwingend กำลัง. Im gesprochenen Thai ist Verb + อยู่ selbst schon sehr natürlich.",
+                    "title": "Neue Wörter",
                     "words": [
                       {
                         "thai": "ร้านกาแฟ",
@@ -63021,19 +62907,9 @@
                         "translation": "Café"
                       },
                       {
-                        "thai": "โต๊ะ",
-                        "transliteration": "tó",
-                        "translation": "Tisch"
-                      },
-                      {
                         "thai": "ข้างๆ",
                         "transliteration": "khâang-khâang",
                         "translation": "daneben"
-                      },
-                      {
-                        "thai": "บริษัท",
-                        "transliteration": "bɔɔ-rí-sàt",
-                        "translation": "Firma"
                       },
                       {
                         "thai": "บางคน",
@@ -63043,27 +62919,22 @@
                       {
                         "thai": "หัวหน้า",
                         "transliteration": "hǔa-nâa",
-                        "translation": "Chef / Vorgesetzter"
+                        "translation": "Chef"
                       },
                       {
-                        "thai": "ออกไป",
-                        "transliteration": "ɔ̀ɔk bpai",
-                        "translation": "hinausgehen / rausgehen"
+                        "thai": "แค่",
+                        "transliteration": "khɛ̂ɛ",
+                        "translation": "nur / einfach"
                       },
                       {
-                        "thai": "ไหน",
-                        "transliteration": "nǎi",
-                        "translation": "wo / welcher"
+                        "thai": "ระวัง",
+                        "transliteration": "rá-wang",
+                        "translation": "aufpassen"
                       },
                       {
-                        "thai": "ใคร",
-                        "transliteration": "khrai",
-                        "translation": "wer"
-                      },
-                      {
-                        "thai": "มี",
-                        "transliteration": "mii",
-                        "translation": "haben / es gibt"
+                        "thai": "หน่อย",
+                        "transliteration": "nɔ̀i",
+                        "translation": "mal kurz / bitte"
                       },
                       {
                         "thai": "สวน",
@@ -63074,157 +62945,96 @@
                         "thai": "อากาศ",
                         "transliteration": "aa-gàat",
                         "translation": "Wetter / Luft"
-                      },
-                      {
-                        "thai": "ระวัง",
-                        "transliteration": "rá-wang",
-                        "translation": "vorsichtig sein / aufpassen"
-                      },
-                      {
-                        "thai": "อย่า",
-                        "transliteration": "yàa",
-                        "translation": "nicht! / tu nicht..."
                       }
-                    ]
+                    ],
+                    "note": "Öffentliche Orte, Cafés, Parks und höfliche Bitten mit หน่อย."
                   }
                 ],
-                "patternLead": "Muster aus dem gelieferten Abschnitt",
+                "patternLead": "Wichtiges Muster",
                 "pattern": {
-                  "thai": "ใช่ค่ะ นั่งอยู่ข้างใน",
-                  "transliteration": "châi khâ nâng yùu khâang-nai",
-                  "translation": "Ja, ich sitze drinnen."
+                  "thai": "แฟนนั่งรออยู่ในร้านกาแฟ",
+                  "transliteration": "fɛɛn nâng rɔɔ yùu nai ráan gaa-fɛɛ",
+                  "translation": "Mein Partner sitzt und wartet im Café."
                 },
                 "discoveries": [
                   {
-                    "thai": "เขาอยู่ในห้อง",
-                    "transliteration": "kǎo yùu nai hɔ̂ng",
-                    "translation": "Er ist im Zimmer."
+                    "thai": "อากาศดี ไปเดินเล่นกัน",
+                    "transliteration": "aa-gàat dii bpai dəən lên kan",
+                    "translation": "Das Wetter ist gut, lass uns spazieren gehen."
                   },
                   {
-                    "thai": "คุณอยู่ร้านกาแฟเหรอ",
-                    "transliteration": "khun yùu ráan gaa-fɛɛ rǒ̌",
-                    "translation": "Bist du im Café?"
+                    "thai": "ระวังหน่อยนะ",
+                    "transliteration": "rá-wang nɔ̀i ná",
+                    "translation": "Pass bitte ein bisschen auf!"
                   }
                 ],
-                "closing": "Nicht jede laufende Handlung braucht zwingend กำลัง. Im gesprochenen Thai ist Verb + อยู่ selbst schon sehr natürlich."
+                "closing": "Du verbindest jetzt mühelos mehrere Verben mit Ort und Zustand (sitzen + warten + im Café)."
               },
               "completion": {
-                "title": "FOUNDATION BLOCK 3 COMPLETE",
-                "heading": "FOUNDATION BLOCK COMPLETE",
-                "message": "FOUNDATION BLOCK 3 COMPLETE",
-                "lead": "Kontext aus den letzten 50 Sätzen",
-                "wordSectionTitle": "Neue Wörter aus den letzten 50 Sätzen",
-                "words": [
+                "title": "🏆 1300 / 1500 · FOUNDATION BLOCK 3 COMPLETE",
+                "sentenceRange": "1251–1300",
+                "progress": "Unterwegs in der Stadt, Bushaltestelle & auf dem Heimweg",
+                "sections": [
                   {
-                    "thai": "พี่สาว",
-                    "transliteration": "phîi-sǎao",
-                    "translation": "ältere Schwester"
-                  },
-                  {
-                    "thai": "แต่งตัว",
-                    "transliteration": "dtɛ̀ng-dtua",
-                    "translation": "sich anziehen"
-                  },
-                  {
-                    "thai": "ครัว",
-                    "transliteration": "khrua",
-                    "translation": "Küche"
-                  },
-                  {
-                    "thai": "ป้ายรถ",
-                    "transliteration": "bpâai rót",
-                    "translation": "Haltestelle"
-                  },
-                  {
-                    "thai": "บน",
-                    "transliteration": "bon",
-                    "translation": "auf / oben auf"
-                  },
-                  {
-                    "thai": "รถ",
-                    "transliteration": "rót",
-                    "translation": "Fahrzeug / Auto / Bus"
-                  },
-                  {
-                    "thai": "โรงพยาบาล",
-                    "transliteration": "rooŋ-phá-yaa-baan",
-                    "translation": "Krankenhaus"
-                  },
-                  {
-                    "thai": "แฟน",
-                    "transliteration": "fɛɛn",
-                    "translation": "Partner/in"
-                  },
-                  {
-                    "thai": "เมือง",
-                    "transliteration": "mʉang",
-                    "translation": "Stadt"
-                  },
-                  {
-                    "thai": "มาก",
-                    "transliteration": "mâak",
-                    "translation": "sehr / viel"
-                  },
-                  {
-                    "thai": "เดินเล่น",
-                    "transliteration": "dəən lên",
-                    "translation": "spazieren gehen"
-                  },
-                  {
-                    "thai": "สนุก",
-                    "transliteration": "sà-nùk",
-                    "translation": "Spaß machen / Spaß haben"
-                  },
-                  {
-                    "thai": "ถึง",
-                    "transliteration": "thʉ̌ng",
-                    "translation": "erreichen / ankommen bei"
-                  },
-                  {
-                    "thai": "ทุกคน",
-                    "transliteration": "thúk khon",
-                    "translation": "alle"
-                  },
-                  {
-                    "thai": "ลูก",
-                    "transliteration": "lûuk",
-                    "translation": "Kind"
-                  },
-                  {
-                    "thai": "โรงเรียน",
-                    "transliteration": "rooŋ-rian",
-                    "translation": "Schule"
-                  },
-                  {
-                    "thai": "กลับถึง",
-                    "transliteration": "glàp thʉ̌ng",
-                    "translation": "zurückkommen / ankommen"
-                  },
-                  {
-                    "thai": "กลับมา",
-                    "transliteration": "glàp maa",
-                    "translation": "zurückkommen"
+                    "title": "Neue Wörter (Sätze 1251–1300)",
+                    "words": [
+                      {
+                        "thai": "แต่งตัว",
+                        "transliteration": "dtɛ̀ng-dtua",
+                        "translation": "sich anziehen"
+                      },
+                      {
+                        "thai": "ครัว",
+                        "transliteration": "khrua",
+                        "translation": "Küche"
+                      },
+                      {
+                        "thai": "ป้ายรถ",
+                        "transliteration": "bpâai rót",
+                        "translation": "Bushaltestelle"
+                      },
+                      {
+                        "thai": "บน",
+                        "transliteration": "bon",
+                        "translation": "auf / im (Bus)"
+                      },
+                      {
+                        "thai": "เมือง",
+                        "transliteration": "mʉang",
+                        "translation": "Stadt"
+                      },
+                      {
+                        "thai": "เดินเล่น",
+                        "transliteration": "dəən lên",
+                        "translation": "spazieren gehen"
+                      },
+                      {
+                        "thai": "สนุก",
+                        "transliteration": "sà-nùk",
+                        "translation": "Spaß machen"
+                      },
+                      {
+                        "thai": "กลับถึง",
+                        "transliteration": "glàp thʉ̌ng",
+                        "translation": "ankommen"
+                      }
+                    ],
+                    "note": "Alltägliche Handlungen in Küche, Stadt und unterwegs im Bus."
                   }
                 ],
-                "progress": "Die letzten 50 Sätze fuehren die gelieferten Muster im Gespraech weiter.",
-                "questionLead": "Frage aus dem gelieferten Abschnitt",
+                "questionLead": "Zentrales Fragemuster",
                 "question": {
-                  "thai": "มีใครอยู่ในห้องไหม",
-                  "transliteration": "mii khrai yùu nai hɔ̂ng mái",
-                  "translation": "Ist jemand im Zimmer?"
+                  "thai": "ตอนนี้คุณอยู่ที่ไหน",
+                  "transliteration": "dton-níi khun yùu thîi-nǎi",
+                  "translation": "Wo bist du gerade?"
                 },
-                "answerLead": "Passende Antwort aus dem gelieferten Abschnitt",
+                "answerLead": "Echte Reaktion",
                 "answer": {
-                  "thai": "มีค่ะ",
-                  "transliteration": "mii khâ",
-                  "translation": "Ja."
+                  "thai": "อยู่บนรถเมล์ กำลังกลับบ้านครับ",
+                  "transliteration": "yùu bon rót-mee gam-lang glàp bâan khráp",
+                  "translation": "Im Bus, auf dem Heimweg."
                 },
-                "alternativeLead": "Weitere Variation aus dem gelieferten Abschnitt",
-                "alternative": {
-                  "thai": "กำลังทำอะไรอยู่",
-                  "transliteration": "gam-lang tham à-rai yùu",
-                  "translation": "Was macht sie gerade?"
-                }
+                "closing": "1.300 Sätze: Du kannst deinen Aufenthaltsort und dein Unterwegssein in Echtzeit durchgeben."
               }
             },
             {
@@ -67473,19 +67283,13 @@
                 }
               ],
               "midpointReminder": {
-                "title": "💎 REMINDER · 1350",
-                "message": "Neue Wörter dieses 50-Satz-Fensters",
-                "lead": "In diesem Block wurde อยู่ wieder in ganz unterschiedlichen Situationen erlebt: Besonders wichtig: อยู่ muss nicht immer mit einer Ortsangabe kommen. Das soll langsam automatisch werden.",
+                "title": "💎 REMINDER · SÄTZE 1301–1350",
+                "message": "Aufräumen, Telefonieren & Meer",
+                "lead": "Was du gerade gelernt hast",
                 "sections": [
                   {
-                    "title": "Neue Wörter dieses 50-Satz-Fensters",
-                    "note": "In diesem Block wurde อยู่ wieder in ganz unterschiedlichen Situationen erlebt: Besonders wichtig: อยู่ muss nicht immer mit einer Ortsangabe kommen. Das soll langsam automatisch werden.",
+                    "title": "Neue Wörter",
                     "words": [
-                      {
-                        "thai": "ตื่น",
-                        "transliteration": "dtʉ̀ʉn",
-                        "translation": "aufwachen"
-                      },
                       {
                         "thai": "ตาม",
                         "transliteration": "dtaam",
@@ -67494,7 +67298,7 @@
                       {
                         "thai": "เก็บ",
                         "transliteration": "gèp",
-                        "translation": "aufräumen / weglegen"
+                        "translation": "aufräumen"
                       },
                       {
                         "thai": "รก",
@@ -67507,44 +67311,24 @@
                         "translation": "Buch"
                       },
                       {
-                        "thai": "อัน",
-                        "transliteration": "an",
-                        "translation": "Stück / Gegenstand"
-                      },
-                      {
-                        "thai": "ไว้",
-                        "transliteration": "wái",
-                        "translation": "aufbewahren / lassen"
-                      },
-                      {
-                        "thai": "เมื่อกี้",
-                        "transliteration": "mʉ̂a-gîi",
-                        "translation": "vorhin"
-                      },
-                      {
                         "thai": "กระเป๋า",
                         "transliteration": "grà-bpǎo",
                         "translation": "Tasche"
                       },
                       {
-                        "thai": "หา",
-                        "transliteration": "hǎa",
-                        "translation": "suchen"
-                      },
-                      {
                         "thai": "เจอ",
                         "transliteration": "jəə",
-                        "translation": "finden"
+                        "translation": "finden / treffen"
                       },
                       {
-                        "thai": "ก่อน",
-                        "transliteration": "gɔ̀ɔn",
-                        "translation": "zuerst / erst einmal"
+                        "thai": "หน้า",
+                        "transliteration": "nâa",
+                        "translation": "vor / vorne"
                       },
                       {
-                        "thai": "รีบ",
-                        "transliteration": "rîip",
-                        "translation": "sich beeilen"
+                        "thai": "คุยโทรศัพท์",
+                        "transliteration": "khui thoo-rá-sàp",
+                        "translation": "telefonieren"
                       },
                       {
                         "thai": "ทะเล",
@@ -67564,248 +67348,132 @@
                       {
                         "thai": "เล่นน้ำ",
                         "transliteration": "lên náam",
-                        "translation": "im Wasser spielen / schwimmen"
-                      },
-                      {
-                        "thai": "ขอ",
-                        "transliteration": "khɔ̌ɔ",
-                        "translation": "bitten um / möchte gern"
-                      },
-                      {
-                        "thai": "แต่งตัว",
-                        "transliteration": "dtɛ̀ng-dtua",
-                        "translation": "sich anziehen"
-                      },
-                      {
-                        "thai": "คุยโทรศัพท์",
-                        "transliteration": "khui thoo-rá-sàp",
-                        "translation": "telefonieren"
+                        "translation": "im Wasser spielen"
                       }
-                    ]
+                    ],
+                    "note": "Gleichzeitige Handlungen im Haushalt und Urlaubsmomente am Meer."
                   }
                 ],
-                "patternLead": "Muster aus dem gelieferten Abschnitt",
+                "patternLead": "Wichtiges Muster",
                 "pattern": {
-                  "thai": "อยู่ในห้อง",
-                  "transliteration": "yùu nai hɔ̂ng",
-                  "translation": "Im Zimmer."
+                  "thai": "เขากำลังคุยโทรศัพท์อยู่",
+                  "transliteration": "kǎo gam-lang khui thoo-rá-sàp yùu",
+                  "translation": "Er telefoniert gerade."
                 },
                 "discoveries": [
                   {
-                    "thai": "อยู่บนโต๊ะ",
-                    "transliteration": "yùu bon tó",
-                    "translation": "Auf dem Tisch."
+                    "thai": "ห้องรก กำลังเก็บของอยู่",
+                    "transliteration": "hɔ̂ng rók gam-lang gèp khɔ̂ɔng yùu",
+                    "translation": "Das Zimmer ist unordentlich, ich räume gerade auf."
                   },
                   {
-                    "thai": "อ๋อ อยู่ในกระเป๋า",
-                    "transliteration": "ɔ̌ɔ yùu nai grà-bpǎo",
-                    "translation": "Ach, es ist in der Tasche."
+                    "thai": "ทะเลสวยมาก",
+                    "transliteration": "thá-lay sǔai mâak",
+                    "translation": "Das Meer ist wunderschön."
                   }
                 ],
-                "closing": "Das soll langsam automatisch werden."
+                "closing": "Mit กำลัง...อยู่ drückst du genau aus, was du oder andere gerade im selben Moment tun."
               },
               "completion": {
-                "title": "FOUNDATION BLOCK 4 COMPLETE",
-                "heading": "FOUNDATION BLOCK COMPLETE",
-                "message": "FOUNDATION BLOCK 4 COMPLETE",
-                "lead": "Kontext aus den letzten 50 Sätzen",
-                "wordSectionTitle": "Neue Wörter aus den letzten 50 Sätzen",
-                "words": [
+                "title": "🏆 1400 / 1500 · FOUNDATION BLOCK 4 COMPLETE",
+                "sentenceRange": "1351–1400",
+                "progress": "Taxi, Stau (รถติด), fast da (ใกล้ถึง) & Feierabend",
+                "sections": [
                   {
-                    "thai": "ตื่น",
-                    "transliteration": "dtʉ̀ʉn",
-                    "translation": "aufwachen"
-                  },
-                  {
-                    "thai": "เก็บ",
-                    "transliteration": "gèp",
-                    "translation": "aufräumen / weglegen"
-                  },
-                  {
-                    "thai": "รก",
-                    "transliteration": "rók",
-                    "translation": "unordentlich"
-                  },
-                  {
-                    "thai": "หนังสือ",
-                    "transliteration": "nǎng-sʉ̌ʉ",
-                    "translation": "Buch"
-                  },
-                  {
-                    "thai": "อัน",
-                    "transliteration": "an",
-                    "translation": "Stück / Gegenstand"
-                  },
-                  {
-                    "thai": "ไว้",
-                    "transliteration": "wái",
-                    "translation": "lassen / aufbewahren"
-                  },
-                  {
-                    "thai": "เมื่อกี้",
-                    "transliteration": "mʉ̂a-gîi",
-                    "translation": "vorhin"
-                  },
-                  {
-                    "thai": "กระเป๋า",
-                    "transliteration": "grà-bpǎo",
-                    "translation": "Tasche"
-                  },
-                  {
-                    "thai": "หา",
-                    "transliteration": "hǎa",
-                    "translation": "suchen"
-                  },
-                  {
-                    "thai": "เจอ",
-                    "transliteration": "jəə",
-                    "translation": "finden"
-                  },
-                  {
-                    "thai": "ก่อน",
-                    "transliteration": "gɔ̀ɔn",
-                    "translation": "zuerst / erst einmal"
-                  },
-                  {
-                    "thai": "รีบ",
-                    "transliteration": "rîip",
-                    "translation": "sich beeilen"
-                  },
-                  {
-                    "thai": "ทะเล",
-                    "transliteration": "thá-lay",
-                    "translation": "Meer"
-                  },
-                  {
-                    "thai": "สวย",
-                    "transliteration": "sǔai",
-                    "translation": "schön"
-                  },
-                  {
-                    "thai": "สอง",
-                    "transliteration": "sɔ̌ɔng",
-                    "translation": "zwei"
-                  },
-                  {
-                    "thai": "เล่นน้ำ",
-                    "transliteration": "lên náam",
-                    "translation": "im Wasser spielen / schwimmen"
-                  },
-                  {
-                    "thai": "ขอ",
-                    "transliteration": "khɔ̌ɔ",
-                    "translation": "bitten / möchte"
-                  },
-                  {
-                    "thai": "หอม",
-                    "transliteration": "hɔ̌ɔm",
-                    "translation": "gut riechen / duften"
-                  },
-                  {
-                    "thai": "หิว",
-                    "transliteration": "hǐu",
-                    "translation": "Hunger haben"
-                  },
-                  {
-                    "thai": "อีก",
-                    "transliteration": "ìik",
-                    "translation": "noch / weitere(s)"
-                  },
-                  {
-                    "thai": "ตอนเย็น",
-                    "transliteration": "dton-yen",
-                    "translation": "am Abend"
-                  },
-                  {
-                    "thai": "เรียน",
-                    "transliteration": "rian",
-                    "translation": "lernen / Unterricht haben"
-                  },
-                  {
-                    "thai": "น่าจะ",
-                    "transliteration": "nâa jà",
-                    "translation": "wahrscheinlich"
-                  },
-                  {
-                    "thai": "แท็กซี่",
-                    "transliteration": "thɛ́k-sîi",
-                    "translation": "Taxi"
-                  },
-                  {
-                    "thai": "ใกล้ถึง",
-                    "transliteration": "glâi thʉ̌ng",
-                    "translation": "fast angekommen sein"
-                  },
-                  {
-                    "thai": "รถติด",
-                    "transliteration": "rót dtìt",
-                    "translation": "Stau"
-                  },
-                  {
-                    "thai": "เจอกัน",
-                    "transliteration": "jəə kan",
-                    "translation": "bis später / wir sehen uns"
-                  },
-                  {
-                    "thai": "ร่ม",
-                    "transliteration": "rôm",
-                    "translation": "Regenschirm"
-                  },
-                  {
-                    "thai": "เสื้อ",
-                    "transliteration": "sʉ̂a",
-                    "translation": "Shirt / Kleidung"
-                  },
-                  {
-                    "thai": "เปียก",
-                    "transliteration": "bpìak",
-                    "translation": "nass"
-                  },
-                  {
-                    "thai": "เลิกงาน",
-                    "transliteration": "lə̂ək ngaan",
-                    "translation": "Feierabend machen"
-                  },
-                  {
-                    "thai": "เพิ่ง",
-                    "transliteration": "phə̂ng",
-                    "translation": "gerade erst"
-                  },
-                  {
-                    "thai": "เหนื่อย",
-                    "transliteration": "nʉ̀ai",
-                    "translation": "müde / erschöpft"
-                  },
-                  {
-                    "thai": "พัก",
-                    "transliteration": "phák",
-                    "translation": "sich ausruhen"
-                  },
-                  {
-                    "thai": "เปล่า",
-                    "transliteration": "plào",
-                    "translation": "nein / nicht"
+                    "title": "Neue Wörter (Sätze 1351–1400)",
+                    "words": [
+                      {
+                        "thai": "หอม",
+                        "transliteration": "hɔ̌ɔm",
+                        "translation": "gut duften"
+                      },
+                      {
+                        "thai": "จัง",
+                        "transliteration": "jang",
+                        "translation": "so sehr"
+                      },
+                      {
+                        "thai": "เรียน",
+                        "transliteration": "rian",
+                        "translation": "lernen / Unterricht"
+                      },
+                      {
+                        "thai": "น่าจะ",
+                        "transliteration": "nâa jà",
+                        "translation": "wahrscheinlich"
+                      },
+                      {
+                        "thai": "ตอนเย็น",
+                        "transliteration": "dton-yen",
+                        "translation": "am Abend"
+                      },
+                      {
+                        "thai": "แท็กซี่",
+                        "transliteration": "thɛ́k-sîi",
+                        "translation": "Taxi"
+                      },
+                      {
+                        "thai": "ใกล้ถึง",
+                        "transliteration": "glâi thʉ̌ng",
+                        "translation": "fast da sein"
+                      },
+                      {
+                        "thai": "รถติด",
+                        "transliteration": "rót dtìt",
+                        "translation": "Stau"
+                      },
+                      {
+                        "thai": "ติด",
+                        "transliteration": "dtìt",
+                        "translation": "festhängen / im Stau sein"
+                      },
+                      {
+                        "thai": "เจอกัน",
+                        "transliteration": "jəə kan",
+                        "translation": "wir sehen uns"
+                      },
+                      {
+                        "thai": "เข้า",
+                        "transliteration": "khâo",
+                        "translation": "hineingehen"
+                      },
+                      {
+                        "thai": "เสื้อ",
+                        "transliteration": "sʉ̂a",
+                        "translation": "Shirt / Kleidung"
+                      },
+                      {
+                        "thai": "เลิกงาน",
+                        "transliteration": "lə̂ək ngaan",
+                        "translation": "Feierabend machen"
+                      },
+                      {
+                        "thai": "นอก",
+                        "transliteration": "nɔ̂ɔk",
+                        "translation": "draußen"
+                      },
+                      {
+                        "thai": "เปล่า",
+                        "transliteration": "plào",
+                        "translation": "nein / nicht"
+                      }
+                    ],
+                    "note": "Großstadtverkehr, Stau im Taxi und Verabredungen nach Feierabend."
                   }
                 ],
-                "progress": "Die letzten 50 Sätze fuehren die gelieferten Muster im Gespraech weiter.",
-                "questionLead": "Frage aus dem gelieferten Abschnitt",
+                "questionLead": "Zentrales Fragemuster",
                 "question": {
-                  "thai": "แม่อยู่ในครัวไหม",
-                  "transliteration": "mɛ̂ɛ yùu nai khrua mái",
-                  "translation": "Ist Mama in der Küche?"
+                  "thai": "ใกล้ถึงหรือยัง",
+                  "transliteration": "glâi thʉ̌ng rʉ̌ʉ yang",
+                  "translation": "Bist du fast da oder noch nicht?"
                 },
-                "answerLead": "Passende Antwort aus dem gelieferten Abschnitt",
+                "answerLead": "Echte Reaktion",
                 "answer": {
-                  "thai": "อยู่ค่ะ",
-                  "transliteration": "yùu khâ",
-                  "translation": "Ja."
+                  "thai": "อยู่บนแท็กซี่ รถติดอยู่ครับ",
+                  "transliteration": "yùu bon thɛ́k-sîi rót dtìt yùu khráp",
+                  "translation": "Ich bin im Taxi, stecke noch im Stau."
                 },
-                "alternativeLead": "Weitere Variation aus dem gelieferten Abschnitt",
-                "alternative": {
-                  "thai": "กำลังทำอาหารอยู่",
-                  "transliteration": "gam-lang tham aa-hǎan yùu",
-                  "translation": "Sie macht gerade Essen."
-                }
+                "closing": "1.400 Sätze: Du meisterst lebensechte Großstadt- und Verkehrssituationen auf Thai."
               }
             },
             {
@@ -71995,316 +71663,116 @@
                 }
               ],
               "midpointReminder": {
-                "title": "💎 REMINDER · 1450",
-                "message": "Neue Wörter dieses 50-Satz-Fensters",
-                "lead": "อยู่ sollte jetzt zunehmend nicht mehr als einzelne Grammatikform wahrgenommen werden, sondern als ganz normales Teilchen im Gespräch. 📍 Ort 🔄 Handlung gerade jetzt 🧠 Wichtig Nicht jedes อยู่ bedeutet automatisch „gerade“. อยู่บ้าน= zu Hause sein กินอยู่= gerade essen Der Kontext entscheidet. 🛵 Mini-Situation 6 · Jemand kommt vorbei 1451.🇹🇭 อยู่บ้านไหมyùu bâan mái🇩🇪 Bist du zu Hause? 1452.🇹🇭 อยู่ค่ะ มีอะไรyùu khâ mii à-rai🇩🇪 Ja. Was ist? 1453.🇹🇭 ฉันอยู่หน้าบ้านchǎn yùu nâa bâan🇩🇪 Ich bin vor dem Haus. 1454.🇹🇭 อ้าว มาแล้วเหรอâao maa lɛ́ɛo rǒ̌🇩🇪 Oh, du bist schon da? 1455.🇹🇭 ใช่ เปิดประตูให้หน่อยchâi bpə̀ət bprà-dtuu hâi nɔ̀i🇩🇪 Ja, mach bitte die Tür auf. 1456.🇹🇭 เดี๋ยวเปิดให้dǐao bpə̀ət hâi🇩🇪 Ich mache gleich auf. 1457.🇹🇭 รออยู่ตรงนั้นนะrɔɔ yùu dtrong-nán ná🇩🇪 Warte dort, okay? 1458.🇹🇭 ได้dâi🇩🇪 Okay. 1459.🇹🇭 ประตูเปิดแล้วbprà-dtuu bpə̀ət lɛ́ɛo🇩🇪 Die Tür ist offen. 1460.🇹🇭 ขอบคุณkhɔ̀ɔp-khun🇩🇪 Danke. 💻 Mini-Situation 7 · Arbeit am Computer 1461.🇹🇭 ทำอะไรอยู่tham à-rai yùu🇩🇪 Was machst du? 1462.🇹🇭 ทำงานอยู่tham-ngaan yùu🇩🇪 Ich arbeite gerade. 1463.🇹🇭 ทำที่บ้านเหรอtham thîi bâan rǒ̌🇩🇪 Arbeitest du von zu Hause? 1464.🇹🇭 ใช่ วันนี้อยู่บ้านchâi wan-níi yùu bâan🇩🇪 Ja, heute bin ich zu Hause. 1465.🇹🇭 งานเยอะไหมngaan yə́ mái🇩🇪 Hast du viel Arbeit? 1466.🇹🇭 เยอะนิดหน่อยyə́ nít nɔ̀i🇩🇪 Ein bisschen viel. 1467.🇹🇭 ยังทำอยู่เหรอyang tham yùu rǒ̌🇩🇪 Arbeitest du immer noch? 1468.🇹🇭 ใช่ ยังไม่เสร็จchâi yang mâi sèt🇩🇪 Ja, ich bin noch nicht fertig. 1469.🇹🇭 งั้นฉันไม่กวนngán chǎn mâi guan🇩🇪 Dann störe ich dich nicht. 1470.🇹🇭 ขอบคุณนะkhɔ̀ɔp-khun ná🇩🇪 Danke. 🌙 Mini-Situation 8 · Später Abend 1471.🇹🇭 ยังไม่นอนเหรอyang mâi nɔɔn rǒ̌🇩🇪 Du schläfst noch nicht? 1472.🇹🇭 ยังเลยyang loei🇩🇪 Noch nicht. 1473.🇹🇭 ทำอะไรอยู่tham à-rai yùu🇩🇪 Was machst du? 1474.🇹🇭 นั่งเล่นอยู่nâng lên yùu🇩🇪 Ich sitze einfach herum. 1475.🇹🇭 ไม่ง่วงเหรอmâi ngûang rǒ̌🇩🇪 Bist du nicht müde? 1476.🇹🇭 ยังไม่ง่วงyang mâi ngûang🇩🇪 Noch nicht. 1477.🇹🇭 พรุ่งนี้ต้องตื่นเช้านะphrûng-níi dtông dtʉ̀ʉn cháao ná🇩🇪 Du musst morgen früh aufstehen. 1478.🇹🇭 รู้แล้วrúu lɛ́ɛo🇩🇪 Ich weiß. 1479.🇹🇭 แต่ยังไม่อยากนอนdtɛ̀ɛ yang mâi yàak nɔɔn🇩🇪 Aber ich will noch nicht schlafen. 1480.🇹🇭 งั้นตามสบายngán dtaam sà-baai🇩🇪 Dann mach, wie du willst. ❤️ Mini-Situation 9 · Zwei Menschen reden 1481.🇹🇭 คุณอยู่ตรงนี้นานแล้วนะkhun yùu dtrong-níi naan lɛ́ɛo ná🇩🇪 Du bist schon lange hier. 1482.🇹🇭 ใช่ค่ะchâi khâ🇩🇪 Ja. 1483.🇹🇭 รอใครอยู่rɔɔ khrai yùu🇩🇪 Auf wen wartest du? 1484.🇹🇭 รอคุณอยู่rɔɔ khun yùu🇩🇪 Auf dich. 1485.🇹🇭 รอทำไมrɔɔ tham-mai🇩🇪 Warum wartest du? 1486.🇹🇭 ก็คุณบอกให้รอgɔ̂ɔ khun bɔ̀ɔk hâi rɔɔ🇩🇪 Du hast doch gesagt, ich soll warten. 1487.🇹🇭 อ๋อ จริงด้วยɔ̌ɔ jing dûai🇩🇪 Ach ja, stimmt. 1488.🇹🇭 ขอโทษนะkhɔ̌ɔ-thôot ná🇩🇪 Tut mir leid. 1489.🇹🇭 ไม่เป็นไร ฉันอยู่ได้mâi bpen-rai chǎn yùu dâi🇩🇪 Kein Problem, ich kann warten. 1490.🇹🇭 งั้นไปกันเถอะngán bpai kan thə̀🇩🇪 Dann lass uns gehen. 🏆 Mini-Situation 10 · Boss-Finale 1491.🇹🇭 ตอนนี้คุณอยู่ไหนdton-níi khun yùu nǎi🇩🇪 Wo bist du gerade? 1492.🇹🇭 อยู่ตรงนี้yùu dtrong-níi🇩🇪 Hier. 1493.🇹🇭 อยู่คนเดียวไหมyùu khon-diao mái🇩🇪 Bist du allein? 1494.🇹🇭 ไม่ อยู่กับคุณmâi yùu gàp khun🇩🇪 Nein, ich bin bei dir. 1495.🇹🇭 ตอนนี้ทำอะไรอยู่dton-níi tham à-rai yùu🇩🇪 Was machen wir gerade? 1496.🇹🇭 ก็นั่งอยู่ด้วยกันgɔ̂ɔ nâng yùu dûai-kan🇩🇪 Wir sitzen einfach zusammen. 1497.🇹🇭 แล้วจะไปไหนlɛ́ɛo jà bpai nǎi🇩🇪 Und wohin gehen wir danach? 1498.🇹🇭 ยังไม่รู้เลยyang mâi rúu loei🇩🇪 Weiß ich noch gar nicht. 1499.🇹🇭 งั้นอยู่ตรงนี้ก่อนngán yùu dtrong-níi gɔ̀ɔn🇩🇪 Dann bleiben wir erst mal hier. 1500.🇹🇭 ได้เลย อยู่ด้วยกันก่อนdâi loei yùu dûai-kan gɔ̀ɔn🇩🇪 Klar, bleiben wir erst mal zusammen. 🏆 GRAMMATIKBOSS 3 BESIEGT ⚔️ 500 / 500 · อยู่ Boss 3 abgeschlossen. Was jetzt sitzen soll อยู่ + Ort อยู่บ้าน อยู่ในห้อง อยู่ร้านอาหาร อยู่โรงแรม อยู่หน้าบ้าน อยู่แถวนี้ อยู่ + Person อยู่กับเพื่อน อยู่กับคุณ อยู่คนเดียว Verb + อยู่ กินอยู่ นั่งอยู่ รออยู่ ทำงานอยู่ กำลัง + Verb + อยู่ กำลังทำอาหารอยู่ กำลังแต่งตัวอยู่ กำลังคุยโทรศัพท์อยู่ ยัง + Verb + อยู่ ยังทำงานอยู่ ยังตกอยู่ ยังอยู่บ้าน Der zentrale Punkt dieses Bosses war nicht, 500-mal dieselbe Konstruktion auswendig zu lernen, sondern อยู่ in echten Gesprächssituationen wieder und wieder zu erkennen, bis Ort und laufende Handlung nicht mehr künstlich getrennt werden müssen.",
+                "title": "💎 REMINDER · SÄTZE 1401–1450",
+                "message": "In der Gegend (แถวนี้) & der gewohnte Laden (ร้านเดิม)",
+                "lead": "Was du gerade gelernt hast",
                 "sections": [
                   {
-                    "title": "Neue Wörter dieses 50-Satz-Fensters",
-                    "note": "อยู่ sollte jetzt zunehmend nicht mehr als einzelne Grammatikform wahrgenommen werden, sondern als ganz normales Teilchen im Gespräch. 📍 Ort 🔄 Handlung gerade jetzt 🧠 Wichtig Nicht jedes อยู่ bedeutet automatisch „gerade“. อยู่บ้าน= zu Hause sein กินอยู่= gerade essen Der Kontext entscheidet. 🛵 Mini-Situation 6 · Jemand kommt vorbei 1451.🇹🇭 อยู่บ้านไหมyùu bâan mái🇩🇪 Bist du zu Hause? 1452.🇹🇭 อยู่ค่ะ มีอะไรyùu khâ mii à-rai🇩🇪 Ja. Was ist? 1453.🇹🇭 ฉันอยู่หน้าบ้านchǎn yùu nâa bâan🇩🇪 Ich bin vor dem Haus. 1454.🇹🇭 อ้าว มาแล้วเหรอâao maa lɛ́ɛo rǒ̌🇩🇪 Oh, du bist schon da? 1455.🇹🇭 ใช่ เปิดประตูให้หน่อยchâi bpə̀ət bprà-dtuu hâi nɔ̀i🇩🇪 Ja, mach bitte die Tür auf. 1456.🇹🇭 เดี๋ยวเปิดให้dǐao bpə̀ət hâi🇩🇪 Ich mache gleich auf. 1457.🇹🇭 รออยู่ตรงนั้นนะrɔɔ yùu dtrong-nán ná🇩🇪 Warte dort, okay? 1458.🇹🇭 ได้dâi🇩🇪 Okay. 1459.🇹🇭 ประตูเปิดแล้วbprà-dtuu bpə̀ət lɛ́ɛo🇩🇪 Die Tür ist offen. 1460.🇹🇭 ขอบคุณkhɔ̀ɔp-khun🇩🇪 Danke. 💻 Mini-Situation 7 · Arbeit am Computer 1461.🇹🇭 ทำอะไรอยู่tham à-rai yùu🇩🇪 Was machst du? 1462.🇹🇭 ทำงานอยู่tham-ngaan yùu🇩🇪 Ich arbeite gerade. 1463.🇹🇭 ทำที่บ้านเหรอtham thîi bâan rǒ̌🇩🇪 Arbeitest du von zu Hause? 1464.🇹🇭 ใช่ วันนี้อยู่บ้านchâi wan-níi yùu bâan🇩🇪 Ja, heute bin ich zu Hause. 1465.🇹🇭 งานเยอะไหมngaan yə́ mái🇩🇪 Hast du viel Arbeit? 1466.🇹🇭 เยอะนิดหน่อยyə́ nít nɔ̀i🇩🇪 Ein bisschen viel. 1467.🇹🇭 ยังทำอยู่เหรอyang tham yùu rǒ̌🇩🇪 Arbeitest du immer noch? 1468.🇹🇭 ใช่ ยังไม่เสร็จchâi yang mâi sèt🇩🇪 Ja, ich bin noch nicht fertig. 1469.🇹🇭 งั้นฉันไม่กวนngán chǎn mâi guan🇩🇪 Dann störe ich dich nicht. 1470.🇹🇭 ขอบคุณนะkhɔ̀ɔp-khun ná🇩🇪 Danke. 🌙 Mini-Situation 8 · Später Abend 1471.🇹🇭 ยังไม่นอนเหรอyang mâi nɔɔn rǒ̌🇩🇪 Du schläfst noch nicht? 1472.🇹🇭 ยังเลยyang loei🇩🇪 Noch nicht. 1473.🇹🇭 ทำอะไรอยู่tham à-rai yùu🇩🇪 Was machst du? 1474.🇹🇭 นั่งเล่นอยู่nâng lên yùu🇩🇪 Ich sitze einfach herum. 1475.🇹🇭 ไม่ง่วงเหรอmâi ngûang rǒ̌🇩🇪 Bist du nicht müde? 1476.🇹🇭 ยังไม่ง่วงyang mâi ngûang🇩🇪 Noch nicht. 1477.🇹🇭 พรุ่งนี้ต้องตื่นเช้านะphrûng-níi dtông dtʉ̀ʉn cháao ná🇩🇪 Du musst morgen früh aufstehen. 1478.🇹🇭 รู้แล้วrúu lɛ́ɛo🇩🇪 Ich weiß. 1479.🇹🇭 แต่ยังไม่อยากนอนdtɛ̀ɛ yang mâi yàak nɔɔn🇩🇪 Aber ich will noch nicht schlafen. 1480.🇹🇭 งั้นตามสบายngán dtaam sà-baai🇩🇪 Dann mach, wie du willst. ❤️ Mini-Situation 9 · Zwei Menschen reden 1481.🇹🇭 คุณอยู่ตรงนี้นานแล้วนะkhun yùu dtrong-níi naan lɛ́ɛo ná🇩🇪 Du bist schon lange hier. 1482.🇹🇭 ใช่ค่ะchâi khâ🇩🇪 Ja. 1483.🇹🇭 รอใครอยู่rɔɔ khrai yùu🇩🇪 Auf wen wartest du? 1484.🇹🇭 รอคุณอยู่rɔɔ khun yùu🇩🇪 Auf dich. 1485.🇹🇭 รอทำไมrɔɔ tham-mai🇩🇪 Warum wartest du? 1486.🇹🇭 ก็คุณบอกให้รอgɔ̂ɔ khun bɔ̀ɔk hâi rɔɔ🇩🇪 Du hast doch gesagt, ich soll warten. 1487.🇹🇭 อ๋อ จริงด้วยɔ̌ɔ jing dûai🇩🇪 Ach ja, stimmt. 1488.🇹🇭 ขอโทษนะkhɔ̌ɔ-thôot ná🇩🇪 Tut mir leid. 1489.🇹🇭 ไม่เป็นไร ฉันอยู่ได้mâi bpen-rai chǎn yùu dâi🇩🇪 Kein Problem, ich kann warten. 1490.🇹🇭 งั้นไปกันเถอะngán bpai kan thə̀🇩🇪 Dann lass uns gehen. 🏆 Mini-Situation 10 · Boss-Finale 1491.🇹🇭 ตอนนี้คุณอยู่ไหนdton-níi khun yùu nǎi🇩🇪 Wo bist du gerade? 1492.🇹🇭 อยู่ตรงนี้yùu dtrong-níi🇩🇪 Hier. 1493.🇹🇭 อยู่คนเดียวไหมyùu khon-diao mái🇩🇪 Bist du allein? 1494.🇹🇭 ไม่ อยู่กับคุณmâi yùu gàp khun🇩🇪 Nein, ich bin bei dir. 1495.🇹🇭 ตอนนี้ทำอะไรอยู่dton-níi tham à-rai yùu🇩🇪 Was machen wir gerade? 1496.🇹🇭 ก็นั่งอยู่ด้วยกันgɔ̂ɔ nâng yùu dûai-kan🇩🇪 Wir sitzen einfach zusammen. 1497.🇹🇭 แล้วจะไปไหนlɛ́ɛo jà bpai nǎi🇩🇪 Und wohin gehen wir danach? 1498.🇹🇭 ยังไม่รู้เลยyang mâi rúu loei🇩🇪 Weiß ich noch gar nicht. 1499.🇹🇭 งั้นอยู่ตรงนี้ก่อนngán yùu dtrong-níi gɔ̀ɔn🇩🇪 Dann bleiben wir erst mal hier. 1500.🇹🇭 ได้เลย อยู่ด้วยกันก่อนdâi loei yùu dûai-kan gɔ̀ɔn🇩🇪 Klar, bleiben wir erst mal zusammen. 🏆 GRAMMATIKBOSS 3 BESIEGT ⚔️ 500 / 500 · อยู่ Boss 3 abgeschlossen. Was jetzt sitzen soll อยู่ + Ort อยู่บ้าน อยู่ในห้อง อยู่ร้านอาหาร อยู่โรงแรม อยู่หน้าบ้าน อยู่แถวนี้ อยู่ + Person อยู่กับเพื่อน อยู่กับคุณ อยู่คนเดียว Verb + อยู่ กินอยู่ นั่งอยู่ รออยู่ ทำงานอยู่ กำลัง + Verb + อยู่ กำลังทำอาหารอยู่ กำลังแต่งตัวอยู่ กำลังคุยโทรศัพท์อยู่ ยัง + Verb + อยู่ ยังทำงานอยู่ ยังตกอยู่ ยังอยู่บ้าน Der zentrale Punkt dieses Bosses war nicht, 500-mal dieselbe Konstruktion auswendig zu lernen, sondern อยู่ in echten Gesprächssituationen wieder und wieder zu erkennen, bis Ort und laufende Handlung nicht mehr künstlich getrennt werden müssen.",
-                    "words": []
+                    "title": "Neue Wörter",
+                    "words": [
+                      {
+                        "thai": "แถวนี้",
+                        "transliteration": "thɛ̌ɛo níi",
+                        "translation": "hier in der Gegend"
+                      },
+                      {
+                        "thai": "ร้านเดิม",
+                        "transliteration": "ráan dəəm",
+                        "translation": "derselbe Laden"
+                      },
+                      {
+                        "thai": "จริงๆ",
+                        "transliteration": "jing-jing",
+                        "translation": "wirklich / echt"
+                      },
+                      {
+                        "thai": "ที่นั่ง",
+                        "transliteration": "thîi nâng",
+                        "translation": "Sitzplatz"
+                      },
+                      {
+                        "thai": "เอง",
+                        "transliteration": "eeng",
+                        "translation": "selbst / bloß"
+                      }
+                    ],
+                    "note": "Orientierung in der Nachbarschaft und Stammplätze im Lokal."
                   }
                 ],
-                "patternLead": "Muster aus dem gelieferten Abschnitt",
+                "patternLead": "Wichtiges Muster",
                 "pattern": {
-                  "thai": "วันนี้อยู่บ้านทั้งวันเหรอ",
-                  "transliteration": "wan-níi yùu bâan tháng-wan rǒ̌",
-                  "translation": "Bist du heute den ganzen Tag zu Hause?"
+                  "thai": "มีร้านอาหารดีๆ อยู่แถวนี้ไหม",
+                  "transliteration": "mii ráan aa-hǎan dii-dii yùu thɛ̌ɛo níi mái",
+                  "translation": "Gibt es gute Restaurants hier in der Gegend?"
                 },
                 "discoveries": [
                   {
-                    "thai": "ตอนนี้อยู่โรงแรมไหม",
-                    "transliteration": "dton-níi yùu rooŋ-rɛɛm mái",
-                    "translation": "Bist du gerade im Hotel?"
+                    "thai": "แฟนนั่งรออยู่ที่ร้านเดิม",
+                    "transliteration": "fɛɛn nâng rɔɔ yùu thîi ráan dəəm",
+                    "translation": "Mein Partner sitzt und wartet im gewohnten Laden."
                   },
                   {
-                    "thai": "คุณอยู่ร้านอาหารไหม",
-                    "transliteration": "khun yùu ráan aa-hǎan mái",
-                    "translation": "Bist du im Restaurant?"
+                    "thai": "ที่นี่มีที่นั่งไหม",
+                    "transliteration": "thîi-nîi mii thîi nâng mái",
+                    "translation": "Gibt es hier Sitzplätze?"
                   }
                 ],
-                "closing": "Achte auf den jeweiligen Satzkontext."
+                "closing": "Mit แถวนี้ (hier in der Gegend) und ร้านเดิม (der gewohnte Laden) klingen deine Ortsangaben völlig natürlich."
               },
               "completion": {
-                "title": "FOUNDATION BLOCK 5 COMPLETE",
-                "heading": "FOUNDATION BLOCK COMPLETE",
-                "message": "FOUNDATION BLOCK 5 COMPLETE",
-                "lead": "Kontext aus den letzten 50 Sätzen",
-                "wordSectionTitle": "Neue Wörter aus den letzten 50 Sätzen",
-                "words": [],
-                "progress": "Die letzten 50 Sätze fuehren die gelieferten Muster im Gespraech weiter.",
-                "questionLead": "Frage aus dem gelieferten Abschnitt",
+                "title": "🏆 1500 / 1500 · BOSS 3 COMPLETE",
+                "sentenceRange": "1451–1500",
+                "progress": "Hände voll (กำลังถือของอยู่), Höflichkeit & 1.500 Sätze Gesamterfolg",
+                "sections": [
+                  {
+                    "title": "Neue Wörter (Sätze 1451–1500)",
+                    "words": [
+                      {
+                        "thai": "ประตู",
+                        "transliteration": "bprà-dtuu",
+                        "translation": "Tür"
+                      },
+                      {
+                        "thai": "ตามสบาย",
+                        "transliteration": "dtaam sà-baai",
+                        "translation": "ganz entspannt"
+                      },
+                      {
+                        "thai": "ขอโทษ",
+                        "transliteration": "khɔ̌ɔ-thôot",
+                        "translation": "Entschuldigung"
+                      }
+                    ],
+                    "note": "Höfliche Bitten im Alltag, Entschuldigungen und das große Finale von Grammar Boss 3."
+                  }
+                ],
+                "questionLead": "Zentrales Situationsmuster",
                 "question": {
-                  "thai": "อยู่บ้านไหม",
-                  "transliteration": "yùu bâan mái",
-                  "translation": "Bist du zu Hause?"
+                  "thai": "เปิดประตูให้หน่อย กำลังถือของอยู่",
+                  "transliteration": "bpə̀ət bprà-dtuu hâi nɔ̀i gam-lang thʉ̌ʉ khɔ̂ɔng yùu",
+                  "translation": "Mach bitte mal die Tür auf, ich habe gerade die Hände voll!"
                 },
-                "answerLead": "Passende Antwort aus dem gelieferten Abschnitt",
+                "answerLead": "Echter Gesprächsabschluss",
                 "answer": {
-                  "thai": "ฉันอยู่หน้าบ้าน",
-                  "transliteration": "chǎn yùu nâa bâan",
-                  "translation": "Ich bin vor dem Haus."
+                  "thai": "ได้เลยครับ ตามสบายนะ",
+                  "transliteration": "dâi loei khráp dtaam sà-baai ná",
+                  "translation": "Sehr gerne! Mach es dir bequem."
                 },
-                "alternativeLead": "Weitere Variation aus dem gelieferten Abschnitt",
-                "alternative": {
-                  "thai": "ฉันอยู่หน้าบ้าน",
-                  "transliteration": "chǎn yùu nâa bâan",
-                  "translation": "Ich bin vor dem Haus."
-                }
+                "closing": "1.500 Sätze gemeistert! Du beherrschst อยู่ perfekt als Ortsverb und als lebendige Verlaufsform. 3 von 4 Bossen besiegt!"
               }
             }
           ],
           "completion": {
-            "title": "GRAMMATIKBOSS 3 BESIEGT",
-            "sentenceRange": "500 / 500 · อยู่",
-            "progress": "🏆 1.500 / 15.000+ Sätze · Boss 3 abgeschlossen.",
+            "title": "⚔️ BOSS 3 DEFEATED",
+            "sentenceRange": "1500 / 1500 Sätze",
+            "progress": "อยู่ · Ort, laufende Handlungen & unterwegs sein abgeschlossen",
             "summary": [
-              "🏆 GRAMMATIKBOSS 3 BESIEGT",
-              "⚔️ 500 / 500 · อยู่",
-              "Boss 3 abgeschlossen.",
-              "Was jetzt sitzen soll",
-              "อยู่ + Ort",
-              "อยู่บ้าน",
-              "อยู่ในห้อง",
-              "อยู่ร้านอาหาร",
-              "อยู่โรงแรม",
-              "อยู่หน้าบ้าน",
-              "อยู่แถวนี้",
-              "อยู่ + Person",
-              "อยู่กับเพื่อน",
-              "อยู่กับคุณ",
-              "อยู่คนเดียว",
-              "Verb + อยู่",
-              "กินอยู่",
-              "นั่งอยู่",
-              "รออยู่",
-              "ทำงานอยู่",
-              "กำลัง + Verb + อยู่",
-              "กำลังทำอาหารอยู่",
-              "กำลังแต่งตัวอยู่",
-              "กำลังคุยโทรศัพท์อยู่",
-              "ยัง + Verb + อยู่",
-              "ยังทำงานอยู่",
-              "ยังตกอยู่",
-              "ยังอยู่บ้าน",
-              "Der zentrale Punkt dieses Bosses war nicht, 500-mal dieselbe Konstruktion auswendig zu lernen, sondern อยู่ in echten Gesprächssituationen wieder und wieder zu erkennen, bis Ort und laufende Handlung nicht mehr künstlich getrennt werden müssen.",
-              "💎 Boss-Abschluss · Neue Wörter dieses Bosses",
-              "Thai",
-              "Umschrift",
-              "Deutsch",
-              "ร้านกาแฟ",
-              "ráan gaa-fɛɛ",
-              "Café",
-              "โต๊ะ",
-              "tó",
-              "Tisch",
-              "ข้างๆ",
-              "khâang-khâang",
-              "daneben",
-              "บางคน",
-              "baang khon",
-              "einige Leute",
-              "หัวหน้า",
-              "hǔa-nâa",
-              "Chef",
-              "ออกไป",
-              "ɔ̀ɔk bpai",
-              "hinausgehen",
-              "สวน",
-              "sǔan",
-              "Park / Garten",
-              "อากาศ",
-              "aa-gàat",
-              "Wetter",
-              "ระวัง",
-              "rá-wang",
-              "vorsichtig sein",
-              "อย่า",
-              "yàa",
-              "nicht!",
-              "พี่สาว",
-              "phîi-sǎao",
-              "ältere Schwester",
-              "แต่งตัว",
-              "dtɛ̀ng-dtua",
-              "sich anziehen",
-              "ครัว",
-              "khrua",
-              "Küche",
-              "ป้ายรถ",
-              "bpâai rót",
-              "Haltestelle",
-              "บน",
-              "bon",
-              "auf / oben auf",
-              "รถ",
-              "rót",
-              "Fahrzeug",
-              "แฟน",
-              "fɛɛn",
-              "Partner/in",
-              "เมือง",
-              "mʉang",
-              "Stadt",
-              "เดินเล่น",
-              "dəən lên",
-              "spazieren gehen",
-              "สนุก",
-              "sà-nùk",
-              "Spaß machen",
-              "ถึง",
-              "thʉ̌ng",
-              "erreichen / ankommen",
-              "ทุกคน",
-              "thúk khon",
-              "alle",
-              "โรงเรียน",
-              "rooŋ-rian",
-              "Schule",
-              "ตื่น",
-              "dtʉ̀ʉn",
-              "aufwachen",
-              "เก็บ",
-              "gèp",
-              "aufräumen / weglegen",
-              "รก",
-              "rók",
-              "unordentlich",
-              "หนังสือ",
-              "nǎng-sʉ̌ʉ",
-              "Buch",
-              "อัน",
-              "an",
-              "Stück / Gegenstand",
-              "เมื่อกี้",
-              "mʉ̂a-gîi",
-              "vorhin",
-              "กระเป๋า",
-              "grà-bpǎo",
-              "Tasche",
-              "หา",
-              "hǎa",
-              "suchen",
-              "เจอ",
-              "jəə",
-              "finden",
-              "รีบ",
-              "rîip",
-              "sich beeilen",
-              "ทะเล",
-              "thá-lay",
-              "Meer",
-              "สวย",
-              "sǔai",
-              "schön",
-              "เล่นน้ำ",
-              "lên náam",
-              "im Wasser spielen",
-              "ขอ",
-              "khɔ̌ɔ",
-              "bitten / möchte",
-              "หอม",
-              "hɔ̌ɔm",
-              "gut riechen",
-              "หิว",
-              "hǐu",
-              "Hunger haben",
-              "เรียน",
-              "rian",
-              "lernen / Unterricht haben",
-              "น่าจะ",
-              "nâa jà",
-              "wahrscheinlich",
-              "แท็กซี่",
-              "thɛ́k-sîi",
-              "Taxi",
-              "ใกล้ถึง",
-              "glâi thʉ̌ng",
-              "fast angekommen",
-              "รถติด",
-              "rót dtìt",
-              "Stau",
-              "ร่ม",
-              "rôm",
-              "Regenschirm",
-              "เสื้อ",
-              "sʉ̂a",
-              "Shirt / Kleidung",
-              "เปียก",
-              "bpìak",
-              "nass",
-              "เลิกงาน",
-              "lə̂ək ngaan",
-              "Feierabend machen",
-              "เพิ่ง",
-              "phə̂ng",
-              "gerade erst",
-              "เหนื่อย",
-              "nʉ̀ai",
-              "müde / erschöpft",
-              "พัก",
-              "phák",
-              "sich ausruhen",
-              "แถวนี้",
-              "thɛ̌ɛo níi",
-              "hier in der Gegend",
-              "ร้านเดิม",
-              "ráan dəəm",
-              "derselbe Laden",
-              "ทั้งวัน",
-              "tháng-wan",
-              "den ganzen Tag",
-              "อร่อย",
-              "à-rɔ̀i",
-              "lecker",
-              "เอง",
-              "eeng",
-              "selbst",
-              "กวน",
-              "guan",
-              "stören",
-              "ทีหลัง",
-              "thii-lǎng",
-              "später",
-              "ประตู",
-              "bprà-dtuu",
-              "Tür",
-              "เปิด",
-              "bpə̀ət",
-              "öffnen",
-              "งาน",
-              "ngaan",
-              "Arbeit",
-              "เยอะ",
-              "yə́",
-              "viel",
-              "นอน",
-              "nɔɔn",
-              "schlafen / liegen",
-              "ง่วง",
-              "ngûang",
-              "schläfrig",
-              "เช้า",
-              "cháao",
-              "früh / Morgen",
-              "ตามสบาย",
-              "dtaam sà-baai",
-              "wie du willst / ganz entspannt",
-              "ขอโทษ",
-              "khɔ̌ɔ-thôot",
-              "Entschuldigung",
-              "จริงด้วย",
-              "jing dûai",
-              "stimmt tatsächlich",
-              "ได้",
-              "dâi",
-              "können / es geht",
-              "รอ",
-              "rɔɔ",
-              "warten",
-              "🏆 1.500 / 15.000+ Sätze · Boss 3 abgeschlossen.",
-              "Nächster Boss laut Roadmap: Boss 4 · มี / ไม่มี — Haben & Existenz. Die Roadmap setzt dort den Fokus auf มี / ไม่มี, „haben / es gibt“, mit Dingen des Alltags und ersten Mengenangaben.",
-              ""
+              "🏆 1.500 / 1.500 Sätze im Gesamtsystem gemeistert!",
+              "Orte angeben: อยู่ที่บ้าน (zu Hause sein) / อยู่ข้างนอก (draußen sein) / อยู่แถวนี้ (in der Gegend sein)",
+              "Laufende Handlungen: กำลังทำกาแฟอยู่ (gerade Kaffee machen) / นั่งรออยู่ (gerade warten)",
+              "Räumliche Orientierung: อยู่ข้างบน (oben) / อยู่ข้างล่าง (unten) / อยู่ข้างหลัง (hinten)",
+              "Unterwegs sein & Verkehr: อยู่บนรถเมล์ (im Bus sein) / รถติดอยู่ (im Stau stecken) / ใกล้ถึงแล้ว (fast da)",
+              "Alltagsdialoge: คุณทำอะไรอยู่ (Was machst du gerade?) / เปิดประตูให้หน่อย (Mach bitte die Tür auf)"
             ]
           }
         },
