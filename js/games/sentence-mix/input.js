@@ -15,7 +15,7 @@
     }
 
     SentenceMixInput.prototype.setMaxDigits = function (count) {
-        this.maxDigits = Math.max(1, Math.min(9, Number(count) || 9));
+        this.maxDigits = Math.max(1, Math.floor(Number(count) || 9));
     };
 
     SentenceMixInput.prototype.clear = function () {
@@ -40,6 +40,18 @@
     SentenceMixInput.prototype.parseKey = function (event) {
         const key = event.key;
         const code = event.code;
+
+        if (key === "0" || code === "Digit0" || code === "Numpad0") {
+            return { type: "digit", value: 10 };
+        }
+
+        if (key === "+" || code === "NumpadAdd") {
+            return { type: "digit", value: 11 };
+        }
+
+        if (key === "." || code === "NumpadDecimal") {
+            return { type: "digit", value: 12 };
+        }
 
         if (code && code.startsWith("Numpad")) {
             const digit = parseInt(code.replace("Numpad", ""), 10);

@@ -491,4 +491,5 @@ document.getElementById("homeStatisticsButton")?.addEventListener(
     () => switchContent("chronik")
 );
 
-switchContent("worldmap");
+const requestedView = new URLSearchParams(window.location.search).get("view");
+switchContent(requestedView === "profile" ? "profile" : "worldmap");

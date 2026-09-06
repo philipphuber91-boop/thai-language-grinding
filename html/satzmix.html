@@ -11,7 +11,7 @@
         href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&family=Noto+Sans+Thai:wght@300;400;500&family=Prompt:wght@300;400&family=Sarabun:wght@300;400;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
-    <link rel="stylesheet" href="../css/sentence-mix.css?v=10">
+    <link rel="stylesheet" href="../css/sentence-mix.css?v=17">
     <link rel="manifest" href="../manifest.json">
 </head>
 <body class="sentence-mix-body">
@@ -36,6 +36,14 @@
                     <strong id="statAvgTime">--:--</strong>
                 </div>
             </div>
+            <button
+                id="sentenceMixProfileButton"
+                class="sentence-mix-profile-button"
+                type="button"
+                aria-label="Profil und Wortmix-Punkte öffnen"
+                aria-controls="sentenceMixProfile"
+                aria-expanded="false"
+                title="Profil und Wortmix-Punkte">👤</button>
             <button id="sentenceMixSettingsButton" class="sentence-mix-settings-button" type="button" aria-label="Wortmix-Einstellungen" aria-controls="sentenceMixSettings" aria-expanded="false">⚙</button>
         </div>
     </header>
@@ -46,7 +54,8 @@
 
     <footer class="sentence-mix-footer">
         <div class="sentence-mix-shortcuts-hint">
-            <span><span class="kbd-badge">1–9</span> / <span class="kbd-badge">Numpad</span> Wort wählen</span>
+            <span><span class="kbd-badge">1–9</span> / <span class="kbd-badge">Numpad</span> / Wortkarten wählen</span>
+            <span class="sentence-mix-desktop-long-keys"><span class="kbd-badge">0</span> → 10 · <span class="kbd-badge">+</span> → 11 · <span class="kbd-badge">.</span> → 12</span>
             <span><span class="kbd-badge">Backspace</span> Letzte Ziffer löschen</span>
             <span><span class="kbd-badge">Enter</span> Prüfen / Weiter</span>
             <span><span class="kbd-badge">Esc</span> Eingabe leeren</span>
@@ -113,6 +122,28 @@
                 </label>
             </fieldset>
         </div>
+    </div>
+
+    <div id="sentenceMixProfile" class="sentence-mix-profile" hidden>
+        <section class="sentence-mix-profile-card" role="dialog" aria-modal="true" aria-labelledby="sentenceMixProfileTitle">
+            <div class="sentence-mix-profile-header">
+                <div>
+                    <p class="sentence-mix-profile-eyebrow">Dein Profil</p>
+                    <h2 id="sentenceMixProfileTitle">Wortmix</h2>
+                </div>
+                <button id="sentenceMixProfileClose" class="sentence-mix-profile-close" type="button" aria-label="Profil schließen">×</button>
+            </div>
+            <div class="sentence-mix-profile-content">
+                <div class="sentence-mix-profile-avatar">
+                    <img id="sentenceMixProfileAvatar" src="../assets/ui/avatars/avatar10.png" alt="Dein Avatar">
+                </div>
+                <div class="sentence-mix-profile-points">
+                    <span>Wortmix-Punkte</span>
+                    <strong id="sentenceMixProfilePoints">0</strong>
+                    <p>Gesammelte Punkte aus deinen gelösten Runden.</p>
+                </div>
+            </div>
+        </section>
     </div>
 
     <script src="../js/thai-giga-drill.js"></script>

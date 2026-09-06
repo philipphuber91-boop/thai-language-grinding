@@ -72,6 +72,9 @@
     const BASE_POINTS_FOR_THREE_WORDS = 30;
     const POINTS_PER_ADDITIONAL_WORD = 10;
     const POINTS_LOSS_PER_SECOND = 3;
+    const POINTS_LOSS_PER_SECOND_LONG_SENTENCE = 1.5;
+    const LONG_SENTENCE_WORD_THRESHOLD = 7;
+    const MINIMUM_POINTS_RATIO = 0.2;
 
     function normalizeWordCount(value) {
         return Math.max(0, Math.floor(Number(value) || 0));
@@ -86,12 +89,20 @@
         );
     }
 
-    function calculatePoints(maxPoints, durationMs) {
+    function getPointsLossPerSecond(wordCount) {
+        return normalizeWordCount(wordCount) > LONG_SENTENCE_WORD_THRESHOLD
+            ? POINTS_LOSS_PER_SECOND_LONG_SENTENCE
+            : POINTS_LOSS_PER_SECOND;
+    }
+
+    function calculatePoints(maxPoints, durationMs, wordCount) {
         const normalizedMaxPoints = Math.max(0, Number(maxPoints) || 0);
         const normalizedDurationMs = Math.max(0, Number(durationMs) || 0);
+        const minimumPoints = normalizedMaxPoints * MINIMUM_POINTS_RATIO;
         return Math.max(
-            0,
-            normalizedMaxPoints - (normalizedDurationMs / 1000) * POINTS_LOSS_PER_SECOND
+            minimumPoints,
+            normalizedMaxPoints -
+                (normalizedDurationMs / 1000) * getPointsLossPerSecond(wordCount)
         );
     }
 
@@ -228,7 +239,11 @@
             durationMs: durationMs,
             durationFormatted: this.formatDuration(durationMs),
             maxPoints: this.currentRound.maxPoints,
-            pointsExact: calculatePoints(this.currentRound.maxPoints, durationMs)
+            pointsExact: calculatePoints(
+                this.currentRound.maxPoints,
+                durationMs,
+                this.currentRound.tokenCount
+            )
         };
     };
 
@@ -247,6 +262,7 @@
     sentenceMixEngineInstance.createGuaranteedShuffle = createGuaranteedShuffle;
     sentenceMixEngineInstance.calculateMaxPoints = calculateMaxPoints;
     sentenceMixEngineInstance.calculatePoints = calculatePoints;
+    sentenceMixEngineInstance.getPointsLossPerSecond = getPointsLossPerSecond;
 
     if (typeof module !== "undefined" && module.exports) {
         module.exports = sentenceMixEngineInstance;

@@ -7,11 +7,34 @@
     const NUMPAD_LAYOUT_STORAGE_KEY = "thaiGigaDrill:v1:sentence-mix-numpad-layout";
     const SENTENCE_ORDER_STORAGE_KEY = "thaiGigaDrill:v1:sentence-mix-sentence-order";
     const TRANSLITERATION_MODE_STORAGE_KEY = "thaiGigaDrill:v1:wordmix-transliteration-mode";
+    const PROFILE_AVATAR_STORAGE_KEY = "profileAvatar";
+    const DEFAULT_PROFILE_AVATAR_ID = "avatar10";
+    const DESKTOP_WORD_SHORTCUTS = {
+        10: "0",
+        11: "+",
+        12: "."
+    };
 
     function formatWordMixPoints(value) {
         return Math.max(0, Number(value) || 0)
             .toFixed(2)
             .replace(".", ",");
+    }
+
+    function getDesktopWordShortcut(displayNumber) {
+        return DESKTOP_WORD_SHORTCUTS[Number(displayNumber)] || "";
+    }
+
+    function readProfileAvatarId() {
+        try {
+            const savedAvatarId = window.localStorage.getItem(PROFILE_AVATAR_STORAGE_KEY);
+            return /^avatar(?:[1-9]|1[01])$/.test(savedAvatarId || "")
+                ? savedAvatarId
+                : DEFAULT_PROFILE_AVATAR_ID;
+        } catch (error) {
+            console.warn("Profil-Avatar konnte nicht gelesen werden.", error);
+            return DEFAULT_PROFILE_AVATAR_ID;
+        }
     }
 
     function readNumpadLayout() {
@@ -123,6 +146,7 @@
     SentenceMixUI.prototype.init = async function (options) {
         options = options || {};
         this.stageContainer = document.getElementById("sentenceMixStageContainer") || document.getElementById("sentenceMixChatArea");
+        this.setupProfile();
 
         try {
             const contentUrl = options.contentUrl || "../data/thai-giga-drill.v1.json";
@@ -151,6 +175,53 @@
             console.error("Fehler beim Initialisieren des Wortmix-Modus:", error);
             this.renderSystemMessage("Fehler beim Laden der Spieldaten: " + error.message);
         }
+    };
+
+    SentenceMixUI.prototype.setupProfile = function () {
+        const panel = document.getElementById("sentenceMixProfile");
+        const openButton = document.getElementById("sentenceMixProfileButton");
+        const closeButton = document.getElementById("sentenceMixProfileClose");
+        const avatarImage = document.getElementById("sentenceMixProfileAvatar");
+        const pointsElement = document.getElementById("sentenceMixProfilePoints");
+
+        if (!panel || !openButton || !closeButton || !avatarImage || !pointsElement) {
+            return;
+        }
+
+        const updateProfile = () => {
+            avatarImage.src = `../assets/ui/avatars/${readProfileAvatarId()}.png`;
+            const points = typeof window.wordMixPoints?.getExact === "function"
+                ? window.wordMixPoints.getExact()
+                : 0;
+            pointsElement.textContent = Math.floor(Math.max(0, Number(points) || 0))
+                .toLocaleString("de-DE");
+        };
+        const closePanel = () => {
+            panel.hidden = true;
+            openButton.setAttribute("aria-expanded", "false");
+            openButton.focus();
+        };
+
+        updateProfile();
+        openButton.addEventListener("click", () => {
+            updateProfile();
+            panel.hidden = false;
+            openButton.setAttribute("aria-expanded", "true");
+            closeButton.focus();
+        });
+        closeButton.addEventListener("click", closePanel);
+        panel.addEventListener("click", event => {
+            if (event.target === panel) {
+                closePanel();
+            }
+        });
+        window.addEventListener("keydown", event => {
+            if (event.key === "Escape" && !panel.hidden) {
+                event.preventDefault();
+                event.stopPropagation();
+                closePanel();
+            }
+        }, { capture: true });
     };
 
     SentenceMixUI.prototype.setupSettings = function () {
@@ -274,12 +345,18 @@
         const digitButtons = Array.from(grid.querySelectorAll(".numpad-key[data-key]"));
         const actionButtons = Array.from(grid.querySelectorAll(".numpad-key[data-action]"));
         const digitsByValue = new Map(digitButtons.map(button => [button.dataset.key, button]));
-        let digitOrder = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+        const allDigits = digitButtons
+            .map(button => button.dataset.key)
+            .sort((left, right) => Number(left) - Number(right));
+        let digitOrder = allDigits;
 
         if (this.numpadLayout === "laptop") {
-            digitOrder = ["7", "8", "9", "4", "5", "6", "1", "2", "3"];
+            const laptopOrder = ["7", "8", "9", "4", "5", "6", "1", "2", "3"];
+            const primaryDigits = laptopOrder.filter(digit => digitsByValue.has(digit));
+            const additionalDigits = allDigits.filter(digit => !primaryDigits.includes(digit));
+            digitOrder = primaryDigits.concat(additionalDigits);
         } else if (this.numpadLayout === "shuffle") {
-            digitOrder = shuffleArray(digitOrder);
+            digitOrder = shuffleArray(allDigits);
         }
 
         digitOrder.forEach(digit => {
@@ -289,6 +366,44 @@
             }
         });
         actionButtons.forEach(button => grid.appendChild(button));
+    };
+
+    SentenceMixUI.prototype.syncMobileNumpadButtons = function (maxTokens) {
+        const grid = document.querySelector("#mobileNumpad .numpad-grid");
+        if (!grid) {
+            return false;
+        }
+
+        const normalizedMaxTokens = Math.max(1, Math.floor(Number(maxTokens) || 1));
+        const digitButtons = Array.from(grid.querySelectorAll(".numpad-key[data-key]"));
+        const digitsByValue = new Map(digitButtons.map(button => [button.dataset.key, button]));
+        let changed = false;
+
+        for (let number = 10; number <= normalizedMaxTokens; number += 1) {
+            const digit = String(number);
+            if (digitsByValue.has(digit)) {
+                continue;
+            }
+
+            const button = document.createElement("button");
+            button.type = "button";
+            button.className = "numpad-key";
+            button.dataset.key = digit;
+            button.textContent = digit;
+            button.setAttribute("aria-label", `Wort ${digit} wählen`);
+            grid.appendChild(button);
+            changed = true;
+        }
+
+        digitButtons.forEach(button => {
+            const digit = Number(button.dataset.key);
+            if (digit > 9 && digit > normalizedMaxTokens) {
+                button.remove();
+                changed = true;
+            }
+        });
+
+        return changed;
     };
 
     SentenceMixUI.prototype.setupInputHandlers = function () {
@@ -327,6 +442,9 @@
         if (!numpad || !this.currentRound) return;
 
         const maxTokens = this.currentRound.tokenCount || 9;
+        if (this.syncMobileNumpadButtons(maxTokens)) {
+            this.applyNumpadLayout();
+        }
         const digitButtons = numpad.querySelectorAll(".numpad-key[data-key]");
         const enterButton = numpad.querySelector('.numpad-key[data-action="enter"]');
         const backspaceButton = numpad.querySelector('.numpad-key[data-action="backspace"]');
@@ -434,10 +552,35 @@
             pillEl.className = "token-pill";
             pillEl.classList.add("token-pill--" + this.transliterationMode);
             pillEl.dataset.digit = pill.displayNumber;
+            pillEl.setAttribute("role", "button");
+            pillEl.setAttribute("tabindex", "0");
+            pillEl.setAttribute("aria-label", `Wort ${pill.displayNumber}: ${pill.text}`);
+
+            const selectPill = () => {
+                if (window.SentenceMixInput) {
+                    window.SentenceMixInput.pressDigit(pill.displayNumber);
+                }
+            };
+            pillEl.addEventListener("click", selectPill);
+            pillEl.addEventListener("keydown", event => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    selectPill();
+                }
+            });
 
             const numSpan = document.createElement("span");
             numSpan.className = "token-pill-num";
             numSpan.textContent = pill.displayNumber;
+
+            const desktopShortcut = getDesktopWordShortcut(pill.displayNumber);
+            if (desktopShortcut) {
+                const shortcutSpan = document.createElement("span");
+                shortcutSpan.className = "token-pill-shortcut";
+                shortcutSpan.textContent = desktopShortcut;
+                shortcutSpan.title = `Desktop-Taste ${desktopShortcut}`;
+                pillEl.appendChild(shortcutSpan);
+            }
 
             const thaiSpan = document.createElement("span");
             thaiSpan.className = "token-pill-thai";
