@@ -98,7 +98,7 @@
         const sentenceGender = getSentenceGender(sentence);
         const profileGender = profile && typeof profile === "object" ? profile.gender : "";
 
-        if (!sentenceGender || !profileGender || sentenceGender === profileGender) {
+        if (speakerProfileId && profileGender) {
             return getBalancedProfileId(sentence, speakerProfileId);
         }
 
