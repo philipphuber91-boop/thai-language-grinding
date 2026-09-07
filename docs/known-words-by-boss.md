@@ -980,4 +980,74 @@
 | ตั๋วเครื่องบิน | dtǔa-khrʉ̂ang-bin | Flugticket / Flugschein |
 | เสื้อกันหนาว | sʉ̂a-gan-nǎao | Winterjacke / warme Jacke |
 | ใช่แล้ว | châi-lɛ́ɛo | genau / so ist es / stimmt genau |
+| รถตู้ | rót-dtûu | Minivan / Kleinbus |
+| ชุดว่ายน้ำ | chút-wâai-náam | Badekleidung / Badeanzug |
+| ทา | thaa | auftragen / streichen / eincremen |
+| ครีมกันแดด | khriim-gan-dɛ̀ɛt | Sonnencreme / Sonnenschutzmittel |
+| ตลาดสด | dtà-làat-sòt | Frischemarkt / traditioneller Markt |
+| วัตถุดิบ | wát-thù-dìp | Zutat / Zutaten / Rohstoffe |
+| แตงโม | dtɛɛng-moo | Wassermelone |
+| พก | phók | bei sich tragen / mitnehmen / einstecken |
+| พ่อค้า | phɔ̂ɔ-kháa | Verkäufer / Händler / Markthändler |
+| หั่น | hàn | schneiden / in Stücke schneiden |
+| เห็ด | hèt | Pilz / Pilze |
+| บีบ | bìip | auspressen / ausdrücken / drücken |
+| มะนาว | má-naao | Limette / Limettensaft |
+| พริก | phrík | Chili / Chilischote |
+| สมุนไพร | sà-mǔn-phrai | Heilkräuter / aromatische Kräuter |
+| น้ำซุป | náam-súp | Brühe / Suppenbrühe |
+| กลมกล่อม | glom-glɔ̀m | harmonisch / ausgewogen / vollmundig |
+| นำเสนอ | nam-sà-nə̌ə | präsentieren / vorstellen |
+| โครงการ | khroong-gaan | Projekt / Vorhaben / Plan |
+| เที่ยง | thîang | Mittag / 12:00 Uhr mittags |
+| ตรวจ | dtrùat | überprüfen / kontrollieren / korrigieren |
+| รายงาน | raai-ngaan | Bericht / Report |
+| แก้ | gɛ̂ɛ | korrigieren / beheben / lösen |
+| ข้อมูล | khɔ̂ɔ-muun | Daten / Informationen / Angaben |
+| กำหนด | gam-nòt | Frist / Termin / festlegen |
+| อนุมัติ | à-nú-mát | genehmigen / bewilligen |
+| งบประมาณ | ngóp-bprà-maan | Budget / Haushaltsmittel |
+| ทาสี | thaa-sǐi | Wände streichen / lackieren |
+| สว่าง | sà-wàang | hell / licht / strahlend |
+| ผ้าม่าน | phâa-mâan | Vorhang / Gardine |
+| หน้าต่าง | nâa-dtàang | Fenster |
+| ลาย | laai | Muster / Motiv |
+| ซ่อม | sɔ̂ɔm | reparieren / instand setzen |
+| หลอดไฟ | lɔ̀ɔt-fai | Glühbirne / Leuchtmittel |
+| เสีย | sǐa | kaputt gehen / defekt sein / verdorben |
+| เฟอร์นิเจอร์ | fəə-ní-jə̂ə | Möbel / Einrichtung |
+| สวนสาธารณะ | sǔan-sǎa-thaa-rá-ná | öffentlicher Park |
+| กิโลเมตร | gì-loo-mêet | Kilometer |
+| ลดน้ำหนัก | lót-nám-nàk | abnehmen / Gewicht reduzieren |
+| งด | ngót | verzichten auf / aussetzen / pausieren |
+| สุขภาพ | sùk-khà-phâap | Gesundheit |
+| ร่างกาย | râang-gaai | Körper / Leib |
+| แข็งแรง | khɛ̌ng-rɛɛng | stark / gesund / fit / kräftig |
+| ลงทะเบียน | long-thá-bpian | sich anmelden / sich registrieren |
+| สมัคร | sà-màk | sich bewerben / sich einschreiben / beitreten |
+| คอร์ส | khɔ́ɔt | Kurs / Lehrgang |
+| ท่อง | thɔ̂ng | auswendig lernen / rezitieren |
+| คำศัพท์ | kham-sàp | Vokabel / Wortschatz / Fachbegriff |
+| คำ | kham | Wort / Zählwort für Wörter |
+| ทบทวน | thóp-thuan | wiederholen / rekapitulieren / überprüfen |
+| ไวยากรณ์ | wai-yaa-gɔɔn | Grammatik |
+| สอบวัดระดับ | sɔ̀ɔp-wát-rá-dàp | Einstufungstest / Sprachprüfung |
+| สื่อสาร | sʉ̀ʉ-sǎan | kommunizieren / sich verständigen |
+| เช็คอิน | chék-in | einchecken |
+| ออนไลน์ | ɔɔn-laai | online |
+| หนังสือเดินทาง | nǎng-sʉ̌ʉ-dəən-thaang | Reisepass |
+| เที่ยวบิน | thîao-bin | Flug / Flugverbindung |
+| ราบรื่น | râap-rʉ̂n | reibungslos / glatt verlaufend |
+| คอนเสิร์ต | khɔɔn-sə̀ət | Konzert |
+| ติดต่อ | dtìt-dtɔ̀ɔ | kontaktieren / sich in Verbindung setzen |
+| สัญญาณโทรศัพท์ | sǎn-yaan-thoo-rá-sàp | Mobilfunkempfang / Handysignal |
+| เลิก | lə̂ək | enden / aufhören / Schluss machen |
+| ห้าทุ่ม | hâa-thûm | 23:00 Uhr |
+| ทันที | than-thii | sofort / augenblicklich |
+| ธุรกิจ | thú-rá-gìt | Business / Geschäft / Gewerbe |
+| ทำเล | tham-lee | Standort / Lage / Lokalität |
+| ดึงดูด | dʉng-dùut | anziehen / anlocken / attraktiv wirken |
+| กำไร | gam-rai | Gewinn / Profit |
+| ก้าวหน้า | gâao-nâa | vorankommen / Fortschritt machen |
+| ความพยายาม | khwaam-phá-yaa-yaam | Bemühung / Ausdauer / Anstrengung |
 
