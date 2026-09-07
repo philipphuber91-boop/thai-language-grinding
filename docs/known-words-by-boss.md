@@ -1,6 +1,4 @@
-# 📚 Bekannter Wortschatz · Thai Giga Drill (Boss 1–7)
-
-Dieses Dokument dient Gemini als schlanke Referenz (~20 KB), um bestehende Wörter aktiv zu recyclen und das Budget von maximal 140 neuen Wörtern pro Boss einzuhalten.
+# 📚 Bekannter Wortschatz · Thai Giga Drill
 
 ## GRAMMATIKBOSS 1 — เป็น · Identität, Zuordnung & einfache Aussagen
 | Thai | Lautschrift | Bedeutung |
@@ -861,9 +859,88 @@ Dieses Dokument dient Gemini als schlanke Referenz (~20 KB), um bestehende Wört
 ## GRAMMATIKBOSS 7 — จะ · Zukunft & Absichten
 | Thai | Lautschrift | Bedeutung |
 | :--- | :--- | :--- |
-| จะไม่ | jà-mâi | nicht werden / nicht beabsichtigen |
-| แล้วจะ | lɛ́ɛo-jà | und dann werden / und wie wird |
+| อยู่บ้าน | yùu-bâan | zu Hause sein / zu Hause bleiben |
+| ไม่ตก | mâi-dtòk | fällt nicht / regnet nicht |
+| ไปด้วย | bpai-dûai | mitgehen / mitnehmen |
+| ท้องฟ้า | thɔ́ɔng-fáa | Himmel / Firmament |
+| กลับบ้าน | glàp-bâan | nach Hause zurückkehren / heimgehen |
+| ตกหนัก | dtòk-nàk | stark regnen / schwer niedergehen |
+| ฟิตเนส | fít-nèet | Fitnessstudio / Gym |
+| เจ็ดโมงเช้า | jèt moong cháo | 7:00 Uhr morgens |
+| มื้อนี้ | mʉ́ʉ níi | diese Mahlzeit / dieses Mal beim Essen |
+| อะไรดี | à-rai dii | was am besten / was Gutes |
+| ผัดไทย | phàt-thai | Pad Thai (gebratene Thai-Nudeln) |
+| น้ำส้มคั้น | náam-sôm-khán | frisch gepresster Orangensaft |
+| ไม่นาน | mâi naan | nicht lange / in Kürze |
+| ได้ไหม | dâai mái | geht das? / kannst du? / ist das möglich? |
+| ให้ดีที่สุด | hâi dii thîi-sùt | so gut wie möglich / mein Bestes |
+| ข่าว | khàao | Nachricht / Neuigkeiten |
+| เสาร์นี้ | sǎo níi | diesen Samstag |
+| ห้องนอน | hɔ̂ɔng-nɔɔn | Schlafzimmer |
+| โต๊ะทำงาน | dtó tham-ngaan | Schreibtisch / Arbeitstisch |
+| ตัวเก่า | dtua gào | das alte Stück / der alte (Stuhl) |
+| ตัวใหม่ | dtua mài | ein neues Stück / der neue (Stuhl) |
+| ยกของ | yók khɔ̌ɔng | Sachen heben / Gegenstände tragen |
+| ช่วยได้ | chûai dâai | kann helfen / hilft |
+| กว้างขึ้น | gwâang khʉ̂n | geräumiger werden / breiter/weiter werden |
+| ทำเสร็จ | tham sèt | fertig machen / erledigen |
+| ปวดหัว | bpùat-hǔa | Kopfschmerzen haben |
+| ไปหาหมอ | bpai hǎa mɔ̌ɔ | zum Arzt gehen |
+| คลินิก | khlii-nìk | Klinik / Arztpraxis |
+| ลางาน | laa-ngaan | sich von der Arbeit freinehmen / Urlaub/Krankheit einreichen |
+| ช่วงบ่าย | chûang bàai | nachmittags / im Laufe des Nachmittags |
+| กลับก่อน | glàp gɔ̀ɔn | vorher/früher nach Hause gehen |
+| กินยา | gin yaa | Medikamente einnehmen / Medizin nehmen |
+| เดี๋ยวก็ | dǐao-gɔ̂ | bald wird schon / gleich dann |
+| หายดี | hǎai dii | vollständig genesen / wieder gesund sein |
+| ดีขึ้น | dii khʉ̂n | besser werden / sich verbessern |
+| ทริปนี้ | thríp níi | diese Reise / dieser Ausflug |
+| รถไฟด่วน | rót-fai dùan | Schnellzug / Expresszug |
+| ออกจาก | ɔ̀ɔk jàak | abfahren von / verlassen |
+| สองทุ่ม | sɔ̌ɔng thûm | 20:00 Uhr (abends) |
+| จองตั๋ว | jɔɔng dtǔa | Ticket reservieren / Fahrkarte buchen |
+| แอป | ɛ́ɛp | App (Smartphone-Anwendung) |
+| อ่านหนังสือ | àan nǎng-sʉ̌ʉ | lesen / für Prüfungen lernen |
+| ฝึกพูด | fʉ̀k phûut | sprechen üben |
+| วันละ | wan-lá | pro Tag / täglich |
+| การสอบ | gaan-sɔ̀ɔp | die Prüfung / das Examen |
+| ขยัน | khà-yǎn | fleißig / arbeitsam |
+| สอบผ่าน | sɔ̀ɔp-phàan | die Prüfung bestehen |
+| ติว | dtiu | Nachhilfe geben / intensiv wiederholen/coachen |
+| ยอมแพ้ | yɔɔm-phɛ́ɛ | aufgeben / kapitulieren |
+| เลือกซื้อ | lʉ̂ak sʉ́ʉ | aussuchen und kaufen / shoppen |
+| ห้างสรรพสินค้า | hâang-sàp-phá-sǐn-kháa | Kaufhaus / Einkaufszentrum / Mall |
+| สีน้ำเงิน | sǐi náam-ngən | dunkelblaue Farbe / Blau |
+| จัดงาน | jàt ngaan | eine Feier/Veranstaltung ausrichten |
+| พร้อมหน้ากัน | phrɔ́ɔm-nâa gan | alle vollzählig beisammen / in versammelter Runde |
+| ก้าวต่อไป | gâao dtɔ̀ɔ-bpai | den nächsten Schritt machen / weiterschreiten |
+| อะไรใหม่ๆ | à-rai mài-mài | neue Dinge / Neues |
+| คล่องขึ้น | khlɔ̂ng khʉ̂n | flüssiger werden / gewandter werden |
+| การพูด | gaan-phûut | das Sprechen / das Reden |
+| อีกต่อไป | ìik dtɔ̀ɔ-bpai | mehr (in der Zukunft) / weiterhin |
+| ฝึกฝน | fʉ̀k-fǒn | eifrig trainieren / üben |
+| บล็อกหน้า | blɔ́k nâa | im nächsten Block |
+| สู้ๆ | sûu-sûu | Kämpfe! / Gib dein Bestes! / Viel Erfolg! |
+| จะไม่ | jà-mâi | nicht werden / nicht wollen |
+| แน่ๆ | nɛ̂ɛ-nɛ̂ɛ | ganz sicher / garantiert / ohne Zweifel |
+| วิ่ง | wîng | rennen / laufen / joggen |
+| ไม่เผ็ด | mâi phèt | nicht scharf / mild |
+| บ่ายนี้ | bàai níi | heute Nachmittag |
+| เยอะๆ | yə́-yə́ | sehr viel / reichlich / ordentlich |
+| ทริป | thríp | Trip / Reise / Ausflug |
 | เดือนหน้า | dʉan-nâa | nächster Monat |
+| ทุกวัน | thúk wan | jeden Tag / täglich |
+| ฝึก | fʉ̀k | trainieren / üben / praktizieren |
+| หนึ่งชั่วโมง | nʉ̀ng chûa-moong | eine Stunde |
+| เก่งขึ้น | gèng khʉ̂n | besser werden / sich verbessern (Fähigkeiten) |
+| เร็วมาก | reo-mâak | sehr schnell / rapide |
+| เย็นนี้ | yen níi | heute Abend |
+| เล็กๆ | lék-lék | klein / in kleinem Rahmen |
+| ที่บ้าน | thîi bâan | zu Hause / daheim |
+| พร้อมแล้ว | phrɔ́ɔm lɛ́ɛo | fertig / bereit sein |
+| กันต่อ | gan dtɔ̀ɔ | gemeinsam weitermachen |
+| เดี๋ยวจะ | dǐao-jà | gleich werden / sofort tun |
+| แล้วจะ | lɛ́ɛo-jà | und dann werden / und wie wird |
 | ไม่รู้ | mâi-rúu | nicht wissen / keine Ahnung haben |
 | ริม | rim | am Rand / am Ufer / an der Kante |
 | ลองดู | lɔɔng-duu | ausprobieren / versuchen / mal sehen |
@@ -886,22 +963,15 @@ Dieses Dokument dient Gemini als schlanke Referenz (~20 KB), um bestehende Wört
 | กุ้ง | gûng | Garnele / Krabbe |
 | สด | sòt | frisch / roh / lebendig |
 | ล้างจาน | láang-jaan | Geschirr spülen / abwaschen |
-| ช่วยได้ | chûai-dâi | helfen können / eine Hilfe sein |
 | ทุ่มตรง | thûm-dtrong | punkt 19:00 Uhr / genau sieben Uhr abends |
 | วันจันทร์ | wan-jan | Montag |
 | อังคาร | ang-khaan | Dienstag / Mars |
-| วันละ | wan-lá | pro Tag / täglich |
 | ดีมาก | dii-mâak | sehr gut / ausgezeichnet |
-| ฝึก | fʉ̀k | üben / trainieren / schulen |
 | บ่อยๆ | bɔ̀i-bɔ̀i | oft / häufig |
-| เก่งขึ้น | gèng-khʉ̂n | besser werden / Fortschritte machen |
-| วิ่ง | wîng | laufen / joggen / rennen |
 | หลับ | làp | einschlafen / schlafen |
 | สบายขึ้น | sà-baai-khʉ̂n | angenehmer werden / sich besser fühlen |
 | ปลุก | bplùk | aufwecken / wecken |
 | แต่เช้า | dtɛ̀ɛ-cháo | früh am Morgen |
-| เยอะๆ | yə́-yə́ | reichlich / viel / ordentlich |
-| ได้ไหม | dâi-mái | kannst du? / geht das? / darf ich? |
 | อ่านดู | àan-duu | durchlesen / probehalber lesen |
 | มาหา | maa-hǎa | zu jemandem kommen / besuchen |
 | คุณต้น | khun-dtôn | Herr Ton / Ton (Höflichkeitsform) |
@@ -909,11 +979,5 @@ Dieses Dokument dient Gemini als schlanke Referenz (~20 KB), um bestehende Wört
 | ตอนไหน | dton-nǎi | wann / zu welchem Zeitpunkt |
 | ตั๋วเครื่องบิน | dtǔa-khrʉ̂ang-bin | Flugticket / Flugschein |
 | เสื้อกันหนาว | sʉ̂a-gan-nǎao | Winterjacke / warme Jacke |
-| ทริป | thríp | Trip / Reise / Ausflug |
-| แน่ๆ | nɛ̂ɛ-nɛ̂ɛ | ganz sicher / auf jeden Fall / garantiert |
 | ใช่แล้ว | châi-lɛ́ɛo | genau / so ist es / stimmt genau |
 
-## Weitere verfügbare Wörter
-| Thai | Lautschrift | Bedeutung |
-| :--- | :--- | :--- |
-| เดี๋ยวจะ | dǐao-jà | gleich werden / sofort tun |

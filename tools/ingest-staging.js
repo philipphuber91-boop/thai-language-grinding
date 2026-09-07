@@ -584,6 +584,22 @@ function ingestDrills(files, prodState) {
                 let existing = drillData.words.find(ew => ew.id === w.id || ew.thai === w.thai);
                 if (existing) {
                     if (w.id) wordIdMap.set(w.id, existing.id);
+                    if (
+                        w.note &&
+                        (
+                            !existing.infoSentence ||
+                            existing.infoSentence === "Keine erforderlich."
+                        )
+                    ) {
+                        existing.infoSentence = w.note;
+                    }
+                    if (
+                        Array.isArray(w.syllables) &&
+                        w.syllables.length > 1 &&
+                        (!Array.isArray(existing.syllables) || existing.syllables.length < 2)
+                    ) {
+                        existing.syllables = w.syllables;
+                    }
                 } else {
                     const canonicalId = (w.id && !w.id.startsWith("temp-"))
                         ? w.id
@@ -664,10 +680,24 @@ function ingestDrills(files, prodState) {
 
             if (targetBlock) {
                 if (Array.isArray(draft.miniStories) && draft.miniStories.length > 0) {
+                    const existingStoriesById = new Map(
+                        (targetBlock.miniStories || []).map(story => [story.id, story])
+                    );
                     targetBlock.miniStories = draft.miniStories.map(ms => ({
                         id: ms.id,
                         title: ms.title,
+                        ...(
+                            Array.isArray(ms.speakers)
+                                ? { speakers: ms.speakers }
+                                : existingStoriesById.get(ms.id)?.speakers
+                                    ? { speakers: existingStoriesById.get(ms.id).speakers }
+                                    : {}
+                        ),
                         sentences: ms.sentences.map(sent => {
+                            const existingSentence = existingStoriesById
+                                .get(ms.id)
+                                ?.sentences
+                                ?.find(sentence => sentence.number === sent.number);
                             const rawTokens = sent.tokens || [];
                             const finalTokens = [];
                             let currentThai = sent.thai;
@@ -713,6 +743,11 @@ function ingestDrills(files, prodState) {
                                 transliteration: sent.transliteration || "",
                                 translation: sent.translation,
                                 audio: sent.audio || { type: "speechSynthesis" },
+                                ...(
+                                    sent.speakerId || existingSentence?.speakerId
+                                        ? { speakerId: sent.speakerId || existingSentence.speakerId }
+                                        : {}
+                                ),
                                 tokens: finalTokens
                             };
                         })
@@ -1027,4 +1062,3 @@ module.exports = {
     loadExistingProductionState,
     renderHumanReadablePreview
 };
-

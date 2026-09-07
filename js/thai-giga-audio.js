@@ -44,10 +44,10 @@
 
     function getSentenceGender(sentence) {
         const text = String(sentence?.thai || "");
-        if (/ค่ะ|คะ/.test(text)) {
+        if (/ฉัน|ดิฉัน|หนู|ค่ะ|คะ/.test(text)) {
             return "female";
         }
-        if (/ครับ/.test(text)) {
+        if (/ผม|ครับ/.test(text)) {
             return "male";
         }
         return "";
@@ -98,11 +98,21 @@
         const sentenceGender = getSentenceGender(sentence);
         const profileGender = profile && typeof profile === "object" ? profile.gender : "";
 
-        if (speakerProfileId && profileGender) {
+        if (
+            speakerProfileId &&
+            profileGender &&
+            (!sentenceGender || sentenceGender === profileGender)
+        ) {
             return getBalancedProfileId(sentence, speakerProfileId);
         }
 
-        return sentenceGender === "female" ? "W" : "M";
+        if (sentenceGender === "female") {
+            return "W";
+        }
+        if (sentenceGender === "male") {
+            return "M";
+        }
+        return speakerProfileId;
     }
 
     function getConfiguredVoiceId(sentence = {}) {

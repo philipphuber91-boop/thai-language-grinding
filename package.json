@@ -6,7 +6,12 @@
     },
     "scripts": {
         "start:tts": "node api/local-server.js",
-        "tts:batch": "node tools/tts-batch.js"
+        "tts:batch": "node tools/tts-batch.js",
+        "staging:preview": "node tools/ingest-staging.js --preview",
+        "staging:validate": "node tools/ingest-staging.js --validate-only",
+        "staging:ingest": "node tools/ingest-staging.js --ingest",
+        "ingest": "node tools/ingest-staging.js --ingest",
+        "ingest:check": "node tools/ingest-staging.js --validate-only"
     },
     "dependencies": {
         "@aws-sdk/client-s3": "^3.879.0",

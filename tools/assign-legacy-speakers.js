@@ -2,9 +2,11 @@ const fs = require("node:fs/promises");
 
 const contentPath = process.env.TTS_CONTENT_PATH || "data/thai-giga-drill.v1.json";
 const writeChanges = process.argv.includes("--write");
+const repairGender = process.argv.includes("--repair-gender");
 
 const MALE_MARKERS = [/\u0e1c\u0e21/u, /\u0e04\u0e23\u0e31\u0e1a/u];
 const FEMALE_MARKERS = [/\u0e09\u0e31\u0e19/u, /\u0e04\u0e48\u0e30/u, /\u0e04\u0e30/u];
+const MALE_PROFILES = new Set(["M", "M1", "M2", "JM", "VA", "OP", "ON"]);
 
 function hasMarker(text, markers) {
     return markers.some(marker => marker.test(text));
@@ -20,6 +22,10 @@ function getGender(text) {
         return "female";
     }
     return "";
+}
+
+function getProfileGender(profile) {
+    return MALE_PROFILES.has(profile) ? "male" : "female";
 }
 
 function getParityEvidence(sentences) {
@@ -75,9 +81,68 @@ function getProfilePair(sentences) {
     };
 }
 
+function repairStoryGender(story) {
+    if (!Array.isArray(story.speakers) || story.speakers.length < 2) {
+        return { changed: false, repairedSentences: 0 };
+    }
+
+    const explicitGenders = new Set(
+        story.sentences.map(sentence => getGender(sentence.thai)).filter(Boolean)
+    );
+    let maleSpeaker = story.speakers.find(
+        speaker => getProfileGender(speaker.voiceProfileId) === "male"
+    );
+    let femaleSpeaker = story.speakers.find(
+        speaker => getProfileGender(speaker.voiceProfileId) === "female"
+    );
+    let changed = false;
+
+    if (explicitGenders.has("male") && !maleSpeaker) {
+        const replacement = story.speakers.find(speaker => speaker !== femaleSpeaker);
+        if (replacement) {
+            replacement.role = "M";
+            replacement.voiceProfileId = "M";
+            maleSpeaker = replacement;
+            changed = true;
+        }
+    }
+    if (explicitGenders.has("female") && !femaleSpeaker) {
+        const replacement = story.speakers.find(speaker => speaker !== maleSpeaker);
+        if (replacement) {
+            replacement.role = "W";
+            replacement.voiceProfileId = "W";
+            femaleSpeaker = replacement;
+            changed = true;
+        }
+    }
+
+    let repairedSentences = 0;
+    story.sentences.forEach(sentence => {
+        const gender = getGender(sentence.thai);
+        const targetSpeaker = gender === "male" ? maleSpeaker : gender === "female" ? femaleSpeaker : null;
+        const currentSpeaker = story.speakers.find(speaker => speaker.id === sentence.speakerId);
+        const currentGender = currentSpeaker
+            ? getProfileGender(currentSpeaker.voiceProfileId)
+            : "";
+        if (targetSpeaker && currentGender !== gender) {
+            sentence.speakerId = targetSpeaker.id;
+            repairedSentences += 1;
+        }
+    });
+
+    return {
+        changed: changed || repairedSentences > 0,
+        repairedSentences
+    };
+}
+
 function assignStory(story) {
-    if (Array.isArray(story.speakers) && story.speakers.length > 0) {
+    if (Array.isArray(story.speakers) && story.speakers.length > 0 && !repairGender) {
         return { changed: false, confidence: null };
+    }
+    if (Array.isArray(story.speakers) && story.speakers.length > 0) {
+        const repair = repairStoryGender(story);
+        return { changed: repair.changed, confidence: null, repairedSentences: repair.repairedSentences };
     }
 
     const assignment = getProfilePair(story.sentences);
@@ -92,8 +157,13 @@ function assignStory(story) {
     story.sentences.forEach((sentence, index) => {
         sentence.speakerId = speakerIds[index % 2];
     });
+    const repair = repairStoryGender(story);
 
-    return { changed: true, confidence: assignment.confidence };
+    return {
+        changed: true,
+        confidence: assignment.confidence,
+        repairedSentences: repair.repairedSentences
+    };
 }
 
 async function run() {
@@ -104,6 +174,8 @@ async function run() {
         skippedStories: 0,
         assignedSentences: 0,
         uncertainStories: 0,
+        repairedStories: 0,
+        repairedSentences: 0,
         profiles: {}
     };
 
@@ -117,9 +189,14 @@ async function run() {
                         summary.skippedStories += 1;
                         continue;
                     }
-                    summary.assignedStories += 1;
-                    summary.assignedSentences += story.sentences.length;
-                    if (result.confidence < 0.8) {
+                    if (repairGender && story.speakers?.length) {
+                        summary.repairedStories += 1;
+                        summary.repairedSentences += result.repairedSentences || 0;
+                    } else {
+                        summary.assignedStories += 1;
+                        summary.assignedSentences += story.sentences.length;
+                    }
+                    if (result.confidence !== null && result.confidence < 0.8) {
                         summary.uncertainStories += 1;
                     }
                     story.speakers.forEach(speaker => {
