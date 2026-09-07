@@ -1729,7 +1729,7 @@
           "role": "M1",
           "assignmentSource": "contextual",
           "confidence": 0.9,
-          "voiceProfileId": "M1"
+          "voiceProfileId": "ON"
         },
         {
           "id": "level-1-boss-7-story-21-speaker-b",
@@ -2371,14 +2371,14 @@
           "role": "W1",
           "assignmentSource": "contextual",
           "confidence": 0.9,
-          "voiceProfileId": "W1"
+          "voiceProfileId": "MU"
         },
         {
           "id": "level-1-boss-7-story-22-speaker-b",
           "role": "M1",
           "assignmentSource": "contextual",
           "confidence": 0.9,
-          "voiceProfileId": "M1"
+          "voiceProfileId": "OP"
         }
       ],
       "sentences": [
@@ -3013,14 +3013,14 @@
           "role": "M1",
           "assignmentSource": "contextual",
           "confidence": 0.9,
-          "voiceProfileId": "M1"
+          "voiceProfileId": "ON"
         },
         {
           "id": "level-1-boss-7-story-23-speaker-b",
           "role": "W1",
           "assignmentSource": "contextual",
           "confidence": 0.9,
-          "voiceProfileId": "W1"
+          "voiceProfileId": "OM"
         }
       ],
       "sentences": [
@@ -3648,14 +3648,14 @@
           "role": "W1",
           "assignmentSource": "contextual",
           "confidence": 0.9,
-          "voiceProfileId": "W1"
+          "voiceProfileId": "JW"
         },
         {
           "id": "level-1-boss-7-story-24-speaker-b",
           "role": "M1",
           "assignmentSource": "contextual",
           "confidence": 0.9,
-          "voiceProfileId": "M1"
+          "voiceProfileId": "OP"
         }
       ],
       "sentences": [
@@ -4290,7 +4290,7 @@
           "role": "M1",
           "assignmentSource": "contextual",
           "confidence": 0.9,
-          "voiceProfileId": "M1"
+          "voiceProfileId": "ON"
         },
         {
           "id": "level-1-boss-7-story-25-speaker-b",
@@ -4932,14 +4932,14 @@
           "role": "W1",
           "assignmentSource": "contextual",
           "confidence": 0.9,
-          "voiceProfileId": "W1"
+          "voiceProfileId": "MU"
         },
         {
           "id": "level-1-boss-7-story-26-speaker-b",
           "role": "M1",
           "assignmentSource": "contextual",
           "confidence": 0.9,
-          "voiceProfileId": "M1"
+          "voiceProfileId": "OP"
         }
       ],
       "sentences": [
@@ -5567,14 +5567,14 @@
           "role": "M1",
           "assignmentSource": "contextual",
           "confidence": 0.9,
-          "voiceProfileId": "M1"
+          "voiceProfileId": "ON"
         },
         {
           "id": "level-1-boss-7-story-27-speaker-b",
           "role": "W1",
           "assignmentSource": "contextual",
           "confidence": 0.9,
-          "voiceProfileId": "W1"
+          "voiceProfileId": "OM"
         }
       ],
       "sentences": [
@@ -6202,14 +6202,14 @@
           "role": "W1",
           "assignmentSource": "contextual",
           "confidence": 0.9,
-          "voiceProfileId": "W1"
+          "voiceProfileId": "JW"
         },
         {
           "id": "level-1-boss-7-story-28-speaker-b",
           "role": "M1",
           "assignmentSource": "contextual",
           "confidence": 0.9,
-          "voiceProfileId": "M1"
+          "voiceProfileId": "OP"
         }
       ],
       "sentences": [
@@ -6823,7 +6823,7 @@
           "role": "M1",
           "assignmentSource": "contextual",
           "confidence": 0.9,
-          "voiceProfileId": "M1"
+          "voiceProfileId": "ON"
         },
         {
           "id": "level-1-boss-7-story-29-speaker-b",
@@ -7486,14 +7486,14 @@
           "role": "W1",
           "assignmentSource": "contextual",
           "confidence": 0.9,
-          "voiceProfileId": "W1"
+          "voiceProfileId": "MU"
         },
         {
           "id": "level-1-boss-7-story-30-speaker-b",
           "role": "M1",
           "assignmentSource": "contextual",
           "confidence": 0.9,
-          "voiceProfileId": "M1"
+          "voiceProfileId": "OP"
         }
       ],
       "sentences": [

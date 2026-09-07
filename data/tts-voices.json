@@ -22,6 +22,16 @@
             "deliveryMode": "BALANCED",
             "language": "th-TH"
         },
+        "W1": {
+            "label": "Weibliche Nebenfigur 1",
+            "gender": "female",
+            "ageGroup": "adult",
+            "voiceId": "Lupita",
+            "modelId": "inworld-tts-2",
+            "speakingRate": 1,
+            "deliveryMode": "BALANCED",
+            "language": "th-TH"
+        },
         "MU": {
             "label": "Mutter",
             "gender": "female",

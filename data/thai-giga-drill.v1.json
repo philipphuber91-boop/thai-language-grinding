@@ -158196,7 +158196,88 @@
             {
               "id": "level-1-boss-7-foundation-block-1",
               "title": "Foundation Block 1 — Sätze 3001–3100",
-              "midpointReminder": null,
+              "midpointReminder": {
+                "title": "💎 REMINDER · SÄTZE 3001–3050",
+                "message": "Zukunftspläne im Alltag, Verabredungen & Essen gehen",
+                "lead": "Was du in den ersten 50 Sätzen gelernt hast",
+                "sections": [
+                  {
+                    "title": "Neue Wörter",
+                    "words": [
+                      {
+                        "thai": "จะ",
+                        "transliteration": "jà",
+                        "translation": "werden / wollen"
+                      },
+                      {
+                        "thai": "จะไม่",
+                        "transliteration": "jà-mâi",
+                        "translation": "nicht werden"
+                      },
+                      {
+                        "thai": "ด้วยกัน",
+                        "transliteration": "dûai-gan",
+                        "translation": "zusammen / gemeinsam"
+                      },
+                      {
+                        "thai": "เลิกงาน",
+                        "transliteration": "lə̂ək-ngaan",
+                        "translation": "Feierabend machen"
+                      },
+                      {
+                        "thai": "หกโมงเช้า",
+                        "transliteration": "hòk-moong-cháo",
+                        "translation": "sechs Uhr morgens"
+                      },
+                      {
+                        "thai": "ออกแต่เช้า",
+                        "transliteration": "ɔ̀ɔk-dtɛ̀ɛ-cháo",
+                        "translation": "früh aufbrechen"
+                      },
+                      {
+                        "thai": "กินข้าวเช้า",
+                        "transliteration": "gin-khâao-cháo",
+                        "translation": "frühstücken"
+                      },
+                      {
+                        "thai": "กาแฟเย็น",
+                        "transliteration": "gaa-fɛɛ-yen",
+                        "translation": "Eiskaffee"
+                      },
+                      {
+                        "thai": "หวานน้อย",
+                        "transliteration": "wǎan-nɔ́ɔi",
+                        "translation": "wenig süß"
+                      },
+                      {
+                        "thai": "หัวหิน",
+                        "transliteration": "hǔa-hǐn",
+                        "translation": "Hua Hin"
+                      }
+                    ],
+                    "note": "Mit จะ vor dem Verb äußerst du feste Pläne und Absichten für den Tag und das Wochenende."
+                  }
+                ],
+                "patternLead": "Wichtiges Muster",
+                "pattern": {
+                  "thai": "เธอจะไปด้วยกันไหม",
+                  "transliteration": "thəə jà bpai dûai-gan mái",
+                  "translation": "Wirst du auch mitgehen?"
+                },
+                "discoveries": [
+                  {
+                    "thai": "ผมจะไปกินข้าวกับเพื่อน",
+                    "transliteration": "phǒm jà bpai gin khâao gàp phʉ̂an",
+                    "translation": "Ich werde mit Freunden essen gehen."
+                  },
+                  {
+                    "thai": "ฉันกำลังจะถึงร้านกาแฟ",
+                    "transliteration": "chǎn gam-lang jà thʉ̌ng ráan gaa-fɛɛ",
+                    "translation": "Ich komme gleich beim Café an."
+                  }
+                ],
+                "closing": "Nutze จะ für Absichten und จะไม่ für Dinge, die du nicht tun wirst."
+              },
               "completion": {
                 "title": "🏆 3100 / 3500 · FOUNDATION BLOCK 1 COMPLETE",
                 "sentenceRange": "3001–3100",
@@ -158205,89 +158286,56 @@
                   {
                     "title": "Neue Wörter & Muster (Sätze 3001–3100)",
                     "words": [
-                      "จะ",
-                      "จะไม่",
-                      "เดี๋ยวจะ",
-                      "แล้วจะ",
-                      "อาทิตย์หน้า",
-                      "เดือนหน้า",
-                      "ด้วยกัน",
-                      "เริ่ม",
-                      "เสร็จ",
-                      "โทร",
-                      "กลับ",
-                      "ตอนเย็น",
-                      "ตอนเช้า",
-                      "เหนื่อย",
-                      "พักผ่อน",
-                      "พรุ่งนี้",
-                      "วันนี้",
-                      "ทำงาน",
-                      "ทำอาหาร",
-                      "เสื้อกันหนาว",
-                      "ทริป",
-                      "แน่ๆ",
-                      "ใช่แล้ว",
-                      "ต้มยำกุ้ง",
-                      "กุ้ง",
-                      "ล้างจาน",
-                      "ทุ่มตรง",
-                      "บ่ายสอง",
-                      "กลับถึง",
-                      "หัวหิน",
-                      "วันจันทร์",
-                      "อังคาร",
-                      "หนังสือ",
-                      "เก่งขึ้น",
-                      "แน่นอน",
-                      "วิ่ง",
-                      "ดึก",
-                      "หลับ",
-                      "สบายขึ้น",
-                      "ปลุก",
-                      "ใจดี",
-                      "นอนพัก",
-                      "ประชุม",
-                      "ตั๋วเครื่องบิน",
-                      "โรงแรม",
-                      "เดินเล่น",
-                      "อากาศ",
-                      "หนาว",
-                      "สดๆ",
-                      "บ่อยๆ",
-                      "เยอะๆ",
-                      "สวยๆ",
-                      "กินข้าว",
-                      "ร้าน",
-                      "เพื่อน",
-                      "ไปเที่ยว",
-                      "เจอกัน",
-                      "ไม่รู้",
-                      "ริม",
-                      "ลองดู",
-                      "หกโมง",
-                      "หกโมงเช้า",
-                      "ออกแต่เช้า",
-                      "กินข้าวเช้า",
-                      "กล้วย",
-                      "ไปไหน",
-                      "ติดงาน",
-                      "อยู่ไหน",
-                      "กาแฟเย็น",
-                      "หวานน้อย",
-                      "ด้านใน",
-                      "สด",
-                      "ช่วยได้",
-                      "วันละ",
-                      "ดีมาก",
-                      "ฝึก",
-                      "แต่เช้า",
-                      "ได้ไหม",
-                      "อ่านดู",
-                      "มาหา",
-                      "คุณต้น",
-                      "โทรกลับ",
-                      "ตอนไหน"
+                      {
+                        "thai": "ทำอาหาร",
+                        "transliteration": "tham-aa-hǎan",
+                        "translation": "kochen"
+                      },
+                      {
+                        "thai": "ต้มยำกุ้ง",
+                        "transliteration": "dtôm-yam-gûng",
+                        "translation": "Tom Yam Gung"
+                      },
+                      {
+                        "thai": "อาทิตย์หน้า",
+                        "transliteration": "aa-thít-nâa",
+                        "translation": "nächste Woche"
+                      },
+                      {
+                        "thai": "เดือนหน้า",
+                        "transliteration": "dʉan-nâa",
+                        "translation": "nächster Monat"
+                      },
+                      {
+                        "thai": "โทรกลับ",
+                        "transliteration": "thoo-glàp",
+                        "translation": "zurückrufen"
+                      },
+                      {
+                        "thai": "ตั๋วเครื่องบิน",
+                        "transliteration": "dtǔa-khrʉ̂ang-bin",
+                        "translation": "Flugticket"
+                      },
+                      {
+                        "thai": "เสื้อกันหนาว",
+                        "transliteration": "sʉ̂a-gan-nǎao",
+                        "translation": "Winterjacke"
+                      },
+                      {
+                        "thai": "พักผ่อน",
+                        "transliteration": "phák-phɔ̀ɔn",
+                        "translation": "sich ausruhen"
+                      },
+                      {
+                        "thai": "ฝึก",
+                        "transliteration": "fʉ̀k",
+                        "translation": "üben / trainieren"
+                      },
+                      {
+                        "thai": "แน่นอน",
+                        "transliteration": "nɛ̂ɛ-nɔɔn",
+                        "translation": "sicher / bestimmt"
+                      }
                     ],
                     "note": "Souverän Zukunftspläne schmieden, Termine vereinbaren und gemeinsame Vorhaben auf Thai absprechen."
                   }
@@ -170017,7 +170065,7 @@
                       "role": "M1",
                       "assignmentSource": "contextual",
                       "confidence": 0.9,
-                      "voiceProfileId": "M1"
+                      "voiceProfileId": "ON"
                     },
                     {
                       "id": "level-1-boss-7-story-21-speaker-b",
@@ -170694,14 +170742,14 @@
                       "role": "W1",
                       "assignmentSource": "contextual",
                       "confidence": 0.9,
-                      "voiceProfileId": "W1"
+                      "voiceProfileId": "MU"
                     },
                     {
                       "id": "level-1-boss-7-story-22-speaker-b",
                       "role": "M1",
                       "assignmentSource": "contextual",
                       "confidence": 0.9,
-                      "voiceProfileId": "M1"
+                      "voiceProfileId": "OP"
                     }
                   ],
                   "sentences": [
@@ -171361,14 +171409,14 @@
                       "role": "M1",
                       "assignmentSource": "contextual",
                       "confidence": 0.9,
-                      "voiceProfileId": "M1"
+                      "voiceProfileId": "ON"
                     },
                     {
                       "id": "level-1-boss-7-story-23-speaker-b",
                       "role": "W1",
                       "assignmentSource": "contextual",
                       "confidence": 0.9,
-                      "voiceProfileId": "W1"
+                      "voiceProfileId": "OM"
                     }
                   ],
                   "sentences": [
@@ -172026,14 +172074,14 @@
                       "role": "W1",
                       "assignmentSource": "contextual",
                       "confidence": 0.9,
-                      "voiceProfileId": "W1"
+                      "voiceProfileId": "JW"
                     },
                     {
                       "id": "level-1-boss-7-story-24-speaker-b",
                       "role": "M1",
                       "assignmentSource": "contextual",
                       "confidence": 0.9,
-                      "voiceProfileId": "M1"
+                      "voiceProfileId": "OP"
                     }
                   ],
                   "sentences": [
@@ -172698,7 +172746,7 @@
                       "role": "M1",
                       "assignmentSource": "contextual",
                       "confidence": 0.9,
-                      "voiceProfileId": "M1"
+                      "voiceProfileId": "ON"
                     },
                     {
                       "id": "level-1-boss-7-story-25-speaker-b",
@@ -173360,14 +173408,14 @@
                       "role": "W1",
                       "assignmentSource": "contextual",
                       "confidence": 0.9,
-                      "voiceProfileId": "W1"
+                      "voiceProfileId": "MU"
                     },
                     {
                       "id": "level-1-boss-7-story-26-speaker-b",
                       "role": "M1",
                       "assignmentSource": "contextual",
                       "confidence": 0.9,
-                      "voiceProfileId": "M1"
+                      "voiceProfileId": "OP"
                     }
                   ],
                   "sentences": [
@@ -174010,14 +174058,14 @@
                       "role": "M1",
                       "assignmentSource": "contextual",
                       "confidence": 0.9,
-                      "voiceProfileId": "M1"
+                      "voiceProfileId": "ON"
                     },
                     {
                       "id": "level-1-boss-7-story-27-speaker-b",
                       "role": "W1",
                       "assignmentSource": "contextual",
                       "confidence": 0.9,
-                      "voiceProfileId": "W1"
+                      "voiceProfileId": "OM"
                     }
                   ],
                   "sentences": [
@@ -174675,14 +174723,14 @@
                       "role": "W1",
                       "assignmentSource": "contextual",
                       "confidence": 0.9,
-                      "voiceProfileId": "W1"
+                      "voiceProfileId": "JW"
                     },
                     {
                       "id": "level-1-boss-7-story-28-speaker-b",
                       "role": "M1",
                       "assignmentSource": "contextual",
                       "confidence": 0.9,
-                      "voiceProfileId": "M1"
+                      "voiceProfileId": "OP"
                     }
                   ],
                   "sentences": [
@@ -175316,7 +175364,7 @@
                       "role": "M1",
                       "assignmentSource": "contextual",
                       "confidence": 0.9,
-                      "voiceProfileId": "M1"
+                      "voiceProfileId": "ON"
                     },
                     {
                       "id": "level-1-boss-7-story-29-speaker-b",
@@ -176014,14 +176062,14 @@
                       "role": "W1",
                       "assignmentSource": "contextual",
                       "confidence": 0.9,
-                      "voiceProfileId": "W1"
+                      "voiceProfileId": "MU"
                     },
                     {
                       "id": "level-1-boss-7-story-30-speaker-b",
                       "role": "M1",
                       "assignmentSource": "contextual",
                       "confidence": 0.9,
-                      "voiceProfileId": "M1"
+                      "voiceProfileId": "OP"
                     }
                   ],
                   "sentences": [
@@ -203431,7 +203479,7 @@
       "syllables": [
         {
           "thai": "โรง",
-          "transliteration": "rooŋ"
+          "transliteration": "roong"
         },
         {
           "thai": "แรม",
@@ -228738,7 +228786,7 @@
         },
         {
           "thai": "กัน",
-          "transliteration": "kan"
+          "transliteration": "gan"
         }
       ]
     },
@@ -235355,7 +235403,17 @@
           ],
           "contextExamples": []
         }
-      }
+      },
+      "syllables": [
+        {
+          "thai": "เอก",
+          "transliteration": "èek-gà"
+        },
+        {
+          "thai": "สาร",
+          "transliteration": "sǎan"
+        }
+      ]
     },
     {
       "id": "word-b5-3285147",
@@ -237411,7 +237469,7 @@
         },
         {
           "thai": "กัน",
-          "transliteration": "kan"
+          "transliteration": "gan"
         }
       ],
       "firstSentenceId": "l1-b5-s2106",
@@ -237740,12 +237798,8 @@
           "transliteration": "nâa"
         },
         {
-          "thai": "ส",
-          "transliteration": "sà"
-        },
-        {
-          "thai": "นุก",
-          "transliteration": "nùk"
+          "thai": "สนุก",
+          "transliteration": "sà-nùk"
         }
       ],
       "firstSentenceId": "l1-b5-s2329",
@@ -237879,7 +237933,7 @@
       "syllables": [
         {
           "thai": "ผล",
-          "transliteration": "phǒn-lá"
+          "transliteration": "phǒn"
         },
         {
           "thai": "ไม้",
@@ -242131,7 +242185,7 @@
       "syllables": [
         {
           "thai": "เสีย",
-          "transliteration": "sǐia"
+          "transliteration": "sǐa"
         },
         {
           "thai": "ดาย",
@@ -243821,7 +243875,7 @@
         },
         {
           "thai": "ไทย",
-          "transliteration": "Thai"
+          "transliteration": "thai"
         }
       ],
       "bossContexts": {
@@ -244873,7 +244927,7 @@
       "syllables": [
         {
           "thai": "ได้",
-          "transliteration": "dâai"
+          "transliteration": "dâi"
         },
         {
           "thai": "ไหม",
@@ -245055,7 +245109,7 @@
         },
         {
           "thai": "ได้",
-          "transliteration": "dâai"
+          "transliteration": "dâi"
         }
       ]
     },
