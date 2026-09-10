@@ -1528,15 +1528,17 @@
                         ${escapeHtml(sentence.translation)}
                     </p>
                 </div>
-                ${audioMarkup}
-                <button
-                    class="thai-giga-playlist-button"
-                    type="button"
-                    data-thai-giga-playlist-sentence="${escapeHtml(sentence.id)}"
-                    aria-label="Satz zur Playlist hinzufügen"
-                    title="Satz zur Playlist hinzufügen">
-                    + Playlist
-                </button>
+                <div class="thai-giga-sentence-tools">
+                    <button
+                        class="thai-giga-playlist-button"
+                        type="button"
+                        data-thai-giga-playlist-sentence="${escapeHtml(sentence.id)}"
+                        aria-label="Satz zur Playlist hinzufügen"
+                        title="Satz zur Playlist hinzufügen">
+                        + Playlist
+                    </button>
+                    ${audioMarkup}
+                </div>
             </article>
         `;
     }
