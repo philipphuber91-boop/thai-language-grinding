@@ -3354,3 +3354,10 @@
         grid-template-columns:1fr 1fr;
     }
 }
+
+@media (display-mode: standalone) and (max-width:900px){
+    body:has(#typingBereich){
+        /* Android PWAs can draw behind gesture navigation without exposing its safe-area inset. */
+        padding-bottom:max(48px, env(safe-area-inset-bottom));
+    }
+}
