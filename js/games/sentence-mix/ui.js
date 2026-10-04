@@ -324,6 +324,10 @@
         this.allSentences = [];
         this.currentIndex = 0;
         this.stageContainer = null;
+        this.stageEl = null;
+        this.stageRoundCountEl = null;
+        this.stageTranslationEl = null;
+        this.stageTokensGridEl = null;
         this.currentRound = null;
         this.currentLiveDisplayEl = null;
         this.feedbackContainerEl = null;
@@ -1080,45 +1084,72 @@
 
     SentenceMixUI.prototype.renderStage = function (round) {
         if (!this.stageContainer) return;
-        this.stageContainer.innerHTML = "";
+
+        if (!this.stageEl || !this.stageContainer.contains(this.stageEl)) {
+            const stage = document.createElement("div");
+            stage.className = "sentence-mix-stage";
+
+            const header = document.createElement("div");
+            header.className = "stage-header";
+
+            const profile = document.createElement("div");
+            profile.className = "stage-butler-profile";
+            const avatar = document.createElement("div");
+            avatar.className = "stage-avatar";
+            avatar.textContent = "🤵";
+            const info = document.createElement("div");
+            info.className = "stage-butler-info";
+            const butlerHeading = document.createElement("h2");
+            butlerHeading.textContent = "Butler";
+            this.stageRoundCountEl = document.createElement("span");
+            info.appendChild(butlerHeading);
+            info.appendChild(this.stageRoundCountEl);
+            profile.appendChild(avatar);
+            profile.appendChild(info);
+            header.appendChild(profile);
+
+            this.stageTranslationEl = document.createElement("div");
+            this.stageTranslationEl.className = "stage-translation-badge";
+            header.appendChild(this.stageTranslationEl);
+            stage.appendChild(header);
+
+            this.stageTokensGridEl = document.createElement("div");
+            this.stageTokensGridEl.className = "stage-tokens-grid";
+            stage.appendChild(this.stageTokensGridEl);
+
+            this.feedbackContainerEl = document.createElement("div");
+            this.feedbackContainerEl.className = "stage-feedback-slot";
+            stage.appendChild(this.feedbackContainerEl);
+
+            const inputSection = document.createElement("div");
+            inputSection.className = "stage-input-section";
+
+            const inputLabel = document.createElement("span");
+            inputLabel.className = "stage-input-label";
+            inputLabel.textContent = "Eingabe";
+            inputSection.appendChild(inputLabel);
+
+            this.currentLiveDisplayEl = document.createElement("div");
+            this.currentLiveDisplayEl.className = "stage-input-display";
+            inputSection.appendChild(this.currentLiveDisplayEl);
+            stage.appendChild(inputSection);
+
+            this.stageEl = stage;
+            this.stageContainer.appendChild(stage);
+        }
+
+        const stage = this.stageEl;
+        stage.classList.toggle("sentence-mix-stage--long", round.tokenCount >= 7);
+        stage.classList.toggle("sentence-mix-stage--very-long", round.tokenCount >= 10);
+        this.stageRoundCountEl.textContent =
+            `Satz ${this.currentIndex + 1} von ${this.sentences.length}`;
+        this.stageTranslationEl.textContent = round.translation || "";
+        this.stageTranslationEl.hidden = !round.translation;
+        this.stageTokensGridEl.innerHTML = "";
+        this.feedbackContainerEl.innerHTML = "";
+        this.currentLiveDisplayEl.innerHTML =
+            '<span class="player-seq">> </span><span class="player-cursor"></span>';
         this.activePillElements.clear();
-
-        const stage = document.createElement("div");
-        stage.className = "sentence-mix-stage";
-        if (round.tokenCount >= 7) {
-            stage.classList.add("sentence-mix-stage--long");
-        }
-        if (round.tokenCount >= 10) {
-            stage.classList.add("sentence-mix-stage--very-long");
-        }
-
-        // 1. Stage Header (Butler & Kontext)
-        const header = document.createElement("div");
-        header.className = "stage-header";
-
-        const profile = document.createElement("div");
-        profile.className = "stage-butler-profile";
-        const avatar = document.createElement("div");
-        avatar.className = "stage-avatar";
-        avatar.textContent = "🤵";
-        const info = document.createElement("div");
-        info.className = "stage-butler-info";
-        info.innerHTML = `<h2>Butler</h2><span>Satz ${this.currentIndex + 1} von ${this.sentences.length}</span>`;
-        profile.appendChild(avatar);
-        profile.appendChild(info);
-        header.appendChild(profile);
-
-        if (round.translation) {
-            const transBadge = document.createElement("div");
-            transBadge.className = "stage-translation-badge";
-            transBadge.textContent = round.translation;
-            header.appendChild(transBadge);
-        }
-        stage.appendChild(header);
-
-        // 2. Tokens Grid
-        const grid = document.createElement("div");
-        grid.className = "stage-tokens-grid";
 
         round.displayPills.forEach(pill => {
             const pillEl = document.createElement("div");
@@ -1177,36 +1208,10 @@
 
             pillEl.appendChild(numSpan);
             pillEl.appendChild(contentSpan);
-            grid.appendChild(pillEl);
+            this.stageTokensGridEl.appendChild(pillEl);
 
             this.activePillElements.set(pill.displayNumber, pillEl);
         });
-        stage.appendChild(grid);
-
-        // 3. Kompakte Live-Eingabe
-        const inputSection = document.createElement("div");
-        inputSection.className = "stage-input-section";
-
-        const inputLabel = document.createElement("span");
-        inputLabel.className = "stage-input-label";
-        inputLabel.textContent = "Eingabe";
-        inputSection.appendChild(inputLabel);
-
-        const inputDisplay = document.createElement("div");
-        inputDisplay.className = "stage-input-display";
-        inputDisplay.innerHTML = '<span class="player-seq">> </span><span class="player-cursor"></span>';
-        inputSection.appendChild(inputDisplay);
-
-        stage.appendChild(inputSection);
-        this.currentLiveDisplayEl = inputDisplay;
-
-        // 4. Feedback-Container (leer zur Initialisierung)
-        const feedbackContainer = document.createElement("div");
-        feedbackContainer.className = "stage-feedback-slot";
-        stage.appendChild(feedbackContainer);
-        this.feedbackContainerEl = feedbackContainer;
-
-        this.stageContainer.appendChild(stage);
     };
 
     SentenceMixUI.prototype.handleInputChange = function (sequence) {
