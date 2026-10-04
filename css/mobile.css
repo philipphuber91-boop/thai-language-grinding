@@ -847,19 +847,22 @@
     }
 
     #zeile1.mobile-thai-lines .thai-mark-placeholder{
-        position:absolute;
-        top:50%;
-        left:50%;
-        font-family:"Noto Sans Thai",sans-serif;
-        font-weight:400;
-        line-height:1;
+        display:inline-block;
+        width:.9em;
+        min-width:.9em;
+        text-align:center;
         white-space:nowrap;
-        transform:translate(-50%,-50%);
+        vertical-align:baseline;
         pointer-events:none;
     }
 
     #zeile1.mobile-thai-lines .thai-combining-source{
+        position:absolute;
+        width:0;
+        height:0;
+        overflow:hidden;
         color:transparent;
+        font-size:0;
     }
 
     .aktuell{
