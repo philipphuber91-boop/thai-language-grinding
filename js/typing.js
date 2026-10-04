@@ -1665,11 +1665,27 @@ function escapeMobileThaiHtml(value) {
 }
 
 function getThaiHighlightRange(lineStart, lineEnd) {
-    const highlightStart = Math.max(lineStart, Math.min(position, lineEnd - 1));
+    const activePosition = Math.max(
+        lineStart,
+        Math.min(position, lineEnd - 1)
+    );
+    const localPosition = activePosition - lineStart;
+    const activeGrapheme = getMobileThaiGraphemes(
+        text.slice(lineStart, lineEnd)
+    ).find(grapheme =>
+        localPosition >= grapheme.start && localPosition < grapheme.end
+    );
+
+    if (activeGrapheme) {
+        return {
+            start: lineStart + activeGrapheme.start,
+            end: lineStart + activeGrapheme.end
+        };
+    }
 
     return {
-        start: highlightStart,
-        end: Math.min(lineEnd, highlightStart + 1)
+        start: activePosition,
+        end: Math.min(lineEnd, activePosition + 1)
     };
 }
 
@@ -1707,7 +1723,7 @@ function renderMobileThaiLines(highlightClass = "aktuell") {
 // allein in der farbig hervorgehobenen "aktuell"-Box stehen: ohne sein
 // Basiszeichen im selben Textlauf kann der Browser es nicht korrekt
 // platzieren und zeigt stattdessen ein abgetrenntes, kaputt wirkendes
-// Kästchen an. Siehe zeigeZeilen().
+// Kästchen an. Siehe getThaiHighlightRange() und zeigeZeilen().
 const THAI_COMBINING_MARKS = /[\u0E31\u0E34-\u0E3A\u0E47-\u0E4E]/;
 
 function istThailaendischesKombinationszeichen(zeichen) {
