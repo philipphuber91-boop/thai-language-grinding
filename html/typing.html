@@ -14,7 +14,7 @@
 
     <link rel="stylesheet" href="../style.css">
     <!-- Nur additive Anpassungen für schmale Viewports, ändert keine bestehende Desktop-Regel -->
-    <link rel="stylesheet" href="../css/mobile.css?v=23">
+    <link rel="stylesheet" href="../css/mobile.css?v=18">
 
     <!-- PWA: Installierbarkeit & Offline-Support, ohne bestehende Optik/Logik zu verändern -->
     <link rel="manifest" href="../manifest.json">
@@ -347,6 +347,29 @@
         <button id="settingsCloseButton" type="button" class="settings-close-button" aria-label="Einstellungen schließen">✕</button>
     </div>
 
+    <div class="settings-section mobile-input-method-settings">
+
+        <h3 class="settings-section-title">Eingabemethode</h3>
+
+        <div class="mobile-input-method-options" role="radiogroup" aria-label="Eingabemethode">
+            <label class="mobile-input-method-option">
+                <input type="radio" name="mobileInputMethod" id="mobileInputGame" value="game" checked>
+                <span>
+                    <strong>Spiel-Tastatur</strong>
+                    <small>Mit eigener Tastenhilfe</small>
+                </span>
+            </label>
+            <label class="mobile-input-method-option">
+                <input type="radio" name="mobileInputMethod" id="mobileInputSystem" value="system">
+                <span>
+                    <strong>iPhone-Systemtastatur</strong>
+                    <small>Originale Gerätetastatur</small>
+                </span>
+            </label>
+        </div>
+
+    </div>
+
     <div class="settings-section">
 
         <h3 class="settings-section-title">Sprache</h3>
@@ -376,13 +399,17 @@
 
         <h3 class="settings-section-title">Lernhilfen</h3>
 
-        <div class="settings-row">
+        <div class="settings-row" id="settingsTutorRow">
             <span class="settings-row-label">⌨️ Tastenhilfe</span>
             <label class="settings-switch">
                 <input type="checkbox" id="settingsTastenhilfeToggle" checked>
                 <span class="settings-switch-track"><span class="settings-switch-thumb"></span></span>
             </label>
         </div>
+
+        <p id="systemKeyboardTutorHint" class="system-keyboard-tutor-hint">
+            Tastenhilfe nur mit Spiel-Tastatur verfügbar
+        </p>
 
         <div class="settings-row settings-row-slider">
             <div class="settings-row-slider-header">
@@ -436,16 +463,25 @@
         <div class="typing-sound-preset" id="settingsSoundPresetRow">
             <label for="settingsSoundPreset">Ton auswählen</label>
             <select id="settingsSoundPreset" aria-label="Tippgeräusch auswählen">
+                <option value="recorded-click">Klick (Aufnahme)</option>
                 <option value="synth-click">Klick (Oszillator)</option>
+                <option value="recorded-drop">Wassertropfen (Aufnahme)</option>
                 <option value="synth-drop">Wassertropfen (Oszillator)</option>
+                <option value="recorded-iphone">iPhone-Klick (Aufnahme)</option>
                 <option value="synth-iphone">iPhone-Klick (Oszillator)</option>
+                <option value="recorded-iphone2">iPhone-Ton (Aufnahme)</option>
                 <option value="synth-iphone2">iPhone-Ton (Oszillator)</option>
+                <option value="recorded-robot-laser-01">Robot-/Laser-Ton 1</option>
                 <option value="synth-robot-laser-01">Robot-/Laser-Ton 1 (Oszillator)</option>
+                <option value="recorded-robot-laser-02">Robot-/Laser-Ton 2</option>
                 <option value="synth-robot-laser-02">Robot-/Laser-Ton 2 (Oszillator)</option>
+                <option value="recorded-robot-laser-03">Robot-/Laser-Ton 3</option>
                 <option value="synth-robot-laser-03">Robot-/Laser-Ton 3 (Oszillator)</option>
+                <option value="recorded-robot-laser-04">Robot-/Laser-Ton 4</option>
                 <option value="synth-robot-laser-04">Robot-/Laser-Ton 4 (Oszillator)</option>
+                <option value="recorded-robot-laser-05">Robot-/Laser-Ton 5</option>
                 <option value="synth-robot-laser-05">Robot-/Laser-Ton 5 (Oszillator)</option>
-                <option value="bell">Glocke (Oszillator)</option>
+                <option value="bell">Glocke</option>
             </select>
         </div>
 

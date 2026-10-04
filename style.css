@@ -364,7 +364,8 @@ body.thai-font-kanit .mastered-word{
     }
 
     body:has(#typingBereich) .settings-slider-scale,
-    body:has(#typingBereich) .settings-hint{
+    body:has(#typingBereich) .settings-hint,
+    body:has(#typingBereich) .system-keyboard-tutor-hint{
         color:rgba(59,40,24,0.75) !important;
     }
 
@@ -6673,6 +6674,14 @@ padding:28px 34px;
 }
 
 @media (min-width:901px){
+
+    .mobile-input-method-settings{
+        display:none !important;
+    }
+
+    .system-keyboard-tutor-hint{
+        display:none !important;
+    }
 
     .mobile-keyboard-feedback-settings{
         display:block;

@@ -2,9 +2,13 @@ const TYPING_VIBRATION_KEY = "typingVibrationEnabled";
 const TYPING_SOUND_KEY = "typingSoundEnabled";
 const TYPING_SOUND_PRESET_KEY = "typingSoundPreset";
 const TYPING_VIBRATION_DURATION_MS = 10;
-const DEFAULT_TYPING_SOUND_PRESET = "synth-click";
+const DEFAULT_TYPING_SOUND_PRESET = "recorded-click";
 
 const TYPING_SOUND_PRESETS = Object.freeze({
+    "recorded-click": {
+        label: "Klick (Aufnahme)",
+        audioSources: ["../assets/audio/typing-click.mp3"]
+    },
     "synth-click": {
         label: "Klick (Oszillator)",
         tones: [
@@ -24,6 +28,10 @@ const TYPING_SOUND_PRESETS = Object.freeze({
                 volume: 0.012
             }
         ]
+    },
+    "recorded-drop": {
+        label: "Wassertropfen (Aufnahme)",
+        audioSources: ["../assets/audio/typing-drop.mp3"]
     },
     "synth-drop": {
         label: "Wassertropfen (Oszillator)",
@@ -45,6 +53,10 @@ const TYPING_SOUND_PRESETS = Object.freeze({
             }
         ]
     },
+    "recorded-iphone": {
+        label: "iPhone-Klick (Aufnahme)",
+        audioSources: ["../assets/audio/typing-iphone.mp3"]
+    },
     "synth-iphone": {
         label: "iPhone-Klick (Oszillator)",
         tones: [
@@ -64,6 +76,10 @@ const TYPING_SOUND_PRESETS = Object.freeze({
                 volume: 0.012
             }
         ]
+    },
+    "recorded-iphone2": {
+        label: "iPhone-Ton (Aufnahme)",
+        audioSources: ["../assets/audio/typing-iphone2.mp3"]
     },
     "synth-iphone2": {
         label: "iPhone-Ton (Oszillator)",
@@ -93,6 +109,10 @@ const TYPING_SOUND_PRESETS = Object.freeze({
             }
         ]
     },
+    "recorded-robot-laser-01": {
+        label: "Robot-/Laser-Ton 1",
+        audioSources: ["../assets/audio/typing-robot-laser-01.mp3"]
+    },
     "synth-robot-laser-01": {
         label: "Robot-/Laser-Ton 1 (Oszillator)",
         tones: [
@@ -112,6 +132,10 @@ const TYPING_SOUND_PRESETS = Object.freeze({
                 volume: 0.013
             }
         ]
+    },
+    "recorded-robot-laser-02": {
+        label: "Robot-/Laser-Ton 2",
+        audioSources: ["../assets/audio/typing-robot-laser-02.mp3"]
     },
     "synth-robot-laser-02": {
         label: "Robot-/Laser-Ton 2 (Oszillator)",
@@ -149,6 +173,10 @@ const TYPING_SOUND_PRESETS = Object.freeze({
             }
         ]
     },
+    "recorded-robot-laser-03": {
+        label: "Robot-/Laser-Ton 3",
+        audioSources: ["../assets/audio/typing-robot-laser-03.mp3"]
+    },
     "synth-robot-laser-03": {
         label: "Robot-/Laser-Ton 3 (Oszillator)",
         tones: [
@@ -169,6 +197,10 @@ const TYPING_SOUND_PRESETS = Object.freeze({
             }
         ]
     },
+    "recorded-robot-laser-04": {
+        label: "Robot-/Laser-Ton 4",
+        audioSources: ["../assets/audio/typing-robot-laser-04.mp3"]
+    },
     "synth-robot-laser-04": {
         label: "Robot-/Laser-Ton 4 (Oszillator)",
         tones: [
@@ -188,6 +220,10 @@ const TYPING_SOUND_PRESETS = Object.freeze({
                 volume: 0.018
             }
         ]
+    },
+    "recorded-robot-laser-05": {
+        label: "Robot-/Laser-Ton 5",
+        audioSources: ["../assets/audio/typing-robot-laser-05.mp3"]
     },
     "synth-robot-laser-05": {
         label: "Robot-/Laser-Ton 5 (Oszillator)",
@@ -210,7 +246,7 @@ const TYPING_SOUND_PRESETS = Object.freeze({
         ]
     },
     bell: {
-        label: "Glocke (Oszillator)",
+        label: "Glocke",
         tones: [
             {
                 type: "sine",
@@ -250,6 +286,8 @@ const TYPING_ERROR_TONES = [
 ];
 
 let typingAudioContext = null;
+const typingAudioPools = new Map();
+const TYPING_AUDIO_POOL_SIZE = 4;
 
 function supportsTypingVibration() {
     return typeof navigator !== "undefined" &&
@@ -327,7 +365,64 @@ function getTypingAudioContext() {
     return typingAudioContext;
 }
 
+function playTypingAudio(sources) {
+    if (typeof Audio !== "function" || !Array.isArray(sources) || sources.length === 0) {
+        return;
+    }
+
+    const source = sources[Math.floor(Math.random() * sources.length)];
+    let pool = typingAudioPools.get(source);
+
+    if (!pool) {
+        pool = [];
+        typingAudioPools.set(source, pool);
+    }
+
+    let audio = pool.find(candidate => candidate.paused || candidate.ended);
+
+    if (!audio) {
+        audio = pool.length < TYPING_AUDIO_POOL_SIZE
+            ? new Audio(source)
+            : pool[0];
+
+        audio.preload = "auto";
+
+        if (!pool.includes(audio)) {
+            pool.push(audio);
+        }
+    }
+
+    if (audio.error) {
+        audio.load();
+    }
+
+    audio.currentTime = 0;
+    audio.volume = 0.45;
+    const playback = audio.play();
+
+    if (playback && typeof playback.catch === "function") {
+        playback.catch(error => {
+            console.warn("Aufgenommener Tipp-Ton konnte nicht abgespielt werden.", error);
+        });
+    }
+}
+
+function resetTypingAudioPool() {
+    typingAudioPools.forEach(pool => {
+        pool.forEach(audio => {
+            audio.pause();
+            audio.currentTime = 0;
+            audio.load();
+        });
+    });
+}
+
 function playTypingPreset(preset) {
+    if (Array.isArray(preset.audioSources)) {
+        playTypingAudio(preset.audioSources);
+        return;
+    }
+
     playTypingSequence(preset.tones);
 }
 
@@ -392,6 +487,8 @@ function scheduleTypingSequence(audioContext, tones) {
         oscillator.stop(endTime);
     });
 }
+
+window.addEventListener("questaudio:ended", resetTypingAudioPool);
 
 function triggerTypingFeedback() {
     if (isTypingVibrationEnabled()) {

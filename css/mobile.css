@@ -612,6 +612,8 @@
 
 .mobile-typing-awards-button,
 .mobile-typing-back,
+.mobile-input-method-settings,
+.system-keyboard-tutor-hint,
 .mobile-delay-zero{
     display:inline;
 }
@@ -2191,12 +2193,77 @@
         pointer-events:none;
     }
 
+    body.system-keyboard-mode #thaiKeyboard{
+        display:none;
+    }
+
+    .mobile-input-method-settings{
+        display:block;
+    }
+
     .mobile-keyboard-feedback-settings{
         display:block;
     }
 
+    .mobile-input-method-options{
+        display:grid;
+        grid-template-columns:1fr;
+        gap:8px;
+    }
+
+    .mobile-input-method-option{
+        display:flex;
+        align-items:center;
+        gap:10px;
+        min-height:54px;
+        padding:8px 11px;
+        border:1px solid #d3ad70;
+        border-radius:10px;
+        background:#fff7e2;
+        color:#4a3018;
+        cursor:pointer;
+    }
+
+    .mobile-input-method-option:has(input:checked){
+        border-color:#a86f24;
+        background:#f3d79e;
+    }
+
+    .mobile-input-method-option input{
+        width:18px;
+        height:18px;
+        margin:0;
+        accent-color:#a86f24;
+    }
+
+    .mobile-input-method-option span{
+        display:flex;
+        flex-direction:column;
+        gap:2px;
+        min-width:0;
+    }
+
+    .mobile-input-method-option strong{
+        font-size:.92rem;
+        line-height:1.2;
+    }
+
+    .mobile-input-method-option small{
+        color:#725335;
+        font-size:.72rem;
+        line-height:1.2;
+    }
+
     .settings-row.disabled{
         opacity:.48;
+    }
+
+    .system-keyboard-tutor-hint.visible{
+        display:block;
+        margin:8px 0 0;
+        color:#77542e;
+        font-size:.72rem;
+        line-height:1.35;
     }
 
     .typing-feedback-hint{
@@ -2591,6 +2658,12 @@
         display:inline;
     }
 
+    body.system-keyboard-mode #eingabe{
+        top:0;
+        bottom:auto;
+        left:0;
+    }
+
     .settings-panel{
         background:#f3dda9;
     }
@@ -2871,30 +2944,6 @@
     body:has(#typingBereich) .learning-text{
         font-size:clamp(.95rem, 4.6vw, 1.15rem);
         line-height:1.25;
-    }
-
-}
-
-@media (max-width:900px){
-
-    body:has(#typingBereich) #zeile1.mobile-thai-lines{
-        display:block;
-        height:auto;
-        min-height:0;
-        max-height:none;
-        overflow:visible;
-        line-height:1.55;
-        white-space:normal;
-    }
-
-    body:has(#typingBereich) #zeile1.mobile-thai-lines .mobile-thai-line{
-        display:inline;
-        flex:none;
-        width:auto;
-        height:auto;
-        min-height:0;
-        line-height:inherit;
-        white-space:nowrap;
     }
 
 }
@@ -3352,12 +3401,5 @@
 
     body:has(#worldmapHome) .home-statistics-grid{
         grid-template-columns:1fr 1fr;
-    }
-}
-
-@media (display-mode: standalone) and (max-width:900px){
-    body:has(#typingBereich){
-        /* Android PWAs can draw behind gesture navigation without exposing its safe-area inset. */
-        padding-bottom:max(48px, env(safe-area-inset-bottom));
     }
 }
