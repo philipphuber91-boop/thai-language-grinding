@@ -1080,6 +1080,12 @@
 
         const stage = document.createElement("div");
         stage.className = "sentence-mix-stage";
+        if (round.tokenCount >= 7) {
+            stage.classList.add("sentence-mix-stage--long");
+        }
+        if (round.tokenCount >= 10) {
+            stage.classList.add("sentence-mix-stage--very-long");
+        }
 
         // 1. Stage Header (Butler & Kontext)
         const header = document.createElement("div");
