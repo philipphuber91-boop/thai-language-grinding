@@ -2267,18 +2267,14 @@ function updateMobileViewportHeightVar() {
         return;
     }
 
-    // Nur im System-Tastatur-Modus wird wirklich eine per JS berechnete Höhe
-    // gebraucht (damit Platz für die native Tastatur bleibt). Im normalen
-    // Spiel-Modus (eigene virtuelle Tastatur) sorgt das Fixieren auf einen
-    // px-Wert dafür, dass die Seite kurz nach Tippbeginn "springt", sobald
-    // der Browser seine Adressleiste einklappt und visualViewport.height
-    // dadurch wächst. Dort reicht das native, sich weich anpassende 100dvh
-    // (Fallback unten in der CSS-Variable) völlig aus.
-    if (!isSystemKeyboardMode()) {
+    const hasViewportOcclusion = window.visualViewport &&
+        window.visualViewport.height < window.innerHeight - 1;
+    if (!isSystemKeyboardMode() && !hasViewportOcclusion) {
         document.documentElement.style.removeProperty("--mobile-vh");
         return;
     }
 
+    // Keep 100dvh's smooth toolbar behavior unless the visible viewport is smaller.
     const viewportHeight = window.visualViewport
         ? Math.round(window.visualViewport.height)
         : window.innerHeight;

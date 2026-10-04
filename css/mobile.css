@@ -2949,6 +2949,30 @@
 }
 
 @media (max-width:900px){
+
+    body:has(#typingBereich) #zeile1.mobile-thai-lines{
+        display:block;
+        height:auto;
+        min-height:0;
+        max-height:none;
+        overflow:visible;
+        line-height:1.55;
+        white-space:normal;
+    }
+
+    body:has(#typingBereich) #zeile1.mobile-thai-lines .mobile-thai-line{
+        display:inline;
+        flex:none;
+        width:auto;
+        height:auto;
+        min-height:0;
+        line-height:inherit;
+        white-space:nowrap;
+    }
+
+}
+
+@media (max-width:900px){
     body:has(#typingBereich) .desktop-typing-layout,
     body:has(#typingBereich) .desktop-typing-center{
         display:contents !important;
