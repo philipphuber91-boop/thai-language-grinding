@@ -1666,6 +1666,14 @@ function escapeMobileThaiHtml(value) {
         .replace(/'/g, "&#39;");
 }
 
+function usesNativeThaiCombiningPlaceholder() {
+    const userAgent = navigator.userAgent || "";
+    const platform = navigator.platform || "";
+
+    return /iPhone|iPad|iPod/i.test(userAgent) ||
+        (platform === "MacIntel" && navigator.maxTouchPoints > 1);
+}
+
 function getThaiHighlightRange(lineStart, lineEnd) {
     const highlightStart = Math.max(lineStart, Math.min(position, lineEnd - 1));
 
@@ -1697,14 +1705,16 @@ function renderMobileThaiLines(highlightClass = "aktuell") {
         const aktuell = text.slice(highlightRange.start, highlightRange.end);
         const rest = text.slice(highlightRange.end, line.end);
         const isCombiningMark = istThailaendischesKombinationszeichen(aktuell);
+        const useAppPlaceholder =
+            isCombiningMark && !usesNativeThaiCombiningPlaceholder();
         const escapedCurrent = escapeMobileThaiHtml(aktuell);
-        const placeholder = isCombiningMark
+        const placeholder = useAppPlaceholder
             ? `<span class="thai-mark-placeholder" aria-hidden="true">◌${escapedCurrent}</span>`
             : "";
-        const currentClass = isCombiningMark
+        const currentClass = useAppPlaceholder
             ? `${highlightClass} thai-combining-current`
             : highlightClass;
-        const currentText = isCombiningMark
+        const currentText = useAppPlaceholder
             ? `<span class="thai-combining-source">${escapedCurrent}</span>`
             : escapedCurrent;
 
@@ -1715,9 +1725,8 @@ function renderMobileThaiLines(highlightClass = "aktuell") {
 }
 
 // Thailändische Ton- und Vokalzeichen verbinden sich optisch mit dem
-// vorherigen Zeichen. Mobil wird für ein allein hervorgehobenes Zeichen ein
-// Platzhalter gezeichnet; auf dem Desktop bleibt das Basiszeichen im selben
-// Textlauf, damit der Browser das Kombinationszeichen korrekt platziert.
+// vorherigen Zeichen. iOS verwendet dafür seine native Anzeige; andere
+// Mobilbrowser erhalten einen expliziten Platzhalter.
 const THAI_COMBINING_MARKS = /[\u0E31\u0E34-\u0E3A\u0E47-\u0E4E]/;
 
 function istThailaendischesKombinationszeichen(zeichen) {
