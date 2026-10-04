@@ -1697,14 +1697,18 @@ function renderMobileThaiLines(highlightClass = "aktuell") {
         const aktuell = text.slice(highlightRange.start, highlightRange.end);
         const rest = text.slice(highlightRange.end, line.end);
         const isCombiningMark = istThailaendischesKombinationszeichen(aktuell);
+        const escapedCurrent = escapeMobileThaiHtml(aktuell);
         const placeholder = isCombiningMark
-            ? '<span class="thai-mark-placeholder" aria-hidden="true"></span>'
+            ? `<span class="thai-mark-placeholder" aria-hidden="true">◌${escapedCurrent}</span>`
             : "";
         const currentClass = isCombiningMark
             ? `${highlightClass} thai-combining-current`
             : highlightClass;
+        const currentText = isCombiningMark
+            ? `<span class="thai-combining-source">${escapedCurrent}</span>`
+            : escapedCurrent;
 
-        return `<span class="mobile-thai-line"><span class="geschrieben">${escapeMobileThaiHtml(geschrieben)}</span><span class="${currentClass}">${placeholder}${escapeMobileThaiHtml(aktuell)}</span><span class="rest">${escapeMobileThaiHtml(rest)}</span></span>`;
+        return `<span class="mobile-thai-line"><span class="geschrieben">${escapeMobileThaiHtml(geschrieben)}</span><span class="${currentClass}">${placeholder}${currentText}</span><span class="rest">${escapeMobileThaiHtml(rest)}</span></span>`;
     }).join("");
 
     zeile1.classList.add("mobile-thai-lines");

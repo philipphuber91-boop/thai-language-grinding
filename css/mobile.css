@@ -850,13 +850,16 @@
         position:absolute;
         top:50%;
         left:50%;
-        width:.58em;
-        height:.58em;
-        box-sizing:border-box;
-        border:1px dotted currentColor;
-        border-radius:50%;
+        font-family:"Noto Sans Thai",sans-serif;
+        font-weight:400;
+        line-height:1;
+        white-space:nowrap;
         transform:translate(-50%,-50%);
         pointer-events:none;
+    }
+
+    #zeile1.mobile-thai-lines .thai-combining-source{
+        color:transparent;
     }
 
     .aktuell{
