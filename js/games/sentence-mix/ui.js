@@ -965,6 +965,11 @@
             }
         });
 
+        const numpad = document.getElementById("mobileNumpad");
+        if (numpad) {
+            numpad.dataset.extraRows = normalizedMaxTokens >= 10 ? "true" : "false";
+        }
+
         return changed;
     };
 
