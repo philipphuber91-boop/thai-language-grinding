@@ -1696,20 +1696,24 @@ function renderMobileThaiLines(highlightClass = "aktuell") {
         const geschrieben = text.slice(line.start, highlightRange.start);
         const aktuell = text.slice(highlightRange.start, highlightRange.end);
         const rest = text.slice(highlightRange.end, line.end);
+        const isCombiningMark = istThailaendischesKombinationszeichen(aktuell);
+        const placeholder = isCombiningMark
+            ? '<span class="thai-mark-placeholder" aria-hidden="true"></span>'
+            : "";
+        const currentClass = isCombiningMark
+            ? `${highlightClass} thai-combining-current`
+            : highlightClass;
 
-        return `<span class="mobile-thai-line"><span class="geschrieben">${escapeMobileThaiHtml(geschrieben)}</span><span class="${highlightClass}">${escapeMobileThaiHtml(aktuell)}</span><span class="rest">${escapeMobileThaiHtml(rest)}</span></span>`;
+        return `<span class="mobile-thai-line"><span class="geschrieben">${escapeMobileThaiHtml(geschrieben)}</span><span class="${currentClass}">${placeholder}${escapeMobileThaiHtml(aktuell)}</span><span class="rest">${escapeMobileThaiHtml(rest)}</span></span>`;
     }).join("");
 
     zeile1.classList.add("mobile-thai-lines");
 }
 
-// Thailändische Ton- und Vokalzeichen (nicht abstandshaltende
-// Kombinationszeichen) verbinden sich optisch mit dem vorherigen Zeichen.
-// Landet die aktuelle Tippposition genau auf so einem Zeichen, darf es nicht
-// allein in der farbig hervorgehobenen "aktuell"-Box stehen: ohne sein
-// Basiszeichen im selben Textlauf kann der Browser es nicht korrekt
-// platzieren und zeigt stattdessen ein abgetrenntes, kaputt wirkendes
-// Kästchen an. Siehe zeigeZeilen().
+// Thailändische Ton- und Vokalzeichen verbinden sich optisch mit dem
+// vorherigen Zeichen. Mobil wird für ein allein hervorgehobenes Zeichen ein
+// Platzhalter gezeichnet; auf dem Desktop bleibt das Basiszeichen im selben
+// Textlauf, damit der Browser das Kombinationszeichen korrekt platziert.
 const THAI_COMBINING_MARKS = /[\u0E31\u0E34-\u0E3A\u0E47-\u0E4E]/;
 
 function istThailaendischesKombinationszeichen(zeichen) {
