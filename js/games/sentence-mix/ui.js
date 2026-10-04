@@ -1321,19 +1321,13 @@
             headline.textContent = "✗ Noch nicht richtig!";
             row.appendChild(headline);
 
-            const nextPrompt = document.createElement("div");
-            nextPrompt.className = "feedback-next-prompt";
-            nextPrompt.innerHTML = 'Die Zeit läuft weiter – versuche es erneut.';
-            row.appendChild(nextPrompt);
-            feedback.appendChild(row);
-
             const details = document.createElement("div");
             details.className = "feedback-details";
-            const enteredStr = result.enteredNumbers.join(" ");
             const expectedStr = result.expectedNumbers.join(" ");
-            details.textContent =
-                `Deine Eingabe: [ ${enteredStr} ]  |  Richtig: [ ${expectedStr} ]`;
-            feedback.appendChild(details);
+            details.textContent = `Lösung: [ ${expectedStr} ]`;
+            row.appendChild(details);
+
+            feedback.appendChild(row);
 
             const thaiRow = document.createElement("div");
             thaiRow.className = "feedback-thai-text";
