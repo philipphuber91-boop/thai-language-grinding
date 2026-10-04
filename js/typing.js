@@ -670,11 +670,7 @@ let gameTastenhilfeEnabled =
     localStorage.getItem("tastenhilfeAktiviert") !== "false";
 let tastenhilfeEnabled = gameTastenhilfeEnabled;
 
-const MOBILE_INPUT_METHOD_KEY = "mobileInputMethod";
-let mobileInputMethod =
-    localStorage.getItem(MOBILE_INPUT_METHOD_KEY) === "system"
-        ? "system"
-        : "game";
+localStorage.removeItem("mobileInputMethod");
 
 let tastenhilfeVerzoegerungSekunden = clampTastenhilfeSekunden(
     localStorage.getItem("tastenhilfeVerzoegerung") ?? TASTENHILFE_STANDARD_SEKUNDEN,
@@ -1819,7 +1815,7 @@ function zeigeFehler() {
     clearTimeout(fehlerTimeout);
 
     if (usesStableThaiLines()) {
-        if (isMobileViewport() && mobileInputMethod === "game") {
+        if (isMobileViewport()) {
             window.typingFeedback?.triggerError();
         }
 
@@ -2100,7 +2096,7 @@ eingabe.addEventListener("input", function () {
 
     console.log("INPUT", eingabe.value);
 
-    const eingegeben = keyboardTutorModeEnabled && !isSystemKeyboardMode()
+    const eingegeben = keyboardTutorModeEnabled
         ? pendingTutorInput
         : eingabe.value;
     pendingTutorInput = null;
@@ -2194,11 +2190,6 @@ const settingsSoundPresetRow = document.getElementById("settingsSoundPresetRow")
 const settingsVibrationRow = document.getElementById("settingsVibrationRow");
 const settingsVibrationHint = document.getElementById("settingsVibrationHint");
 const mobileBackButton = document.getElementById("mobileBackButton");
-const mobileInputGame = document.getElementById("mobileInputGame");
-const mobileInputSystem = document.getElementById("mobileInputSystem");
-const settingsTutorRow = document.getElementById("settingsTutorRow");
-const settingsDelayRow = settingsDelaySlider?.closest(".settings-row");
-const systemKeyboardTutorHint = document.getElementById("systemKeyboardTutorHint");
 const leaveQuestButton = document.getElementById("leaveQuestButton");
 const questBarLeaveButton = document.getElementById("questBarLeaveButton");
 const leaveQuestOverlay = document.getElementById("leaveQuestOverlay");
@@ -2242,10 +2233,6 @@ function usesStableThaiLines() {
     return isMobileViewport() || isDesktopTypingViewport();
 }
 
-function isSystemKeyboardMode() {
-    return isMobileViewport() && mobileInputMethod === "system";
-}
-
 function focusEingabeWithoutScroll() {
     if (!eingabe) {
         return;
@@ -2260,41 +2247,6 @@ function focusEingabeWithoutScroll() {
     if (isMobileViewport()) {
         window.scrollTo(0, 0);
     }
-}
-
-function updateMobileViewportHeightVar() {
-    if (!isMobileViewport()) {
-        return;
-    }
-
-    // Nur im System-Tastatur-Modus wird wirklich eine per JS berechnete Höhe
-    // gebraucht (damit Platz für die native Tastatur bleibt). Im normalen
-    // Spiel-Modus (eigene virtuelle Tastatur) sorgt das Fixieren auf einen
-    // px-Wert dafür, dass die Seite kurz nach Tippbeginn "springt", sobald
-    // der Browser seine Adressleiste einklappt und visualViewport.height
-    // dadurch wächst. Dort reicht das native, sich weich anpassende 100dvh
-    // (Fallback unten in der CSS-Variable) völlig aus.
-    if (!isSystemKeyboardMode()) {
-        document.documentElement.style.removeProperty("--mobile-vh");
-        return;
-    }
-
-    const viewportHeight = window.visualViewport
-        ? Math.round(window.visualViewport.height)
-        : window.innerHeight;
-
-    document.documentElement.style.setProperty(
-        "--mobile-vh",
-        `${viewportHeight}px`
-    );
-}
-
-function enforceSystemKeyboardNoScroll() {
-    if (!isSystemKeyboardMode()) {
-        return;
-    }
-
-    window.scrollTo(0, 0);
 }
 
 function applyMobileKeyboardStructure() {
@@ -2347,12 +2299,10 @@ function applyMobileKeyboardStructure() {
 
 function aktualisiereTastenhilfeUI() {
 
-    const systemKeyboardActive = isSystemKeyboardMode();
     const vibrationSupported = window.typingFeedback?.supportsVibration() === true;
 
     if (settingsTastenhilfeToggle) {
         settingsTastenhilfeToggle.checked = tastenhilfeEnabled;
-        settingsTastenhilfeToggle.disabled = systemKeyboardActive;
     }
 
     if (settingsDelaySlider) {
@@ -2367,17 +2317,13 @@ function aktualisiereTastenhilfeUI() {
 
         settingsDelaySlider.min = String(minSekunden);
         settingsDelaySlider.value = String(tastenhilfeVerzoegerungSekunden);
-        settingsDelaySlider.disabled = !tastenhilfeEnabled || systemKeyboardActive;
+        settingsDelaySlider.disabled = !tastenhilfeEnabled;
     }
 
     if (settingsDelayValue) {
         settingsDelayValue.textContent =
             formatiereTastenhilfeSekunden(tastenhilfeVerzoegerungSekunden);
     }
-
-    settingsTutorRow?.classList.toggle("disabled", systemKeyboardActive);
-    settingsDelayRow?.classList.toggle("disabled", systemKeyboardActive);
-    systemKeyboardTutorHint?.classList.toggle("visible", systemKeyboardActive);
 
     if (settingsVibrationToggle) {
         settingsVibrationToggle.checked =
@@ -2391,7 +2337,7 @@ function aktualisiereTastenhilfeUI() {
 
         if (settingsSoundPreset) {
             settingsSoundPreset.value =
-                window.typingFeedback?.getSoundPreset() || "recorded-click";
+                window.typingFeedback?.getSoundPreset() || "synth-click";
             settingsSoundPreset.disabled = !soundEnabled;
         }
 
@@ -2403,36 +2349,12 @@ function aktualisiereTastenhilfeUI() {
 
 }
 
-function applyMobileInputMethod() {
-    const systemKeyboardActive = isSystemKeyboardMode();
-
-    document.body.classList.toggle("system-keyboard-mode", systemKeyboardActive);
-    eingabe.readOnly = isMobileViewport() && !systemKeyboardActive;
-
-    if (mobileInputGame) {
-        mobileInputGame.checked = mobileInputMethod === "game";
-    }
-
-    if (mobileInputSystem) {
-        mobileInputSystem.checked = mobileInputMethod === "system";
-    }
-
-    tastenhilfeEnabled = systemKeyboardActive
-        ? false
-        : gameTastenhilfeEnabled;
-
+function configureTypingInput() {
+    eingabe.readOnly = isMobileViewport();
     applyMobileKeyboardStructure();
-    updateMobileViewportHeightVar();
     aktualisiereTastenhilfeUI();
     syncKeyboardHighlight();
     renderVirtualKeyboardLabels();
-}
-
-function setMobileInputMethod(method) {
-    mobileInputMethod = method === "system" ? "system" : "game";
-    localStorage.setItem(MOBILE_INPUT_METHOD_KEY, mobileInputMethod);
-    eingabe.blur();
-    applyMobileInputMethod();
 }
 
 function openSettingsPanel() {
@@ -2529,18 +2451,6 @@ settingsSoundPreset?.addEventListener("change", function () {
     aktualisiereTastenhilfeUI();
 });
 
-mobileInputGame?.addEventListener("change", function () {
-    if (mobileInputGame.checked) {
-        setMobileInputMethod("game");
-    }
-});
-
-mobileInputSystem?.addEventListener("change", function () {
-    if (mobileInputSystem.checked) {
-        setMobileInputMethod("system");
-    }
-});
-
 settingsDelaySlider?.addEventListener("input", function () {
 
     tastenhilfeVerzoegerungSekunden = clampTastenhilfeSekunden(
@@ -2624,7 +2534,7 @@ document
 
     });
 
-applyMobileInputMethod();
+configureTypingInput();
 
 if (questMode === "challenge") {
 
@@ -2771,10 +2681,6 @@ document.addEventListener("keydown", function (event) {
        return;
    }
 
-   if (isSystemKeyboardMode()) {
-       return;
-   }
-
       resolvePressedVirtualKeys(event).forEach(pressKey);
 
 
@@ -2909,7 +2815,7 @@ function typeCharacterFromVirtualKey(character) {
 
 function handleVirtualKeyTap(keyElement) {
     if (!keyElement || phase !== "typing" ||
-        !isMobileViewport() || mobileInputMethod !== "game") {
+        !isMobileViewport()) {
         return;
     }
 
@@ -2973,26 +2879,9 @@ if (isTouchDevice && keyboardElement) {
     });
 }
 
-updateMobileViewportHeightVar();
-
-if (window.visualViewport) {
-    window.visualViewport.addEventListener("resize", function () {
-        updateMobileViewportHeightVar();
-        enforceSystemKeyboardNoScroll();
-    });
-    window.visualViewport.addEventListener("scroll", enforceSystemKeyboardNoScroll);
-}
-
 window.addEventListener("resize", function () {
-    applyMobileKeyboardStructure();
-    updateMobileViewportHeightVar();
-    aktualisiereTastenhilfeUI();
+    configureTypingInput();
     if (phase === "typing") {
         zeigeZeilen();
     }
-    syncKeyboardHighlight();
-});
-eingabe.addEventListener("focus", function () {
-    updateMobileViewportHeightVar();
-    enforceSystemKeyboardNoScroll();
 });
