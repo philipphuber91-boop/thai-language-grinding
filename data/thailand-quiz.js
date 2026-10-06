@@ -611,6 +611,102 @@
             "ประเจียดเป็นผ้าคาดแขนที่นักมวยไทยบางคนสวมตามธรรมเนียม",
             "Pra Jiad ist ein traditionelles Stoffband, das manche Muay-Thai-Kämpfer am Oberarm tragen.",
             [{ title: "Encyclopaedia Britannica – Muay Thai", url: "https://www.britannica.com/sports/Muay-Thai" }]
+        ),
+        makeQuestion(
+            "thq-geo-007", "geography", 2, "single_choice",
+            "แม่น้ำสายใดไหลผ่านกรุงเทพฯ และลงสู่อ่าวไทย?",
+            "Welcher Fluss fließt durch Bangkok und mündet in den Golf von Thailand?",
+            "Maenam sai dai lai phan Krung Thep lae long su Ao Thai?",
+            [
+                ["a", "แม่น้ำโขง", "Mekong", "Maenam Khong"],
+                ["b", "แม่น้ำเจ้าพระยา", "Chao Phraya", "Maenam Chao Phraya"],
+                ["c", "แม่น้ำปิง", "Ping", "Maenam Ping"],
+                ["d", "แม่น้ำน่าน", "Nan", "Maenam Nan"]
+            ],
+            "b",
+            "แม่น้ำเจ้าพระยาไหลผ่านกรุงเทพฯ และมีปากแม่น้ำที่อ่าวไทย",
+            "Der Chao Phraya fließt durch Bangkok und mündet in den Golf von Thailand.",
+            [{ title: "Encyclopaedia Britannica – Chao Phraya River", url: "https://www.britannica.com/place/Chao-Phraya-River" }]
+        ),
+        makeQuestion(
+            "thq-hist-007", "history", 3, "single_choice",
+            "หลังจากกรุงศรีอยุธยาเสียกรุงใน พ.ศ. 2310 เมืองใดเป็นราชธานีก่อนกรุงเทพฯ?",
+            "Welche Stadt war nach dem Fall Ayutthayas 1767 vor Bangkok die Hauptstadt Siams?",
+            "Lang chak Krung Si Ayutthaya sia krung nai Phutthasakkarat 2310 mueang dai pen ratchathani kon Krung Thep?",
+            [
+                ["a", "เชียงใหม่", "Chiang Mai", "Chiang Mai"],
+                ["b", "ธนบุรี", "Thonburi", "Thon Buri"],
+                ["c", "สุโขทัย", "Sukhothai", "Sukhothai"],
+                ["d", "นครราชสีมา", "Nakhon Ratchasima", "Nakhon Ratchasima"]
+            ],
+            "b",
+            "หลังกรุงศรีอยุธยาแตกในปี 1767 สมเด็จพระเจ้าตากสินทรงตั้งธนบุรีเป็นราชธานี ก่อนย้ายไปกรุงเทพฯ ในปี 1782",
+            "Nach dem Fall Ayutthayas 1767 machte König Taksin Thonburi zur Hauptstadt; 1782 wurde die Hauptstadt nach Bangkok verlegt.",
+            [{ title: "Encyclopaedia Britannica – The Thon Buri and Early Bangkok Periods", url: "https://www.britannica.com/place/Thailand/The-Thon-Buri-and-Early-Bangkok-periods" }]
+        ),
+        makeQuestion(
+            "thq-cult-007", "culture", 2, "single_choice",
+            "เทศกาลผีตาโขนจัดขึ้นในจังหวัดใด?",
+            "In welcher Provinz findet das Phi-Ta-Khon-Fest statt?",
+            "Thetsakan Phi Ta Khon chat khuen nai changwat dai?",
+            [
+                ["a", "เลย", "Loei", "Loei"],
+                ["b", "ภูเก็ต", "Phuket", "Phuket"],
+                ["c", "สุราษฎร์ธานี", "Surat Thani", "Surat Thani"],
+                ["d", "ชลบุรี", "Chonburi", "Chon Buri"]
+            ],
+            "a",
+            "เทศกาลผีตาโขนจัดขึ้นที่อำเภอด่านซ้าย จังหวัดเลย",
+            "Das Phi-Ta-Khon-Fest findet im Bezirk Dan Sai in der Provinz Loei statt.",
+            [{ title: "Tourism Authority of Thailand – Phi Ta Khon Festival", url: "https://www.tourismthailand.org/Events-and-Festivals/phi-ta-khon-festival-2025-2" }]
+        ),
+        makeQuestion(
+            "thq-food-007", "food", 2, "single_choice",
+            "ข้าวซอยเป็นอาหารท้องถิ่นที่มีชื่อเสียงของภูมิภาคใด?",
+            "Für welche Region Thailands ist Khao Soi besonders bekannt?",
+            "Khao soi pen ahan thongthin thi mi chue siang khong phumiphak dai?",
+            [
+                ["a", "ภาคเหนือ", "Der Norden", "Phak Nuea"],
+                ["b", "ภาคใต้", "Der Süden", "Phak Tai"],
+                ["c", "ภาคกลาง", "Die Zentralregion", "Phak Klang"],
+                ["d", "ภาคตะวันออกเฉียงเหนือ", "Der Nordosten", "Phak Tawan-ok Chiang Nuea"]
+            ],
+            "a",
+            "ข้าวซอยเป็นอาหารขึ้นชื่อของภาคเหนือ โดยเฉพาะเชียงใหม่",
+            "Khao Soi ist ein bekanntes Gericht Nordthailands, besonders aus Chiang Mai.",
+            [{ title: "Tourism Authority of Thailand – Yummy Delicacies at Chiang Mai Night Market", url: "https://www.tourismthailand.org/Article/yummy-delicacies-at-chiang-mai-night-market" }]
+        ),
+        makeQuestion(
+            "thq-nature-007", "nature", 3, "single_choice",
+            "อ่างเก็บน้ำเชี่ยวหลานอยู่ในอุทยานแห่งชาติใด?",
+            "In welchem Nationalpark liegt der Cheow-Lan-Stausee?",
+            "Ang kep nam Chiao Lan yu nai utthayan haeng chat dai?",
+            [
+                ["a", "อุทยานแห่งชาติเขาสก", "Khao-Sok-Nationalpark", "Utthayan haeng chat Khao Sok"],
+                ["b", "อุทยานแห่งชาติเขาใหญ่", "Khao-Yai-Nationalpark", "Utthayan haeng chat Khao Yai"],
+                ["c", "อุทยานแห่งชาติดอยอินทนนท์", "Doi-Inthanon-Nationalpark", "Utthayan haeng chat Doi Inthanon"],
+                ["d", "อุทยานแห่งชาติหมู่เกาะสิมิลัน", "Similan-Inseln-Nationalpark", "Utthayan haeng chat Mu Ko Similan"]
+            ],
+            "a",
+            "อ่างเก็บน้ำเชี่ยวหลานหรือเขื่อนรัชชประภาเป็นจุดเด่นของอุทยานแห่งชาติเขาสก",
+            "Der Cheow-Lan-Stausee, auch Ratchaprapha-Stausee genannt, gehört zu den bekanntesten Orten im Khao-Sok-Nationalpark.",
+            [{ title: "Tourism Authority of Thailand – Khao Sok National Park", url: "https://www.tourismthailand.org/Attraction/khao-sok-national-park" }]
+        ),
+        makeQuestion(
+            "thq-sport-007", "sport", 2, "single_choice",
+            "กีฬาเซปักตะกร้อแบบเรกูมีผู้เล่นในหนึ่งทีมกี่คน?",
+            "Wie viele Spieler hat ein Team beim Sepak Takraw im Regu-Format?",
+            "Kila sepak takraw baep regu mi phu len nai nueng thim ki khon?",
+            [
+                ["a", "สองคน", "Zwei", "Song khon"],
+                ["b", "สามคน", "Drei", "Sam khon"],
+                ["c", "สี่คน", "Vier", "Si khon"],
+                ["d", "ห้าคน", "Fünf", "Ha khon"]
+            ],
+            "b",
+            "การแข่งขันแบบเรกูใช้ผู้เล่นทีมละสามคน โดยหนึ่งคนเป็นผู้เสิร์ฟและอีกสองคนอยู่ด้านหน้า",
+            "Im Regu-Format besteht jedes Team aus drei Spielern: einem Aufschläger und zwei Spielern vorne am Netz.",
+            [{ title: "Sepak Takraw Association of Canada – Regu Rules", url: "https://sepaktakraw.ca/regu-sepak-takraw" }]
         )
     ];
 
