@@ -1544,6 +1544,646 @@
             "'สู้ๆ' มาจากการซ้ำคำว่า 'สู้' ใช้ปลอบโยนและเสริมกำลังใจในยามพบอุปสรรค คล้ายกับ 'Fighting!' หรือ 'Gib nicht auf!'",
             "'Su Su!' (wörtlich: Kämpfe!) ist der beliebteste Motivationsruf unter Freunden, Kollegen und Sportlern, um Kraft und Durchhaltevermögen zuzusprechen.",
             [{ title: "Tourism Authority of Thailand – Everyday Thai Motivation", url: "https://www.tourismthailand.org/" }]
+        ),
+        makeQuestion(
+            "thq-geo-014", "geography", 2, "single_choice",
+            "ตลาดร่มหุบ ซึ่งเป็นตลาดสดที่มีรถไฟวิ่งผ่านผ่ากลางตลาด ตั้งอยู่ในจังหวัดใด?",
+            "In welcher Provinz befindet sich der berühmte Maeklong-Eisenbahnmarkt (Talad Rom Hub), bei dem Züge mitten durch die Marktstände fahren?",
+            "Talat Rom Hup sueng pen talat sot thi mi rotfai wing phan pha klang talat, tang yu nai changwat dai?",
+            [
+                ["a", "สมุทรสงคราม", "Samut Songkhram", "Samut Songkhram"],
+                ["b", "สมุทรสาคร", "Samut Sakhon", "Samut Sakhon"],
+                ["c", "สมุทรปราการ", "Samut Prakan", "Samut Prakan"],
+                ["d", "ราชบุรี", "Ratchaburi", "Ratchaburi"]
+            ],
+            "a",
+            "ตลาดร่มหุบตั้งอยู่ที่สถานีรถไฟแม่กลอง จังหวัดสมุทรสงคราม พ่อค้าแม่ค้าจะหุบร่มและเก็บแผงอย่างรวดเร็วทุกครั้งที่รถไฟแล่นผ่าน",
+            "Der Maeklong Railway Market liegt am Bahnhof Maeklong in Samut Songkhram. Bei jeder Zugdurchfahrt klappen die Händler blitzschnell ihre Markisen und Stände ein.",
+            [{ title: "Tourism Authority of Thailand – Maeklong Railway Market", url: "https://www.tourismthailand.org/" }]
+        ),
+        makeQuestion(
+            "thq-geo-015", "geography", 2, "single_choice",
+            "แม่น้ำสายสำคัญที่สุดของไทยคือแม่น้ำเจ้าพระยา ซึ่งเกิดจากการรวมตัวกันของแม่น้ำสายใดที่ปากน้ำโพ จังหวัดนครสวรรค์?",
+            "Aus dem Zusammenfluss welcher Flüsse entsteht Thailands Lebensader, der Chao Phraya, bei Pak Nam Pho in Nakhon Sawan?",
+            "Maenam sai samkhan thi sut khong Thai khue Maenam Chao Phraya, sueng koet chak kan ruam tua kan khong maenam sai dai thi Pak Nam Pho changwat Nakhon Sawan?",
+            [
+                ["a", "แม่น้ำปิงและแม่น้ำน่าน", "Ping und Nan (zusammen mit Wang und Yom)", "Maenam Ping lae Maenam Nan"],
+                ["b", "แม่น้ำโขงและแม่น้ำมูล", "Mekong und Mun", "Maenam Khong lae Maenam Mun"],
+                ["c", "แม่น้ำตาปีและแม่น้ำคีรีรัฐ", "Tapi und Khirirat", "Maenam Tapi lae Maenam Khirirat"],
+                ["d", "แม่น้ำป่าสักและแม่น้ำลพบุรี", "Pa Sak und Lopburi", "Maenam Pa Sak lae Maenam Lop Buri"]
+            ],
+            "a",
+            "แม่น้ำเจ้าพระยาเกิดจากแม่น้ำปิง (ซึ่งรวมกับวัง) และแม่น้ำน่าน (ซึ่งรวมกับยม) ไหลมาบรรจบกันที่ตำบลปากน้ำโพ จังหวัดนครสวรรค์",
+            "Der Chao Phraya entsteht am Zusammenfluss des Ping (nach Aufnahme des Wang) und des Nan (nach Aufnahme des Yom) in Pak Nam Pho, Nakhon Sawan.",
+            [{ title: "Royal Irrigation Department Thailand – Chao Phraya Basin", url: "https://www.rid.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-geo-016", "geography", 2, "single_choice",
+            "อุทยานแห่งชาติแห่งแรกของประเทศไทยที่ได้รับการจัดตั้งขึ้นอย่างเป็นทางการในปี พ.ศ. 2505 คืออุทยานแห่งชาติใด?",
+            "Welcher Nationalpark wurde 1962 als allererster Nationalpark Thailands offiziell gegründet?",
+            "Utthayan haeng chat haeng raek khong prathet Thai thi dairap kan chat tang khuen yang pen thangkan nai pi Pho So 2505 khue utthayan haeng chat dai?",
+            [
+                ["a", "อุทยานแห่งชาติเขาใหญ่", "Khao Yai Nationalpark", "Utthayan haeng chat Khao Yai"],
+                ["b", "อุทยานแห่งชาติดอยอินทนนท์", "Doi Inthanon Nationalpark", "Utthayan haeng chat Doi Inthanon"],
+                ["c", "อุทยานแห่งชาติแก่งกระจาน", "Kaeng Krachan Nationalpark", "Utthayan haeng chat Kaeng Krachan"],
+                ["d", "อุทยานแห่งชาติเอราวัณ", "Erawan Nationalpark", "Utthayan haeng chat Erawan"]
+            ],
+            "a",
+            "อุทยานแห่งชาติเขาใหญ่ได้รับการจัดตั้งขึ้นเป็นอุทยานแห่งชาติแห่งแรกของไทยในปี พ.ศ. 2505 และเป็นส่วนหนึ่งของผืนป่าดงพญาเย็น-เขาใหญ่ที่ได้ขึ้นทะเบียนมรดกโลก",
+            "Der Khao Yai Nationalpark wurde 1962 gegründet und bildet zusammen mit dem Dong-Phayayen-Gebirge ein UNESCO-Weltnaturerbe.",
+            [{ title: "Department of National Parks Thailand – Khao Yai", url: "https://www.dnp.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-geo-017", "geography", 3, "single_choice",
+            "ยอดเขาภูชี้ฟ้า ซึ่งเป็นจุดชมวิวทะเลหมอกและพระอาทิตย์ขึ้นที่มีชื่อเสียง ตั้งอยู่ตามแนวชายแดนระหว่างไทยกับประเทศใด?",
+            "An der Grenze zu welchem Nachbarland liegt der Berg Phu Chi Fa in Chiang Rai, berühmt für sein atemberaubendes Nebelmeer bei Sonnenaufgang?",
+            "Yot khao Phu Chi Fa sueng pen chut chom wio thale mok lae phra-athit khuen thi mi chuesiang, tang yu tam naeo chaidaen rawang Thai kap prathet dai?",
+            [
+                ["a", "ประเทศลาว", "Laos", "Prathet Lao"],
+                ["b", "ประเทศพม่า", "Myanmar", "Prathet Phama"],
+                ["c", "ประเทศกัมพูชา", "Kambodscha", "Prathet Kampuchia"],
+                ["d", "ประเทศมาเลเซีย", "Malaysia", "Prathet Malesia"]
+            ],
+            "a",
+            "ภูชี้ฟ้าตั้งอยู่ในจังหวัดเชียงราย บนเทือกเขาดอยผาหม่น ซึ่งเป็นพรมแดนธรรมชาติระหว่างประเทศไทยและสาธารณรัฐประชาธิปไตยประชาชนลาว",
+            "Phu Chi Fa liegt im Doi-Pha-Mon-Gebirge in der Provinz Chiang Rai direkt an der Landesgrenze zwischen Thailand und Laos.",
+            [{ title: "Tourism Authority of Thailand – Phu Chi Fa", url: "https://www.tourismthailand.org/" }]
+        ),
+        makeQuestion(
+            "thq-geo-018", "geography", 3, "single_choice",
+            "หมู่เกาะสิมิลัน ซึ่งมีชื่อเสียงระดับโลกในฐานะสวรรค์ของนักดำน้ำ ตั้งอยู่ในทะเลอันดามันของจังหวัดใด?",
+            "In welcher Provinz liegt der weltberühmte Similan-Archipel in der Andamanensee, der als eines der schönsten Tauchgebiete der Erde gilt?",
+            "Mu ko Similan sueng mi chuesiang radap lok nai thana sawan khong nak damnam, tang yu nai thale Andaman khong changwat dai?",
+            [
+                ["a", "พังงา", "Phang Nga", "Phangnga"],
+                ["b", "ภูเก็ต", "Phuket", "Phuket"],
+                ["c", "กระบี่", "Krabi", "Krabi"],
+                ["d", "ระนอง", "Ranong", "Ranong"]
+            ],
+            "a",
+            "อุทยานแห่งชาติหมู่เกาะสิมิลันอยู่ในจังหวัดพังงา คำว่า 'สิมิลัน' มาจากภาษายาวีแปลว่า 'เก้า' สื่อถึงเก้าเกาะดั้งเดิม",
+            "Der Mu Ko Similan Nationalpark liegt in Phang Nga. Das Wort 'Similan' stammt aus dem Yawi (Malaiisch) und bedeutet 'neun', nach den ursprünglichen neun Inseln.",
+            [{ title: "Department of National Parks Thailand – Mu Ko Similan", url: "https://www.dnp.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-his-014", "history", 2, "single_choice",
+            "หลังจากกรุงศรีอยุธยาเสียแก่พม่าในปี พ.ศ. 2310 พระมหากษัตริย์พระองค์ใดทรงกอบกู้เอกราชและสถาปนากรุงธนบุรีเป็นราชธานี?",
+            "Welcher König befreite Siam nach dem Fall Ayutthayas 1767 von der birmanischen Besatzung und gründete Thonburi als neue Hauptstadt?",
+            "Langchak Krung Si Ayutthaya sia kae Phama nai pi Pho So 2310, phra mahakasat phra-ong dai song kopku ekkarat lae sathapana Krung Thonburi pen ratchathani?",
+            [
+                ["a", "สมเด็จพระเจ้าตากสินมหาราช", "König Taksin der Große", "Somdet Phra Chao Taksin Maharat"],
+                ["b", "พระบาทสมเด็จพระพุทธยอดฟ้าจุฬาโลกมหาราช (รัชกาลที่ 1)", "König Rama I.", "Phra Bat Somdet Phra Phuttha Yot Fa Chulalok Maharat"],
+                ["c", "สมเด็จพระนเรศวรมหาราช", "König Naresuan der Große", "Somdet Phra Naresuan Maharat"],
+                ["d", "สมเด็จพระนารายณ์มหาราช", "König Narai der Große", "Somdet Phra Narai Maharat"]
+            ],
+            "a",
+            "สมเด็จพระเจ้าตากสินมหาราชทรงรวบรวมกำลังพลกอบกู้เอกราชคืนได้ภายในเวลาเพียง 7 เดือน และทรงสถาปนากรุงธนบุรีเป็นเมืองหลวงใหม่",
+            "König Taksin der Große sammelte Truppen, befreite Siam innerhalb von nur sieben Monaten von den Besatzern und machte Thonburi zur neuen Hauptstadt.",
+            [{ title: "National Museum Bangkok – Thonburi Period", url: "https://www.finearts.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-his-015", "history", 3, "single_choice",
+            "วัฒนธรรมบ้านเชียงในจังหวัดอุดรธานี ซึ่งได้รับการยกย่องเป็นมรดกโลก มีความโดดเด่นทางประวัติศาสตร์โบราณคดีในยุคใด?",
+            "Für welche prähistorische Epoche ist die Fundstätte Ban Chiang in Udon Thani weltberühmt, da dort früheste Metallurgie nachgewiesen wurde?",
+            "Watthanatham Ban Chiang nai changwat Udon Thani sueng dairap kan yokyong pen moradok lok, mi khwam dotden thang prawattisat borannakhadi nai yuk dai?",
+            [
+                ["a", "ยุคสำริดและยุคเหล็กก่อนประวัติศาสตร์", "Prähistorische Bronze- und Eisenzeit", "Yuk samrit lae yuk lek kon prawattisat"],
+                ["b", "ยุคหินเก่าตอนต้น", "Frühes Paläolithikum (Altsteinzeit)", "Yuk hin kao ton ton"],
+                ["c", "ยุคกลางของยุโรป", "Europäisches Mittelalter", "Yuk klang khong Yurop"],
+                ["d", "ยุคทวารวดีตอนปลาย", "Späte Dvaravati-Periode", "Yuk Thawarawadi ton plai"]
+            ],
+            "a",
+            "บ้านเชียงเป็นหลักฐานสำคัญของการพัฒนาทางวัฒนธรรมและโลหกรรมยุคสำริดและยุคเหล็กในเอเชียตะวันออกเฉียงใต้ มีชื่อเสียงจากหม้อดินเผาลายเขียนสีแดง",
+            "Ban Chiang belegt frühe Bronzeguss- und Eisenverarbeitung in Südostasien sowie Ackerbau und ist berühmt für charakteristische rot bemalte Keramik.",
+            [{ title: "UNESCO – Ban Chiang Archaeological Site", url: "https://whc.unesco.org/en/list/575/" }]
+        ),
+        makeQuestion(
+            "thq-his-016", "history", 2, "single_choice",
+            "พระบาทสมเด็จพระจุลจอมเกล้าเจ้าอยู่หัว (รัชกาลที่ 5) ทรงได้รับการถวายพระราชสมัญญาว่า 'พระปิยมหาราช' จากพระราชกรณียกิจสำคัญยิ่งด้านใดในปี พ.ศ. 2448?",
+            "Welche historische Reform von König Chulalongkorn (Rama V.), die 1905 vollendet wurde, brachte ihm den Ehrentitel 'Phra Piya Maharaj' (Geliebter Großer König) ein?",
+            "Phra Bat Somdet Phra Chulachomklao Chao Yu Hua (Ratchakan thi 5) song dairap kan thawai phraratchasammanya wa 'Phra Piya Maharat' chak phraratchakoraniyakit samkhan ying dan dai nai pi Pho So 2448?",
+            [
+                ["a", "การเลิกทาสและการเลิกไพร่โดยสันติวิธี", "Die friedliche und schrittweise Abschaffung der Sklaverei", "Kan loek that lae kan loek phrai doi santiwithi"],
+                ["b", "การสร้างกำแพงพระนครแห่งใหม่", "Der Bau neuer Festungsmauern", "Kan sang kamphaeng phranakhon haeng mai"],
+                ["c", "การย้ายเมืองหลวงไปยังเชียงใหม่", "Die Verlegung der Hauptstadt nach Chiang Mai", "Kan yai mueang luang pai yang Chiang Mai"],
+                ["d", "การประกาศสงครามกับฝรั่งเศส", "Die Kriegserklärung an Frankreich", "Kan prakat songkhram kap Farangset"]
+            ],
+            "a",
+            "รัชกาลที่ 5 ทรงออกพระราชบัญญัติเลิกทาส ร.ศ. 124 (พ.ศ. 2448) ทำให้ลูกทาสและทาสทุกคนเป็นไทโดยไม่มีการนองเลือด ถือเป็นก้าวย่างสำคัญสู่ความทันสมัย",
+            "König Chulalongkorn schaffte die Sklaverei und Leibeigenschaft in Siam schrittweise und ohne Blutvergießen ab, sodass alle Siamesen freie Bürger wurden.",
+            [{ title: "National Archives of Thailand – King Rama V Abolition of Slavery", url: "https://www.nat.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-his-017", "history", 3, "single_choice",
+            "สะพานข้ามแม่น้ำแควในจังหวัดกาญจนบุรี สร้างขึ้นโดยแรงงานเชลยศึกฝ่ายสัมพันธมิตรและกรรมกรชาวเอเชียในสงครามใด?",
+            "Während welches Krieges bauten alliierte Kriegsgefangene und asiatische Zwangsarbeiter unter der japanischen Armee die berühmte Brücke am Kwai in Kanchanaburi?",
+            "Saphan kham Maenam Khwae nai changwat Kanchanaburi, sang khuen doi raengngan chaloeisuek fai samphanthamit lae kammakon chao Echia nai songkhram dai?",
+            [
+                ["a", "สงครามโลกครั้งที่ 2", "Zweiter Weltkrieg", "Songkhram Lok khrang thi 2"],
+                ["b", "สงครามโลกครั้งที่ 1", "Erster Weltkrieg", "Songkhram Lok khrang thi 1"],
+                ["c", "สงครามเวียดนาม", "Vietnamkrieg", "Songkhram Wiatnam"],
+                ["d", "สงครามเกาหลี", "Koreakrieg", "Songkhram Kaoli"]
+            ],
+            "a",
+            "กองทัพญี่ปุ่นได้เกณฑ์เชลยศึกสัมพันธมิตรและกรรมกรเอเชียสร้างทางรถไฟสายมรณะและสะพานข้ามแม่น้ำแควในปี พ.ศ. 2485-2486 ระหว่างสงครามโลกครั้งที่สอง",
+            "Die Brücke über den Kwai war Teil der 'Thailand-Burma-Eisenbahn' (Todeseisenbahn), die das japanische Militär im Zweiten Weltkrieg unter extremen Opfern errichten ließ.",
+            [{ title: "Commonwealth War Graves Commission – Kanchanaburi", url: "https://www.cwgc.org/" }]
+        ),
+        makeQuestion(
+            "thq-his-018", "history", 3, "single_choice",
+            "ศิลาจารึกหลักที่ 1 ระบุว่า พระมหากษัตริย์พระองค์ใดแห่งอาณาจักรสุโขทัยทรงประดิษฐ์อักษรไทยขึ้นในปี พ.ศ. 1826?",
+            "Welcher König des Reiches Sukhothai schuf laut Inschrift 1 im Jahr 1283 die thailändische Schrift (Lai Sue Thai)?",
+            "Silacharuek lak thi nueng rabu wa phra mahakasat phra-ong dai haeng anachak Sukhothai song pradit akson Thai khuen nai pi Pho So 1826?",
+            [
+                ["a", "พ่อขุนรามคำแหงมหาราช", "König Ramkhamhaeng der Große", "Pho Khun Ramkhamhaeng Maharat"],
+                ["b", "พ่อขุนศรีอินทราทิตย์", "König Sri Indraditya", "Pho Khun Si Inthrathit"],
+                ["c", "พระมหาธรรมราชาที่ 1 (ลิไทย)", "König Li Thai", "Phra Maha Thammaracha thi 1 (Li Thai)"],
+                ["d", "พ่อขุนผาเมือง", "Pho Khun Pha Mueang", "Pho Khun Pha Mueang"]
+            ],
+            "a",
+            "พ่อขุนรามคำแหงมหาราชทรงประดิษฐ์ 'ลายสือไทย' ขึ้นในปี พ.ศ. 1826 โดยดัดแปลงจากอักษรขอมและมอญโบราณ กลายมาเป็นต้นแบบของอักษรไทยในปัจจุบัน",
+            "König Ramkhamhaeng erfand 1283 das 'Lai Sue Thai', abgeleitet von alten Mon- und Khmer-Schriften, welches das Fundament der heutigen Thai-Schrift bildet.",
+            [{ title: "UNESCO – The King Ram Khamhaeng Inscription", url: "https://en.unesco.org/memoryoftheworld/registry/2003/inscription" }]
+        ),
+        makeQuestion(
+            "thq-cul-014", "culture", 2, "single_choice",
+            "ประเพณีผีตาโขน ซึ่งผู้เข้าร่วมจะสวมหน้ากากทำจากหวดนึ่งข้าวเหนียวและโคนก้านมะพร้าว เป็นประเพณีเอกลักษณ์ของอำเภอด่านซ้าย ในจังหวัดใด?",
+            "In welcher Provinz findet das berühmte Geistermaskenfest 'Phi Ta Khon' im Bezirk Dan Sai statt, bei dem farbenprächtige Masken aus gedämpften Reiskörben getragen werden?",
+            "Prapheni Phi Ta Khon sueng phu khao ruam cha suam nakak tham chak huat nueng khao niao lae khon kan maphrao, pen prapheni ekkalak khong amphoe Dan Sai nai changwat dai?",
+            [
+                ["a", "เลย", "Loei", "Loei"],
+                ["b", "เชียงใหม่", "Chiang Mai", "Chiang Mai"],
+                ["c", "น่าน", "Nan", "Nan"],
+                ["d", "นครพนม", "Nakhon Phanom", "Nakhon Phanom"]
+            ],
+            "a",
+            "ประเพณีผีตาโขนเป็นส่วนหนึ่งของงานบุญหลวงที่อำเภอด่านซ้าย จังหวัดเลย หน้ากากอันโดดเด่นทำจากหวดนึ่งข้าวเหนียวเย็บต่อกับโคนก้านมะพร้าวและระบายสีสันสดใส",
+            "Das Phi Ta Khon Fest ist Teil des traditionellen Bun Luang im Bezirk Dan Sai, Provinz Loei. Die kunstvollen Masken symbolisieren Geister, die Prinz Vessantara begleiten.",
+            [{ title: "Tourism Authority of Thailand – Phi Ta Khon Festival", url: "https://www.tourismthailand.org/" }]
+        ),
+        makeQuestion(
+            "thq-cul-015", "culture", 2, "single_choice",
+            "ในพิธีไหว้ครูของไทย ดอกไม้ชนิดใดนิยมนำมาจัดพานเพื่อเป็นสัญลักษณ์แทน 'ความเฉียบแหลมและปัญญาไว'?",
+            "Welche Blume wird bei der traditionellen thailändischen Lehrerehrung (Wai Kru) als Symbol für geistige Schärfe und scharfsinnigen Verstand überreicht?",
+            "Nai phithi wai khru khong Thai, dokmai chanit dai niyom nam ma chat phan phuea pen sanyalak thaen 'khwam chiaplaem lae panya wai'?",
+            [
+                ["a", "ดอกเข็ม", "Dok Khem (Ixora / Nadelblüte)", "Dok Khem"],
+                ["b", "ดอกมะลิ", "Dok Mali (Jasmin)", "Dok Mali"],
+                ["c", "ดอกบัว", "Dok Bua (Lotus)", "Dok Bua"],
+                ["d", "ดอกดาวเรือง", "Dok Dao Rueang (Tagetes)", "Dok Dao Rueang"]
+            ],
+            "a",
+            "ดอกเข็มมีปลายแหลมเหมือนเข็ม จึงใช้เป็นสัญลักษณ์แทนสติปัญญาที่เฉียบแหลม โดยพานไหว้ครูยังมีดอกมะเขือ (ความอ่อนน้อม) หญ้าแพรก (ความอดทน) และข้าวตอก (วินัย)",
+            "Die nadelspitze Ixora-Blüte ('Dok Khem') symbolisiert Scharfsinn. Zusammen mit Auberginenblüte (Demut), Wiesen-Bermudagras (Geduld) und Puffreis bildet sie die Gabe.",
+            [{ title: "Ministry of Culture Thailand – Wai Kru Tradition", url: "https://www.m-culture.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-cul-016", "culture", 3, "single_choice",
+            "'หนังตะลุง' ศิลปะการแสดงหุ่นเงาพื้นบ้านยอดนิยมของภาคใต้ ทำมาจากวัสดุชนิดใด?",
+            "Aus welchem Naturmaterial werden die kunstvoll verzierten Figuren des traditionellen südthailändischen Schattentheaters 'Nang Talung' gefertigt?",
+            "'Nang Talung' sinlapa kan sadaeng hun ngao phuenban yotniyom khong phak tai, tham ma chak watsadu chanit dai?",
+            [
+                ["a", "แผ่นหนังวัวหรือหนังควายฉลุลาย", "Gegerbtes und ausgestanztes Rinds- oder Büffelleder", "Phaen nang wua rue nang khwai chalu lai"],
+                ["b", "ไม้สักแกะสลัก", "Geschnitztes Teakholz", "Mai sak kaesalak"],
+                ["c", "กระดาษสาชุบน้ำมัน", "Geöltes Maulbeerbaumpapier (Sa-Papier)", "Kradat sa chup namman"],
+                ["d", "ผ้าไหมปักเลื่อม", "Bestickte Seide", "Pha mai pak lueam"]
+            ],
+            "a",
+            "ตัวหนังตะลุงทำจากหนังวัวหรือหนังควายที่ฟอกจนแห้งโปร่งแสง แล้วนำมาฉลุลวดลายตัวละครอย่างละเอียดอ่อน นิยมเชิดอยู่หลังจอผ้าขาวสะท้อนแสงไฟ",
+            "Nang-Talung-Puppen werden aus sorgfältig getrocknetem Rinds- oder Wasserbüffelleder gestanzt, bemalt und an Stöcken hinter einem beleuchteten weißen Schirm bewegt.",
+            [{ title: "Department of Cultural Promotion Thailand – Shadow Puppetry", url: "https://www.culture.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-cul-017", "culture", 3, "single_choice",
+            "การแสดง 'โขน' ซึ่งเป็นศิลปะการแสดงชั้นสูงของไทยและได้รับการขึ้นทะเบียนมรดกทางวัฒนธรรมที่จับต้องไม่ได้จากยูเนสโก มีเนื้อเรื่องหลักมาจากวรรณคดีเรื่องใด?",
+            "Aus welchem thailändischen Nationalepos stammen die Geschichten des klassischen königlichen Maskentanzdramas 'Khon' (UNESCO-Kulturerbe)?",
+            "Kan sadaeng 'Khon' sueng pen sinlapa kan sadaeng chan sung khong Thai lae dairap kan khuen thabian moradok thang watthanatham thi chap tong mai dai chak UNESCO, mi nuea rueang lak ma chak wannakhadi rueang dai?",
+            [
+                ["a", "รามเกียรติ์", "Ramakien (thailändische Ramayana-Adaption)", "Ramakian"],
+                ["b", "ขุนช้างขุนแผน", "Khun Chang Khun Phaen", "Khun Chang Khun Phaen"],
+                ["c", "อิเหนา", "Inao", "Inao"],
+                ["d", "พระอภัยมณี", "Phra Aphai Mani", "Phra Aphai Mani"]
+            ],
+            "a",
+            "โขนใช้เรื่อง 'รามเกียรติ์' ในการแสดง โดยตัวละครที่เป็นยักษ์และลิงจะสวม 'หัวโขน' ส่วนพระและนางจะแต่งกายงดงามและเคลื่อนไหวตามบทพากย์และบทเจรจา",
+            "Das Khon-Drama erzählt Episoden des Ramakien. Dämonen (Yak) und Affenkrieger tragen reich verzierte Ganzkopfmasken, begleitet von traditioneller Piphat-Musik.",
+            [{ title: "UNESCO Intangible Cultural Heritage – Khon masked dance drama", url: "https://ich.unesco.org/en/RL/khon-masked-dance-drama-in-thailand-01385" }]
+        ),
+        makeQuestion(
+            "thq-cul-018", "culture", 2, "single_choice",
+            "เทคนิคการทอผ้าไหมไทยโบราณที่มัดย้อมเส้นไหมก่อนนำไปทอให้เกิดลวดลายสวยงามอ่อนช้อย มีชื่อเรียกว่าอะไร?",
+            "Wie heißt die traditionelle thailändische Webtechnik, bei der Seidenstränge vor dem Weben nach Mustern abgebunden und gefärbt werden (Ikat-Verfahren)?",
+            "Theknik kan tho pha mai Thai boran thi mat yom sen mai kon nam pai tho hai koet luat lai suai ngam on choi, mi chue riak wa arai?",
+            [
+                ["a", "ผ้ามัดหมี่", "Pha Matmi (Mudmee / Ikat-Seide)", "Pha Matmi"],
+                ["b", "ผ้าบาติก", "Batik", "Pha Batik"],
+                ["c", "ผ้าลูกไม้", "Spitze", "Pha Lukmai"],
+                ["d", "ผ้ายีนส์", "Jeansstoff / Denim", "Pha Yin"]
+            ],
+            "a",
+            "ผ้ามัดหมี่เป็นภูมิปัญญาการทอผ้าพื้นบ้าน โดยมัดเส้นไหมเป็นเปลาะๆ ตามลายที่กำหนดแล้วย้อมสีก่อนทอ นิยมมากในภาคอีสาน เช่น จังหวัดขอนแก่นและสุรินทร์",
+            "Matmi (Mudmee) ist das thailändische Ikat-Verfahren, bei dem Kett- oder Schussfäden vor dem Webstuhl mustergenau reserviert gefärbt werden. Zentrum ist der Nordosten (Isan).",
+            [{ title: "The SUPPORT Foundation of Queen Sirikit – Thai Silk", url: "https://www.support.or.th/" }]
+        ),
+        makeQuestion(
+            "thq-foo-014", "food", 1, "single_choice",
+            "วัตถุดิบหลักที่เป็นหัวใจของอาหารอีสานยอดนิยมอย่าง 'ส้มตำไทย' คือผลไม้อะไรที่นำมาสับเป็นเส้น?",
+            "Welche Frucht wird im unreifen, grünen Zustand in feine Streifen geraspelt und bildet die Hauptzutat des beliebten 'Som Tum' (Papayasalat)?",
+            "Watthudip lak thi pen huachai khong ahan Isan yotniyom yang 'Som Tam Thai' khue phonlamai arai thi nam ma sap pen sen?",
+            [
+                ["a", "มะละกอดิบ", "Grüne unreife Papaya", "Malako dip"],
+                ["b", "มะม่วงสุก", "Reife Mango", "Mamuang suk"],
+                ["c", "สับปะรด", "Ananas", "Sappharot"],
+                ["d", "แตงโม", "Wassermelone", "Taengmo"]
+            ],
+            "a",
+            "ส้มตำไทยใช้เส้นมะละกอดิบที่กรอบ คลุกเคล้ากับกระเทียม พริก ถั่วลิสงคั่ว ถั่วฝักยาว มะเขือเทศ กุ้งแห้ง ปรุงรสด้วยน้ำปลา มะนาว และน้ำตาลปี๊บในครก",
+            "Som Tum Thai basiert auf knackig gestifteter grüner Papaya, die im Mörser mit Chili, Knoblauch, Limettensaft, Palmzucker, Tomaten und Erdnüssen gestampft wird.",
+            [{ title: "Michelin Guide Thailand – The Art of Som Tum", url: "https://guide.michelin.com/th/en" }]
+        ),
+        makeQuestion(
+            "thq-foo-015", "food", 2, "single_choice",
+            "อาหารพื้นเมืองขึ้นชื่อของภาคเหนือที่มีบะหมี่ไข่ในน้ำแกงกะหรี่กะทิเข้มข้น โรยหน้าด้วยหมี่กรอบ มะนาว และผักกาดดอง คือเมนูใด?",
+            "Welches nordthailändische Kultgericht besteht aus Eiernudeln in milder Kokos-Currysuppe, getoppt mit knusprig frittierten Nudeln und serviert mit eingelegtem Senfkohl?",
+            "Ahan phuenmueang khuen chue khong phak nuea thi mi bami khai nai nam kaeng kari kathi khemkhon, roi na duai mi krop, manao lae phak kat dong khue menu dai?",
+            [
+                ["a", "ข้าวซอย", "Khao Soi", "Khao Soi"],
+                ["b", "ขนมจีนน้ำเงี้ยว", "Khanom Jeen Nam Ngiao", "Khanom Chin Nam Ngiao"],
+                ["c", "แกงฮังเล", "Kaeng Hang Le", "Kaeng Hang Le"],
+                ["d", "ไส้อั่ว", "Sai Ua (Nordthailändische Kräuterwurst)", "Sai Ua"]
+            ],
+            "a",
+            "ข้าวซอยเป็นอาหารเอกลักษณ์ของเชียงใหม่และภาคเหนือ เสิร์ฟพร้อมไก่หรือเนื้อในน้ำแกงหอมเครื่องเทศกะทิ และรับประทานคู่กับหอมแดง ผักกาดดอง และมะนาว",
+            "Khao Soi ist die berühmte nordthailändische Currynudelsuppe. Die Kombination aus weichen Eiernudeln, cremiger Brühe und krossen Nudelfäden ist legendär.",
+            [{ title: "Tourism Authority of Thailand – Northern Culinary Heritage Khao Soi", url: "https://www.tourismthailand.org/" }]
+        ),
+        makeQuestion(
+            "thq-foo-016", "food", 1, "single_choice",
+            "ใบสมุนไพรที่มีกลิ่นหอมเผ็ดร้อนอันเป็นหัวใจสำคัญของเมนูตามสั่งยอดฮิต 'ผัดกะเพรา' คือใบอะไร?",
+            "Welches Kraut verleiht dem thailändischen National-Streetfood 'Pad Kra Pao' seinen unverwechselbaren pfeffrig-würzigen Geschmack?",
+            "Bai samunphrai thi mi klin hom phet ron an pen huachai samkhan khong menu tam sang yothit 'Phat Kaphrao' khue bai arai?",
+            [
+                ["a", "ใบกะเพรา (Holy Basil)", "Indisches / Heiliges Basilikum (Kaphrao)", "Bai Kaphrao"],
+                ["b", "ใบโหระพา (Thai Sweet Basil)", "Süßes Thai-Basilikum (Horapha)", "Bai Horapha"],
+                ["c", "ใบสะระแหน่ (Pfefferminze)", "Minze (Saranae)", "Bai Saranae"],
+                ["d", "ใบมะกรูด (Kaffirlimettenblätter)", "Kaffirlimettenblätter (Makrut)", "Bai Makrut"]
+            ],
+            "a",
+            "ผัดกะเพราแท้ต้องใช้ 'ใบกะเพรา' ซึ่งมีรสเผ็ดซ่าและกลิ่นหอมเฉพาะตัว ต่างจากใบโหระพาที่นิยมใส่ในแกงเขียวหวานหรือใบแมงลัก",
+            "Echtes Pad Kaphrao verlangt zwingend heiliges Basilikum (Ocimum tenuiflorum / Kra Pao), das im Gegensatz zum süßen Horapha eine pikante Schärfe hat.",
+            [{ title: "Department of Agriculture Thailand – Holy Basil Culinary Traits", url: "https://www.doa.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-foo-017", "food", 2, "single_choice",
+            "แกงสมุนไพรโบราณ 'ต้มข่าไก่' มีเครื่องปรุงสมุนไพรหลักชนิดใดที่ให้กลิ่นหอมสดชื่นอันเป็นที่มาของชื่อเมนูนี้?",
+            "Welche aromatische Wurzelknolle ist neben Kokosmilch und Hühnerfleisch der namensgebende Hauptbestandteil der Suppe 'Tom Kha Gai'?",
+            "Kaeng samunphrai boran 'Tom Kha Kai' mi khrueangprung samunphrai lak chanit dai thi hai klin hom sotchuen an pen thima khong chue menu ni?",
+            [
+                ["a", "ข่า", "Galgant (Kha)", "Kha"],
+                ["b", "ขิง", "Ingwer (Khing)", "Khing"],
+                ["c", "กระชาย", "Fingerwurz (Krachai)", "Krachai"],
+                ["d", "ขมิ้น", "Kurkuma (Khamin)", "Khamin"]
+            ],
+            "a",
+            "'ข่า' เป็นสมุนไพรที่มีกลิ่นหอมละมุนและเผ็ดอุ่น เมื่อต้มกับกะทิ ตะไคร้ ใบมะกรูด และเนื้อไก่ จะทำให้น้ำซุปมีรสกลมกล่อมเปรี้ยวเค็มมันพอดี",
+            "'Kha' steht für Galgantwurzel. In Scheiben geschnitten sorgt sie zusammen mit Kokosmilch, Zitronengras und Limettenblättern für die cremige, zitronig-würzige Note.",
+            [{ title: "Royal Society of Thailand – Thai Food Glossary", url: "https://www.orst.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-foo-018", "food", 1, "single_choice",
+            "ขนมหวานยอดนิยมระดับโลก 'ข้าวเหนียวมะม่วง' นิยมเลือกใช้มะม่วงสุกพันธุ์ใดที่มีเนื้อเนียนหวานฉ่ำและกลิ่นหอม?",
+            "Welche thailändische Mangosorte wird wegen ihres faserfreien, saftig-süßen Fruchtfleischs am liebsten für 'Khao Niao Mamuang' (Mango Sticky Rice) gewählt?",
+            "Khanom wan yotniyom radap lok 'Khao Niao Mamuang' niyom lueak chai mamuang suk phan dai thi mi nuea nian wan cham lae klin hom?",
+            [
+                ["a", "มะม่วงน้ำดอกไม้", "Nam Dok Mai (Blütenwasser-Mango)", "Mamuang Nam Dok Mai"],
+                ["b", "มะม่วงเขียวเสวย", "Khiao Sawoei", "Mamuang Khiao Sawoei"],
+                ["c", "มะม่วงแรด", "Mamuang Raet", "Mamuang Raet"],
+                ["d", "มะม่วงฟ้าลั่น", "Mamuang Fa Lan", "Mamuang Fa Lan"]
+            ],
+            "a",
+            "มะม่วงน้ำดอกไม้สุกมีรสหวานละมุน เนื้อนุ่มเนียนไม่มีเสี้ยน กลิ่นหอมชื่นใจ เมื่อทานคู่กับข้าวเหนียวมูนกะทิรสเค็มมันและราดน้ำกะทิสดถือเป็นความลงตัวที่สุด",
+            "Die Sorte 'Nam Dok Mai' gilt als Königin unter den Desserts-Mangos: goldgelb, samtig weich, faserfrei und wunderbar süß in Harmonie mit gesalzenem Kokos-Klebreis.",
+            [{ title: "Tourism Authority of Thailand – Thai Mango Sticky Rice", url: "https://www.tourismthailand.org/" }]
+        ),
+        makeQuestion(
+            "thq-nat-014", "nature", 2, "single_choice",
+            "สัตว์เลี้ยงลูกด้วยนมในป่าดงดิบของไทยชนิดใด ที่ไม่มีหางและมีแขนยาวคล่องแคล่วในการโหนต้นไม้ พร้อมส่งเสียงร้องก้องกังวานยามเช้า?",
+            "Welcher schwanzlose Primat schwingt mit langen Armen meisterhaft durch die Kronen thailändischer Urwälder und verzaubert den Dschungel mit morgendlichen Rufen?",
+            "Sat liang luk duai nom nai pa dongdip khong Thai chanit dai, thi mai mi hang lae mi khaen yao khlongkhlaeo nai kan hon tonmai phrom song siang rong kong kangwan yam chao?",
+            [
+                ["a", "ชะนีมือขาว", "Weißhandgibbon (Lar-Gibbon)", "Chani mue khao"],
+                ["b", "ลิงแสม", "Javaneraffe (Krabbenfressender Makak)", "Ling samae"],
+                ["c", "ค่างแว่นถิ่นใต้", "Dunkler Brillenlangur", "Khang waen thin tai"],
+                ["d", "นางอาย (ลิงลม)", "Plumplori", "Nang-ai (Ling lom)"]
+            ],
+            "a",
+            "ชะนีมือขาวเป็นสัตว์ในกลุ่มเอป (ไม่มีหาง) อาศัยอยู่บนเรือนยอดไม้สูง มีความสำคัญในการช่วยกระจายเมล็ดพันธุ์ไม้ป่าและมีเสียงร้องประสานคู่ที่เป็นเอกลักษณ์",
+            "Weißhandgibbons (Hylobates lar) besitzen keinen Schwanz und bewegen sich durch Hangeln (Brachiation) fort. Ihre melodiösen Duette hallen kilometerweit durch den Urwald.",
+            [{ title: "Department of National Parks Thailand – White-handed Gibbon", url: "https://www.dnp.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-nat-015", "nature", 2, "single_choice",
+            "ปลาที่มีขนาดใหญ่ที่สุดในโลก ซึ่งมักพบแหวกว่ายหากินแพลงก์ตอนในน่านน้ำไทย เช่น บริเวณกองหินริเชลิวและเกาะเต่า คือปลาชนิดใด?",
+            "Welcher sanfte Riese gilt als der größte Fisch der Erde und wird von Tauchern vor allem am Richelieu Rock und um Koh Tao beobachtet?",
+            "Pla thi mi khanat yai thi sut nai lok sueng mak phop waek wai hakin phlaengkhton nai nannam Thai chen boriwen konghin Richelieu lae Ko Tao khue pla chanit dai?",
+            [
+                ["a", "ฉลามวาฬ", "Walhai (Rhincodon typus)", "Chalam wan"],
+                ["b", "กระเบนราหู (แมนตา)", "Manta-Rochen", "Kraben rahu (Manta)"],
+                ["c", "ปลาวาฬสีน้ำเงิน", "Blauwal (Meeressäuger)", "Pla wan si namngoen"],
+                ["d", "ปลาช่อนอเมซอน", "Arapaima", "Pla chon Amezon"]
+            ],
+            "a",
+            "ฉลามวาฬเป็นปลากระดูกอ่อนขนาดใหญ่ที่สุดในโลก สามารถยาวได้กว่า 12 เมตร กินแพลงก์ตอนและสัตว์น้ำขนาดเล็กเป็นอาหาร และเป็นสัตว์ป่าสงวนของไทย",
+            "Der Walhai ist mit bis zu 12 Metern Länge der größte lebende Fisch. Als friedlicher Filtrierer ernährt er sich von Plankton und steht in Thailand unter strengem Schutz.",
+            [{ title: "Department of Marine and Coastal Resources Thailand – Whale Shark Conservation", url: "https://www.dmcr.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-nat-016", "nature", 2, "single_choice",
+            "ระบบนิเวศป่าไม้บริเวณชายฝั่งทะเลน้ำกร่อยที่มีรากค้ำยันแข็งแรง ช่วยป้องกันการกัดเซาะชายฝั่งและเป็นแหล่งอนุบาลสัตว์น้ำ เรียกว่าอะไร?",
+            "Wie heißen die küstenschützenden Gezeitenwälder mit charakteristischen Stelzenwurzeln im Brackwasserbereich, die als Kinderstube für Fische und Krebse dienen?",
+            "Rapop niwet pamai boriwen chaifang thale namkroi thi mi rak khamyan khaengkraeng, chuai pongkan kan katso chaifang lae pen laeng anuban sat nam riak wa arai?",
+            [
+                ["a", "ป่าชายเลน", "Mangrovenwald (Pa Chai Len)", "Pa Chai Len"],
+                ["b", "ป่าเต็งรัง", "Trockener Laubmischwald (Dipterocarp-Wald)", "Pa Teng Rang"],
+                ["c", "ป่าเบญจพรรณ", "Mischwald (Pa Benjaphan)", "Pa Benjaphan"],
+                ["d", "ป่าสนเขา", "Kiefern-Bergwald", "Pa Son Khao"]
+            ],
+            "a",
+            "ป่าชายเลนมีต้นโกงกางที่มีระบบรากค้ำจุนพิเศษ สามารถเติบโตในดินเลนน้ำกร่อย เป็นแนวกันคลื่นลมพายุ และเป็นแหล่งเพาะพันธุ์ปู ปลา และนกน้ำ",
+            "Mangrovenwälder (Pa Chai Len) schützen Thailands Küsten vor Erosion und Tsunamis. Ihre dichten Wurzelsysteme bieten Lebensraum für Schlammspringer und Garnelen.",
+            [{ title: "Department of Marine and Coastal Resources Thailand – Mangrove Forest", url: "https://www.dmcr.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-nat-017", "nature", 1, "single_choice",
+            "สัตว์ประจำชาติของประเทศไทย ซึ่งมีบทบาทสำคัญในประวัติศาสตร์และวัฒนธรรมไทยมาอย่างยาวนาน คือสัตว์ชนิดใด?",
+            "Welches Tier ist das offizielle Nationaltier Thailands und genießt seit Jahrhunderten höchste historische und kulturelle Verehrung?",
+            "Sat pracham chat khong prathet Thai, sueng mi botbat samkhan nai prawattisat lae watthanatham Thai ma yang yaonan khue sat chanit dai?",
+            [
+                ["a", "ช้างไทย", "Thailändischer Elefant (Asiatischer Elefant)", "Chang Thai"],
+                ["b", "เสือโคร่ง", "Indochinesischer Tiger", "Suea khrong"],
+                ["c", "กระทิง", "Gaur (Wildrind)", "Krathing"],
+                ["d", "ควายไทย", "Wasserbüffel", "Khwai Thai"]
+            ],
+            "a",
+            "ช้างไทยได้รับการประกาศเป็นสัตว์ประจำชาติอย่างเป็นทางการ โดยเฉพาะ 'ช้างเผือก' ซึ่งเป็นสัญลักษณ์มงคลคู่พระบารมีของพระมหากษัตริย์ไทย",
+            "Der Elefant (Chang Thai) ist das Nationaltier Thailands. Früher schmückte ein weißer Elefant sogar die Nationalflagge Siams; er gilt als Symbol für Würde und Kraft.",
+            [{ title: "Royal Society of Thailand – National Animal", url: "https://www.orst.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-nat-018", "nature", 3, "single_choice",
+            "สัตว์เลี้ยงลูกด้วยนมที่มีขนาดเล็กที่สุดในโลก ซึ่งถูกค้นพบในถ้ำหินปูนริมแม่น้ำแควน้อย จังหวัดกาญจนบุรี คือสัตว์ชนิดใด?",
+            "Welches winzige Wesen, das in Kalksteinhöhlen am Khwae-Noi-Fluss in Kanchanaburi entdeckt wurde, gilt als das kleinste Säugetier der Welt nach Körpergröße?",
+            "Sat liang luk duai nom thi mi khanat lek thi sut nai lok, sueng thuk khonphop nai tham hinpun rim Maenam Khwae Noi changwat Kanchanaburi khue sat chanit dai?",
+            [
+                ["a", "ค้างคาวคุณกิตติ", "Kitti-Schweinsnasenfledermaus / Hummelfledermaus", "Khangkhao Khun Kitti"],
+                ["b", "หนูผีจิ๋ว", "Etruskerspitzmaus", "Nu phi chio"],
+                ["c", "กระรอกบินจิ๋ว", "Zwerggleithörnchen", "Krarok bin chio"],
+                ["d", "บ่างชวา", "Gleitflieger (Kaguan)", "Bang Chawa"]
+            ],
+            "a",
+            "ค้างคาวคุณกิตติมีความยาวลำตัวเพียงประมาณ 3 เซนติเมตร และมีน้ำหนักตัวเพียง 2 กรัม ค้นพบครั้งแรกโดยคุณกิตติ ทองลองยา ในปี พ.ศ. 2516",
+            "Die Kitti-Schweinsnasenfledermaus wiegt kaum 2 Gramm bei einer Körperlänge von 3 cm. Sie lebt endemisch in den Karsthöhlen von Kanchanaburi und Teilen Myanmars.",
+            [{ title: "Department of National Parks Thailand – Kitti's Hog-nosed Bat", url: "https://www.dnp.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-sport-014", "sport", 2, "single_choice",
+            "พิธีกรรมร่ายรำอันศักดิ์สิทธิ์ที่นักมวยไทยทุกคนต้องปฏิบัติบนเวทีก่อนเริ่มการชก เพื่อแสดงความกตัญญูต่อบิดามารดาและครูบาอาจารย์ เรียกว่าอะไร?",
+            "Wie heißt das rituelle Zeremoniell und der traditionelle Tanz, den jeder Muay-Thai-Kämpfer vor dem Gong zur Ehrung von Meistern und Eltern im Ring vollzieht?",
+            "Phithikam rai ram an saksit thi nak muai Thai thuk khon tong patibat bon wethi kon roem kan chok phuea sadaeng khwam katanyu to bida manda lae khru ba achan riak wa arai?",
+            [
+                ["a", "การไหว้ครูรำมวย", "Wai Kru Ram Muay", "Kan wai khru ram muai"],
+                ["b", "การลงนวม", "Sparring / Handschuhtraining", "Kan long nuam"],
+                ["c", "การเต้นฟุตเวิร์ก", "Footwork / Beinarbeit", "Kan ten futwoek"],
+                ["d", "การชั่งน้ำหนัก", "Offizielles Wiegen", "Kan chang namnak"]
+            ],
+            "a",
+            "การไหว้ครูรำมวยเป็นการทำจิตใจให้สงบ มีสมาธิ พร้อมทั้งอบอุ่นร่างกาย ยืดกล้ามเนื้อ และสำรวจพื้นเวทีก่อนขึ้นชกอย่างมีสติตามประเพณีโบราณ",
+            "Wai Kru Ram Muay verbindet Ehrerbietung mit mentaler Fokussierung, spirituellem Schutz und Dehnübungen zum Prüfen der Ringseile und Beschaffenheit des Ringbodens.",
+            [{ title: "World Muaythai Council – Wai Kru Rituals", url: "https://www.wmcmuaythai.org/" }]
+        ),
+        makeQuestion(
+            "thq-sport-015", "sport", 2, "single_choice",
+            "มงคลสวมศีรษะที่ครูมวยสวมให้นักมวยไทยก่อนก้าวขึ้นสู่สังเวียนและถอดออกก่อนเริ่มยกแรก มีความหมายสำคัญอย่างไร?",
+            "Welche Bedeutung hat der 'Mongkhon' (มงคล), der geflochtene Stirnkranz, den der Meister dem Boxer vor dem Betreten des Rings aufsetzt?",
+            "Mongkhon suam sisa thi khru muai suam hai nak muai Thai kon kao khuen su sangwian lae thot ok kon roem yok raek mi khwammai samkhan yangrai?",
+            [
+                ["a", "เป็นเครื่องรางของขลังเพื่อคุ้มครองและเป็นสิริมงคล", "Geweihtes Schutzamulett für Segen und Unversehrtheit", "Pen khrueangrang khongkhlang phuea khumkhrong lae pen sirimongkhon"],
+                ["b", "เพื่อซับเหงื่อที่หน้าผาก", "Ein einfaches Schweißband", "Phuea sap nguea thi naphak"],
+                ["c", "เพื่อป้องกันการกระทบกระเทือนที่ศีรษะ", "Ein stoßdämpfender Kopfschutz", "Phuea pongkan kan krathop krathuean thi sisa"],
+                ["d", "เพื่อระบุสังกัดค่ายมวยเท่านั้น", "Ein reines Erkennungsband des Boxstalls", "Phuea rabu sangkat khai muai thaonan"]
+            ],
+            "a",
+            "มงคลถือเป็นวัตถุมงคลสูงสุดที่ผ่านพิธีประสิทธิ์ประสาทพรจากครูบาอาจารย์ นักมวยต้องกราบขอพรและให้ครูเป็นผู้ถอดออกจากศีรษะก่อนเริ่มการชก",
+            "Der Mongkhon ist ein heiliger, geweihter Gegenstand. Nur der Trainer darf ihn nach Gebet und Rezitation im Ring vom Kopf des Athleten abnehmen.",
+            [{ title: "Sports Authority of Thailand – Muay Thai Traditions", url: "https://www.sat.or.th/" }]
+        ),
+        makeQuestion(
+            "thq-sport-016", "sport", 3, "single_choice",
+            "ศิลปะการต่อสู้ป้องกันตัวแบบดั้งเดิมของไทยที่ใช้อาวุธโบราณ เช่น ดาบเดี่ยว ดาบสองมือ หอก และพลอง ฝึกซ้อมและประลอง เรียกว่าอะไร?",
+            "Wie heißt die traditionelle thailändische Kampfkunst mit Blankwaffen wie Schwertern, Stöcken, Lanzen und Schild, die siamesischen Kriegern als Nahkampfausbildung diente?",
+            "Sinlapa kan tosu pongkan tua baep dangdoem khong Thai thi chai awut boran chen dap diao, dap song mue, hok lae phlong fuekson lae pralong riak wa arai?",
+            [
+                ["a", "กระบี่กระบอง", "Krabi Krabong", "Krabi Krabong"],
+                ["b", "เทควันโด", "Taekwondo", "Thekhwando"],
+                ["c", "ฟันดาบสากล", "Olympisches Fechten", "Fan dap sakon"],
+                ["d", "ยูโด", "Judo", "Yudo"]
+            ],
+            "a",
+            "กระบี่กระบองเป็นศาสตร์การต่อสู้อาวุธสั้นและยาวในระยะประชิดของนักรบไทยในอดีต มักแสดงคู่กับการบรรเลงดนตรีปี่พาทย์เพื่อกำหนดจังหวะรุกรับ",
+            "Krabi Krabong (wörtlich: Degen und Stock) umfasst Kampftechniken mit Doppelschwertern, Lanzen und Schilden und bildete die historische Waffenausbildung Siams.",
+            [{ title: "Department of Physical Education Thailand – Krabi Krabong Heritage", url: "https://www.dpe.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-sport-017", "sport", 3, "single_choice",
+            "การแข่งขันเรือใบระดับนานาชาติที่ใหญ่และมีชื่อเสียงที่สุดในทวีปเอเชีย ซึ่งจัดขึ้นเป็นประจำทุกปีที่เกาะภูเก็ต มีชื่อว่าอะไร?",
+            "Welche traditionsreiche internationale Segelregatta vor der Küste Phukets gilt als die größte und prestigeträchtigste Yacht-Regatta in ganz Asien?",
+            "Kan khaengkhan ruea bai radap nanachat thi yai lae mi chuesiang thi sut nai thawip Echia sueng chat khuen pen pracham thuk pi thi Ko Phuket mi chue wa arai?",
+            [
+                ["a", "ภูเก็ตคิงส์คัพรีกัตตา", "Phuket King's Cup Regatta", "Phuket King's Cup Regatta"],
+                ["b", "อะเมริกาส์คัพ", "America's Cup", "Americas Cup"],
+                ["c", "บางกอกโบ๊ตเรซ", "Bangkok Boat Race", "Bangkok Boat Race"],
+                ["d", "อันดามันแคนูคัพ", "Andaman Canoe Cup", "Andaman Canoe Cup"]
+            ],
+            "a",
+            "ภูเก็ตคิงส์คัพรีกัตตาก่อตั้งขึ้นในปี พ.ศ. 2530 เพื่อเฉลิมพระเกียรติในหลวงรัชกาลที่ 9 ในวโรกาสเฉลิมพระชนมพรรษาครบ 5 รอบ โดยมีเรือใบจากทั่วโลกเข้าร่วมชิงชัย",
+            "Die Phuket King's Cup Regatta wurde 1987 zu Ehren des 60. Geburtstages von König Bhumibol ins Leben gerufen und zieht alljährlich Segler aus der ganzen Welt an.",
+            [{ title: "Phuket King's Cup Regatta Official", url: "https://www.kingscup.com/" }]
+        ),
+        makeQuestion(
+            "thq-sport-018", "sport", 2, "single_choice",
+            "นักกีฬาไทยคนแรกในประวัติศาสตร์ที่สามารถคว้าเหรียญทองในการแข่งขันกีฬาโอลิมปิกเกมส์ คือใคร และจากกีฬาชนิดใด?",
+            "Wer war der allererste thailändische Sportler, der bei Olympischen Spielen eine Goldmedaille gewann (Atlanta 1996), und in welcher Sportart?",
+            "Nak kila Thai khon raek nai prawattisat thi samat khwa rianthong nai kan khaengkhan kila Olimpik Kem khue khrai lae chak kila chanit dai?",
+            [
+                ["a", "สมรักษ์ คำสิงห์ (กีฬามวยสากลสมัครเล่น)", "Somluck Kamsing (Boxen)", "Somrak Khamsing (Kila muai sakon samaklen)"],
+                ["b", "มนัส บุญจำนงค์ (กีฬามวยสากล)", "Manus Boonjumnong (Boxen)", "Manat Bunchamnong"],
+                ["c", "ปวีณา ทองสุก (กีฬายกน้ำหนัก)", "Pawina Thongsuk (Gewichtheben)", "Pawina Thongsuk"],
+                ["d", "พาณิภัค วงศ์พัฒนกิจ (กีฬาเทควันโด)", "Panipak Wongpattanakit (Taekwondo)", "Phaniphak Wongphattanakit"]
+            ],
+            "a",
+            "สมรักษ์ คำสิงห์ คว้าเหรียญทองแรกในประวัติศาสตร์ให้แก่ประเทศไทยในกีฬาชกมวยสากลสมัครเล่น รุ่นเฟเธอร์เวต ในโอลิมปิกปี ค.ศ. 1996 ณ เมืองแอตแลนตา สหรัฐอเมริกา",
+            "Somluck Kamsing schrieb Sportgeschichte, als er bei den Olympischen Sommerspielen 1996 in Atlanta im Federgewichtsboxen die erste olympische Goldmedaille für Thailand holte.",
+            [{ title: "Olympic Committee of Thailand – Historic Gold Medals", url: "https://www.olympicthai.org/" }]
+        ),
+        makeQuestion(
+            "thq-rel-013", "religion", 1, "single_choice",
+            "วัดสำคัญคู่บ้านคู่เมืองที่ประดิษฐานพระพุทธมหามณีรัตนปฏิมากร (พระแก้วมรกต) ภายในพระบรมมหาราชวัง คือวัดใด?",
+            "Welcher heiligste Tempel Thailands liegt auf dem Areal des Großen Palastes in Bangkok und beherbergt den verehrten Smaragd-Buddha?",
+            "Wat samkhan khu ban khu mueang thi praditsathan Phra Phutthamahamani Rattanapatimakon (Phra Kaeo Morakot) phainai Phra Borom Maha Ratchawang khue wat dai?",
+            [
+                ["a", "วัดพระศรีรัตนศาสดาราม (วัดพระแก้ว)", "Wat Phra Si Rattana Satsadaram (Wat Phra Kaew)", "Wat Phra Si Rattana Satsadaram (Wat Phra Kaeo)"],
+                ["b", "วัดโพธิ์ (วัดพระเชตุพน)", "Wat Pho (Tempel des liegenden Buddha)", "Wat Pho"],
+                ["c", "วัดสุทัศนเทพวราราม", "Wat Suthat", "Wat Suthat Thepwararam"],
+                ["d", "วัดสระเกศ (ภูเขาทอง)", "Wat Saket (Golden Mount)", "Wat Saket"]
+            ],
+            "a",
+            "วัดพระแก้วสร้างขึ้นพร้อมกับการสถาปนากรุงรัตนโกสินทร์ในปี พ.ศ. 2325 เป็นวัดประจำพระบรมมหาราชวังที่ไม่มีพระสงฆ์จำพรรษาอยู่ภายในวัด",
+            "Wat Phra Kaew wurde 1782 bei der Gründung Bangkoks errichtet. Als königlicher Tempel auf dem Palastgelände besitzt er keine Wohnquartiere für Mönche.",
+            [{ title: "Bureau of the Royal Household – Temple of the Emerald Buddha", url: "https://www.royaloffice.th/" }]
+        ),
+        makeQuestion(
+            "thq-rel-014", "religion", 1, "single_choice",
+            "วัดอรุณราชวราราม มีจุดเด่นคือพระปรางค์ริมแม่น้ำเจ้าพระยาที่ประดับตกแต่งด้วยวัสดุชนิดใดจนเปล่งประกายงดงามยามต้องแสง?",
+            "Womit sind die kunstvoll geschmückten Fassaden des berühmten Prang am Ufer des Chao Phraya im Wat Arun (Tempel der Morgenröte) verkleidet?",
+            "Wat Arun Ratchawararam mi chutden khue phra prang rim Maenam Chao Phraya thi pradap toktaeng duai watsadu chanit dai chon pleng prakaai ngotngam yam tong saeng?",
+            [
+                ["a", "กระเบื้องเคลือบและเศษเครื่องถ้วยชามเบญจรงค์ลายคราม", "Glasiertes Porzellan und bemalte Keramikscherben", "Krabueang khlueap lae chet khrueang thuai cham bencharong lai khram"],
+                ["b", "ทองคำเปลวบริสุทธิ์ทั้งองค์", "Reines Blattgold von oben bis unten", "Thongkham pleo borisut thang ong"],
+                ["c", "ไม้สักแกะสลักสีทอง", "Vergoldetes geschnitztes Teakholz", "Mai sak kaesalak si thong"],
+                ["d", "หินแกรนิตสีดำสนิท", "Schwarzer Granit", "Hin kraenit si dam sanit"]
+            ],
+            "a",
+            "พระปรางค์วัดอรุณประดับด้วยชิ้นกระเบื้องเคลือบสีและเศษถ้วยชามจีนโบราณที่นำเข้ามาทางเรือสำเภาในสมัยรัตนโกสินทร์ตอนต้น สะท้อนแสงระยิบระยับงดงาม",
+            "Der Prang von Wat Arun ist mit Hunderttausenden von bunten Porzellanscherben und chinesischen Keramikfliesen besetzt, die als Ballast auf Handelsschiffen dienten.",
+            [{ title: "Tourism Authority of Thailand – Wat Arun", url: "https://www.tourismthailand.org/" }]
+        ),
+        makeQuestion(
+            "thq-rel-015", "religion", 2, "single_choice",
+            "การที่พระภิกษุสงฆ์เดินรับอาหารจากชาวบ้านในยามเช้าตรู่ด้วยความสงบสำรวม เรียกว่ากิจวัตรใด?",
+            "Wie bezeichnet man den morgendlichen Almosengang buddhistischer Mönche in aller Frühe, bei dem Gläubige Speisen in die Almosenschale geben?",
+            "Kan thi phra phiksusong doen rap ahan chak chaoban nai yam chao tru duai khwam sangop samruam riak wa kitwat dai?",
+            [
+                ["a", "การบิณฑบาต", "Bindabat (Almosengang)", "Kan binthabat"],
+                ["b", "การเวียนเทียน", "Wian Tian (Kerzenprozession)", "Kan wian thian"],
+                ["c", "การนั่งสมาธิ", "Meditation (Samadhi)", "Kan nang samathi"],
+                ["d", "การเทศนา", "Predigt (Thesana)", "Kan thetsana"]
+            ],
+            "a",
+            "การออกบิณฑบาตเป็นพุทธบัญญัติเพื่อให้พระสงฆ์ได้โปรดสัตว์และเปิดโอกาสให้พุทธศาสนิกชนได้ทำบุญตักบาตร สละความตระหนี่ และเริ่มต้นวันด้วยจิตใจที่ผ่องใส",
+            "Bindabat (Pali: Pindapata) ist der morgendliche Gang der Mönche. Laien praktizieren dabei 'Tam Bun' (Gutes tun) durch das Spenden von frischer Nahrung.",
+            [{ title: "Office of National Buddhism Thailand – Monastic Disciplines", url: "https://www.onab.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-rel-016", "religion", 2, "single_choice",
+            "วันสำคัญทางพุทธศาสนาที่พระสงฆ์ต้องอยู่จำพรรษา ณ วัดใดวัดหนึ่งตลอดระยะเวลา 3 เดือนในฤดูฝน เรียกว่าวันอะไร?",
+            "Welcher Feiertag leitet die dreimonatige buddhistische Regenzeitklausur (Rains Retreat) ein, während der Mönche in ihrem Heimatkloster bleiben?",
+            "Wan samkhan thang phutthasatsana thi phra song tong yu cham phansa na wat dai wat nueng talot raya wela sam duean nai ruedu fon riak wa wan arai?",
+            [
+                ["a", "วันเข้าพรรษา", "Wan Khao Phansa (Beginn der Fasten- und Regenzeit)", "Wan Khao Phansa"],
+                ["b", "วันออกพรรษา", "Wan Ok Phansa (Ende der Regenzeit)", "Wan Ok Phansa"],
+                ["c", "วันมาฆบูชา", "Wan Makha Bucha", "Wan Makha Bucha"],
+                ["d", "วันสารทไทย", "Wan Sat Thai", "Wan Sat Thai"]
+            ],
+            "a",
+            "วันเข้าพรรษาตรงกับวันแรม 1 ค่ำ เดือน 8 กำหนดขึ้นตั้งแต่สมัยพุทธกาลเพื่อป้องกันไม่ให้พระสงฆ์เหยียบย่ำพืชผลและต้นกล้าของชาวบ้านที่เพาะปลูกในฤดูฝน",
+            "Khao Phansa beginnt am Tag nach Vollmond im 8. Mondmonat. Buddha verfügte die Klausur, damit wandernde Mönche nicht die zarten Reissetzlinge auf den Feldern zertraten.",
+            [{ title: "Office of National Buddhism Thailand – Khao Phansa Day", url: "https://www.onab.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-rel-017", "religion", 2, "single_choice",
+            "ต้นไม้ศักดิ์สิทธิ์ที่มักปลูกอยู่ในบริเวณวัดไทย เพื่อรำลึกถึงสถานที่ที่พระสัมมาสัมพุทธเจ้าทรงตรัสรู้ คือต้นไม้ชนิดใด?",
+            "Welcher heilige Baum wird auf vielen Tempelanlagen Thailands verehrt, da der historische Buddha unter ihm die vollkommene Erleuchtung erlangte?",
+            "Tonmai saksit thi mak pluk yu nai boriwen wat Thai phuea ramluek thueng sathanthi thi phra samma samphutthachao song tratsaru khue tonmai chanit dai?",
+            [
+                ["a", "ต้นพระศรีมหาโพธิ์ (ต้นโพธิ์)", "Bodhi-Baum / Pipal-Pappel-Feige (Ton Pho)", "Ton Phra Si Maha Pho (Ton Pho)"],
+                ["b", "ต้นไทร", "Banyan-Feigenbaum (Ton Sai)", "Ton Sai"],
+                ["c", "ต้นสัก", "Teakbaum (Ton Sak)", "Ton Sak"],
+                ["d", "ต้นกล้วยไม้", "Orchideenbaum", "Ton Kluaimai"]
+            ],
+            "a",
+            "ต้นโพธิ์ (Ficus religiosa) เป็นสัญลักษณ์แห่งการตรัสรู้ธรรม ใบโพธิ์มีปลายเรียวแหลมเป็นเอกลักษณ์ วัดไทยมักปลูกและดูแลรักษาต้นโพธิ์ไว้อย่างเคารพสักการะ",
+            "Der Bodhi-Baum (Ficus religiosa) symbolisiert Erleuchtung und Erwachen. Seine herzförmigen Blätter mit langer Spitze sind in der buddhistischen Ikonografie allgegenwärtig.",
+            [{ title: "Royal Society of Thailand – Sacred Trees in Buddhism", url: "https://www.orst.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-lan-013", "language_daily", 2, "single_choice",
+            "คำว่า 'เกรงใจ' (Kreng Jai) ในวัฒนธรรมไทย สะท้อนถึงมารยาทและการอยู่ร่วมกันในสังคมในความหมายใด?",
+            "Welche grundlegende thailändische Verhaltensnorm und Höflichkeit drückt der Begriff 'Kreng Jai' (เกรงใจ) im täglichen Miteinander aus?",
+            "Kham wa 'krengchai' nai watthanatham Thai sathon thueng marayat lae kan yu ruam kan nai sangkhom nai khwammai dai?",
+            [
+                ["a", "ความเกรงกลัวและระมัดระวังที่จะไม่ทำให้ผู้อื่นเดือดร้อน รำคาญ หรือเสียน้ำใจ", "Feinfühligkeit, Rücksichtnahme und Scheu davor, anderen Umstände zu bereiten", "Khwam krengklua lae ramatrawang thi cha mai tham hai phu uen dueatron, ramkhan rue sia namchai"],
+                ["b", "ความไม่สนใจในความรู้สึกของผู้อื่น", "Gleichgültigkeit gegenüber den Gefühlen anderer", "Khwam mai sonchai nai khwamsuek khong phu uen"],
+                ["c", "การสั่งการอย่างเข้มงวด", "Strenge Befehlsausgabe", "Kan sang kan yang khemnguat"],
+                ["d", "ความหยิ่งทะนงในศักดิ์ศรี", "Stolze Überheblichkeit", "Khwam yingthanong nai saksri"]
+            ],
+            "a",
+            "'เกรงใจ' คือความรู้สึกเคารพและถนอมน้ำใจผู้อื่น ไม่อยากรบกวนหรือสร้างภาระให้ใคร เป็นหนึ่งในค่านิยมสูงสุดที่ทำให้สังคมไทยอยู่ร่วมกันอย่างสันติ",
+            "'Kreng Jai' beschreibt die feinfühlige Rücksichtnahme, anderen keine Unannehmlichkeiten, Verlegenheit oder Mühe zu verursachen – eine zentrale Tugend thailändischer Etikette.",
+            [{ title: "Ministry of Culture Thailand – Thai Values and Etiquette", url: "https://www.m-culture.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-lan-014", "language_daily", 1, "single_choice",
+            "ประโยคคำถามทักทายยอดนิยมในชีวิตประจำวันของคนไทยอย่าง 'กินข้าวหรือยัง?' ใช้เพื่อจุดประสงค์หลักใด?",
+            "Mit welchem Hintergedanken fragen Thailänder im Alltag häufig 'Kin Khao Rue Yang?' (กินข้าวหรือยัง? – Hast du schon gegessen?)?",
+            "Prayok khamtham thakthai yotniyom nai chiwit pracham wan khong khon Thai yang 'Kin khao rue yang?' chai phuea chutprasong lak dai?",
+            [
+                ["a", "เป็นการทักทายแสดงความห่วงใย ถามสารทุกข์สุกดิบ คล้าย 'เป็นอย่างไรบ้าง?'", "Als herzliche Begrüßung und Ausdruck fürsorglicher Anteilnahme", "Pen kan thakthai sadaeng khwam huangyai, tham sarathuk-sukdip khlai 'pen yangrai bang?'"],
+                ["b", "เพื่อตรวจสอบบัญชีค่าอาหาร", "Zur Überprüfung der Restaurantrechnung", "Phuea truat sop banchi kha ahan"],
+                ["c", "เพื่อตักเตือนเรื่องมารยาทบนโต๊ะอาหาร", "Als Mahnung zu Tischmanieren", "Phuea taktuean rueang marayat bon to ahan"],
+                ["d", "เพื่อบังคับให้ผู้อื่นทำอาหารให้", "Um jemanden zum Kochen aufzufordern", "Phuea bangkhap hai phu uen tham ahan hai"]
+            ],
+            "a",
+            "คำว่า 'กินข้าวหรือยัง' แสดงถึงความอบอุ่นและห่วงใยในวิถีชีวิตคนไทย โดยอาหารคือสิ่งสำคัญในการดูแลกัน หากยังไม่ทานก็มักจะชวนมาร่วมรับประทานด้วยกัน",
+            "'Kin Khao Rue Yang?' ist im thailändischen Alltag ein herzlicher Gruß wie 'Wie geht es dir?'. Essen steht für Fürsorge und Gemeinschaft; oft folgt eine Einladung zum Mitessen.",
+            [{ title: "Tourism Authority of Thailand – Everyday Thai Greetings", url: "https://www.tourismthailand.org/" }]
+        ),
+        makeQuestion(
+            "thq-lan-015", "language_daily", 1, "single_choice",
+            "คำสแลงและสำนวนติดปากคนไทยว่า 'สบายๆ' (Sabai Sabai) สื่อถึงทัศนคติและการดำเนินชีวิตแบบใด?",
+            "Welche Lebensphilosophie und Geisteshaltung verkörpert der weltberühmte thailändische Ausdruck 'Sabai Sabai' (สบายๆ)?",
+            "Kham slaeng lae samnuan tit pak khon Thai wa 'sabai sabai' sue thueng thatsanakhati lae kan damnoen chiwit baep dai?",
+            [
+                ["a", "ความผ่อนคลาย สบายใจ ไม่เครียด และดำเนินชีวิตอย่างราบรื่น", "Gelassenheit, Entspannung und stressfreies Wohlbefinden", "Khwam phonkhlai, sabai chai, mai khriat lae damnoen chiwit yang rapruen"],
+                ["b", "ความเร่งรีบและตึงเครียดตลอดเวลา", "Permanente Hetze und Anspannung", "Khwam rengrip lae tuengkriat talot wela"],
+                ["c", "ความโศกเศร้าเสียใจ", "Tiefe Trauer und Niedergeschlagenheit", "Khwam soksao sia chai"],
+                ["d", "ความเข้มงวดและเจ้าระเบียบ", "Strenge Pedanterie", "Khwam khemnguat lae chao rabiap"]
+            ],
+            "a",
+            "'สบายๆ' หมายถึงบรรยากาศหรืออารมณ์ที่ไร้ความกดดัน ผ่อนคลายทั้งกายและใจ เป็นคำที่สะท้อนเสน่ห์แห่งความยิ้มแย้มและมองโลกในแง่ดีของคนไทย",
+            "'Sabai Sabai' ist die thailändische Kunst der Entspanntheit: unaufgeregt, behaglich und im Einklang mit dem Moment, ohne sich von Hektik aus der Ruhe bringen zu lassen.",
+            [{ title: "Tourism Authority of Thailand – The Thai Concept of Sabai", url: "https://www.tourismthailand.org/" }]
+        ),
+        makeQuestion(
+            "thq-lan-016", "language_daily", 1, "single_choice",
+            "การแสดงความเคารพ ทักทาย และขอบคุณตามประเพณีไทยด้วยการพนมมือทั้งสองข้างเข้าด้วยกันที่ระดับอกหรือใบหน้า เรียกว่าอะไร?",
+            "Wie heißt die traditionelle thailändische Begrüßungs- und Respektsgeste mit aneinandergelegten Handflächen und leichter Verbeugung?",
+            "Kan sadaeng khwam khaorop, thakthai lae khopkhun tam prapheni Thai duai kan phanom mue thang song khang khao duai kan thi radap ok rue bai na riak wa arai?",
+            [
+                ["a", "การไหว้", "Wai (การไหว้)", "Kan wai"],
+                ["b", "การจับมือ", "Händeschütteln", "Kan chap mue"],
+                ["c", "การโอบกอด", "Umarmung", "Kan op kot"],
+                ["d", "การโบกมือ", "Winken", "Kan bok mue"]
+            ],
+            "a",
+            "การไหว้เป็นวัฒนธรรมการทักทายที่งดงามของไทย มีหลายระดับความสูงของมือตามสถานะและอาวุโส เช่น ไหว้พระสงฆ์ ไหว้บิดามารดาผู้มีพระคุณ หรือไหว้บุคคลทั่วไป",
+            "Der 'Wai' ist die fundamentale thailändische Höflichkeitsgeste. Je nach sozialer Beziehung und Alter reicht die Daumenposition von der Brust über die Nase bis zur Stirn.",
+            [{ title: "Ministry of Culture Thailand – The Etiquette of Wai", url: "https://www.m-culture.go.th/" }]
+        ),
+        makeQuestion(
+            "thq-lan-017", "language_daily", 1, "single_choice",
+            "เมื่อรับประทานอาหารไทยแล้วรู้สึกถูกปากและประทับใจในรสชาติ คำชมภาษาไทยที่นิยมพูดกับแม่ครัวหรือเจ้าของร้านคือคำใด?",
+            "Mit welchem unverzichtbaren thailändischen Lob drückt man Köchen oder Gastgebern seine Begeisterung über ein köstliches Essen aus?",
+            "Muea rapประทาน ahan Thai laeo rusuek thuk pak lae prathapjai nai rotchat, kham chom phasa Thai thi niyom phut kap maekhrua rue chaokhong ran khue kham dai?",
+            [
+                ["a", "อร่อยมาก!", "Aroi Mak! (Sehr lecker / köstlich!)", "Aroi mak!"],
+                ["b", "เผ็ดเกินไป!", "Zu scharf!", "Phet koen pai!"],
+                ["c", "เค็มจัง!", "So salzig!", "Khem chang!"],
+                ["d", "ไม่อร่อยเลย!", "Gar nicht lecker!", "Mai aroi loei!"]
+            ],
+            "a",
+            "'อร่อยมาก' (Aroi Mak) ประกอบด้วยคำว่า 'อร่อย' (schmackhaft) และ 'มาก' (sehr) เป็นคำชมที่สร้างรอยยิ้มและความภาคภูมิใจให้แก่ผู้ปรุงอาหารเสมอ",
+            "'Aroi Mak' (sehr lecker) zaubert jedem thailändischen Koch ein strahlendes Lächeln ins Gesicht und ist der herzlichste Dank nach einem guten Mahl.",
+            [{ title: "Tourism Authority of Thailand – Basic Thai for Food Lovers", url: "https://www.tourismthailand.org/" }]
         )
     ];
 
