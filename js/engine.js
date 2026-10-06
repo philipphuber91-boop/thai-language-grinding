@@ -1257,6 +1257,11 @@ function switchContent(mode) {
         return;
     }
 
+    if (mode === "thailand-quiz") {
+        window.location.href = "thailand-quiz.html";
+        return;
+    }
+
     contentMode = mode;
     document.body.classList.toggle(
         "worldmap-view-mode",

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#15110d">
+    <title>Thailand-Quiz · Thai Language Grinding</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400&family=Noto+Sans+Thai:wght@300;400;500&family=Noto+Serif+Thai:wght@300;400&family=Prompt:wght@300;400&family=Sarabun:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/thailand-quiz.css?v=11">
+    <link rel="manifest" href="../manifest.json">
+</head>
+<body id="thailandQuizView" class="thq-body">
+    <header class="thq-topbar">
+        <div class="thq-brand">
+            <a class="thq-back-button" href="index.html" aria-label="Zurück zur Hauptansicht">← Zurück</a>
+            <div>
+                <h1>🇹🇭 Thailand-Quiz</h1>
+                <p>Wissen über Thailand · begleitet von deinem Mentor</p>
+            </div>
+        </div>
+        <div class="thq-topbar-actions">
+            <div class="thq-top-stats" aria-live="polite">
+                <div class="thq-stat-badge"><span>Quiz-Level</span><strong id="thqHeaderLevel">1</strong></div>
+                <div class="thq-stat-badge"><span>Punkte</span><strong id="thqHeaderPoints">0</strong></div>
+                <div class="thq-stat-badge"><span>Runde</span><strong id="thqHeaderRound">—</strong></div>
+            </div>
+            <button
+                id="thqGermanQuickToggle"
+                class="thq-language-toggle"
+                type="button"
+                aria-label="Deutsch einschalten"
+                aria-pressed="false"
+                aria-controls="thqChatLog thqChoices"
+                title="Deutsch anzeigen">
+                <span aria-hidden="true">DE</span>
+            </button>
+            <button
+                id="thqProfileButton"
+                class="thq-icon-button"
+                type="button"
+                aria-label="Quizprofil und Punkte öffnen"
+                aria-controls="thqProfile"
+                aria-expanded="false"
+                title="Quizprofil">👤</button>
+            <button
+                id="thqSettingsButton"
+                class="thq-icon-button"
+                type="button"
+                aria-label="Quiz-Einstellungen öffnen"
+                aria-controls="thqSettings"
+                aria-expanded="false"
+                title="Quiz-Einstellungen">⚙</button>
+        </div>
+    </header>
+
+    <main class="thq-main">
+        <section class="thq-chatroom" aria-label="Thailand-Quiz-Chat">
+            <div id="thqChatLog" class="thq-chat-log" role="log" aria-live="polite" aria-relevant="additions">
+                <article class="thq-message thq-message--butler">
+                    <div class="thq-message-avatar" aria-hidden="true">
+                        <img src="../assets/ui/monk-mentor.png" alt="">
+                    </div>
+                    <div class="thq-message-content">
+                        <div class="thq-message-byline"><strong>Dein Mentor</strong><span>Willkommen</span></div>
+                        <p>Guten Tag! Ich stelle dir Fragen über Thailand. Mit dem DE-Schalter oben kannst du die deutschen Übersetzungen ein- oder ausblenden.</p>
+                    </div>
+                </article>
+            </div>
+
+            <section class="thq-composer" aria-label="Quizantwort">
+                <div id="thqTurnStatus" class="thq-turn-status">Starte eine neue Runde, wenn du bereit bist.</div>
+                <div id="thqChoices" class="thq-choices" role="group" aria-label="Antwortmöglichkeiten" hidden></div>
+                <div class="thq-composer-actions">
+                    <span id="thqTimer" class="thq-timer" aria-live="off" hidden>0 s</span>
+                    <button id="thqStartButton" class="thq-primary-button" type="button">Quizrunde starten</button>
+                    <button id="thqSubmitButton" class="thq-primary-button" type="button" hidden>Antwort senden</button>
+                    <button id="thqNextButton" class="thq-primary-button" type="button" hidden>Weiter ›</button>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <div id="thqProfile" class="thq-overlay" hidden>
+        <section class="thq-popover thq-profile-card" role="dialog" aria-modal="true" aria-labelledby="thqProfileTitle">
+            <header class="thq-popover-header">
+                <div><p class="thq-eyebrow">Dein Fortschritt</p><h2 id="thqProfileTitle">Thailand-Quiz</h2></div>
+                <button id="thqProfileClose" class="thq-close-button" type="button" aria-label="Profil schließen">×</button>
+            </header>
+            <div class="thq-profile-content">
+                <div class="thq-player-avatar"><img id="thqProfileAvatar" src="../assets/ui/avatars/avatar10.png" alt="Dein Spieleravatar"></div>
+                <div class="thq-profile-points"><span>Quizpunkte</span><strong id="thqProfilePoints">0</strong><span id="thqProfileLevel">Quiz-Level 1</span></div>
+            </div>
+            <dl id="thqProfileStats" class="thq-profile-stats"></dl>
+        </section>
+    </div>
+
+    <div id="thqSettings" class="thq-overlay" hidden>
+        <section class="thq-popover thq-settings-card" role="dialog" aria-modal="true" aria-labelledby="thqSettingsTitle">
+            <header class="thq-popover-header">
+                <div><p class="thq-eyebrow">Persönlich anpassen</p><h2 id="thqSettingsTitle">Quiz-Einstellungen</h2></div>
+                <button id="thqSettingsClose" class="thq-close-button" type="button" aria-label="Einstellungen schließen">×</button>
+            </header>
+            <div class="thq-settings-scroll">
+                <fieldset class="thq-settings-group">
+                    <legend>Darstellung</legend>
+                    <label class="thq-settings-row" for="thqFontSelect">
+                        <span>Thai-Schriftart</span>
+                        <select id="thqFontSelect">
+                            <option value="standard">Standard Serif</option>
+                            <option value="noto-sans-thai">Noto Sans Thai</option>
+                            <option value="sarabun">Sarabun</option>
+                            <option value="prompt">Prompt</option>
+                            <option value="kanit">Kanit</option>
+                        </select>
+                    </label>
+                    <label class="thq-settings-row" for="thqToneColorsToggle">
+                        <span>Tonfarben anzeigen</span>
+                        <input id="thqToneColorsToggle" type="checkbox">
+                    </label>
+                    <label class="thq-settings-row" for="thqWordSeparationToggle">
+                        <span>Wörter separieren</span>
+                        <input id="thqWordSeparationToggle" type="checkbox">
+                    </label>
+                    <label class="thq-settings-row" for="thqTransliterationToggle">
+                        <span>Umschrift anzeigen</span>
+                        <input id="thqTransliterationToggle" type="checkbox">
+                    </label>
+                    <label class="thq-settings-row" for="thqGermanToggle">
+                        <span>Deutsch anzeigen</span>
+                        <input id="thqGermanToggle" type="checkbox">
+                    </label>
+                </fieldset>
+
+                <fieldset class="thq-settings-group">
+                    <legend>Kategorien</legend>
+                    <div id="thqCategoryFilters" class="thq-filter-list"></div>
+                </fieldset>
+
+                <fieldset class="thq-settings-group">
+                    <legend>Schwierigkeit</legend>
+                    <div id="thqDifficultyFilters" class="thq-filter-list"></div>
+                </fieldset>
+
+                <fieldset class="thq-settings-group">
+                    <legend>Rundenlänge</legend>
+                    <label class="thq-settings-row" for="thqRoundLength">
+                        <span>Fragen: <output id="thqRoundLengthValue" for="thqRoundLength">10</output></span>
+                        <input id="thqRoundLength" type="range" min="1" max="100" step="1" value="10">
+                    </label>
+                    <label class="thq-settings-row" for="thqEndlessToggle">
+                        <span>Endlos spielen</span>
+                        <input id="thqEndlessToggle" type="checkbox">
+                    </label>
+                    <p class="thq-settings-help">Wenn weniger passende Fragen vorhanden sind, spielt die Runde alle verfügbaren Fragen.</p>
+                </fieldset>
+            </div>
+        </section>
+    </div>
+
+    <div id="thqWordDefinition" class="thq-definition-overlay" hidden>
+        <section class="thq-definition-card" role="dialog" aria-modal="true" aria-labelledby="thqDefinitionTitle">
+            <header class="thq-popover-header">
+                <div><p class="thq-eyebrow">Wörterbuch</p><h2 id="thqDefinitionTitle" lang="th"></h2></div>
+                <button id="thqDefinitionClose" class="thq-close-button" type="button" aria-label="Definition schließen">×</button>
+            </header>
+            <p id="thqDefinitionTransliteration" class="thq-definition-transliteration"></p>
+            <div id="thqDefinitionMeanings" class="thq-definition-meanings"></div>
+            <p id="thqDefinitionContext" class="thq-definition-context" hidden></p>
+            <form id="thqWordForm" class="thq-word-form" hidden>
+                <h3 id="thqWordFormTitle">Neuen Quiz-Glossareintrag anlegen</h3>
+                <label for="thqWordThai">Thai-Wort</label>
+                <input id="thqWordThai" name="thai" type="text" lang="th" required>
+                <label for="thqWordTransliteration">Umschrift (optional)</label>
+                <input id="thqWordTransliteration" name="transliteration" type="text">
+                <label for="thqWordMeaning">Kurze Bedeutung</label>
+                <textarea id="thqWordMeaning" name="meaning" rows="2" required></textarea>
+                <label for="thqWordSyllables">Thai-Silben (mit | trennen)</label>
+                <input id="thqWordSyllables" name="syllables" type="text" lang="th" required>
+                <label for="thqWordReadings">Umschrift je Silbe (mit | trennen)</label>
+                <input id="thqWordReadings" name="readings" type="text">
+                <p id="thqWordFormError" class="thq-form-error" role="alert" hidden></p>
+                <button class="thq-primary-button" type="submit">Im Quiz-Glossar speichern</button>
+            </form>
+        </section>
+    </div>
+
+    <script src="../js/save.js"></script>
+    <script src="../js/player.js"></script>
+    <script>loadPlayer();</script>
+    <script src="../js/thai-giga-drill.js"></script>
+    <script src="../data/thailand-quiz.js"></script>
+    <script src="../data/thailand-quiz-words.js"></script>
+    <script src="../js/thailand-quiz-engine.js"></script>
+    <script src="../js/thailand-quiz-vocabulary.js"></script>
+    <script src="../js/thailand-quiz.js"></script>
+    <script src="../js/pwa-register.js"></script>
+</body>
+</html>

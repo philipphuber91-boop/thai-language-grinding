@@ -599,7 +599,7 @@ html, body {
     }
 }
 
-/* Stage Header mit Butler Info */
+/* Stage Header mit Mentor-Info */
 .stage-header {
     display: flex;
     align-items: center;
@@ -618,6 +618,7 @@ html, body {
 .stage-avatar {
     width: 44px;
     height: 44px;
+    overflow: hidden;
     border-radius: 50%;
     background: #3b2a1a;
     border: 2px solid var(--gold, #c89b3c);
@@ -627,6 +628,13 @@ html, body {
     font-size: 1.5rem;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
     flex-shrink: 0;
+}
+
+.stage-avatar img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .stage-butler-info h2 {
@@ -1111,7 +1119,6 @@ html, body {
     .stage-avatar {
         width: clamp(26px, 4vh, 36px);
         height: clamp(26px, 4vh, 36px);
-        font-size: clamp(0.9rem, 2vh, 1.2rem);
         border-radius: 50%;
         background: #3b2a1a;
         border: 2px solid var(--gold, #c89b3c);
