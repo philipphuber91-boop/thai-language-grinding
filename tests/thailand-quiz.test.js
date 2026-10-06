@@ -4,7 +4,7 @@ const data = require("../data/thailand-quiz.js");
 const quiz = require("../js/thailand-quiz-engine.js");
 
 test("question bank has complete, valid mixed-category questions", () => {
-    assert.equal(data.questions.length, 88);
+    assert.equal(data.questions.length, 94);
     assert.deepEqual(quiz.validateQuestionBank(data), []);
     assert.equal(new Set(data.questions.map(question => question.categoryId)).size, 8);
     assert.ok(data.questions.every(question =>
