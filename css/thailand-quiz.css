@@ -637,9 +637,13 @@
 .thq-settings-card {
     display: flex;
     flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
 }
 
 .thq-settings-scroll {
+    flex: 1 1 auto;
+    min-height: 0;
     overflow-y: auto;
 }
 
@@ -655,6 +659,98 @@
     color: #f3d17a;
     font-size: 0.85rem;
     font-weight: 700;
+}
+
+.thq-settings-disclosure {
+    padding: 0;
+    overflow: hidden;
+}
+
+.thq-settings-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px;
+    color: #f3d17a;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+}
+
+.thq-settings-summary::-webkit-details-marker {
+    display: none;
+}
+
+.thq-settings-summary::after {
+    content: "+";
+    color: #cbb493;
+    font-size: 1.1rem;
+}
+
+.thq-settings-disclosure[open] > .thq-settings-summary {
+    border-bottom: 1px solid rgba(200, 155, 60, 0.28);
+}
+
+.thq-settings-disclosure[open] > .thq-settings-summary::after {
+    content: "−";
+}
+
+.thq-settings-selection-summary {
+    margin-left: auto;
+    color: #a8947c;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.thq-settings-disclosure .thq-filter-list {
+    padding: 10px 12px 12px;
+}
+
+.thq-settings-disclosure-content {
+    padding: 10px 12px 12px;
+}
+
+.thq-category-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 8px 12px 0;
+}
+
+.thq-filter-action {
+    min-height: 32px;
+    padding: 5px 9px;
+    border: 1px solid rgba(200, 155, 60, 0.45);
+    border-radius: 7px;
+    background: rgba(200, 155, 60, 0.08);
+    color: #e5d6b7;
+    font: inherit;
+    font-size: 0.76rem;
+    cursor: pointer;
+}
+
+.thq-filter-action:hover {
+    background: rgba(200, 155, 60, 0.18);
+}
+
+.thq-settings-actions {
+    display: grid;
+    flex: 0 0 auto;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(200, 155, 60, 0.28);
+}
+
+.thq-settings-actions .thq-primary-button {
+    width: 100%;
+}
+
+.thq-settings-feedback {
+    margin: 0;
+    color: #ff9999;
+    font-size: 0.82rem;
 }
 
 .thq-settings-row,

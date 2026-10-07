@@ -107,46 +107,6 @@
             </header>
             <div class="thq-settings-scroll">
                 <fieldset class="thq-settings-group">
-                    <legend>Darstellung</legend>
-                    <label class="thq-settings-row" for="thqFontSelect">
-                        <span>Thai-Schriftart</span>
-                        <select id="thqFontSelect">
-                            <option value="standard">Standard Serif</option>
-                            <option value="noto-sans-thai">Noto Sans Thai</option>
-                            <option value="sarabun">Sarabun</option>
-                            <option value="prompt">Prompt</option>
-                            <option value="kanit">Kanit</option>
-                        </select>
-                    </label>
-                    <label class="thq-settings-row" for="thqToneColorsToggle">
-                        <span>Tonfarben anzeigen</span>
-                        <input id="thqToneColorsToggle" type="checkbox">
-                    </label>
-                    <label class="thq-settings-row" for="thqWordSeparationToggle">
-                        <span>Wörter separieren</span>
-                        <input id="thqWordSeparationToggle" type="checkbox">
-                    </label>
-                    <label class="thq-settings-row" for="thqTransliterationToggle">
-                        <span>Umschrift anzeigen</span>
-                        <input id="thqTransliterationToggle" type="checkbox">
-                    </label>
-                    <label class="thq-settings-row" for="thqGermanToggle">
-                        <span>Deutsch anzeigen</span>
-                        <input id="thqGermanToggle" type="checkbox">
-                    </label>
-                </fieldset>
-
-                <fieldset class="thq-settings-group">
-                    <legend>Kategorien</legend>
-                    <div id="thqCategoryFilters" class="thq-filter-list"></div>
-                </fieldset>
-
-                <fieldset class="thq-settings-group">
-                    <legend>Schwierigkeit</legend>
-                    <div id="thqDifficultyFilters" class="thq-filter-list"></div>
-                </fieldset>
-
-                <fieldset class="thq-settings-group">
                     <legend>Rundenlänge</legend>
                     <label class="thq-settings-row" for="thqRoundLength">
                         <span>Fragen: <output id="thqRoundLengthValue" for="thqRoundLength">10</output></span>
@@ -158,6 +118,72 @@
                     </label>
                     <p class="thq-settings-help">Wenn weniger passende Fragen vorhanden sind, spielt die Runde alle verfügbaren Fragen.</p>
                 </fieldset>
+
+                <details class="thq-settings-group thq-settings-disclosure">
+                    <summary class="thq-settings-summary">
+                        <span>Darstellung</span>
+                        <span class="thq-settings-selection-summary">5 Optionen</span>
+                    </summary>
+                    <div class="thq-settings-disclosure-content">
+                        <label class="thq-settings-row" for="thqFontSelect">
+                            <span>Thai-Schriftart</span>
+                            <select id="thqFontSelect">
+                                <option value="standard">Standard Serif</option>
+                                <option value="noto-sans-thai">Noto Sans Thai</option>
+                                <option value="sarabun">Sarabun</option>
+                                <option value="prompt">Prompt</option>
+                                <option value="kanit">Kanit</option>
+                            </select>
+                        </label>
+                        <label class="thq-settings-row" for="thqToneColorsToggle">
+                            <span>Tonfarben anzeigen</span>
+                            <input id="thqToneColorsToggle" type="checkbox">
+                        </label>
+                        <label class="thq-settings-row" for="thqWordSeparationToggle">
+                            <span>Wörter separieren</span>
+                            <input id="thqWordSeparationToggle" type="checkbox">
+                        </label>
+                        <label class="thq-settings-row" for="thqTransliterationToggle">
+                            <span>Umschrift anzeigen</span>
+                            <input id="thqTransliterationToggle" type="checkbox">
+                        </label>
+                        <label class="thq-settings-row" for="thqGermanToggle">
+                            <span>Deutsch anzeigen</span>
+                            <input id="thqGermanToggle" type="checkbox">
+                        </label>
+                    </div>
+                </details>
+
+                <details class="thq-settings-group thq-settings-disclosure">
+                    <summary class="thq-settings-summary">
+                        <span>Kategorien</span>
+                        <span id="thqCategorySelectionSummary" class="thq-settings-selection-summary"></span>
+                    </summary>
+                    <div class="thq-category-actions">
+                        <button id="thqClearCategoriesButton" class="thq-filter-action" type="button">
+                            Alle abwählen
+                        </button>
+                        <button id="thqSelectAllCategoriesButton" class="thq-filter-action" type="button">
+                            Alle auswählen
+                        </button>
+                    </div>
+                    <div id="thqCategoryFilters" class="thq-filter-list"></div>
+                </details>
+
+                <details class="thq-settings-group thq-settings-disclosure">
+                    <summary class="thq-settings-summary">
+                        <span>Schwierigkeit</span>
+                        <span id="thqDifficultySelectionSummary" class="thq-settings-selection-summary"></span>
+                    </summary>
+                    <div id="thqDifficultyFilters" class="thq-filter-list"></div>
+                </details>
+
+            </div>
+            <div class="thq-settings-actions">
+                <p id="thqSettingsFeedback" class="thq-settings-feedback" role="status" hidden></p>
+                <button id="thqApplySettingsButton" class="thq-primary-button" type="button">
+                    Einstellungen übernehmen & Runde starten
+                </button>
             </div>
         </section>
     </div>

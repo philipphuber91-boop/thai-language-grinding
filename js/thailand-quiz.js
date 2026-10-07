@@ -56,13 +56,19 @@
         settingsButton: document.getElementById("thqSettingsButton"),
         settings: document.getElementById("thqSettings"),
         settingsClose: document.getElementById("thqSettingsClose"),
+        settingsApplyButton: document.getElementById("thqApplySettingsButton"),
+        settingsFeedback: document.getElementById("thqSettingsFeedback"),
         fontSelect: document.getElementById("thqFontSelect"),
         toneColorsToggle: document.getElementById("thqToneColorsToggle"),
         wordSeparationToggle: document.getElementById("thqWordSeparationToggle"),
         transliterationToggle: document.getElementById("thqTransliterationToggle"),
         germanToggle: document.getElementById("thqGermanToggle"),
         categoryFilters: document.getElementById("thqCategoryFilters"),
+        categorySelectionSummary: document.getElementById("thqCategorySelectionSummary"),
+        clearCategoriesButton: document.getElementById("thqClearCategoriesButton"),
+        selectAllCategoriesButton: document.getElementById("thqSelectAllCategoriesButton"),
         difficultyFilters: document.getElementById("thqDifficultyFilters"),
+        difficultySelectionSummary: document.getElementById("thqDifficultySelectionSummary"),
         roundLength: document.getElementById("thqRoundLength"),
         roundLengthValue: document.getElementById("thqRoundLengthValue"),
         endlessToggle: document.getElementById("thqEndlessToggle"),
@@ -584,16 +590,44 @@
         };
     }
 
+    function updateFilterSummaries() {
+        const categoryCount =
+            elements.categoryFilters.querySelectorAll("input:checked").length;
+        const difficultyCount =
+            elements.difficultyFilters.querySelectorAll("input:checked").length;
+
+        elements.categorySelectionSummary.textContent =
+            `${categoryCount}/${data.categories.length} ausgewählt`;
+        elements.difficultySelectionSummary.textContent =
+            `${difficultyCount}/5 ausgewählt`;
+    }
+
+    function setAllCategoriesSelected(selected) {
+        const categoryInputs = elements.categoryFilters.querySelectorAll("input");
+        for (const input of categoryInputs) {
+            input.checked = selected;
+        }
+        preferences.categories = selected
+            ? data.categories.map(category => category.id)
+            : [];
+        savePreferences();
+        updateFilterSummaries();
+    }
+
     function startRound() {
-        stopTimer();
         const filters = getActiveFilters();
         const filteredQuestions = engine.filterQuestions(data.questions, filters);
         if (filteredQuestions.length === 0) {
-            elements.turnStatus.textContent = "Mit diesen Filtern gibt es keine passenden Fragen. Wähle mindestens eine Kategorie und Schwierigkeit.";
-            elements.startButton.hidden = false;
-            return;
+            const message = "Mit diesen Filtern gibt es keine passenden Fragen. Wähle mindestens eine Kategorie und Schwierigkeit.";
+            elements.turnStatus.textContent = message;
+            elements.settingsFeedback.textContent = message;
+            elements.settingsFeedback.hidden = false;
+            return false;
         }
 
+        stopTimer();
+        elements.settingsFeedback.hidden = true;
+        elements.settingsFeedback.textContent = "";
         preferences.endless = elements.endlessToggle.checked;
         currentEndlessMode = preferences.endless;
         preferences.roundLength = Number(elements.roundLength.value);
@@ -639,6 +673,7 @@
             );
         }
         renderCurrentQuestion();
+        return true;
     }
 
     function submitAnswer() {
@@ -773,6 +808,7 @@
             })),
             preferences.difficulties
         );
+        updateFilterSummaries();
         const font = localStorage.getItem(FONT_STORAGE_KEY) || DEFAULT_FONT;
         elements.fontSelect.value = Object.hasOwn(FONT_FAMILIES, font) ? font : DEFAULT_FONT;
         document.body.style.setProperty("--thai-font-family", FONT_FAMILIES[elements.fontSelect.value]);
@@ -930,6 +966,11 @@
 
     function initializeEvents() {
         elements.startButton.addEventListener("click", startRound);
+        elements.settingsApplyButton.addEventListener("click", () => {
+            if (startRound()) {
+                closeOverlay(elements.settings, elements.settingsButton);
+            }
+        });
         elements.submitButton.addEventListener("click", submitAnswer);
         elements.nextButton.addEventListener("click", nextQuestion);
         elements.profileButton.addEventListener("click", () =>
@@ -995,10 +1036,18 @@
         elements.categoryFilters.addEventListener("change", () => {
             preferences.categories = getActiveFilters().categories;
             savePreferences();
+            updateFilterSummaries();
         });
+        elements.clearCategoriesButton.addEventListener("click", () =>
+            setAllCategoriesSelected(false)
+        );
+        elements.selectAllCategoriesButton.addEventListener("click", () =>
+            setAllCategoriesSelected(true)
+        );
         elements.difficultyFilters.addEventListener("change", () => {
             preferences.difficulties = getActiveFilters().difficulties;
             savePreferences();
+            updateFilterSummaries();
         });
         elements.roundLength.addEventListener("input", () => {
             preferences.roundLength = Number(elements.roundLength.value);
