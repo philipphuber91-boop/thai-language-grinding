@@ -4,9 +4,9 @@ const data = require("../data/thailand-quiz.js");
 const quiz = require("../js/thailand-quiz-engine.js");
 
 test("question bank has complete, valid mixed-category questions", () => {
-    assert.equal(data.questions.length, 334);
+    assert.equal(data.questions.length, 434);
     assert.deepEqual(quiz.validateQuestionBank(data), []);
-    assert.equal(new Set(data.questions.map(question => question.categoryId)).size, 18);
+    assert.equal(new Set(data.questions.map(question => question.categoryId)).size, 28);
     assert.ok(data.questions.every(question =>
         question.transliteration.question &&
         question.options.every(option => option.transliteration) &&
@@ -18,7 +18,7 @@ test("question bank has complete, valid mixed-category questions", () => {
     ));
 });
 
-test("beginner question categories provide twenty Thai-first questions at levels one and two", () => {
+test("beginner categories provide varied Thai-first questions at levels one and two", () => {
     const beginnerQuestions = data.questions.filter(question =>
         question.id.startsWith("thq-beginner-")
     );
@@ -34,12 +34,12 @@ test("beginner question categories provide twenty Thai-first questions at levels
         );
     }
 
-    assert.equal(beginnerQuestions.length, 200);
+    assert.equal(beginnerQuestions.length, 300);
     assert.ok(beginnerQuestions.every(question => question.difficulty <= 2));
     assert.equal(legacyQuestions.length, 134);
     assert.ok(legacyQuestions.every(question => question.difficulty >= 2));
-    assert.equal(counts.size, 20);
-    assert.ok([...counts.values()].every(count => count === 10));
+    assert.equal(counts.size, 40);
+    assert.ok([...counts.values()].every(count => count === 5 || count === 10));
 
     const secondPack = beginnerQuestions.filter(question =>
         Number(question.id.slice(-3)) >= 11
@@ -53,6 +53,63 @@ test("beginner question categories provide twenty Thai-first questions at levels
     assert.equal(secondPack.length, 100);
     assert.equal(new Set(secondPackTexts).size, secondPack.length);
     assert.ok(secondPackTexts.every(text => !previousTexts.has(text)));
+
+    const newCategoryIds = new Set([
+        "beginner_school",
+        "beginner_time",
+        "beginner_shopping",
+        "beginner_health",
+        "beginner_clothing",
+        "beginner_jobs",
+        "beginner_technology",
+        "beginner_home",
+        "beginner_music_art",
+        "beginner_hobbies"
+    ]);
+    const newPack = beginnerQuestions.filter(question =>
+        newCategoryIds.has(question.categoryId)
+    );
+    const newPackTexts = newPack.map(question => question.question.th.trim());
+    const newPackCounts = new Map();
+
+    for (const question of newPack) {
+        const key = `${question.categoryId}:${question.difficulty}`;
+        newPackCounts.set(key, (newPackCounts.get(key) || 0) + 1);
+    }
+
+    const newPackPreviousQuestions = data.questions.filter(question =>
+        !newPack.includes(question)
+    );
+    const newPackPreviousTexts = new Set(
+        newPackPreviousQuestions.map(question => question.question.th.trim())
+    );
+    assert.equal(newPack.length, 100);
+    assert.equal(newPackCounts.size, 20);
+    assert.ok([...newPackCounts.values()].every(count => count === 5));
+    assert.equal(new Set(newPackTexts).size, newPack.length);
+    assert.ok(newPackTexts.every(text => !newPackPreviousTexts.has(text)));
+
+    const levelTwoQuestions = newPack.filter(question => question.difficulty === 2);
+    const trueFalseQuestions = newPack.filter(question =>
+        question.type === "true_false"
+    );
+    assert.equal(trueFalseQuestions.length, 10);
+    assert.ok(trueFalseQuestions.every(question =>
+        question.options.length === 2 &&
+        question.options[0].th === "จริง" &&
+        question.options[1].th === "ไม่จริง"
+    ));
+    const yesNoQuestions = levelTwoQuestions.filter(question =>
+        question.options.map(option => option.th).join("|") === "ใช่|ไม่ใช่"
+    );
+    assert.equal(yesNoQuestions.length, 20);
+    assert.equal(
+        levelTwoQuestions.filter(question =>
+            question.type === "single_choice" &&
+            question.options.length > 2
+        ).length,
+        20
+    );
 });
 
 test("round selection returns ten unique questions with mixed categories and levels", () => {

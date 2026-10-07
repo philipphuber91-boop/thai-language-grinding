@@ -7,6 +7,38 @@ function profileFormatPercent(value) {
     return `${Math.round(percent)}%`;
 }
 
+function getProfileThailandQuizPoints() {
+    const storedStats = localStorage.getItem("thailandQuizStats");
+    if (!storedStats) {
+        return 0;
+    }
+
+    let stats;
+    try {
+        stats = JSON.parse(storedStats);
+    } catch (error) {
+        console.warn("Gespeicherte Thailand-Quizpunkte sind ungültig.", error);
+        return 0;
+    }
+
+    if (!stats || typeof stats !== "object" || Array.isArray(stats)) {
+        console.warn("Gespeicherte Thailand-Quizpunkte haben ein ungültiges Format.");
+        return 0;
+    }
+
+    if (!Object.prototype.hasOwnProperty.call(stats, "totalQuizPoints")) {
+        return 0;
+    }
+
+    const points = Number(stats.totalQuizPoints);
+    if (!Number.isFinite(points) || points < 0) {
+        console.warn("Gespeicherte Thailand-Quizpunkte sind keine gültige Punktzahl.");
+        return 0;
+    }
+
+    return Math.floor(points);
+}
+
 const profileRankTiers = [
     [
         "Sprachschüler", "Lernender", "Schreiber", "Wortsammler",
@@ -543,6 +575,7 @@ function renderProfile() {
     const wordMixPoints = typeof window.wordMixPoints?.getExact === "function"
         ? window.wordMixPoints.getExact()
         : 0;
+    const thailandQuizPoints = getProfileThailandQuizPoints();
     const xp = typeof getPlayerXpSummary === "function"
         ? getPlayerXpSummary()
         : {
@@ -626,16 +659,28 @@ function renderProfile() {
 
             <section class="profile-panel profile-wordmix-panel" aria-labelledby="profileWordmixTitle">
                 <div class="profile-panel-heading">
-                    <span class="profile-panel-icon" aria-hidden="true">🎲</span>
+                    <span class="profile-panel-icon profile-points-panel-icon" aria-hidden="true">
+                        <img src="../assets/ui/profile-wordmix-points.png" alt="">
+                    </span>
                     <div>
                         <p class="profile-eyebrow">Wortmix</p>
                         <h2 id="profileWordmixTitle">Wortmix-Punkte</h2>
+                        <strong class="profile-wordmix-score">${profileFormatNumber(Math.floor(wordMixPoints))}</strong>
                     </div>
                 </div>
-                <strong class="profile-wordmix-score">${profileFormatNumber(Math.floor(wordMixPoints))}</strong>
-                <p class="profile-wordmix-caption">
-                    Gesammelte Punkte – unabhängig von XP und anderen Punktesystemen.
-                </p>
+            </section>
+
+            <section class="profile-panel profile-thailand-quiz-panel" aria-labelledby="profileThailandQuizTitle">
+                <div class="profile-panel-heading">
+                    <span class="profile-panel-icon profile-points-panel-icon" aria-hidden="true">
+                        <img src="../assets/ui/profile-thailand-quiz-points.png" alt="">
+                    </span>
+                    <div>
+                        <p class="profile-eyebrow">Thailand-Quiz</p>
+                        <h2 id="profileThailandQuizTitle">Quizpunkte</h2>
+                        <strong class="profile-thailand-quiz-score">${profileFormatNumber(thailandQuizPoints)}</strong>
+                    </div>
+                </div>
             </section>
 
             <section class="profile-panel profile-badges-panel" aria-labelledby="profileBadgesTitle">
@@ -648,10 +693,6 @@ function renderProfile() {
                         <h2 id="profileBadgesTitle">Abzeichen</h2>
                     </div>
                 </div>
-                <p class="profile-badges-intro">
-                    ${profileFormatNumber(questBadgeSummary.total)}
-                    Questauszeichnungen gesammelt
-                </p>
                 <div class="profile-badge-categories">
                     ${questBadgeSummary.categories.map(category => `
                         <article class="profile-badge-category">

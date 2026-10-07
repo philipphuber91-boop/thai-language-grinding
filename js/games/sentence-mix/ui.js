@@ -1289,8 +1289,21 @@
             ) {
                 throw new Error("Wortmix-Punktespeicher ist nicht verfügbar.");
             }
+            if (typeof window.awardPlayerXp !== "function") {
+                throw new Error("Die zentrale Spieler-XP-Funktion ist nicht verfügbar.");
+            }
+            if (
+                !window.SentenceMixEngine ||
+                typeof window.SentenceMixEngine.calculateXpForWordCount !== "function"
+            ) {
+                throw new Error("Die Wortmix-XP-Berechnung ist nicht verfügbar.");
+            }
 
+            const xpReward = window.SentenceMixEngine.calculateXpForWordCount(
+                this.currentRound.tokenCount
+            );
             window.wordMixPoints.addExact(result.pointsExact);
+            const xpResult = window.awardPlayerXp(xpReward);
             this.solvedCount++;
             this.totalDurationMs += result.durationMs;
             feedback.className = "stage-feedback correct";
@@ -1305,7 +1318,8 @@
 
             const points = document.createElement("div");
             points.className = "feedback-points";
-            points.textContent = `+${formatWordMixPoints(result.pointsExact)} Punkte`;
+            points.textContent =
+                `+${formatWordMixPoints(result.pointsExact)} Punkte · +${xpResult.awardedXp} XP`;
             row.appendChild(points);
 
             const nextPrompt = document.createElement("div");

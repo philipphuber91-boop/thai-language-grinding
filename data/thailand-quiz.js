@@ -19,7 +19,17 @@
         { id: "beginner_nature_weather", icon: "🌦️", th: "ธรรมชาติและอากาศ", de: "Natur & Wetter" },
         { id: "beginner_thailand_places", icon: "🗺️", th: "สถานที่ในประเทศไทย", de: "Orte in Thailand" },
         { id: "beginner_transport", icon: "🚲", th: "การเดินทาง", de: "Verkehr" },
-        { id: "beginner_thai_culture", icon: "🎉", th: "วัฒนธรรมไทย", de: "Thai-Kultur" }
+        { id: "beginner_thai_culture", icon: "🎉", th: "วัฒนธรรมไทย", de: "Thai-Kultur" },
+        { id: "beginner_school", icon: "🎒", th: "โรงเรียน", de: "Schule" },
+        { id: "beginner_time", icon: "⏰", th: "เวลาและปฏิทิน", de: "Zeit & Kalender" },
+        { id: "beginner_shopping", icon: "🛍️", th: "การซื้อของ", de: "Einkaufen" },
+        { id: "beginner_health", icon: "🩺", th: "สุขภาพ", de: "Gesundheit" },
+        { id: "beginner_clothing", icon: "👕", th: "เสื้อผ้า", de: "Kleidung" },
+        { id: "beginner_jobs", icon: "🧰", th: "อาชีพ", de: "Berufe" },
+        { id: "beginner_technology", icon: "📱", th: "เทคโนโลยี", de: "Technik" },
+        { id: "beginner_home", icon: "🏠", th: "ห้องต่างๆ ในบ้าน", de: "Räume zu Hause" },
+        { id: "beginner_music_art", icon: "🎨", th: "ดนตรีและศิลปะ", de: "Musik & Kunst" },
+        { id: "beginner_hobbies", icon: "⚽", th: "งานอดิเรกและเวลาว่าง", de: "Hobbys & Freizeit" }
     ];
 
     function makeQuestion(
@@ -97,6 +107,46 @@
         thai_culture: {
             title: "UNESCO Intangible Cultural Heritage",
             url: "https://ich.unesco.org/"
+        },
+        school: {
+            title: "UNESCO – Education",
+            url: "https://www.unesco.org/en/education"
+        },
+        time: {
+            title: "Royal Society of Thailand – Dictionary",
+            url: "https://dictionary.orst.go.th/"
+        },
+        shopping: {
+            title: "Tourism Authority of Thailand",
+            url: "https://www.tourismthailand.org/"
+        },
+        health: {
+            title: "Ministry of Public Health Thailand",
+            url: "https://www.moph.go.th/"
+        },
+        clothing: {
+            title: "Royal Society of Thailand – Dictionary",
+            url: "https://dictionary.orst.go.th/"
+        },
+        jobs: {
+            title: "Ministry of Labour Thailand",
+            url: "https://www.mol.go.th/"
+        },
+        technology: {
+            title: "National Science and Technology Development Agency",
+            url: "https://www.nstda.or.th/"
+        },
+        home: {
+            title: "Royal Society of Thailand – Dictionary",
+            url: "https://dictionary.orst.go.th/"
+        },
+        music_art: {
+            title: "UNESCO – Culture",
+            url: "https://www.unesco.org/en/culture"
+        },
+        hobbies: {
+            title: "Sports Authority of Thailand",
+            url: "https://www.sat.or.th/"
         }
     };
 
@@ -392,17 +442,430 @@
             ["โลหะ", "Metall", "loha"],
             ["แก้ว", "Glas", "kaeo"]
         ],
+        school_places: [
+            ["โรงเรียน", "Schule", "rongrian"],
+            ["ตลาด", "Markt", "talat"],
+            ["โรงพยาบาล", "Krankenhaus", "rongphayaban"],
+            ["สนามบิน", "Flughafen", "sanam bin"]
+        ],
+        school_roles: [
+            ["ครู", "Lehrer", "khru"],
+            ["ช่าง", "Handwerker", "chang"],
+            ["คนขับรถ", "Fahrer", "khon khap rot"],
+            ["พ่อครัว", "Koch", "pho khrua"]
+        ],
+        school_board: [
+            ["กระดาน", "Tafel", "kradan"],
+            ["หมอน", "Kissen", "mon"],
+            ["จาน", "Teller", "chan"],
+            ["รองเท้า", "Schuhe", "rongthao"]
+        ],
+        school_paper: [
+            ["กระดาษ", "Papier", "kradat"],
+            ["แก้ว", "Glas", "kaeo"],
+            ["เสื้อ", "Hemd", "suea"],
+            ["ลูกบอล", "Ball", "luk bon"]
+        ],
+        school_bag: [
+            ["กระเป๋า", "Tasche", "krapao"],
+            ["หม้อ", "Topf", "mo"],
+            ["ตู้เย็น", "Kühlschrank", "tu yen"],
+            ["รองเท้า", "Schuhe", "rongthao"]
+        ],
+        school_subject: [
+            ["คณิตศาสตร์", "Mathematik", "khanittasat"],
+            ["ดนตรี", "Musik", "dontri"],
+            ["ศิลปะ", "Kunst", "sinlapa"],
+            ["กีฬา", "Sport", "kila"]
+        ],
+        school_library: [
+            ["ห้องสมุด", "Bibliothek", "hong samut"],
+            ["ห้องน้ำ", "Toilette", "hong nam"],
+            ["สนามกีฬา", "Sportplatz", "sanam kila"],
+            ["โรงอาหาร", "Kantine", "rong ahan"]
+        ],
+        day_hours: [
+            ["24 ชั่วโมง", "24 Stunden", "yi sip si chuamong"],
+            ["12 ชั่วโมง", "12 Stunden", "sip song chuamong"],
+            ["60 นาที", "60 Minuten", "hok sip nathi"],
+            ["100 ชั่วโมง", "100 Stunden", "nueng roi chuamong"]
+        ],
+        minute_seconds: [
+            ["60 วินาที", "60 Sekunden", "hok sip winathi"],
+            ["30 วินาที", "30 Sekunden", "sam sip winathi"],
+            ["100 วินาที", "100 Sekunden", "nueng roi winathi"],
+            ["24 วินาที", "24 Sekunden", "yi sip si winathi"]
+        ],
+        weekday_order: [
+            ["วันจันทร์", "Montag", "wan chan"],
+            ["วันอังคาร", "Dienstag", "wan angkhan"],
+            ["วันพุธ", "Mittwoch", "wan phut"],
+            ["วันศุกร์", "Freitag", "wan suk"]
+        ],
+        noon_time: [
+            ["สิบโมง", 10, "sip mong"],
+            ["สิบเอ็ดโมง", 11, "sip et mong"],
+            ["สิบสองโมง", 12, "sip song mong"],
+            ["หนึ่งโมง", 1, "nueng mong"]
+        ],
+        calendar_info: [
+            ["วันที่", "Datum", "wan thi"],
+            ["รสชาติ", "Geschmack", "rot chat"],
+            ["น้ำหนัก", "Gewicht", "nam nak"],
+            ["เสียง", "Geräusch", "siang"]
+        ],
+        shopping_market: [
+            ["ตลาด", "Markt", "talat"],
+            ["โรงเรียน", "Schule", "rongrian"],
+            ["โรงหนัง", "Kino", "rong nang"],
+            ["สนามบิน", "Flughafen", "sanam bin"]
+        ],
+        cashier: [
+            ["พนักงานเก็บเงิน", "Kassierer", "phanakngan kep ngoen"],
+            ["นักเรียน", "Schüler", "nakrian"],
+            ["ช่างตัดผม", "Friseur", "chang tat phom"],
+            ["คนสวน", "Gärtner", "khon suan"]
+        ],
+        shopping_bag: [
+            ["ถุง", "Tüte", "thung"],
+            ["หมอน", "Kissen", "mon"],
+            ["รองเท้า", "Schuhe", "rongthao"],
+            ["ช้อน", "Löffel", "chon"]
+        ],
+        pharmacy_goods: [
+            ["ยา", "Medizin", "ya"],
+            ["หนังสือเรียน", "Schulbuch", "nangsue rian"],
+            ["ลูกบอล", "Ball", "luk bon"],
+            ["เสื้อผ้า", "Kleidung", "suea pha"]
+        ],
+        change_amount: [
+            ["10 บาท", "10 Baht", "sip baht"],
+            ["20 บาท", "20 Baht", "yi sip baht"],
+            ["30 บาท", "30 Baht", "sam sip baht"],
+            ["40 บาท", "40 Baht", "si sip baht"]
+        ],
+        receipt: [
+            ["ใบเสร็จ", "Quittung", "bai set"],
+            ["หมวก", "Hut", "muak"],
+            ["รองเท้า", "Schuhe", "rongthao"],
+            ["ช้อน", "Löffel", "chon"]
+        ],
+        fever: [
+            ["ตัวร้อน", "heißer Körper", "tua ron"],
+            ["หนาว", "kalt", "nao"],
+            ["หิว", "hungrig", "hiu"],
+            ["ง่วง", "müde", "nguang"]
+        ],
+        wound: [
+            ["แผล", "Wunde", "phlae"],
+            ["ผม", "Haare", "phom"],
+            ["รองเท้า", "Schuhe", "rongthao"],
+            ["หนังสือ", "Buch", "nangsue"]
+        ],
+        clothes_socks: [
+            ["ถุงเท้า", "Socken", "thung thao"],
+            ["ถุงมือ", "Handschuhe", "thung mue"],
+            ["หมวก", "Hut", "muak"],
+            ["ผ้าพันคอ", "Schal", "pha phan kho"]
+        ],
+        clothes_sun: [
+            ["หมวก", "Hut", "muak"],
+            ["ถุงเท้า", "Socken", "thung thao"],
+            ["เข็มขัด", "Gürtel", "khemkhat"],
+            ["ถุงมือ", "Handschuhe", "thung mue"]
+        ],
+        washing_machine: [
+            ["เครื่องซักผ้า", "Waschmaschine", "khrueang sak pha"],
+            ["พัดลม", "Ventilator", "phat lom"],
+            ["โทรทัศน์", "Fernseher", "thorasap"],
+            ["เตาอบ", "Backofen", "ta op"]
+        ],
+        cold_clothes: [
+            ["เสื้อกันหนาว", "Pullover", "suea kan nao"],
+            ["ชุดว่ายน้ำ", "Badeanzug", "chut wai nam"],
+            ["รองเท้าแตะ", "Sandalen", "rongthao tae"],
+            ["แว่นตา", "Brille", "waen ta"]
+        ],
+        hanger: [
+            ["ไม้แขวนเสื้อ", "Kleiderbügel", "mai khwaen suea"],
+            ["ช้อน", "Löffel", "chon"],
+            ["จาน", "Teller", "chan"],
+            ["หมอน", "Kissen", "mon"]
+        ],
+        wet_cloth: [
+            ["ตากให้แห้ง", "zum Trocknen aufhängen", "tak hai haeng"],
+            ["กิน", "essen", "kin"],
+            ["อ่าน", "lesen", "an"],
+            ["ใส่ตู้เย็น", "in den Kühlschrank legen", "sai tu yen"]
+        ],
+        sewing: [
+            ["ผ้า", "Stoff", "pha"],
+            ["กระดาษ", "Papier", "kradat"],
+            ["น้ำ", "Wasser", "nam"],
+            ["แก้ว", "Glas", "kaeo"]
+        ],
+        camera: [
+            ["กล้อง", "Kamera", "klong"],
+            ["ช้อน", "Löffel", "chon"],
+            ["หมอน", "Kissen", "mon"],
+            ["ถุงเท้า", "Socken", "thung thao"]
+        ],
+        remote: [
+            ["รีโมต", "Fernbedienung", "rimo"],
+            ["กุญแจ", "Schlüssel", "kunchae"],
+            ["แปรงสีฟัน", "Zahnbürste", "praeng si fan"],
+            ["กระเป๋า", "Tasche", "krapao"]
+        ],
+        charger: [
+            ["ที่ชาร์จ", "Ladegerät", "thi chat"],
+            ["จาน", "Teller", "chan"],
+            ["หมวก", "Hut", "muak"],
+            ["หนังสือ", "Buch", "nangsue"]
+        ],
+        keyboard: [
+            ["แป้นพิมพ์", "Tastatur", "paen phim"],
+            ["แก้วน้ำ", "Trinkglas", "kaeo nam"],
+            ["รองเท้า", "Schuhe", "rongthao"],
+            ["หมอน", "Kissen", "mon"]
+        ],
+        headphones: [
+            ["หูฟัง", "Kopfhörer", "hu fang"],
+            ["ถุงมือ", "Handschuhe", "thung mue"],
+            ["เข็มขัด", "Gürtel", "khemkhat"],
+            ["ผ้ากันเปื้อน", "Schürze", "pha kan puen"]
+        ],
+        jobs_hair: [
+            ["ช่างตัดผม", "Friseur", "chang tat phom"],
+            ["คนสวน", "Gärtner", "khon suan"],
+            ["นักบิน", "Pilot", "nak bin"],
+            ["ชาวนา", "Bauer", "chao na"]
+        ],
+        jobs_fishing: [
+            ["ชาวประมง", "Fischer", "chao pramong"],
+            ["ทันตแพทย์", "Zahnarzt", "thantaphaet"],
+            ["ครู", "Lehrer", "khru"],
+            ["นักบิน", "Pilot", "nak bin"]
+        ],
+        computer_mouse: [
+            ["คลิกบนหน้าจอ", "auf dem Bildschirm klicken", "khlik bon na cho"],
+            ["เขียนบนกระดาษ", "auf Papier schreiben", "khian bon kradat"],
+            ["ล้างจาน", "Geschirr spülen", "lang chan"],
+            ["ใส่รองเท้า", "Schuhe anziehen", "sai rongthao"]
+        ],
+        printer_use: [
+            ["พิมพ์เอกสาร", "Dokumente drucken", "phim ekkasan"],
+            ["หุงข้าว", "Reis kochen", "hung khao"],
+            ["ตัดผม", "Haare schneiden", "tat phom"],
+            ["ล้างมือ", "Hände waschen", "lang mue"]
+        ],
+        room_wall: [
+            ["ผนัง", "Wand", "phanang"],
+            ["พื้น", "Boden", "phuen"],
+            ["หลังคา", "Dach", "langkha"],
+            ["รองเท้า", "Schuhe", "rongthao"]
+        ],
+        door_key: [
+            ["กุญแจ", "Schlüssel", "kunchae"],
+            ["หมอน", "Kissen", "mon"],
+            ["ช้อน", "Löffel", "chon"],
+            ["แก้ว", "Glas", "kaeo"]
+        ],
+        music_piano: [
+            ["เปียโน", "Klavier", "piano"],
+            ["กลอง", "Trommel", "klong"],
+            ["ขลุ่ย", "Flöte", "khlui"],
+            ["ฉิ่ง", "Zimbeln", "ching"]
+        ],
+        music_strings: [
+            ["กีตาร์", "Gitarre", "kita"],
+            ["กลอง", "Trommel", "klong"],
+            ["ฉิ่ง", "Zimbeln", "ching"],
+            ["ระฆัง", "Glocke", "rakhang"]
+        ],
+        drum_sticks: [
+            ["ไม้กลอง", "Trommelstöcke", "mai klong"],
+            ["ช้อน", "Löffel", "chon"],
+            ["รองเท้า", "Schuhe", "rongthao"],
+            ["หมวก", "Hut", "muak"]
+        ],
+        painting_tool: [
+            ["วาดรูป", "Bilder malen", "wat rup"],
+            ["ล้างจาน", "Geschirr spülen", "lang chan"],
+            ["ตัดผม", "Haare schneiden", "tat phom"],
+            ["เปิดประตู", "eine Tür öffnen", "poet pratu"]
+        ],
+        music_flute: [
+            ["ขลุ่ย", "Flöte", "khlui"],
+            ["กีตาร์", "Gitarre", "kita"],
+            ["กลอง", "Trommel", "klong"],
+            ["เปียโน", "Klavier", "piano"]
+        ],
+        music_struck: [
+            ["ฉิ่ง", "Zimbeln", "ching"],
+            ["ขลุ่ย", "Flöte", "khlui"],
+            ["กีตาร์", "Gitarre", "kita"],
+            ["เปียโน", "Klavier", "piano"]
+        ],
+        hobby_racket: [
+            ["ไม้แบดมินตัน", "Badmintonschläger", "mai baetmin ton"],
+            ["ช้อน", "Löffel", "chon"],
+            ["หมวก", "Hut", "muak"],
+            ["หนังสือ", "Buch", "nangsue"]
+        ],
+        hobby_ball: [
+            ["ลูกบอล", "Ball", "luk bon"],
+            ["กีตาร์", "Gitarre", "kita"],
+            ["แปรง", "Pinsel", "praeng"],
+            ["จาน", "Teller", "chan"]
+        ],
+        flower_soil: [
+            ["ดิน", "Erde", "din"],
+            ["แก้ว", "Glas", "kaeo"],
+            ["รองเท้า", "Schuhe", "rongthao"],
+            ["หนังสือ", "Buch", "nangsue"]
+        ],
+        fishing_rod: [
+            ["ตกปลา", "angeln", "tok pla"],
+            ["ตัดผม", "Haare schneiden", "tat phom"],
+            ["วาดรูป", "Bilder malen", "wat rup"],
+            ["ทำอาหาร", "kochen", "tham ahan"]
+        ],
+        horseback: [
+            ["ม้า", "Pferd", "ma"],
+            ["ปลา", "Fisch", "pla"],
+            ["จักรยาน", "Fahrrad", "chakkrayan"],
+            ["รถเมล์", "Bus", "rot me"]
+        ],
+        swimming_places: [
+            ["สระว่ายน้ำ", "Schwimmbad", "sa wai nam"],
+            ["ตลาด", "Markt", "talat"],
+            ["ห้องครัว", "Küche", "hong khrua"],
+            ["สถานีรถไฟ", "Bahnhof", "sathani rotfai"]
+        ],
+        chess_pieces: [
+            ["ตัวหมาก", "Spielfiguren", "tua mak"],
+            ["ลูกบอล", "Ball", "luk bon"],
+            ["ไพ่", "Spielkarten", "phai"],
+            ["ไม้แบดมินตัน", "Badmintonschläger", "mai baetmin ton"]
+        ],
+        health_care: [
+            ["หมอ", "Arzt", "mo"],
+            ["ช่างไม้", "Tischler", "chang mai"],
+            ["นักร้อง", "Sänger", "nak rong"],
+            ["คนขับรถ", "Fahrer", "khon khap rot"]
+        ],
+        thermometer: [
+            ["เทอร์โมมิเตอร์", "Thermometer", "thoe-mo-mi-toe"],
+            ["ช้อน", "Löffel", "chon"],
+            ["กุญแจ", "Schlüssel", "kunchae"],
+            ["แปรง", "Bürste", "praeng"]
+        ],
+        health_mask: [
+            ["หน้ากาก", "Maske", "na kak"],
+            ["ถุงเท้า", "Socken", "thung thao"],
+            ["แว่นกันแดด", "Sonnenbrille", "waen kan daet"],
+            ["หมวก", "Hut", "muak"]
+        ],
+        jobs_farmer: [
+            ["ชาวนา", "Bauer", "chao na"],
+            ["หมอ", "Arzt", "mo"],
+            ["นักบิน", "Pilot", "nak bin"],
+            ["นักร้อง", "Sänger", "nak rong"]
+        ],
+        jobs_pilot: [
+            ["นักบิน", "Pilot", "nak bin"],
+            ["คนสวน", "Gärtner", "khon suan"],
+            ["ช่างตัดผม", "Friseur", "chang tat phom"],
+            ["คนขายของ", "Verkäufer", "khon khai khong"]
+        ],
+        jobs_firefighter: [
+            ["นักดับเพลิง", "Feuerwehrmann", "nak dap phloeng"],
+            ["พ่อครัว", "Koch", "pho khrua"],
+            ["ครู", "Lehrer", "khru"],
+            ["ชาวนา", "Bauer", "chao na"]
+        ],
+        jobs_mechanic: [
+            ["ช่างยนต์", "Mechaniker", "chang yon"],
+            ["นักเรียน", "Schüler", "nakrian"],
+            ["พยาบาล", "Krankenpfleger", "phayaban"],
+            ["นักดนตรี", "Musiker", "nak dontri"]
+        ],
+        jobs_dentist: [
+            ["ทันตแพทย์", "Zahnarzt", "thantaphaet"],
+            ["นักบิน", "Pilot", "nak bin"],
+            ["พ่อครัว", "Koch", "pho khrua"],
+            ["ช่างไม้", "Tischler", "chang mai"]
+        ],
+        jobs_hair: [
+            ["ช่างตัดผม", "Friseur", "chang tat phom"],
+            ["คนสวน", "Gärtner", "khon suan"],
+            ["นักบิน", "Pilot", "nak bin"],
+            ["ชาวนา", "Bauer", "chao na"]
+        ],
+        jobs_fishing: [
+            ["ชาวประมง", "Fischer", "chao pramong"],
+            ["ทันตแพทย์", "Zahnarzt", "thantaphaet"],
+            ["ครู", "Lehrer", "khru"],
+            ["นักบิน", "Pilot", "nak bin"]
+        ],
+        jobs_singer: [
+            ["นักร้อง", "Sänger", "nak rong"],
+            ["ช่างยนต์", "Mechaniker", "chang yon"],
+            ["ชาวนา", "Bauer", "chao na"],
+            ["นักบิน", "Pilot", "nak bin"]
+        ],
+        home_kitchen: [
+            ["ห้องครัว", "Küche", "hong khrua"],
+            ["ห้องนอน", "Schlafzimmer", "hong non"],
+            ["ห้องน้ำ", "Badezimmer", "hong nam"],
+            ["โรงรถ", "Garage", "rong rot"]
+        ],
+        home_bedroom: [
+            ["ห้องนอน", "Schlafzimmer", "hong non"],
+            ["ห้องครัว", "Küche", "hong khrua"],
+            ["ห้องน้ำ", "Badezimmer", "hong nam"],
+            ["ระเบียง", "Balkon", "rabian"]
+        ],
+        home_dining: [
+            ["ห้องอาหาร", "Esszimmer", "hong ahan"],
+            ["ห้องน้ำ", "Badezimmer", "hong nam"],
+            ["โรงรถ", "Garage", "rong rot"],
+            ["ห้องซักผ้า", "Waschküche", "hong sak pha"]
+        ],
+        home_living: [
+            ["ห้องนั่งเล่น", "Wohnzimmer", "hong nang len"],
+            ["ห้องครัว", "Küche", "hong khrua"],
+            ["ห้องน้ำ", "Badezimmer", "hong nam"],
+            ["โรงรถ", "Garage", "rong rot"]
+        ],
+        home_garage: [
+            ["โรงรถ", "Garage", "rong rot"],
+            ["ห้องนอน", "Schlafzimmer", "hong non"],
+            ["ห้องน้ำ", "Badezimmer", "hong nam"],
+            ["ห้องอาหาร", "Esszimmer", "hong ahan"]
+        ],
+        true_false: [
+            ["จริง", "Wahr", "ching"],
+            ["ไม่จริง", "Nicht wahr", "mai ching"]
+        ],
         yes_no: [
             ["ใช่", "Ja", "chai"],
-            ["ไม่ใช่", "Nein", "mai chai"],
-            ["ไม่รู้", "Ich weiß nicht", "mai ru"],
-            ["ไม่แน่ใจ", "Ich bin nicht sicher", "mai nae chai"]
+            ["ไม่ใช่", "Nein", "mai chai"]
         ]
     };
 
     const beginnerQuestionCounts = Object.create(null);
 
-    function makeBeginnerQuestion([categoryKey, difficulty, questionTh, questionDe, questionRead, optionSet, correctId]) {
+    function makeBeginnerQuestion([
+        categoryKey,
+        difficulty,
+        questionTh,
+        questionDe,
+        questionRead,
+        optionSet,
+        correctId,
+        type = "single_choice"
+    ]) {
         beginnerQuestionCounts[categoryKey] = (beginnerQuestionCounts[categoryKey] || 0) + 1;
         const optionSetValues = beginnerOptionSets[optionSet];
         const options = optionSetValues.map(([th, de, reading], optionIndex) => [
@@ -418,7 +881,7 @@
             `thq-beginner-${categoryKey}-${String(beginnerQuestionCounts[categoryKey]).padStart(3, "0")}`,
             `beginner_${categoryKey}`,
             difficulty,
-            "single_choice",
+            type,
             questionTh,
             questionDe,
             questionRead,
@@ -2786,7 +3249,117 @@
             ["thai_culture", 2, "คนไทยมักสั่งอาหารหลายอย่างมากินด้วยกันไหม?", "Bestellen Thailänder oft mehrere Gerichte zum gemeinsamen Essen?", "Khon Thai mak sang ahan lai yang ma kin duai kan mai?", "yes_no", "a"],
             ["thai_culture", 2, "เราควรเคารพผู้ใหญ่ไหม?", "Sollten wir Älteren Respekt zeigen?", "Rao khuan khaorop phu yai mai?", "yes_no", "a"],
             ["thai_culture", 2, "คนไทยมีวันแม่ไหม?", "Gibt es in Thailand einen Muttertag?", "Khon Thai mi wan mae mai?", "yes_no", "a"],
-            ["thai_culture", 2, "คนไทยใช้ช้อนกินข้าวไหม?", "Benutzen Thailänder einen Löffel zum Essen von Reis?", "Khon Thai chai chon kin khao mai?", "yes_no", "a"]
+            ["thai_culture", 2, "คนไทยใช้ช้อนกินข้าวไหม?", "Benutzen Thailänder einen Löffel zum Essen von Reis?", "Khon Thai chai chon kin khao mai?", "yes_no", "a"],
+
+            ["school", 1, "นักเรียนเรียนที่ไหน?", "Wo lernen Schüler?", "Nakrian rian thi nai?", "school_places", "a"],
+            ["school", 1, "ใครสอนนักเรียน?", "Wer unterrichtet Schüler?", "Khrai son nakrian?", "school_roles", "a"],
+            ["school", 1, "ครูเขียนบนอะไร?", "Worauf schreibt ein Lehrer?", "Khru khian bon arai?", "school_board", "a"],
+            ["school", 1, "เราเขียนคำตอบลงบนอะไร?", "Worauf schreiben wir Antworten?", "Rao khian khamtop long bon arai?", "school_paper", "a"],
+            ["school", 1, "นักเรียนใส่หนังสือในอะไร?", "Worin verstauen Schüler Bücher?", "Nakrian sai nangsue nai arai?", "school_bag", "a"],
+            ["school", 2, "วิชาอะไรเรียนเกี่ยวกับตัวเลข?", "In welchem Fach geht es um Zahlen?", "Wicha arai rian kiao kap tua lek?", "school_subject", "a"],
+            ["school", 2, "นักเรียนยืมหนังสือที่ไหน?", "Wo leihen Schüler Bücher aus?", "Nakrian yuem nangsue thi nai?", "school_library", "a"],
+            ["school", 2, "ในห้องสมุดมีหนังสือ", "In einer Bibliothek gibt es Bücher.", "Nai hong samut mi nangsue.", "true_false", "a", "true_false"],
+            ["school", 2, "นักเรียนใส่กระเป๋าไว้ใต้โต๊ะได้ไหม?", "Können Schüler ihre Tasche unter den Tisch stellen?", "Nakrian sai krapao wai tai to dai mai?", "yes_no", "a"],
+            ["school", 2, "โรงเรียนมีห้องเรียนไหม?", "Hat eine Schule Klassenzimmer?", "Rongrian mi hong rian mai?", "yes_no", "a"],
+
+            ["time", 1, "หนึ่งชั่วโมงมีกี่นาที?", "Wie viele Minuten hat eine Stunde?", "Nueng chuamong mi ki nathi?", "minute_seconds", "a"],
+            ["time", 1, "ครึ่งชั่วโมงมีกี่นาที?", "Wie viele Minuten hat eine halbe Stunde?", "Khrueng chuamong mi ki nathi?", "minute_seconds", "c"],
+            ["time", 1, "วันไหนอยู่หลังวันอังคาร?", "Welcher Tag kommt nach Dienstag?", "Wan nai yu lang wan angkhan?", "weekday_order", "c"],
+            ["time", 1, "เที่ยงตรงคือกี่โมง?", "Wie spät ist es genau um zwölf Uhr mittags?", "Thiang trong khue ki mong?", "noon_time", "c"],
+            ["time", 1, "เราใช้ปฏิทินดูอะไร?", "Was schauen wir im Kalender nach?", "Rao chai pathithin du arai?", "calendar_info", "a"],
+            ["time", 2, "หนึ่งวันมีกี่ชั่วโมง?", "Wie viele Stunden hat ein Tag?", "Nueng wan mi ki chuamong?", "day_hours", "a"],
+            ["time", 2, "หนึ่งนาทีมีกี่วินาที?", "Wie viele Sekunden hat eine Minute?", "Nueng nathi mi ki winathi?", "minute_seconds", "a"],
+            ["time", 2, "วันจันทร์มาก่อนวันอังคาร", "Montag kommt vor Dienstag.", "Wan chan ma kon wan angkhan.", "true_false", "a", "true_false"],
+            ["time", 2, "เดือนมกราคมมาก่อนเดือนกุมภาพันธ์ไหม?", "Kommt Januar vor Februar?", "Duean mokkarakhom ma kon duean kumphaphan mai?", "yes_no", "a"],
+            ["time", 2, "เที่ยงคืนเป็นเวลากลางคืนไหม?", "Ist Mitternacht nachts?", "Thiang khuen pen wela klang khuen mai?", "yes_no", "a"],
+
+            ["shopping", 1, "เราซื้อผักสดได้ที่ไหน?", "Wo können wir frisches Gemüse kaufen?", "Rao sue phak sot dai thi nai?", "shopping_market", "a"],
+            ["shopping", 1, "ใครรับเงินตอนเราซื้อของ?", "Wer nimmt beim Einkaufen unser Geld entgegen?", "Khrai rap ngoen ton rao sue khong?", "cashier", "a"],
+            ["shopping", 1, "เราใส่ของที่ซื้อในอะไร?", "Worin tragen wir unsere Einkäufe?", "Rao sai khong thi sue nai arai?", "shopping_bag", "a"],
+            ["shopping", 1, "ร้านขายยาขายอะไร?", "Was verkauft eine Apotheke?", "Ran khai ya khai arai?", "pharmacy_goods", "a"],
+            ["shopping", 1, "สิบบาทสองเหรียญรวมเป็นกี่บาท?", "Wie viel sind zwei Zehn-Baht-Münzen zusammen?", "Sip baht song rian ruam pen ki baht?", "change_amount", "b"],
+            ["shopping", 2, "ของราคา 30 บาท จ่าย 50 บาท ได้เงินทอนกี่บาท?", "Ein Einkauf kostet 30 Baht; wie viel Rückgeld gibt es bei 50 Baht?", "Khong rakha sam sip baht chai ha sip baht dai ngoen thon ki baht?", "change_amount", "b"],
+            ["shopping", 2, "หลังจ่ายเงิน เราขออะไรจากร้าน?", "Was bitten wir nach dem Bezahlen im Geschäft?", "Lang chai ngoen rao kho arai chak ran?", "receipt", "a"],
+            ["shopping", 2, "ลูกค้าจ่ายเงินเพื่อซื้อของ", "Kunden bezahlen Geld, um Dinge zu kaufen.", "Lukkha chai ngoen phuea sue khong.", "true_false", "a", "true_false"],
+            ["shopping", 2, "ร้านลดราคาทำให้ของถูกลงไหม?", "Macht ein Rabatt Waren günstiger?", "Ran lot rakha tham hai khong thuk long mai?", "yes_no", "a"],
+            ["shopping", 2, "เราควรตรวจเงินทอนหลังซื้อของไหม?", "Sollten wir nach dem Einkauf das Rückgeld prüfen?", "Rao khuan truat ngoen thon lang sue khong mai?", "yes_no", "a"],
+
+            ["health", 1, "ใครดูแลคนป่วย?", "Wer kümmert sich um kranke Menschen?", "Khrai dulae khon puai?", "school_roles", "c"],
+            ["health", 1, "เราใช้อะไรวัดอุณหภูมิ?", "Womit messen wir die Temperatur?", "Rao chai arai wat unหภูมิ?", "thermometer", "a"],
+            ["health", 1, "เราซื้อยาได้ที่ไหน?", "Wo kaufen wir Medizin?", "Rao sue ya dai thi nai?", "pharmacy_goods", "a"],
+            ["health", 1, "เวลาไม่สบาย เราใส่อะไรปิดปากและจมูก?", "Was tragen wir bei Krankheit vor Mund und Nase?", "Wela mai sabai rao sai arai pit pak lae chamuk?", "health_mask", "a"],
+            ["health", 1, "เวลาไอ เราควรปิดอะไร?", "Was sollten wir beim Husten bedecken?", "Wela ai rao khuan pit arai?", "body", "a"],
+            ["health", 2, "ถ้ามีไข้ ตัวเรามักเป็นอย่างไร?", "Wie fühlt sich der Körper bei Fieber oft an?", "Tha mi khai tua rao mak pen yangrai?", "fever", "a"],
+            ["health", 2, "ถ้ามีแผล เราใช้พลาสเตอร์ปิดอะไร?", "Was bedecken wir mit einem Pflaster?", "Tha mi phlae rao chai phlaster pit arai?", "wound", "a"],
+            ["health", 2, "เราควรกินยาตามคำแนะนำ", "Wir sollten Medizin nach Anweisung einnehmen.", "Rao khuan kin ya tam kham nae nam.", "true_false", "a", "true_false"],
+            ["health", 2, "ยาเป็นขนมไหม?", "Ist Medizin eine Süßigkeit?", "Ya pen khanom mai?", "yes_no", "b"],
+            ["health", 2, "ถ้าปวดฟัน เราไปหาหมอฟันไหม?", "Gehen wir bei Zahnschmerzen zum Zahnarzt?", "Tha puat fan rao pai ha mo fan mai?", "yes_no", "a"],
+
+            ["clothing", 1, "เราใส่อะไรที่เท้าก่อนใส่รองเท้า?", "Was ziehen wir vor den Schuhen an die Füße?", "Rao sai arai thi thao kon sai rongthao?", "clothes_socks", "a"],
+            ["clothing", 1, "อะไรช่วยบังแดดให้หัว?", "Was schützt den Kopf vor der Sonne?", "Arai chuai bang daet hai hua?", "clothes_sun", "a"],
+            ["clothing", 1, "เราซักผ้าด้วยเครื่องอะไร?", "Mit welcher Maschine waschen wir Kleidung?", "Rao sak pha duai khrueang arai?", "washing_machine", "a"],
+            ["clothing", 1, "อากาศหนาว เราใส่อะไร?", "Was ziehen wir bei kaltem Wetter an?", "Akat nao rao sai arai?", "cold_clothes", "a"],
+            ["clothing", 1, "เราแขวนเสื้อไว้กับอะไร?", "Woran hängen wir ein Hemd?", "Rao khwaen suea wai kap arai?", "hanger", "a"],
+            ["clothing", 2, "ผ้าเปียกควรทำอะไร?", "Was sollte man mit nassem Stoff machen?", "Pha piak khuan tham arai?", "wet_cloth", "a"],
+            ["clothing", 2, "เราใช้เข็มเย็บอะไร?", "Was nähen wir mit einer Nadel?", "Rao chai khem yep arai?", "sewing", "a"],
+            ["clothing", 2, "ถุงมือใส่ที่มือ", "Handschuhe trägt man an den Händen.", "Thung mue sai thi mue.", "true_false", "a", "true_false"],
+            ["clothing", 2, "เสื้อกันฝนใส่ตอนฝนตกไหม?", "Zieht man einen Regenmantel an, wenn es regnet?", "Suea kan fon sai ton fon tok mai?", "yes_no", "a"],
+            ["clothing", 2, "เสื้อกันหนาวใส่ตอนอากาศร้อนไหม?", "Trägt man einen Pullover bei heißem Wetter?", "Suea kan nao sai ton akat ron mai?", "yes_no", "b"],
+
+            ["jobs", 1, "ใครปลูกข้าว?", "Wer baut Reis an?", "Khrai pluk khao?", "jobs_farmer", "a"],
+            ["jobs", 1, "ใครขับเครื่องบิน?", "Wer steuert ein Flugzeug?", "Khrai khap khrueang bin?", "jobs_pilot", "a"],
+            ["jobs", 1, "ใครดับไฟ?", "Wer löscht Feuer?", "Khrai dap fai?", "jobs_firefighter", "a"],
+            ["jobs", 1, "ใครซ่อมรถ?", "Wer repariert Autos?", "Khrai som rot?", "jobs_mechanic", "a"],
+            ["jobs", 1, "ใครดูแลฟัน?", "Wer kümmert sich um die Zähne?", "Khrai dulae fan?", "jobs_dentist", "a"],
+            ["jobs", 2, "ใครตัดผมให้ลูกค้า?", "Wer schneidet Kunden die Haare?", "Khrai tat phom hai lukkha?", "jobs_hair", "a"],
+            ["jobs", 2, "ใครจับปลาเป็นอาชีพ?", "Wer fängt beruflich Fische?", "Khrai chap pla pen achip?", "jobs_fishing", "a"],
+            ["jobs", 2, "นักข่าวเขียนข่าว", "Journalisten schreiben Nachrichten.", "Nakkhao khian khao.", "true_false", "a", "true_false"],
+            ["jobs", 2, "พ่อครัวใช้เตาทำอาหารไหม?", "Benutzt ein Koch einen Herd zum Kochen?", "Pho khrua chai tao tham ahan mai?", "yes_no", "a"],
+            ["jobs", 2, "ตำรวจใส่เครื่องแบบไหม?", "Trägt die Polizei eine Uniform?", "Tamruat sai khrueang baep mai?", "yes_no", "a"],
+
+            ["technology", 1, "เราใช้อะไรถ่ายรูป?", "Womit machen wir Fotos?", "Rao chai arai thai rup?", "camera", "a"],
+            ["technology", 1, "เราใช้อะไรเปลี่ยนช่องโทรทัศน์?", "Womit wechseln wir den Fernsehkanal?", "Rao chai arai plian chong thorasap?", "remote", "a"],
+            ["technology", 1, "เราใช้อะไรชาร์จโทรศัพท์?", "Womit laden wir ein Telefon auf?", "Rao chai arai chat thorasap?", "charger", "a"],
+            ["technology", 1, "เราพิมพ์ตัวอักษรด้วยอะไร?", "Womit tippen wir Buchstaben?", "Rao phim tua akson duai arai?", "keyboard", "a"],
+            ["technology", 1, "เราใส่อะไรที่หูเพื่อฟังเพลง?", "Was setzen wir auf die Ohren, um Musik zu hören?", "Rao sai arai thi hu phuea fang phleng?", "headphones", "a"],
+            ["technology", 2, "เมาส์ใช้ทำอะไร?", "Wofür benutzt man eine Computermaus?", "Mao chai tham arai?", "computer_mouse", "a"],
+            ["technology", 2, "เครื่องพิมพ์ใช้ทำอะไร?", "Wofür benutzt man einen Drucker?", "Khrueang phim chai tham arai?", "printer_use", "a"],
+            ["technology", 2, "คอมพิวเตอร์ต้องใช้ไฟฟ้า", "Ein Computer braucht Strom.", "Khomphiutoe tong chai faifa.", "true_false", "a", "true_false"],
+            ["technology", 2, "เราใช้โทรศัพท์ดูแผนที่ได้ไหม?", "Können wir mit einem Telefon eine Karte ansehen?", "Rao chai thorasap du phaenthi dai mai?", "yes_no", "a"],
+            ["technology", 2, "เราควรบอกรหัสผ่านให้คนแปลกหน้าไหม?", "Sollten wir Fremden unser Passwort verraten?", "Rao khuan bok rahat phan hai khon plaek na mai?", "yes_no", "b"],
+
+            ["home", 1, "เราทำอาหารในห้องไหน?", "In welchem Raum kochen wir?", "Rao tham ahan nai hong nai?", "home_kitchen", "a"],
+            ["home", 1, "เรานอนในห้องไหน?", "In welchem Raum schlafen wir?", "Rao non nai hong nai?", "home_bedroom", "a"],
+            ["home", 1, "เรากินข้าวเย็นในห้องไหน?", "In welchem Raum essen wir zu Abend?", "Rao kin khao yen nai hong nai?", "home_dining", "a"],
+            ["home", 1, "โซฟามักอยู่ในห้องไหน?", "In welchem Raum steht meistens ein Sofa?", "Sofa mak yu nai hong nai?", "home_living", "a"],
+            ["home", 1, "เราจอดรถไว้ที่ไหน?", "Wo parken wir ein Auto?", "Rao chot rot wai thi nai?", "home_garage", "a"],
+            ["home", 2, "หน้าต่างอยู่ส่วนไหนของห้อง?", "Wo im Zimmer befindet sich ein Fenster?", "Natang yu suan nai khong hong?", "room_wall", "a"],
+            ["home", 2, "เราใช้กุญแจเปิดประตูที่ล็อกไหม?", "Öffnen wir eine verschlossene Tür mit einem Schlüssel?", "Rao chai kunchae poet pratu thi lok mai?", "door_key", "a"],
+            ["home", 2, "ห้องนอนใช้ทำอาหาร", "Im Schlafzimmer kocht man.", "Hong non chai tham ahan.", "true_false", "b", "true_false"],
+            ["home", 2, "ห้องน้ำมีฝักบัวไหม?", "Hat ein Badezimmer eine Dusche?", "Hongnam mi fakbua mai?", "yes_no", "a"],
+            ["home", 2, "บ้านมีหลังคาไหม?", "Hat ein Haus ein Dach?", "Ban mi langkha mai?", "yes_no", "a"],
+
+            ["music_art", 1, "เครื่องดนตรีอะไรมีแป้นสีขาวกับสีดำ?", "Welches Instrument hat weiße und schwarze Tasten?", "Khrueang dontri arai mi paen si khao kap si dam?", "music_piano", "a"],
+            ["music_art", 1, "เครื่องดนตรีอะไรมีสาย?", "Welches Instrument hat Saiten?", "Khrueang dontri arai mi sai?", "music_strings", "a"],
+            ["music_art", 1, "เราตีกลองด้วยอะไร?", "Womit schlagen wir eine Trommel?", "Rao ti klong duai arai?", "drum_sticks", "a"],
+            ["music_art", 1, "เราใช้พู่กันทำอะไร?", "Wofür benutzen wir einen Pinsel?", "Rao chai phu kan tham arai?", "painting_tool", "a"],
+            ["music_art", 1, "ใครร้องเพลง?", "Wer singt Lieder?", "Khrai rong phleng?", "jobs_singer", "a"],
+            ["music_art", 2, "ขลุ่ยเล่นด้วยการเป่า", "Eine Flöte spielt man durch Hineinblasen.", "Khlui len duai kan pao.", "true_false", "a", "true_false"],
+            ["music_art", 2, "เครื่องดนตรีอะไรใช้เป่า?", "Welches Instrument spielt man durch Hineinblasen?", "Khrueang dontri arai chai pao?", "music_flute", "a"],
+            ["music_art", 2, "เครื่องดนตรีอะไรใช้ตีให้เกิดเสียง?", "Welches Instrument schlägt man, um einen Ton zu erzeugen?", "Khrueang dontri arai chai ti hai koet siang?", "music_struck", "a"],
+            ["music_art", 2, "คนเต้นตามเพลงได้ไหม?", "Kann man zu Musik tanzen?", "Khon ten tam phleng dai mai?", "yes_no", "a"],
+            ["music_art", 2, "วิทยุเปิดเพลงได้ไหม?", "Kann ein Radio Musik abspielen?", "Withayu poet phleng dai mai?", "yes_no", "a"],
+
+            ["hobbies", 1, "เราใช้อะไรเล่นแบดมินตัน?", "Womit spielen wir Badminton?", "Rao chai arai len baetmin ton?", "hobby_racket", "a"],
+            ["hobbies", 1, "เราใช้อะไรเล่นฟุตบอล?", "Womit spielen wir Fußball?", "Rao chai arai len futbon?", "hobby_ball", "a"],
+            ["hobbies", 1, "เราปลูกดอกไม้ในอะไร?", "Worin pflanzen wir Blumen?", "Rao pluk dokmai nai arai?", "flower_soil", "a"],
+            ["hobbies", 1, "เราใช้เบ็ดทำอะไร?", "Wofür benutzen wir eine Angel?", "Rao chai bet tham arai?", "fishing_rod", "a"],
+            ["hobbies", 1, "เราขี่อะไรเวลาไปขี่ม้า?", "Worauf reiten wir beim Reiten?", "Rao khi arai wela pai khi ma?", "horseback", "a"],
+            ["hobbies", 2, "ว่ายน้ำเล่นที่ไหน?", "Wo kann man schwimmen?", "Wai nam len thi nai?", "swimming_places", "a"],
+            ["hobbies", 2, "คนเล่นหมากรุกขยับอะไร?", "Was bewegen Schachspieler?", "Khon len mak ruk khayap arai?", "chess_pieces", "a"],
+            ["hobbies", 2, "การวิ่งเป็นการออกกำลังกาย", "Laufen ist Bewegung / Sport.", "Kan wing pen kan ok kamlangkai.", "true_false", "a", "true_false"],
+            ["hobbies", 2, "คนทำสวนใช้พลั่วได้ไหม?", "Kann ein Gärtner eine Schaufel benutzen?", "Khon tham suan chai phlua dai mai?", "yes_no", "a"],
+            ["hobbies", 2, "คนเล่นหมากรุกใช้กระดานไหม?", "Benutzt man beim Schach ein Brett?", "Khon len mak ruk chai kradan mai?", "yes_no", "a"]
         ].map(makeBeginnerQuestion)
     ];
 

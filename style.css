@@ -10264,28 +10264,44 @@ body:has(#worldmapHome) .topbar{
     margin-top:14px;
 }
 
-.profile-wordmix-panel{
+.profile-wordmix-panel,
+.profile-thailand-quiz-panel{
     margin-top:14px;
+    min-height:0;
+    display:flex;
+    align-items:center;
 }
 
-.profile-wordmix-score{
+.profile-points-panel-icon{
+    flex:0 0 112px;
+    width:112px;
+    height:88px;
+    border:0;
+    border-radius:0;
+    background:transparent;
+}
+
+.profile-points-panel-icon img{
+    width:88px;
+    height:88px;
+    object-fit:contain;
+}
+
+.profile-wordmix-panel .profile-panel-heading,
+.profile-thailand-quiz-panel .profile-panel-heading{
+    align-items:center;
+    justify-content:flex-start;
+    margin-bottom:0;
+}
+
+.profile-wordmix-score,
+.profile-thailand-quiz-score{
     display:block;
-    margin:2px 0 0 48px;
+    margin:4px 0 0;
     color:#a35f18;
     font-size:2rem;
     line-height:1;
-}
-
-.profile-wordmix-caption{
-    margin:8px 0 0 48px;
-    color:#765323;
-    font-size:.76rem;
-}
-
-.profile-badges-intro{
-    margin:-5px 0 12px 48px;
-    color:#765323;
-    font-size:.76rem;
+    text-align:left;
 }
 
 .profile-badge-categories{

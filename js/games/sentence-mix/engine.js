@@ -82,6 +82,15 @@
         return Math.max(0, Math.floor(Number(value) || 0));
     }
 
+    function calculateXpForWordCount(wordCount) {
+        const normalizedWordCount = Number(wordCount);
+        if (!Number.isInteger(normalizedWordCount) || normalizedWordCount < 1) {
+            throw new RangeError("Die Wortmix-Satzlänge muss eine positive ganze Zahl sein.");
+        }
+
+        return Math.max(1, normalizedWordCount - 2);
+    }
+
     function calculateMaxPoints(wordCount) {
         const normalizedWordCount = normalizeWordCount(wordCount);
         return Math.max(
@@ -262,6 +271,7 @@
     const sentenceMixEngineInstance = new SentenceMixEngine();
     sentenceMixEngineInstance.SentenceMixEngine = SentenceMixEngine;
     sentenceMixEngineInstance.createGuaranteedShuffle = createGuaranteedShuffle;
+    sentenceMixEngineInstance.calculateXpForWordCount = calculateXpForWordCount;
     sentenceMixEngineInstance.calculateMaxPoints = calculateMaxPoints;
     sentenceMixEngineInstance.calculatePoints = calculatePoints;
     sentenceMixEngineInstance.getPointsLossPerSecond = getPointsLossPerSecond;
