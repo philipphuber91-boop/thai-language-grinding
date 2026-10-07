@@ -9,7 +9,17 @@
         { id: "nature", icon: "🐘", th: "ธรรมชาติ", de: "Natur" },
         { id: "sport", icon: "🥊", th: "กีฬา", de: "Sport" },
         { id: "religion", icon: "🏛️", th: "ศาสนาและวัด", de: "Religion & Tempel" },
-        { id: "language_daily", icon: "💬", th: "ภาษาและชีวิตประจำวัน", de: "Alltag & Sprache" }
+        { id: "language_daily", icon: "💬", th: "ภาษาและชีวิตประจำวัน", de: "Alltag & Sprache" },
+        { id: "beginner_animals", icon: "🐾", th: "สัตว์", de: "Tiere" },
+        { id: "beginner_colors_numbers", icon: "🎨", th: "สีและตัวเลข", de: "Farben & Zahlen" },
+        { id: "beginner_food_drink", icon: "🍌", th: "อาหารและเครื่องดื่ม", de: "Essen & Trinken" },
+        { id: "beginner_family_body", icon: "👪", th: "ครอบครัวและร่างกาย", de: "Familie & Körper" },
+        { id: "beginner_daily_life", icon: "🏠", th: "ชีวิตประจำวัน", de: "Alltag" },
+        { id: "beginner_greetings", icon: "💬", th: "คำทักทาย", de: "Begrüßungen" },
+        { id: "beginner_nature_weather", icon: "🌦️", th: "ธรรมชาติและอากาศ", de: "Natur & Wetter" },
+        { id: "beginner_thailand_places", icon: "🗺️", th: "สถานที่ในประเทศไทย", de: "Orte in Thailand" },
+        { id: "beginner_transport", icon: "🚲", th: "การเดินทาง", de: "Verkehr" },
+        { id: "beginner_thai_culture", icon: "🎉", th: "วัฒนธรรมไทย", de: "Thai-Kultur" }
     ];
 
     function makeQuestion(
@@ -45,6 +55,379 @@
             explanation: { th: explanationTh, de: explanationDe },
             sources
         };
+    }
+
+    const beginnerSources = {
+        animals: {
+            title: "Department of National Parks, Wildlife and Plant Conservation",
+            url: "https://www.dnp.go.th/"
+        },
+        colors_numbers: {
+            title: "Royal Society of Thailand – Dictionary",
+            url: "https://dictionary.orst.go.th/"
+        },
+        food_drink: {
+            title: "Tourism Authority of Thailand – Thai Food",
+            url: "https://www.tourismthailand.org/"
+        },
+        family_body: {
+            title: "Royal Society of Thailand – Dictionary",
+            url: "https://dictionary.orst.go.th/"
+        },
+        daily_life: {
+            title: "Royal Society of Thailand – Dictionary",
+            url: "https://dictionary.orst.go.th/"
+        },
+        greetings: {
+            title: "Tourism Authority of Thailand – Thai Language",
+            url: "https://www.tourismthailand.org/"
+        },
+        nature_weather: {
+            title: "Department of National Parks, Wildlife and Plant Conservation",
+            url: "https://www.dnp.go.th/"
+        },
+        thailand_places: {
+            title: "Tourism Authority of Thailand",
+            url: "https://www.tourismthailand.org/"
+        },
+        transport: {
+            title: "Bangkok Mass Transit System",
+            url: "https://www.bts.co.th/"
+        },
+        thai_culture: {
+            title: "UNESCO Intangible Cultural Heritage",
+            url: "https://ich.unesco.org/"
+        }
+    };
+
+    const beginnerOptionSets = {
+        animals: [
+            ["แมว", "Katze", "maeo"],
+            ["หมา", "Hund", "ma"],
+            ["ปลา", "Fisch", "pla"],
+            ["ช้าง", "Elefant", "chang"]
+        ],
+        colors: [
+            ["แดง", "Rot", "daeng"],
+            ["เหลือง", "Gelb", "lueang"],
+            ["เขียว", "Grün", "khiao"],
+            ["ฟ้า", "Hellblau", "fa"]
+        ],
+        numbers: [
+            ["หนึ่ง", "Eins", "nueng"],
+            ["สอง", "Zwei", "song"],
+            ["สาม", "Drei", "sam"],
+            ["ห้า", "Fünf", "ha"]
+        ],
+        food: [
+            ["ข้าว", "Reis", "khao"],
+            ["น้ำ", "Wasser", "nam"],
+            ["ไข่", "Ei", "khai"],
+            ["กล้วย", "Banane", "kluai"]
+        ],
+        family: [
+            ["แม่", "Mutter", "mae"],
+            ["พ่อ", "Vater", "pho"],
+            ["พี่ชาย", "älterer Bruder", "phi chai"],
+            ["ยาย", "Großmutter (mütterlicherseits)", "yai"]
+        ],
+        grandparents: [
+            ["ปู่", "Großvater (väterlicherseits)", "pu"],
+            ["ตา", "Großvater (mütterlicherseits)", "ta"],
+            ["ย่า", "Großmutter (väterlicherseits)", "ya"],
+            ["ยาย", "Großmutter (mütterlicherseits)", "yai"]
+        ],
+        body: [
+            ["ตา", "Auge", "ta"],
+            ["หู", "Ohr", "hu"],
+            ["จมูก", "Nase", "chamuk"],
+            ["มือ", "Hand", "mue"]
+        ],
+        daily_life: [
+            ["ปากกา", "Stift", "pakka"],
+            ["เก้าอี้", "Stuhl", "kao-i"],
+            ["หนังสือ", "Buch", "nang-sue"],
+            ["ร่ม", "Regenschirm", "rom"]
+        ],
+        household: [
+            ["เตียง", "Bett", "tiang"],
+            ["โต๊ะ", "Tisch", "to"],
+            ["ประตู", "Tür", "pratu"],
+            ["เก้าอี้", "Stuhl", "kao-i"]
+        ],
+        utensils: [
+            ["ช้อน", "Löffel", "chon"],
+            ["ส้อม", "Gabel", "som"],
+            ["จาน", "Teller", "chan"],
+            ["แก้ว", "Glas", "kaeo"]
+        ],
+        greetings: [
+            ["สวัสดี", "Hallo", "sawatdi"],
+            ["ขอบคุณ", "Danke", "khop khun"],
+            ["ขอโทษ", "Entschuldigung", "kho thot"],
+            ["ลาก่อน", "Auf Wiedersehen", "la kon"]
+        ],
+        greeting_response: [
+            ["ไม่เป็นไร", "Gern geschehen / macht nichts", "mai pen rai"],
+            ["ขอบคุณ", "Danke", "khop khun"],
+            ["ขอโทษ", "Entschuldigung", "kho thot"],
+            ["ลาก่อน", "Auf Wiedersehen", "la kon"]
+        ],
+        nature: [
+            ["พระอาทิตย์", "Sonne", "phra athit"],
+            ["ฝน", "Regen", "fon"],
+            ["เมฆ", "Wolke", "mek"],
+            ["ดาว", "Stern", "dao"]
+        ],
+        places: [
+            ["กรุงเทพฯ", "Bangkok", "Krung Thep"],
+            ["เชียงใหม่", "Chiang Mai", "Chiang Mai"],
+            ["ภูเก็ต", "Phuket", "Phuket"],
+            ["พัทยา", "Pattaya", "Phatthaya"]
+        ],
+        southern_places: [
+            ["ภูเก็ต", "Phuket", "Phuket"],
+            ["เชียงใหม่", "Chiang Mai", "Chiang Mai"],
+            ["กรุงเทพฯ", "Bangkok", "Krung Thep"],
+            ["พัทยา", "Pattaya", "Phatthaya"]
+        ],
+        transport: [
+            ["รถยนต์", "Auto", "rot yon"],
+            ["เรือ", "Boot", "ruea"],
+            ["เครื่องบิน", "Flugzeug", "khrueang bin"],
+            ["จักรยาน", "Fahrrad", "chakkrayan"]
+        ],
+        rail: [
+            ["รถไฟ", "Zug", "rot fai"],
+            ["รถยนต์", "Auto", "rot yon"],
+            ["เรือ", "Boot", "ruea"],
+            ["จักรยาน", "Fahrrad", "chakkrayan"]
+        ],
+        slow_animals: [
+            ["เต่า", "Schildkröte", "tao"],
+            ["แมว", "Katze", "maeo"],
+            ["หมา", "Hund", "ma"],
+            ["ช้าง", "Elefant", "chang"]
+        ],
+        thai_culture: [
+            ["สงกรานต์", "Songkran", "songkran"],
+            ["ลอยกระทง", "Loi Krathong", "loi krathong"],
+            ["การไหว้", "Wai-Geste", "kan wai"],
+            ["มวยไทย", "Muay Thai", "muai Thai"]
+        ],
+        animals_small: [
+            ["กระต่าย", "Kaninchen", "kratai"],
+            ["เต่า", "Schildkröte", "tao"],
+            ["งู", "Schlange", "ngu"],
+            ["กบ", "Frosch", "kop"]
+        ],
+        animals_night: [
+            ["ค้างคาว", "Fledermaus", "khangkhao"],
+            ["ปลา", "Fisch", "pla"],
+            ["ช้าง", "Elefant", "chang"],
+            ["ไก่", "Huhn", "kai"]
+        ],
+        colors_basic: [
+            ["ฟ้า", "Hellblau", "fa"],
+            ["แดง", "Rot", "daeng"],
+            ["เหลือง", "Gelb", "lueang"],
+            ["เขียว", "Grün", "khiao"]
+        ],
+        colors_pumpkin: [
+            ["ส้ม", "Orange", "som"],
+            ["ดำ", "Schwarz", "dam"],
+            ["ขาว", "Weiß", "khao"],
+            ["เขียว", "Grün", "khiao"]
+        ],
+        colors_coal: [
+            ["ขาว", "Weiß", "khao"],
+            ["ดำ", "Schwarz", "dam"],
+            ["แดง", "Rot", "daeng"],
+            ["เหลือง", "Gelb", "lueang"]
+        ],
+        numbers_four: [
+            ["สอง", "Zwei", "song"],
+            ["สาม", "Drei", "sam"],
+            ["สี่", "Vier", "si"],
+            ["ห้า", "Fünf", "ha"]
+        ],
+        fruit_spiky: [
+            ["สับปะรด", "Ananas", "sapparot"],
+            ["แตงโม", "Wassermelone", "taengmo"],
+            ["มะม่วง", "Mango", "mamuang"],
+            ["ส้ม", "Orange", "som"]
+        ],
+        fruit_colors: [
+            ["แตงโม", "Wassermelone", "taengmo"],
+            ["มะม่วง", "Mango", "mamuang"],
+            ["ส้ม", "Orange", "som"],
+            ["กล้วย", "Banane", "kluai"]
+        ],
+        orange_drink: [
+            ["น้ำส้ม", "Orangensaft", "nam som"],
+            ["น้ำมะพร้าว", "Kokoswasser", "nam maphrao"],
+            ["นม", "Milch", "nom"],
+            ["กาแฟ", "Kaffee", "ka-fae"]
+        ],
+        baked_food: [
+            ["ขนมปัง", "Brot", "khanom pang"],
+            ["ไข่", "Ei", "khai"],
+            ["ข้าว", "Reis", "khao"],
+            ["ปลา", "Fisch", "pla"]
+        ],
+        fruit_seed: [
+            ["มะม่วง", "Mango", "mamuang"],
+            ["ส้ม", "Orange", "som"],
+            ["สับปะรด", "Ananas", "sapparot"],
+            ["แตงโม", "Wassermelone", "taengmo"]
+        ],
+        body_actions: [
+            ["ฟัน", "Zähne", "fan"],
+            ["ปาก", "Mund", "pak"],
+            ["ผม", "Haare", "phom"],
+            ["แขน", "Arm", "khaen"],
+            ["เท้า", "Fuß", "thao"]
+        ],
+        home_use: [
+            ["ประตู", "Tür", "pratu"],
+            ["มือ", "Hand", "mue"],
+            ["ผ้าขนหนู", "Handtuch", "pha khon nu"],
+            ["ตู้เสื้อผ้า", "Kleiderschrank", "tu suea pha"],
+            ["จาน", "Teller", "chan"]
+        ],
+        chat_name: [
+            ["คุณชื่ออะไร?", "Wie heißt du?", "khun chue arai?"],
+            ["ราคาเท่าไร?", "Wie viel kostet es?", "rakha thao rai?"],
+            ["ไม่เข้าใจ", "Ich verstehe nicht", "mai khao chai"],
+            ["ฉันชอบแมว", "Ich mag Katzen", "chan chop maeo"]
+        ],
+        chat_understand: [
+            ["ฉันไม่เข้าใจ", "Ich verstehe nicht", "chan mai khao chai"],
+            ["ฉันหิว", "Ich bin hungrig", "chan hiu"],
+            ["ฉันง่วง", "Ich bin müde", "chan nguang"],
+            ["ฉันชอบ", "Ich mag es", "chan chop"]
+        ],
+        chat_price: [
+            ["ราคาเท่าไร?", "Wie viel kostet es?", "rakha thao rai?"],
+            ["คุณชื่ออะไร?", "Wie heißt du?", "khun chue arai?"],
+            ["ไปไหน?", "Wohin gehst du?", "pai nai?"],
+            ["สบายดีไหม?", "Geht es dir gut?", "sabai di mai?"]
+        ],
+        chat_slow: [
+            ["พูดช้าๆ ได้ไหม?", "Kannst du langsam sprechen?", "phut cha-cha dai mai?"],
+            ["ลาก่อน", "Auf Wiedersehen", "la kon"],
+            ["ขอบคุณ", "Danke", "khop khun"],
+            ["ไม่เป็นไร", "Macht nichts", "mai pen rai"]
+        ],
+        chat_like: [
+            ["ฉันชอบแมว", "Ich mag Katzen", "chan chop maeo"],
+            ["ฉันไม่เข้าใจ", "Ich verstehe nicht", "chan mai khao chai"],
+            ["ฉันหิว", "Ich bin hungrig", "chan hiu"],
+            ["ฉันง่วง", "Ich bin müde", "chan nguang"]
+        ],
+        seasons: [
+            ["ฤดูร้อน", "Sommer", "rue du ron"],
+            ["ฤดูฝน", "Regenzeit", "rue du fon"],
+            ["ฤดูหนาว", "Winter", "rue du nao"],
+            ["ฤดูใบไม้ผลิ", "Frühling", "rue du bai mai phli"]
+        ],
+        flower_insects: [
+            ["ผึ้ง", "Biene", "phueng"],
+            ["มด", "Ameise", "mot"],
+            ["ยุง", "Mücke", "yung"],
+            ["แมลงวัน", "Fliege", "malaeng wan"]
+        ],
+        wind_items: [
+            ["ใบไม้", "Blatt", "bai mai"],
+            ["ก้อนหิน", "Stein", "kon hin"],
+            ["ช้อน", "Löffel", "chon"],
+            ["แก้ว", "Glas", "kaeo"]
+        ],
+        places_new: [
+            ["ประจวบคีรีขันธ์", "Prachuap Khiri Khan", "prachuap khiri khan"],
+            ["สตูล", "Satun", "satun"],
+            ["กาญจนบุรี", "Kanchanaburi", "kanchanaburi"],
+            ["แม่ฮ่องสอน", "Mae Hong Son", "mae hong son"],
+            ["เชียงใหม่", "Chiang Mai", "chiang mai"]
+        ],
+        vehicles_city: [
+            ["รถเมล์", "Bus", "rot me"],
+            ["รถจักรยานยนต์", "Motorrad", "rot chakkrayan yon"],
+            ["รถบรรทุก", "Lkw", "rot banthuk"],
+            ["รถแท็กซี่", "Taxi", "rot taeksi"]
+        ],
+        vehicles_emergency: [
+            ["รถพยาบาล", "Krankenwagen", "rot phayaban"],
+            ["รถเมล์", "Bus", "rot me"],
+            ["รถแท็กซี่", "Taxi", "rot taeksi"],
+            ["รถจักรยาน", "Fahrrad", "rot chakkrayan"]
+        ],
+        money: [
+            ["เยน", "Yen", "yen"],
+            ["บาท", "Baht", "bat"],
+            ["ยูโร", "Euro", "yuro"],
+            ["ดอลลาร์", "Dollar", "donla"]
+        ],
+        polite_men: [
+            ["ครับ", "Höflichkeitspartikel, typisch bei Männern", "khrap"],
+            ["ค่ะ", "Höflichkeitspartikel, typisch bei Frauen", "kha"],
+            ["ลาก่อน", "Auf Wiedersehen", "la kon"],
+            ["ขอโทษ", "Entschuldigung", "kho thot"]
+        ],
+        polite_women: [
+            ["ขอบคุณ", "Danke", "khop khun"],
+            ["ค่ะ", "Höflichkeitspartikel, typisch bei Frauen", "kha"],
+            ["ครับ", "Höflichkeitspartikel, typisch bei Männern", "khrap"],
+            ["ไม่ใช่", "Nein", "mai chai"]
+        ],
+        noodle_tools: [
+            ["ตะเกียบ", "Essstäbchen", "takhiap"],
+            ["รองเท้า", "Schuhe", "rongthao"],
+            ["ปากกา", "Stift", "pakka"],
+            ["หมวก", "Hut", "muak"]
+        ],
+        pha_khao_ma: [
+            ["ผ้าลายตาราง", "kariertes Tuch", "pha lai tarang"],
+            ["กระดาษ", "Papier", "kradat"],
+            ["โลหะ", "Metall", "loha"],
+            ["แก้ว", "Glas", "kaeo"]
+        ],
+        yes_no: [
+            ["ใช่", "Ja", "chai"],
+            ["ไม่ใช่", "Nein", "mai chai"],
+            ["ไม่รู้", "Ich weiß nicht", "mai ru"],
+            ["ไม่แน่ใจ", "Ich bin nicht sicher", "mai nae chai"]
+        ]
+    };
+
+    const beginnerQuestionCounts = Object.create(null);
+
+    function makeBeginnerQuestion([categoryKey, difficulty, questionTh, questionDe, questionRead, optionSet, correctId]) {
+        beginnerQuestionCounts[categoryKey] = (beginnerQuestionCounts[categoryKey] || 0) + 1;
+        const optionSetValues = beginnerOptionSets[optionSet];
+        const options = optionSetValues.map(([th, de, reading], optionIndex) => [
+            String.fromCharCode(97 + optionIndex),
+            th,
+            de,
+            reading
+        ]);
+        const correctOption = optionSetValues[correctId.charCodeAt(0) - 97];
+        const source = beginnerSources[categoryKey];
+
+        return makeQuestion(
+            `thq-beginner-${categoryKey}-${String(beginnerQuestionCounts[categoryKey]).padStart(3, "0")}`,
+            `beginner_${categoryKey}`,
+            difficulty,
+            "single_choice",
+            questionTh,
+            questionDe,
+            questionRead,
+            options,
+            correctId,
+            `คำตอบคือ ${correctOption[0]}`,
+            `Die richtige Antwort ist: ${correctOption[1]}.`,
+            [source]
+        );
     }
 
     const questions = [
@@ -2184,8 +2567,294 @@
             "'อร่อยมาก' (Aroi Mak) ประกอบด้วยคำว่า 'อร่อย' (schmackhaft) และ 'มาก' (sehr) เป็นคำชมที่สร้างรอยยิ้มและความภาคภูมิใจให้แก่ผู้ปรุงอาหารเสมอ",
             "'Aroi Mak' (sehr lecker) zaubert jedem thailändischen Koch ein strahlendes Lächeln ins Gesicht und ist der herzlichste Dank nach einem guten Mahl.",
             [{ title: "Tourism Authority of Thailand – Basic Thai for Food Lovers", url: "https://www.tourismthailand.org/" }]
-        )
+        ),
+        ...[
+            ["animals", 1, "สัตว์อะไรมีงวง?", "Welches Tier hat einen Rüssel?", "Sat arai mi nguang?", "animals", "d"],
+            ["animals", 1, "สัตว์อะไรร้องว่า 'เหมียว'?", "Welches Tier miaut?", "Sat arai rong wa 'miao'?", "animals", "a"],
+            ["animals", 1, "สัตว์อะไรอยู่ในน้ำ?", "Welches Tier lebt im Wasser?", "Sat arai yu nai nam?", "animals", "c"],
+            ["animals", 1, "สัตว์อะไรเห่า?", "Welches Tier bellt?", "Sat arai hao?", "animals", "b"],
+            ["animals", 1, "สัตว์อะไรเดินช้า?", "Welches Tier geht langsam?", "Sat arai doen cha?", "slow_animals", "a"],
+            ["animals", 2, "แมวเป็นปลาไหม?", "Ist eine Katze ein Fisch?", "Maeo pen pla mai?", "yes_no", "b"],
+            ["animals", 2, "หมามีสี่ขาไหม?", "Hat ein Hund vier Beine?", "Ma mi si kha mai?", "yes_no", "a"],
+            ["animals", 2, "ปลาอยู่ในน้ำไหม?", "Lebt ein Fisch im Wasser?", "Pla yu nai nam mai?", "yes_no", "a"],
+            ["animals", 2, "นกมีปีกไหม?", "Hat ein Vogel Flügel?", "Nok mi pik mai?", "yes_no", "a"],
+            ["animals", 2, "ช้างตัวเล็กกว่ามดไหม?", "Ist ein Elefant kleiner als eine Ameise?", "Chang tua lek kwa mot mai?", "yes_no", "b"],
+
+            ["colors_numbers", 1, "ใบไม้ส่วนใหญ่สีอะไร?", "Welche Farbe haben die meisten Blätter?", "Bai mai suan yai si arai?", "colors", "c"],
+            ["colors_numbers", 1, "กล้วยสุกสีอะไร?", "Welche Farbe hat eine reife Banane?", "Kluai suk si arai?", "colors", "b"],
+            ["colors_numbers", 1, "มะเขือเทศสุกสีอะไร?", "Welche Farbe hat eine reife Tomate?", "Makhuea thet suk si arai?", "colors", "a"],
+            ["colors_numbers", 1, "ท้องฟ้าสีอะไร?", "Welche Farbe hat der Himmel?", "Thong fa si arai?", "colors", "d"],
+            ["colors_numbers", 1, "หนึ่งบวกหนึ่งได้เท่าไร?", "Was ist eins plus eins?", "Nueng buat nueng dai thao rai?", "numbers", "b"],
+            ["colors_numbers", 2, "หนึ่ง สอง แล้วอะไร?", "Eins, zwei – was kommt dann?", "Nueng, song, laeo arai?", "numbers", "c"],
+            ["colors_numbers", 2, "สามบวกสองได้เท่าไร?", "Was ist drei plus zwei?", "Sam buat song dai thao rai?", "numbers", "d"],
+            ["colors_numbers", 2, "มือหนึ่งมีห้านิ้วไหม?", "Hat eine Hand fünf Finger?", "Mue nueng mi ha niu mai?", "yes_no", "a"],
+            ["colors_numbers", 2, "เลขสิบมากกว่าเลขห้าไหม?", "Ist zehn größer als fünf?", "Lek sip mak kwa lek ha mai?", "yes_no", "a"],
+            ["colors_numbers", 2, "กล้วยสุกมักมีสีเหลืองไหม?", "Sind reife Bananen meistens gelb?", "Kluai suk mak mi si lueang mai?", "yes_no", "a"],
+
+            ["food_drink", 1, "เวลาหิวน้ำ เราดื่มอะไร?", "Was trinken wir, wenn wir durstig sind?", "Wela hiu nam, rao duem arai?", "food", "b"],
+            ["food_drink", 1, "ไข่เจียวทำจากอะไร?", "Woraus macht man ein Omelett?", "Khai chiaw tham chak arai?", "food", "c"],
+            ["food_drink", 1, "ผลไม้อะไรยาวและมีเปลือกสีเหลือง?", "Welche Frucht ist lang und hat eine gelbe Schale?", "Phonlamai arai yao lae mi plueak si lueang?", "food", "d"],
+            ["food_drink", 1, "กินแกงกับอะไร?", "Wozu isst man Curry?", "Kin kaeng kap arai?", "food", "a"],
+            ["food_drink", 1, "เรากินซุปด้วยอะไร?", "Womit essen wir Suppe?", "Rao kin sup duai arai?", "utensils", "a"],
+            ["food_drink", 2, "ข้าวเป็นอาหารไหม?", "Ist Reis ein Nahrungsmittel?", "Khao pen ahan mai?", "yes_no", "a"],
+            ["food_drink", 2, "กล้วยเป็นผักไหม?", "Ist eine Banane ein Gemüse?", "Kluai pen phak mai?", "yes_no", "b"],
+            ["food_drink", 2, "มะนาวมีรสเปรี้ยวไหม?", "Schmeckt Limette sauer?", "Manao mi rot priao mai?", "yes_no", "a"],
+            ["food_drink", 2, "เราดื่มน้ำเวลาเราหิวน้ำไหม?", "Trinken wir Wasser, wenn wir durstig sind?", "Rao duem nam wela rao hiu nam mai?", "yes_no", "a"],
+            ["food_drink", 2, "ไข่เป็นเครื่องดื่มไหม?", "Ist ein Ei ein Getränk?", "Khai pen khrueang duem mai?", "yes_no", "b"],
+
+            ["family_body", 1, "พ่อของพ่อเรียกว่าอะไร?", "Wie nennt man den Vater des eigenen Vaters?", "Pho khong pho riak wa arai?", "grandparents", "a"],
+            ["family_body", 1, "พ่อของแม่เรียกว่าอะไร?", "Wie nennt man den Vater der eigenen Mutter?", "Pho khong mae riak wa arai?", "grandparents", "b"],
+            ["family_body", 1, "แม่ของแม่เรียกว่าอะไร?", "Wie nennt man die Mutter der eigenen Mutter?", "Mae khong mae riak wa arai?", "family", "d"],
+            ["family_body", 1, "เรามองด้วยอะไร?", "Womit sehen wir?", "Rao mong duai arai?", "body", "a"],
+            ["family_body", 1, "เราใช้ส่วนไหนฟัง?", "Welchen Körperteil benutzen wir zum Hören?", "Rao chai suan nai fang?", "body", "b"],
+            ["family_body", 2, "เรามองด้วยตาไหม?", "Sehen wir mit den Augen?", "Rao mong duai ta mai?", "yes_no", "a"],
+            ["family_body", 2, "เราฟังด้วยหูไหม?", "Hören wir mit den Ohren?", "Rao fang duai hu mai?", "yes_no", "a"],
+            ["family_body", 2, "เราดมกลิ่นด้วยจมูกไหม?", "Riechen wir mit der Nase?", "Rao dom klin duai chamuk mai?", "yes_no", "a"],
+            ["family_body", 2, "เรามีมือสองข้างไหม?", "Haben wir zwei Hände?", "Rao mi mue song khang mai?", "yes_no", "a"],
+            ["family_body", 2, "เท้าอยู่บนหัวไหม?", "Sind die Füße auf dem Kopf?", "Thao yu bon hua mai?", "yes_no", "b"],
+
+            ["daily_life", 1, "เราเขียนด้วยอะไร?", "Womit schreiben wir?", "Rao khian duai arai?", "daily_life", "a"],
+            ["daily_life", 1, "เรานั่งบนอะไร?", "Worauf sitzen wir?", "Rao nang bon arai?", "daily_life", "b"],
+            ["daily_life", 1, "เราอ่านอะไร?", "Was lesen wir?", "Rao an arai?", "daily_life", "c"],
+            ["daily_life", 1, "เราใช้ร่มทำอะไร?", "Wofür benutzen wir einen Regenschirm?", "Rao chai rom tham arai?", "daily_life", "d"],
+            ["daily_life", 1, "เรานอนบนอะไร?", "Worauf schlafen wir?", "Rao non bon arai?", "household", "a"],
+            ["daily_life", 2, "เราเขียนด้วยปากกาไหม?", "Schreiben wir mit einem Stift?", "Rao khian duai pakka mai?", "yes_no", "a"],
+            ["daily_life", 2, "เรานั่งบนเก้าอี้ไหม?", "Sitzen wir auf einem Stuhl?", "Rao nang bon kao-i mai?", "yes_no", "a"],
+            ["daily_life", 2, "เราอ่านหนังสือไหม?", "Lesen wir Bücher?", "Rao an nangsue mai?", "yes_no", "a"],
+            ["daily_life", 2, "ใช้ร่มกันฝนได้ไหม?", "Kann man mit einem Schirm Regen abhalten?", "Chai rom kan fon dai mai?", "yes_no", "a"],
+            ["daily_life", 2, "เราใส่รองเท้าที่มือไหม?", "Tragen wir Schuhe an den Händen?", "Rao sai rongthao thi mue mai?", "yes_no", "b"],
+
+            ["greetings", 1, "เมื่อเจอคน เราพูดว่าอะไร?", "Was sagen wir, wenn wir jemanden treffen?", "Muea choe khon, rao phut wa arai?", "greetings", "a"],
+            ["greetings", 1, "เมื่อมีคนช่วย เราพูดว่าอะไร?", "Was sagen wir, wenn uns jemand hilft?", "Muea mi khon chuai, rao phut wa arai?", "greetings", "b"],
+            ["greetings", 1, "เมื่อเราทำผิด เราพูดว่าอะไร?", "Was sagen wir, wenn wir einen Fehler machen?", "Muea rao tham phit, rao phut wa arai?", "greetings", "c"],
+            ["greetings", 1, "เมื่อจะกลับ เราพูดว่าอะไร?", "Was sagen wir, wenn wir gehen wollen?", "Muea cha klap, rao phut wa arai?", "greetings", "d"],
+            ["greetings", 1, "เมื่อมีคนพูดว่า 'ขอบคุณ' เราตอบว่าอะไร?", "Was antworten wir, wenn jemand Danke sagt?", "Muea mi khon phut wa 'khop khun', rao top wa arai?", "greeting_response", "a"],
+            ["greetings", 2, "เราพูด 'สวัสดี' เมื่อเจอคนไหม?", "Sagen wir Hallo, wenn wir jemanden treffen?", "Rao phut 'sawatdi' muea choe khon mai?", "yes_no", "a"],
+            ["greetings", 2, "ขอบคุณแปลว่า 'ลาก่อน' ไหม?", "Bedeutet ขอบคุณ „Auf Wiedersehen“?", "Khop khun plae wa 'la kon' mai?", "yes_no", "b"],
+            ["greetings", 2, "เราพูด 'ขอโทษ' เมื่อทำผิดไหม?", "Sagen wir ขอโทษ, wenn wir einen Fehler machen?", "Rao phut 'kho thot' muea tham phit mai?", "yes_no", "a"],
+            ["greetings", 2, "เราพูด 'ลาก่อน' เมื่อกลับไหม?", "Sagen wir „Auf Wiedersehen“, wenn wir gehen?", "Rao phut 'la kon' muea klap mai?", "yes_no", "a"],
+            ["greetings", 2, "คำว่า 'ไม่' แปลว่า 'ใช่' ไหม?", "Bedeutet ไม่ „Ja“?", "Kham wa 'mai' plae wa 'chai' mai?", "yes_no", "b"],
+
+            ["nature_weather", 1, "อะไรให้แสงสว่างตอนกลางวัน?", "Was spendet tagsüber Licht?", "Arai hai saeng sawang ton klangwan?", "nature", "a"],
+            ["nature_weather", 1, "ฝนมาจากไหน?", "Woher kommt der Regen?", "Fon ma chak nai?", "nature", "b"],
+            ["nature_weather", 1, "อะไรอยู่บนฟ้าและมีสีขาว?", "Was ist am Himmel und weiß?", "Arai yu bon fa lae mi si khao?", "nature", "c"],
+            ["nature_weather", 1, "อะไรส่องแสงบนฟ้าตอนกลางคืน?", "Was leuchtet nachts am Himmel?", "Arai song saeng bon fa ton klang khuen?", "nature", "d"],
+            ["nature_weather", 1, "เราใช้อะไรกันฝน?", "Womit schützen wir uns vor Regen?", "Rao chai arai kan fon?", "daily_life", "d"],
+            ["nature_weather", 2, "ฝนตกลงมาจากฟ้าไหม?", "Fällt Regen vom Himmel?", "Fon tok long ma chak fa mai?", "yes_no", "a"],
+            ["nature_weather", 2, "ดวงอาทิตย์ขึ้นตอนเช้าไหม?", "Geht die Sonne morgens auf?", "Duang athit khuen ton chao mai?", "yes_no", "a"],
+            ["nature_weather", 2, "น้ำแข็งเย็นไหม?", "Ist Eis kalt?", "Namkhaeng yen mai?", "yes_no", "a"],
+            ["nature_weather", 2, "เมฆอยู่บนฟ้าไหม?", "Sind Wolken am Himmel?", "Mek yu bon fa mai?", "yes_no", "a"],
+            ["nature_weather", 2, "ต้นไม้มีใบไหม?", "Hat ein Baum Blätter?", "Tonmai mi bai mai?", "yes_no", "a"],
+
+            ["thailand_places", 1, "สถานที่ไหนอยู่ทางใต้ของไทย?", "Welcher Ort liegt im Süden Thailands?", "Sathanthi nai yu thang tai khong Thai?", "southern_places", "a"],
+            ["thailand_places", 1, "เมืองไหนอยู่ทางเหนือของไทย?", "Welche Stadt liegt im Norden Thailands?", "Mueang nai yu thang nuea khong Thai?", "places", "b"],
+            ["thailand_places", 1, "สถานที่ใดเป็นเกาะในประเทศไทย?", "Welcher Ort ist eine Insel in Thailand?", "Sathanthi dai pen ko nai prathet Thai?", "places", "c"],
+            ["thailand_places", 1, "เมืองไหนอยู่ริมทะเล?", "Welche Stadt liegt am Meer?", "Mueang nai yu rim thale?", "places", "d"],
+            ["thailand_places", 1, "เมืองหลวงของไทยชื่ออะไร?", "Wie heißt die Hauptstadt Thailands?", "Mueang luang khong Thai chue arai?", "places", "a"],
+            ["thailand_places", 2, "ประเทศไทยมีทะเลไหม?", "Hat Thailand eine Küste am Meer?", "Prathet Thai mi thale mai?", "yes_no", "a"],
+            ["thailand_places", 2, "กรุงเทพฯ เป็นเมืองหลวงของไทยไหม?", "Ist Bangkok die Hauptstadt Thailands?", "Krung Thep pen mueang luang khong Thai mai?", "yes_no", "a"],
+            ["thailand_places", 2, "เชียงใหม่อยู่ทางเหนือของไทยไหม?", "Liegt Chiang Mai im Norden Thailands?", "Chiang Mai yu thang nuea khong Thai mai?", "yes_no", "a"],
+            ["thailand_places", 2, "ภูเก็ตเป็นจังหวัดของไทยไหม?", "Ist Phuket eine Provinz Thailands?", "Phuket pen changwat khong Thai mai?", "yes_no", "a"],
+            ["thailand_places", 2, "กรุงเทพฯ เป็นเกาะไหม?", "Ist Bangkok eine Insel?", "Krung Thep pen ko mai?", "yes_no", "b"],
+
+            ["transport", 1, "อะไรวิ่งบนราง?", "Was fährt auf Schienen?", "Arai wing bon rang?", "rail", "a"],
+            ["transport", 1, "อะไรแล่นในน้ำ?", "Was fährt auf dem Wasser?", "Arai laen nai nam?", "transport", "b"],
+            ["transport", 1, "อะไรบินบนฟ้า?", "Was fliegt am Himmel?", "Arai bin bon fa?", "transport", "c"],
+            ["transport", 1, "อะไรมีสองล้อและใช้ปั่น?", "Was hat zwei Räder und wird durch Treten bewegt?", "Arai mi song lo lae chai pan?", "transport", "d"],
+            ["transport", 1, "อะไรมีสี่ล้อและวิ่งบนถนน?", "Was hat vier Räder und fährt auf der Straße?", "Arai mi si lo lae wing bon thanon?", "transport", "a"],
+            ["transport", 2, "รถไฟวิ่งบนรางไหม?", "Fährt ein Zug auf Schienen?", "Rotfai wing bon rang mai?", "yes_no", "a"],
+            ["transport", 2, "เรือแล่นบนถนนไหม?", "Fährt ein Boot auf der Straße?", "Ruea laen bon thanon mai?", "yes_no", "b"],
+            ["transport", 2, "เครื่องบินบินบนฟ้าไหม?", "Fliegt ein Flugzeug am Himmel?", "Khrueang bin bin bon fa mai?", "yes_no", "a"],
+            ["transport", 2, "จักรยานมีสองล้อไหม?", "Hat ein Fahrrad zwei Räder?", "Chakkrayan mi song lo mai?", "yes_no", "a"],
+            ["transport", 2, "รถยนต์วิ่งในทะเลไหม?", "Fährt ein Auto im Meer?", "Rot yon wing nai thale mai?", "yes_no", "b"],
+
+            ["thai_culture", 1, "เทศกาลไหนมีการเล่นน้ำ?", "Bei welchem Fest spielt man mit Wasser?", "Thetsakan nai mi kan len nam?", "thai_culture", "a"],
+            ["thai_culture", 1, "เทศกาลไหนมีการลอยกระทง?", "Bei welchem Fest lässt man Krathongs treiben?", "Thetsakan nai mi kan loi krathong?", "thai_culture", "b"],
+            ["thai_culture", 1, "ท่าทางไหนใช้ทักทายแบบไทย?", "Welche Geste benutzt man zur thailändischen Begrüßung?", "Tha thang nai chai thakthai baep Thai?", "thai_culture", "c"],
+            ["thai_culture", 1, "กีฬาไหนเป็นการชกมวย?", "Welche Sportart ist Boxen?", "Kila nai pen kan chok muai?", "thai_culture", "d"],
+            ["thai_culture", 1, "เทศกาลไหนเป็นปีใหม่ไทย?", "Welches Fest ist das thailändische Neujahr?", "Thetsakan nai pen pi mai Thai?", "thai_culture", "a"],
+            ["thai_culture", 2, "สงกรานต์เป็นเทศกาลของไทยไหม?", "Ist Songkran ein thailändisches Fest?", "Songkran pen thetsakan khong Thai mai?", "yes_no", "a"],
+            ["thai_culture", 2, "ในวันลอยกระทง เราลอยกระทงลงน้ำไหม?", "Lässt man am Loy-Krathong-Fest Krathongs ins Wasser?", "Nai wan Loi Krathong, rao loi krathong long nam mai?", "yes_no", "a"],
+            ["thai_culture", 2, "การไหว้ใช้มือไหม?", "Benutzt man für den Wai die Hände?", "Kan wai chai mue mai?", "yes_no", "a"],
+            ["thai_culture", 2, "มวยไทยใช้หมัดไหม?", "Benutzt Muay Thai die Fäuste?", "Muai Thai chai mat mai?", "yes_no", "a"],
+            ["thai_culture", 2, "ดอกบัวเป็นดอกไม้ไหม?", "Ist der Lotus eine Blume?", "Dok bua pen dokmai mai?", "yes_no", "a"],
+            ["animals", 1, "สัตว์อะไรมีหูยาว?", "Welches Tier hat lange Ohren?", "Sat arai mi hu yao?", "animals_small", "a"],
+            ["animals", 1, "สัตว์อะไรมีเปลือกแข็ง?", "Welches Tier hat einen harten Panzer?", "Sat arai mi plueak khaeng?", "animals_small", "b"],
+            ["animals", 1, "สัตว์อะไรไม่มีขา?", "Welches Tier hat keine Beine?", "Sat arai mai mi kha?", "animals_small", "c"],
+            ["animals", 1, "สัตว์อะไรบินตอนกลางคืน?", "Welches Tier fliegt nachts?", "Sat arai bin ton klang khuen?", "animals_night", "a"],
+            ["animals", 1, "สัตว์อะไรอยู่ได้ทั้งในน้ำและบนบก?", "Welches Tier lebt im Wasser und an Land?", "Sat arai yu dai thang nai nam lae bon bok?", "animals_small", "d"],
+            ["animals", 2, "ผึ้งมีปีกไหม?", "Hat eine Biene Flügel?", "Phueng mi pik mai?", "yes_no", "a"],
+            ["animals", 2, "ค้างคาวเป็นนกไหม?", "Ist eine Fledermaus ein Vogel?", "Khangkhao pen nok mai?", "yes_no", "b"],
+            ["animals", 2, "กบมีขาไหม?", "Hat ein Frosch Beine?", "Kop mi kha mai?", "yes_no", "a"],
+            ["animals", 2, "ผึ้งทำน้ำผึ้งไหม?", "Machen Bienen Honig?", "Phueng tham nam phueng mai?", "yes_no", "a"],
+            ["animals", 2, "ปลาเดินบนบกได้ไหม?", "Kann ein Fisch an Land gehen?", "Pla doen bon bok dai mai?", "yes_no", "b"],
+
+            ["colors_numbers", 1, "ทะเลมักมีสีอะไร?", "Welche Farbe hat das Meer meistens?", "Thale mak mi si arai?", "colors_basic", "a"],
+            ["colors_numbers", 1, "เลือดมีสีอะไร?", "Welche Farbe hat Blut?", "Lueat mi si arai?", "colors_basic", "b"],
+            ["colors_numbers", 1, "ฟักทองมักมีสีอะไร?", "Welche Farbe hat ein Kürbis meistens?", "Fak thong mak mi si arai?", "colors_pumpkin", "a"],
+            ["colors_numbers", 1, "ถ่านมีสีอะไร?", "Welche Farbe hat Kohle?", "Than mi si arai?", "colors_coal", "b"],
+            ["colors_numbers", 1, "สองบวกสองได้เท่าไร?", "Was ist zwei plus zwei?", "Song buat song dai thao rai?", "numbers_four", "c"],
+            ["colors_numbers", 2, "หนึ่งสัปดาห์มีเจ็ดวันไหม?", "Hat eine Woche sieben Tage?", "Nueng sapda mi chet wan mai?", "yes_no", "a"],
+            ["colors_numbers", 2, "หนึ่งปีมีสิบสองเดือนไหม?", "Hat ein Jahr zwölf Monate?", "Nueng pi mi sip song duean mai?", "yes_no", "a"],
+            ["colors_numbers", 2, "เลขสี่มากกว่าห้าไหม?", "Ist vier größer als fünf?", "Lek si mak kwa ha mai?", "yes_no", "b"],
+            ["colors_numbers", 2, "ห้าลบหนึ่งได้สี่ไหม?", "Ist fünf minus eins vier?", "Ha lop nueng dai si mai?", "yes_no", "a"],
+            ["colors_numbers", 2, "หญ้ามีสีเขียวไหม?", "Ist Gras grün?", "Ya mi si khiao mai?", "yes_no", "a"],
+
+            ["food_drink", 1, "ผลไม้อะไรมีเปลือกเป็นหนาม?", "Welche Frucht hat eine stachelige Schale?", "Phonlamai arai mi plueak pen nam?", "fruit_spiky", "a"],
+            ["food_drink", 1, "ผลไม้อะไรมีเปลือกสีเขียวและเนื้อสีแดง?", "Welche Frucht hat eine grüne Schale und rotes Fruchtfleisch?", "Phonlamai arai mi plueak si khiao lae nuea si daeng?", "fruit_colors", "a"],
+            ["food_drink", 1, "น้ำอะไรทำจากส้ม?", "Welcher Saft wird aus Orangen gemacht?", "Nam arai tham chak som?", "orange_drink", "a"],
+            ["food_drink", 1, "อาหารอะไรทำจากแป้งและอบ?", "Welches Essen wird aus Mehl gemacht und gebacken?", "Ahan arai tham chak paeng lae op?", "baked_food", "a"],
+            ["food_drink", 1, "ผลไม้อะไรมีเมล็ดใหญ่แบน?", "Welche Frucht hat einen großen, flachen Kern?", "Phonlamai arai mi malet yai baen?", "fruit_seed", "a"],
+            ["food_drink", 2, "น้ำผึ้งมีรสหวานไหม?", "Schmeckt Honig süß?", "Nam phueng mi rot wan mai?", "yes_no", "a"],
+            ["food_drink", 2, "กาแฟเป็นเครื่องดื่มไหม?", "Ist Kaffee ein Getränk?", "Kafae pen khrueang duem mai?", "yes_no", "a"],
+            ["food_drink", 2, "เราควรล้างผลไม้ก่อนกินไหม?", "Soll man Obst vor dem Essen waschen?", "Rao khuan lang phonlamai kon kin mai?", "yes_no", "a"],
+            ["food_drink", 2, "น้ำตาลมีรสเค็มไหม?", "Schmeckt Zucker salzig?", "Nam tan mi rot khem mai?", "yes_no", "b"],
+            ["food_drink", 2, "น้ำแข็งร้อนไหม?", "Ist Eis heiß?", "Namkhaeng ron mai?", "yes_no", "b"],
+
+            ["family_body", 1, "เราเคี้ยวอาหารด้วยอะไร?", "Womit kauen wir?", "Rao khiao ahan duai arai?", "body_actions", "a"],
+            ["family_body", 1, "เราพูดด้วยอะไร?", "Womit sprechen wir?", "Rao phut duai arai?", "body_actions", "b"],
+            ["family_body", 1, "เราใช้หวีหวีอะไร?", "Was kämmen wir mit einem Kamm?", "Rao chai wi wi arai?", "body_actions", "c"],
+            ["family_body", 1, "ส่วนไหนอยู่ระหว่างไหล่กับมือ?", "Welcher Körperteil liegt zwischen Schulter und Hand?", "Suan nai yu rawang lai kap mue?", "body_actions", "d"],
+            ["family_body", 1, "เราใช้ส่วนไหนเตะบอล?", "Welchen Körperteil benutzen wir, um einen Ball zu treten?", "Rao chai suan nai te bon?", "body_actions", "e"],
+            ["family_body", 2, "ผมอยู่บนศีรษะไหม?", "Ist das Haar auf dem Kopf?", "Phom yu bon sisa mai?", "yes_no", "a"],
+            ["family_body", 2, "คนเรามีหัวใจไหม?", "Haben Menschen ein Herz?", "Khon rao mi huachai mai?", "yes_no", "a"],
+            ["family_body", 2, "เราใช้มือปรบมือไหม?", "Klatschen wir mit den Händen?", "Rao chai mue prop mue mai?", "yes_no", "a"],
+            ["family_body", 2, "เท้าอยู่ปลายขาไหม?", "Befinden sich die Füße am Ende der Beine?", "Thao yu plai kha mai?", "yes_no", "a"],
+            ["family_body", 2, "หัวเข่าอยู่ที่ขาไหม?", "Liegt das Knie am Bein?", "Hua khao yu thi kha mai?", "yes_no", "a"],
+
+            ["daily_life", 1, "เราใช้กุญแจเปิดอะไร?", "Was öffnen wir mit einem Schlüssel?", "Rao chai kunchae poet arai?", "home_use", "a"],
+            ["daily_life", 1, "เราเช็ดตัวด้วยอะไร?", "Womit trocknen wir uns ab?", "Rao chet tua duai arai?", "home_use", "c"],
+            ["daily_life", 1, "เราเก็บเสื้อผ้าไว้ที่ไหน?", "Wo bewahren wir Kleidung auf?", "Rao kep suea pha wai thi nai?", "home_use", "d"],
+            ["daily_life", 1, "เราใช้จานใส่อะไร?", "Wofür benutzen wir einen Teller?", "Rao chai chan sai arai?", "home_use", "e"],
+            ["daily_life", 1, "เราใช้สบู่ล้างอะไร?", "Was waschen wir mit Seife?", "Rao chai sabu lang arai?", "home_use", "b"],
+            ["daily_life", 2, "ตอนเช้าเราแปรงฟันไหม?", "Putzen wir morgens die Zähne?", "Ton chao rao praeng fan mai?", "yes_no", "a"],
+            ["daily_life", 2, "ก่อนกินข้าวเราล้างมือไหม?", "Waschen wir uns vor dem Essen die Hände?", "Kon kin khao rao lang mue mai?", "yes_no", "a"],
+            ["daily_life", 2, "ตอนกลางคืนเราเปิดไฟไหม?", "Schalten wir nachts das Licht an?", "Ton klang khuen rao poet fai mai?", "yes_no", "a"],
+            ["daily_life", 2, "เราพับผ้าห่มหลังตื่นนอนได้ไหม?", "Können wir nach dem Aufwachen die Decke zusammenlegen?", "Rao phap pha hom lang tuen non dai mai?", "yes_no", "a"],
+            ["daily_life", 2, "เราล้างมือหลังเข้าห้องน้ำไหม?", "Waschen wir uns nach dem Toilettengang die Hände?", "Rao lang mue lang khao hongnam mai?", "yes_no", "a"],
+
+            ["greetings", 1, "ถ้าอยากรู้ชื่อเพื่อน เราถามว่าอะไร?", "Wie fragen wir nach dem Namen eines Freundes?", "Tha yak ru chue phuean rao tham wa arai?", "chat_name", "a"],
+            ["greetings", 1, "ถ้าฟังไม่เข้าใจ เราพูดว่าอะไร?", "Was sagen wir, wenn wir etwas nicht verstehen?", "Tha fang mai khao chai rao phut wa arai?", "chat_understand", "a"],
+            ["greetings", 1, "ถ้าอยากรู้ราคา เราถามว่าอะไร?", "Wie fragen wir nach dem Preis?", "Tha yak ru rakha rao tham wa arai?", "chat_price", "a"],
+            ["greetings", 1, "ถ้าอยากให้คนพูดช้าๆ เราถามว่าอะไร?", "Wie bitten wir jemanden, langsam zu sprechen?", "Tha yak hai khon phut cha-cha rao tham wa arai?", "chat_slow", "a"],
+            ["greetings", 1, "ถ้าอยากบอกว่าชอบแมว เราพูดว่าอะไร?", "Wie sagen wir, dass wir Katzen mögen?", "Tha yak bok wa chop maeo rao phut wa arai?", "chat_like", "a"],
+            ["greetings", 2, "วันนี้หมายถึงวันปัจจุบันไหม?", "Bedeutet วันนี้ „der heutige Tag“?", "Wan ni mai thueng wan patchuban mai?", "yes_no", "a"],
+            ["greetings", 2, "พรุ่งนี้เป็นวันก่อนวันนี้ไหม?", "Ist morgen der Tag vor heute?", "Phrungni pen wan kon wan ni mai?", "yes_no", "b"],
+            ["greetings", 2, "เมื่อวานเป็นวันก่อนวันนี้ไหม?", "Ist gestern der Tag vor heute?", "Muea wan pen wan kon wan ni mai?", "yes_no", "a"],
+            ["greetings", 2, "คำว่า 'ไม่' ใช้ปฏิเสธไหม?", "Benutzt man ไม่ zum Verneinen?", "Kham wa 'mai' chai patiset mai?", "yes_no", "a"],
+            ["greetings", 2, "'ไม่เข้าใจ' หมายถึงว่าเราเข้าใจไหม?", "Bedeutet ไม่เข้าใจ, dass wir etwas verstehen?", "'Mai khao chai' mai thueng wa rao khao chai mai?", "yes_no", "b"],
+
+            ["nature_weather", 1, "ฤดูไหนมีฝนตกบ่อย?", "In welcher Jahreszeit regnet es oft?", "Rue du nai mi fon tok boi?", "seasons", "b"],
+            ["nature_weather", 1, "ฤดูไหนอากาศเย็น?", "In welcher Jahreszeit ist es kühl?", "Rue du nai akat yen?", "seasons", "c"],
+            ["nature_weather", 1, "ฤดูไหนอากาศร้อน?", "In welcher Jahreszeit ist es heiß?", "Rue du nai akat ron?", "seasons", "a"],
+            ["nature_weather", 1, "แมลงอะไรดูดน้ำหวานจากดอกไม้?", "Welches Insekt trinkt den Nektar aus Blumen?", "Malaeng arai dut nam wan chak dokmai?", "flower_insects", "a"],
+            ["nature_weather", 1, "อะไรปลิวตามลมได้?", "Was kann im Wind davonfliegen?", "Arai plio tam lom dai?", "wind_items", "a"],
+            ["nature_weather", 2, "ผึ้งบินได้ไหม?", "Können Bienen fliegen?", "Phueng bin dai mai?", "yes_no", "a"],
+            ["nature_weather", 2, "ต้นไม้ต้องการน้ำไหม?", "Brauchen Bäume Wasser?", "Tonmai tongkan nam mai?", "yes_no", "a"],
+            ["nature_weather", 2, "น้ำทะเลมีรสเค็มไหม?", "Schmeckt Meerwasser salzig?", "Nam thale mi rot khem mai?", "yes_no", "a"],
+            ["nature_weather", 2, "ดอกไม้ต้องการแสงแดดไหม?", "Brauchen Blumen Sonnenlicht?", "Dokmai tongkan saeng daet mai?", "yes_no", "a"],
+            ["nature_weather", 2, "ฤดูหนาวเย็นกว่าฤดูร้อนไหม?", "Ist der Winter kühler als der Sommer?", "Rue du nao yen kwa rue du ron mai?", "yes_no", "a"],
+
+            ["thailand_places", 1, "หัวหินอยู่จังหวัดอะไร?", "In welcher Provinz liegt Hua Hin?", "Hua Hin yu changwat arai?", "places_new", "a"],
+            ["thailand_places", 1, "เกาะหลีเป๊ะอยู่จังหวัดอะไร?", "In welcher Provinz liegt Koh Lipe?", "Ko Lipe yu changwat arai?", "places_new", "b"],
+            ["thailand_places", 1, "อุทยานแห่งชาติเอราวัณอยู่จังหวัดอะไร?", "In welcher Provinz liegt der Erawan-Nationalpark?", "Utthayan haeng chat Erawan yu changwat arai?", "places_new", "c"],
+            ["thailand_places", 1, "หมู่บ้านรักไทยอยู่จังหวัดอะไร?", "In welcher Provinz liegt das Dorf Rak Thai?", "Mu ban Rak Thai yu changwat arai?", "places_new", "d"],
+            ["thailand_places", 1, "วัดพระธาตุดอยสุเทพอยู่จังหวัดอะไร?", "In welcher Provinz liegt Wat Phra That Doi Suthep?", "Wat Phra That Doi Suthep yu changwat arai?", "places_new", "e"],
+            ["thailand_places", 2, "ประเทศไทยอยู่ในเอเชียตะวันออกเฉียงใต้ไหม?", "Liegt Thailand in Südostasien?", "Prathet Thai yu nai Echia Tawan-ok Chiang Tai mai?", "yes_no", "a"],
+            ["thailand_places", 2, "เกาะหลีเป๊ะอยู่ในประเทศไทยไหม?", "Liegt Koh Lipe in Thailand?", "Ko Lipe yu nai prathet Thai mai?", "yes_no", "a"],
+            ["thailand_places", 2, "สตูลอยู่ทางใต้ของประเทศไทยไหม?", "Liegt Satun im Süden Thailands?", "Satun yu thang tai khong prathet Thai mai?", "yes_no", "a"],
+            ["thailand_places", 2, "หัวหินอยู่ติดทะเลไหม?", "Liegt Hua Hin am Meer?", "Hua Hin yu tit thale mai?", "yes_no", "a"],
+            ["thailand_places", 2, "ประเทศไทยมีหลายจังหวัดไหม?", "Hat Thailand viele Provinzen?", "Prathet Thai mi lai changwat mai?", "yes_no", "a"],
+
+            ["transport", 1, "รถอะไรมีสองล้อและมีเครื่องยนต์?", "Welches Fahrzeug hat zwei Räder und einen Motor?", "Rot arai mi song lo lae mi khrueang yon?", "vehicles_city", "b"],
+            ["transport", 1, "รถอะไรรับคนหลายคนในเมือง?", "Welches Fahrzeug befördert viele Menschen in der Stadt?", "Rot arai rap khon lai khon nai mueang?", "vehicles_city", "a"],
+            ["transport", 1, "รถอะไรเรียกให้มารับเราได้?", "Welches Fahrzeug können wir rufen, damit es uns abholt?", "Rot arai riak hai ma rap rao dai?", "vehicles_city", "d"],
+            ["transport", 1, "รถอะไรขนของหนัก?", "Welches Fahrzeug transportiert schwere Dinge?", "Rot arai khon khong nak?", "vehicles_city", "c"],
+            ["transport", 1, "คนป่วยฉุกเฉินไปโรงพยาบาลด้วยรถอะไร?", "Mit welchem Fahrzeug fährt man bei einem medizinischen Notfall ins Krankenhaus?", "Khon puai chukchoen pai rongphayaban duai rot arai?", "vehicles_emergency", "a"],
+            ["transport", 2, "คนขี่มอเตอร์ไซค์ควรใส่หมวกกันน็อกไหม?", "Sollten Motorradfahrer einen Helm tragen?", "Khon khi motosai khuan sai muak kan nok mai?", "yes_no", "a"],
+            ["transport", 2, "ในรถเราคาดเข็มขัดนิรภัยไหม?", "Schnallen wir uns im Auto an?", "Nai rot rao khat khemkhat niraphai mai?", "yes_no", "a"],
+            ["transport", 2, "คนขับควรมองถนนไหม?", "Soll der Fahrer auf die Straße schauen?", "Khon khap khuan mong thanon mai?", "yes_no", "a"],
+            ["transport", 2, "คนขับใช้โทรศัพท์ตอนขับรถได้ไหม?", "Darf der Fahrer während der Fahrt telefonieren?", "Khon khap chai thorasap ton khap rot dai mai?", "yes_no", "b"],
+            ["transport", 2, "เราควรข้ามถนนตรงทางม้าลายไหม?", "Sollten wir die Straße am Zebrastreifen überqueren?", "Rao khuan kham thanon trong thang ma lai mai?", "yes_no", "a"],
+
+            ["thai_culture", 1, "เงินไทยเรียกว่าอะไร?", "Wie heißt die thailändische Währung?", "Ngoen Thai riak wa arai?", "money", "b"],
+            ["thai_culture", 1, "ผู้ชายมักพูดคำไหนเพื่อความสุภาพ?", "Welches Wort benutzen Männer oft als Höflichkeitspartikel?", "Phu chai mak phut kham nai phuea khwam suphap?", "polite_men", "a"],
+            ["thai_culture", 1, "ผู้หญิงมักพูดคำไหนเพื่อความสุภาพ?", "Welches Wort benutzen Frauen oft als Höflichkeitspartikel?", "Phu ying mak phut kham nai phuea khwam suphap?", "polite_women", "b"],
+            ["thai_culture", 1, "คนไทยกินก๋วยเตี๋ยวด้วยอะไร?", "Womit isst man in Thailand Nudelsuppe?", "Khon Thai kin kuaitiao duai arai?", "noodle_tools", "a"],
+            ["thai_culture", 1, "ผ้าขาวม้าเป็นผ้าแบบไหน?", "Was für ein Tuch ist ein Pha Khao Ma?", "Pha khao ma pen pha baep nai?", "pha_khao_ma", "a"],
+            ["thai_culture", 2, "ก่อนเข้าบ้าน คนไทยมักถอดรองเท้าไหม?", "Ziehen Thailänder vor dem Betreten eines Hauses oft die Schuhe aus?", "Kon khao ban khon Thai mak thot rongthao mai?", "yes_no", "a"],
+            ["thai_culture", 2, "คนไทยมักสั่งอาหารหลายอย่างมากินด้วยกันไหม?", "Bestellen Thailänder oft mehrere Gerichte zum gemeinsamen Essen?", "Khon Thai mak sang ahan lai yang ma kin duai kan mai?", "yes_no", "a"],
+            ["thai_culture", 2, "เราควรเคารพผู้ใหญ่ไหม?", "Sollten wir Älteren Respekt zeigen?", "Rao khuan khaorop phu yai mai?", "yes_no", "a"],
+            ["thai_culture", 2, "คนไทยมีวันแม่ไหม?", "Gibt es in Thailand einen Muttertag?", "Khon Thai mi wan mae mai?", "yes_no", "a"],
+            ["thai_culture", 2, "คนไทยใช้ช้อนกินข้าวไหม?", "Benutzen Thailänder einen Löffel zum Essen von Reis?", "Khon Thai chai chon kin khao mai?", "yes_no", "a"]
+        ].map(makeBeginnerQuestion)
     ];
+
+    const legacyDifficultyReview = {
+        "thq-geo-001": 2, "thq-geo-002": 3, "thq-geo-003": 2,
+        "thq-geo-004": 3, "thq-geo-005": 4, "thq-geo-006": 5,
+        "thq-geo-007": 3, "thq-geo-008": 4, "thq-geo-009": 4,
+        "thq-geo-010": 4, "thq-geo-011": 5, "thq-geo-012": 3,
+        "thq-geo-013": 4, "thq-geo-014": 3, "thq-geo-015": 4,
+        "thq-geo-016": 3, "thq-geo-017": 4, "thq-geo-018": 4,
+        "thq-hist-001": 2, "thq-hist-002": 3, "thq-hist-003": 3,
+        "thq-hist-004": 3, "thq-hist-005": 4, "thq-hist-006": 5,
+        "thq-hist-007": 3, "thq-his-008": 4, "thq-his-009": 3,
+        "thq-his-010": 5, "thq-his-011": 5, "thq-his-012": 4,
+        "thq-his-013": 5, "thq-his-014": 5, "thq-his-015": 5,
+        "thq-his-016": 5, "thq-his-017": 4, "thq-his-018": 5,
+        "thq-cult-001": 2, "thq-cult-002": 2, "thq-cult-003": 2,
+        "thq-cult-004": 3, "thq-cult-005": 3, "thq-cult-006": 4,
+        "thq-cult-007": 2, "thq-cul-008": 3, "thq-cul-009": 4,
+        "thq-cul-010": 5, "thq-cul-011": 4, "thq-cul-012": 5,
+        "thq-cul-013": 4, "thq-cul-014": 5, "thq-cul-015": 5,
+        "thq-cul-016": 5, "thq-cul-017": 5, "thq-cul-018": 5,
+        "thq-food-001": 3, "thq-food-002": 2, "thq-food-003": 2,
+        "thq-food-004": 2, "thq-food-005": 2, "thq-food-006": 3,
+        "thq-food-007": 2, "thq-foo-008": 3, "thq-foo-009": 3,
+        "thq-foo-010": 4, "thq-foo-011": 4, "thq-foo-012": 4,
+        "thq-foo-013": 5, "thq-foo-014": 4, "thq-foo-015": 4,
+        "thq-foo-016": 4, "thq-foo-017": 4, "thq-foo-018": 4,
+        "thq-nature-001": 2, "thq-nature-002": 2, "thq-nature-003": 3,
+        "thq-nature-004": 4, "thq-nature-005": 4, "thq-nature-006": 4,
+        "thq-nature-007": 3, "thq-nat-008": 4, "thq-nat-009": 4,
+        "thq-nat-010": 5, "thq-nat-011": 4, "thq-nat-012": 5,
+        "thq-nat-013": 5, "thq-nat-014": 5, "thq-nat-015": 5,
+        "thq-nat-016": 4, "thq-nat-017": 4, "thq-nat-018": 5,
+        "thq-sport-001": 2, "thq-sport-002": 3, "thq-sport-003": 4,
+        "thq-sport-004": 3, "thq-sport-005": 3, "thq-sport-006": 5,
+        "thq-sport-007": 4, "thq-sport-008": 4, "thq-sport-009": 5,
+        "thq-sport-010": 3, "thq-sport-011": 4, "thq-sport-012": 4,
+        "thq-sport-013": 5, "thq-sport-014": 5, "thq-sport-015": 5,
+        "thq-sport-016": 5, "thq-sport-017": 5, "thq-sport-018": 5,
+        "thq-rel-005": 4, "thq-rel-006": 4, "thq-rel-007": 5,
+        "thq-rel-008": 3, "thq-rel-009": 5, "thq-rel-010": 5,
+        "thq-rel-011": 5, "thq-rel-012": 5, "thq-rel-013": 5,
+        "thq-rel-014": 4, "thq-rel-015": 4, "thq-rel-016": 4,
+        "thq-rel-017": 4,
+        "thq-lan-005": 3, "thq-lan-006": 3, "thq-lan-007": 3,
+        "thq-lan-008": 4, "thq-lan-009": 4, "thq-lan-010": 4,
+        "thq-lan-011": 3, "thq-lan-012": 4, "thq-lan-013": 5,
+        "thq-lan-014": 3, "thq-lan-015": 4, "thq-lan-016": 4,
+        "thq-lan-017": 3
+    };
+    const legacyQuestions = questions.filter(question =>
+        !question.id.startsWith("thq-beginner-")
+    );
+    const unreviewedLegacyQuestions = legacyQuestions.filter(question =>
+        !Object.prototype.hasOwnProperty.call(legacyDifficultyReview, question.id)
+    );
+    if (
+        unreviewedLegacyQuestions.length > 0 ||
+        Object.keys(legacyDifficultyReview).length !== legacyQuestions.length
+    ) {
+        throw new Error(
+            `Schwierigkeitsbewertung unvollständig: ${unreviewedLegacyQuestions.map(question => question.id).join(", ")}`
+        );
+    }
+    for (const question of legacyQuestions) {
+        question.difficulty = legacyDifficultyReview[question.id];
+    }
 
     const data = { categories, questions };
 

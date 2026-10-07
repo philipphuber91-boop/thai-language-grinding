@@ -4,9 +4,9 @@ const data = require("../data/thailand-quiz.js");
 const quiz = require("../js/thailand-quiz-engine.js");
 
 test("question bank has complete, valid mixed-category questions", () => {
-    assert.equal(data.questions.length, 134);
+    assert.equal(data.questions.length, 334);
     assert.deepEqual(quiz.validateQuestionBank(data), []);
-    assert.equal(new Set(data.questions.map(question => question.categoryId)).size, 8);
+    assert.equal(new Set(data.questions.map(question => question.categoryId)).size, 18);
     assert.ok(data.questions.every(question =>
         question.transliteration.question &&
         question.options.every(option => option.transliteration) &&
@@ -16,6 +16,43 @@ test("question bank has complete, valid mixed-category questions", () => {
         !JSON.stringify(question).includes("<") &&
         !JSON.stringify(question).includes("במשך")
     ));
+});
+
+test("beginner question categories provide twenty Thai-first questions at levels one and two", () => {
+    const beginnerQuestions = data.questions.filter(question =>
+        question.id.startsWith("thq-beginner-")
+    );
+    const legacyQuestions = data.questions.filter(question =>
+        !question.id.startsWith("thq-beginner-")
+    );
+    const counts = new Map();
+
+    for (const question of beginnerQuestions) {
+        counts.set(
+            `${question.categoryId}:${question.difficulty}`,
+            (counts.get(`${question.categoryId}:${question.difficulty}`) || 0) + 1
+        );
+    }
+
+    assert.equal(beginnerQuestions.length, 200);
+    assert.ok(beginnerQuestions.every(question => question.difficulty <= 2));
+    assert.equal(legacyQuestions.length, 134);
+    assert.ok(legacyQuestions.every(question => question.difficulty >= 2));
+    assert.equal(counts.size, 20);
+    assert.ok([...counts.values()].every(count => count === 10));
+
+    const secondPack = beginnerQuestions.filter(question =>
+        Number(question.id.slice(-3)) >= 11
+    );
+    const previousQuestions = data.questions.filter(question =>
+        !secondPack.includes(question)
+    );
+    const previousTexts = new Set(previousQuestions.map(question => question.question.th.trim()));
+    const secondPackTexts = secondPack.map(question => question.question.th.trim());
+
+    assert.equal(secondPack.length, 100);
+    assert.equal(new Set(secondPackTexts).size, secondPack.length);
+    assert.ok(secondPackTexts.every(text => !previousTexts.has(text)));
 });
 
 test("round selection returns ten unique questions with mixed categories and levels", () => {
@@ -35,14 +72,14 @@ test("round selection avoids recently played questions when enough alternatives 
 });
 
 test("round filters and short pools return only matching available questions", () => {
-    const filters = { categories: ["geography"], difficulties: [1] };
+    const filters = { categories: ["geography"], difficulties: [2] };
     const filtered = quiz.filterQuestions(data.questions, filters);
     const round = quiz.selectRound(data.questions, [], () => 0.4, 10, filters);
 
     assert.ok(filtered.length > 0);
     assert.equal(round.length, filtered.length);
     assert.ok(round.every(question =>
-        question.categoryId === "geography" && question.difficulty === 1
+        question.categoryId === "geography" && question.difficulty === 2
     ));
     assert.deepEqual(quiz.filterQuestions(data.questions, { categories: [] }), []);
 });
