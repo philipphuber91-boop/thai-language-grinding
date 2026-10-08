@@ -851,6 +851,43 @@
         yes_no: [
             ["ใช่", "Ja", "chai"],
             ["ไม่ใช่", "Nein", "mai chai"]
+        ],
+        health_carer: [
+            ["ครู", "Lehrer", "khru"],
+            ["ช่าง", "Handwerker", "chang"],
+            ["หมอ", "Arzt", "mo"],
+            ["พ่อครัว", "Koch", "pho khrua"]
+        ],
+        pharmacy_place: [
+            ["ร้านขายยา", "Apotheke", "ran khai ya"],
+            ["ร้านหนังสือ", "Buchhandlung", "ran nangsue"],
+            ["ร้านเสื้อผ้า", "Bekleidungsgeschäft", "ran suea pha"],
+            ["ตลาดสด", "Frischmarkt", "talat sot"]
+        ],
+        body_cover: [
+            ["ปาก", "Mund", "pak"],
+            ["ตา", "Auge", "ta"],
+            ["หู", "Ohr", "hu"],
+            ["เท้า", "Fuß", "thao"]
+        ],
+        hour_minutes: [
+            ["60 นาที", "60 Minuten", "hok sip nathi"],
+            ["30 นาที", "30 Minuten", "sam sip nathi"],
+            ["100 นาที", "100 Minuten", "nueng roi nathi"],
+            ["24 นาที", "24 Minuten", "yi sip si nathi"]
+        ],
+        umbrella_use: [
+            ["ปากกา", "Stift", "pakka"],
+            ["เก้าอี้", "Stuhl", "kao-i"],
+            ["หนังสือ", "Buch", "nang-sue"],
+            ["กันฝน", "Schutz vor Regen", "kan fon"]
+        ],
+        home_use_food: [
+            ["ประตู", "Tür", "pratu"],
+            ["มือ", "Hand", "mue"],
+            ["ผ้าขนหนู", "Handtuch", "pha khon nu"],
+            ["ตู้เสื้อผ้า", "Kleiderschrank", "tu suea pha"],
+            ["อาหาร", "Essen", "ahan"]
         ]
     };
 
@@ -1672,7 +1709,7 @@
         makeQuestion(
             "thq-foo-009", "food", 2, "single_choice",
             "ผลไม้ชนิดใดได้รับยกย่องให้เป็น 'ราชาแห่งผลไม้' (King of Fruits) ในประเทศไทย?",
-            "Welche Frucht wird in Thailand als die 'Königin der Früchte' (King of Fruits) bezeichnet?",
+            "Welche Frucht wird in Thailand als der 'König der Früchte' (King of Fruits) bezeichnet?",
             "Phonlamai chanit dai dairap yokyong hai pen 'racha haeng phonlamai' nai prathet Thai?",
             [
                 ["a", "ทุเรียน", "Durian", "Thurian"],
@@ -1714,13 +1751,13 @@
             ],
             "a",
             "ค้างคาวคุณกิตติพบครั้งแรกในจังหวัดกาญจนบุรี มีน้ำหนักเพียงประมาณ 2 กรัมและเป็นสัตว์เลี้ยงลูกด้วยนมที่เล็กที่สุดในโลกชนิดหนึ่ง",
-            "Die Hummelfledermaus wurde in Kanchanaburi entdeckt, wiegt nur rund 2 Gramm und ist das kleinste Säugetier unseres Planeten.",
+            "Die Hummelfledermaus wurde in Kanchanaburi entdeckt, wiegt nur rund 2 Gramm und ist eines der kleinsten Säugetiere der Welt.",
             [{ title: "EDGE of Existence – Kitti's Hog-nosed Bat", url: "https://www.edgeofexistence.org/" }]
         ),
         makeQuestion(
             "thq-sport-008", "sport", 2, "single_choice",
             "กีฬามวยไทยได้รับการขนานนามว่าเป็น 'ศาสตร์แห่งอาวุธทั้ง...' กี่ชนิด?",
-            "Als die 'Kunst der ... Waffen' wird Muay Thai wegen des Einsatzes von Fäusten, Ellbogen, Knien und Schienbeinen bezeichnet?",
+            "Muay Thai wird als 'Kunst der ... Waffen' bezeichnet. Wie viele Waffen sind damit gemeint?",
             "Kila muai Thai dairap kan khanan nam wa pen 'sat haeng awut thang...' ki chanit?",
             [
                 ["a", "แปด (8)", "Acht (8) Gliedmaßen", "Paet"],
@@ -1913,7 +1950,7 @@
         makeQuestion(
             "thq-his-010", "history", 3, "single_choice",
             "พระมหากษัตริย์ไทยพระองค์ใดทรงริเริ่มการเลิกทาสและพัฒนาระบบรถไฟ โทรเลข และการประปาในสยาม?",
-            "Welcher thailändische König schaffte die Sklaverei ab und modernisierte Siam mit Eisenbahn, Telegraf und Schulwesen?",
+            "Welcher thailändische König schaffte die Sklaverei ab und modernisierte Siam mit Eisenbahn, Telegraf und Wasserversorgung?",
             "Phra maha kasat Thai phra ong dai song ri roem kan loek that lae phatthana rabop rotfai, thoralek lae kan prapa nai Sayam?",
             [
                 ["a", "พระบาทสมเด็จพระจุลจอมเกล้าเจ้าอยู่หัว (รัชกาลที่ 5)", "König Chulalongkorn (Rama V.)", "Phra Bat Somdet Phra Chulachomklao Chao Yu Hua (Ratchakan thi 5)"],
@@ -2057,7 +2094,7 @@
         makeQuestion(
             "thq-sport-011", "sport", 3, "single_choice",
             "สนามมวยไทยมาตรฐานแห่งแรกของประเทศไทยที่เปิดดำเนินการอย่างเป็นทางการในกรุงเทพฯ คือสนามใด?",
-            "Welches war das erste offizielle, permanente Muay-Thai-Stadion Thailands, das 1945 in Bangkok eröffnet wurde?",
+            "Welches war das erste offizielle, permanente Muay-Thai-Stadion Thailands in Bangkok?",
             "Sanam muai Thai mattrathan haeng raek khong prathet Thai thi poet damnoen kan yang pen thangkan nai Krung Thep khue sanam dai?",
             [
                 ["a", "สนามมวยราชดำเนิน", "Rajadamnern-Stadion", "Sanam muai Ratchadamnoen"],
@@ -2314,7 +2351,7 @@
         makeQuestion(
             "thq-sport-013", "sport", 3, "single_choice",
             "การแข่งเรือยาวประเพณี ซึ่งจัดขึ้นในฤดูน้ำหลากช่วงเทศกาลออกพรรษา นิยมใช้ฝีพายพายเรือที่ขุดมาจากไม้ชนิดใดเป็นส่วนใหญ่?",
-            "Aus welchen edlen Baumstämmen wurden die traditionellen Langboote (Ruea Yao) für die herbstlichen Flussregatten ursprünglich gehauen?",
+            "Aus welchem Holz werden die traditionellen Langboote (Ruea Yao) bei den herbstlichen Flussregatten hauptsächlich gefertigt?",
             "Kan khaeng ruea yao prapheni sueng chat khuen nai ruedu nam lak chuang thetsakan ok phansa, niyom chai fiphai phai ruea thi khut ma chak mai chanit dai pen suan yai?",
             [
                 ["a", "ไม้ตะเคียน", "Takian-Holz (Hopea odorata)", "Mai takhian"],
@@ -2413,7 +2450,7 @@
             "Aus dem Zusammenfluss welcher Flüsse entsteht Thailands Lebensader, der Chao Phraya, bei Pak Nam Pho in Nakhon Sawan?",
             "Maenam sai samkhan thi sut khong Thai khue Maenam Chao Phraya, sueng koet chak kan ruam tua kan khong maenam sai dai thi Pak Nam Pho changwat Nakhon Sawan?",
             [
-                ["a", "แม่น้ำปิงและแม่น้ำน่าน", "Ping und Nan (zusammen mit Wang und Yom)", "Maenam Ping lae Maenam Nan"],
+                ["a", "แม่น้ำปิงและแม่น้ำน่าน", "Ping und Nan", "Maenam Ping lae Maenam Nan"],
                 ["b", "แม่น้ำโขงและแม่น้ำมูล", "Mekong und Mun", "Maenam Khong lae Maenam Mun"],
                 ["c", "แม่น้ำตาปีและแม่น้ำคีรีรัฐ", "Tapi und Khirirat", "Maenam Tapi lae Maenam Khirirat"],
                 ["d", "แม่น้ำป่าสักและแม่น้ำลพบุรี", "Pa Sak und Lopburi", "Maenam Pa Sak lae Maenam Lop Buri"]
@@ -3079,7 +3116,7 @@
             ["daily_life", 1, "เราเขียนด้วยอะไร?", "Womit schreiben wir?", "Rao khian duai arai?", "daily_life", "a"],
             ["daily_life", 1, "เรานั่งบนอะไร?", "Worauf sitzen wir?", "Rao nang bon arai?", "daily_life", "b"],
             ["daily_life", 1, "เราอ่านอะไร?", "Was lesen wir?", "Rao an arai?", "daily_life", "c"],
-            ["daily_life", 1, "เราใช้ร่มทำอะไร?", "Wofür benutzen wir einen Regenschirm?", "Rao chai rom tham arai?", "daily_life", "d"],
+            ["daily_life", 1, "เราใช้ร่มทำอะไร?", "Wofür benutzen wir einen Regenschirm?", "Rao chai rom tham arai?", "umbrella_use", "d"],
             ["daily_life", 1, "เรานอนบนอะไร?", "Worauf schlafen wir?", "Rao non bon arai?", "household", "a"],
             ["daily_life", 2, "เราเขียนด้วยปากกาไหม?", "Schreiben wir mit einem Stift?", "Rao khian duai pakka mai?", "yes_no", "a"],
             ["daily_life", 2, "เรานั่งบนเก้าอี้ไหม?", "Sitzen wir auf einem Stuhl?", "Rao nang bon kao-i mai?", "yes_no", "a"],
@@ -3099,7 +3136,7 @@
             ["greetings", 2, "คำว่า 'ไม่' แปลว่า 'ใช่' ไหม?", "Bedeutet ไม่ „Ja“?", "Kham wa 'mai' plae wa 'chai' mai?", "yes_no", "b"],
 
             ["nature_weather", 1, "อะไรให้แสงสว่างตอนกลางวัน?", "Was spendet tagsüber Licht?", "Arai hai saeng sawang ton klangwan?", "nature", "a"],
-            ["nature_weather", 1, "ฝนมาจากไหน?", "Woher kommt der Regen?", "Fon ma chak nai?", "nature", "b"],
+            ["nature_weather", 1, "ฝนมาจากไหน?", "Woher kommt der Regen?", "Fon ma chak nai?", "nature", "c"],
             ["nature_weather", 1, "อะไรอยู่บนฟ้าและมีสีขาว?", "Was ist am Himmel und weiß?", "Arai yu bon fa lae mi si khao?", "nature", "c"],
             ["nature_weather", 1, "อะไรส่องแสงบนฟ้าตอนกลางคืน?", "Was leuchtet nachts am Himmel?", "Arai song saeng bon fa ton klang khuen?", "nature", "d"],
             ["nature_weather", 1, "เราใช้อะไรกันฝน?", "Womit schützen wir uns vor Regen?", "Rao chai arai kan fon?", "daily_life", "d"],
@@ -3188,7 +3225,7 @@
             ["daily_life", 1, "เราใช้กุญแจเปิดอะไร?", "Was öffnen wir mit einem Schlüssel?", "Rao chai kunchae poet arai?", "home_use", "a"],
             ["daily_life", 1, "เราเช็ดตัวด้วยอะไร?", "Womit trocknen wir uns ab?", "Rao chet tua duai arai?", "home_use", "c"],
             ["daily_life", 1, "เราเก็บเสื้อผ้าไว้ที่ไหน?", "Wo bewahren wir Kleidung auf?", "Rao kep suea pha wai thi nai?", "home_use", "d"],
-            ["daily_life", 1, "เราใช้จานใส่อะไร?", "Wofür benutzen wir einen Teller?", "Rao chai chan sai arai?", "home_use", "e"],
+            ["daily_life", 1, "เราใช้จานใส่อะไร?", "Wofür benutzen wir einen Teller?", "Rao chai chan sai arai?", "home_use_food", "e"],
             ["daily_life", 1, "เราใช้สบู่ล้างอะไร?", "Was waschen wir mit Seife?", "Rao chai sabu lang arai?", "home_use", "b"],
             ["daily_life", 2, "ตอนเช้าเราแปรงฟันไหม?", "Putzen wir morgens die Zähne?", "Ton chao rao praeng fan mai?", "yes_no", "a"],
             ["daily_life", 2, "ก่อนกินข้าวเราล้างมือไหม?", "Waschen wir uns vor dem Essen die Hände?", "Kon kin khao rao lang mue mai?", "yes_no", "a"],
@@ -3262,8 +3299,8 @@
             ["school", 2, "นักเรียนใส่กระเป๋าไว้ใต้โต๊ะได้ไหม?", "Können Schüler ihre Tasche unter den Tisch stellen?", "Nakrian sai krapao wai tai to dai mai?", "yes_no", "a"],
             ["school", 2, "โรงเรียนมีห้องเรียนไหม?", "Hat eine Schule Klassenzimmer?", "Rongrian mi hong rian mai?", "yes_no", "a"],
 
-            ["time", 1, "หนึ่งชั่วโมงมีกี่นาที?", "Wie viele Minuten hat eine Stunde?", "Nueng chuamong mi ki nathi?", "minute_seconds", "a"],
-            ["time", 1, "ครึ่งชั่วโมงมีกี่นาที?", "Wie viele Minuten hat eine halbe Stunde?", "Khrueng chuamong mi ki nathi?", "minute_seconds", "c"],
+            ["time", 1, "หนึ่งชั่วโมงมีกี่นาที?", "Wie viele Minuten hat eine Stunde?", "Nueng chuamong mi ki nathi?", "hour_minutes", "a"],
+            ["time", 1, "ครึ่งชั่วโมงมีกี่นาที?", "Wie viele Minuten hat eine halbe Stunde?", "Khrueng chuamong mi ki nathi?", "hour_minutes", "b"],
             ["time", 1, "วันไหนอยู่หลังวันอังคาร?", "Welcher Tag kommt nach Dienstag?", "Wan nai yu lang wan angkhan?", "weekday_order", "c"],
             ["time", 1, "เที่ยงตรงคือกี่โมง?", "Wie spät ist es genau um zwölf Uhr mittags?", "Thiang trong khue ki mong?", "noon_time", "c"],
             ["time", 1, "เราใช้ปฏิทินดูอะไร?", "Was schauen wir im Kalender nach?", "Rao chai pathithin du arai?", "calendar_info", "a"],
@@ -3284,11 +3321,11 @@
             ["shopping", 2, "ร้านลดราคาทำให้ของถูกลงไหม?", "Macht ein Rabatt Waren günstiger?", "Ran lot rakha tham hai khong thuk long mai?", "yes_no", "a"],
             ["shopping", 2, "เราควรตรวจเงินทอนหลังซื้อของไหม?", "Sollten wir nach dem Einkauf das Rückgeld prüfen?", "Rao khuan truat ngoen thon lang sue khong mai?", "yes_no", "a"],
 
-            ["health", 1, "ใครดูแลคนป่วย?", "Wer kümmert sich um kranke Menschen?", "Khrai dulae khon puai?", "school_roles", "c"],
-            ["health", 1, "เราใช้อะไรวัดอุณหภูมิ?", "Womit messen wir die Temperatur?", "Rao chai arai wat unหภูมิ?", "thermometer", "a"],
-            ["health", 1, "เราซื้อยาได้ที่ไหน?", "Wo kaufen wir Medizin?", "Rao sue ya dai thi nai?", "pharmacy_goods", "a"],
+            ["health", 1, "ใครดูแลคนป่วย?", "Wer kümmert sich um kranke Menschen?", "Khrai dulae khon puai?", "health_carer", "c"],
+            ["health", 1, "เราใช้อะไรวัดอุณหภูมิ?", "Womit messen wir die Temperatur?", "Rao chai arai wat unhaphum?", "thermometer", "a"],
+            ["health", 1, "เราซื้อยาได้ที่ไหน?", "Wo kaufen wir Medizin?", "Rao sue ya dai thi nai?", "pharmacy_place", "a"],
             ["health", 1, "เวลาไม่สบาย เราใส่อะไรปิดปากและจมูก?", "Was tragen wir bei Krankheit vor Mund und Nase?", "Wela mai sabai rao sai arai pit pak lae chamuk?", "health_mask", "a"],
-            ["health", 1, "เวลาไอ เราควรปิดอะไร?", "Was sollten wir beim Husten bedecken?", "Wela ai rao khuan pit arai?", "body", "a"],
+            ["health", 1, "เวลาไอ เราควรปิดอะไร?", "Was sollten wir beim Husten bedecken?", "Wela ai rao khuan pit arai?", "body_cover", "a"],
             ["health", 2, "ถ้ามีไข้ ตัวเรามักเป็นอย่างไร?", "Wie fühlt sich der Körper bei Fieber oft an?", "Tha mi khai tua rao mak pen yangrai?", "fever", "a"],
             ["health", 2, "ถ้ามีแผล เราใช้พลาสเตอร์ปิดอะไร?", "Was bedecken wir mit einem Pflaster?", "Tha mi phlae rao chai phlaster pit arai?", "wound", "a"],
             ["health", 2, "เราควรกินยาตามคำแนะนำ", "Wir sollten Medizin nach Anweisung einnehmen.", "Rao khuan kin ya tam kham nae nam.", "true_false", "a", "true_false"],
@@ -3333,7 +3370,7 @@
             ["home", 1, "เรากินข้าวเย็นในห้องไหน?", "In welchem Raum essen wir zu Abend?", "Rao kin khao yen nai hong nai?", "home_dining", "a"],
             ["home", 1, "โซฟามักอยู่ในห้องไหน?", "In welchem Raum steht meistens ein Sofa?", "Sofa mak yu nai hong nai?", "home_living", "a"],
             ["home", 1, "เราจอดรถไว้ที่ไหน?", "Wo parken wir ein Auto?", "Rao chot rot wai thi nai?", "home_garage", "a"],
-            ["home", 2, "หน้าต่างอยู่ส่วนไหนของห้อง?", "Wo im Zimmer befindet sich ein Fenster?", "Natang yu suan nai khong hong?", "room_wall", "a"],
+            ["home", 2, "หน้าต่างอยู่ส่วนไหนของห้อง?", "Wo im Zimmer befindet sich ein Fenster?", "Na tang yu suan nai khong hong?", "room_wall", "a"],
             ["home", 2, "เราใช้กุญแจเปิดประตูที่ล็อกไหม?", "Öffnen wir eine verschlossene Tür mit einem Schlüssel?", "Rao chai kunchae poet pratu thi lok mai?", "door_key", "a"],
             ["home", 2, "ห้องนอนใช้ทำอาหาร", "Im Schlafzimmer kocht man.", "Hong non chai tham ahan.", "true_false", "b", "true_false"],
             ["home", 2, "ห้องน้ำมีฝักบัวไหม?", "Hat ein Badezimmer eine Dusche?", "Hongnam mi fakbua mai?", "yes_no", "a"],
@@ -3346,7 +3383,7 @@
             ["music_art", 1, "ใครร้องเพลง?", "Wer singt Lieder?", "Khrai rong phleng?", "jobs_singer", "a"],
             ["music_art", 2, "ขลุ่ยเล่นด้วยการเป่า", "Eine Flöte spielt man durch Hineinblasen.", "Khlui len duai kan pao.", "true_false", "a", "true_false"],
             ["music_art", 2, "เครื่องดนตรีอะไรใช้เป่า?", "Welches Instrument spielt man durch Hineinblasen?", "Khrueang dontri arai chai pao?", "music_flute", "a"],
-            ["music_art", 2, "เครื่องดนตรีอะไรใช้ตีให้เกิดเสียง?", "Welches Instrument schlägt man, um einen Ton zu erzeugen?", "Khrueang dontri arai chai ti hai koet siang?", "music_struck", "a"],
+            ["music_art", 2, "เครื่องดนตรีอะไรใช้ตีสองชิ้นกระทบกัน?", "Welches Instrument wird gespielt, indem man zwei Teile gegeneinanderschlägt?", "Khrueang dontri arai chai ti song chin kratop kan?", "music_struck", "a"],
             ["music_art", 2, "คนเต้นตามเพลงได้ไหม?", "Kann man zu Musik tanzen?", "Khon ten tam phleng dai mai?", "yes_no", "a"],
             ["music_art", 2, "วิทยุเปิดเพลงได้ไหม?", "Kann ein Radio Musik abspielen?", "Withayu poet phleng dai mai?", "yes_no", "a"],
 
