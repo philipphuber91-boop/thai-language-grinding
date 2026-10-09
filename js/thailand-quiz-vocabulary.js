@@ -56,9 +56,9 @@
                     ...word,
                     ...existing,
                     meanings: [...new Set([...existing.meanings, ...word.meanings])],
-                    syllables: existing.syllables.length > 0
-                        ? existing.syllables
-                        : word.syllables
+                    syllables: word.syllables.length > 0
+                        ? word.syllables
+                        : existing.syllables
                 }
                 : word);
         }

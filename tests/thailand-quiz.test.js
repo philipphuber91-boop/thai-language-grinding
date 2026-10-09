@@ -4,7 +4,7 @@ const data = require("../data/thailand-quiz.js");
 const quiz = require("../js/thailand-quiz-engine.js");
 
 test("question bank has complete, valid mixed-category questions", () => {
-    assert.equal(data.questions.length, 434);
+    assert.equal(data.questions.length, 534);
     assert.deepEqual(quiz.validateQuestionBank(data), []);
     assert.equal(new Set(data.questions.map(question => question.categoryId)).size, 28);
     assert.ok(data.questions.every(question =>
@@ -36,7 +36,7 @@ test("beginner categories provide varied Thai-first questions at levels one and 
 
     assert.equal(beginnerQuestions.length, 300);
     assert.ok(beginnerQuestions.every(question => question.difficulty <= 2));
-    assert.equal(legacyQuestions.length, 134);
+    assert.equal(legacyQuestions.length, 234);
     assert.ok(legacyQuestions.every(question => question.difficulty >= 2));
     assert.equal(counts.size, 40);
     assert.ok([...counts.values()].every(count => count === 5 || count === 10));
