@@ -7868,6 +7868,1606 @@
             [{"title":"Tourism Authority of Thailand – Yi Peng Festival Chiang Mai","url":"https://www.tourismthailand.org/"}]
         ),
 
+        makeQuestion(
+            "thq-beg-201", "geography", 1, "single_choice",
+            "แม่น้ำใดเป็นพรมแดนระหว่างไทยกับลาว?",
+            "Welcher Fluss bildet über weite Strecken die Grenze zwischen Thailand und Laos?",
+            "mɛ̂ɛ-náam dai bpen phrom daen rá wàang Thai gàp Lao ?",
+            [
+                ["a", "แม่น้ำโขง", "Mekong", "mɛ̂ɛ-náam Khǒng"],
+                ["b", "แม่น้ำเจ้าพระยา", "Chao Phraya", "mɛ̂ɛ-náam Jâo-phrá-yaa"],
+                ["c", "แม่น้ำดานูบ", "Donau", "mɛ̂ɛ-náam daa nûup"],
+                ["d", "แม่น้ำไรน์", "Rhein", "mɛ̂ɛ-náam rai"]
+            ],
+            "a",
+            "คำตอบคือ แม่น้ำโขง",
+            "Die richtige Antwort ist: Mekong.",
+            [{"title":"Tourism Authority of Thailand","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-202", "geography", 1, "single_choice",
+            "เกาะสมุยอยู่ในจังหวัดใด?",
+            "In welcher Provinz liegt die Insel Koh Samui?",
+            "Kò Sàmui yùu nai changwàt dai ?",
+            [
+                ["a", "สุราษฎร์ธานี", "Surat Thani", "Sùrat Thani"],
+                ["b", "เชียงใหม่", "Chiang Mai", "chiiang-mài"],
+                ["c", "เลย", "Loei", "loei"],
+                ["d", "ตราด", "Trat", "tràat"]
+            ],
+            "a",
+            "คำตอบคือ สุราษฎร์ธานี",
+            "Die richtige Antwort ist: Surat Thani.",
+            [{"title":"Tourism Authority of Thailand","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-203", "geography", 1, "single_choice",
+            "เกาะช้างอยู่ในจังหวัดใด?",
+            "Zu welcher Provinz gehört die Insel Koh Chang?",
+            "Kò Cháng yùu nai changwàt dai ?",
+            [
+                ["a", "ตราด", "Trat", "tràat"],
+                ["b", "ภูเก็ต", "Phuket", "phuu-gèt"],
+                ["c", "อุดรธานี", "Udon Thani", "Ùdon Thani"],
+                ["d", "ลำปาง", "Lampang", "lam paang"]
+            ],
+            "a",
+            "คำตอบคือ ตราด",
+            "Die richtige Antwort ist: Trat.",
+            [{"title":"Tourism Authority of Thailand","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-204", "geography", 1, "single_choice",
+            "อุทยานแห่งชาติภูกระดึงอยู่ในจังหวัดใด?",
+            "In welcher Provinz liegt der Nationalpark Phu Kradueng?",
+            "ùtháyan hàeng chât phuu krà dʉng yùu nai changwàt dai ?",
+            [
+                ["a", "เลย", "Loei", "loei"],
+                ["b", "กระบี่", "Krabi", "Krabi"],
+                ["c", "พระนครศรีอยุธยา", "Ayutthaya", "phrá ná khɔɔn sǐi à yút thá yaa"],
+                ["d", "ชลบุรี", "Chonburi", "Chon bù rii"]
+            ],
+            "a",
+            "คำตอบคือ เลย",
+            "Die richtige Antwort ist: Loei.",
+            [{"title":"Tourism Authority of Thailand","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-205", "geography", 1, "single_choice",
+            "ภาคกลางของไทยมีชื่อเสียงเรื่องใด?",
+            "Wofür ist die zentrale Ebene Thailands besonders bekannt?",
+            "phâak klaang khɔ̌ɔng Thai mii chûue sǐang rʉ̂ang dai ?",
+            [
+                ["a", "ที่ราบอุดมสมบูรณ์และนาข้าว", "Fruchtbare Ebenen und Reisfelder", "thîi râap ù dom sǒm buun lɛ́ naa khâao"],
+                ["b", "ธารน้ำแข็ง", "Gletscher", "thaan nam khaeng"],
+                ["c", "ทะเลทราย", "Wüsten", "thá-lay sai"],
+                ["d", "ภูเขาไฟที่ยังปะทุ", "Aktive Vulkane", "phuu-khǎo-fai thîi yang pà tʰú"]
+            ],
+            "a",
+            "คำตอบคือ ที่ราบอุดมสมบูรณ์และนาข้าว",
+            "Die richtige Antwort ist: Fruchtbare Ebenen und Reisfelder.",
+            [{"title":"Tourism Authority of Thailand","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-206", "geography", 1, "single_choice",
+            "ภาคใต้ของไทยตั้งอยู่บนคาบสมุทรใด?",
+            "Auf welcher Halbinsel liegt der Süden Thailands?",
+            "phâak dtâi khɔ̌ɔng Thai tâng yùu bon khap samut dai ?",
+            [
+                ["a", "คาบสมุทรมลายู", "Malaiische Halbinsel", "khap samut má laa yuu"],
+                ["b", "คาบสมุทรไอบีเรีย", "Iberische Halbinsel", "khap samut ai bii ria"],
+                ["c", "คาบสมุทรอาหรับ", "Arabische Halbinsel", "khap samut aa ràp"],
+                ["d", "คาบสมุทรบอลข่าน", "Balkanhalbinsel", "khap samut bon khàan"]
+            ],
+            "a",
+            "คำตอบคือ คาบสมุทรมลายู",
+            "Die richtige Antwort ist: Malaiische Halbinsel.",
+            [{"title":"Tourism Authority of Thailand","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-207", "geography", 1, "single_choice",
+            "น้ำตกเอราวัณอยู่ในจังหวัดใด?",
+            "In welcher Provinz befinden sich die Erawan-Wasserfälle?",
+            "nám-dtòk Ee raa wan yùu nai changwàt dai ?",
+            [
+                ["a", "กาญจนบุรี", "Kanchanaburi", "Kanchànábùri"],
+                ["b", "นครสวรรค์", "Nakhon Sawan", "Nákhon Sàwán"],
+                ["c", "เชียงราย", "Chiang Rai", "Chiang Rai"],
+                ["d", "ระยอง", "Rayong", "rá yɔɔng"]
+            ],
+            "a",
+            "คำตอบคือ กาญจนบุรี",
+            "Die richtige Antwort ist: Kanchanaburi.",
+            [{"title":"Tourism Authority of Thailand","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-208", "geography", 1, "single_choice",
+            "เมืองใดอยู่ทางเหนือสุดของตัวเลือกเหล่านี้?",
+            "Welche dieser Städte liegt im äußersten Norden Thailands?",
+            "mʉang dai yùu thaang nǔea sùt khɔ̌ɔng dtua lʉ̂ak lào níi ?",
+            [
+                ["a", "เชียงราย", "Chiang Rai", "Chiang Rai"],
+                ["b", "หาดใหญ่", "Hat Yai", "hàat yài"],
+                ["c", "พัทยา", "Pattaya", "Phat-thá-yaa"],
+                ["d", "หัวหิน", "Hua Hin", "hǔa-hǐn"]
+            ],
+            "a",
+            "คำตอบคือ เชียงราย",
+            "Die richtige Antwort ist: Chiang Rai.",
+            [{"title":"Tourism Authority of Thailand","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-209", "geography", 2, "single_choice",
+            "หาดไร่เลย์ซึ่งมีหน้าผาหินปูนสำหรับปีนผาอยู่ในจังหวัดใด?",
+            "Zu welcher Provinz gehört Railay, ein bekanntes Ziel zum Klettern an Kalksteinfelsen?",
+            "hat râi lee sûeng mii-nâa phǎa hin pun sǎm-ràp piin phǎa yùu nai changwàt dai ?",
+            [
+                ["a", "กระบี่", "Krabi", "Krabi"],
+                ["b", "ตราด", "Trat", "tràat"],
+                ["c", "สุโขทัย", "Sukhothai", "Sùkhǒthai"],
+                ["d", "ลพบุรี", "Lopburi", "Lopburi"]
+            ],
+            "a",
+            "คำตอบคือ กระบี่",
+            "Die richtige Antwort ist: Krabi.",
+            [{"title":"Tourism Authority of Thailand","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-210", "geography", 1, "single_choice",
+            "เชียงคานตั้งอยู่ริมแม่น้ำใด?",
+            "An welchem Fluss liegt Chiang Khan?",
+            "chiang khaan tâng yùu rim mɛ̂ɛ-náam dai ?",
+            [
+                ["a", "แม่น้ำโขง", "Mekong", "mɛ̂ɛ-náam Khǒng"],
+                ["b", "แม่น้ำเจ้าพระยา", "Chao Phraya", "mɛ̂ɛ-náam Jâo-phrá-yaa"],
+                ["c", "แม่น้ำปิง", "Ping", "mâenám Ping"],
+                ["d", "แม่น้ำยม", "Yom", "mɛ̂ɛ-náam yom"]
+            ],
+            "a",
+            "คำตอบคือ แม่น้ำโขง",
+            "Die richtige Antwort ist: Mekong.",
+            [{"title":"Tourism Authority of Thailand","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-211", "history", 2, "single_choice",
+            "กษัตริย์พระองค์ใดทรงตั้งกรุงเทพฯ เป็นเมืองหลวงในปี พ.ศ. 2325?",
+            "Welcher König machte Bangkok 1782 zur neuen Hauptstadt?",
+            "kà sǎt phrá òng dai song tâng Krung Thêp bpen mueang lǔang nai pii phó sò . 2325 ?",
+            [
+                ["a", "รัชกาลที่หนึ่ง", "Rama I.", "rát kaan thîi nʉ̀ng"],
+                ["b", "รัชกาลที่ห้า", "Rama V.", "rát kaan thîi hâa"],
+                ["c", "สมเด็จพระเจ้าตากสิน", "König Taksin", "sǒmdèt Phra Chao Taksin"],
+                ["d", "พ่อขุนรามคำแหง", "König Ramkhamhaeng", "Pho Khun Ramkhamhaeng"]
+            ],
+            "a",
+            "คำตอบคือ รัชกาลที่หนึ่ง",
+            "Die richtige Antwort ist: Rama I..",
+            [{"title":"Thailand.go.th – History and Culture","url":"https://thailand.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-212", "history", 1, "single_choice",
+            "วันจักรีระลึกถึงเรื่องใด?",
+            "Was feiert Thailand am Chakri-Tag?",
+            "wan chàk rii rá lúek thʉ̌ng rʉ̂ang dai ?",
+            [
+                ["a", "การก่อตั้งราชวงศ์จักรี", "Die Gründung der Chakri-Dynastie", "gaan kò tâng râat wóng chàk rii"],
+                ["b", "การเริ่มต้นฤดูฝน", "Den Beginn der Regenzeit", "gaan rə̂əm-dtôn rúe duu fǒn"],
+                ["c", "การเปิดสนามบินแห่งแรก", "Die Eröffnung des ersten Flughafens", "gaan bpə̀ət sà-nǎam-bin hàeng rɛ̂ɛk"],
+                ["d", "วันปิดภาคเรียน", "Das Ende des Schuljahres", "wan bpìt phâak rian"]
+            ],
+            "a",
+            "คำตอบคือ การก่อตั้งราชวงศ์จักรี",
+            "Die richtige Antwort ist: Die Gründung der Chakri-Dynastie.",
+            [{"title":"Thailand.go.th – History and Culture","url":"https://thailand.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-213", "history", 2, "single_choice",
+            "พุทธศักราชมากกว่าคริสต์ศักราชกี่ปีโดยทั่วไป?",
+            "Um wie viele Jahre liegt die buddhistische Jahreszählung üblicherweise vor der gregorianischen?",
+            "phút sàk râat mâak kwàa khrít sàk râat gìi bpii doi thûa pai ?",
+            [
+                ["a", "543 ปี", "543 Jahre", "543 bpii"],
+                ["b", "50 ปี", "50 Jahre", "50 bpii"],
+                ["c", "100 ปี", "100 Jahre", "100 bpii"],
+                ["d", "1.000 ปี", "1.000 Jahre", "1.000 bpii"]
+            ],
+            "a",
+            "คำตอบคือ 543 ปี",
+            "Die richtige Antwort ist: 543 Jahre.",
+            [{"title":"Thailand.go.th – History and Culture","url":"https://thailand.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-214", "history", 2, "single_choice",
+            "ยุคประวัติศาสตร์ที่เริ่มเมื่อกรุงเทพฯ เป็นเมืองหลวงเรียกว่าอะไร?",
+            "Wie heißt die historische Epoche, die mit Bangkok als Hauptstadt begann?",
+            "yúk prà wá tì sǎat thîi rə̂əm mʉ̂a Krung Thêp bpen mueang lǔang rîak wâa à-rai ?",
+            [
+                ["a", "รัตนโกสินทร์", "Rattanakosin", "Rát ná koo sǐn"],
+                ["b", "ยุคกลาง", "Mittelalter", "yúk klaang"],
+                ["c", "ยุคเอโดะ", "Edo-Zeit", "yúk ee dò"],
+                ["d", "ยุคโบราณ", "Antike", "yúk boo raan"]
+            ],
+            "a",
+            "คำตอบคือ รัตนโกสินทร์",
+            "Die richtige Antwort ist: Rattanakosin.",
+            [{"title":"Thailand.go.th – History and Culture","url":"https://thailand.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-215", "history", 2, "single_choice",
+            "สยามรักษาเอกราชในยุคอาณานิคมของยุโรปได้อย่างไร?",
+            "Wie konnte Siam seine staatliche Unabhängigkeit während der europäischen Kolonialzeit bewahren?",
+            "Sà-yǎam rák-sǎa ekkarat nai yúk aa naa ní khom khɔ̌ɔng yú rôop dâi yàng rai ?",
+            [
+                ["a", "ใช้การทูตและการประนีประนอมทางการเมือง", "Durch Diplomatie und politische Kompromisse", "chái gaan thûut lɛ́ gaan bprà nii bprà nɔɔm thaang kaan mʉang"],
+                ["b", "สร้างกำแพงรอบประเทศ", "Durch eine Mauer rund um das Land", "sâang kam phaaeng rɔ̂ɔp bprà-thêet"],
+                ["c", "หยุดค้าขายกับทุกประเทศ", "Durch den Verzicht auf Handel", "yùt kháa khǎai gàp thúk bprà-thêet"],
+                ["d", "สร้างเรือดำน้ำจำนวนมาก", "Durch den Bau vieler U-Boote", "sâang rʉa dam nam jam-nuan mâak"]
+            ],
+            "a",
+            "คำตอบคือ ใช้การทูตและการประนีประนอมทางการเมือง",
+            "Die richtige Antwort ist: Durch Diplomatie und politische Kompromisse.",
+            [{"title":"Thailand.go.th – History and Culture","url":"https://thailand.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-216", "food", 1, "single_choice",
+            "ไส้อั่วเป็นอาหารชนิดใด?",
+            "Welche Speise ist Sai Ua?",
+            "sâi ùa bpen aa-hǎan chánít dai ?",
+            [
+                ["a", "ไส้กรอกสมุนไพรแบบภาคเหนือ", "Eine würzige nordthailändische Wurst", "sâi krɔ̀ɔk sà-mǔn-phrai bɛ̀ɛp phâak nǔea"],
+                ["b", "ขนมหวานมะม่วง", "Ein süßer Mangokuchen", "khà-nǒm wǎan má-mûang"],
+                ["c", "ซุปกะทิ", "Eine Kokosnusssuppe", "súp kàthí"],
+                ["d", "ขนมปลา", "Ein Fischdessert", "khà-nǒm pla"]
+            ],
+            "a",
+            "คำตอบคือ ไส้กรอกสมุนไพรแบบภาคเหนือ",
+            "Die richtige Antwort ist: Eine würzige nordthailändische Wurst.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-217", "food", 1, "single_choice",
+            "ข้าวมันไก่ประกอบด้วยอะไรเป็นหลัก?",
+            "Was ist Khao Man Gai?",
+            "khâao man kài prà kòp dûai à-rai bpen làk ?",
+            [
+                ["a", "ไก่กับข้าวที่หุงในน้ำซุป", "Huhn mit aromatisch gegartem Reis", "kài kàp khâo thîi hǔng nai náam-súp"],
+                ["b", "ข้าวกับช็อกโกแลต", "Reis mit Schokolade", "khâao gàp chɔ́k koo lɛ́ɛt"],
+                ["c", "บะหมี่กับชีส", "Gebratene Nudeln mit Käse", "bà mìi gàp chíit"],
+                ["d", "ซุปแตงกวาเย็น", "Eine kalte Gurkensuppe", "súp dtaeng gwaa yen"]
+            ],
+            "a",
+            "คำตอบคือ ไก่กับข้าวที่หุงในน้ำซุป",
+            "Die richtige Antwort ist: Huhn mit aromatisch gegartem Reis.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-218", "food", 1, "single_choice",
+            "ขนมครกทำจากอะไรเป็นหลัก?",
+            "Was sind Khanom Krok?",
+            "khà nǒm khrók tham jàak à-rai bpen làk ?",
+            [
+                ["a", "แป้งข้าวเจ้ากับกะทิ", "Kleine Kokos-Reis-Pfannküchlein", "pâeng khâao châo gàp kàthí"],
+                ["b", "เกี๊ยวไส้เนื้อ", "Gefüllte Fleischknödel", "kíao sâi nuea"],
+                ["c", "เปลือกกล้วยทอด", "Frittierte Bananenschalen", "plùeak glûai thot"],
+                ["d", "ลูกชิ้นปลาเผ็ด", "Scharfe Fischbällchen", "lûuk chín pla phèt"]
+            ],
+            "a",
+            "คำตอบคือ แป้งข้าวเจ้ากับกะทิ",
+            "Die richtige Antwort ist: Kleine Kokos-Reis-Pfannküchlein.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-219", "food", 1, "single_choice",
+            "โรตีสายไหมจากอยุธยามีอะไรอยู่ในแป้งโรตี?",
+            "Wofür ist Roti Sai Mai aus Ayutthaya bekannt?",
+            "roo tii sǎai mǎi jàak Àyúttháya mii à-rai yùu nai pâeng roo tii ?",
+            [
+                ["a", "สายไหมหวาน", "Süße Zuckerwatte", "sǎai mǎi wǎan"],
+                ["b", "ซุปเส้นรสเผ็ด", "Eine scharfe Nudelsuppe", "súp sên rót phèt"],
+                ["c", "เมล็ดกาแฟคั่ว", "Geröstete Kaffeebohnen", "mét gaa-fɛɛ khua"],
+                ["d", "ปลาเค็ม", "Eingelegter Fisch", "pla khem"]
+            ],
+            "a",
+            "คำตอบคือ สายไหมหวาน",
+            "Die richtige Antwort ist: Süße Zuckerwatte.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-220", "food", 1, "single_choice",
+            "หมูปิ้งคืออะไร?",
+            "Was bekommt man bei Moo Ping typischerweise?",
+            "mǔu bpîng khʉʉ à-rai ?",
+            [
+                ["a", "หมูเสียบไม้ย่าง", "Gegrillte Schweinefleischspieße", "mǔu sìap mai yâang"],
+                ["b", "ขนมปัง", "Brot", "khà-nǒm-bpang"],
+                ["c", "ข้าวโพดต้มกับชีส", "Gekochte Maiskolben mit Käse", "khâo phôt tôm gàp chíit"],
+                ["d", "มะม่วงกับไอศกรีมพริก", "Mango mit Chili-Eis", "má-mûang gàp ai sà khriim phrík"]
+            ],
+            "a",
+            "คำตอบคือ หมูเสียบไม้ย่าง",
+            "Die richtige Antwort ist: Gegrillte Schweinefleischspieße.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-221", "food", 2, "single_choice",
+            "แกงฮังเลเป็นอาหารที่มีชื่อเสียงจากภาคใด?",
+            "Welche Beschreibung passt zu Gaeng Hung Lay?",
+            "kaeng Hang lee bpen aa-hǎan thîi mii chûue sǐang jàak phâak dai ?",
+            [
+                ["a", "แกงหมูแบบภาคเหนือ", "Ein nordthailändisches Schweinefleisch-Curry", "kaeng mǔu bɛ̀ɛp phâak nǔea"],
+                ["b", "สลัดผลไม้จากภาคใต้", "Ein süßer Fruchtsalat aus dem Süden", "sà lát phǒn-lá-mái jàak phâak dtâi"],
+                ["c", "ขนมปังกะทิอบ", "Ein gebackenes Kokosbrot", "khà-nǒm-bpang kàthí op"],
+                ["d", "เครื่องดื่มเย็นมะนาว", "Ein kaltes Getränk mit Limette", "khrʉ̂ang-dʉ̀ʉm yen má-naao"]
+            ],
+            "a",
+            "คำตอบคือ แกงหมูแบบภาคเหนือ",
+            "Die richtige Antwort ist: Ein nordthailändisches Schweinefleisch-Curry.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-222", "food", 1, "single_choice",
+            "ข้าวยำเป็นอาหารแบบใด?",
+            "Was ist Khao Yam?",
+            "khâao yam bpen aa-hǎan bɛ̀ɛp dai ?",
+            [
+                ["a", "ข้าวคลุกสมุนไพรแบบภาคใต้", "Ein südthailändischer Reis-Salat mit Kräutern", "khâao khlúk sà-mǔn-phrai bɛ̀ɛp phâak dtâi"],
+                ["b", "พุดดิ้งช็อกโกแลต", "Ein Schokoladenpudding", "phút dîng chɔ́k koo lɛ́ɛt"],
+                ["c", "ไข่เจียวเย็น", "Ein gebratener Eierkuchen", "khài chiao yen"],
+                ["d", "ขนมแตงโม", "Ein Dessert aus Wassermelone", "khà-nǒm dtɛɛng-moo"]
+            ],
+            "a",
+            "คำตอบคือ ข้าวคลุกสมุนไพรแบบภาคใต้",
+            "Die richtige Antwort ist: Ein südthailändischer Reis-Salat mit Kräutern.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-223", "food", 1, "single_choice",
+            "ขนมจีนคืออะไร?",
+            "Was sind Khanom Chin?",
+            "khǎnom chiin khʉʉ à-rai ?",
+            [
+                ["a", "เส้นข้าวหมักที่มักกินกับแกง", "Fermentierte Reisnudeln, oft mit Curry", "sên khâo màk thîi mák gin gàp kaeng"],
+                ["b", "มันฝรั่งทอด", "Frittierte Kartoffelstäbchen", "man fàrâng thot"],
+                ["c", "ลูกอมมะพร้าว", "Süße Kokosbonbons", "lûuk-om má phráao"],
+                ["d", "กล้วยย่าง", "Gegrillte Bananen", "glûai yâang"]
+            ],
+            "a",
+            "คำตอบคือ เส้นข้าวหมักที่มักกินกับแกง",
+            "Die richtige Antwort ist: Fermentierte Reisnudeln, oft mit Curry.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-224", "food", 1, "single_choice",
+            "ไก่ย่างหมายถึงอะไร?",
+            "Was bedeutet Kai Yang auf einer Speisekarte?",
+            "kài yâang mǎi thʉ̌ng à-rai ?",
+            [
+                ["a", "ไก่ย่าง", "Gegrilltes Hähnchen", "kài yâang"],
+                ["b", "ไข่ต้มกับน้ำตาล", "Gekochte Eier mit Zucker", "khài tôm gàp náam-dtaan"],
+                ["c", "สลัดปลาเย็น", "Kalter Fischsalat", "sà lát pla yen"],
+                ["d", "ฟักทองผัด", "Gebratener Kürbis", "fák thong phàt"]
+            ],
+            "a",
+            "คำตอบคือ ไก่ย่าง",
+            "Die richtige Antwort ist: Gegrilltes Hähnchen.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-225", "food", 1, "single_choice",
+            "น้ำพริกหนุ่มเป็นอาหารแบบใด?",
+            "Was ist Nam Prik Noom?",
+            "náam phrík nùm bpen aa-hǎan bɛ̀ɛp dai ?",
+            [
+                ["a", "น้ำพริกพริกเขียวแบบภาคเหนือ", "Ein nordthailändischer Dip aus grünen Chilis", "náam phrík phrík khiao bɛ̀ɛp phâak nǔea"],
+                ["b", "ชาหวานใส่นม", "Ein süßer Tee mit Milch", "chaa wǎan sài nom"],
+                ["c", "ซุปถั่วแดง", "Eine Suppe aus roten Bohnen", "súp thùa daeng"],
+                ["d", "ขนมข้าวเหนียว", "Ein Dessert aus Klebreis", "khà-nǒm khâo nǐao"]
+            ],
+            "a",
+            "คำตอบคือ น้ำพริกพริกเขียวแบบภาคเหนือ",
+            "Die richtige Antwort ist: Ein nordthailändischer Dip aus grünen Chilis.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-226", "food", 2, "single_choice",
+            "ทำไมก๋วยเตี๋ยวเราจึงมีชื่อนี้?",
+            "Warum heißen Kuai Tiao Ruea auch „Bootsnudeln“?",
+            "tham-mai gǔai-dtǐao rao chueng mii chûue níi ?",
+            [
+                ["a", "ในอดีตพ่อค้ามักขายจากเรือ", "Früher wurden sie oft von Händlern in Booten verkauft", "nai à dìit phɔ̂ɔ-kháa mák khǎai jàak rʉa"],
+                ["b", "มีรูปร่างเหมือนเรือ", "Sie haben die Form kleiner Boote", "mii rûup râang mʉ̌ʉan rʉa"],
+                ["c", "ทำจากไม้เรือ", "Sie werden aus Bootsholz hergestellt", "tham jàak mai rʉa"],
+                ["d", "กินได้เฉพาะบนเรือ", "Man kann sie nur auf Booten essen", "gin dâi chěe phó bon rʉa"]
+            ],
+            "a",
+            "คำตอบคือ ในอดีตพ่อค้ามักขายจากเรือ",
+            "Die richtige Antwort ist: Früher wurden sie oft von Händlern in Booten verkauft.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-227", "food", 1, "single_choice",
+            "ทับทิมกรอบเป็นขนมหวานที่มีอะไร?",
+            "Was ist Tub Tim Krob?",
+            "tháp thim kròop bpen khà-nǒm wǎan thîi mii à-rai ?",
+            [
+                ["a", "แห้วกับกะทิ", "Ein Dessert mit Wasserkastanien und Kokosmilch", "hâeo gàp kàthí"],
+                ["b", "ปลาย่างกับมะนาว", "Gegrillter Fisch mit Limette", "pla yâang gàp má-naao"],
+                ["c", "ซุปสมุนไพรเผ็ด", "Eine scharfe Kräutersuppe", "súp sà-mǔn-phrai phèt"],
+                ["d", "หมูกรอบ", "Knuspriger Schweinebraten", "mǔu kròop"]
+            ],
+            "a",
+            "คำตอบคือ แห้วกับกะทิ",
+            "Die richtige Antwort ist: Ein Dessert mit Wasserkastanien und Kokosmilch.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-228", "food", 1, "single_choice",
+            "ผัดซีอิ๊วทำจากอะไรเป็นหลัก?",
+            "Was ist Pad See Ew?",
+            "phàt sii ío tham jàak à-rai bpen làk ?",
+            [
+                ["a", "เส้นใหญ่ผัดกับซีอิ๊ว", "Gebratene breite Reisnudeln mit dunkler Sojasauce", "sên yài phàt gàp sii ío"],
+                ["b", "ข้าวเย็นกับสับปะรดและครีม", "Kalter Reis mit Ananas und Sahne", "khâao-yen gàp sàppàrót lɛ́ khriim"],
+                ["c", "ซุปแกงกะทิฟักทอง", "Eine Kokos-Curry-Suppe mit Kürbis", "súp kaeng kàthí fák thong"],
+                ["d", "เนื้อย่างกับชีส", "Gegrilltes Rindfleisch mit Käse", "nuea yâang gàp chíit"]
+            ],
+            "a",
+            "คำตอบคือ เส้นใหญ่ผัดกับซีอิ๊ว",
+            "Die richtige Antwort ist: Gebratene breite Reisnudeln mit dunkler Sojasauce.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-229", "food", 1, "single_choice",
+            "ขนมเบื้องมีลักษณะอย่างไร?",
+            "Was sind Khanom Buang?",
+            "khà-nǒm bʉ̂ang mii lák-sà-nà yàng rai ?",
+            [
+                ["a", "ขนมแป้งกรอบชิ้นเล็กที่มีไส้", "Knusprige kleine Pfannküchlein mit Füllung", "khà-nǒm pâeng kròop chín lék thîi mii sâi"],
+                ["b", "บะหมี่เนยถั่ว", "Nudeln mit Erdnussbutter", "bà mìi nəəi thùa"],
+                ["c", "ข้าวปั้นต้มในซุป", "Gekochte Reisbällchen mit Suppe", "khâao pân tôm nai súp"],
+                ["d", "มะม่วงดอง", "Eingelegte Mangoscheiben", "má-mûang dong"]
+            ],
+            "a",
+            "คำตอบคือ ขนมแป้งกรอบชิ้นเล็กที่มีไส้",
+            "Die richtige Antwort ist: Knusprige kleine Pfannküchlein mit Füllung.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-230", "food", 1, "single_choice",
+            "บัวลอยมักเสิร์ฟกับอะไร?",
+            "Was ist Bua Loi?",
+            "bua loi mák sòep gàp à-rai ?",
+            [
+                ["a", "เม็ดแป้งข้าวในน้ำกะทิหวาน", "Kleine Reismehlbällchen in süßer Kokosmilch", "mét pâeng khâao nai nám kàthí wǎan"],
+                ["b", "ปลาหมึกผัดเผ็ด", "Scharf gebratener Tintenfisch", "pla muek phàt phèt"],
+                ["c", "ข้าวเค็มใส่ไก่", "Ein salziger Reiskuchen mit Huhn", "khâao khem sài kài"],
+                ["d", "กาแฟเย็นมะนาว", "Kalter Kaffee mit Limette", "gaa-fɛɛ-yen má-naao"]
+            ],
+            "a",
+            "คำตอบคือ เม็ดแป้งข้าวในน้ำกะทิหวาน",
+            "Die richtige Antwort ist: Kleine Reismehlbällchen in süßer Kokosmilch.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-231", "food", 2, "single_choice",
+            "ปลาเผามักปรุงอย่างไร?",
+            "Woraus besteht Pla Pao typischerweise?",
+            "pla phǎo mák prung yàng rai ?",
+            [
+                ["a", "ปลาย่างที่พอกเกลือ", "Ein gegrillter, mit Salz umhüllter Fisch", "pla yâang thîi phɔ̂ɔk kluea"],
+                ["b", "เนื้อดิบกับช็อกโกแลต", "Rohes Rindfleisch mit Schokolade", "nuea dìp gàp chɔ́k koo lɛ́ɛt"],
+                ["c", "ข้าวเหนียวทอด", "Frittierter Klebreis", "khâo nǐao thot"],
+                ["d", "กล้วยในซอสแกง", "Bananen in Currysauce", "glûai nai sôt kaeng"]
+            ],
+            "a",
+            "คำตอบคือ ปลาย่างที่พอกเกลือ",
+            "Die richtige Antwort ist: Ein gegrillter, mit Salz umhüllter Fisch.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-232", "food", 2, "single_choice",
+            "เมี่ยงคำกินอย่างไร?",
+            "Was ist Miang Kham?",
+            "mîang kham gin yàng rai ?",
+            [
+                ["a", "ห่อเครื่องต่างๆ ไว้ในใบไม้แล้วกินเป็นคำ", "Ein kleiner Happen, bei dem Zutaten in ein Blatt gewickelt werden", "hɔ̀ɔ khrûeang dtàang-dtàang wái nai bai mái lɛ́ɛo gin bpen kham"],
+                ["b", "เป็นข้าวก้อนใหญ่สำหรับงานเทศกาล", "Ein riesiger Reiskuchen für Feste", "bpen khâao kôn yài sǎm-ràp ngaan thêt sa kan"],
+                ["c", "เป็นซุปหวานใส่เส้น", "Eine süße Suppe mit Nudeln", "bpen súp wǎan sài sên"],
+                ["d", "เป็นเครื่องดื่มข้าวโพดย่าง", "Ein Getränk aus gegrilltem Mais", "bpen khrʉ̂ang-dʉ̀ʉm khâo phôt yâang"]
+            ],
+            "a",
+            "คำตอบคือ ห่อเครื่องต่างๆ ไว้ในใบไม้แล้วกินเป็นคำ",
+            "Die richtige Antwort ist: Ein kleiner Happen, bei dem Zutaten in ein Blatt gewickelt werden.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-233", "food", 1, "single_choice",
+            "ข้าวต้มมัดทำจากอะไร?",
+            "Was ist Khao Tom Mat?",
+            "khâao-dtôm mát tham jàak à-rai ?",
+            [
+                ["a", "ข้าวเหนียวกับกล้วยห่อใบตองแล้วนำไปปรุง", "Klebreis mit Banane, in einem Blatt gegart", "khâo nǐao gàp glûai hɔ̀ɔ bai-dtɔɔng lɛ́ɛo nam bpai prung"],
+                ["b", "บะหมี่ผัดกับเต้าหู้", "Gebratene Nudeln mit Tofu", "bà mìi phàt gàp taohu"],
+                ["c", "ซุปกะทิเย็น", "Eine kalte Kokosmilch-Suppe", "súp kàthí yen"],
+                ["d", "ไก่ย่างกับมะละกอ", "Gegrilltes Huhn mit Papaya", "kài yâang gàp máláko"]
+            ],
+            "a",
+            "คำตอบคือ ข้าวเหนียวกับกล้วยห่อใบตองแล้วนำไปปรุง",
+            "Die richtige Antwort ist: Klebreis mit Banane, in einem Blatt gegart.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-234", "food", 1, "single_choice",
+            "แกงส้มมีรสชาติเด่นแบบใด?",
+            "Welcher Geschmack ist für Kaeng Som besonders typisch?",
+            "gaeng-sôm mii rót-châat dèn bɛ̀ɛp dai ?",
+            [
+                ["a", "เปรี้ยวและเผ็ด", "Sauer und scharf", "prîao lɛ́ phèt"],
+                ["b", "หวานเหมือนน้ำตาล", "Süß wie Zucker", "wǎan mʉ̌ʉan náam-dtaan"],
+                ["c", "จืดเหมือนน้ำเปล่า", "Neutral wie Wasser", "chùet mʉ̌ʉan náam-bplào"],
+                ["d", "ขมเหมือนกาแฟดำ", "Bitter wie schwarzer Kaffee", "khǒm mʉ̌ʉan gaa-fɛɛ dam"]
+            ],
+            "a",
+            "คำตอบคือ เปรี้ยวและเผ็ด",
+            "Die richtige Antwort ist: Sauer und scharf.",
+            [{"title":"Tourism Authority of Thailand – Thai Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-235", "culture", 1, "single_choice",
+            "ทำไมบ้านไทยแบบดั้งเดิมหลายหลังจึงยกพื้นสูง?",
+            "Warum stehen traditionelle Thai-Häuser oft auf Stelzen?",
+            "tham-mai bâan Thai bɛ̀ɛp dâng doem lǎai lǎng chueng yók phúuen sǔng ?",
+            [
+                ["a", "ช่วยป้องกันน้ำท่วมและให้อากาศถ่ายเท", "Das schützt besser vor Überschwemmungen und sorgt für Luftzirkulation", "chûai pongkan náam thûam lɛ́ hâi aa-gàat thàai thee"],
+                ["b", "เพื่อให้บ้านอยู่ใกล้เมฆ", "Damit sie näher an den Wolken sind", "phʉ̂a hâi bâan yùu glâi mêk"],
+                ["c", "เพื่อให้ช้างจอดข้างใต้ได้", "Damit Elefanten darunter parken können", "phʉ̂a hâi cháng jɔ̀ɔt khâang dtâi dâi"],
+                ["d", "เพื่อไม่ต้องสร้างบันได", "Damit man keine Treppen bauen muss", "phʉ̂a mâi dtɔ̂ng sâang ban-dai"]
+            ],
+            "a",
+            "คำตอบคือ ช่วยป้องกันน้ำท่วมและให้อากาศถ่ายเท",
+            "Die richtige Antwort ist: Das schützt besser vor Überschwemmungen und sorgt für Luftzirkulation.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-236", "culture", 1, "single_choice",
+            "ผ้าขาวม้าเป็นของใช้แบบใด?",
+            "Was ist ein Pha Khao Ma?",
+            "phâa khǎao máa bpen khɔ̌ɔng chái bɛ̀ɛp dai ?",
+            [
+                ["a", "ผ้าลายตารางที่ใช้ได้หลายอย่างในชีวิตประจำวัน", "Ein vielseitiges kariertes Tuch", "phâa laai taa raang thîi chái dâi lǎai yàang nai chii wít prà cham wan"],
+                ["b", "เครื่องตีระฆังวัด", "Ein Tempelglockenspiel", "khrûeang tii rá khang wát"],
+                ["c", "กาต้มน้ำชา", "Ein besonderer Teekessel", "kaa tôm náam chaa"],
+                ["d", "ตะกร้าจับปลา", "Ein traditioneller Fischfangkorb", "tà grâa chàp pla"]
+            ],
+            "a",
+            "คำตอบคือ ผ้าลายตารางที่ใช้ได้หลายอย่างในชีวิตประจำวัน",
+            "Die richtige Antwort ist: Ein vielseitiges kariertes Tuch.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-237", "culture", 1, "single_choice",
+            "พวงมาลัยคืออะไร?",
+            "Was ist eine Phuang Malai?",
+            "phuang maa-lai khʉʉ à-rai ?",
+            [
+                ["a", "พวงดอกไม้ที่ร้อยอย่างประณีต", "Eine kunstvoll gebundene Blumengirlande", "phuang dokmai thîi rɔ́ɔi yàang bprà-nîit"],
+                ["b", "ก๋วยเตี๋ยวชนิดหนึ่ง", "Eine Art Reisnudel", "gǔai-dtǐao chánít nʉ̀ng"],
+                ["c", "รองเท้าเต้นรำไม้", "Ein hölzerner Tanzschuh", "rong tháo dtên-ram mai"],
+                ["d", "เครื่องเทศจากภาคเหนือ", "Ein Gewürz aus dem Norden", "khrûeang thêt jàak phâak nǔea"]
+            ],
+            "a",
+            "คำตอบคือ พวงดอกไม้ที่ร้อยอย่างประณีต",
+            "Die richtige Antwort ist: Eine kunstvoll gebundene Blumengirlande.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-238", "culture", 1, "single_choice",
+            "ศาลาในประเทศไทยมักเป็นสถานที่แบบใด?",
+            "Was ist eine Sala in Thailand?",
+            "sǎa laa nai pràthet Thai mák bpen sà thǎan thîi bɛ̀ɛp dai ?",
+            [
+                ["a", "ศาลาเปิดโล่งสำหรับพักหรือพบปะกัน", "Ein offener Pavillon zum Ausruhen oder für Begegnungen", "sǎa laa bpə̀ət lôong sǎm-ràp phák rʉ̌ʉ phóp pà kan"],
+                ["b", "อุโมงค์ใต้ดิน", "Ein unterirdischer Tunnel", "ù moong dtâi-din"],
+                ["c", "อาหารปลาและข้าว", "Ein Gericht aus Fisch und Reis", "aa-hǎan pla lɛ́ khâao"],
+                ["d", "หมวกแบบดั้งเดิม", "Ein traditioneller Hut", "mùak bɛ̀ɛp dâng doem"]
+            ],
+            "a",
+            "คำตอบคือ ศาลาเปิดโล่งสำหรับพักหรือพบปะกัน",
+            "Die richtige Antwort ist: Ein offener Pavillon zum Ausruhen oder für Begegnungen.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-239", "culture", 1, "single_choice",
+            "ผ้าไหมไทยดั้งเดิมทำมาจากอะไร?",
+            "Woraus wird traditionelle Thai-Seide gewonnen?",
+            "phâa mǎi Thai dâng doem tham maa jàak à-rai ?",
+            [
+                ["a", "เส้นใยจากรังไหม", "Aus den Fäden von Seidenraupenkokons", "sên yai jàak rang mǎi"],
+                ["b", "ใบปาล์ม", "Aus Palmblättern", "bai paam"],
+                ["c", "รากไผ่", "Aus Bambuswurzeln", "rak phài"],
+                ["d", "กะลามะพร้าว", "Aus Kokosnussschalen", "kà laa má phráao"]
+            ],
+            "a",
+            "คำตอบคือ เส้นใยจากรังไหม",
+            "Die richtige Antwort ist: Aus den Fäden von Seidenraupenkokons.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-240", "culture", 1, "single_choice",
+            "หมู่บ้านบ่อสร้างใกล้เชียงใหม่มีชื่อเสียงเรื่องอะไร?",
+            "Wofür ist das Dorf Bo Sang bei Chiang Mai bekannt?",
+            "mùu bâan bɔ̀ɔ sâang glâi chiiang-mài mii chûue sǐang rʉ̂ang à-rai ?",
+            [
+                ["a", "ร่มทำมือที่มีลวดลาย", "Für handgefertigte, bemalte Schirme", "rôm tham mʉʉ thîi mii luat lai"],
+                ["b", "เรือดำน้ำขนาดใหญ่", "Für große U-Boote", "rʉa dam nam khà-nàat yài"],
+                ["c", "ประติมากรรมน้ำแข็ง", "Für Schneeskulpturen", "bprà dtì maa gam nam khaeng"],
+                ["d", "แก้วจากลาวาภูเขาไฟ", "Für Gläser aus Vulkanlava", "gɛ̂ɛo jàak laa waa phuu-khǎo-fai"]
+            ],
+            "a",
+            "คำตอบคือ ร่มทำมือที่มีลวดลาย",
+            "Die richtige Antwort ist: Für handgefertigte, bemalte Schirme.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-241", "culture", 2, "single_choice",
+            "โนราเป็นศิลปะการแสดงจากภาคใด?",
+            "Was ist Nora?",
+            "noo raa bpen sìnlápà gaan sǎ daeng jàak phâak dai ?",
+            [
+                ["a", "การรำและละครแบบดั้งเดิมจากภาคใต้", "Eine traditionelle Tanz- und Theaterform aus Südthailand", "gaan ram lɛ́ lá khon bɛ̀ɛp dâng doem jàak phâak dtâi"],
+                ["b", "แกงแบบภาคเหนือ", "Ein nordthailändisches Curry", "kaeng bɛ̀ɛp phâak nǔea"],
+                ["c", "เรือในแม่น้ำโขง", "Ein Bootstyp für den Mekong", "rʉa nai mɛ̂ɛ-náam Khǒng"],
+                ["d", "วันสำคัญทางพุทธศาสนา", "Ein buddhistischer Feiertag", "wan sǎm-khan thaang phút sàat naa"]
+            ],
+            "a",
+            "คำตอบคือ การรำและละครแบบดั้งเดิมจากภาคใต้",
+            "Die richtige Antwort ist: Eine traditionelle Tanz- und Theaterform aus Südthailand.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-242", "culture", 1, "single_choice",
+            "ขันโตกคืออะไร?",
+            "Was ist Khan Tok?",
+            "khǎn tòok khʉʉ à-rai ?",
+            [
+                ["a", "โต๊ะเตี้ยทรงกลมที่ใช้เสิร์ฟอาหารทางภาคเหนือ", "Ein niedriger, runder Esstisch aus dem Norden", "tó tîa song klom thîi chái sòep aa-hǎan thaang phâak nǔea"],
+                ["b", "การแข่งขันเรือใบ", "Ein königlicher Segelwettbewerb", "gaan khàeng khǎn ruea bai"],
+                ["c", "เครื่องดนตรีโลหะ", "Ein traditionelles Musikinstrument aus Metall", "khrueang dontri loo hà"],
+                ["d", "ระฆังวัดชนิดหนึ่ง", "Eine besondere Tempelglocke", "rá khang wát chánít nʉ̀ng"]
+            ],
+            "a",
+            "คำตอบคือ โต๊ะเตี้ยทรงกลมที่ใช้เสิร์ฟอาหารทางภาคเหนือ",
+            "Die richtige Antwort ist: Ein niedriger, runder Esstisch aus dem Norden.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-243", "culture", 2, "single_choice",
+            "บายศรีมักใช้ในโอกาสใด?",
+            "Wofür wird ein Bai Sri bei Zeremonien verwendet?",
+            "baai sǐi mák chái nai ooh-gàat dai ?",
+            [
+                ["a", "พิธีอวยพรและต้อนรับ", "Als Arrangement bei Segens- und Willkommensritualen", "phithi uai phon lɛ́ dtɔ́ɔn-ráp"],
+                ["b", "ใช้เป็นเสื้อกันฝน", "Als Regenmantel", "chái bpen sʉ̂a kan fǒn"],
+                ["c", "เป็นตะกร้าซื้อปลา", "Als Einkaufskorb für Fische", "bpen tà grâa sʉ́ʉ pla"],
+                ["d", "เป็นโคมไฟริมถนน", "Als Straßenlaterne", "bpen khom fai rim thà-nǒn"]
+            ],
+            "a",
+            "คำตอบคือ พิธีอวยพรและต้อนรับ",
+            "Die richtige Antwort ist: Als Arrangement bei Segens- und Willkommensritualen.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-244", "culture", 2, "single_choice",
+            "ลิเกเป็นการแสดงแบบใด?",
+            "Was ist Likay?",
+            "lí kee pen kan sǎ daeng bɛ̀ɛp dai ?",
+            [
+                ["a", "ละครพื้นบ้านที่มีดนตรีและเครื่องแต่งกายสีสันสดใส", "Eine volkstümliche Theaterform mit Musik und farbenfrohen Kostümen", "lá khon phúuen bâan thîi mii dontri lɛ́ khrûeang taeng kai sǐi sǎn sòt sǎi"],
+                ["b", "เรือในนาข้าว", "Ein regionales Boot für Reisfelder", "rʉa nai naa khâao"],
+                ["c", "ข้าวเหนียวกับมะม่วง", "Ein Gericht aus Klebreis und Mango", "khâo nǐao gàp má-mûang"],
+                ["d", "จีวรพระ", "Eine Art Mönchsrobe", "chiwon phrá"]
+            ],
+            "a",
+            "คำตอบคือ ละครพื้นบ้านที่มีดนตรีและเครื่องแต่งกายสีสันสดใส",
+            "Die richtige Antwort ist: Eine volkstümliche Theaterform mit Musik und farbenfrohen Kostümen.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-245", "culture", 1, "single_choice",
+            "ช่างทอผ้าทำอะไร?",
+            "Was macht ein traditioneller Handwerker beim Weben von Seide?",
+            "châang tho phâa tham à-rai ?",
+            [
+                ["a", "สานเส้นด้ายบนกี่ให้เป็นผืนผ้า", "Er verknüpft Fäden auf einem Webstuhl zu Stoff", "sǎan sên dâai bon gìi hâi bpen phʉ̌ʉn phâa"],
+                ["b", "เทโลหะลงในแม่พิมพ์", "Er gießt flüssiges Metall in eine Form", "thee loo hà long nai mɛ̂ɛ phím"],
+                ["c", "แกะสลักข้าวจากไม้", "Er schnitzt Reis aus Holz", "kàe sà lák khâao jàak mai"],
+                ["d", "เป่าแก้วให้เป็นผ้า", "Er bläst Glas zu Stoff", "pào gɛ̂ɛo hâi bpen phâa"]
+            ],
+            "a",
+            "คำตอบคือ สานเส้นด้ายบนกี่ให้เป็นผืนผ้า",
+            "Die richtige Antwort ist: Er verknüpft Fäden auf einem Webstuhl zu Stoff.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-246", "culture", 1, "single_choice",
+            "หลังคาบ้านไทยแบบดั้งเดิมหลายหลังมีลักษณะอย่างไร?",
+            "Was ist ein typisches Merkmal vieler traditioneller Thai-Dächer?",
+            "lǎng khaa bâan Thai bɛ̀ɛp dâng doem lǎai lǎng mii lák-sà-nà yàng rai ?",
+            [
+                ["a", "ลาดชันเพื่อช่วยระบายน้ำฝน", "Sie sind steil und lassen Regen gut ablaufen", "lâat chan phʉ̂a chûai rá-baai náam fǒn"],
+                ["b", "ทำจากหิมะ", "Sie bestehen aus Schnee", "tham jàak hì má"],
+                ["c", "แบนและอยู่ใต้ดิน", "Sie sind immer flach und unterirdisch", "baaen lɛ́ yùu dtâi-din"],
+                ["d", "หมุนตามลม", "Sie drehen sich mit dem Wind", "mǔn dtaam lom"]
+            ],
+            "a",
+            "คำตอบคือ ลาดชันเพื่อช่วยระบายน้ำฝน",
+            "Die richtige Antwort ist: Sie sind steil und lassen Regen gut ablaufen.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-247", "culture", 2, "single_choice",
+            "ในพิธีแต่งงานไทยบางแบบ ผู้ใหญ่ทำอะไรเพื่ออวยพรคู่บ่าวสาว?",
+            "Was passiert bei einer traditionellen Thai-Hochzeitszeremonie oft beim Segensritual?",
+            "nai phithi dtɛ̀ng ngaan Thai baang bɛ̀ɛp phu yai tham à-rai phʉ̂a uai phon khûu bàao sǎao ?",
+            [
+                ["a", "รดน้ำลงบนมือของคู่บ่าวสาว", "Wasser wird über die Hände des Brautpaars gegossen", "rót nám long bon mʉʉ khɔ̌ɔng khûu bàao sǎao"],
+                ["b", "ให้ทั้งคู่กระโดดลงแม่น้ำ", "Das Paar springt gemeinsam in einen Fluss", "hâi thang khûu grà-dòot long mɛ̂ɛ-náam"],
+                ["c", "ซ่อนแหวนไว้ในข้าว", "Die Gäste verstecken die Ringe im Reis", "sɔ̂ɔn wǎen wái nai khâao"],
+                ["d", "ทาสีบ้านเป็นสีน้ำเงิน", "Die Familien bemalen das Haus blau", "thaa-sǐi bâan bpen sǐi náam-ngən"]
+            ],
+            "a",
+            "คำตอบคือ รดน้ำลงบนมือของคู่บ่าวสาว",
+            "Die richtige Antwort ist: Wasser wird über die Hände des Brautpaars gegossen.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-248", "culture", 1, "single_choice",
+            "หลังคาวัดไทยหลายแห่งตกแต่งด้วยอะไร?",
+            "Was ist ein auffälliges Merkmal vieler Thai-Tempeldächer?",
+            "lǎng khaa wát Thai lǎai hàeng tòk tàaeng dûai à-rai ?",
+            [
+                ["a", "ยอดและลวดลายประดับอย่างประณีต", "Kunstvoll verzierte Dachspitzen und Ornamente", "yôt lɛ́ luat lai pradap yàang bprà-nîit"],
+                ["b", "ปล่องไฟน้ำแข็ง", "Schornsteine aus Eis", "plɔ̀ɔng fai nam khaeng"],
+                ["c", "ลิฟต์แก้วทุกหลัง", "Gläserne Fahrstühle an jedem Gebäude", "líp gɛ̂ɛo thúk lǎng"],
+                ["d", "สนามฟุตบอลใต้ดิน", "Unterirdische Fußballfelder", "sànam fút bon dtâi-din"]
+            ],
+            "a",
+            "คำตอบคือ ยอดและลวดลายประดับอย่างประณีต",
+            "Die richtige Antwort ist: Kunstvoll verzierte Dachspitzen und Ornamente.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-249", "culture", 1, "single_choice",
+            "พวงมาลัยดอกไม้มักใช้ทำอะไร?",
+            "Wozu wird eine traditionelle thailändische Blumengirlande oft verwendet?",
+            "phuang maa-lai dokmai mák chái tham à-rai ?",
+            [
+                ["a", "มอบเป็นของขวัญหรือต้อนรับ", "Als Geschenk oder Zeichen des Willkommens", "môp bpen khɔ̌ɔng khwǎn rʉ̌ʉ dtɔ́ɔn-ráp"],
+                ["b", "ใช้หุงข้าว", "Als Werkzeug zum Reiskochen", "chái hǔng khâao"],
+                ["c", "ใช้เป็นตั๋วรถไฟ", "Als Ticket für den Nachtzug", "chái bpen dtǔa rót-fai"],
+                ["d", "ทำจากเกล็ดปลา", "Als Schmuckstück aus Fischschuppen", "tham jàak glèt pla"]
+            ],
+            "a",
+            "คำตอบคือ มอบเป็นของขวัญหรือต้อนรับ",
+            "Die richtige Antwort ist: Als Geschenk oder Zeichen des Willkommens.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-250", "nature", 1, "single_choice",
+            "กระทิงเป็นสัตว์ชนิดใด?",
+            "Welches Tier ist ein Gaur?",
+            "krà thing bpen sǎt chánít dai ?",
+            [
+                ["a", "วัวป่าขนาดใหญ่", "Ein großes wildes Rind", "wua pà khà-nàat yài"],
+                ["b", "หมีขั้วโลก", "Ein Eisbär", "mǐi khûa lôk"],
+                ["c", "อัลปากา", "Ein Alpaka", "an bpaa gaa"],
+                ["d", "ลามา", "Ein Lama", "laa maa"]
+            ],
+            "a",
+            "คำตอบคือ วัวป่าขนาดใหญ่",
+            "Die richtige Antwort ist: Ein großes wildes Rind.",
+            [{"title":"Department of National Parks, Wildlife and Plant Conservation","url":"https://www.dnp.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-251", "nature", 1, "single_choice",
+            "สมเสร็จมลายูมีลักษณะเด่นอย่างไร?",
+            "Welches Tier hat ein auffälliges schwarz-weißes Fell und lebt auch in Südthailand?",
+            "sǒm sèt má laa yuu mii lák-sà-nà dèn yàng rai ?",
+            [
+                ["a", "มีลำตัวสีดำและขาว", "Malaiischer Tapir mit auffälligem schwarz-weißem Fell", "mii lam dtua sǐi dam lɛ́ khao"],
+                ["b", "มีลายทางเหมือนม้าลาย", "Ein Zebra", "mii laai thaang mʉ̌ʉan máa-laai"],
+                ["c", "มีหนามทั่วตัว", "Ein Stinktier", "mii nǎam thûa dtua"],
+                ["d", "มีขนสีขาวและอาศัยในน้ำแข็ง", "Ein Pinguin", "mii khǒn sǐi khao lɛ́ asǎi nai nam khaeng"]
+            ],
+            "a",
+            "คำตอบคือ มีลำตัวสีดำและขาว",
+            "Die richtige Antwort ist: Malaiischer Tapir mit auffälligem schwarz-weißem Fell.",
+            [{"title":"Department of National Parks, Wildlife and Plant Conservation","url":"https://www.dnp.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-252", "nature", 1, "single_choice",
+            "นกเงือกจำง่ายจากลักษณะใด?",
+            "Woran erkennt man einen Nashornvogel besonders leicht?",
+            "nók ngʉ̂ak jam ngâai jàak lák-sà-nà dai ?",
+            [
+                ["a", "จะงอยปากขนาดใหญ่", "An seinem großen, auffälligen Schnabel", "chà ngoi pàak khà-nàat yài"],
+                ["b", "มีปีกแปดข้าง", "An acht Flügeln", "mii pìik pàaet khâang"],
+                ["c", "มีเขากวาง", "An einem Geweih", "mii kǎo gwaang"],
+                ["d", "มีงวงยาว", "An einem langen Rüssel", "mii nguang yaao"]
+            ],
+            "a",
+            "คำตอบคือ จะงอยปากขนาดใหญ่",
+            "Die richtige Antwort ist: An seinem großen, auffälligen Schnabel.",
+            [{"title":"Department of National Parks, Wildlife and Plant Conservation","url":"https://www.dnp.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-253", "nature", 1, "single_choice",
+            "ตัวนิ่มเป็นสัตว์แบบใด?",
+            "Was ist ein Schuppentier (Pangolin)?",
+            "dtua nîm bpen sǎt bɛ̀ɛp dai ?",
+            [
+                ["a", "สัตว์เลี้ยงลูกด้วยนมที่มีเกล็ดซ้อนกัน", "Ein Säugetier mit überlappenden Schuppen", "sǎt líang lûuk dûai nom thîi mii glèt són kan"],
+                ["b", "ปลาที่มีขน", "Ein Fisch mit Federn", "pla thîi mii khǒn"],
+                ["c", "นกที่ไม่มีปีก", "Ein Vogel ohne Flügel", "nók thîi mâi mii pìik"],
+                ["d", "ผีเสื้อที่มีเขา", "Ein Schmetterling mit Hörnern", "phǐi sʉ̂a thîi mii kǎo"]
+            ],
+            "a",
+            "คำตอบคือ สัตว์เลี้ยงลูกด้วยนมที่มีเกล็ดซ้อนกัน",
+            "Die richtige Antwort ist: Ein Säugetier mit überlappenden Schuppen.",
+            [{"title":"Department of National Parks, Wildlife and Plant Conservation","url":"https://www.dnp.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-254", "nature", 1, "single_choice",
+            "เต่าทะเลมักวางไข่ที่ไหน?",
+            "Wo legen Meeresschildkröten ihre Eier meist ab?",
+            "tào thá-lay mák waang khài thîi-nǎi ?",
+            [
+                ["a", "ในหลุมทรายบนชายหาด", "In Sandnestern an Stränden", "nai lǔm sai bon chaai-hàat"],
+                ["b", "บนยอดไม้สูง", "In hohen Bäumen", "bon yôt mái sǔung"],
+                ["c", "ในบ่อน้ำจืด", "In Süßwasserbrunnen", "nai bɔ̀ɔ náam chùet"],
+                ["d", "ในถ้ำน้ำแข็ง", "In Höhlen aus Schnee", "nai tham nam khaeng"]
+            ],
+            "a",
+            "คำตอบคือ ในหลุมทรายบนชายหาด",
+            "Die richtige Antwort ist: In Sandnestern an Stränden.",
+            [{"title":"Department of National Parks, Wildlife and Plant Conservation","url":"https://www.dnp.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-255", "nature", 2, "single_choice",
+            "ทำไมจึงไม่ควรหักหรือนำปะการังกลับบ้าน?",
+            "Warum sollte man Korallen nicht abbrechen oder mitnehmen?",
+            "tham-mai chueng mâi khuan hàk rʉ̌ʉ nam bpà kaa rang glàp-bâan ?",
+            [
+                ["a", "ปะการังเป็นที่อยู่อาศัยและเติบโตช้ามาก", "Sie sind wichtige Lebensräume und wachsen sehr langsam", "bpà kaa rang bpen thîi yùu asǎi lɛ́ tòep to cháa mâak"],
+                ["b", "ปะการังอยู่ได้เฉพาะในตู้เย็น", "Sie können nur im Kühlschrank überleben", "bpà kaa rang yùu dâi chěe phó nai dtûu-yen"],
+                ["c", "ปะการังทำจากแก้วและละลายเมื่อร้อน", "Sie sind aus Glas und zerbrechen bei Wärme", "bpà kaa rang tham jàak gɛ̂ɛo lɛ́ lá laai mʉ̂a rɔ́ɔn"],
+                ["d", "ปะการังเป็นอาหารของช้าง", "Sie sind ein beliebtes Futter für Elefanten", "bpà kaa rang bpen aa-hǎan khɔ̌ɔng cháng"]
+            ],
+            "a",
+            "คำตอบคือ ปะการังเป็นที่อยู่อาศัยและเติบโตช้ามาก",
+            "Die richtige Antwort ist: Sie sind wichtige Lebensräume und wachsen sehr langsam.",
+            [{"title":"Department of National Parks, Wildlife and Plant Conservation","url":"https://www.dnp.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-256", "nature", 2, "single_choice",
+            "ปะการังเป็นสิ่งมีชีวิตประเภทใด?",
+            "Was sind Korallen biologisch gesehen?",
+            "bpà kaa rang bpen sing mii chii wít prà phêet dai ?",
+            [
+                ["a", "สัตว์ตัวเล็กๆ ที่อยู่รวมกันเป็นกลุ่ม", "Kolonien winziger Tiere", "sǎt dtua lék-lék thîi yùu ruam kan bpen-g lûm"],
+                ["b", "พืชหินชนิดหนึ่ง", "Eine Sorte Steinpflanze", "phûuet hin chánít nʉ̀ng"],
+                ["c", "เปลือกหอยที่กลายเป็นหินและยังเติบโต", "Versteinerte Muscheln, die noch wachsen", "plùeak hɔ̌ɔi thîi klaai bpen hin lɛ́ yang tòep to"],
+                ["d", "ปลาตัวเล็กที่เกาะพื้นทะเล", "Kleine Fische, die am Meeresboden kleben", "pla dtua lék thîi kò phúuen thá-lay"]
+            ],
+            "a",
+            "คำตอบคือ สัตว์ตัวเล็กๆ ที่อยู่รวมกันเป็นกลุ่ม",
+            "Die richtige Antwort ist: Kolonien winziger Tiere.",
+            [{"title":"Department of National Parks, Wildlife and Plant Conservation","url":"https://www.dnp.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-257", "nature", 2, "single_choice",
+            "ทางเชื่อมผืนป่าช่วยสัตว์ป่าอย่างไร?",
+            "Warum sind Wildtierkorridore zwischen Wäldern wichtig?",
+            "thaang chûeam phʉ̌ʉn pà chûai sǎt pà yàng rai ?",
+            [
+                ["a", "ช่วยให้สัตว์เดินทางระหว่างถิ่นอาศัยได้", "Sie ermöglichen Tieren, zwischen Lebensräumen zu wandern", "chûai hâi sǎt dəən-thaang rá wàang thìn asǎi dâi"],
+                ["b", "พานักท่องเที่ยวไปยังร้านอาหาร", "Sie leiten Touristengruppen zu Restaurants", "phaa nák-thɔ̂ng-thîao bpai yang ráan aa-hǎan"],
+                ["c", "ป้องกันไม่ให้ต้นไม้โต", "Sie verhindern, dass Bäume wachsen", "pongkan mâi hâi tôn mái too"],
+                ["d", "เป็นที่จอดรถเท่านั้น", "Sie sind ausschließlich Parkplätze", "bpen thîi jɔ̀ɔt rót thâo-nán"]
+            ],
+            "a",
+            "คำตอบคือ ช่วยให้สัตว์เดินทางระหว่างถิ่นอาศัยได้",
+            "Die richtige Antwort ist: Sie ermöglichen Tieren, zwischen Lebensräumen zu wandern.",
+            [{"title":"Department of National Parks, Wildlife and Plant Conservation","url":"https://www.dnp.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-258", "nature", 2, "single_choice",
+            "ค้างคาวช่วยระบบนิเวศได้อย่างไร?",
+            "Wie helfen Fledermäuse vielen Ökosystemen?",
+            "khangkhao chûai rá bòp níwêt dâi yàng rai ?",
+            [
+                ["a", "กินแมลงและช่วยผสมเกสรพืชบางชนิด", "Sie fressen Insekten und bestäuben manche Pflanzen", "gin maa laaeng lɛ́ chûai phà sǒm gee sɔ̌ɔn phûuet baang chánít"],
+                ["b", "ดื่มน้ำเพื่อทำให้แม่น้ำสะอาด", "Sie halten Flüsse sauber, indem sie Wasser trinken", "dʉ̀ʉm náam phʉ̂a tham hâi mɛ̂ɛ-náam sà-àat"],
+                ["c", "สร้างรังให้ช้าง", "Sie bauen Nester für Elefanten", "sâang rang hâi cháng"],
+                ["d", "ไล่นกทุกชนิดออกจากป่า", "Sie vertreiben alle Vögel aus dem Wald", "lâi nók thúk chánít ɔ̀ɔk jàak pà"]
+            ],
+            "a",
+            "คำตอบคือ กินแมลงและช่วยผสมเกสรพืชบางชนิด",
+            "Die richtige Antwort ist: Sie fressen Insekten und bestäuben manche Pflanzen.",
+            [{"title":"Department of National Parks, Wildlife and Plant Conservation","url":"https://www.dnp.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-259", "nature", 1, "single_choice",
+            "พืชกินแมลงมีหม้อไว้ทำอะไร?",
+            "Wozu dient die Kannenform mancher fleischfressender Pflanzen?",
+            "phûuet gin maa laaeng mii mô wái tham à-rai ?",
+            [
+                ["a", "ดักจับแมลง", "Sie fängt Insekten", "dàk chàp maa laaeng"],
+                ["b", "เก็บน้ำทะเลให้ปลา", "Sie speichert Salzwasser für Fische", "gèp náam thá-lay hâi pla"],
+                ["c", "ป้องกันแสงแดด", "Sie schützt die Pflanze vor Licht", "pongkan sǎeng dàet"],
+                ["d", "เป็นถ้วยให้นก", "Sie wird von Vögeln als Schale benutzt", "bpen thûai hâi nók"]
+            ],
+            "a",
+            "คำตอบคือ ดักจับแมลง",
+            "Die richtige Antwort ist: Sie fängt Insekten.",
+            [{"title":"Department of National Parks, Wildlife and Plant Conservation","url":"https://www.dnp.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-260", "nature", 1, "single_choice",
+            "หิ่งห้อยเปล่งแสงเพื่ออะไร?",
+            "Warum leuchten Glühwürmchen?",
+            "hìng hɔ̂ɔi plèeng sǎaeng phʉ̂a à-rai ?",
+            [
+                ["a", "ช่วยดึงดูดคู่", "Unter anderem, um Partner anzulocken", "chûai dʉng-dùut khûu"],
+                ["b", "ส่องทางให้รถ", "Damit sie den Weg für Autos beleuchten", "sòng thaang hâi rót"],
+                ["c", "ทำให้ปีกแห้ง", "Um ihre Flügel zu trocknen", "tham hâi pìik hâaeng"],
+                ["d", "ช่วยให้นอนกลางวัน", "Damit sie tagsüber schlafen können", "chûai hâi nɔɔn klaang wan"]
+            ],
+            "a",
+            "คำตอบคือ ช่วยดึงดูดคู่",
+            "Die richtige Antwort ist: Unter anderem, um Partner anzulocken.",
+            [{"title":"Department of National Parks, Wildlife and Plant Conservation","url":"https://www.dnp.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-261", "nature", 2, "single_choice",
+            "ทำไมจึงไม่ควรให้อาหารสัตว์ป่าตามสถานที่ท่องเที่ยว?",
+            "Warum sollte man wilde Tiere an Sehenswürdigkeiten nicht füttern?",
+            "tham-mai chueng mâi khuan hâi aa-hǎan sǎt pà dtaam sà thǎan thîi thɔ̂ng thîao ?",
+            [
+                ["a", "อาจกระทบต่อสุขภาพและพฤติกรรมตามธรรมชาติ", "Das kann Gesundheit und natürliches Verhalten beeinträchtigen", "àat kràthóp dtɔ̀ɔ sùk-khà-phâap lɛ́ phrʉ́t-dtì-gam taam thammáchâat"],
+                ["b", "ขนของสัตว์จะเปลี่ยนสี", "Sie verlieren dadurch ihre Fellfarbe", "khǒn khɔ̌ɔng sǎt jà bplìian sǐi"],
+                ["c", "สัตว์จะลืมวิธีว่ายน้ำ", "Sie vergessen, wie man schwimmt", "sǎt jà lʉʉm wí thii wâai-náam"],
+                ["d", "สัตว์จะเชื่องทันที", "Es macht die Tiere automatisch zahm", "sǎt jà chʉ̂ang than-thii"]
+            ],
+            "a",
+            "คำตอบคือ อาจกระทบต่อสุขภาพและพฤติกรรมตามธรรมชาติ",
+            "Die richtige Antwort ist: Das kann Gesundheit und natürliches Verhalten beeinträchtigen.",
+            [{"title":"Department of National Parks, Wildlife and Plant Conservation","url":"https://www.dnp.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-262", "nature", 2, "single_choice",
+            "แนวปะการังที่สมบูรณ์ช่วยชายฝั่งอย่างไร?",
+            "Was schützt ein gesundes Korallenriff auch an tropischen Küsten?",
+            "naaeo bpà kaa rang thîi sǒm buun chûai chai fàng yàng rai ?",
+            [
+                ["a", "ช่วยลดแรงคลื่นและเป็นที่อยู่อาศัยของสัตว์", "Es kann Wellen abschwächen und Lebensräume bieten", "chûai lót rɛɛng khlʉ̂ʉn lɛ́ bpen thîi yùu asǎi khɔ̌ɔng sǎt"],
+                ["b", "หยุดเมฆฝนทุกชนิด", "Es verhindert jede Regenwolke", "yùt mêk fǒn thúk chánít"],
+                ["c", "ทำให้น้ำทะเลกลายเป็นน้ำจืด", "Es macht das Meer dauerhaft süß", "tham hâi náam thá-lay klaai bpen náam chùet"],
+                ["d", "กันปลาไม่ให้ขึ้นฝั่ง", "Es hält alle Fische an Land", "kan pla mâi hâi khʉ̂n fàng"]
+            ],
+            "a",
+            "คำตอบคือ ช่วยลดแรงคลื่นและเป็นที่อยู่อาศัยของสัตว์",
+            "Die richtige Antwort ist: Es kann Wellen abschwächen und Lebensräume bieten.",
+            [{"title":"Department of National Parks, Wildlife and Plant Conservation","url":"https://www.dnp.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-263", "nature", 2, "single_choice",
+            "นกเงือกกินอะไรเป็นอาหาร?",
+            "Was frisst ein Nashornvogel hauptsächlich?",
+            "nók ngʉ̂ak gin à-rai bpen aa-hǎan ?",
+            [
+                ["a", "ผลไม้และสัตว์ขนาดเล็ก", "Früchte und kleine Tiere", "phǒn-lá-mái lɛ́ sǎt khà-nàat lék"],
+                ["b", "ทรายเท่านั้น", "Nur Sand", "sai thâo-nán"],
+                ["c", "ใยไผ่เท่านั้น", "Ausschließlich Bambusfasern", "yai phài thâo-nán"],
+                ["d", "เต่าทะเลขนาดใหญ่เท่านั้น", "Nur große Meeresschildkröten", "tào thá-lay khà-nàat yài thâo-nán"]
+            ],
+            "a",
+            "คำตอบคือ ผลไม้และสัตว์ขนาดเล็ก",
+            "Die richtige Antwort ist: Früchte und kleine Tiere.",
+            [{"title":"Department of National Parks, Wildlife and Plant Conservation","url":"https://www.dnp.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-264", "nature", 2, "single_choice",
+            "ป่าบนภูเขาช่วยแม่น้ำอย่างไร?",
+            "Warum sind Wälder in Bergregionen wichtig für Flüsse?",
+            "pà bon phuu-khǎo chûai mɛ̂ɛ-náam yàng rai ?",
+            [
+                ["a", "ช่วยกักเก็บน้ำในดินและลดการพังทลาย", "Sie halten Wasser im Boden und verringern Erosion", "chûai gàk gèp náam nai din lɛ́ lót gaan phang thá laai"],
+                ["b", "ทำให้น้ำในแม่น้ำเป็นสีฟ้า", "Sie färben das Flusswasser blau", "tham hâi náam nai mɛ̂ɛ-náam bpen sǐi fáa"],
+                ["c", "ป้องกันไม่ให้ฝนตก", "Sie verhindern, dass es überhaupt regnet", "pongkan mâi hâi fǒn dtòk"],
+                ["d", "ทำให้น้ำจืดกลายเป็นน้ำเค็ม", "Sie machen Flüsse salzig", "tham hâi náam chùet klaai bpen náam khem"]
+            ],
+            "a",
+            "คำตอบคือ ช่วยกักเก็บน้ำในดินและลดการพังทลาย",
+            "Die richtige Antwort ist: Sie halten Wasser im Boden und verringern Erosion.",
+            [{"title":"Department of National Parks, Wildlife and Plant Conservation","url":"https://www.dnp.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-265", "culture", 1, "single_choice",
+            "หมากรุกไทยเรียกว่าอะไร?",
+            "Was ist Makruk?",
+            "màak rúk Thai rîak wâa à-rai ?",
+            [
+                ["a", "หมากรุกไทย", "Eine thailändische Schachvariante", "màak rúk Thai"],
+                ["b", "เครื่องดื่มมะพร้าวหวาน", "Ein süßes Kokosgetränk", "khrʉ̂ang-dʉ̀ʉm má phráao wǎan"],
+                ["c", "เรือข้ามฟาก", "Ein kleines Fährboot", "rʉa khâam fâak"],
+                ["d", "พิธีตีระฆังวัด", "Ein Tempelglocken-Ritual", "phithi tii rá khang wát"]
+            ],
+            "a",
+            "คำตอบคือ หมากรุกไทย",
+            "Die richtige Antwort ist: Eine thailändische Schachvariante.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-266", "culture", 2, "single_choice",
+            "ขิมเป็นเครื่องดนตรีแบบใด?",
+            "Welches Instrument ist ein Khim?",
+            "khǐm bpen khrueang dontri bɛ̀ɛp dai ?",
+            [
+                ["a", "เครื่องสายที่ใช้ไม้เล็กๆ ตี", "Ein Saiteninstrument, das mit kleinen Schlägeln gespielt wird", "khrûeang sǎai thîi chái mai lék-lék tii"],
+                ["b", "แตรไม้ไผ่ยาว", "Eine lange Bambustrompete", "dtɛɛ mai phai yaao"],
+                ["c", "ระฆังมือขนาดใหญ่", "Eine große Handglocke", "rá khang mʉʉ khà-nàat yài"],
+                ["d", "กลองดิน", "Eine Trommel aus Ton", "klong din"]
+            ],
+            "a",
+            "คำตอบคือ เครื่องสายที่ใช้ไม้เล็กๆ ตี",
+            "Die richtige Antwort ist: Ein Saiteninstrument, das mit kleinen Schlägeln gespielt wird.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-267", "culture", 1, "single_choice",
+            "ระนาดเป็นเครื่องดนตรีที่มีลักษณะคล้ายอะไร?",
+            "Was ist ein Ranat?",
+            "rá nâat bpen khrueang dontri thîi mii lák-sà-nà khláai à-rai ?",
+            [
+                ["a", "ระนาดคล้ายเครื่องดนตรีไซโลโฟน", "Ein thailändisches Xylophon-ähnliches Instrument", "rá nâat khláai khrueang dontri sai loo foon"],
+                ["b", "ร่มแบบดั้งเดิม", "Ein traditioneller Regenschirm", "rôm bɛ̀ɛp dâng doem"],
+                ["c", "ภาชนะใส่กะทิ", "Ein Gefäß für Kokosmilch", "phaa chá ná sài kàthí"],
+                ["d", "เรือแคนูติดใบ", "Ein Kanu mit Segel", "rʉa khaae nuu dtìt bai"]
+            ],
+            "a",
+            "คำตอบคือ ระนาดคล้ายเครื่องดนตรีไซโลโฟน",
+            "Die richtige Antwort ist: Ein thailändisches Xylophon-ähnliches Instrument.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-268", "culture", 1, "single_choice",
+            "แคนเป็นเครื่องดนตรีแบบใด?",
+            "Was ist eine Khaen?",
+            "khaen bpen khrueang dontri bɛ̀ɛp dai ?",
+            [
+                ["a", "เครื่องเป่าปากแบบดั้งเดิม", "Ein traditionelles Mundorgel-Instrument", "khrûeang pào pàak bɛ̀ɛp dâng doem"],
+                ["b", "บันไดไม้ไผ่", "Eine Bambusleiter", "ban-dai mai phai"],
+                ["c", "ขนมข้าวภาคใต้", "Ein Reiskuchen aus dem Süden", "khà-nǒm khâao phâak dtâi"],
+                ["d", "เสาวัดแกะสลัก", "Ein geschnitzter Tempelpfeiler", "sǎo wát kàe sà lák"]
+            ],
+            "a",
+            "คำตอบคือ เครื่องเป่าปากแบบดั้งเดิม",
+            "Die richtige Antwort ist: Ein traditionelles Mundorgel-Instrument.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-269", "culture", 1, "single_choice",
+            "พิณเป็นเครื่องดนตรีที่เล่นอย่างไร?",
+            "Was ist ein Phin?",
+            "phin bpen khrueang dontri thîi lên yàng rai ?",
+            [
+                ["a", "ดีดสาย", "Ein traditionelles gezupftes Saiteninstrument", "dìit sǎai"],
+                ["b", "ใช้ไม้ตี", "Mit Schlägeln schlagen", "chái mai tii"],
+                ["c", "เป่า", "Blasen", "pào"],
+                ["d", "เขย่า", "Schütteln", "khǎo yâa"]
+            ],
+            "a",
+            "คำตอบคือ ดีดสาย",
+            "Die richtige Antwort ist: Ein traditionelles gezupftes Saiteninstrument.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-270", "culture", 2, "single_choice",
+            "เพลงลูกทุ่งเป็นเพลงแบบใด?",
+            "Was ist Luk Thung?",
+            "phleeng lûuk thûng bpen phleeng bɛ̀ɛp dai ?",
+            [
+                ["a", "เพลงไทยที่มีเรื่องราวและอิทธิพลจากชีวิตชนบท", "Ein beliebtes thailändisches Musikgenre mit ländlichen Einflüssen", "phleeng Thai thîi mii rʉ̂ang raao lɛ́ ìtthíphon jàak chii wít chon ná bòt"],
+                ["b", "ก๋วยเตี๋ยวชนิดหนึ่ง", "Eine traditionelle Art von Nudelsuppe", "gǔai-dtǐao chánít nʉ̀ng"],
+                ["c", "ตลาดน้ำ", "Ein schwimmender Markt", "dtà-làat náam"],
+                ["d", "ท่ามวย", "Eine Kampfsporttechnik", "thâa muai"]
+            ],
+            "a",
+            "คำตอบคือ เพลงไทยที่มีเรื่องราวและอิทธิพลจากชีวิตชนบท",
+            "Die richtige Antwort ist: Ein beliebtes thailändisches Musikgenre mit ländlichen Einflüssen.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-271", "culture", 2, "single_choice",
+            "หมอลำเป็นศิลปะเพลงที่เกี่ยวข้องกับภาคใด?",
+            "Was ist Mor Lam?",
+            "mǒo lam bpen sìnlápà phleeng thîi kìao khɔ̂ɔng gàp phâak dai ?",
+            [
+                ["a", "ภาคตะวันออกเฉียงเหนือ", "Ein Musik- und Gesangsstil, besonders mit dem Nordosten verbunden", "phâak tà wan ɔ̀ɔk chǐang nǔea"],
+                ["b", "ภาคเหนือเท่านั้น", "Ein Boot, das nur auf Seen fährt", "phâak nǔea thâo-nán"],
+                ["c", "ชายฝั่งทะเลตะวันออก", "Eine Sorte Kokosnuss", "chai fàng thá-lay tà wan ɔ̀ɔk"],
+                ["d", "กรุงเทพฯ เท่านั้น", "Ein Tempel aus weißem Stein", "Krung Thêp thâo-nán"]
+            ],
+            "a",
+            "คำตอบคือ ภาคตะวันออกเฉียงเหนือ",
+            "Die richtige Antwort ist: Ein Musik- und Gesangsstil, besonders mit dem Nordosten verbunden.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-272", "culture", 2, "single_choice",
+            "วงปี่พาทย์คืออะไร?",
+            "Was ist ein Piphat-Ensemble?",
+            "wong pìi phaat khʉʉ à-rai ?",
+            [
+                ["a", "วงดนตรีไทยที่ใช้เครื่องดนตรีดั้งเดิมหลายชนิด", "Ein Ensemble traditioneller thailändischer Instrumente", "wong dontri Thai thîi chái khrueang dontri dâng doem lǎai chánít"],
+                ["b", "กลุ่มพ่อค้าในตลาด", "Eine Gruppe von Straßenhändlern", "glùm phɔ̂ɔ-kháa nai dtà-làat"],
+                ["c", "ทีมปลูกข้าว", "Ein Team beim Reispflanzen", "thiim plùuk khâao"],
+                ["d", "เรือแข่ง", "Eine Art Drachenboot", "rʉa khàaeng"]
+            ],
+            "a",
+            "คำตอบคือ วงดนตรีไทยที่ใช้เครื่องดนตรีดั้งเดิมหลายชนิด",
+            "Die richtige Antwort ist: Ein Ensemble traditioneller thailändischer Instrumente.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-273", "culture", 2, "single_choice",
+            "ลิเกมักมีลักษณะการแสดงอย่างไร?",
+            "Was zeichnet eine Likay-Aufführung oft aus?",
+            "lí kee mák mii lák-sà-nà gaan sǎ daeng yàng rai ?",
+            [
+                ["a", "มีดนตรี การเต้น และการแสดงสด", "Musik, Tanz und improvisiertes Schauspiel", "mii dontri gaan tên lɛ́ gaan sǎ daeng sòt"],
+                ["b", "ใช้ไม้ฮอกกี้", "Eishockeyschläger", "chái mai hɔ̂k kîi"],
+                ["c", "ใช้ลำโพงใต้น้ำ", "Unterwasser-Lautsprecher", "chái lam phooŋ dtâi náam"],
+                ["d", "ใช้หุ่นแก้ว", "Marionetten aus Glas", "chái hùn gɛ̂ɛo"]
+            ],
+            "a",
+            "คำตอบคือ มีดนตรี การเต้น และการแสดงสด",
+            "Die richtige Antwort ist: Musik, Tanz und improvisiertes Schauspiel.",
+            [{"title":"UNESCO Intangible Cultural Heritage","url":"https://ich.unesco.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-274", "religion", 1, "single_choice",
+            "ชาวพุทธส่วนใหญ่ในไทยนับถือนิกายใด?",
+            "Welche buddhistische Tradition praktizieren die meisten thailändischen Buddhisten?",
+            "chaao phút sùan yài nai Thai náp thǔue ní-gaai dai ?",
+            [
+                ["a", "เถรวาท", "Theravada", "thěn wâat"],
+                ["b", "ศาสนาอิสลาม", "Islam", "sàat naa ìt sà laam"],
+                ["c", "ศาสนาชินโต", "Shinto", "sàat naa chin too"],
+                ["d", "ศาสนาคริสต์", "Christentum", "sàat naa khrít"]
+            ],
+            "a",
+            "คำตอบคือ เถรวาท",
+            "Die richtige Antwort ist: Theravada.",
+            [{"title":"Tourism Authority of Thailand – Buddhist Traditions","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-275", "religion", 1, "single_choice",
+            "เจดีย์ในวัดคือสิ่งก่อสร้างแบบใด?",
+            "Was ist ein Chedi in einer Tempelanlage?",
+            "chee dii nai wát khʉʉ sing kò sâang bɛ̀ɛp dai ?",
+            [
+                ["a", "เจดีย์ที่มักเก็บพระธาตุ", "Ein stupaartiges Bauwerk, das oft Reliquien beherbergt", "chee dii thîi mák gèp phrá thaa tù"],
+                ["b", "เตาทำอาหาร", "Ein Küchenofen", "tao tham-aa-hǎan"],
+                ["c", "ที่พักช้าง", "Eine Unterkunft für Elefanten", "thîi-phák cháng"],
+                ["d", "แผงขายของ", "Ein Marktstand", "phǎaeng khǎai khɔ̌ɔng"]
+            ],
+            "a",
+            "คำตอบคือ เจดีย์ที่มักเก็บพระธาตุ",
+            "Die richtige Antwort ist: Ein stupaartiges Bauwerk, das oft Reliquien beherbergt.",
+            [{"title":"Tourism Authority of Thailand – Buddhist Traditions","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-276", "religion", 2, "single_choice",
+            "อุโบสถในวัดใช้ทำอะไร?",
+            "Wozu dient ein Ubosot in einem buddhistischen Tempel?",
+            "ù boo sòt nai wát chái tham à-rai ?",
+            [
+                ["a", "เป็นสถานที่ประกอบพิธีสำคัญทางศาสนา", "Als geweihter Raum für wichtige religiöse Zeremonien", "bpen sà thǎan thîi prà kòp phithi sǎm-khan thaang sàat naa"],
+                ["b", "เป็นสถานีรถไฟ", "Als Bahnhof", "bpen sà-thǎa-nii rót-fai"],
+                ["c", "เป็นสระว่ายน้ำ", "Als Schwimmbecken", "bpen sà-wâai-náam"],
+                ["d", "เป็นที่เก็บอาหารริมทาง", "Als Lager für Straßenküchen", "bpen thîi gèp aa-hǎan rim thaang"]
+            ],
+            "a",
+            "คำตอบคือ เป็นสถานที่ประกอบพิธีสำคัญทางศาสนา",
+            "Die richtige Antwort ist: Als geweihter Raum für wichtige religiöse Zeremonien.",
+            [{"title":"Tourism Authority of Thailand – Buddhist Traditions","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-277", "religion", 2, "single_choice",
+            "ประเพณีทอดกฐินจัดขึ้นในช่วงใด?",
+            "Was ist Kathina?",
+            "pràpheni thɔ̂ɔt kà thǐn jàt khʉ̂n nai chûang dai ?",
+            [
+                ["a", "หลังช่วงเข้าพรรษาและมีการถวายผ้าแก่พระสงฆ์", "Eine Zeremonie nach der Regenzeit, bei der Mönchen Roben gespendet werden", "lǎng chûang khao phansa lɛ́ mii gaan thà waai phâa kàae phra song"],
+                ["b", "ช่วงสงกรานต์", "Ein Wasserfest im April", "chûang Sǒngkràn"],
+                ["c", "ช่วงแข่งว่าว", "Ein traditioneller Drachenwettbewerb", "chûang khàaeng wâo"],
+                ["d", "ช่วงตลาดผ้าไหม", "Ein Markt für Seide", "chûang dtà-làat phâa mǎi"]
+            ],
+            "a",
+            "คำตอบคือ หลังช่วงเข้าพรรษาและมีการถวายผ้าแก่พระสงฆ์",
+            "Die richtige Antwort ist: Eine Zeremonie nach der Regenzeit, bei der Mönchen Roben gespendet werden.",
+            [{"title":"Tourism Authority of Thailand – Buddhist Traditions","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-278", "religion", 2, "single_choice",
+            "การบวชชั่วคราวหมายถึงอะไร?",
+            "Was bedeutet eine zeitweilige Ordination im thailändischen Buddhismus?",
+            "gaan bùat chûa khraao mǎi thʉ̌ng à-rai ?",
+            [
+                ["a", "การบวชเป็นพระในช่วงเวลาจำกัด", "Für eine begrenzte Zeit als Mönch zu leben", "gaan bùat bpen phrá nai chûang wee-laa jam kàt"],
+                ["b", "การฝึกเป็นผู้ดูแลวัด", "Eine Ausbildung zum Tempelwächter", "gaan fʉ̀k bpen phûu duu-lɛɛ wát"],
+                ["c", "การย้ายไปอยู่ในวังตลอดชีวิต", "Für immer in einen Palast zu ziehen", "gaan yáai bpai yùu nai wang tà lôt chii wít"],
+                ["d", "การฝึกเป็นนักเต้น", "Eine Ausbildung zum professionellen Tänzer", "gaan fʉ̀k bpen nák tên"]
+            ],
+            "a",
+            "คำตอบคือ การบวชเป็นพระในช่วงเวลาจำกัด",
+            "Die richtige Antwort ist: Für eine begrenzte Zeit als Mönch zu leben.",
+            [{"title":"Tourism Authority of Thailand – Buddhist Traditions","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-279", "religion", 1, "single_choice",
+            "ธรรมะหมายถึงอะไรในพระพุทธศาสนา?",
+            "Was bezeichnet „Dhamma“ im Buddhismus?",
+            "tham ma mǎi thʉ̌ng à-rai nai phrá phút sàat naa ?",
+            [
+                ["a", "คำสอนของพระพุทธเจ้า", "Die Lehre und den Weg des Buddha", "kham sǒn khɔ̌ɔng Phrá Phút Châo"],
+                ["b", "ระฆังวัดชนิดหนึ่ง", "Eine Sorte Tempelglocke", "rá khang wát chánít nʉ̀ng"],
+                ["c", "ปลาศักดิ์สิทธิ์", "Einen heiligen Fisch", "pla saksit"],
+                ["d", "อาหารข้าวกับมะม่วง", "Ein Gericht aus Reis und Mango", "aa-hǎan khâao gàp má-mûang"]
+            ],
+            "a",
+            "คำตอบคือ คำสอนของพระพุทธเจ้า",
+            "Die richtige Antwort ist: Die Lehre und den Weg des Buddha.",
+            [{"title":"Tourism Authority of Thailand – Buddhist Traditions","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-280", "religion", 1, "single_choice",
+            "คณะสงฆ์หมายถึงใคร?",
+            "Was ist die Sangha?",
+            "khana song mǎi thʉ̌ng khrai ?",
+            [
+                ["a", "ชุมชนของพระสงฆ์ในพระพุทธศาสนา", "Die Gemeinschaft buddhistischer Mönche", "chum-chon khɔ̌ɔng phra song nai phrá phút sàat naa"],
+                ["b", "กลุ่มพ่อค้า", "Eine Gruppe von Straßenhändlern", "glùm phɔ̂ɔ-kháa"],
+                ["c", "เรือใบหลวง", "Ein königliches Segelboot", "ruea bai lǔang"],
+                ["d", "ตลาดเครื่องเทศ", "Ein Gewürzmarkt", "dtà-làat khrûeang thêt"]
+            ],
+            "a",
+            "คำตอบคือ ชุมชนของพระสงฆ์ในพระพุทธศาสนา",
+            "Die richtige Antwort ist: Die Gemeinschaft buddhistischer Mönche.",
+            [{"title":"Tourism Authority of Thailand – Buddhist Traditions","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-281", "religion", 2, "single_choice",
+            "นอกจากทำพิธีทางศาสนาแล้ว วัดยังเป็นสถานที่สำคัญด้านใด?",
+            "Warum besuchen viele Menschen einen Tempel auch außerhalb religiöser Zeremonien?",
+            "nôk chàak tham phithi thaang sàat naa lɛ́ɛo wát yang bpen sà thǎan thîi sǎm-khan dâan dai ?",
+            [
+                ["a", "เป็นสถานที่พบปะและทำกิจกรรมของชุมชน", "Ein wichtiger Ort für Gemeinschaft und Zusammenkunft", "bpen sà thǎan thîi phóp pà lɛ́ tham gìt-jà-gam khɔ̌ɔng chum-chon"],
+                ["b", "เป็นที่ขับเครื่องบินฟรี", "Ein Ort, an dem man kostenlos Flugzeuge steuern darf", "bpen thîi khàp khrʉ̂ang-bin frii"],
+                ["c", "เป็นสถานที่ถ่ายทอดฟุตบอลเสมอ", "Ein Ort, an dem immer Fußballspiele übertragen werden", "bpen sà thǎan thîi thàai-thɔ̂ɔt fút bon sà-mə̌ə"],
+                ["d", "เป็นโรงเรียนทุกแห่ง", "Ein Ersatz für alle Schulen", "bpen rooŋ-rian thúk hàeng"]
+            ],
+            "a",
+            "คำตอบคือ เป็นสถานที่พบปะและทำกิจกรรมของชุมชน",
+            "Die richtige Antwort ist: Ein wichtiger Ort für Gemeinschaft und Zusammenkunft.",
+            [{"title":"Tourism Authority of Thailand – Buddhist Traditions","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-282", "religion", 1, "single_choice",
+            "การนั่งสมาธิหมายถึงการทำอะไร?",
+            "Was bedeutet es, vor einer Buddha-Statue zu meditieren?",
+            "gaan nâng sà maa thí mǎi thʉ̌ng gaan tham à-rai ?",
+            [
+                ["a", "นั่งอย่างสงบและตั้งใจจดจ่อ", "Still sitzen und die Gedanken sammeln", "nâng yàang sà-ngòp lɛ́ dtâng-jai jòt jɔ̀ɔ"],
+                ["b", "ฝึกเต้นรำ", "Einen traditionellen Tanz üben", "fʉ̀k dtên-ram"],
+                ["c", "นับหน้าต่างวัด", "Die Fenster des Tempels zählen", "náp nâa-dtàang wát"],
+                ["d", "รอรถโดยสาร", "Auf einen Bus warten", "rɔɔ rót dooi-sǎan"]
+            ],
+            "a",
+            "คำตอบคือ นั่งอย่างสงบและตั้งใจจดจ่อ",
+            "Die richtige Antwort ist: Still sitzen und die Gedanken sammeln.",
+            [{"title":"Tourism Authority of Thailand – Buddhist Traditions","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-283", "religion", 2, "single_choice",
+            "ระฆังในวัดอาจใช้ทำอะไรในบางพิธี?",
+            "Wozu dient ein Tempelglockenspiel bei manchen Zeremonien?",
+            "rá khang nai wát àat chái tham à-rai nai baang phithi ?",
+            [
+                ["a", "บอกหรือประกอบช่วงเวลาของพิธี", "Religiöse Momente markieren oder begleiten", "bɔ̀ɔk rʉ̌ʉ prà kòp chûang wee-laa khɔ̌ɔng phithi"],
+                ["b", "วัดอุณหภูมิ", "Die Temperatur des Tempels messen", "wát un hà phuu mí"],
+                ["c", "บอกเวลาเปิดสนามบิน", "Die Öffnungszeiten des Flughafens ankündigen", "bɔ̀ɔk wee-laa bpə̀ət sà-nǎam-bin"],
+                ["d", "ไล่นกทุกชนิด", "Alle Vögel aus der Stadt vertreiben", "lâi nók thúk chánít"]
+            ],
+            "a",
+            "คำตอบคือ บอกหรือประกอบช่วงเวลาของพิธี",
+            "Die richtige Antwort ist: Religiöse Momente markieren oder begleiten.",
+            [{"title":"Tourism Authority of Thailand – Buddhist Traditions","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-284", "language_daily", 1, "single_choice",
+            "ภาษาไทยมีเสียงวรรณยุกต์ที่ใช้แยกความหมายกี่เสียง?",
+            "Wie viele bedeutungsunterscheidende Töne hat die thailändische Sprache?",
+            "phaa-sǎa Thai mii sǐang wan yúk thîi chái yɛ̂ɛk khwaam mǎi gìi sǐang ?",
+            [
+                ["a", "ห้าเสียง", "Fünf", "hâa sǐang"],
+                ["b", "สองเสียง", "Zwei", "sɔ̌ɔng sǐang"],
+                ["c", "สิบเสียง", "Zehn", "sìp sǐang"],
+                ["d", "ไม่มีเสียงวรรณยุกต์", "Keine", "mâi mii sǐang wan yúk"]
+            ],
+            "a",
+            "คำตอบคือ ห้าเสียง",
+            "Die richtige Antwort ist: Fünf.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-285", "language_daily", 2, "single_choice",
+            "ในประโยคภาษาไทยทั่วไป เว้นวรรคระหว่างคำอย่างไร?",
+            "Wie werden Wörter in einem gewöhnlichen thailändischen Satz meist voneinander getrennt?",
+            "nai bprà-yòok phaa-sǎa Thai thûa pai wén wák rá wàang kham yàng rai ?",
+            [
+                ["a", "ไม่ได้เว้นวรรคทุกคำ แต่มักเว้นระหว่างกลุ่มคำ", "Nicht jedes Wort bekommt ein Leerzeichen; Leerzeichen trennen oft größere Einheiten", "mâi-dâi wén wák thúk kham tɛ̀ɛ mák wén rá wàang glùm kham"],
+                ["b", "ใส่กรอบแยกทุกคำ", "Jedes Wort steht in einem eigenen Kasten", "sài kròop yɛ̂ɛk thúk kham"],
+                ["c", "ใช้เครื่องหมายจุลภาคคั่นทุกคำ", "Wörter werden durch Kommas getrennt", "chái khrʉ̂ang mǎai chun phâak khân thúk kham"],
+                ["d", "ใส่ขีดระหว่างทุกพยางค์", "Zwischen alle Silben kommt ein Bindestrich", "sài khìit rá wàang thúk phá yaang"]
+            ],
+            "a",
+            "คำตอบคือ ไม่ได้เว้นวรรคทุกคำ แต่มักเว้นระหว่างกลุ่มคำ",
+            "Die richtige Antwort ist: Nicht jedes Wort bekommt ein Leerzeichen; Leerzeichen trennen oft größere Einheiten.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-286", "language_daily", 1, "single_choice",
+            "คำเรียกพี่มักใช้เรียกใคร?",
+            "Was bedeutet die Anrede „Phi“ typischerweise im Verhältnis zum Sprecher?",
+            "kham rîak phîi mák chái rîak khrai ?",
+            [
+                ["a", "คนที่อายุมากกว่าหรือพี่", "Eine ältere Person oder ein älteres Geschwister", "khon thîi aa yú mâak kwàa rʉ̌ʉ phîi"],
+                ["b", "สัตว์เลี้ยงแปลกหน้า", "Ein fremdes Haustier", "sǎt líang plàek nâa"],
+                ["c", "อาคารวัด", "Ein Tempelgebäude", "aa khaan wát"],
+                ["d", "อาหารเส้น", "Ein Gericht mit Nudeln", "aa-hǎan sên"]
+            ],
+            "a",
+            "คำตอบคือ คนที่อายุมากกว่าหรือพี่",
+            "Die richtige Antwort ist: Eine ältere Person oder ein älteres Geschwister.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-287", "language_daily", 1, "single_choice",
+            "คำเรียกน้องมักใช้เรียกใคร?",
+            "Was bedeutet „Nong“ als Anrede typischerweise?",
+            "kham rîak nóng mák chái rîak khrai ?",
+            [
+                ["a", "คนที่อายุน้อยกว่าหรือน้อง", "Eine jüngere Person oder ein jüngeres Geschwister", "khon thîi aa yú nɔ́ɔi gwàa rʉ̌ʉ nóng"],
+                ["b", "คนที่อายุมากกว่า", "Eine ältere Person", "khon thîi aa yú mâak kwàa"],
+                ["c", "สถานีรถไฟ", "Ein Bahnhof", "sà-thǎa-nii rót-fai"],
+                ["d", "แผงขายของ", "Ein Marktstand", "phǎaeng khǎai khɔ̌ɔng"]
+            ],
+            "a",
+            "คำตอบคือ คนที่อายุน้อยกว่าหรือน้อง",
+            "Die richtige Antwort ist: Eine jüngere Person oder ein jüngeres Geschwister.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-288", "language_daily", 2, "single_choice",
+            "คำบอกชนิดของสิ่งของใช้ทำอะไรเมื่อนับ?",
+            "Wozu dienen Zählwörter in der thailändischen Sprache?",
+            "kham bɔ̀ɔk chánít khɔ̌ɔng sìng-khɔ̌ɔng chái tham à-rai mʉ̂a náp ?",
+            [
+                ["a", "ใช้ร่วมกับตัวเลขและคำนามเมื่อนับสิ่งของ", "Sie werden oft zusammen mit Zahlen und Nomen verwendet", "chái rûam gàp tua lêek lɛ́ kham naam mʉ̂a náp sìng-khɔ̌ɔng"],
+                ["b", "ใช้แทนคำกริยาทั้งหมด", "Sie ersetzen alle Verben", "chái thɛɛn kham krì yaa tháng mòt"],
+                ["c", "บอกว่าเป็นประโยคคำถามเสมอ", "Sie zeigen immer die Satzfrage an", "bɔ̀ɔk wâa bpen bprà-yòok kham thǎam sà-mə̌ə"],
+                ["d", "ใช้เฉพาะในเพลง", "Sie werden nur in Liedern benutzt", "chái chěe phó nai phleeng"]
+            ],
+            "a",
+            "คำตอบคือ ใช้ร่วมกับตัวเลขและคำนามเมื่อนับสิ่งของ",
+            "Die richtige Antwort ist: Sie werden oft zusammen mit Zahlen und Nomen verwendet.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-289", "language_daily", 2, "single_choice",
+            "คำขยายอย่างคำว่า สีแดง มักอยู่ตรงไหนเมื่อเทียบกับคำนามในภาษาไทย?",
+            "Wo steht ein beschreibendes Wort wie „rot“ im Thailändischen häufig im Verhältnis zum Nomen?",
+            "kham khà yaai yàang kham wâa sǐi-dɛɛng mák yùu dtrong nǎi mʉ̂a thîap gàp kham naam nai phaa-sǎa Thai ?",
+            [
+                ["a", "หลังคำนาม", "Nach dem Nomen", "lǎng kham naam"],
+                ["b", "หน้าคำนามเสมอ", "Immer vor dem Nomen", "nâa kham naam sà-mə̌ə"],
+                ["c", "ต้นประโยคเท่านั้น", "Nur am Satzanfang", "tôn bprà-yòok thâo-nán"],
+                ["d", "ไม่อยู่ในประโยคเดียวกัน", "Nie im selben Satz", "mâi yùu nai bprà-yòok diao kan"]
+            ],
+            "a",
+            "คำตอบคือ หลังคำนาม",
+            "Die richtige Antwort ist: Nach dem Nomen.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-290", "language_daily", 1, "single_choice",
+            "คำว่า คุณ ใช้ทำอะไรในชีวิตประจำวัน?",
+            "Wozu dient ein höflicher Titel wie „Khun“ im Alltag?",
+            "kham wâa khun chái tham à-rai nai chii wít prà cham wan ?",
+            [
+                ["a", "ใช้เรียกบุคคลอย่างสุภาพ", "Als respektvolle Anrede für eine Person", "chái rîak bùk khon yàang suphap"],
+                ["b", "ใช้เรียกวันหยุด", "Als Name eines Feiertags", "chái rîak wan-yùt"],
+                ["c", "ใช้เรียกสนามบิน", "Als Wort für Flughafen", "chái rîak sà-nǎam-bin"],
+                ["d", "ใช้เรียกข้าวเหนียว", "Als Bezeichnung für Klebreis", "chái rîak khâo nǐao"]
+            ],
+            "a",
+            "คำตอบคือ ใช้เรียกบุคคลอย่างสุภาพ",
+            "Die richtige Antwort ist: Als respektvolle Anrede für eine Person.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-291", "language_daily", 2, "single_choice",
+            "ทำไมพยางค์เดียวกันในภาษาไทยจึงอาจมีความหมายต่างกัน?",
+            "Warum kann dieselbe thailändische Silbe je nach Tonhöhe etwas anderes bedeuten?",
+            "tham-mai phá yaang diao kan nai phaa-sǎa Thai chueng àat mii khwaam mǎi tàang kan ?",
+            [
+                ["a", "เพราะเสียงวรรณยุกต์ช่วยแยกความหมาย", "Weil der Ton die Wortbedeutung unterscheiden kann", "phráw sǐang wan yúk chûai yɛ̂ɛk khwaam mǎi"],
+                ["b", "เพราะทุกคำต้องมีสี่รูปเขียน", "Weil jedes Wort vier Schreibweisen haben muss", "phráw thúk kham dtɔ̂ng mii sìi rûup khǐan"],
+                ["c", "เพราะภาษาไทยไม่ออกเสียงสระ", "Weil Vokale nie gesprochen werden", "phráw phaa-sǎa Thai mâi ɔ̀ɔk sǐang sà rá"],
+                ["d", "เพราะความหมายขึ้นกับสีของตัวอักษร", "Weil die Bedeutung von der Schriftfarbe abhängt", "phráw khwaam mǎi khʉ̂n gàp sǐi khɔ̌ɔng dtua akson"]
+            ],
+            "a",
+            "คำตอบคือ เพราะเสียงวรรณยุกต์ช่วยแยกความหมาย",
+            "Die richtige Antwort ist: Weil der Ton die Wortbedeutung unterscheiden kann.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-292", "language_daily", 2, "single_choice",
+            "เมื่อนับสิ่งของในภาษาไทย คำบอกชนิดมักอยู่ตรงไหน?",
+            "Wo steht das Zählwort beim Zählen im Thai üblicherweise?",
+            "mʉ̂a náp sìng-khɔ̌ɔng nai phaa-sǎa Thai kham bɔ̀ɔk chánít mák yùu dtrong nǎi ?",
+            [
+                ["a", "หลังคำนามและตัวเลข", "Nach dem Nomen und der Zahl", "lǎng kham naam lɛ́ tua lêek"],
+                ["b", "ก่อนคำนามเสมอ", "Immer vor dem Nomen", "gɔ̀ɔn kham naam sà-mə̌ə"],
+                ["c", "ท้ายประโยคเท่านั้น", "Nur am Satzende", "tháai bprà-yòok thâo-nán"],
+                ["d", "แทนตัวเลขทั้งหมด", "Anstelle jeder Zahl", "thɛɛn tua lêek tháng mòt"]
+            ],
+            "a",
+            "คำตอบคือ หลังคำนามและตัวเลข",
+            "Die richtige Antwort ist: Nach dem Nomen und der Zahl.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-293", "language_daily", 2, "single_choice",
+            "คำถามแบบใช่หรือไม่ใช่ในภาษาไทยมักทำเครื่องหมายอย่างไร?",
+            "Was zeigt ein Fragewort am Satzende im Thailändischen häufig an?",
+            "kham thǎam bɛ̀ɛp châi rʉ̌ʉ mâi châi nai phaa-sǎa Thai mák tham khrʉ̂ang mǎai yàng rai ?",
+            [
+                ["a", "เป็นคำถามที่ตอบได้ว่าใช่หรือไม่ใช่", "Dass eine Ja-Nein-Frage gestellt wird", "bpen kham thǎam thîi tòp dâi wâa châi rʉ̌ʉ mâi châi"],
+                ["b", "เป็นเนื้อเพลง", "Dass der Satz ein Liedtext ist", "bpen nuea phleeng"],
+                ["c", "เป็นการบอกราคา", "Dass jemand einen Preis nennt", "pen kan bɔ̀ɔk raa-khaa"],
+                ["d", "เป็นการจบประโยคเสมอ", "Dass der Satz bereits beendet ist", "pen kan chòp bprà-yòok sà-mə̌ə"]
+            ],
+            "a",
+            "คำตอบคือ เป็นคำถามที่ตอบได้ว่าใช่หรือไม่ใช่",
+            "Die richtige Antwort ist: Dass eine Ja-Nein-Frage gestellt wird.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-294", "geography", 2, "single_choice",
+            "เกาะเกร็ดใกล้กรุงเทพฯ มีชื่อเสียงเรื่องใด?",
+            "Wofür ist Ko Kret nahe Bangkok besonders bekannt?",
+            "kɔ̀ grèt glâi Krung Thêp mii chûue sǐang rʉ̂ang dai ?",
+            [
+                ["a", "เครื่องปั้นดินเผาและวัฒนธรรมมอญ", "Töpferhandwerk und Mon-Kultur", "khrueang pan din phao lɛ́ wátthánatham mon"],
+                ["b", "ภูเขาที่มีหิมะ", "Schneebedeckte Berge", "phuu-khǎo thîi mii hì má"],
+                ["c", "ลานกระโดดสกี", "Skisprungschanzen", "laan grà-dòot sà kii"],
+                ["d", "ทะเลทรายทรายแดง", "Eine Wüste aus rotem Sand", "thá-lay sai sai daeng"]
+            ],
+            "a",
+            "คำตอบคือ เครื่องปั้นดินเผาและวัฒนธรรมมอญ",
+            "Die richtige Antwort ist: Töpferhandwerk und Mon-Kultur.",
+            [{"title":"Tourism Authority of Thailand","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-295", "geography", 2, "single_choice",
+            "อุทยานประวัติศาสตร์พิมายมีสิ่งใดให้ชม?",
+            "Was kann man im historischen Park Phimai besonders sehen?",
+            "ùtháyan prà wá tì sǎat phí maai mii sing dai hâi chom ?",
+            [
+                ["a", "โบราณสถานสถาปัตยกรรมแบบขอม", "Eine bedeutende Anlage mit Khmer-Architektur", "boo raan sà thǎan sà thǎa pàt yá kam bɛ̀ɛp Khǒm"],
+                ["b", "สนามบินลอยน้ำ", "Einen schwimmenden Flughafen", "sà-nǎam-bin lɔɔi náam"],
+                ["c", "ปราสาทน้ำแข็งยุคกลาง", "Eine mittelalterliche Burg aus Eis", "bpraa sàat nam khaeng yúk klaang"],
+                ["d", "ท่าเรือโรมันโบราณ", "Einen antiken römischen Hafen", "thâa ruea roo man boo raan"]
+            ],
+            "a",
+            "คำตอบคือ โบราณสถานสถาปัตยกรรมแบบขอม",
+            "Die richtige Antwort ist: Eine bedeutende Anlage mit Khmer-Architektur.",
+            [{"title":"Tourism Authority of Thailand","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-296", "geography", 2, "single_choice",
+            "เชียงคานมีชื่อเสียงเรื่องใด?",
+            "Wofür ist Chiang Khan am Mekong bekannt?",
+            "chiang khaan mii chûue sǐang rʉ̂ang dai ?",
+            [
+                ["a", "เมืองริมแม่น้ำที่มีบ้านไม้เก่าแก่", "Eine historische Uferstadt mit traditionellen Holzhäusern", "mʉang rim mɛ̂ɛ-náam thîi mii bâan mai kào kàae"],
+                ["b", "รถไฟใต้ทะเล", "Eine U-Bahn unter dem Meer", "rót-fai dtâi thá-lay"],
+                ["c", "พีระมิดทราย", "Pyramiden aus Sand", "phii rá mít sai"],
+                ["d", "ลานสกี", "Skigebiete", "laan sà kii"]
+            ],
+            "a",
+            "คำตอบคือ เมืองริมแม่น้ำที่มีบ้านไม้เก่าแก่",
+            "Die richtige Antwort ist: Eine historische Uferstadt mit traditionellen Holzhäusern.",
+            [{"title":"Tourism Authority of Thailand","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-297", "geography", 1, "single_choice",
+            "หัวหินเป็นสถานที่แบบใด?",
+            "Was ist Hua Hin?",
+            "hǔa-hǐn bpen sà thǎan thîi bɛ̀ɛp dai ?",
+            [
+                ["a", "เมืองตากอากาศริมทะเล", "Ein bekannter Badeort am Golf von Thailand", "mʉang tàak aa-gàat rim thá-lay"],
+                ["b", "จังหวัดทางเหนือสุด", "Eine Provinz im äußersten Norden", "changwàt thaang nǔea sùt"],
+                ["c", "วัดกลางกรุงเทพฯ", "Ein Tempel im Zentrum Bangkoks", "wát glaang Krung Thêp"],
+                ["d", "ช่องเขาที่ติดลาว", "Ein Gebirgspass an der Grenze zu Laos", "chông khǎo thîi dtìt Lao"]
+            ],
+            "a",
+            "คำตอบคือ เมืองตากอากาศริมทะเล",
+            "Die richtige Antwort ist: Ein bekannter Badeort am Golf von Thailand.",
+            [{"title":"Tourism Authority of Thailand","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-298", "beginner_shopping", 1, "single_choice",
+            "ประเทศไทยใช้เงินสกุลใด?",
+            "Wie heißt die Währung, mit der man in Thailand bezahlt?",
+            "pràthet Thai chái ngoen sà kun dai ?",
+            [
+                ["a", "บาท", "Baht", "bàat"],
+                ["b", "เยน", "Yen", "yeen"],
+                ["c", "ยูโร", "Euro", "yuu roo"],
+                ["d", "รูปี", "Rupie", "ruu pii"]
+            ],
+            "a",
+            "คำตอบคือ บาท",
+            "Die richtige Antwort ist: Baht.",
+            [{"title":"Tourism Authority of Thailand","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-299", "beginner_daily_life", 1, "single_choice",
+            "ทำไมอาคารหลายแห่งในไทยจึงใช้พัดลมหรือเครื่องปรับอากาศ?",
+            "Warum sind Ventilatoren und Klimaanlagen in vielen thailändischen Gebäuden nützlich?",
+            "tham-mai aa khaan lǎai hàeng nai Thai chueng chái phát lom rʉ̌ʉ khrûeang pràp aa-gàat ?",
+            [
+                ["a", "เพราะอากาศมักร้อนและชื้น", "Weil es häufig warm und feucht ist", "phráw aa-gàat mák rɔ́ɔn lɛ́ chʉ́n"],
+                ["b", "เพราะหิมะตกทั้งปี", "Weil es dort das ganze Jahr schneit", "phráw hì má dtòk thang bpii"],
+                ["c", "เพราะทำให้เกิดเมฆฝน", "Weil sie Regenwolken anziehen", "phráw tham hâi gə̀ət mêk fǒn"],
+                ["d", "เพราะใช้ทำอาหาร", "Weil sie zum Kochen verwendet werden", "phráw chái tham-aa-hǎan"]
+            ],
+            "a",
+            "คำตอบคือ เพราะอากาศมักร้อนและชื้น",
+            "Die richtige Antwort ist: Weil es häufig warm und feucht ist.",
+            [{"title":"Thailand.go.th – Climate","url":"https://thailand.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-300", "beginner_nature_weather", 2, "single_choice",
+            "ลมที่พัดตามฤดูกาลทำให้หลายพื้นที่ของไทยมีสภาพอากาศแบบใด?",
+            "Welche Witterung bringen saisonale Winde in vielen Teilen Thailands typischerweise mit sich?",
+            "lom thîi phát dtaam rúe duu kaan tham hâi lǎai phúen thî khɔ̌ɔng Thai mii sà phâap aa-gàat bɛ̀ɛp dai ?",
+            [
+                ["a", "มีฤดูฝนที่ชัดเจน", "Eine ausgeprägte Regenzeit", "mii rúe duu fǒn thîi chát-jeen"],
+                ["b", "มีหิมะตกตลอดเวลา", "Dauerhaften Schneefall", "mii hì má dtòk tà lôt wee-laa"],
+                ["c", "มีพายุทรายในทะเลทราย", "Sandstürme wie in der Sahara", "mii phaa yú sai nai thá-lay sai"],
+                ["d", "มีน้ำค้างแข็งทุกวัน", "Jeden Tag Frost", "mii nám kʰáang kʰɛ̌ng thúk wan"]
+            ],
+            "a",
+            "คำตอบคือ มีฤดูฝนที่ชัดเจน",
+            "Die richtige Antwort ist: Eine ausgeprägte Regenzeit.",
+            [{"title":"Thai Meteorological Department","url":"https://www.tmd.go.th/"}]
+        ),
         ...[
             ["animals", 1, "สัตว์อะไรมีงวง?", "Welches Tier hat einen Rüssel?", "Sat arai mi nguang?", "animals", "d"],
             ["animals", 1, "สัตว์อะไรร้องว่า 'เหมียว'?", "Welches Tier miaut?", "Sat arai rong wa 'miao'?", "animals", "a"],
@@ -8547,6 +10147,106 @@
         "thq-beg-198": 1,
         "thq-beg-199": 1,
         "thq-beg-200": 1,
+        "thq-beg-201": 1,
+        "thq-beg-202": 1,
+        "thq-beg-203": 1,
+        "thq-beg-204": 1,
+        "thq-beg-205": 1,
+        "thq-beg-206": 1,
+        "thq-beg-207": 1,
+        "thq-beg-208": 1,
+        "thq-beg-209": 2,
+        "thq-beg-210": 1,
+        "thq-beg-211": 2,
+        "thq-beg-212": 1,
+        "thq-beg-213": 2,
+        "thq-beg-214": 2,
+        "thq-beg-215": 2,
+        "thq-beg-216": 1,
+        "thq-beg-217": 1,
+        "thq-beg-218": 1,
+        "thq-beg-219": 1,
+        "thq-beg-220": 1,
+        "thq-beg-221": 2,
+        "thq-beg-222": 1,
+        "thq-beg-223": 1,
+        "thq-beg-224": 1,
+        "thq-beg-225": 1,
+        "thq-beg-226": 2,
+        "thq-beg-227": 1,
+        "thq-beg-228": 1,
+        "thq-beg-229": 1,
+        "thq-beg-230": 1,
+        "thq-beg-231": 2,
+        "thq-beg-232": 2,
+        "thq-beg-233": 1,
+        "thq-beg-234": 1,
+        "thq-beg-235": 1,
+        "thq-beg-236": 1,
+        "thq-beg-237": 1,
+        "thq-beg-238": 1,
+        "thq-beg-239": 1,
+        "thq-beg-240": 1,
+        "thq-beg-241": 2,
+        "thq-beg-242": 1,
+        "thq-beg-243": 2,
+        "thq-beg-244": 2,
+        "thq-beg-245": 1,
+        "thq-beg-246": 1,
+        "thq-beg-247": 2,
+        "thq-beg-248": 1,
+        "thq-beg-249": 1,
+        "thq-beg-250": 1,
+        "thq-beg-251": 1,
+        "thq-beg-252": 1,
+        "thq-beg-253": 1,
+        "thq-beg-254": 1,
+        "thq-beg-255": 2,
+        "thq-beg-256": 2,
+        "thq-beg-257": 2,
+        "thq-beg-258": 2,
+        "thq-beg-259": 1,
+        "thq-beg-260": 1,
+        "thq-beg-261": 2,
+        "thq-beg-262": 2,
+        "thq-beg-263": 2,
+        "thq-beg-264": 2,
+        "thq-beg-265": 1,
+        "thq-beg-266": 2,
+        "thq-beg-267": 1,
+        "thq-beg-268": 1,
+        "thq-beg-269": 1,
+        "thq-beg-270": 2,
+        "thq-beg-271": 2,
+        "thq-beg-272": 2,
+        "thq-beg-273": 2,
+        "thq-beg-274": 1,
+        "thq-beg-275": 1,
+        "thq-beg-276": 2,
+        "thq-beg-277": 2,
+        "thq-beg-278": 2,
+        "thq-beg-279": 1,
+        "thq-beg-280": 1,
+        "thq-beg-281": 2,
+        "thq-beg-282": 1,
+        "thq-beg-283": 2,
+        "thq-beg-284": 1,
+        "thq-beg-285": 2,
+        "thq-beg-286": 1,
+        "thq-beg-287": 1,
+        "thq-beg-288": 2,
+        "thq-beg-289": 2,
+        "thq-beg-290": 1,
+        "thq-beg-291": 2,
+        "thq-beg-292": 2,
+        "thq-beg-293": 2,
+        "thq-beg-294": 2,
+        "thq-beg-295": 2,
+        "thq-beg-296": 2,
+        "thq-beg-297": 1,
+        "thq-beg-298": 1,
+        "thq-beg-299": 1,
+        "thq-beg-300": 2,
     };
     const legacyQuestions = questions.filter(question =>
         !question.id.startsWith("thq-beginner-")

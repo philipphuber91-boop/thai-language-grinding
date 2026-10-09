@@ -4,7 +4,7 @@ const data = require("../data/thailand-quiz.js");
 const quiz = require("../js/thailand-quiz-engine.js");
 
 test("question bank has complete, valid mixed-category questions", () => {
-    assert.equal(data.questions.length, 734);
+    assert.equal(data.questions.length, 834);
     assert.deepEqual(quiz.validateQuestionBank(data), []);
     assert.equal(new Set(data.questions.map(question => question.categoryId)).size, 28);
     assert.ok(data.questions.every(question =>
@@ -36,7 +36,7 @@ test("beginner categories provide varied Thai-first questions at levels one and 
 
     assert.equal(beginnerQuestions.length, 300);
     assert.ok(beginnerQuestions.every(question => question.difficulty <= 2));
-    assert.equal(legacyQuestions.length, 434);
+    assert.equal(legacyQuestions.length, 534);
     assert.ok(legacyQuestions.every(question => question.difficulty >= 1));
     assert.equal(counts.size, 40);
     assert.ok([...counts.values()].every(count => count === 5 || count === 10));
@@ -110,6 +110,22 @@ test("beginner categories provide varied Thai-first questions at levels one and 
         ).length,
         20
     );
+});
+
+test("third Thailand beginner pack has 100 unique level-one and level-two questions", () => {
+    const newPack = data.questions.filter(question =>
+        /^thq-beg-(20[1-9]|2[1-9]\d|300)$/.test(question.id)
+    );
+    const allOtherTexts = new Set(
+        data.questions.filter(question => !newPack.includes(question))
+            .map(question => question.question.th.trim())
+    );
+    const newTexts = newPack.map(question => question.question.th.trim());
+
+    assert.equal(newPack.length, 100);
+    assert.ok(newPack.every(question => question.difficulty <= 2));
+    assert.equal(new Set(newTexts).size, 100);
+    assert.ok(newTexts.every(text => !allOtherTexts.has(text)));
 });
 
 test("round selection returns ten unique questions with mixed categories and levels", () => {
