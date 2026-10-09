@@ -95,23 +95,30 @@ function auditQuiz() {
     };
 }
 
-const args = process.argv.slice(2);
-const isCheck = args.includes('--check') || args.length === 0;
+module.exports = {
+    auditQuiz,
+    validSyllables
+};
 
-console.log('--- QUIZ VOCABULARY AUDIT ---');
-const report = auditQuiz();
-console.log(`Total questions audited: ${report.totalQuestions}`);
-console.log(`Tokens without entry:    ${report.missing.length}`);
-console.log(`Tokens with invalid syl: ${report.invalidSyllables.length}`);
+if (require.main === module) {
+    const args = process.argv.slice(2);
+    const isCheck = args.includes('--check') || args.length === 0;
 
-if (report.missing.length === 0 && report.invalidSyllables.length === 0) {
-    console.log('\n[PASS] All tokens in question bank are 100% covered with valid syllables and tone mappings.');
-} else {
-    console.log('\n[FAIL] Gaps found in vocabulary.');
-    if (report.missing.length > 0) {
-        console.log('Sample missing tokens:', report.missing.slice(0, 10).map(x => x.text).join(', '));
-    }
-    if (report.invalidSyllables.length > 0) {
-        console.log('Sample invalid syllables:', report.invalidSyllables.slice(0, 10).map(x => x.text).join(', '));
+    console.log('--- QUIZ VOCABULARY AUDIT ---');
+    const report = auditQuiz();
+    console.log(`Total questions audited: ${report.totalQuestions}`);
+    console.log(`Tokens without entry:    ${report.missing.length}`);
+    console.log(`Tokens with invalid syl: ${report.invalidSyllables.length}`);
+
+    if (report.missing.length === 0 && report.invalidSyllables.length === 0) {
+        console.log('\n[PASS] All tokens in question bank are 100% covered with valid syllables and tone mappings.');
+    } else {
+        console.log('\n[FAIL] Gaps found in vocabulary.');
+        if (report.missing.length > 0) {
+            console.log('Sample missing tokens:', report.missing.slice(0, 10).map(x => x.text).join(', '));
+        }
+        if (report.invalidSyllables.length > 0) {
+            console.log('Sample invalid syllables:', report.invalidSyllables.slice(0, 10).map(x => x.text).join(', '));
+        }
     }
 }

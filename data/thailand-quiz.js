@@ -4668,6 +4668,1606 @@
             "'Yin di thi dai ruchak' drückt Freude über ein erstes Kennenlernen aus.",
             [{ title: "Royal Society of Thailand – Thai Greetings", url: "https://www.orst.go.th/" }]
         ),
+        makeQuestion(
+            "thq-beg-001", "beginner_animals", 1, "single_choice",
+            "สัตว์ตัวใดชอบกินกล้วยและปีนต้นไม้เก่ง?",
+            "Welches Tier isst gerne Bananen und klettert geschickt auf Bäume?",
+            "Sat tua dai chop kin kluai lae pin tonmai keng?",
+            [
+                ["a", "ลิง", "Affe", "Ling"],
+                ["b", "ปลา", "Fisch", "Pla"],
+                ["c", "เต่า", "Schildkröte", "Tao"],
+                ["d", "เป็ด", "Ente", "Pet"]
+            ],
+            "a",
+            "ลิง (Affe) ชอบกินผลไม้และปีนป่ายต้นไม้ได้อย่างคล่องแคล่ว",
+            "Der Affe ('Ling') liebt Früchte wie Bananen und ist ein geschickter Kletterer.",
+            [{"title":"Department of National Parks Thailand","url":"https://www.dnp.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-002", "beginner_animals", 1, "single_choice",
+            "สัตว์ชนิดใดว่ายน้ำอยู่ในน้ำและมีครีบ?",
+            "Welches Tier schwimmt im Wasser und hat Flossen?",
+            "Sat chanit dai wai nam yu nai nam lae mi khrip?",
+            [
+                ["a", "ม้า", "Pferd", "Ma"],
+                ["b", "ปลา", "Fisch", "Pla"],
+                ["c", "หมู", "Schwein", "Mu"],
+                ["d", "เสือ", "Tiger", "Suea"]
+            ],
+            "b",
+            "ปลา (Fisch) หายใจด้วยเหงือกและว่ายน้ำอยู่ในแหล่งน้ำ",
+            "Der Fisch ('Plaa') lebt und schwimmt im Wasser.",
+            [{"title":"Department of Fisheries Thailand","url":"https://www.fisheries.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-003", "beginner_animals", 1, "single_choice",
+            "สัตว์ชนิดใดร้อง 'เหมียวๆ' และชอบจับหนู?",
+            "Welches Tier maunzt 'Miao' und jagt gerne Mäuse?",
+            "Sat chanit dai rong 'miao miao' lae chop chap nu?",
+            [
+                ["a", "แมว", "Katze", "Maeo"],
+                ["b", "วัว", "Kuh", "Wua"],
+                ["c", "ไก่", "Huhn", "Kai"],
+                ["d", "กบ", "Frosch", "Kop"]
+            ],
+            "a",
+            "แมว (Katze) เป็นสัตว์เลี้ยงแสนน่ารักที่ร้องเสียงเหมียว",
+            "Die Katze ('Maeo') ist ein beliebtes Haustier mit typischem Maunzen.",
+            [{"title":"Royal Society of Thailand – Animals","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-004", "beginner_animals", 1, "single_choice",
+            "สัตว์ชนิดใดมีงวงยาวและเป็นสัญลักษณ์ของประเทศไทย?",
+            "Welches Tier hat einen langen Rüssel und ist das Nationalsymbol Thailands?",
+            "Sat chanit dai mi nguang yao lae pen sanyalak khong prathet Thai?",
+            [
+                ["a", "หมา", "Hund", "Ma"],
+                ["b", "นก", "Vogel", "Nok"],
+                ["c", "ช้าง", "Elefant", "Chang"],
+                ["d", "แพะ", "Ziege", "Phae"]
+            ],
+            "c",
+            "ช้างไทย (Elefant) มีงวงและงา และมีความผูกพันกับประวัติศาสตร์ไทย",
+            "Der Elefant ('Chang') ist das berühmte Nationaltier Thailands.",
+            [{"title":"Tourism Authority of Thailand – Chang Thai","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-005", "beginner_animals", 1, "single_choice",
+            "สัตว์ชนิดใดขันเสียงดังในตอนเช้าตรู่?",
+            "Welches Tier kräht frühmorgens laut bei Sonnenaufgang?",
+            "Sat chanit dai khan siang dang nai ton chao tru?",
+            [
+                ["a", "ไก่", "Huhn / Hahn", "Kai"],
+                ["b", "เป็ด", "Ente", "Pet"],
+                ["c", "งู", "Schlange", "Ngu"],
+                ["d", "สิงโต", "Löwe", "Singto"]
+            ],
+            "a",
+            "ไก่ตัวผู้จะขันบอกเวลาเช้าเมื่อแสงอาทิตย์เริ่มส่อง",
+            "Der Hahn ('Kai') weckt die Menschen morgens mit seinem Krähen.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-006", "beginner_animals", 1, "single_choice",
+            "สัตว์ชนิดใดเห่า 'โฮ่งๆ' และช่วยเฝ้าบ้าน?",
+            "Welches Tier bellt 'Wuff' und bewacht das Haus?",
+            "Sat chanit dai hao 'hong hong' lae chuai fao ban?",
+            [
+                ["a", "หมา", "Hund", "Ma"],
+                ["b", "แมว", "Katze", "Maeo"],
+                ["c", "ม้า", "Pferd", "Ma"],
+                ["d", "กระต่าย", "Hase", "Kratai"]
+            ],
+            "a",
+            "หมาหรือสุนัขเป็นสัตว์เลี้ยงที่ซื่อสัตย์คอยดูแลบ้าน",
+            "Der Hund ('Ma') bewacht treu Haus und Hof.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-007", "beginner_animals", 1, "single_choice",
+            "สัตว์ชนิดใดมีหูยาว กระโดดได้ และชอบกินผัก?",
+            "Welches Tier hat lange Ohren, hüpft und isst gern Gemüse?",
+            "Sat chanit dai mi hu yao, kradot dai lae chop kin phak?",
+            [
+                ["a", "กระต่าย", "Hase / Kaninchen", "Kratai"],
+                ["b", "เต่า", "Schildkröte", "Tao"],
+                ["c", "ปลา", "Fisch", "Pla"],
+                ["d", "หมู", "Schwein", "Mu"]
+            ],
+            "a",
+            "กระต่าย (Kaninchen) มีขนปุย หูยาว และกระโดดไปมา",
+            "Das Kaninchen ('Kratai') hat lange Ohren und hüpft geschwind.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-008", "beginner_animals", 1, "single_choice",
+            "สัตว์ชนิดใดเดินช้าและมีกระดองแข็งหุ้มตัว?",
+            "Welches Tier bewegt sich langsam und hat einen harten Panzer?",
+            "Sat chanit dai doen cha lae mi kradong khaeng hum tua?",
+            [
+                ["a", "เสือ", "Tiger", "Suea"],
+                ["b", "เต่า", "Schildkröte", "Tao"],
+                ["c", "ลิง", "Affe", "Ling"],
+                ["d", "นก", "Vogel", "Nok"]
+            ],
+            "b",
+            "เต่า (Schildkröte) เคลื่อนไหวอย่างช้าๆ และหลบภัยในกระดอง",
+            "Die Schildkröte ('Tao') schützt sich mit ihrem festen Panzer.",
+            [{"title":"Department of Marine and Coastal Resources","url":"https://www.dmcr.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-009", "beginner_animals", 1, "single_choice",
+            "สัตว์ชนิดใดมีปีกและบินได้บนท้องฟ้า?",
+            "Welches Tier besitzt Flügel und fliegt durch die Luft?",
+            "Sat chanit dai mi pik lae bin dai bon thongfa?",
+            [
+                ["a", "นก", "Vogel", "Nok"],
+                ["b", "ปลา", "Fisch", "Pla"],
+                ["c", "หมู", "Schwein", "Mu"],
+                ["d", "หมา", "Hund", "Ma"]
+            ],
+            "a",
+            "นก (Vogel) มีขนและปีกช่วยพยุงตัวบินในอากาศ",
+            "Vögel ('Nok') gleiten mit ihren Flügeln durch die Lüfte.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-010", "beginner_animals", 1, "single_choice",
+            "สัตว์เลี้ยงชนิดใดให้นมสดแก่เรา?",
+            "Welches Haustier liefert uns frische Trinkmilch?",
+            "Sat liang chanit dai hai nom sot kae rao?",
+            [
+                ["a", "วัว", "Kuh", "Wua"],
+                ["b", "ม้า", "Pferd", "Ma"],
+                ["c", "ช้าง", "Elefant", "Chang"],
+                ["d", "เป็ด", "Ente", "Pet"]
+            ],
+            "a",
+            "วัวนมให้น้ำนมที่มีสารอาหารและแคลเซียมสูง",
+            "Die Kuh ('Wua') liefert die klassische Kuhmilch.",
+            [{"title":"Department of Livestock Development","url":"https://dld.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-011", "beginner_colors_numbers", 1, "single_choice",
+            "ใบไม้สดส่วนใหญ่มีสีอะไรตามธรรมชาติ?",
+            "Welche Farbe haben frische Blätter in der Natur meistens?",
+            "Baimai sot suanyai mi si arai tam thammachat?",
+            [
+                ["a", "เขียว", "Grün", "Khiao"],
+                ["b", "แดง", "Rot", "Daeng"],
+                ["c", "ดำ", "Schwarz", "Dam"],
+                ["d", "ขาว", "Weiß", "Khao"]
+            ],
+            "a",
+            "สีเขียว (Grün) เป็นสีธรรมชาติของใบไม้ที่มีคลอโรฟิลล์",
+            "Grün ('Khiao') ist die typische Farbe von Laub und Pflanzen.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-012", "beginner_colors_numbers", 1, "single_choice",
+            "กล้วยที่สุกแล้วมีเปลือกเป็นสีอะไร?",
+            "Welche Farbe hat die Schale einer reifen Banane?",
+            "Kluai thi suk laeo mi plueak pen si arai?",
+            [
+                ["a", "เหลือง", "Gelb", "Lueang"],
+                ["b", "ฟ้า", "Hellblau", "Fa"],
+                ["c", "ม่วง", "Lila", "Muang"],
+                ["d", "ส้ม", "Orange", "Som"]
+            ],
+            "a",
+            "สีเหลือง (Gelb) เป็นสีสดใสของเปลือกกล้วยที่สุกแล้ว",
+            "Gelb ('Lueang') ist die Leuchtfarbe reifer Bananen.",
+            [{"title":"Department of Agriculture Thailand","url":"https://www.doa.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-013", "beginner_colors_numbers", 1, "single_choice",
+            "เลือดของมนุษย์มีสีอะไร?",
+            "Welche Farbe hat menschliches Blut?",
+            "Lueat khong manut mi si arai?",
+            [
+                ["a", "แดง", "Rot", "Daeng"],
+                ["b", "ขาว", "Weiß", "Khao"],
+                ["c", "เขียว", "Grün", "Khiao"],
+                ["d", "ดำ", "Schwarz", "Dam"]
+            ],
+            "a",
+            "สีแดง (Rot) เป็นสีของเม็ดเลือดแดงในร่างกาย",
+            "Rot ('Daeng') ist die Signalfarbe des Blutes.",
+            [{"title":"Ministry of Public Health Thailand","url":"https://www.moph.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-014", "beginner_colors_numbers", 1, "single_choice",
+            "ท้องฟ้าแจ่มใสในเวลากลางวันมักมีสีอะไร?",
+            "Welche Farbe hat ein wolkenloser Himmel am Tag?",
+            "Thongfa chaemsai nai wela klangwan mak mi si arai?",
+            [
+                ["a", "ฟ้า", "Hellblau", "Fa"],
+                ["b", "ดำ", "Schwarz", "Dam"],
+                ["c", "แดง", "Rot", "Daeng"],
+                ["d", "ชมพู", "Rosa", "Chomphu"]
+            ],
+            "a",
+            "สีฟ้า (Hellblau) คือสีของท้องฟ้าในวันที่อากาศปลอดโปร่ง",
+            "Hellblau ('Fa') ist die Farbe des heiteren Himmels.",
+            [{"title":"Thai Meteorological Department","url":"https://www.tmd.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-015", "beginner_colors_numbers", 1, "single_choice",
+            "หิมะบริสุทธิ์และน้ำตาลทรายมีสีอะไร?",
+            "Welche Farbe haben reiner Schnee und weißer Zucker?",
+            "Hima borisut lae namtan sai mi si arai?",
+            [
+                ["a", "ขาว", "Weiß", "Khao"],
+                ["b", "ดำ", "Schwarz", "Dam"],
+                ["c", "เขียว", "Grün", "Khiao"],
+                ["d", "ส้ม", "Orange", "Som"]
+            ],
+            "a",
+            "สีขาว (Weiß) สื่อถึงความสะอาดและบริสุทธิ์",
+            "Weiß ('Khao') steht für Helligkeit und Reinheit.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-016", "beginner_colors_numbers", 1, "single_choice",
+            "ท้องฟ้ายามค่ำคืนที่มืดสนิทมีสีอะไร?",
+            "Welche Farbe hat die finstere Nacht?",
+            "Thongfa yam khamkhuen thi muet sanit mi si arai?",
+            [
+                ["a", "ดำ", "Schwarz", "Dam"],
+                ["b", "ขาว", "Weiß", "Khao"],
+                ["c", "เหลือง", "Gelb", "Lueang"],
+                ["d", "แดง", "Rot", "Daeng"]
+            ],
+            "a",
+            "สีดำ (Schwarz) คือสีของความมืดมิดยามราตรี",
+            "Schwarz ('Dam') ist die Farbe der dunklen Nacht.",
+            [{"title":"National Astronomical Research Institute of Thailand","url":"https://www.narit.or.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-017", "beginner_colors_numbers", 1, "single_choice",
+            "เลข 'สาม' บวกกับเลข 'สอง' ได้ผลลัพธ์เท่าไร?",
+            "Was ergibt drei plus zwei?",
+            "Lek 'sam' buak kap lek 'song' dai phonlap thao dai?",
+            [
+                ["a", "ห้า", "Fünf (5)", "Ha"],
+                ["b", "สี่", "Vier (4)", "Si"],
+                ["c", "หก", "Sechs (6)", "Hok"],
+                ["d", "เจ็ด", "Sieben (7)", "Chet"]
+            ],
+            "a",
+            "3 + 2 = 5 ในภาษาไทยเรียกว่า 'ห้า'",
+            "Drei plus zwei ergibt fünf ('Ha').",
+            [{"title":"Ministry of Education Thailand","url":"https://www.moe.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-018", "beginner_colors_numbers", 1, "single_choice",
+            "มนุษย์ทั่วไปมีมือปกติกี่ข้าง?",
+            "Wie viele Hände hat ein Mensch normalerweise?",
+            "Manut thua pai mi mue pokkati ki khang?",
+            [
+                ["a", "สอง", "Zwei (2)", "Song"],
+                ["b", "หนึ่ง", "Eins (1)", "Nueng"],
+                ["c", "สาม", "Drei (3)", "Sam"],
+                ["d", "สี่", "Vier (4)", "Si"]
+            ],
+            "a",
+            "คนเรามีมือสองข้าง คือมือซ้ายและมือขวา",
+            "Der Mensch besitzt zwei Hände ('Song').",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-019", "beginner_colors_numbers", 1, "single_choice",
+            "ตัวเลขเริ่มต้นนับจำนวนคือเลขใด?",
+            "Mit welcher Ziffer beginnt das Zählen gewöhnlich?",
+            "Tualek roemton nap chamnuan khue lek dai?",
+            [
+                ["a", "หนึ่ง", "Eins (1)", "Nueng"],
+                ["b", "สิบ", "Zehn (10)", "Sip"],
+                ["c", "แปด", "Acht (8)", "Paet"],
+                ["d", "ศูนย์", "Null (0)", "Sun"]
+            ],
+            "a",
+            "เลขหนึ่ง (1) คือจำนวนนับแรกสุด",
+            "Die Zählung beginnt mit der Zahl eins ('Nueng').",
+            [{"title":"Ministry of Education Thailand","url":"https://www.moe.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-020", "beginner_colors_numbers", 1, "single_choice",
+            "นิ้วมือของคนเราในหนึ่งข้างมีทั้งหมดกี่นิ้ว?",
+            "Wie viele Finger hat eine menschliche Hand?",
+            "Nio mue khong khon rao nai nueng khang mi thang mot ki nio?",
+            [
+                ["a", "ห้า", "Fünf (5)", "Ha"],
+                ["b", "สี่", "Vier (4)", "Si"],
+                ["c", "หก", "Sechs (6)", "Hok"],
+                ["d", "สาม", "Drei (3)", "Sam"]
+            ],
+            "a",
+            "มือหนึ่งข้างมี 5 นิ้ว ได้แก่ นิ้วโป้ง ชี้ กลาง นาง และก้อย",
+            "Jede Hand besitzt fünf Finger ('Ha').",
+            [{"title":"Ministry of Public Health Thailand","url":"https://www.moph.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-021", "beginner_food_drink", 1, "single_choice",
+            "อาหารหลักที่คนไทยรับประทานแทบทุกมื้อคืออะไร?",
+            "Was ist das Hauptnahrungsmittel, das Thailänder zu fast jeder Mahlzeit essen?",
+            "Ahan lak thi khon thai rapprathan thaep thuk mue khue arai?",
+            [
+                ["a", "ข้าว", "Reis", "Khao"],
+                ["b", "ขนมปัง", "Brot", "Khanompang"],
+                ["c", "พิซซ่า", "Pizza", "Phitsa"],
+                ["d", "มันฝรั่ง", "Kartoffeln", "Manfarang"]
+            ],
+            "a",
+            "ข้าว (Khao) เป็นอาหารจานหลักของคนไทยและวัฒนธรรมเอเชีย",
+            "Reis ('Khao') ist das Grundnahrungsmittel in Thailand.",
+            [{"title":"Rice Department Thailand","url":"https://www.ricethailand.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-022", "beginner_food_drink", 1, "single_choice",
+            "เครื่องดื่มใส ไม่มีสี ไม่มีกลิ่น จำเป็นต่อชีวิตคืออะไร?",
+            "Welches klare, farblose Getränk ist lebensnotwendig?",
+            "Khrueangduem sai mai mi si mai mi klin champen to chiwit khue arai?",
+            [
+                ["a", "น้ำเปล่า", "Trinkwasser", "Nam plao"],
+                ["b", "กาแฟ", "Kaffee", "Kafae"],
+                ["c", "น้ำส้ม", "Orangensaft", "Nam som"],
+                ["d", "น้ำอัดลม", "Limonade", "Nam atlom"]
+            ],
+            "a",
+            "น้ำเปล่าบริสุทธิ์ช่วยให้ร่างกายทำงานได้อย่างสมบูรณ์",
+            "Sauberes Trinkwasser ('Nam plao') ist essenziell für die Gesundheit.",
+            [{"title":"Department of Health Thailand","url":"https://anamai.moph.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-023", "beginner_food_drink", 1, "single_choice",
+            "ผลไม้ไทยชนิดใดมีรสเปรี้ยว ใช้ปรุงรสต้มยำและส้มตำ?",
+            "Welche thailändische Frucht ist sauer und würzt Tom Yam und Som Tam?",
+            "Phonlamai thai chanit dai mi rot priao chai phrung rot tom yam lae som tam?",
+            [
+                ["a", "มะนาว", "Limette", "Manao"],
+                ["b", "มะละกอสุก", "Reife Papaya", "Malako suk"],
+                ["c", "กล้วย", "Banane", "Kluai"],
+                ["d", "แตงโม", "Wassermelone", "Taengmo"]
+            ],
+            "a",
+            "มะนาว (Manao) ให้รสเปรี้ยวหอมสดชื่นในอาหารไทย",
+            "Die Limette ('Manao') verleiht Gerichten ihre frische Säure.",
+            [{"title":"Tourism Authority of Thailand – Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-024", "beginner_food_drink", 1, "single_choice",
+            "สิ่งใดได้จากแม่ไก่ นิยมนำไปทอดเป็นไข่ดาวหรือต้ม?",
+            "Was legt das Huhn und wird gern als Spiegelei gebraten?",
+            "Sing dai dai chak mae kai niyom nam ma thot pen khai dao rue tom?",
+            [
+                ["a", "ไข่", "Ei", "Khai"],
+                ["b", "ข้าว", "Reis", "Khao"],
+                ["c", "ผัก", "Gemüse", "Phak"],
+                ["d", "ขนม", "Süßigkeit", "Khanom"]
+            ],
+            "a",
+            "ไข่ไก่ (Khai) นำมาปรุงเป็นไข่ดาว ไข่เจียว และไข่ต้ม",
+            "Eier ('Khai') sind ein vielseitiges Grundnahrungsmittel.",
+            [{"title":"Department of Livestock Development","url":"https://dld.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-025", "beginner_food_drink", 1, "single_choice",
+            "เครื่องดื่มสีดำ มีกลิ่นหอม รสขม นิยมดื่มตอนเช้าคืออะไร?",
+            "Welches dunkle, aromatische Heißgetränk trinken viele morgens?",
+            "Khrueangduem si dam mi klin hom rot khom niyom duem ton chao khue arai?",
+            [
+                ["a", "กาแฟ", "Kaffee", "Kafae"],
+                ["b", "น้ำส้ม", "Orangensaft", "Nam som"],
+                ["c", "นมสด", "Milch", "Nom sot"],
+                ["d", "น้ำผลไม้", "Fruchtsaft", "Nam phonlamai"]
+            ],
+            "a",
+            "กาแฟ (Kafae) เป็นเครื่องดื่มยอดนิยมที่ช่วยให้ตื่นตัวยามเช้า",
+            "Kaffee ('Kafae') weckt die Lebensgeister am Morgen.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-026", "beginner_food_drink", 1, "single_choice",
+            "ผลไม้ลูกใหญ่ เนื้อสีแดง รสหวาน ฉ่ำน้ำในหน้าร้อนคืออะไร?",
+            "Welche große Frucht hat rotes, saftig-süßes Fruchtfleisch?",
+            "Phonlamai luk yai nuea si daeng rot wan cham nam nai na ron khue arai?",
+            [
+                ["a", "แตงโม", "Wassermelone", "Taengmo"],
+                ["b", "มะพร้าว", "Kokosnuss", "Maphrao"],
+                ["c", "ส้ม", "Orange", "Som"],
+                ["d", "กล้วย", "Banane", "Kluai"]
+            ],
+            "a",
+            "แตงโม (Taengmo) มีน้ำมาก ช่วยดับกระหายคลายร้อนได้ดี",
+            "Wassermelone ('Taengmo') erfrischt an heißen Tagen.",
+            [{"title":"Department of Agriculture Thailand","url":"https://www.doa.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-027", "beginner_food_drink", 1, "single_choice",
+            "ผลไม้ทรงกลม เปลือกสีเขียว มีน้ำหวานหอมและเนื้อมะพร้าวคืออะไร?",
+            "Welche runde Palmfrucht hat süßes Trinkwasser und weißes Fruchtfleisch?",
+            "Phonlamai song klom plueak si khiao mi nam wan hom lae nuea maphrao khue arai?",
+            [
+                ["a", "มะพร้าว", "Kokosnuss", "Maphrao"],
+                ["b", "มะละกอ", "Papaya", "Malako"],
+                ["c", "ทุเรียน", "Durian", "Thurian"],
+                ["d", "มะม่วง", "Mango", "Mamuang"]
+            ],
+            "a",
+            "มะพร้าว (Maphrao) ให้น้ำหวานสดชื่นและเนื้อมะพร้าวแสนอร่อย",
+            "Die Kokosnuss ('Maphrao') ist reich an erfrischendem Wasser.",
+            [{"title":"Tourism Authority of Thailand – Food","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-028", "beginner_food_drink", 1, "single_choice",
+            "เครื่องปรุงสีขาว รสเค็ม ใช้ปรุงอาหารทุกชนิดคืออะไร?",
+            "Welches weiße Gewürz schmeckt salzig?",
+            "Khrueangphrung si khao rot khem chai phrung ahan thuk chanit khue arai?",
+            [
+                ["a", "เกลือ", "Salz", "Kluea"],
+                ["b", "น้ำตาล", "Zucker", "Namtan"],
+                ["c", "พริก", "Chili", "Phrik"],
+                ["d", "น้ำปลา", "Fischsauce", "Nampla"]
+            ],
+            "a",
+            "เกลือ (Kluea) ให้รสเค็มเป็นพื้นฐานของการปรุงอาหาร",
+            "Salz ('Kluea') verleiht Speisen herzhafte Würze.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-029", "beginner_food_drink", 1, "single_choice",
+            "เครื่องปรุงรสหวาน ทำจากอ้อย นิยมใส่ในขนมและกาแฟคืออะไร?",
+            "Welches süße Würzmittel aus Zuckerrohr kommt in Desserts und Kaffee?",
+            "Khrueangphrung rot wan tham chak oi niyom sai nai khanom lae kafae khue arai?",
+            [
+                ["a", "น้ำตาล", "Zucker", "Namtan"],
+                ["b", "เกลือ", "Salz", "Kluea"],
+                ["c", "มะนาว", "Limette", "Manao"],
+                ["d", "พริกไทย", "Pfeffer", "Phrikthai"]
+            ],
+            "a",
+            "น้ำตาล (Namtan) ให้รสหวานชื่นใจในขนมและเครื่องดื่ม",
+            "Zucker ('Namtan') sorgt für die süße Geschmacksnote.",
+            [{"title":"Office of the Cane and Sugar Board","url":"https://www.ocsb.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-030", "beginner_food_drink", 1, "single_choice",
+            "อาหารเส้นในน้ำซุปร้อนๆ มีลูกชิ้นและผักเรียกว่าอะไร?",
+            "Wie heißt das Nudelgericht in heißer Suppe mit Fleischbällchen?",
+            "Ahan sen nai nam sup ron ron mi lukchin lae phak riak wa arai?",
+            [
+                ["a", "ก๋วยเตี๋ยว", "Nudelsuppe", "Kuaitiao"],
+                ["b", "ข้าวผัด", "Gebratener Reis", "Khao phat"],
+                ["c", "ขนมจีน", "Khanom Chin", "Khanom chin"],
+                ["d", "ส้มตำ", "Papayasalat", "Som tam"]
+            ],
+            "a",
+            "ก๋วยเตี๋ยว (Kuaitiao) เป็นอาหารจานด่วนยอดนิยมทั่วประเทศไทย",
+            "Nudelsuppe ('Kuaitiao') ist ein thailändischer Streetfood-Klassiker.",
+            [{"title":"Tourism Authority of Thailand – Streetfood","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-031", "beginner_family_body", 1, "single_choice",
+            "อวัยวะส่วนใดของร่างกายใช้สำหรับมองเห็นสิ่งต่างๆ?",
+            "Mit welchem Organ können wir sehen?",
+            "Awaiyawa suan dai khong rangkai chai samrap mong hen sing tang tang?",
+            [
+                ["a", "ตา", "Auge", "Ta"],
+                ["b", "หู", "Ohr", "Hu"],
+                ["c", "จมูก", "Nase", "Chamuk"],
+                ["d", "ปาก", "Mund", "Pak"]
+            ],
+            "a",
+            "ดวงตา (Ta) เป็นอวัยวะรับภาพและการมองเห็นของร่างกาย",
+            "Das Auge ('Ta') ermöglicht das Sehen.",
+            [{"title":"Ministry of Public Health Thailand","url":"https://www.moph.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-032", "beginner_family_body", 1, "single_choice",
+            "อวัยวะส่วนใดใช้สำหรับฟังเสียงและดนตรี?",
+            "Mit welchem Organ hören wir Geräusche und Musik?",
+            "Awaiyawa suan dai chai samrap fang siang lae dontri?",
+            [
+                ["a", "หู", "Ohr", "Hu"],
+                ["b", "ปาก", "Mund", "Pak"],
+                ["c", "ตา", "Auge", "Ta"],
+                ["d", "มือ", "Hand", "Mue"]
+            ],
+            "a",
+            "หู (Hu) รับคลื่นเสียงทำให้เราได้ยินเสียงรอบข้าง",
+            "Das Ohr ('Hu') nimmt Töne und Sprache wahr.",
+            [{"title":"Ministry of Public Health Thailand","url":"https://www.moph.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-033", "beginner_family_body", 1, "single_choice",
+            "อวัยวะส่วนใดใช้สำหรับดมกลิ่นและหายใจ?",
+            "Womit riechen und atmen wir?",
+            "Awaiyawa suan dai chai samrap dom klin lae haichai?",
+            [
+                ["a", "จมูก", "Nase", "Chamuk"],
+                ["b", "คาง", "Kinn", "Khang"],
+                ["c", "แก้ม", "Wange", "Kaem"],
+                ["d", "หน้าผาก", "Stirn", "Naphak"]
+            ],
+            "a",
+            "จมูก (Chamuk) เป็นทางผ่านของลมหายใจและประสาทรับกลิ่น",
+            "Die Nase ('Chamuk') dient der Atmung und dem Riechen.",
+            [{"title":"Ministry of Public Health Thailand","url":"https://www.moph.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-034", "beginner_family_body", 1, "single_choice",
+            "อวัยวะส่วนใดใช้สำหรับเคี้ยวอาหารและพูดคุย?",
+            "Womit kauen wir Speisen und sprechen?",
+            "Awaiyawa suan dai chai samrap khiao ahan lae phut khui?",
+            [
+                ["a", "ปาก", "Mund", "Pak"],
+                ["b", "ตา", "Auge", "Ta"],
+                ["c", "หู", "Ohr", "Hu"],
+                ["d", "แขน", "Arm", "Khaen"]
+            ],
+            "a",
+            "ปากและฟัน (Pak) ทำหน้าที่บดเคี้ยวอาหารและเปล่งเสียงพูด",
+            "Der Mund ('Pak') dient dem Sprechen und Essen.",
+            [{"title":"Ministry of Public Health Thailand","url":"https://www.moph.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-035", "beginner_family_body", 1, "single_choice",
+            "ส่วนใดของร่างกายที่อยู่ปลายแขน ใช้หยิบจับสิ่งของ?",
+            "Was befindet sich am Ende des Arms und greift Gegenstände?",
+            "Suan dai khong rangkai thi yu plai khaen chai yip chap singkhong?",
+            [
+                ["a", "มือ", "Hand", "Mue"],
+                ["b", "ขา", "Bein", "Kha"],
+                ["c", "เท้า", "Fuß", "Thao"],
+                ["d", "คอ", "Hals", "Kho"]
+            ],
+            "a",
+            "มือ (Mue) มีนิ้วห้านิ้วช่วยในการหยิบจับสิ่งของอย่างละเอียด",
+            "Die Hand ('Mue') greift Gegenstände und führt Tätigkeiten aus.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-036", "beginner_family_body", 1, "single_choice",
+            "ส่วนของร่างกายที่ใช้สำหรับยืน เดิน และวิ่งคืออะไร?",
+            "Womit stehen, gehen und laufen wir?",
+            "Suan khong rangkai thi chai samrap yuen doen lae wing khue arai?",
+            [
+                ["a", "ขาและเท้า", "Beine & Füße", "Kha lae thao"],
+                ["b", "แขนและมือ", "Arme & Hände", "Khaen lae mue"],
+                ["c", "ไหล่", "Schultern", "Lai"],
+                ["d", "ท้อง", "Bauch", "Thong"]
+            ],
+            "a",
+            "ขาและเท้า (Kha lae thao) ค้ำจุนร่างกายและช่วยในการเคลื่อนที่",
+            "Beine und Füße ('Kha lae thao') tragen das Körpergewicht beim Gehen.",
+            [{"title":"Department of Physical Education","url":"https://www.dpe.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-037", "beginner_family_body", 1, "single_choice",
+            "ผู้ชายที่ให้กำเนิดเราและเป็นคู่สมรสของแม่เรียกว่าใคร?",
+            "Wie nennt man den Mann, der unser Vater ist?",
+            "Phuchai thi hai kamnoet rao lae pen khusomrot khong mae riak wa khrai?",
+            [
+                ["a", "พ่อ", "Vater", "Pho"],
+                ["b", "พี่ชาย", "Älterer Bruder", "Phi chai"],
+                ["c", "ลุง", "Onkel", "Lung"],
+                ["d", "ปู่", "Großvater", "Pu"]
+            ],
+            "a",
+            "พ่อ (Pho) คือบิดาผู้ให้กำเนิดและดูแลเรา",
+            "Der Vater ('Pho') ist das männliche Elternteil.",
+            [{"title":"Ministry of Social Development and Human Security","url":"https://www.m-society.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-038", "beginner_family_body", 1, "single_choice",
+            "ผู้หญิงที่อุ้มท้องคลอดเรามาเรียกว่าใคร?",
+            "Wie nennt man die Frau, die uns zur Welt gebracht hat?",
+            "Phuying thi um thong khlot rao ma riak wa khrai?",
+            [
+                ["a", "แม่", "Mutter", "Mae"],
+                ["b", "ป้า", "Tante", "Pa"],
+                ["c", "ย่า", "Großmutter", "Ya"],
+                ["d", "พี่สาว", "Ältere Schwester", "Phi sao"]
+            ],
+            "a",
+            "แม่ (Mae) คือมารดาผู้ให้กำเนิดและเลี้ยงดูเรา",
+            "Die Mutter ('Mae') ist das weibliche Elternteil.",
+            [{"title":"Ministry of Social Development and Human Security","url":"https://www.m-society.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-039", "beginner_family_body", 1, "single_choice",
+            "พี่ผู้ชายที่มีสายเลือดเดียวกับเราเรียกว่าอะไร?",
+            "Wie nennt man seinen älteren Bruder auf Thai?",
+            "Phi phuchai thi mi sailueat diao kap rao riak wa arai?",
+            [
+                ["a", "พี่ชาย", "Älterer Bruder", "Phi chai"],
+                ["b", "น้องสาว", "Jüngere Schwester", "Nong sao"],
+                ["c", "พ่อ", "Vater", "Pho"],
+                ["d", "น้า", "Tante/Onkel", "Na"]
+            ],
+            "a",
+            "พี่ชาย (Phi chai) หมายถึงพี่แท้ๆ ที่เป็นผู้ชาย",
+            "Der ältere Bruder wird als 'Phi chai' bezeichnet.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-040", "beginner_family_body", 1, "single_choice",
+            "น้องผู้หญิงที่มีอายุน้อยกว่าเราในครอบครัวเรียกว่าอะไร?",
+            "Wie nennt man die jüngere Schwester?",
+            "Nong phuying thi mi ayu noi kwa rao nai khropkhrua riak wa arai?",
+            [
+                ["a", "น้องสาว", "Jüngere Schwester", "Nong sao"],
+                ["b", "พี่ชาย", "Älterer Bruder", "Phi chai"],
+                ["c", "ป้า", "Tante", "Pa"],
+                ["d", "แม่", "Mutter", "Mae"]
+            ],
+            "a",
+            "น้องสาว (Nong sao) หมายถึงน้องผู้หญิงในครอบครัว",
+            "Die jüngere Schwester heißt 'Nong sao'.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-041", "beginner_clothing", 1, "single_choice",
+            "สิ่งใดใช้สวมใส่ท่อนบนของร่างกาย?",
+            "Welches Kleidungsstück trägt man am Oberkörper?",
+            "Sing dai chai suamsai thon bon khong rangkai?",
+            [
+                ["a", "เสื้อ", "Hemd / T-Shirt", "Suea"],
+                ["b", "กางเกง", "Hose", "Kangkeng"],
+                ["c", "รองเท้า", "Schuhe", "Rongthao"],
+                ["d", "หมวก", "Hut", "Muak"]
+            ],
+            "a",
+            "เสื้อ (Suea) เป็นเครื่องนุ่งห่มส่วนบนของร่างกาย",
+            "Das Oberteil bzw. T-Shirt heißt 'Suea'.",
+            [{"title":"Royal Society of Thailand – Clothing","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-042", "beginner_clothing", 1, "single_choice",
+            "สิ่งใดใช้สวมใส่ท่อนล่างของร่างกาย มีขาสองข้าง?",
+            "Was trägt man an den Beinen?",
+            "Sing dai chai suamsai thon lang khong rangkai mi kha song khang?",
+            [
+                ["a", "กางเกง", "Hose", "Kangkeng"],
+                ["b", "เสื้อ", "Hemd", "Suea"],
+                ["c", "ถุงมือ", "Handschuhe", "Thungmue"],
+                ["d", "แว่นตา", "Brille", "Waenta"]
+            ],
+            "a",
+            "กางเกง (Kangkeng) เป็นเครื่องแต่งกายท่อนล่าง",
+            "Die Hose heißt 'Kangkeng'.",
+            [{"title":"Royal Society of Thailand – Clothing","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-043", "beginner_clothing", 1, "single_choice",
+            "สิ่งใดใช้สวมใส่ที่เท้าก่อนสวมรองเท้า?",
+            "Was zieht man an die Füße, bevor man in die Schuhe schlüpft?",
+            "Sing dai chai suamsai thi thao kon suam rongthao?",
+            [
+                ["a", "ถุงเท้า", "Socken", "Thungthao"],
+                ["b", "ถุงมือ", "Handschuhe", "Thungmue"],
+                ["c", "ผ้าพันคอ", "Schal", "Phaphankho"],
+                ["d", "หมวก", "Mütze", "Muak"]
+            ],
+            "a",
+            "ถุงเท้า (Thungthao) ช่วยปกป้องเท้าและลดการเสียดสีกับรองเท้า",
+            "Socken heißen 'Thungthao'.",
+            [{"title":"Royal Society of Thailand – Clothing","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-044", "beginner_clothing", 1, "single_choice",
+            "สิ่งใดใช้สวมบนศีรษะเพื่อบังแดดหรือกันร้อน?",
+            "Was setzt man auf den Kopf, um sich vor Sonne zu schützen?",
+            "Sing dai chai suam bon sisa phuea bang daet rue kan ron?",
+            [
+                ["a", "หมวก", "Hut / Kappe", "Muak"],
+                ["b", "เสื้อ", "Hemd", "Suea"],
+                ["c", "รองเท้า", "Schuhe", "Rongthao"],
+                ["d", "เข็มขัด", "Gürtel", "Khemkhat"]
+            ],
+            "a",
+            "หมวก (Muak) ช่วยป้องกันแสงแดดกระทบศีรษะโดยตรง",
+            "Die Kopfbedeckung ('Muak') schützt vor starker Sonneneinstrahlung.",
+            [{"title":"Royal Society of Thailand – Clothing","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-045", "beginner_home", 1, "single_choice",
+            "สิ่งใดใช้นอนหนุนศีรษะตอนนอนหลับบนเตียง?",
+            "Worauf bettet man den Kopf beim Schlafen im Bett?",
+            "Sing dai chai non nun sisa ton nonlap bon tiang?",
+            [
+                ["a", "หมอน", "Kissen", "Mon"],
+                ["b", "ผ้าห่ม", "Bettdecke", "Phahom"],
+                ["c", "โต๊ะ", "Tisch", "To"],
+                ["d", "เก้าอี้", "Stuhl", "Kao-i"]
+            ],
+            "a",
+            "หมอน (Mon) ช่วยรองรับศีรษะและลำคอให้หลับสบาย",
+            "Das Kopfkissen heißt 'Mon'.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-046", "beginner_home", 1, "single_choice",
+            "สิ่งใดใช้คลุมร่างกายเพื่อสร้างความอบอุ่นเวลานอน?",
+            "Womit deckt man sich beim Schlafen zu, um warm zu bleiben?",
+            "Sing dai chai khlum rangkai phuea sang khwam op-un wela non?",
+            [
+                ["a", "ผ้าห่ม", "Bettdecke", "Phahom"],
+                ["b", "เสื่อ", "Matte", "Suea"],
+                ["c", "พัดลม", "Ventilator", "Phatlom"],
+                ["d", "เตียง", "Bett", "Tiang"]
+            ],
+            "a",
+            "ผ้าห่ม (Phahom) ช่วยรักษาอุณหภูมิร่างกายขณะนอนหลับ",
+            "Die Decke ('Phahom') hält nachts warm.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-047", "beginner_home", 1, "single_choice",
+            "สิ่งของใดมีสี่ขาและมีหน้าโต๊ะเรียบสำหรับวางสิ่งของหรือเขียนหนังสือ?",
+            "Was hat vier Beine und eine flache Platte zum Abstellen oder Schreiben?",
+            "Singkhong dai mi si kha lae mi na to riap samrap wang singkhong rue khian nangsue?",
+            [
+                ["a", "โต๊ะ", "Tisch", "To"],
+                ["b", "เก้าอี้", "Stuhl", "Kao-i"],
+                ["c", "ตู้", "Schrank", "Tu"],
+                ["d", "เตียง", "Bett", "Tiang"]
+            ],
+            "a",
+            "โต๊ะ (To) ใช้สำหรับรับประทานอาหาร ทำงาน และวางสิ่งของ",
+            "Der Tisch heißt 'To'.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-048", "beginner_home", 1, "single_choice",
+            "สิ่งของใดมีพนักพิง ใช้สำหรับนั่งพักผ่อนหรือนั่งทำงาน?",
+            "Worauf setzt man sich zum Ausruhen oder Arbeiten?",
+            "Singkhong dai mi phnak phing chai samrap nang phakphon rue nang thamngan?",
+            [
+                ["a", "เก้าอี้", "Stuhl", "Kao-i"],
+                ["b", "โต๊ะ", "Tisch", "To"],
+                ["c", "หน้าต่าง", "Fenster", "Natang"],
+                ["d", "ประตู", "Tür", "Pratu"]
+            ],
+            "a",
+            "เก้าอี้ (Kao-i) ใช้สำหรับรองรับการนั่งของมนุษย์",
+            "Der Stuhl heißt 'Kao-i'.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-049", "beginner_home", 1, "single_choice",
+            "ช่องเปิดบนฝาผนังบ้านที่ใช้เปิดรับลมและแสงสว่างคืออะไร?",
+            "Was ist die Wandöffnung, um Licht und frische Luft hereinzulassen?",
+            "Chong poet bon phanang ban thi chai poet rap lom lae saeng sawang khue arai?",
+            [
+                ["a", "หน้าต่าง", "Fenster", "Natang"],
+                ["b", "ประตู", "Tür", "Pratu"],
+                ["c", "หลังคา", "Dach", "Langka"],
+                ["d", "พื้น", "Boden", "Phuen"]
+            ],
+            "a",
+            "หน้าต่าง (Natang) ช่วยให้อากาศและแสงสว่างถ่ายเทเข้าสู่ตัวบ้าน",
+            "Das Fenster heißt 'Natang'.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-050", "beginner_home", 1, "single_choice",
+            "อุปกรณ์ทำความเย็นในบ้านที่ใบพัดหมุนเป่าลมเย็นคืออะไร?",
+            "Welches Gerät im Haus erzeugt mit drehenden Flügeln einen kühlen Luftzug?",
+            "Uppakon tham khwam yen nai ban thi baiphat mun pao lom yen khue arai?",
+            [
+                ["a", "พัดลม", "Ventilator", "Phatlom"],
+                ["b", "ตู้เย็น", "Kühlschrank", "Tuyen"],
+                ["c", "ทีวี", "Fernseher", "Thiwi"],
+                ["d", "เตาอบ", "Ofen", "Tao-op"]
+            ],
+            "a",
+            "พัดลม (Phatlom) หมุนเวียนอากาศสร้างความเย็นสบายในบ้าน",
+            "Der Ventilator heißt 'Phatlom'.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-051", "beginner_greetings", 2, "single_choice",
+            "เมื่อคนไทยพบเจอกัน คำทักทายมาตรฐานที่สุภาพที่สุดคือคำใด?",
+            "Was ist der universelle thailändische Höflichkeitsgruß bei einer Begegnung?",
+            "Muea khon thai phop choe kan kham thakthai mattrathan thi suphap thi sut khue kham dai?",
+            [
+                ["a", "สวัสดี", "Sawatdi (Hallo / Guten Tag)", "Sawatdi"],
+                ["b", "ขอบคุณ", "Khop khun (Danke)", "Khop khun"],
+                ["c", "ขอโทษ", "Kho thot (Entschuldigung)", "Kho thot"],
+                ["d", "ลาก่อน", "La kon (Auf Wiedersehen)", "La kon"]
+            ],
+            "a",
+            "'สวัสดี' (Sawatdi) เป็นคำทักทายมาตรฐานที่ใช้ได้ทุกเวลา",
+            "'Sawatdi' ist der allgegenwärtige Gruß zu jeder Tageszeit.",
+            [{"title":"Royal Society of Thailand – Sawatdi","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-052", "beginner_greetings", 2, "single_choice",
+            "เมื่อมีคนให้ความช่วยเหลือหรือมอบของขวัญให้ เราควรกล่าวคำใด?",
+            "Was sagt man höflich, wenn jemand hilft oder etwas schenkt?",
+            "Muea mi khon hai khwam chuailuea rue mop khongkhwan hai rao khuan klao kham dai?",
+            [
+                ["a", "ขอบคุณ", "Danke", "Khop khun"],
+                ["b", "สวัสดี", "Hallo", "Sawatdi"],
+                ["c", "ไม่เป็นไร", "Kein Problem", "Mai pen rai"],
+                ["d", "ขอโทษ", "Entschuldigung", "Kho thot"]
+            ],
+            "a",
+            "'ขอบคุณ' (Khop khun) ใช้แสดงความซาบซึ้งใจในน้ำใจของผู้อื่น",
+            "'Khop khun' drückt Dankbarkeit und Wertschätzung aus.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-053", "beginner_greetings", 2, "single_choice",
+            "ถ้าเราเผลอเดินชนผู้อื่น เราควรกล่าวคำสุภาพคำใดทันที?",
+            "Was sagt man sofort, wenn man versehentlich jemanden anrempelt?",
+            "Tha rao phloe doen chon phu uen rao khuan klao kham suphap kham dai thanthi?",
+            [
+                ["a", "ขอโทษ", "Entschuldigung", "Kho thot"],
+                ["b", "ขอบคุณ", "Danke", "Khop khun"],
+                ["c", "ยินดี", "Gern geschehen", "Yindi"],
+                ["d", "สวัสดี", "Hallo", "Sawatdi"]
+            ],
+            "a",
+            "'ขอโทษ' (Kho thot) ใช้ขออภัยเมื่อทำผิดพลาดหรือไม่สะดวกแก่ผู้อื่น",
+            "'Kho thot' bedeutet Entschuldigung oder Verzeihung.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-054", "beginner_greetings", 2, "single_choice",
+            "เมื่อมีคนกล่าวขอโทษหรือขอบคุณ เรามักตอบรับอย่างสุภาพด้วยคำใด?",
+            "Was antwortet man freundlich auf ein Dankeschön oder eine Entschuldigung?",
+            "Muea mi khon klao kho thot rue khop khun rao mak top rap yang suphap duai kham dai?",
+            [
+                ["a", "ไม่เป็นไร", "Gern geschehen / Kein Problem", "Mai pen rai"],
+                ["b", "ลาก่อน", "Auf Wiedersehen", "La kon"],
+                ["c", "ช่วยด้วย", "Hilfe", "Chuai duai"],
+                ["d", "ใช่แล้ว", "Genau", "Chai laeo"]
+            ],
+            "a",
+            "'ไม่เป็นไร' (Mai pen rai) สื่อถึงความใจกว้างและความสบายใจ",
+            "'Mai pen rai' ist Thailands berühmte Redewendung für 'Kein Problem / Gern geschehen'.",
+            [{"title":"Tourism Authority of Thailand – Culture","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-055", "beginner_greetings", 2, "single_choice",
+            "ผู้ชายไทยใช้คำลงท้ายประโยคเพื่อความสุภาพด้วยคำใด?",
+            "Welche Höflichkeitspartikel nutzen thailändische Männer am Satzende?",
+            "Phuchai thai chai kham longthai prayok phuea khwam suphap duai kham dai?",
+            [
+                ["a", "ครับ", "Khrap", "Khrap"],
+                ["b", "ค่ะ", "Kha", "Kha"],
+                ["c", "จ้ะ", "Cha", "Cha"],
+                ["d", "นะ", "Na", "Na"]
+            ],
+            "a",
+            "'ครับ' (Khrap) เป็นคำลงท้ายสุภาพของผู้ชาย",
+            "Männer beenden Höflichkeitssätze typischerweise mit 'Khrap'.",
+            [{"title":"Royal Society of Thailand – Grammar","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-056", "beginner_greetings", 2, "single_choice",
+            "ผู้หญิงไทยใช้คำลงท้ายประโยคบอกเล่าอย่างสุภาพด้วยคำใด?",
+            "Welche Höflichkeitspartikel nutzen Frauen am Satzende einer Aussage?",
+            "Phuying thai chai kham longthai prayok boklao yang suphap duai kham dai?",
+            [
+                ["a", "ค่ะ", "Kha", "Kha"],
+                ["b", "ครับ", "Khrap", "Khrap"],
+                ["c", "ฮะ", "Ha", "Ha"],
+                ["d", "วะ", "Wa", "Wa"]
+            ],
+            "a",
+            "'ค่ะ' (Kha) เป็นคำลงท้ายสุภาพในประโยคบอกเล่าของผู้หญิง",
+            "Frauen beenden Aussagen im Thailändischen mit 'Kha'.",
+            [{"title":"Royal Society of Thailand – Grammar","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-057", "beginner_greetings", 2, "single_choice",
+            "การไหว้ (Wai) ของคนไทยทำโดยการพนมมือไว้ที่ตำแหน่งใดเป็นหลัก?",
+            "Wo werden beim thailändischen Wai die Hände zusammengelegt?",
+            "Kan wai khong khon thai tham doi kan phanom mue wai thi tamnaeng dai pen lak?",
+            [
+                ["a", "พนมมือระดับอกหรือใบหน้า", "Vor Brust oder Gesicht", "Phanom mue radap ok rue bai na"],
+                ["b", "ยกมือข้ามศีรษะ", "Über den Kopf", "Yok mue kham sisa"],
+                ["c", "กางแขนออกสองข้าง", "Arme ausbreiten", "Kang khaen ok song khang"],
+                ["d", "วางมือบนเข่า", "Hände auf die Knie", "Wang mue bon khao"]
+            ],
+            "a",
+            "การไหว้เป็นการพนมมือสองข้างเข้าหากันที่ระดับอกหรือใบหน้าพร้อมก้มศีรษะ",
+            "Der Wai wird ausgeführt, indem die Handflächen vor Brust oder Gesicht aneinandergelegt werden.",
+            [{"title":"Ministry of Culture Thailand","url":"https://www.m-culture.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-058", "beginner_greetings", 2, "single_choice",
+            "ก่อนจะเข้านอนในเวลากลางคืน เรานิยมอวยพรด้วยคำว่าอะไร?",
+            "Was wünscht man sich abends vor dem Einschlafen?",
+            "Kon cha khao non nai wela klangkhuen rao niyom uai phon duai kham wa arai?",
+            [
+                ["a", "ราตรีสวัสดิ์", "Gute Nacht", "Ratri sawat"],
+                ["b", "อรุณสวัสดิ์", "Guten Morgen", "Arun sawat"],
+                ["c", "โชคดี", "Viel Glück", "Chok di"],
+                ["d", "ยินดีด้วย", "Herzlichen Glückwunsch", "Yindi duai"]
+            ],
+            "a",
+            "'ราตรีสวัสดิ์' (Ratri sawat) หมายถึงขอให้มีความสุขสงบในคืนนี้",
+            "'Ratri sawat' bedeutet wörtlich 'Gute Nacht'.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-059", "beginner_greetings", 2, "single_choice",
+            "ในยามเช้าตรู่ คำทักทายที่เป็นทางการแปลว่า 'Guten Morgen' คือคำใด?",
+            "Welcher Gruß bedeutet formell 'Guten Morgen'?",
+            "Nai yam chao tru kham thakthai thi pen thangkan plae wa 'Guten Morgen' khue kham dai?",
+            [
+                ["a", "อรุณสวัสดิ์", "Guten Morgen", "Arun sawat"],
+                ["b", "ราตรีสวัสดิ์", "Gute Nacht", "Ratri sawat"],
+                ["c", "สายัณห์สวัสดิ์", "Guten Abend", "Sayan sawat"],
+                ["d", "ลาก่อน", "Auf Wiedersehen", "La kon"]
+            ],
+            "a",
+            "'อรุณสวัสดิ์' (Arun sawat) ใช้ทักทายอย่างเป็นทางการยามเช้า",
+            "'Arun sawat' ist der thailändische Gruß für den frühen Morgen.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-060", "beginner_greetings", 2, "single_choice",
+            "เมื่อต้องแยกย้ายจากเพื่อนและหวังว่าจะได้พบกันอีก เราควรพูดว่าอะไร?",
+            "Was sagt man beim Verabschieden zu Freunden?",
+            "Muea tong yaekyai chak phuean lae wang wa cha dai phop kan ik rao khuan phut wa arai?",
+            [
+                ["a", "แล้วเจอกันใหม่นะ", "Bis zum nächsten Mal / Bis bald", "Laeo choe kan mai na"],
+                ["b", "ขอโทษนะ", "Entschuldige", "Kho thot na"],
+                ["c", "หิวข้าวแล้ว", "Ich habe Hunger", "Hiu khao laeo"],
+                ["d", "อร่อยมาก", "Sehr lecker", "Aroi mak"]
+            ],
+            "a",
+            "'แล้วเจอกันใหม่' เป็นคำลาที่เป็นกันเองระหว่างเพื่อนฝูง",
+            "'Laeo choe kan mai na' verabschiedet Freunde herzlich.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-061", "beginner_shopping", 2, "single_choice",
+            "ถ้าต้องการถามราคาสินค้าในตลาดภาษาไทย ควรถามอย่างไร?",
+            "Wie fragt man auf dem Markt auf Thai nach dem Preis?",
+            "Tha tongkan tham rakha sinkha nai talat phasa thai khuan tham yangrai?",
+            [
+                ["a", "อันนี้ราคาเท่าไรครับ/ค่ะ?", "Wie viel kostet das?", "An ni rakha thao rai khrap/kha?"],
+                ["b", "อันนี้ชื่ออะไร?", "Wie heißt das?", "An ni chue arai?"],
+                ["c", "อยู่ที่ไหน?", "Wo ist das?", "Yu thi nai?"],
+                ["d", "กินได้ไหม?", "Kann man das essen?", "Kin dai mai?"]
+            ],
+            "a",
+            "'ราคาเท่าไร' เป็นคำถามมาตรฐานในการสอบถามราคาสินค้า",
+            "'Rakha thao rai?' fragt direkt nach dem Preis einer Ware.",
+            [{"title":"Ministry of Commerce Thailand","url":"https://www.moc.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-062", "beginner_shopping", 2, "single_choice",
+            "คำว่า 'ลดราคาได้ไหม?' ใช้ในสถานการณ์ใดเมื่อซื้อของ?",
+            "In welcher Situation sagt man 'Lot rakha dai mai?'?",
+            "Kham wa 'lot rakha dai mai?' chai nai sathanakan dai muea sue khong?",
+            [
+                ["a", "ขอต่อรองราคาให้ถูกลง", "Nach einem Rabatt fragen", "Kho to rong rakha hai thuk long"],
+                ["b", "ขอซื้อเพิ่มอีกชิ้น", "Mehr kaufen", "Kho sue phoem ik chin"],
+                ["c", "ขอคืนสินค้าที่เสีย", "Ware zurückgeben", "Kho khuen sinkha thi sia"],
+                ["d", "ถามหาห้องน้ำ", "Nach der Toilette fragen", "Tham ha hongnam"]
+            ],
+            "a",
+            "'ลดได้ไหม' เป็นสำนวนขอส่วนลดในการซื้อขายตามตลาดสด",
+            "'Lot dai mai?' ist die gängige Frage nach einem Preisnachlass.",
+            [{"title":"Tourism Authority of Thailand – Shopping","url":"https://www.tourismthailand.org/"}]
+        ),
+        makeQuestion(
+            "thq-beg-063", "beginner_shopping", 2, "single_choice",
+            "สกุลเงินประจำชาติของประเทศไทยเรียกว่าอะไร?",
+            "Wie heißt die Währungseinheit Thailands?",
+            "Sakun ngoen pracham chat khong prathet Thai riak wa arai?",
+            [
+                ["a", "บาท", "Baht", "Baht"],
+                ["b", "ดอลลาร์", "Dollar", "Donla"],
+                ["c", "กีบ", "Kip", "Kip"],
+                ["d", "ยูโร", "Euro", "Yuro"]
+            ],
+            "a",
+            "เงินบาท (Baht) เป็นเงินตราทางการของประเทศไทย",
+            "Die Währung Thailands ist der Baht (THB).",
+            [{"title":"Bank of Thailand","url":"https://www.bot.or.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-064", "beginner_shopping", 2, "single_choice",
+            "ธนบัตรใบละ 20 บาทของไทยมีสีอะไรเป็นเอกลักษณ์?",
+            "Welche Farbe hat der thailändische 20-Baht-Schein?",
+            "Thanabat bai la 20 baht khong thai mi si arai pen ekkalak?",
+            [
+                ["a", "สีเขียว", "Grün", "Si khiao"],
+                ["b", "สีแดง", "Rot", "Si daeng"],
+                ["c", "สีน้ำเงิน", "Blau", "Si namngoen"],
+                ["d", "สีม่วง", "Lila", "Si muang"]
+            ],
+            "a",
+            "ธนบัตร 20 บาทของไทยพิมพ์ด้วยหมึกโทนสีเขียว",
+            "Der 20-Baht-Schein in Thailand ist grün gestaltet.",
+            [{"title":"Bank of Thailand – Banknotes","url":"https://www.bot.or.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-065", "beginner_shopping", 2, "single_choice",
+            "ธนบัตรใบละ 100 บาทของไทยมีสีอะไร?",
+            "Welche Farbe hat der 100-Baht-Schein?",
+            "Thanabat bai la 100 baht khong thai mi si arai?",
+            [
+                ["a", "สีแดง", "Rot", "Si daeng"],
+                ["b", "สีเขียว", "Grün", "Si khiao"],
+                ["c", "สีเทา", "Grau", "Si thao"],
+                ["d", "สีเหลือง", "Gelb", "Si lueang"]
+            ],
+            "a",
+            "ธนบัตร 100 บาทของไทยมีสีแดงสดใสจดจำง่าย",
+            "Der thailändische 100-Baht-Schein ist rot gehalten.",
+            [{"title":"Bank of Thailand – Banknotes","url":"https://www.bot.or.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-066", "beginner_shopping", 2, "single_choice",
+            "ธนบัตรที่มีมูลค่าสูงที่สุดในปัจจุบันของไทยคือใบละเท่าไร?",
+            "Was ist der höchste thailändische Geldschein?",
+            "Thanabat thi mi munkha sung thi sut nai patchuban khong thai khue bai la thao rai?",
+            [
+                ["a", "1,000 บาท", "1.000 Baht", "Nueng phan baht"],
+                ["b", "500 บาท", "500 Baht", "Ha roi baht"],
+                ["c", "100 บาท", "100 Baht", "Nueng roi baht"],
+                ["d", "5,000 บาท", "5.000 Baht", "Ha phan baht"]
+            ],
+            "a",
+            "ธนบัตรชนิดราคา 1,000 บาท มีมูลค่าสูงสุดในการหมุนเวียน",
+            "Der 1.000-Baht-Schein ist die Banknote mit dem höchsten Wert.",
+            [{"title":"Bank of Thailand – Banknotes","url":"https://www.bot.or.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-067", "beginner_shopping", 2, "single_choice",
+            "ถ้าของชิ้นหนึ่งราคา 'แพงมาก' หมายความว่าอย่างไร?",
+            "Was bedeutet es, wenn eine Ware 'Phaeng mak' ist?",
+            "Tha khong chin nueng rakha 'phaeng mak' maikhwam wa yangrai?",
+            [
+                ["a", "ราคาสูงมาก ไม่ถูก", "Sehr teuer", "Rakha sung mak mai thuk"],
+                ["b", "ราคาถูกมาก", "Sehr billig", "Rakha thuk mak"],
+                ["c", "ขนาดใหญ่มาก", "Riesig groß", "Khanat yai mak"],
+                ["d", "สวยงามมาก", "Sehr schön", "Suai-ngam mak"]
+            ],
+            "a",
+            "'แพง' (Phaeng) หมายถึงสิ่งของที่มีราคาสูงเกินไป",
+            "'Phaeng mak' beschreibt einen sehr hohen Preis.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-068", "beginner_shopping", 2, "single_choice",
+            "คำตรงข้ามกับคำว่า 'แพง' ในภาษาไทยคือคำใด?",
+            "Was ist das Gegenteil von 'teuer' (แพง)?",
+            "Kham trongkham kap kham wa 'phaeng' nai phasa thai khue kham dai?",
+            [
+                ["a", "ถูก", "Günstig / Billig", "Thuk"],
+                ["b", "ดี", "Gut", "Di"],
+                ["c", "สวย", "Schön", "Suai"],
+                ["d", "ร้อน", "Heiß", "Ron"]
+            ],
+            "a",
+            "'ถูก' (Thuk) เป็นคำตรงข้ามกับคำว่าแพง แปลว่าราคาเยา",
+            "'Thuk' bedeutet preiswert, günstig oder billig.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-069", "beginner_shopping", 2, "single_choice",
+            "เมื่อซื้อของเสร็จและจ่ายเงินแล้ว คนขายจะทอนสิ่งใดกลับมาหากเราจ่ายเกิน?",
+            "Was gibt der Verkäufer zurück, wenn man mit einem größeren Schein zahlt?",
+            "Muea sue khong set lae chai ngoen laeo khon khai cha thon sing dai klap ma hak rao chai koen?",
+            [
+                ["a", "เงินทอน", "Wechselgeld", "Ngoen thon"],
+                ["b", "ใบสั่ง", "Strafzettel", "Bai sang"],
+                ["c", "ถุงขยะ", "Mülltüte", "Thung khaya"],
+                ["d", "อาหารแถม", "Gratisessen", "Ahan thaem"]
+            ],
+            "a",
+            "'เงินทอน' คือเงินส่วนที่จ่ายเกินราคาแล้วผู้ขายคืนให้",
+            "'Ngoen thon' ist das Wechselgeld beim Einkaufen.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-070", "beginner_shopping", 2, "single_choice",
+            "เอกสารใบเล็กๆ ที่พิมพ์รายการสินค้าและราคาเพื่อเป็นหลักฐานการซื้อเรียกว่าอะไร?",
+            "Wie heißt der gedruckte Kassenbeleg als Kaufnachweis?",
+            "Ekkasan bai lek lek thi phim raikan sinkha lae rakha phuea pen lakthan kan sue riak wa arai?",
+            [
+                ["a", "ใบเสร็จ", "Quittung / Kassenbon", "Bai set"],
+                ["b", "ปฏิทิน", "Kalender", "Patithin"],
+                ["c", "แผนที่", "Landkarte", "Phaenthi"],
+                ["d", "การ์ด", "Karte", "Kat"]
+            ],
+            "a",
+            "'ใบเสร็จรับเงิน' หรือใบเสร็จเป็นหลักฐานการชำระเงิน",
+            "'Bai set' ist die Quittung bzw. der Kassenbon.",
+            [{"title":"Revenue Department Thailand","url":"https://www.rd.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-071", "beginner_time", 2, "single_choice",
+            "หนึ่งสัปดาห์มีทั้งหมดกี่วัน?",
+            "Wie viele Tage hat eine Woche?",
+            "Nueng sapda mi thang mot ki wan?",
+            [
+                ["a", "เจ็ดวัน", "7 Tage", "Chet wan"],
+                ["b", "ห้าวัน", "5 Tage", "Ha wan"],
+                ["c", "สิบวัน", "10 Tage", "Sip wan"],
+                ["d", "หกวัน", "6 Tage", "Hok wan"]
+            ],
+            "a",
+            "1 สัปดาห์หรือ 1 อาทิตย์ ประกอบด้วย 7 วัน",
+            "Eine Woche umfasst 7 Tage ('Chet wan').",
+            [{"title":"Royal Society of Thailand – Calendar","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-072", "beginner_time", 2, "single_choice",
+            "วันแรกของการทำงานในสัปดาห์คือวันใด?",
+            "Welcher Tag ist der erste Arbeitstag der Woche?",
+            "Wan raek khong kan thamngan nai sapda khue wan dai?",
+            [
+                ["a", "วันจันทร์", "Montag", "Wan chan"],
+                ["b", "วันเสาร์", "Samstag", "Wan sao"],
+                ["c", "วันอาทิตย์", "Sonntag", "Wan athit"],
+                ["d", "วันพุธ", "Mittwoch", "Wan phut"]
+            ],
+            "a",
+            "วันจันทร์ (Wan chan) เป็นวันเริ่มต้นสัปดาห์ของการทำงาน",
+            "Der Montag ('Wan chan') eröffnet die Arbeitswoche.",
+            [{"title":"Royal Society of Thailand – Calendar","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-073", "beginner_time", 2, "single_choice",
+            "วันหยุดสุดสัปดาห์ของคนส่วนใหญ่ประกอบด้วยวันใดบ้าง?",
+            "Aus welchen beiden Tagen besteht das Wochenende gewöhnlich?",
+            "Wan yut sut sapda khong khon suanyai prakop duai wan dai bang?",
+            [
+                ["a", "วันเสาร์และวันอาทิตย์", "Samstag & Sonntag", "Wan sao lae wan athit"],
+                ["b", "วันจันทร์และวันอังคาร", "Montag & Dienstag", "Wan chan lae wan angkhan"],
+                ["c", "วันพุธและวันพฤหัสบดี", "Mittwoch & Donnerstag", "Wan phut lae wan phruehatsabodi"],
+                ["d", "วันพฤหัสบดีและวันศุกร์", "Donnerstag & Freitag", "Wan phruehatsabodi lae wan suk"]
+            ],
+            "a",
+            "วันเสาร์และวันอาทิตย์เป็นวันหยุดสุดสัปดาห์สากล",
+            "Das Wochenende umfasst Samstag ('Wan sao') und Sonntag ('Wan athit').",
+            [{"title":"Ministry of Labour Thailand","url":"https://www.mol.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-074", "beginner_time", 2, "single_choice",
+            "เวลาเที่ยงตรงที่ดวงอาทิตย์อยู่ตรงศีรษะคือเวลากี่นาฬิกา?",
+            "Wie viel Uhr ist es genau am Mittag?",
+            "Wela thiang trong thi duang athit yu trong sisa khue wela ki nalika?",
+            [
+                ["a", "12:00 น.", "12:00 Uhr (Mittag)", "Sip song nalika"],
+                ["b", "06:00 น.", "06:00 Uhr", "Hok nalika"],
+                ["c", "18:00 น.", "18:00 Uhr", "Sip hok nalika"],
+                ["d", "24:00 น.", "24:00 Uhr", "Yi sip si nalika"]
+            ],
+            "a",
+            "เวลา 12:00 น. เรียกว่าเวลาเที่ยงวัน",
+            "12:00 Uhr ist der genaue Mittag ('Thiang wan').",
+            [{"title":"National Institute of Metrology Thailand","url":"https://www.nimt.or.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-075", "beginner_time", 2, "single_choice",
+            "หนึ่งชั่วโมงมีทั้งหมดกี่นาที?",
+            "Wie viele Minuten hat eine Stunde?",
+            "Nueng chuamong mi thang mot ki nathi?",
+            [
+                ["a", "60 นาที", "60 Minuten", "Hok sip nathi"],
+                ["b", "100 นาที", "100 Minuten", "Nueng roi nathi"],
+                ["c", "30 นาที", "30 Minuten", "Sam sip nathi"],
+                ["d", "24 นาที", "24 Minuten", "Yi sip si nathi"]
+            ],
+            "a",
+            "1 ชั่วโมง แบ่งออกเป็น 60 นาที",
+            "Eine Stunde besteht aus 60 Minuten ('Hok sip nathi').",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-076", "beginner_time", 2, "single_choice",
+            "หนึ่งวันเต็มมีทั้งหมดกี่ชั่วโมง?",
+            "Wie viele Stunden hat ein ganzer Tag?",
+            "Nueng wan tem mi thang mot ki chuamong?",
+            [
+                ["a", "24 ชั่วโมง", "24 Stunden", "Yi sip si chuamong"],
+                ["b", "12 ชั่วโมง", "12 Stunden", "Sip song chuamong"],
+                ["c", "60 ชั่วโมง", "60 Stunden", "Hok sip chuamong"],
+                ["d", "48 ชั่วโมง", "48 Stunden", "Si sip paet chuamong"]
+            ],
+            "a",
+            "โลกหมุนรอบตัวเองหนึ่งรอบใช้เวลาประมาณ 24 ชั่วโมง หรือ 1 วัน",
+            "Ein Tag hat 24 Stunden ('Yi sip si chuamong').",
+            [{"title":"National Astronomical Research Institute of Thailand","url":"https://www.narit.or.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-077", "beginner_time", 2, "single_choice",
+            "สิ่งใดที่เราใช้แขวนผนังหรือดูเพื่อตรวจสอบวันที่และเดือน?",
+            "Was hängt an der Wand, um Datum und Monat abzulesen?",
+            "Sing dai thi rao chai khwaen phanang rue du phuea truat sop wan thi lae duean?",
+            [
+                ["a", "ปฏิทิน", "Kalender", "Patithin"],
+                ["b", "นาฬิกาปลุก", "Wecker", "Nalika pluk"],
+                ["c", "กระจก", "Spiegel", "Krachok"],
+                ["d", "รูปถ่าย", "Foto", "Rup thai"]
+            ],
+            "a",
+            "ปฏิทิน (Patithin) แสดงวัน สัปดาห์ และเดือนของแต่ละปี",
+            "Der Kalender ('Patithin') zeigt Tage, Wochen und Monate.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-078", "beginner_time", 2, "single_choice",
+            "คำว่า 'พรุ่งนี้' หมายถึงเวลาช่วงใด?",
+            "Welcher Tag ist mit 'Phrung ni' gemeint?",
+            "Kham wa 'phrung ni' maikhwam wa wela chuang dai?",
+            [
+                ["a", "วันถัดไปจากวันนี้", "Morgen", "Wan that pai chak wan ni"],
+                ["b", "วันก่อนหน้านี้", "Gestern", "Wan kon na ni"],
+                ["c", "วันนี้", "Heute", "Wan ni"],
+                ["d", "ปีหน้า", "Nächstes Jahr", "Pi na"]
+            ],
+            "a",
+            "'พรุ่งนี้' หมายถึงวันรุ่งขึ้นหลังจากวันนี้",
+            "'Phrung ni' bedeutet 'Morgen' (der nächste Tag).",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-079", "beginner_time", 2, "single_choice",
+            "คำว่า 'เมื่อวาน' หมายถึงเวลาช่วงใด?",
+            "Welcher Tag ist mit 'Muea wan' gemeint?",
+            "Kham wa 'muea wan' maikhwam wa wela chuang dai?",
+            [
+                ["a", "วันที่ผ่านมาแล้วก่อนวันนี้", "Gestern", "Wan thi phan ma laeo kon wan ni"],
+                ["b", "วันพรุ่งนี้", "Morgen", "Wan phrung ni"],
+                ["c", "วันนี้", "Heute", "Wan ni"],
+                ["d", "สัปดาห์หน้า", "Nächste Woche", "Sapda na"]
+            ],
+            "a",
+            "'เมื่อวาน' หรือเมื่อวานนี้ คือวันที่เพิ่งผ่านพ้นไปก่อนวันนี้",
+            "'Muea wan' bedeutet 'Gestern'.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-080", "beginner_time", 2, "single_choice",
+            "หนึ่งปีตามปฏิทินสุริยคติสากลมีทั้งหมดกี่เดือน?",
+            "Wie viele Monate hat ein Kalenderjahr?",
+            "Nueng pi tam patithin suriyakhati sakon mi thang mot ki duean?",
+            [
+                ["a", "12 เดือน", "12 Monate", "Sip song duean"],
+                ["b", "10 เดือน", "10 Monate", "Sip duean"],
+                ["c", "7 เดือน", "7 Monate", "Chet duean"],
+                ["d", "24 เดือน", "24 Monate", "Yi sip si duean"]
+            ],
+            "a",
+            "1 ปี มี 12 เดือน เริ่มตั้งแต่มกราคมถึงธันวาคม",
+            "Ein Kalenderjahr umfasst 12 Monate ('Sip song duean').",
+            [{"title":"Royal Society of Thailand – Calendar","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-081", "beginner_transport", 2, "single_choice",
+            "ถ้าต้องการบอกให้คนขับรถเลี้ยวไปทางซ้ายมือ ควรพูดคำว่าอะไร?",
+            "Was sagt man dem Fahrer, wenn er nach links abbiegen soll?",
+            "Tha tongkan bok hai khon khap rot liao pai thang sai mue khuan phut kham wa arai?",
+            [
+                ["a", "เลี้ยวซ้าย", "Nach links abbiegen", "Liao sai"],
+                ["b", "เลี้ยวขวา", "Nach rechts abbiegen", "Liao khwa"],
+                ["c", "ตรงไป", "Geradeaus fahren", "Trong pai"],
+                ["d", "หยุดรถ", "Anhalten", "Yut rot"]
+            ],
+            "a",
+            "'เลี้ยวซ้าย' (Liao sai) สั่งให้เลี้ยวไปทิศทางด้านซ้าย",
+            "'Liao sai' bedeutet 'Links abbiegen'.",
+            [{"title":"Department of Land Transport Thailand","url":"https://www.dlt.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-082", "beginner_transport", 2, "single_choice",
+            "ถ้าต้องการบอกให้คนขับรถขับตรงไปข้างหน้า ไม่เลี้ยว ควรพูดว่าอะไร?",
+            "Was sagt man, um geradeaus weiterzufahren?",
+            "Tha tongkan bok hai khon khap rot khap trong pai khang na mai liao khuan phut wa arai?",
+            [
+                ["a", "ตรงไป", "Geradeaus", "Trong pai"],
+                ["b", "เลี้ยวซ้าย", "Links", "Liao sai"],
+                ["c", "กลับรถ", "Wenden", "Klap rot"],
+                ["d", "ถอยหลัง", "Rückwärts", "Thoi lang"]
+            ],
+            "a",
+            "'ตรงไป' (Trong pai) สื่อถึงการมุ่งหน้าต่อไปตามแนวถนน",
+            "'Trong pai' bedeutet 'Geradeaus'.",
+            [{"title":"Department of Land Transport Thailand","url":"https://www.dlt.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-083", "beginner_transport", 2, "single_choice",
+            "สัญญาณไฟจราจรสีแดงมีความหมายว่าอย่างไรสำหรับผู้ขับขี่?",
+            "Was bedeutet die rote Ampel im Straßenverkehr?",
+            "Sanyan fai charachon si daeng mi khwammai wa yangrai samrap phu khapkhi?",
+            [
+                ["a", "ให้หยุดรถ", "Anhalten", "Hai yut rot"],
+                ["b", "ให้ขับต่อไปได้", "Weiterfahren", "Hai khap toi pai dai"],
+                ["c", "ให้เลี้ยวซ้าย", "Links abbiegen", "Hai liao sai"],
+                ["d", "ให้เร่งความเร็ว", "Beschleunigen", "Hai reng khwamreo"]
+            ],
+            "a",
+            "ไฟสีแดงหมายถึงสัญญาณบังคับให้รถทุกคันหยุดหลังเส้นจราจร",
+            "Rot bedeutet im Verkehr ausnahmslos 'Stopp' bzw. 'Anhalten'.",
+            [{"title":"Royal Thai Police – Traffic","url":"https://www.royalthaipolice.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-084", "beginner_transport", 2, "single_choice",
+            "สัญญาณไฟจราจรสีเขียวมีความหมายว่าอย่างไร?",
+            "Was signalisiert die grüne Ampel?",
+            "Sanyan fai charachon si khiao mi khwammai wa yangrai?",
+            [
+                ["a", "ให้ขับผ่านไปได้", "Freie Fahrt", "Hai khap phan pai dai"],
+                ["b", "ให้หยุดทันที", "Sofort stoppen", "Hai yut thanthi"],
+                ["c", "ให้จอดพัก", "Parken", "Hai chot phak"],
+                ["d", "ให้ระวังอันตราย", "Gefahr", "Hai rawang antarai"]
+            ],
+            "a",
+            "ไฟเขียวอนุญาตให้ยานพาหนะเคลื่อนผ่านทางแยกได้อย่างปลอดภัย",
+            "Grün signalisiert freie Fahrt.",
+            [{"title":"Royal Thai Police – Traffic","url":"https://www.royalthaipolice.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-085", "beginner_transport", 2, "single_choice",
+            "ยานพาหนะสองล้อที่ขับเคลื่อนด้วยการปั่นลูกถีบคืออะไร?",
+            "Welches zweirädrige Gefährt bewegt man mit Pedalen fort?",
+            "Yanphahana song lo thi khapkhluean duai kan pan lukthip khue arai?",
+            [
+                ["a", "จักรยาน", "Fahrrad", "Chakkrayan"],
+                ["b", "มอเตอร์ไซค์", "Motorrad", "Mōtœesai"],
+                ["c", "รถยนต์", "Auto", "Rotyon"],
+                ["d", "รถเมล์", "Bus", "Rot me"]
+            ],
+            "a",
+            "จักรยาน (Chakkrayan) เป็นยานพาหนะสองล้อไร้เครื่องยนต์",
+            "Das Fahrrad ('Chakkrayan') wird mit Pedalkraft angetrieben.",
+            [{"title":"Department of Physical Education","url":"https://www.dpe.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-086", "beginner_transport", 2, "single_choice",
+            "รถโดยสารประจำทางคันใหญ่ที่รับส่งผู้โดยสารตามป้ายรถเมล์เรียกว่าอะไร?",
+            "Wie heißt der große Linienbus im Nahverkehr?",
+            "Rot doisan pracham thang khan yai thi rap song phudoisan tam pai rot me riak wa arai?",
+            [
+                ["a", "รถเมล์ / รถบัส", "Linienbus", "Rot me / Rot bat"],
+                ["b", "รถไฟเหาะ", "Achterbahn", "Rot fai ho"],
+                ["c", "รถแท็กซี่", "Taxi", "Rot thaeksi"],
+                ["d", "เรือพาย", "Ruderboot", "Ruea phai"]
+            ],
+            "a",
+            "รถเมล์เป็นระบบขนส่งมวลชนบนท้องถนนที่ให้บริการประชาชน",
+            "Der Linienbus wird in Thailand als 'Rot me' bezeichnet.",
+            [{"title":"Bangkok Mass Transit Authority","url":"https://www.bmta.co.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-087", "beginner_transport", 2, "single_choice",
+            "ทางข้ามถนนที่มีแถบสีขาวดำทาบนพื้นถนนเพื่อให้คนเดินข้ามเรียกว่าอะไร?",
+            "Wie heißt der Zebrastreifen zum sicheren Überqueren der Straße?",
+            "Thang kham thanon thi mi thaep si khao dam tha bon phuen thanon phuea hai khon doen kham riak wa arai?",
+            [
+                ["a", "ทางม้าลาย", "Zebrastreifen", "Thang ma lai"],
+                ["b", "ทางด่วน", "Autobahn", "Thang duan"],
+                ["c", "สะพานแขวน", "Hängebrücke", "Saphan khwaen"],
+                ["d", "อุโมงค์", "Tunnel", "Umong"]
+            ],
+            "a",
+            "ทางม้าลาย (Thang ma lai) ออกแบบไว้เพื่อความปลอดภัยของคนเดินเท้า",
+            "Der Zebrastreifen heißt auf Thai wörtlich 'Zebrastreifen' ('Thang ma lai').",
+            [{"title":"Department of Highways Thailand","url":"https://www.doh.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-088", "beginner_transport", 2, "single_choice",
+            "สะพานคนเดินข้ามที่สร้างยกระดับข้ามถนนใหญ่เพื่อความปลอดภัยเรียกว่าอะไร?",
+            "Wie heißt die Fußgängerüberführung über breite Straßen?",
+            "Saphan khon doen kham thi sang yok radap kham thanon yai phuea khwam plotphai riak wa arai?",
+            [
+                ["a", "สะพานลอย", "Fußgängerbrücke", "Saphan loi"],
+                ["b", "บันไดเลื่อน", "Rolltreppe", "Bandai luean"],
+                ["c", "ลิฟต์", "Aufzug", "Lip"],
+                ["d", "ทางม้าลาย", "Zebrastreifen", "Thang ma lai"]
+            ],
+            "a",
+            "สะพานลอย (Saphan loi) ช่วยให้คนเดินข้ามถนนใหญ่ได้โดยไม่ต้องตัดกระแสรถ",
+            "Die Fußgängerbrücke heißt 'Saphan loi'.",
+            [{"title":"Department of Highways Thailand","url":"https://www.doh.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-089", "beginner_transport", 2, "single_choice",
+            "สถานที่สำหรับจอดรอขึ้นเครื่องบินเพื่อเดินทางไกลคือที่ใด?",
+            "Wo steigt man in Flugzeuge ein?",
+            "Sathanthi samrap chot ro khuen khrueangbin phuea doen thang klai khue thi dai?",
+            [
+                ["a", "สนามบิน", "Flughafen", "Sanam bin"],
+                ["b", "ท่าเรือ", "Hafen", "Tha ruea"],
+                ["c", "สถานีรถไฟ", "Bahnhof", "Sathani rotfai"],
+                ["d", "อู่ซ่อมรถ", "Werkstatt", "U som rot"]
+            ],
+            "a",
+            "สนามบินหรือท่าอากาศยานเป็นจุดขึ้นลงของเครื่องบินพาณิชย์",
+            "Der Flughafen heißt auf Thai 'Sanam bin'.",
+            [{"title":"Airports of Thailand","url":"https://www.mot.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-090", "beginner_transport", 2, "single_choice",
+            "ยานพาหนะที่แล่นอยู่บนรางเหล็กยาวเชื่อมต่อระหว่างจังหวัดคืออะไร?",
+            "Welches Verkehrsmittel fährt auf Schienen zwischen Städten?",
+            "Yanphahana thi laen yu bon rang lek yao chueamtɔ rawang changwat khue arai?",
+            [
+                ["a", "รถไฟ", "Zug / Eisenbahn", "Rotfai"],
+                ["b", "รถตู้", "Minivan", "Rot tu"],
+                ["c", "เครื่องบิน", "Flugzeug", "Khrueangbin"],
+                ["d", "เรือยนต์", "Motorboot", "Ruea yon"]
+            ],
+            "a",
+            "รถไฟ (Rotfai) วิ่งบนรางเหล็กเพื่อขนส่งผู้โดยสารและสินค้า",
+            "Der Zug ('Rotfai') verbindet Provinzen auf dem Schienennetz.",
+            [{"title":"State Railway of Thailand","url":"https://www.railway.co.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-091", "beginner_health", 2, "single_choice",
+            "เมื่อรู้สึกไม่สบาย ปวดหัว หรือมีไข้ เราควรไปพบใคร?",
+            "Wen sucht man auf, wenn man krank ist oder Fieber hat?",
+            "Muea rusuek mai sabai puat hua rue mi khai rao khuan pai phop khrai?",
+            [
+                ["a", "หมอ / แพทย์", "Arzt", "Mo / Phaet"],
+                ["b", "ตำรวจ", "Polizist", "Tamruat"],
+                ["c", "ครู", "Lehrer", "Khru"],
+                ["d", "ช่างไฟ", "Elektriker", "Chang fai"]
+            ],
+            "a",
+            "แพทย์หรือหมอเป็นผู้ตรวจวินิจฉัยและรักษาอาการเจ็บป่วย",
+            "Der Arzt ('Mo' / 'Phaet') behandelt Erkrankungen.",
+            [{"title":"Ministry of Public Health Thailand","url":"https://www.moph.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-092", "beginner_health", 2, "single_choice",
+            "สถานที่ที่มีแพทย์ พยาบาล และเตียงรักษาคนป่วยเรียกว่าอะไร?",
+            "Wo arbeiten Ärzte und Pflegekräfte, um Kranke zu behandeln?",
+            "Sathanthi thi mi phaet phayaban lae tiang raksa khon puai riak wa arai?",
+            [
+                ["a", "โรงพยาบาล", "Krankenhaus", "Rongphayaban"],
+                ["b", "โรงเรียน", "Schule", "Rongrian"],
+                ["c", "โรงแรม", "Hotel", "Rongraem"],
+                ["d", "ตลาดสด", "Markt", "Talat sot"]
+            ],
+            "a",
+            "โรงพยาบาล (Rongphayaban) เป็นสถานพยาบาลที่ให้การดูแลรักษาผู้ป่วย",
+            "Das Krankenhaus heißt 'Rongphayaban'.",
+            [{"title":"Ministry of Public Health Thailand","url":"https://www.moph.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-093", "beginner_health", 2, "single_choice",
+            "ร้านที่จำหน่ายยาและมีเภสัชกรคอยให้คำแนะนำเรียกว่าอะไร?",
+            "Wo kauft man Medikamente bei einer Fachberatung?",
+            "Ran thi chamnai ya lae mi phesatchakon khoi hai khamnaenam riak wa arai?",
+            [
+                ["a", "ร้านขายยา", "Apotheke", "Ran khai ya"],
+                ["b", "ร้านหนังสือ", "Buchhandlung", "Ran nangsue"],
+                ["c", "ร้านตัดผม", "Friseursalon", "Ran tat phom"],
+                ["d", "ร้านกาแฟ", "Café", "Ran kafae"]
+            ],
+            "a",
+            "ร้านขายยา (Ran khai ya) จำหน่ายยารักษาโรคและอุปกรณ์การแพทย์",
+            "Die Apotheke heißt 'Ran khai ya'.",
+            [{"title":"Food and Drug Administration Thailand","url":"https://www.fda.moph.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-094", "beginner_health", 2, "single_choice",
+            "เมื่อมีอาการกระหายน้ำในวันที่อากาศร้อน เราควรดื่มสิ่งใดมากที่สุด?",
+            "Was sollte man an heißen Tagen bei Durst am meisten trinken?",
+            "Muea mi akan krahai nam nai wan thi akat ron rao khuan duem sing dai mak thi sut?",
+            [
+                ["a", "น้ำเปล่าสะอาด", "Sauberes Trinkwasser", "Nam plao saat"],
+                ["b", "กาแฟเข้ม", "Starker Kaffee", "Kafae khem"],
+                ["c", "น้ำหวานจัด", "Zuckergetränke", "Nam wan chat"],
+                ["d", "น้ำแข็งเปล่า", "Nur Eiswürfel", "Namkhaeng plao"]
+            ],
+            "a",
+            "น้ำเปล่าช่วยทดแทนเหงื่อและป้องกันภาวะขาดน้ำในร่างกาย",
+            "Trinkwasser beugt Dehydrierung bei Hitze vor.",
+            [{"title":"Department of Health Thailand","url":"https://anamai.moph.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-095", "beginner_health", 2, "single_choice",
+            "อุปกรณ์ที่เราใช้แปรงฟันร่วมกับยาสีฟันทุกเช้าเย็นคืออะไร?",
+            "Was benutzt man zusammen mit Zahnpasta zum Zähneputzen?",
+            "Uppakon thi rao chai praeng fan ruam kap yasifan thuk chao yen khue arai?",
+            [
+                ["a", "แปรงสีฟัน", "Zahnbürste", "Praengsifan"],
+                ["b", "หวี", "Kamm", "Wii"],
+                ["c", "ช้อน", "Löffel", "Chon"],
+                ["d", "กรรไกร", "Schere", "Kankrai"]
+            ],
+            "a",
+            "แปรงสีฟัน (Praengsifan) ช่วยทำความสะอาดผิวฟันและซอกฟัน",
+            "Die Zahnbürste heißt 'Praengsifan'.",
+            [{"title":"Dental Association of Thailand","url":"https://www.thaidental.or.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-096", "beginner_health", 2, "single_choice",
+            "สิ่งที่ใช้ถูตัวเวลาอาบน้ำเพื่อชำระล้างคราบไคลและแบคทีเรียคืออะไร?",
+            "Womit wäscht man sich beim Duschen, um sauber zu werden?",
+            "Sing thi chai thu tua wela apnam phuea chamra lang khrap khai lae baekthiria khue arai?",
+            [
+                ["a", "สบู่", "Seife", "Sabu"],
+                ["b", "ยาสีฟัน", "Zahnpasta", "Yasifan"],
+                ["c", "น้ำยาทาเล็บ", "Nagellack", "Namyathalep"],
+                ["d", "น้ำมันพืช", "Pflanzenöl", "Nammanphuet"]
+            ],
+            "a",
+            "สบู่ (Sabu) ช่วยขจัดสิ่งสกปรกและไขมันออกจากผิวหนัง",
+            "Seife ('Sabu') reinigt die Haut beim Duschen.",
+            [{"title":"Ministry of Public Health Thailand","url":"https://www.moph.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-097", "beginner_health", 2, "single_choice",
+            "อุปกรณ์ที่มีซี่ถี่ๆ ใช้สำหรับจัดแต่งทรงผมให้เรียบร้อยคืออะไร?",
+            "Welches Utensil mit Zinken nutzt man, um Haare zu kämmen?",
+            "Uppakon thi mi si thi thi chai samrap chat taeng song phom hai riaproi khue arai?",
+            [
+                ["a", "หวี", "Kamm", "Wii"],
+                ["b", "มีด", "Messer", "Mit"],
+                ["c", "ส้อม", "Gabel", "Som"],
+                ["d", "แปรงทาสี", "Pinsel", "Praengthasi"]
+            ],
+            "a",
+            "หวี (Wii) ช่วยสางเส้นผมไม่ให้พันกันและจัดทรงผมให้สวยงาม",
+            "Der Kamm heißt 'Wii'.",
+            [{"title":"Royal Society of Thailand – Dictionary","url":"https://dictionary.orst.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-098", "beginner_health", 2, "single_choice",
+            "เมื่อรู้สึกเหนื่อยล้าจากการทำงานมาทั้งวัน ร่างกายต้องการสิ่งใดมากที่สุด?",
+            "Was braucht der Körper nach einem anstrengenden Tag am meisten?",
+            "Muea rusuek nueailai chak kan thamngan ma thang wan rangkai tongkan sing dai mak thi sut?",
+            [
+                ["a", "การพักผ่อนนอนหลับ", "Schlaf und Erholung", "Kan phakphon nonlap"],
+                ["b", "วิ่งออกกำลังกายหนัก", "Schweren Sport", "Wing okkamlangkai nak"],
+                ["c", "เล่นเกมดึก", "Langes Zocken", "Len kem duek"],
+                ["d", "เดินตากแดด", "In der Sonne spazieren", "Doen tak daet"]
+            ],
+            "a",
+            "การนอนหลับพักผ่อนอย่างเพียงพอช่วยซ่อมแซมส่วนที่สึกหรอของร่างกาย",
+            "Ausreichender Schlaf regeneriert Körper und Geist.",
+            [{"title":"Department of Mental Health Thailand","url":"https://dmh.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-099", "beginner_health", 2, "single_choice",
+            "สิ่งใดเป็นผลไม้ยอดนิยมที่มีวิตามินซีสูง รสเปรี้ยวอมหวาน ปอกเปลือกง่าย?",
+            "Welche beliebte Zitrusfrucht hat viel Vitamin C und lässt sich leicht schälen?",
+            "Sing dai pen phonlamai yotniyom thi mi witamin si sung rot priao om wan pok plueak ngai?",
+            [
+                ["a", "ส้ม", "Orange / Mandarine", "Som"],
+                ["b", "มะพร้าว", "Kokosnuss", "Maphrao"],
+                ["c", "ทุเรียน", "Durian", "Thurian"],
+                ["d", "ขนุน", "Jackfrucht", "Khanun"]
+            ],
+            "a",
+            "ส้ม (Som) อุดมด้วยวิตามินซี ช่วยเสริมภูมิต้านทานโรค",
+            "Orangen und Mandarinen ('Som') liefern wertvolles Vitamin C.",
+            [{"title":"Department of Health Thailand","url":"https://anamai.moph.go.th/"}]
+        ),
+        makeQuestion(
+            "thq-beg-100", "beginner_health", 2, "single_choice",
+            "สิ่งใดที่เราควรทำทุกครั้งก่อนรับประทานอาหารเพื่อป้องกันเชื้อโรค?",
+            "Was sollten wir vor jeder Mahlzeit tun, um Krankheitskeime zu vermeiden?",
+            "Sing dai thi rao khuan tham thuk khrang kon rapprathan ahan phuea pongkan chuearok?",
+            [
+                ["a", "ล้างมือให้สะอาด", "Gründlich Hände waschen", "Lang mue hai saat"],
+                ["b", "วิ่งรอบบ้าน", "Ums Haus rennen", "Wing rop ban"],
+                ["c", "สระผม", "Haare waschen", "Sra phom"],
+                ["d", "นอนหลับ", "Schlafen", "Nonlap"]
+            ],
+            "a",
+            "การล้างมือด้วยสบู่และน้ำสะอาดช่วยลดการติดเชื้อทางเดินอาหาร",
+            "Gründliches Händewaschen schützt vor Keimen und Infektionen.",
+            [{"title":"Department of Disease Control Thailand","url":"https://ddc.moph.go.th/"}]
+        ),
         ...[
             ["animals", 1, "สัตว์อะไรมีงวง?", "Welches Tier hat einen Rüssel?", "Sat arai mi nguang?", "animals", "d"],
             ["animals", 1, "สัตว์อะไรร้องว่า 'เหมียว'?", "Welches Tier miaut?", "Sat arai rong wa 'miao'?", "animals", "a"],
@@ -5146,7 +6746,107 @@
         "thq-lan-034": 3,
         "thq-lan-035": 3,
         "thq-lan-036": 3,
-        "thq-lan-037": 3
+        "thq-lan-037": 3,
+        "thq-beg-001": 1,
+        "thq-beg-002": 1,
+        "thq-beg-003": 1,
+        "thq-beg-004": 1,
+        "thq-beg-005": 1,
+        "thq-beg-006": 1,
+        "thq-beg-007": 1,
+        "thq-beg-008": 1,
+        "thq-beg-009": 1,
+        "thq-beg-010": 1,
+        "thq-beg-011": 1,
+        "thq-beg-012": 1,
+        "thq-beg-013": 1,
+        "thq-beg-014": 1,
+        "thq-beg-015": 1,
+        "thq-beg-016": 1,
+        "thq-beg-017": 1,
+        "thq-beg-018": 1,
+        "thq-beg-019": 1,
+        "thq-beg-020": 1,
+        "thq-beg-021": 1,
+        "thq-beg-022": 1,
+        "thq-beg-023": 1,
+        "thq-beg-024": 1,
+        "thq-beg-025": 1,
+        "thq-beg-026": 1,
+        "thq-beg-027": 1,
+        "thq-beg-028": 1,
+        "thq-beg-029": 1,
+        "thq-beg-030": 1,
+        "thq-beg-031": 1,
+        "thq-beg-032": 1,
+        "thq-beg-033": 1,
+        "thq-beg-034": 1,
+        "thq-beg-035": 1,
+        "thq-beg-036": 1,
+        "thq-beg-037": 1,
+        "thq-beg-038": 1,
+        "thq-beg-039": 1,
+        "thq-beg-040": 1,
+        "thq-beg-041": 1,
+        "thq-beg-042": 1,
+        "thq-beg-043": 1,
+        "thq-beg-044": 1,
+        "thq-beg-045": 1,
+        "thq-beg-046": 1,
+        "thq-beg-047": 1,
+        "thq-beg-048": 1,
+        "thq-beg-049": 1,
+        "thq-beg-050": 1,
+        "thq-beg-051": 2,
+        "thq-beg-052": 2,
+        "thq-beg-053": 2,
+        "thq-beg-054": 2,
+        "thq-beg-055": 2,
+        "thq-beg-056": 2,
+        "thq-beg-057": 2,
+        "thq-beg-058": 2,
+        "thq-beg-059": 2,
+        "thq-beg-060": 2,
+        "thq-beg-061": 2,
+        "thq-beg-062": 2,
+        "thq-beg-063": 2,
+        "thq-beg-064": 2,
+        "thq-beg-065": 2,
+        "thq-beg-066": 2,
+        "thq-beg-067": 2,
+        "thq-beg-068": 2,
+        "thq-beg-069": 2,
+        "thq-beg-070": 2,
+        "thq-beg-071": 2,
+        "thq-beg-072": 2,
+        "thq-beg-073": 2,
+        "thq-beg-074": 2,
+        "thq-beg-075": 2,
+        "thq-beg-076": 2,
+        "thq-beg-077": 2,
+        "thq-beg-078": 2,
+        "thq-beg-079": 2,
+        "thq-beg-080": 2,
+        "thq-beg-081": 2,
+        "thq-beg-082": 2,
+        "thq-beg-083": 2,
+        "thq-beg-084": 2,
+        "thq-beg-085": 2,
+        "thq-beg-086": 2,
+        "thq-beg-087": 2,
+        "thq-beg-088": 2,
+        "thq-beg-089": 2,
+        "thq-beg-090": 2,
+        "thq-beg-091": 2,
+        "thq-beg-092": 2,
+        "thq-beg-093": 2,
+        "thq-beg-094": 2,
+        "thq-beg-095": 2,
+        "thq-beg-096": 2,
+        "thq-beg-097": 2,
+        "thq-beg-098": 2,
+        "thq-beg-099": 2,
+        "thq-beg-100": 2,
     };
     const legacyQuestions = questions.filter(question =>
         !question.id.startsWith("thq-beginner-")
