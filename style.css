@@ -438,7 +438,8 @@ p{
    BUTTONS
 ========================================================= */
 
-button{
+button,
+.menu-card .account-menu-link{
 
     
 
@@ -597,7 +598,8 @@ button{
 
 }
 
-.menu-card button:hover{
+.menu-card button:hover,
+.menu-card .account-menu-link:hover{
 
     transform:translateY(-2px);
 
@@ -611,7 +613,8 @@ button{
 
 }
 
-.menu-card button:active{
+.menu-card button:active,
+.menu-card .account-menu-link:active{
 
     transform:translateY(1px);
 
@@ -879,7 +882,8 @@ button{
 
 }
 
-.menu-card button{
+.menu-card button,
+.menu-card .account-menu-link{
 
     width:100%;
 
@@ -887,43 +891,20 @@ button{
 
 }
 
-.menu-card button:last-child{
+.menu-card > :last-child{
 
     margin-bottom:0;
 
 }
 
 .menu-card .account-menu-link{
-
     display:block;
 
-    width:100%;
+    font-family:Arial;
 
-    margin-top:12px;
-
-    padding:12px 18px;
-
-    border:1px solid rgba(225,185,85,.55);
-
-    border-radius:8px;
-
-    color:#fff0bd;
-
-    background:linear-gradient(180deg, #362714, #1c1209);
-
-    font:inherit;
-
-    text-align:left;
+    text-align:center;
 
     text-decoration:none;
-
-}
-
-.menu-card .account-menu-link:hover{
-
-    transform:translateY(-2px);
-
-    background:linear-gradient(180deg, #48351d, #25180c);
 
 }
 
