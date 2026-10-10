@@ -75,46 +75,71 @@
             ? new Intl.Segmenter("th", { granularity: "word" })
             : null;
 
-        function findWordAt(text, index, segmentEnds) {
-            return wordsByLength.find(word =>
-                text.startsWith(word.thai, index) &&
-                segmentEnds.has(index + word.thai.length)
-            ) || null;
-        }
-
         function segment(text) {
             const value = String(text || "");
+            if (!value) {
+                return [];
+            }
             const nativeSegments = segmenter
                 ? [...segmenter.segment(value)]
                 : [{ segment: value, index: 0, isWordLike: true }];
             const segmentEnds = new Set(
                 nativeSegments.map(item => item.index + item.segment.length)
             );
+
+            function isValidEnd(endPos, depth = 0) {
+                if (segmentEnds.has(endPos) || endPos >= value.length) {
+                    return true;
+                }
+                if (depth >= 3) {
+                    return false;
+                }
+                for (const nextWord of wordsByLength) {
+                    if (value.startsWith(nextWord.thai, endPos)) {
+                        if (isValidEnd(endPos + nextWord.thai.length, depth + 1)) {
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }
+
+            function findWordAt(index) {
+                return wordsByLength.find(word =>
+                    value.startsWith(word.thai, index) &&
+                    isValidEnd(index + word.thai.length)
+                ) || null;
+            }
+
             const output = [];
-            let segmentIndex = 0;
+            let pos = 0;
 
-            while (segmentIndex < nativeSegments.length) {
-                const native = nativeSegments[segmentIndex];
-                const match = findWordAt(value, native.index, segmentEnds);
-                if (!/\p{Script=Thai}/u.test(native.segment)) {
-                    output.push({ text: native.segment, entry: null });
-                    segmentIndex++;
-                    continue;
-                }
-                if (!match) {
-                    output.push({ text: native.segment, entry: null });
-                    segmentIndex++;
+            while (pos < value.length) {
+                if (!/\p{Script=Thai}/u.test(value[pos])) {
+                    let end = pos + 1;
+                    while (end < value.length && !/\p{Script=Thai}/u.test(value[end])) {
+                        end++;
+                    }
+                    output.push({ text: value.slice(pos, end), entry: null });
+                    pos = end;
                     continue;
                 }
 
-                output.push({ text: match.thai, entry: match });
-                const matchEnd = native.index + match.thai.length;
-                while (
-                    segmentIndex < nativeSegments.length &&
-                    nativeSegments[segmentIndex].index + nativeSegments[segmentIndex].segment.length <= matchEnd
-                ) {
-                    segmentIndex++;
+                const match = findWordAt(pos);
+                if (match) {
+                    output.push({ text: match.thai, entry: match });
+                    pos += match.thai.length;
+                    continue;
                 }
+
+                let fallbackEnd = pos + 1;
+                for (const end of segmentEnds) {
+                    if (end > pos && (fallbackEnd === pos + 1 || end < fallbackEnd)) {
+                        fallbackEnd = end;
+                    }
+                }
+                output.push({ text: value.slice(pos, fallbackEnd), entry: null });
+                pos = fallbackEnd;
             }
 
             return output;
