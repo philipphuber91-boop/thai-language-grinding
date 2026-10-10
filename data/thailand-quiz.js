@@ -10248,6 +10248,116 @@
         "thq-beg-299": 1,
         "thq-beg-300": 2,
     };
+    const levelOneDifficultyReview = {
+        "thq-beg-104": 2,
+        "thq-beg-118": 2,
+        "thq-beg-119": 2,
+        "thq-beg-121": 2,
+        "thq-beg-122": 2,
+        "thq-beg-125": 2,
+        "thq-beg-126": 2,
+        "thq-beg-129": 2,
+        "thq-beg-130": 2,
+        "thq-beg-132": 2,
+        "thq-beg-133": 2,
+        "thq-beg-134": 2,
+        "thq-beg-138": 2,
+        "thq-beg-139": 2,
+        "thq-beg-142": 2,
+        "thq-beg-143": 2,
+        "thq-beg-144": 2,
+        "thq-beg-145": 2,
+        "thq-beg-147": 2,
+        "thq-beg-148": 2,
+        "thq-beg-149": 2,
+        "thq-beg-152": 2,
+        "thq-beg-153": 2,
+        "thq-beg-154": 2,
+        "thq-beg-155": 2,
+        "thq-beg-156": 2,
+        "thq-beg-163": 2,
+        "thq-beg-164": 2,
+        "thq-beg-166": 2,
+        "thq-beg-167": 2,
+        "thq-beg-168": 2,
+        "thq-beg-170": 2,
+        "thq-beg-178": 2,
+        "thq-beg-181": 2,
+        "thq-beg-182": 2,
+        "thq-beg-183": 2,
+        "thq-beg-184": 2,
+        "thq-beg-185": 2,
+        "thq-beg-186": 2,
+        "thq-beg-187": 2,
+        "thq-beg-188": 2,
+        "thq-beg-189": 2,
+        "thq-beg-190": 2,
+        "thq-beg-193": 2,
+        "thq-beg-196": 2,
+        "thq-beg-198": 2,
+        "thq-beg-199": 2,
+        "thq-beg-200": 2,
+        "thq-beg-201": 2,
+        "thq-beg-202": 2,
+        "thq-beg-203": 2,
+        "thq-beg-204": 2,
+        "thq-beg-205": 2,
+        "thq-beg-206": 2,
+        "thq-beg-207": 2,
+        "thq-beg-208": 2,
+        "thq-beg-210": 2,
+        "thq-beg-212": 2,
+        "thq-beg-216": 2,
+        "thq-beg-217": 2,
+        "thq-beg-218": 2,
+        "thq-beg-219": 2,
+        "thq-beg-220": 2,
+        "thq-beg-222": 2,
+        "thq-beg-223": 2,
+        "thq-beg-225": 2,
+        "thq-beg-227": 2,
+        "thq-beg-228": 2,
+        "thq-beg-229": 2,
+        "thq-beg-230": 2,
+        "thq-beg-233": 2,
+        "thq-beg-234": 2,
+        "thq-beg-235": 2,
+        "thq-beg-236": 2,
+        "thq-beg-237": 2,
+        "thq-beg-238": 2,
+        "thq-beg-239": 2,
+        "thq-beg-240": 2,
+        "thq-beg-242": 2,
+        "thq-beg-245": 2,
+        "thq-beg-246": 2,
+        "thq-beg-248": 2,
+        "thq-beg-249": 2,
+        "thq-beg-250": 2,
+        "thq-beg-251": 2,
+        "thq-beg-252": 2,
+        "thq-beg-253": 2,
+        "thq-beg-254": 2,
+        "thq-beg-259": 2,
+        "thq-beg-260": 2,
+        "thq-beg-284": 2,
+        "thq-beg-286": 2,
+        "thq-beg-287": 2,
+        "thq-beg-290": 2,
+        "thq-beg-297": 2,
+        "thq-beginner-thailand_places-011": 2,
+        "thq-beginner-thailand_places-012": 2,
+        "thq-beginner-thailand_places-013": 2,
+        "thq-beginner-thailand_places-014": 2,
+        "thq-beginner-thailand_places-015": 2,
+        "thq-beg-265": 3,
+        "thq-beg-267": 3,
+        "thq-beg-268": 3,
+        "thq-beg-269": 3,
+        "thq-beg-274": 3,
+        "thq-beg-275": 3,
+        "thq-beg-279": 3,
+        "thq-beg-280": 3
+    };
     const legacyQuestions = questions.filter(question =>
         !question.id.startsWith("thq-beginner-")
     );
@@ -10264,6 +10374,80 @@
     }
     for (const question of legacyQuestions) {
         question.difficulty = legacyDifficultyReview[question.id];
+    }
+    for (const [questionId, difficulty] of Object.entries(levelOneDifficultyReview)) {
+        const question = questions.find(item => item.id === questionId);
+        if (!question || question.difficulty !== 1 || difficulty < 2 || difficulty > 3) {
+            throw new Error(`Ungültige Neubewertung für Frage ${questionId}`);
+        }
+        question.difficulty = difficulty;
+    }
+    const provincialBeginnerQuestions = new Set([
+        "thq-beginner-thailand_places-011",
+        "thq-beginner-thailand_places-012",
+        "thq-beginner-thailand_places-013",
+        "thq-beginner-thailand_places-014",
+        "thq-beginner-thailand_places-015"
+    ]);
+    const foundationalBeginnerQuestions = questions.filter(question =>
+        question.id.startsWith("thq-beginner-") &&
+        question.difficulty === 2 &&
+        !provincialBeginnerQuestions.has(question.id)
+    );
+    const simpleLegacyBeginnerQuestions = questions.filter(question =>
+        /^thq-beg-\d{3}$/.test(question.id) &&
+        Number(question.id.slice(-3)) >= 51 &&
+        Number(question.id.slice(-3)) <= 100
+    );
+    const levelTwoToOneIds = [
+        "thq-geo-001",
+        "thq-cult-001",
+        "thq-cult-002",
+        "thq-cult-003",
+        "thq-food-002",
+        "thq-food-003",
+        "thq-food-004",
+        "thq-food-005",
+        "thq-nature-001",
+        "thq-sport-001",
+        "thq-beg-104",
+        "thq-beg-118",
+        "thq-beg-119",
+        "thq-beg-142",
+        "thq-beg-150",
+        "thq-beg-181",
+        "thq-beg-217",
+        "thq-beg-220",
+        "thq-beg-228",
+        "thq-beg-236",
+        "thq-beg-238",
+        "thq-beg-239",
+        "thq-beg-249",
+        "thq-beg-254",
+        "thq-beg-259",
+        "thq-beg-281",
+        "thq-beg-286",
+        "thq-beg-287",
+        "thq-beg-290"
+    ];
+    const otherLevelTwoQuestions = levelTwoToOneIds.map(questionId =>
+        questions.find(question => question.id === questionId)
+    );
+    const levelTwoToOneQuestions = [
+        ...foundationalBeginnerQuestions,
+        ...simpleLegacyBeginnerQuestions,
+        ...otherLevelTwoQuestions
+    ];
+    if (
+        foundationalBeginnerQuestions.length !== 150 ||
+        simpleLegacyBeginnerQuestions.length !== 50 ||
+        otherLevelTwoQuestions.some(question => !question) ||
+        levelTwoToOneQuestions.some(question => question.difficulty !== 2)
+    ) {
+        throw new Error("Level-2-Neubewertung unvollständig oder veraltet");
+    }
+    for (const question of levelTwoToOneQuestions) {
+        question.difficulty = 1;
     }
 
     const data = { categories, questions };

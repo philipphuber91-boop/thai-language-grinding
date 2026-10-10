@@ -38,8 +38,16 @@ test("beginner categories provide varied Thai-first questions at levels one and 
     assert.ok(beginnerQuestions.every(question => question.difficulty <= 2));
     assert.equal(legacyQuestions.length, 534);
     assert.ok(legacyQuestions.every(question => question.difficulty >= 1));
-    assert.equal(counts.size, 40);
-    assert.ok([...counts.values()].every(count => count === 5 || count === 10));
+    assert.equal(counts.size, 21);
+    assert.equal(counts.get("beginner_thailand_places:2"), 5);
+    assert.equal(
+        beginnerQuestions.filter(question => question.difficulty === 1).length,
+        295
+    );
+    assert.equal(
+        beginnerQuestions.filter(question => question.difficulty === 2).length,
+        5
+    );
 
     const secondPack = beginnerQuestions.filter(question =>
         Number(question.id.slice(-3)) >= 11
@@ -84,12 +92,12 @@ test("beginner categories provide varied Thai-first questions at levels one and 
         newPackPreviousQuestions.map(question => question.question.th.trim())
     );
     assert.equal(newPack.length, 100);
-    assert.equal(newPackCounts.size, 20);
-    assert.ok([...newPackCounts.values()].every(count => count === 5));
+    assert.equal(newPackCounts.size, 10);
+    assert.ok([...newPackCounts.values()].every(count => count === 10));
+    assert.ok(newPack.every(question => question.difficulty === 1));
     assert.equal(new Set(newPackTexts).size, newPack.length);
     assert.ok(newPackTexts.every(text => !newPackPreviousTexts.has(text)));
 
-    const levelTwoQuestions = newPack.filter(question => question.difficulty === 2);
     const trueFalseQuestions = newPack.filter(question =>
         question.type === "true_false"
     );
@@ -99,20 +107,40 @@ test("beginner categories provide varied Thai-first questions at levels one and 
         question.options[0].th === "จริง" &&
         question.options[1].th === "ไม่จริง"
     ));
-    const yesNoQuestions = levelTwoQuestions.filter(question =>
+    const yesNoQuestions = newPack.filter(question =>
         question.options.map(option => option.th).join("|") === "ใช่|ไม่ใช่"
     );
     assert.equal(yesNoQuestions.length, 20);
     assert.equal(
-        levelTwoQuestions.filter(question =>
+        newPack.filter(question =>
             question.type === "single_choice" &&
             question.options.length > 2
         ).length,
-        20
+        70
     );
 });
 
-test("third Thailand beginner pack has 100 unique level-one and level-two questions", () => {
+test("reclassifies foundational questions while retaining provincial Level 2 and specialist Level 3", () => {
+    const difficultyFor = id =>
+        data.questions.find(question => question.id === id)?.difficulty;
+    const levelCounts = data.questions.reduce((counts, question) => {
+        counts[question.difficulty] = (counts[question.difficulty] || 0) + 1;
+        return counts;
+    }, {});
+
+    assert.equal(
+        difficultyFor("thq-beginner-animals-006"),
+        1
+    );
+    assert.equal(difficultyFor("thq-beg-051"), 1);
+    assert.equal(difficultyFor("thq-geo-001"), 1);
+    assert.equal(difficultyFor("thq-beginner-thailand_places-011"), 2);
+    assert.equal(difficultyFor("thq-beg-285"), 2);
+    assert.equal(difficultyFor("thq-beg-274"), 3);
+    assert.deepEqual(levelCounts, { 1: 463, 2: 144, 3: 139, 4: 49, 5: 39 });
+});
+
+test("third Thailand beginner pack has 100 unique questions through Level 3", () => {
     const newPack = data.questions.filter(question =>
         /^thq-beg-(20[1-9]|2[1-9]\d|300)$/.test(question.id)
     );
@@ -123,7 +151,7 @@ test("third Thailand beginner pack has 100 unique level-one and level-two questi
     const newTexts = newPack.map(question => question.question.th.trim());
 
     assert.equal(newPack.length, 100);
-    assert.ok(newPack.every(question => question.difficulty <= 2));
+    assert.ok(newPack.every(question => question.difficulty <= 3));
     assert.equal(new Set(newTexts).size, 100);
     assert.ok(newTexts.every(text => !allOtherTexts.has(text)));
 });
@@ -147,7 +175,7 @@ test("round selection avoids recently played questions when enough alternatives 
 test("round filters and short pools return only matching available questions", () => {
     const filters = { categories: ["geography"], difficulties: [2] };
     const filtered = quiz.filterQuestions(data.questions, filters);
-    const round = quiz.selectRound(data.questions, [], () => 0.4, 10, filters);
+    const round = quiz.selectRound(data.questions, [], () => 0.4, 100, filters);
 
     assert.ok(filtered.length > 0);
     assert.equal(round.length, filtered.length);
