@@ -179,6 +179,7 @@ async function signUp(email, password) {
 
 async function saveLocalGameToCloud() {
     const localBackup = backupTools.createBackup();
+    const cloudPayload = backupTools.validateCloudPayload(localBackup.data);
     const previousSave = cloudSave;
 
     if (previousSave && !window.confirm(
@@ -207,7 +208,7 @@ async function saveLocalGameToCloud() {
         .upsert({
             user_id: currentSession.user.id,
             save_version: 1,
-            payload: localBackup.data,
+            payload: cloudPayload,
         }, { onConflict: "user_id" });
 
     if (error) {
@@ -236,7 +237,7 @@ async function restoreCloudGameToLocal() {
         throw new Error(`Das Cloud-Format ${save.save_version} wird von dieser App-Version nicht unterstützt.`);
     }
 
-    const payload = backupTools.validatePayload(save.payload);
+    const payload = backupTools.validateCloudPayload(save.payload);
     const restoredEntries = backupTools.replaceLocalData(payload);
     setStatus(elements.accountStatus, `${restoredEntries} lokale Einträge aus der Cloud wiederhergestellt. Die App wird neu geladen.`, "success");
     window.setTimeout(() => window.location.assign("index.html"), 800);

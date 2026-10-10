@@ -3,8 +3,10 @@
 
     const APP_ID = "thai-language-grinding";
     const FORMAT_VERSION = 1;
-    const MAX_BACKUP_SIZE = 4 * 1024 * 1024;
+    const MAX_LOCAL_BACKUP_SIZE = 32 * 1024 * 1024;
+    const MAX_CLOUD_SAVE_SIZE = 4 * 1024 * 1024;
     const ACCOUNT_STATE_PREFIX = "thaiGrindingAccount:";
+    const RELOADABLE_CACHE_KEYS = new Set(["thaiGigaDrill:v1:content"]);
 
     function isProtectedKey(key) {
         return /^sb-[a-z0-9-]+-auth-token(?:-code-verifier)?$/i.test(key)
@@ -18,7 +20,7 @@
         for (let index = 0; index < storage.length; index += 1) {
             const key = storage.key(index);
 
-            if (key === null || isProtectedKey(key)) {
+            if (key === null || isProtectedKey(key) || RELOADABLE_CACHE_KEYS.has(key)) {
                 continue;
             }
 
@@ -33,12 +35,13 @@
         return Object.fromEntries(entries);
     }
 
-    function validatePayload(payload) {
+    function validatePayload(payload, maxSize = MAX_LOCAL_BACKUP_SIZE) {
         if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
             throw new Error("Der Spielstand muss ein JSON-Objekt sein.");
         }
 
-        const entries = Object.entries(payload);
+        const entries = Object.entries(payload)
+            .filter(([key]) => !RELOADABLE_CACHE_KEYS.has(key));
 
         if (entries.length > 500) {
             throw new Error("Der Spielstand enthält zu viele Einträge.");
@@ -58,11 +61,18 @@
             }
         }
 
-        if (JSON.stringify(payload).length > MAX_BACKUP_SIZE) {
-            throw new Error("Der Spielstand ist größer als 4 MB und kann nicht importiert werden.");
+        const validatedPayload = Object.fromEntries(entries);
+
+        if (JSON.stringify(validatedPayload).length > maxSize) {
+            const limitInMegabytes = Math.floor(maxSize / (1024 * 1024));
+            throw new Error(`Der Spielstand ist größer als ${limitInMegabytes} MB und kann nicht verarbeitet werden.`);
         }
 
-        return Object.fromEntries(entries);
+        return validatedPayload;
+    }
+
+    function validateCloudPayload(payload) {
+        return validatePayload(payload, MAX_CLOUD_SAVE_SIZE);
     }
 
     function createBackup(storage = global.localStorage) {
@@ -77,7 +87,7 @@
     }
 
     function parseBackup(rawText) {
-        if (typeof rawText !== "string" || rawText.length > MAX_BACKUP_SIZE + 10000) {
+        if (typeof rawText !== "string" || rawText.length > MAX_LOCAL_BACKUP_SIZE * 2 + 10000) {
             throw new Error("Die Sicherungsdatei ist ungültig oder zu groß.");
         }
 
@@ -142,7 +152,13 @@
     }
 
     function downloadBackup(backup = createBackup()) {
-        const json = `${JSON.stringify(backup, null, 2)}\n`;
+        const safeBackup = {
+            appId: APP_ID,
+            formatVersion: FORMAT_VERSION,
+            exportedAt: typeof backup.exportedAt === "string" ? backup.exportedAt : new Date().toISOString(),
+            data: validatePayload(backup.data),
+        };
+        const json = `${JSON.stringify(safeBackup, null, 2)}\n`;
         const blob = new Blob([json], { type: "application/json" });
         const objectUrl = URL.createObjectURL(blob);
         const link = document.createElement("a");
@@ -164,6 +180,7 @@
         isProtectedKey,
         parseBackup,
         replaceLocalData,
+        validateCloudPayload,
         validatePayload,
     });
 })(window);

@@ -38,8 +38,10 @@ the frontend or commit one to the repository.
 
 - `html/account.html` supports local JSON export/import, account creation,
   sign-in, password reset, manual cloud upload, and restore.
-- A backup includes the site's local-storage values but excludes Supabase
-  authentication tokens and account-internal keys.
+- A backup includes the site's saved data but excludes Supabase authentication
+  tokens, account-internal keys, and the reloadable Thai-Giga content cache.
+  Thai-Giga progress itself is retained; the cached content is fetched again
+  from the app's bundled data file when needed.
 - Cloud upload is intentionally manual for now. It asks before replacing an
   existing cloud save; restoring downloads a local backup before replacing
   local game data. Do not remove an existing Home Screen app until the current

@@ -119,12 +119,34 @@ test("invalid payloads leave the existing save untouched", () => {
     assert.equal(storage.getItem("player"), "keep-me");
 });
 
-test("oversized local data cannot be exported as an unrestorable backup", () => {
+test("local backups allow more than 4 MB and omit the reloadable Giga content cache", () => {
     const backupApi = createBackupApi(new MemoryStorage({
         player: "x".repeat(4 * 1024 * 1024 + 1),
+        "thaiGigaDrill:v1:content": "reloadable-content",
+        "thaiGigaDrill:v1:progress": "{\"completedSentenceIds\":[\"sentence-1\"]}",
     }));
+    const backup = backupApi.createBackup();
+    const parsedBackup = backupApi.parseBackup(JSON.stringify(backup));
+    const cloudPayload = backupApi.validateCloudPayload({
+        "thaiGigaDrill:v1:content": "x".repeat(4 * 1024 * 1024 + 1),
+        "thaiGigaDrill:v1:progress": parsedBackup.data["thaiGigaDrill:v1:progress"],
+    });
 
-    assert.throws(() => backupApi.createBackup(), /größer als 4 MB/);
+    assert.ok(backup.data.player.length > 4 * 1024 * 1024);
+    assert.equal(backup.data["thaiGigaDrill:v1:content"], undefined);
+    assert.equal(
+        parsedBackup.data["thaiGigaDrill:v1:progress"],
+        "{\"completedSentenceIds\":[\"sentence-1\"]}"
+    );
+    assert.equal(cloudPayload.player, undefined);
+    assert.equal(
+        cloudPayload["thaiGigaDrill:v1:progress"],
+        parsedBackup.data["thaiGigaDrill:v1:progress"]
+    );
+    assert.throws(
+        () => backupApi.validateCloudPayload({ player: "x".repeat(4 * 1024 * 1024 + 1) }),
+        /größer als 4 MB/
+    );
 });
 
 test("restore rolls back the previous save if local storage rejects a write", () => {
