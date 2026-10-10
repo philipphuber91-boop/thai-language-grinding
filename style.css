@@ -893,6 +893,40 @@ button{
 
 }
 
+.menu-card .account-menu-link{
+
+    display:block;
+
+    width:100%;
+
+    margin-top:12px;
+
+    padding:12px 18px;
+
+    border:1px solid rgba(225,185,85,.55);
+
+    border-radius:8px;
+
+    color:#fff0bd;
+
+    background:linear-gradient(180deg, #362714, #1c1209);
+
+    font:inherit;
+
+    text-align:left;
+
+    text-decoration:none;
+
+}
+
+.menu-card .account-menu-link:hover{
+
+    transform:translateY(-2px);
+
+    background:linear-gradient(180deg, #48351d, #25180c);
+
+}
+
 
 /* =========================================================
    QUEST CONTAINER
@@ -10397,6 +10431,13 @@ body:has(#worldmapHome) .topbar{
     color:#e4c889;
     background:linear-gradient(180deg, #362714, #1c1209);
     font:600 .8rem Georgia, "Times New Roman", serif;
+}
+
+.account-home-link{
+    display:inline-flex;
+    align-items:center;
+    text-decoration:none;
+    white-space:nowrap;
 }
 
 .shop-button:disabled{

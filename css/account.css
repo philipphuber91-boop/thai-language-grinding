@@ -1,0 +1,243 @@
+:root {
+    color-scheme: dark;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: #15110d;
+    color: #f3e6ca;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-width: 320px;
+    min-height: 100vh;
+    margin: 0;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(90, 61, 28, .45), transparent 54%),
+        #15110d;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 1px solid #b78a42;
+    border-radius: 8px;
+    color: #fff4d5;
+    background: #392714;
+    cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+    background: #51391d;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: .55;
+}
+
+a {
+    color: #f1cf80;
+}
+
+.account-shell {
+    width: min(100% - 32px, 760px);
+    margin: 0 auto;
+    padding: 24px 0 48px;
+}
+
+.account-back-link {
+    display: inline-block;
+    margin-bottom: 26px;
+    text-decoration: none;
+}
+
+.account-header {
+    margin-bottom: 26px;
+    text-align: center;
+}
+
+.account-header img {
+    display: block;
+    width: min(160px, 45vw);
+    height: auto;
+    margin: 0 auto 12px;
+}
+
+.account-eyebrow {
+    margin: 0 0 4px;
+    color: #61ddc3;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.account-header h1 {
+    margin: 0;
+    color: #f3d58f;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(1.8rem, 7vw, 2.5rem);
+}
+
+.account-header > p:last-child {
+    max-width: 560px;
+    margin: 10px auto 0;
+    color: #cabb9e;
+    line-height: 1.55;
+}
+
+.account-card {
+    margin: 18px 0;
+    padding: clamp(18px, 4vw, 26px);
+    border: 1px solid rgba(211, 165, 83, .46);
+    border-radius: 14px;
+    background: rgba(38, 27, 18, .94);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, .2);
+}
+
+.account-card h2,
+.account-cloud-panel h3 {
+    margin: 0 0 8px;
+    color: #f1d391;
+}
+
+.account-card > p,
+.account-card #signedInPanel > p {
+    color: #d5c7ac;
+    line-height: 1.55;
+}
+
+.account-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.account-import-form,
+.account-auth-form {
+    display: grid;
+    gap: 9px;
+    margin-top: 18px;
+}
+
+.account-import-form {
+    padding-top: 18px;
+    border-top: 1px solid rgba(211, 165, 83, .24);
+}
+
+.account-auth-form input {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #75582e;
+    border-radius: 7px;
+    color: #fff8e8;
+    background: #17120e;
+}
+
+.account-auth-form input:focus-visible,
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid #61ddc3;
+    outline-offset: 2px;
+}
+
+.account-primary-button {
+    color: #251a0d;
+    background: #e5bd69;
+}
+
+.account-primary-button:hover:not(:disabled) {
+    background: #f0cf83;
+}
+
+.account-text-button {
+    min-height: 38px;
+    margin-top: 10px;
+    padding-inline: 0;
+    border: 0;
+    color: #f1cf80;
+    background: transparent;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.account-text-button:hover:not(:disabled) {
+    background: transparent;
+    color: #ffe7ac;
+}
+
+.account-status {
+    min-height: 1.5em;
+    color: #d5c7ac;
+    overflow-wrap: anywhere;
+}
+
+.account-status[data-state="success"] {
+    color: #91e3bf;
+}
+
+.account-status[data-state="error"] {
+    color: #ffaaa1;
+}
+
+.account-status[data-state="info"] {
+    color: #d5c7ac;
+}
+
+.account-cloud-panel {
+    margin-top: 18px;
+    padding: 16px;
+    border: 1px solid rgba(211, 165, 83, .25);
+    border-radius: 10px;
+    background: rgba(13, 11, 9, .45);
+}
+
+.account-cloud-panel h3 {
+    font-size: 1.1rem;
+}
+
+.account-warning {
+    color: #f3cf8b;
+    font-size: .92rem;
+    line-height: 1.5;
+}
+
+.account-muted,
+.account-security-note {
+    color: #b9aa8e;
+    font-size: .88rem;
+    line-height: 1.55;
+}
+
+.account-security-note {
+    margin: 22px 4px 0;
+    text-align: center;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+@media (max-width: 520px) {
+    .account-shell {
+        width: min(100% - 24px, 760px);
+        padding-top: 16px;
+    }
+
+    .account-actions {
+        flex-direction: column;
+    }
+
+    .account-actions button {
+        width: 100%;
+    }
+}

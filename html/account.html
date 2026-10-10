@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#15110d">
+    <title>Konto &amp; Spielstand · Thai Grind</title>
+    <link rel="manifest" href="../manifest.json">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/icons/pwa/favicon-32.png">
+    <link rel="apple-touch-icon" href="../assets/icons/pwa/apple-touch-icon.png">
+    <link rel="stylesheet" href="../css/account.css">
+</head>
+<body>
+    <main class="account-shell">
+        <a class="account-back-link" href="index.html">← Zurück zum Spiel</a>
+        <header class="account-header">
+            <img src="../assets/ui/logo.png" alt="Thai Grind">
+            <p class="account-eyebrow">Thai Language Grinding</p>
+            <h1>Konto &amp; Spielstand</h1>
+            <p>Erstelle ein Konto und sichere deinen Fortschritt. Lokale Sicherungen funktionieren auch ohne Supabase.</p>
+        </header>
+
+        <section class="account-card" aria-labelledby="backupTitle">
+            <h2 id="backupTitle">Lokale Sicherung</h2>
+            <p>
+                Exportiere deine Spielstände als JSON-Datei, bevor du ein Gerät wechselst oder eine App vom Home-Bildschirm entfernst.
+                Anmeldetokens werden nicht in die Datei aufgenommen.
+            </p>
+            <div class="account-actions">
+                <button id="backupExportButton" class="account-primary-button" type="button">Spielstand herunterladen</button>
+            </div>
+            <form id="backupImportForm" class="account-import-form">
+                <label for="backupFile">JSON-Sicherung wiederherstellen</label>
+                <input id="backupFile" name="backupFile" type="file" accept="application/json,.json">
+                <button class="account-secondary-button" type="submit">Sicherung importieren</button>
+            </form>
+        </section>
+
+        <section class="account-card" aria-labelledby="supabaseTitle">
+            <h2 id="supabaseTitle">Spielerkonto</h2>
+            <p id="supabaseConfigurationStatus" class="account-status" role="status" aria-live="polite">
+                Supabase-Konfiguration wird geprüft …
+            </p>
+            <p id="accountStatus" class="account-status" role="status" aria-live="polite"></p>
+
+            <div id="signedOutPanel">
+                <form id="signInForm" class="account-auth-form">
+                    <label for="accountEmail">E-Mail-Adresse</label>
+                    <input id="accountEmail" name="email" type="email" autocomplete="email" required>
+                    <label for="accountPassword">Passwort</label>
+                    <input id="accountPassword" name="password" type="password" autocomplete="current-password" minlength="8" required>
+                    <div class="account-actions">
+                        <button class="account-primary-button" type="submit">Anmelden</button>
+                        <button id="signUpButton" class="account-secondary-button" type="button">Konto erstellen</button>
+                    </div>
+                </form>
+                <button id="resetPasswordButton" class="account-text-button" type="button">Passwort zurücksetzen</button>
+            </div>
+
+            <form id="passwordRecoveryForm" class="account-auth-form" hidden>
+                <label for="newAccountPassword">Neues Passwort</label>
+                <input id="newAccountPassword" name="newPassword" type="password" autocomplete="new-password" minlength="8" required>
+                <button class="account-primary-button" type="submit">Passwort aktualisieren</button>
+            </form>
+
+            <div id="signedInPanel" hidden>
+                <p>Angemeldet als <strong id="currentAccountEmail"></strong></p>
+                <div class="account-cloud-panel">
+                    <h3>Cloud-Spielstand</h3>
+                    <p id="cloudSaveStatus" class="account-status" role="status" aria-live="polite"></p>
+                    <p id="cloudSaveUpdatedAt" class="account-muted"></p>
+                    <p class="account-warning">
+                        Die Cloud-Sicherung ist zunächst manuell. Änderungen nach dem letzten Upload bleiben nur auf diesem Gerät.
+                        Ein bestehender Cloud-Spielstand wird nur nach Bestätigung überschrieben.
+                    </p>
+                    <div class="account-actions">
+                        <button id="saveToCloudButton" class="account-primary-button" type="button">Diesen Spielstand in der Cloud sichern</button>
+                        <button id="restoreFromCloudButton" class="account-secondary-button" type="button">Cloud-Spielstand auf dieses Gerät laden</button>
+                    </div>
+                </div>
+                <button id="signOutButton" class="account-text-button" type="button">Abmelden</button>
+            </div>
+
+            <button id="returnToGameButton" class="account-secondary-button" type="button" hidden>Spiel mit den wiederhergestellten Daten öffnen</button>
+        </section>
+
+        <p class="account-security-note">
+            Passwörter werden von Supabase Auth verwaltet und nicht im Spielstand gespeichert.
+            Verwende im Browser ausschließlich den Supabase Publishable Key, niemals den Service-Role-Key.
+        </p>
+    </main>
+
+    <script src="../js/supabase-config.js"></script>
+    <script src="../js/account-backup.js"></script>
+    <script type="module" src="../js/account-page.js"></script>
+    <script src="../js/pwa-register.js"></script>
+</body>
+</html>

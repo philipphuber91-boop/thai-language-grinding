@@ -13,7 +13,7 @@
         "ingest": "node tools/ingest-staging.js --ingest",
         "ingest:check": "node tools/ingest-staging.js --validate-only",
         "quiz:audit": "node tools/quiz-vocabulary-pipeline.js --check",
-        "test": "node --test tests/sentence-mix-xp.test.js tests/thailand-quiz-vocabulary.test.js tests/thailand-quiz.test.js"
+        "test": "node --test tests/sentence-mix-xp.test.js tests/thailand-quiz-vocabulary.test.js tests/thailand-quiz.test.js tests/save-backup.test.js"
     },
     "dependencies": {
         "@aws-sdk/client-s3": "^3.879.0",
