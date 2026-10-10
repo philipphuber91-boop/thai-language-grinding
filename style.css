@@ -642,7 +642,7 @@ button{
 
     text-align:center;
 
-    padding:25px 0;
+    padding:14px 0;
 
     background:linear-gradient(
 
@@ -660,19 +660,19 @@ button{
 
 .topbar h1{
 
-    font-size:72px;
+    margin:0;
 
-    color:#e8c46b;
+}
 
-    letter-spacing:6px;
+.topbar-logo{
 
-    text-transform:uppercase;
+    display:block;
 
-    text-shadow:
+    width:clamp(160px, 22vw, 220px);
 
-        0 0 10px rgba(255,220,120,.3),
+    height:auto;
 
-        0 0 25px rgba(255,220,120,.15);
+    margin:0 auto;
 
 }
 
@@ -8881,7 +8881,7 @@ body:has(#worldmapHome){
 body:has(#worldmapHome) .topbar{
     display:block;
     min-height:0;
-    padding:25px 0;
+    padding:14px 0;
     border-bottom:2px solid var(--gold);
     background:linear-gradient(180deg, #2b1b10, #18110c);
     text-align:center;

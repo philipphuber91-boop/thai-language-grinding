@@ -346,14 +346,6 @@
         display:flex;
     }
 
-    .topbar h1{
-        font-size:44px;
-    }
-
-    .topbar h2{
-        font-size:22px;
-    }
-
     /* Sidebar wird zum ausklappbaren Drawer von links.
        "position:fixed" wird hier bewusst erneut gesetzt, da
        eine bereits bestehende Regel in style.css (@media
@@ -3058,7 +3050,7 @@
 @media (max-width:900px){
     body:has(#worldmapHome) .topbar{
         display:block;
-        padding:25px 10px 46px;
+        padding:14px 10px 18px;
         text-align:center;
     }
 
@@ -3203,7 +3195,7 @@
 
     body:not(.worldmap-view-mode):has(#worldmapHome) .topbar{
         display:block;
-        padding:25px 10px 46px;
+        padding:14px 10px 18px;
         text-align:center;
     }
 
