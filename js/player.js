@@ -13,6 +13,7 @@ stats: {
     perfectQuests: 0,
     newRecordCount: 0,
     masteredThaiWords: 0,
+    totalTime: 0,
 
     // Quests
     completedQuests: 0,
@@ -25,7 +26,6 @@ stats: {
     uniqueThaiWords: [],
     wordStats: {},
     wordStatsInitialized: false,
-    totalTime: 0,
     averageTime: 0,
 
     // Geschwindigkeit
@@ -1058,6 +1058,16 @@ const ActivityManager = {
         this.resetInactivityTimer();
     },
 
+    registerGameplayActivity() {
+
+        if (this.status === "INACTIVE") {
+            this.startPlaying();
+            return;
+        }
+
+        this.registerActivity();
+    },
+
     resetInactivityTimer() {
 
         this.clearInactivityTimer();
@@ -1185,7 +1195,14 @@ function updatePlayerStats(zeit, cpm, accuracy, zeichen) {
     // Durchschnittswerte
 
     player.stats.averageTime =
-        player.stats.totalTime / player.stats.totalAttempts;
+    Number(
+    (
+        (
+            Number(player.stats.averageTime ?? 0) *
+            (player.stats.totalAttempts - 1) +
+            Number(zeit)
+        ) / player.stats.totalAttempts
+    ).toFixed(1));
 
     player.stats.averageCPM =
     Number(

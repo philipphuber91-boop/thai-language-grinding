@@ -398,6 +398,18 @@
         timerInterval = window.setInterval(updateTimer, 250);
     }
 
+    function hasActiveQuizRound() {
+        return round.length > 0 &&
+            !roundFinished &&
+            (currentEndlessMode || roundIndex >= 0);
+    }
+
+    function registerQuizGameplayActivity() {
+        if (hasActiveQuizRound()) {
+            ActivityManager.registerGameplayActivity();
+        }
+    }
+
     function updateRoundHeader() {
         if (roundFinished) {
             elements.headerRound.textContent = "—";
@@ -673,6 +685,7 @@
             );
         }
         renderCurrentQuestion();
+        registerQuizGameplayActivity();
         return true;
     }
 
@@ -725,6 +738,7 @@
         }
         roundFinished = true;
         stopTimer();
+        ActivityManager.stopPlaying();
         Object.assign(stats, engine.completeRound(
             stats,
             round.map(question => question.id)
@@ -965,6 +979,16 @@
     }
 
     function initializeEvents() {
+        document.addEventListener(
+            "pointerdown",
+            registerQuizGameplayActivity,
+            { capture: true }
+        );
+        document.addEventListener(
+            "keydown",
+            registerQuizGameplayActivity,
+            { capture: true }
+        );
         elements.startButton.addEventListener("click", startRound);
         elements.settingsApplyButton.addEventListener("click", () => {
             if (startRound()) {
@@ -1063,6 +1087,9 @@
         document.addEventListener("visibilitychange", () => {
             if (document.hidden) {
                 stopTimer();
+                if (hasActiveQuizRound()) {
+                    ActivityManager.pauseCounting();
+                }
             } else {
                 resumeTimer();
             }

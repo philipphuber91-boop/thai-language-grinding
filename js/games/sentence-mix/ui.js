@@ -739,6 +739,7 @@
         this.applySentenceConfiguration();
         this.applySentenceOrder();
         this.currentIndex = 0;
+        ActivityManager.stopPlaying();
         this.roundState = "idle";
 
         if (window.SentenceMixInput) {
@@ -984,6 +985,19 @@
         input.onReset = this.handleInputReset.bind(this);
         input.attach();
 
+        const registerActivity = () => {
+            if (this.roundState !== "idle") {
+                ActivityManager.registerGameplayActivity();
+            }
+        };
+        document.addEventListener("pointerdown", registerActivity, true);
+        document.addEventListener("keydown", registerActivity, true);
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) {
+                ActivityManager.pauseCounting();
+            }
+        });
+
         // Touch-/Klick-Handler für mobilen Zahlenblock
         const numpad = document.getElementById("mobileNumpad");
         if (numpad) {
@@ -1072,6 +1086,7 @@
         const sentenceModel = this.sentences[this.currentIndex];
         this.currentRound = window.SentenceMixEngine.startRound(sentenceModel);
         this.roundState = "playing";
+        ActivityManager.registerGameplayActivity();
 
         window.SentenceMixInput.clear();
         window.SentenceMixInput.setMaxDigits(this.currentRound.tokenCount);
