@@ -35,3 +35,17 @@ test("standalone Wordmix loads and initializes player XP before the game UI", ()
     assert.ok(loadPlayerCall > playerScript);
     assert.ok(gameUiScript > loadPlayerCall);
 });
+
+test("Wordmix active rounds use the shared playtime tracker", () => {
+    const gameUi = fs.readFileSync(
+        path.join(__dirname, "../js/games/sentence-mix/ui.js"),
+        "utf8"
+    );
+
+    assert.match(
+        gameUi,
+        /this\.roundState = "playing";\s*ActivityManager\.registerGameplayActivity\(\)/
+    );
+    assert.match(gameUi, /document\.addEventListener\("pointerdown", registerActivity/);
+    assert.match(gameUi, /ActivityManager\.pauseCounting\(\)/);
+});

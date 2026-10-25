@@ -1,7 +1,28 @@
 const test = require("node:test");
 const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const path = require("node:path");
 const data = require("../data/thailand-quiz.js");
 const quiz = require("../js/thailand-quiz-engine.js");
+
+test("active Thailand Quiz rounds use the shared playtime tracker", () => {
+    const quizScript = fs.readFileSync(
+        path.join(__dirname, "../js/thailand-quiz.js"),
+        "utf8"
+    );
+    const page = fs.readFileSync(
+        path.join(__dirname, "../html/thailand-quiz.html"),
+        "utf8"
+    );
+
+    assert.ok(
+        page.indexOf("../js/player.js") <
+        page.indexOf("../js/thailand-quiz.js")
+    );
+    assert.match(quizScript, /ActivityManager\.registerGameplayActivity\(\)/);
+    assert.match(quizScript, /ActivityManager\.stopPlaying\(\)/);
+    assert.match(quizScript, /ActivityManager\.pauseCounting\(\)/);
+});
 
 test("question bank has complete, valid mixed-category questions", () => {
     assert.equal(data.questions.length, 834);
