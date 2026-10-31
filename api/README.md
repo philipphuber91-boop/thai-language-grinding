@@ -15,7 +15,8 @@ next to `docker-compose.tts.yml`:
   not provide a voice ID.
 - `INWORLD_DEFAULT_MODEL_ID` defaults to `inworld-tts-2`.
 - `TTS_ALLOWED_ORIGINS` is a comma-separated list for a separately hosted
-  frontend. Same-origin requests are allowed automatically.
+  frontend. Same-origin requests and `https://thai-language-grinding.vercel.app`
+  are allowed automatically.
 - `AUDIO_STORAGE_*` configures an S3-compatible bucket for durable audio
   storage. Leave these values empty to use only the warm-runtime cache.
 

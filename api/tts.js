@@ -15,6 +15,9 @@ const MAX_CACHE_ENTRIES = 128;
 const MAX_SYNTHESIS_ATTEMPTS = 2;
 const SYNTHESIS_RETRY_DELAY_MS = 250;
 const AUDIO_CACHE_PREFIX = process.env.AUDIO_CACHE_PREFIX || "tts/v1";
+const DEFAULT_ALLOWED_ORIGINS = [
+    "https://thai-language-grinding.vercel.app"
+];
 const audioCache = new Map();
 const pendingGenerations = new Map();
 
@@ -47,10 +50,11 @@ function sendJson(response, status, body) {
 }
 
 function getAllowedOrigins() {
-    return String(process.env.TTS_ALLOWED_ORIGINS || "")
+    const configuredOrigins = String(process.env.TTS_ALLOWED_ORIGINS || "")
         .split(",")
         .map(origin => origin.trim())
         .filter(Boolean);
+    return [...new Set([...DEFAULT_ALLOWED_ORIGINS, ...configuredOrigins])];
 }
 
 function applyCors(request, response) {
