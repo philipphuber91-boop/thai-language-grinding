@@ -2038,3 +2038,7 @@ Erst danach wird das Thai-Typing freigeschaltet.`,
         ]
     },
 };
+
+if (typeof window !== "undefined") {
+    window.wordMixCampaignQuests = quests;
+}

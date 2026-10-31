@@ -116,6 +116,7 @@
             words: words,
             tokenCount: words.length,
             meta: {
+                contentSource: "giga",
                 levelId: storyMeta?.levelId || sentence.levelId || "",
                 levelTitle: storyMeta?.levelTitle || "",
                 bossId: storyMeta?.bossId || sentence.bossId || "",
@@ -125,6 +126,115 @@
                 storyTitle: storyMeta?.title || ""
             }
         };
+    }
+
+    function createRoundModelFromQuestLine(
+        questId,
+        quest,
+        thai,
+        translation,
+        lineNumber,
+        segmenter
+    ) {
+        if (typeof thai !== "string" || thai.trim() === "") {
+            return null;
+        }
+
+        const wordSegments = [];
+        Array.from(segmenter.segment(thai)).forEach(segment => {
+            if (!segment.isWordLike || segment.segment.trim() === "") {
+                return;
+            }
+
+            const previousSegment = wordSegments[wordSegments.length - 1];
+            if (segment.segment === "ะ" && previousSegment) {
+                // Thai's short vowel is part of the preceding word, not a word by itself.
+                previousSegment.segment += segment.segment;
+                return;
+            }
+            wordSegments.push({ segment: segment.segment });
+        });
+
+        const words = wordSegments.map((segment, index) => ({
+                id: `quest-${questId}-line-${lineNumber}-word-${index + 1}`,
+                text: segment.segment,
+                wordId: "",
+                transliteration: "",
+                syllables: []
+            }));
+
+        if (words.length < 2) {
+            return null;
+        }
+
+        const sentenceId = `quest-${questId}-line-${lineNumber}`;
+        return {
+            sentenceId,
+            thai,
+            translation: typeof translation === "string" ? translation : "",
+            transliteration: "",
+            expectedTokenIds: words.map(word => word.id),
+            words,
+            tokenCount: words.length,
+            meta: {
+                contentSource: "quests",
+                questId: String(questId),
+                questTitle: quest?.titel || quest?.title || `Quest ${questId}`,
+                questChapter: quest?.kapitel || "",
+                lineNumber
+            }
+        };
+    }
+
+    function getCampaignQuestOptions(questCollection) {
+        if (!questCollection || typeof questCollection !== "object") {
+            throw new TypeError("Die Kampagnen-Quests sind nicht verfügbar.");
+        }
+
+        return Object.entries(questCollection)
+            .filter(([, quest]) =>
+                quest &&
+                Array.isArray(quest.thaiZeilen) &&
+                quest.thaiZeilen.some(line =>
+                    typeof line === "string" && line.trim() !== ""
+                )
+            )
+            .map(([id, quest]) => ({
+                id: String(id),
+                title: quest.titel || quest.title || `Quest ${id}`,
+                chapter: quest.kapitel || ""
+            }));
+    }
+
+    function extractCampaignQuestSentences(questCollection) {
+        if (!questCollection || typeof questCollection !== "object") {
+            throw new TypeError("Die Kampagnen-Quests sind nicht verfügbar.");
+        }
+        if (typeof Intl === "undefined" || typeof Intl.Segmenter !== "function") {
+            throw new Error("Quest-Wordmix benötigt Thai-Wortsegmentierung in diesem Browser.");
+        }
+
+        const segmenter = new Intl.Segmenter("th", { granularity: "word" });
+        const playable = [];
+        Object.entries(questCollection).forEach(([questId, quest]) => {
+            if (!quest || !Array.isArray(quest.thaiZeilen)) {
+                return;
+            }
+            quest.thaiZeilen.forEach((thai, index) => {
+                const round = createRoundModelFromQuestLine(
+                    questId,
+                    quest,
+                    thai,
+                    quest.deutschZeilen?.[index],
+                    index + 1,
+                    segmenter
+                );
+                if (round) {
+                    playable.push(round);
+                }
+            });
+        });
+        return playable;
     }
 
     /**
@@ -177,6 +287,9 @@
         createWordDetailsMap: createWordDetailsMap,
         createRoundModelFromSentence: createRoundModelFromSentence,
         extractAllPlayableSentences: extractAllPlayableSentences,
+        createRoundModelFromQuestLine: createRoundModelFromQuestLine,
+        getCampaignQuestOptions: getCampaignQuestOptions,
+        extractCampaignQuestSentences: extractCampaignQuestSentences,
 
         async loadContent(url) {
             let content = null;

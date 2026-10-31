@@ -479,6 +479,10 @@ html, body {
     border-radius: 10px;
 }
 
+.sentence-mix-settings-group[hidden] {
+    display: none;
+}
+
 .sentence-mix-settings-group legend {
     padding: 0 6px;
     color: #cbb493;

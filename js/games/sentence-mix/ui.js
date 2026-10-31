@@ -9,11 +9,16 @@
     const TRANSLITERATION_MODE_STORAGE_KEY = "thaiGigaDrill:v1:wordmix-transliteration-mode";
     const WORDMIX_CONFIGURATION_STORAGE_KEY = "thaiGigaDrill:v1:wordmix-configuration";
     const WORDMIX_CONTENT_MODES = ["all", "bosses"];
+    const WORDMIX_CONTENT_SOURCES = ["giga", "quests", "both"];
+    const WORDMIX_QUEST_FILTER_MODES = ["all", "selected"];
     const WORDMIX_MIN_WORDS = 2;
     const WORDMIX_MAX_WORDS = 12;
     const DEFAULT_WORDMIX_CONFIGURATION = {
+        contentSource: "giga",
         contentMode: "all",
         bossIds: [],
+        questFilterMode: "all",
+        questIds: [],
         minWords: WORDMIX_MIN_WORDS,
         maxWords: WORDMIX_MAX_WORDS
     };
@@ -152,8 +157,20 @@
         const contentMode = value && WORDMIX_CONTENT_MODES.includes(value.contentMode)
             ? value.contentMode
             : DEFAULT_WORDMIX_CONFIGURATION.contentMode;
+        const contentSource = value && WORDMIX_CONTENT_SOURCES.includes(value.contentSource)
+            ? value.contentSource
+            : DEFAULT_WORDMIX_CONFIGURATION.contentSource;
         const bossIds = value && Array.isArray(value.bossIds)
             ? value.bossIds.filter(bossId => typeof bossId === "string" && bossId.trim() !== "")
+            : [];
+        const questFilterMode = value &&
+            WORDMIX_QUEST_FILTER_MODES.includes(value.questFilterMode)
+            ? value.questFilterMode
+            : DEFAULT_WORDMIX_CONFIGURATION.questFilterMode;
+        const questIds = value && Array.isArray(value.questIds)
+            ? value.questIds.filter(questId =>
+                typeof questId === "string" && questId.trim() !== ""
+            )
             : [];
         const requestedMin = value && Number.isFinite(Number(value.minWords))
             ? Math.floor(Number(value.minWords))
@@ -165,8 +182,11 @@
         const maxWords = Math.max(minWords, Math.min(maxLimit, Math.max(minLimit, requestedMax)));
 
         return {
+            contentSource: contentSource,
             contentMode: contentMode,
             bossIds: Array.from(new Set(bossIds)),
+            questFilterMode: questFilterMode,
+            questIds: Array.from(new Set(questIds)),
             minWords: minWords,
             maxWords: maxWords
         };
@@ -343,9 +363,12 @@
         this.wordMixConfiguration = readWordMixConfiguration();
         this.pendingWordMixConfiguration = null;
         this.configurationBosses = [];
+        this.configurationQuests = [];
         this.configurationPanel = null;
         this.configurationOpenButton = null;
         this.configurationCloseButton = null;
+        this.isPlaylistSource = false;
+        this.questSourceAvailable = true;
     }
 
     SentenceMixUI.prototype.init = async function (options) {
@@ -358,20 +381,47 @@
             const source = options.source ||
                 new URLSearchParams(window.location.search).get("source") ||
                 "all";
-            this.allSentences = source === "playlist"
-                ? await window.SentenceMixAdapter.loadPlaylist(contentUrl)
-                : await window.SentenceMixAdapter.loadContent(contentUrl);
+            this.isPlaylistSource = source === "playlist";
+            this.questSourceAvailable =
+                typeof Intl !== "undefined" && typeof Intl.Segmenter === "function";
+            this.configurationQuests =
+                window.SentenceMixAdapter.getCampaignQuestOptions(
+                    window.wordMixCampaignQuests
+                );
+            if (this.isPlaylistSource) {
+                this.allSentences = await window.SentenceMixAdapter.loadPlaylist(contentUrl);
+            } else {
+                const gigaSentences = await window.SentenceMixAdapter.loadContent(contentUrl);
+                const questSentences = this.questSourceAvailable
+                    ? window.SentenceMixAdapter.extractCampaignQuestSentences(
+                        window.wordMixCampaignQuests
+                    )
+                    : [];
+                this.allSentences = gigaSentences.concat(questSentences);
+            }
             this.setupSettings();
             this.setupConfiguration();
             this.applySentenceConfiguration();
             this.applySentenceOrder();
             this.applyNumpadLayout();
 
+            if (
+                !this.questSourceAvailable &&
+                !this.isPlaylistSource &&
+                this.wordMixConfiguration.contentSource !== "giga"
+            ) {
+                this.setupInputHandlers();
+                this.renderSystemMessage(
+                    "Quest-Dialoge benötigen Thai-Wortsegmentierung, die dieser Browser nicht unterstützt. Wähle im Inhalt-Menü den Giga-Drill."
+                );
+                return;
+            }
+
             if (this.sentences.length === 0) {
                 this.renderSystemMessage(
                     source === "playlist"
                         ? "Die Audio-Playlist enthält keine spielbaren Sätze für den Wortmix."
-                        : "Keine spielbaren Sätze im Giga-Drill gefunden."
+                        : "Keine spielbaren Sätze im ausgewählten Inhalt gefunden."
                 );
                 return;
             }
@@ -454,6 +504,9 @@
 
         this.allSentences.forEach(sentence => {
             const meta = sentence.meta || {};
+            if (meta.contentSource === "quests") {
+                return;
+            }
             const bossId = typeof meta.bossId === "string" ? meta.bossId.trim() : "";
             if (!bossId || bosses.has(bossId)) {
                 return;
@@ -472,13 +525,40 @@
     };
 
     SentenceMixUI.prototype.getConfigurationSummary = function (configuration) {
-        const contentLabel = configuration.contentMode === "all"
-            ? "Gesamter Content"
-            : `${configuration.bossIds.length} Grammar-Boss${configuration.bossIds.length === 1 ? "" : "e"}`;
+        const contentLabels = {
+            giga: "Giga-Drill",
+            quests: "Quest-Dialoge",
+            both: "Giga-Drill + Quest-Dialoge"
+        };
+        const contentLabel = this.isPlaylistSource
+            ? "Audio-Playlist"
+            : contentLabels[configuration.contentSource] || contentLabels.giga;
+        const filters = [];
+        if (
+            !this.isPlaylistSource &&
+            configuration.contentSource !== "quests" &&
+            configuration.contentMode === "bosses"
+        ) {
+            filters.push(
+                `${configuration.bossIds.length} Grammar-Boss${configuration.bossIds.length === 1 ? "" : "e"}`
+            );
+        }
+        if (
+            !this.isPlaylistSource &&
+            configuration.contentSource !== "giga" &&
+            configuration.questFilterMode === "selected"
+        ) {
+            filters.push(`${configuration.questIds.length} Quests`);
+        }
         const orderLabel = (configuration.sentenceOrder || this.sentenceOrder) === "shuffle"
             ? "Shuffle"
             : "Originalreihenfolge";
-        return `${contentLabel} · ${configuration.minWords}–${configuration.maxWords} Wörter · ${orderLabel}`;
+        return [
+            contentLabel,
+            ...filters,
+            `${configuration.minWords}–${configuration.maxWords} Wörter`,
+            orderLabel
+        ].join(" · ");
     };
 
     SentenceMixUI.prototype.renderConfigurationForm = function () {
@@ -488,8 +568,15 @@
 
         const configuration = this.pendingWordMixConfiguration || this.wordMixConfiguration;
         const bounds = this.getWordMixConfigurationBounds();
+        const contentSourceInputs = this.configurationPanel.querySelectorAll('input[name="sentenceMixContentSource"]');
+        const contentSourceOptions = this.configurationPanel.querySelector("#sentenceMixContentSourceOptions");
+        const questSourceStatus = this.configurationPanel.querySelector("#sentenceMixQuestSourceStatus");
+        const gigaContentOptions = this.configurationPanel.querySelector("#sentenceMixGigaContentOptions");
+        const questContentOptions = this.configurationPanel.querySelector("#sentenceMixQuestContentOptions");
         const allContentInput = this.configurationPanel.querySelector('input[name="sentenceMixContentMode"][value="all"]');
         const bossOptions = this.configurationPanel.querySelector("#sentenceMixBossOptions");
+        const questFilterInputs = this.configurationPanel.querySelectorAll('input[name="sentenceMixQuestFilterMode"]');
+        const questOptions = this.configurationPanel.querySelector("#sentenceMixQuestOptions");
         const orderInputs = this.configurationPanel.querySelectorAll('input[name="sentenceMixSentenceOrder"]');
         const minWordsInput = this.configurationPanel.querySelector("#sentenceMixMinWords");
         const maxWordsInput = this.configurationPanel.querySelector("#sentenceMixMaxWords");
@@ -498,9 +585,30 @@
         const rangeSummary = this.configurationPanel.querySelector("#sentenceMixRangeSummary");
         const summary = this.configurationPanel.querySelector("#sentenceMixConfigurationSummary");
 
+        contentSourceInputs.forEach(input => {
+            input.checked = input.value === configuration.contentSource;
+            input.disabled = !this.questSourceAvailable && input.value !== "giga";
+        });
+        if (contentSourceOptions) {
+            contentSourceOptions.hidden = this.isPlaylistSource;
+        }
+        if (questSourceStatus) {
+            questSourceStatus.hidden = this.questSourceAvailable || this.isPlaylistSource;
+        }
+        if (gigaContentOptions) {
+            gigaContentOptions.hidden =
+                !this.isPlaylistSource && configuration.contentSource === "quests";
+        }
+        if (questContentOptions) {
+            questContentOptions.hidden =
+                this.isPlaylistSource || configuration.contentSource === "giga";
+        }
         if (allContentInput) {
             allContentInput.checked = configuration.contentMode === "all";
         }
+        questFilterInputs.forEach(input => {
+            input.checked = input.value === configuration.questFilterMode;
+        });
         orderInputs.forEach(input => {
             input.checked = input.value === (configuration.sentenceOrder || this.sentenceOrder);
         });
@@ -526,6 +634,30 @@
                 label.appendChild(input);
                 label.appendChild(text);
                 bossOptions.appendChild(label);
+            });
+        }
+
+        if (questOptions) {
+            questOptions.innerHTML = "";
+            this.configurationQuests.forEach(quest => {
+                const label = document.createElement("label");
+                label.className = "sentence-mix-boss-option";
+
+                const input = document.createElement("input");
+                input.type = "checkbox";
+                input.value = quest.id;
+                input.checked = configuration.questFilterMode === "all" ||
+                    configuration.questIds.includes(quest.id);
+
+                const text = document.createElement("span");
+                text.textContent = quest.title;
+                if (quest.chapter) {
+                    text.title = quest.chapter;
+                }
+
+                label.appendChild(input);
+                label.appendChild(text);
+                questOptions.appendChild(label);
             });
         }
 
@@ -559,6 +691,9 @@
         const resetButton = document.getElementById("sentenceMixConfigurationReset");
         const bossOptions = document.getElementById("sentenceMixBossOptions");
         const allContentInput = document.querySelector('input[name="sentenceMixContentMode"][value="all"]');
+        const contentSourceInputs = document.querySelectorAll('input[name="sentenceMixContentSource"]');
+        const questFilterInputs = document.querySelectorAll('input[name="sentenceMixQuestFilterMode"]');
+        const questOptions = document.getElementById("sentenceMixQuestOptions");
         const orderInputs = document.querySelectorAll('input[name="sentenceMixSentenceOrder"]');
         const minWordsInput = document.getElementById("sentenceMixMinWords");
         const maxWordsInput = document.getElementById("sentenceMixMaxWords");
@@ -571,6 +706,9 @@
             !resetButton ||
             !bossOptions ||
             !allContentInput ||
+            contentSourceInputs.length === 0 ||
+            questFilterInputs.length === 0 ||
+            !questOptions ||
             !minWordsInput ||
             !maxWordsInput
         ) {
@@ -583,12 +721,15 @@
         this.configurationBosses = this.getConfigurationBosses();
 
         const availableBossIds = new Set(this.configurationBosses.map(boss => boss.id));
+        const availableQuestIds = new Set(this.configurationQuests.map(quest => quest.id));
         this.wordMixConfiguration = normalizeWordMixConfiguration(
             this.wordMixConfiguration,
             this.getWordMixConfigurationBounds()
         );
         this.wordMixConfiguration.bossIds = this.wordMixConfiguration.bossIds
             .filter(bossId => availableBossIds.has(bossId));
+        this.wordMixConfiguration.questIds = this.wordMixConfiguration.questIds
+            .filter(questId => availableQuestIds.has(questId));
         if (
             this.wordMixConfiguration.contentMode === "bosses" &&
             this.wordMixConfiguration.bossIds.length === 0
@@ -628,6 +769,20 @@
             }
         }, { capture: true });
 
+        contentSourceInputs.forEach(input => {
+            input.addEventListener("change", () => {
+                if (!input.checked) {
+                    return;
+                }
+                this.pendingWordMixConfiguration = Object.assign(
+                    {},
+                    this.pendingWordMixConfiguration || this.wordMixConfiguration,
+                    { contentSource: input.value }
+                );
+                this.renderConfigurationForm();
+            });
+        });
+
         allContentInput.addEventListener("change", () => {
             if (!allContentInput.checked) {
                 return;
@@ -638,6 +793,26 @@
                 { contentMode: "all", bossIds: [] }
             );
             this.renderConfigurationForm();
+        });
+
+        questFilterInputs.forEach(input => {
+            input.addEventListener("change", () => {
+                if (!input.checked) {
+                    return;
+                }
+                this.pendingWordMixConfiguration = Object.assign(
+                    {},
+                    this.pendingWordMixConfiguration || this.wordMixConfiguration,
+                    {
+                        questFilterMode: input.value,
+                        questIds: input.value === "all"
+                            ? []
+                            : (this.pendingWordMixConfiguration ||
+                                this.wordMixConfiguration).questIds
+                    }
+                );
+                this.renderConfigurationForm();
+            });
         });
 
         bossOptions.addEventListener("change", event => {
@@ -655,6 +830,26 @@
                 {
                     contentMode: selectedBossIds.length > 0 ? "bosses" : "all",
                     bossIds: selectedBossIds
+                }
+            );
+            this.renderConfigurationForm();
+        });
+
+        questOptions.addEventListener("change", event => {
+            const changedInput = event.target.closest('input[type="checkbox"]');
+            if (!changedInput) {
+                return;
+            }
+
+            const selectedQuestIds = Array.from(
+                questOptions.querySelectorAll('input[type="checkbox"]:checked')
+            ).map(input => input.value);
+            this.pendingWordMixConfiguration = Object.assign(
+                {},
+                this.pendingWordMixConfiguration || this.wordMixConfiguration,
+                {
+                    questFilterMode: "selected",
+                    questIds: selectedQuestIds
                 }
             );
             this.renderConfigurationForm();
@@ -698,8 +893,11 @@
         resetButton.addEventListener("click", () => {
             const bounds = this.getWordMixConfigurationBounds();
             this.pendingWordMixConfiguration = normalizeWordMixConfiguration({
+                contentSource: "giga",
                 contentMode: "all",
                 bossIds: [],
+                questFilterMode: "all",
+                questIds: [],
                 minWords: bounds.min,
                 maxWords: bounds.max,
                 sentenceOrder: "original"
@@ -718,12 +916,15 @@
     SentenceMixUI.prototype.applyWordMixConfiguration = function (configuration) {
         const bounds = this.getWordMixConfigurationBounds();
         const availableBossIds = new Set(this.configurationBosses.map(boss => boss.id));
+        const availableQuestIds = new Set(this.configurationQuests.map(quest => quest.id));
         const nextConfiguration = normalizeWordMixConfiguration(configuration, bounds);
         const nextSentenceOrder = SENTENCE_ORDERS.includes(configuration.sentenceOrder)
             ? configuration.sentenceOrder
             : this.sentenceOrder;
         nextConfiguration.bossIds = nextConfiguration.bossIds
             .filter(bossId => availableBossIds.has(bossId));
+        nextConfiguration.questIds = nextConfiguration.questIds
+            .filter(questId => availableQuestIds.has(questId));
         if (
             nextConfiguration.contentMode === "bosses" &&
             nextConfiguration.bossIds.length === 0
@@ -884,13 +1085,32 @@
     SentenceMixUI.prototype.applySentenceConfiguration = function () {
         const configuration = this.wordMixConfiguration;
         const selectedBossIds = new Set(configuration.bossIds);
+        const selectedQuestIds = new Set(configuration.questIds);
 
         this.filteredSentences = this.allSentences.filter(sentence => {
             const tokenCount = Number(sentence.tokenCount);
             const matchesLength = tokenCount >= configuration.minWords &&
                 tokenCount <= configuration.maxWords;
-            const matchesContent = configuration.contentMode === "all" ||
-                selectedBossIds.has(sentence.meta?.bossId);
+            const isQuest = sentence.meta?.contentSource === "quests";
+            if (this.isPlaylistSource) {
+                return matchesLength && (
+                    configuration.contentMode === "all" ||
+                    selectedBossIds.has(sentence.meta?.bossId)
+                );
+            }
+
+            const sourceIncludesSentence = isQuest
+                ? configuration.contentSource !== "giga"
+                : configuration.contentSource !== "quests";
+            if (!sourceIncludesSentence) {
+                return false;
+            }
+
+            const matchesContent = isQuest
+                ? configuration.questFilterMode === "all" ||
+                    selectedQuestIds.has(sentence.meta?.questId)
+                : configuration.contentMode === "all" ||
+                    selectedBossIds.has(sentence.meta?.bossId);
             return matchesLength && matchesContent;
         });
     };

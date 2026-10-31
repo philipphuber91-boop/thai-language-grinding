@@ -119,6 +119,16 @@ Kopiere die passende Vorlage in Gemini 3.7 Flash:
 > }
 > ```
 
+### Quest-Dialoge im Wortmix
+
+Jede Zeile in `thaiZeilen` wird als eigene Wortmix-Runde angeboten; die passende
+Übersetzung kommt aus `deutschZeilen` mit demselben Index. Die Thai-Wörter
+werden im Browser segmentiert, da Quest-Zeilen keine Wort-IDs oder
+Wort-Umschriften wie der Giga-Drill enthalten. Zeilen mit weniger als zwei
+erkannten Wörtern sind keine spielbaren Wortmix-Runden.
+Quest-Wordmix benötigt `Intl.Segmenter`; ohne diese Browser-API bleibt der
+Giga-Drill spielbar, Quest-Inhalte müssen dann deaktiviert bleiben.
+
 ---
 
 ### B. Komödien-Episode erstellen (inkl. Goldstandard-Wortkarten)
