@@ -6,13 +6,17 @@
     const MAX_PLAYBACK_RATE = 2;
     const NATIVE_SPEECH_AUDIO_CACHE_LIMIT = 32;
     const REMOTE_AUDIO_CACHE_LIMIT = 32;
+    const REMOTE_AUDIO_BUFFER_CACHE_LIMIT = 8;
     const activePlayers = new Set();
     const nativeSpeechAudioCache = new Map();
     const remoteAudioCache = new Map();
+    const remoteAudioBufferCache = new Map();
     let activeSpeech = null;
     let activeNativeAudio = null;
+    let activeRemoteAudioSource = null;
     let activeRemoteRequest = null;
     let remotePlaybackAudio = null;
+    let remoteAudioContext = null;
 
     function resetSpeechButton(button) {
         if (!button) {
@@ -71,9 +75,21 @@
             activeNativeAudio.currentTime = 0;
             activeNativeAudio = null;
         }
+
+        if (activeRemoteAudioSource) {
+            activeRemoteAudioSource.onended = null;
+            activeRemoteAudioSource.stop();
+            activeRemoteAudioSource.disconnect();
+            activeRemoteAudioSource = null;
+        }
     }
 
     function updateActiveNativeAudioRate(rate) {
+        if (activeRemoteAudioSource && Number.isFinite(rate)) {
+            activeRemoteAudioSource.playbackRate.value = rate;
+            return true;
+        }
+
         if (!activeNativeAudio || !Number.isFinite(rate)) {
             return false;
         }
@@ -130,8 +146,52 @@
         return remotePlaybackAudio;
     }
 
+    function getRemoteAudioContext() {
+        const AudioContextConstructor = window.AudioContext || window.webkitAudioContext;
+        if (typeof AudioContextConstructor !== "function") {
+            return null;
+        }
+
+        if (!remoteAudioContext || remoteAudioContext.state === "closed") {
+            try {
+                remoteAudioContext = new AudioContextConstructor();
+            } catch (error) {
+                console.warn("Der Web-Audio-Kontext konnte nicht erstellt werden.", error);
+                return null;
+            }
+        }
+
+        return remoteAudioContext;
+    }
+
+    function resumeRemoteAudioContext(context) {
+        if (context.state === "running") {
+            return Promise.resolve(true);
+        }
+
+        try {
+            return context.resume()
+                .then(() => context.state === "running")
+                .catch(error => {
+                    console.warn("Der Web-Audio-Kontext konnte nicht aktiviert werden.", error);
+                    return false;
+                });
+        } catch (error) {
+            console.warn("Der Web-Audio-Kontext konnte nicht aktiviert werden.", error);
+            return Promise.resolve(false);
+        }
+    }
+
     function getRemoteCacheKey(request) {
         return `${request.endpoint}:${JSON.stringify(request.body)}`;
+    }
+
+    function removeRemoteAudio(key, audio) {
+        if (audio?.url) {
+            URL.revokeObjectURL(audio.url);
+        }
+        remoteAudioCache.delete(key);
+        remoteAudioBufferCache.delete(key);
     }
 
     function cacheRemoteAudio(key, audio) {
@@ -144,6 +204,16 @@
                 URL.revokeObjectURL(oldest.url);
             }
             remoteAudioCache.delete(oldestKey);
+            remoteAudioBufferCache.delete(oldestKey);
+        }
+    }
+
+    function cacheRemoteAudioBuffer(key, buffer) {
+        remoteAudioBufferCache.delete(key);
+        remoteAudioBufferCache.set(key, buffer);
+        while (remoteAudioBufferCache.size > REMOTE_AUDIO_BUFFER_CACHE_LIMIT) {
+            const oldestKey = remoteAudioBufferCache.keys().next().value;
+            remoteAudioBufferCache.delete(oldestKey);
         }
     }
 
@@ -153,6 +223,10 @@
             return { handled: false, started: false };
         }
 
+        const audioContext = getRemoteAudioContext();
+        const audioContextReady = audioContext
+            ? resumeRemoteAudioContext(audioContext)
+            : Promise.resolve(false);
         stopSpeech();
         const requestState = { text, button, utterance: null };
         activeSpeech = requestState;
@@ -190,7 +264,7 @@
 
                 const blob = await response.blob();
                 const url = URL.createObjectURL(blob);
-                cachedAudio = { url };
+                cachedAudio = { url, blob };
                 cacheRemoteAudio(cacheKey, cachedAudio);
             } catch {
                 if (activeSpeech !== requestState) {
@@ -210,6 +284,62 @@
 
         if (activeSpeech !== requestState) {
             return { handled: true, started: false };
+        }
+
+        if (audioContext && await audioContextReady) {
+            let source = null;
+            try {
+                let audioBuffer = remoteAudioBufferCache.get(cacheKey);
+                if (audioBuffer) {
+                    remoteAudioBufferCache.delete(cacheKey);
+                    remoteAudioBufferCache.set(cacheKey, audioBuffer);
+                } else {
+                    audioBuffer = await audioContext.decodeAudioData(
+                        await cachedAudio.blob.arrayBuffer()
+                    );
+                    cacheRemoteAudioBuffer(cacheKey, audioBuffer);
+                }
+
+                if (activeSpeech !== requestState) {
+                    return { handled: true, started: false };
+                }
+
+                source = audioContext.createBufferSource();
+                source.buffer = audioBuffer;
+                source.playbackRate.value = Number.isFinite(options.rate)
+                    ? options.rate
+                    : getStoredPlaybackRate();
+                source.connect(audioContext.destination);
+                activeRemoteAudioSource = source;
+
+                const cleanup = () => {
+                    if (activeRemoteAudioSource === source) {
+                        activeRemoteAudioSource = null;
+                    }
+                    if (activeSpeech === requestState) {
+                        activeSpeech = null;
+                    }
+                    source.onended = null;
+                    source.disconnect();
+                    resetSpeechButton(button);
+                };
+
+                source.onended = () => {
+                    cleanup();
+                    options.onEnd?.();
+                };
+                source.start();
+                return { handled: true, started: true };
+            } catch (error) {
+                if (source) {
+                    source.onended = null;
+                    source.disconnect();
+                    if (activeRemoteAudioSource === source) {
+                        activeRemoteAudioSource = null;
+                    }
+                }
+                console.warn("Remote-TTS konnte nicht mit Web Audio abgespielt werden.", error);
+            }
         }
 
         const audio = getRemotePlaybackAudio();
@@ -258,17 +388,18 @@
         };
         audio.onerror = () => {
             cleanup();
-            remoteAudioCache.delete(cacheKey);
-            URL.revokeObjectURL(cachedAudio.url);
+            removeRemoteAudio(cacheKey, cachedAudio);
             options.onError?.();
         };
-        audio.play().catch(() => {
+        try {
+            await audio.play();
+            return { handled: true, started: true };
+        } catch (error) {
             cleanup();
-            remoteAudioCache.delete(cacheKey);
-            URL.revokeObjectURL(cachedAudio.url);
-            options.onError?.();
-        });
-        return { handled: true, started: true };
+            removeRemoteAudio(cacheKey, cachedAudio);
+            console.warn("Remote-TTS konnte nicht gestartet werden.", error);
+            return { handled: false, started: false };
+        }
     }
 
     function clearSpeechState(utterance) {
