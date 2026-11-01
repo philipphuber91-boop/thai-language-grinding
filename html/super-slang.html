@@ -114,8 +114,8 @@
             <div class="super-slang-menu-heading">💬 Super Slang</div>
             <nav class="super-slang-chapter-nav" aria-label="Projektbereiche">
                 <a href="#stories" class="super-slang-nav-link is-active" data-view-target="stories">📖 Mini-Stories</a>
-                <a href="#story-slang-s1" class="super-slang-nav-sublink" data-view-target="stories">☕ Story 1: โดนเทหรือเปล่า</a>
-                <a href="#story-slang-s2" class="super-slang-nav-sublink" data-view-target="stories">🧋 Story 2: ชานมแก้วนี้เอาเรื่อง</a>
+                <a href="#story-slang-story-01" class="super-slang-nav-sublink" data-view-target="stories">☕ Story 1: โดนเทหรือเปล่า</a>
+                <a href="#story-slang-story-02" class="super-slang-nav-sublink" data-view-target="stories">🧋 Story 2: ชานมแก้วนี้เอาเรื่อง</a>
                 <a href="#glossar" class="super-slang-nav-link" data-view-target="glossary">📚 Token-Glossar (83 Wörter)</a>
             </nav>
         </div>
@@ -127,27 +127,6 @@
     </header>
 
     <main class="super-slang-main">
-        <nav class="super-slang-view-tabs" role="tablist" aria-label="Bereich auswählen">
-            <button
-                id="superSlangTabStories"
-                class="super-slang-tab is-active"
-                type="button"
-                role="tab"
-                aria-selected="true"
-                aria-controls="superSlangStoriesSection">
-                📖 Mini-Stories
-            </button>
-            <button
-                id="superSlangTabGlossary"
-                class="super-slang-tab"
-                type="button"
-                role="tab"
-                aria-selected="false"
-                aria-controls="superSlangDictionarySection">
-                📚 Token-Glossar (83 Wörter)
-            </button>
-        </nav>
-
         <section
             id="superSlangAudioPlayer"
             class="thai-giga-audio-player"
@@ -198,6 +177,7 @@
         </section>
 
         <section id="superSlangStoriesSection" class="super-slang-section" aria-labelledby="superSlangStoriesTitle">
+            <div id="stories"></div>
             <div class="super-slang-section-heading">
                 <p class="super-slang-eyebrow">Mini-Stories Curriculum</p>
                 <h2 id="superSlangStoriesTitle">Echte Dialoge mit Slang-Drill</h2>
@@ -210,6 +190,7 @@
         </section>
 
         <section id="superSlangDictionarySection" class="super-slang-section" aria-labelledby="superSlangDictTitle" hidden>
+            <div id="glossar"></div>
             <div class="super-slang-section-heading">
                 <p class="super-slang-eyebrow">Wortschatz &amp; Slang-Register</p>
                 <h2 id="superSlangDictTitle">Token-Glossar · Super Slang</h2>

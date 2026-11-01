@@ -6,8 +6,7 @@
     const toggle = document.getElementById("superSlangSidebarToggle");
     const storiesSection = document.getElementById("superSlangStoriesSection");
     const dictSection = document.getElementById("superSlangDictionarySection");
-    const tabStories = document.getElementById("superSlangTabStories");
-    const tabGlossary = document.getElementById("superSlangTabGlossary");
+    const audioPlayer = document.getElementById("superSlangAudioPlayer");
     const storiesContainer = document.getElementById("superSlangStoriesContainer");
     const dictGrid = document.getElementById("superSlangDictGrid");
     const dictSearch = document.getElementById("superSlangDictSearch");
@@ -602,70 +601,92 @@
             });
         }
 
-        // View switching: Mini-Stories vs. Token-Glossar
+        function resolveTargetElement(targetId, isGlossary) {
+            if (!targetId) {
+                return isGlossary ? dictSection : storiesSection;
+            }
+            if (targetId === "glossar" || targetId === "glossary" || targetId === "superSlangDictionarySection") {
+                return dictSection;
+            }
+            if (targetId === "stories" || targetId === "superSlangStoriesSection") {
+                return storiesSection;
+            }
+            if (targetId === "story-slang-s1" || targetId === "story-1") {
+                return document.getElementById("story-slang-story-01") || storiesSection;
+            }
+            if (targetId === "story-slang-s2" || targetId === "story-2") {
+                return document.getElementById("story-slang-story-02") || storiesSection;
+            }
+            return document.getElementById(targetId) || (isGlossary ? dictSection : storiesSection);
+        }
+
+        function scrollToTarget(targetEl) {
+            if (!targetEl) return;
+            targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+
+        // View switching: Mini-Stories vs. Token-Glossar & direct jumping
         function switchView(viewName, targetId) {
             const isGlossary = viewName === "glossary";
             if (storiesSection) storiesSection.hidden = isGlossary;
             if (dictSection) dictSection.hidden = !isGlossary;
+            if (audioPlayer) audioPlayer.hidden = isGlossary;
 
-            if (tabStories) {
-                tabStories.classList.toggle("is-active", !isGlossary);
-                tabStories.setAttribute("aria-selected", String(!isGlossary));
-            }
-            if (tabGlossary) {
-                tabGlossary.classList.toggle("is-active", isGlossary);
-                tabGlossary.setAttribute("aria-selected", String(isGlossary));
-            }
+            document.querySelectorAll(".super-slang-chapter-nav a").forEach(link => {
+                const href = link.getAttribute("href") || "";
+                const linkId = href.startsWith("#") ? href.slice(1) : "";
+                const linkView = link.dataset.viewTarget;
 
-            document.querySelectorAll(".super-slang-chapter-nav [data-view-target]").forEach(link => {
-                const targetView = link.dataset.viewTarget;
-                const isItemActive = (!isGlossary && targetView === "stories" && !link.classList.contains("super-slang-nav-sublink")) ||
-                                     (isGlossary && targetView === "glossary");
+                let isItemActive = false;
+                if (targetId) {
+                    isItemActive = (linkId === targetId);
+                } else {
+                    isItemActive = (!isGlossary && linkView === "stories" && !link.classList.contains("super-slang-nav-sublink")) ||
+                                   (isGlossary && linkView === "glossary");
+                }
                 link.classList.toggle("is-active", isItemActive);
             });
 
-            if (targetId) {
-                setTimeout(() => {
-                    const targetEl = document.getElementById(targetId);
-                    if (targetEl) {
-                        targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
-                        targetEl.focus?.();
-                    }
-                }, 60);
+            const targetEl = resolveTargetElement(targetId, isGlossary);
+            if (targetEl) {
+                requestAnimationFrame(() => {
+                    setTimeout(() => {
+                        scrollToTarget(targetEl);
+                        if (isGlossary && dictSearch && (!targetId || targetId === "glossar" || targetId === "glossary")) {
+                            dictSearch.focus();
+                        }
+                    }, 40);
+                });
             }
         }
 
-        tabStories?.addEventListener("click", () => {
-            switchView("stories");
-            if (window.location.hash !== "#stories") {
-                history.replaceState(null, "", "#stories");
-            }
-        });
-
-        tabGlossary?.addEventListener("click", () => {
-            switchView("glossary");
-            if (window.location.hash !== "#glossar") {
-                history.replaceState(null, "", "#glossar");
-            }
-            dictSearch?.focus();
-        });
-
-        document.querySelectorAll("[data-view-target]").forEach(link => {
+        document.querySelectorAll(".super-slang-chapter-nav a[href]").forEach(link => {
             link.addEventListener("click", event => {
-                const view = link.dataset.viewTarget;
                 const href = link.getAttribute("href") || "";
-                const targetId = href.startsWith("#") ? href.slice(1) : "";
+                if (!href.startsWith("#")) return;
+                event.preventDefault();
+
+                const targetId = href.slice(1);
+                const isGlossary = targetId === "glossar" || targetId === "glossary" || link.dataset.viewTarget === "glossary";
+                const view = isGlossary ? "glossary" : "stories";
+
                 switchView(view, targetId);
                 closeSidebar();
+
+                if (window.location.hash !== href) {
+                    history.pushState(null, "", href);
+                }
             });
         });
 
         function handleHash() {
             const hash = window.location.hash;
             if (hash === "#glossar" || hash === "#glossary" || hash === "#superSlangDictionarySection") {
-                switchView("glossary");
+                switchView("glossary", "glossar");
             } else if (hash.startsWith("#story-") || hash.startsWith("#sentence-")) {
                 switchView("stories", hash.slice(1));
+            } else if (hash === "#stories") {
+                switchView("stories", "stories");
             } else {
                 switchView("stories");
             }
