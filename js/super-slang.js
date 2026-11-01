@@ -208,6 +208,7 @@
                         class="super-slang-story-summary"
                         type="button"
                         aria-expanded="false"
+                        title="Mini-Story aufklappen"
                         aria-controls="story-content-${escapeHtml(story.id)}">
                         <span class="super-slang-story-title" role="heading" aria-level="3">${escapeHtml(story.title)}</span>
                         <span class="super-slang-story-desc">${escapeHtml(story.description || story.context || "")}</span>
