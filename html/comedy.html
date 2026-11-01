@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#15110d">
+    <title>Komödie · Thai Topic Drill</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&family=Noto+Sans+Thai:wght@300;400;600&family=Noto+Serif+Thai:wght@300;400;600&family=Prompt:wght@300;400;600&family=Sarabun:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/thai-giga.css">
+    <link rel="stylesheet" href="../css/comedy-reader.css">
+    <link rel="stylesheet" href="../css/comedy.css">
+    <link rel="manifest" href="../manifest.json">
+</head>
+<body class="thai-giga-page comedy-drill-page">
+    <button
+        id="comedySidebarToggle"
+        class="thai-giga-sidebar-toggle"
+        type="button"
+        aria-label="Komödien-Menü öffnen"
+        aria-expanded="false"
+        aria-controls="comedySidebar">☰</button>
+    <div id="comedySidebarBackdrop" class="thai-giga-sidebar-backdrop"></div>
+    <button
+        id="comedyPlayerToggle"
+        class="thai-giga-player-toggle"
+        type="button"
+        aria-label="Audio-Player öffnen"
+        aria-expanded="false"
+        aria-controls="comedyAudioPlayer">🎧</button>
+    <button
+        id="comedySettingsToggle"
+        class="thai-giga-settings-toggle"
+        type="button"
+        aria-label="Komödien-Einstellungen öffnen"
+        aria-expanded="false"
+        aria-controls="comedySettingsPanel">⚙</button>
+
+    <div id="comedySettingsBackdrop" class="thai-giga-settings-backdrop" hidden></div>
+    <section
+        id="comedySettingsPanel"
+        class="thai-giga-settings-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="comedySettingsTitle"
+        hidden>
+        <header class="thai-giga-settings-header">
+            <h2 id="comedySettingsTitle">Komödien-Einstellungen</h2>
+            <button
+                id="comedySettingsClose"
+                class="thai-giga-settings-close"
+                type="button"
+                aria-label="Einstellungen schließen">✕</button>
+        </header>
+        <div class="thai-giga-settings-section">
+            <label class="thai-giga-settings-label" for="comedyFontSelect">
+                Thai-Schriftart
+            </label>
+            <select id="comedyFontSelect" class="thai-giga-settings-select">
+                <option value="standard">Standard</option>
+                <option value="noto-sans-thai">Noto Sans Thai</option>
+                <option value="sarabun">Sarabun</option>
+                <option value="prompt">Prompt</option>
+                <option value="kanit">Kanit</option>
+            </select>
+        </div>
+        <div class="thai-giga-settings-section">
+            <label class="thai-giga-settings-row" for="comedyTranslationToggle">
+                <span class="thai-giga-settings-label">Deutsche Übersetzung anzeigen</span>
+                <input id="comedyTranslationToggle" type="checkbox" checked>
+            </label>
+        </div>
+    </section>
+
+    <aside id="comedySidebar" class="thai-giga-sidebar" aria-label="Komödien-Navigation">
+        <div class="thai-giga-menu-card">
+            <a class="thai-giga-back-link" href="index.html?view=topic-drill">
+                ← Zurück zum Thai Topic Drill
+            </a>
+            <div class="thai-giga-menu-heading">
+                <span aria-hidden="true">😂</span>
+                <span>Komödie</span>
+            </div>
+            <p class="thai-giga-menu-label">Episoden</p>
+            <nav id="comedyEpisodeNavigation" class="thai-giga-chapter-nav" aria-label="Komödien-Episoden"></nav>
+        </div>
+    </aside>
+
+    <header class="thai-giga-topbar comedy-drill-topbar">
+        <h1 class="comedy-drill-topbar-title">😂 Komödie</h1>
+        <p>Thai Topic Drill · Eine fortlaufende Serie</p>
+    </header>
+
+    <main class="thai-giga-main comedy-drill-main">
+        <section id="comedyEmptyState" class="comedy-drill-empty" hidden>
+            <h2>Noch keine Episoden</h2>
+            <p>Für die Komödie sind noch keine Episoden verfügbar.</p>
+        </section>
+
+        <div id="comedyDrillContent">
+            <section class="comedy-drill-episode-header" aria-labelledby="comedyEpisodeTitle">
+                <p id="comedyEpisodeEyebrow" class="thai-giga-eyebrow">Episode 01</p>
+                <h2 id="comedyEpisodeTitle"></h2>
+                <p id="comedyEpisodeDescription" class="comedy-drill-description"></p>
+                <p id="comedyEpisodeStory" class="comedy-drill-story"></p>
+                <div class="comedy-drill-episode-actions">
+                    <button id="readingButton" class="comedy-drill-action" type="button">
+                        📖 Lesemodus &amp; Wörterbuch
+                    </button>
+                    <button id="comedyTypingButton" class="comedy-drill-action is-primary" type="button">
+                        ⌨ Typing starten
+                    </button>
+                    <span id="comedyEpisodeSentenceCount" class="comedy-drill-sentence-count"></span>
+                </div>
+            </section>
+
+            <section
+                id="comedyAudioPlayer"
+                class="thai-giga-audio-player"
+                data-drill-audio-player
+                data-drill-audio-prefix="comedy"
+                data-drill-audio-storage-namespace="comedy"
+                data-drill-audio-api="comedyAudio"
+                data-drill-audio-content="comedyContent"
+                data-drill-audio-item-label="Komödie"
+                aria-label="Komödien-Playlist">
+                <header class="thai-giga-audio-header">
+                    <div>
+                        <p class="thai-giga-eyebrow">Audio-Player · Komödie</p>
+                    </div>
+                    <span id="comedyAudioCount" class="thai-giga-audio-count">0/0</span>
+                </header>
+                <div class="thai-giga-audio-controls">
+                    <label>
+                        <input id="comedyAudioLoop" type="checkbox" checked>
+                        <span>🔁 Dauerschleife</span>
+                    </label>
+                    <label>
+                        <input id="comedyAudioShuffle" type="checkbox">
+                        <span>🔀 Shuffle</span>
+                    </label>
+                </div>
+                <div class="thai-giga-audio-controls">
+                    <button id="comedyAudioPrevious" type="button" disabled>⏮ Zurück</button>
+                    <button id="comedyAudioPlayPause" class="is-primary" type="button" disabled>▶ Abspielen</button>
+                    <button id="comedyAudioNext" type="button" disabled>Weiter ⏭</button>
+                </div>
+                <label class="thai-giga-audio-speed" for="comedyAudioSpeed">
+                    <span>Wiedergabegeschwindigkeit</span>
+                    <input id="comedyAudioSpeed" type="range" min="0.5" max="1.5" step="0.05" value="0.85">
+                    <output id="comedyAudioSpeedValue" for="comedyAudioSpeed">0,85×</output>
+                </label>
+                <div class="thai-giga-audio-actions">
+                    <button id="comedyAudioOpenTyping" type="button" disabled>Typing</button>
+                    <button id="comedyAudioOpenRsvp" type="button" disabled>Speedreading</button>
+                    <button id="comedyAudioOpenSentenceMix" type="button" disabled>Wortmix</button>
+                    <button id="comedyAudioClear" type="button" disabled>Playlist leeren</button>
+                </div>
+                <ol id="comedyAudioPlaylist" class="thai-giga-audio-playlist" aria-label="Komödien-Playlist"></ol>
+                <p id="comedyAudioStatus" class="thai-giga-audio-status" role="status" aria-live="polite">
+                    Füge Sätze aus einer Episode hinzu, um sie hier abzuspielen.
+                </p>
+            </section>
+
+            <div id="comedyEpisodeSentences" class="comedy-drill-sentences"></div>
+        </div>
+    </main>
+
+    <div id="comedyReadingOverlay" class="comedy-reading-overlay" hidden>
+        <section
+            class="comedy-reading-window"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="comedyReadingTitle">
+            <header class="comedy-reading-header">
+                <div>
+                    <p class="eyebrow">Komödie · Lesemodus</p>
+                    <h2 id="comedyReadingTitle"></h2>
+                </div>
+                <button
+                    id="comedyReadingClose"
+                    class="comedy-reading-close"
+                    type="button"
+                    aria-label="Lesemodus schließen">✕</button>
+            </header>
+            <p class="comedy-reading-intro">
+                Lies die Sätze in Ruhe. Klicke auf ein Thai-Wort, um seine
+                deutsche Bedeutung und Vorkommen im Satzkontext zu sehen.
+            </p>
+            <div class="comedy-reading-layout">
+                <div id="comedyReadingLines" class="comedy-reading-lines"></div>
+                <aside
+                    id="comedyReadingDictionary"
+                    class="comedy-reading-dictionary"
+                    hidden
+                    aria-live="polite"></aside>
+            </div>
+        </section>
+    </div>
+
+    <script src="../data/comedy.js"></script>
+    <script src="../data/comedy-glossary.js"></script>
+    <script src="../js/thai-giga-tts-config.js"></script>
+    <script src="../js/quest-audio.js"></script>
+    <script src="../js/drill-audio-player.js"></script>
+    <script src="../js/comedy-reader.js"></script>
+    <script src="../js/comedy-drill.js"></script>
+    <script src="../js/pwa-register.js"></script>
+</body>
+</html>

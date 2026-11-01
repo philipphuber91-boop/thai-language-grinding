@@ -1252,6 +1252,16 @@ function switchContent(mode) {
         return;
     }
 
+    if (mode === "super-slang") {
+        window.location.href = "super-slang.html";
+        return;
+    }
+
+    if (mode === "comedy") {
+        window.location.href = "comedy.html";
+        return;
+    }
+
     if (mode === "satzmix") {
         window.location.href = "satzmix.html";
         return;
@@ -1277,6 +1287,7 @@ function switchContent(mode) {
     );
 
    const worldmapHome = document.getElementById("worldmapHome");
+   const topicDrillHome = document.getElementById("topicDrillHome");
    const questView = document.getElementById("questView");
    const statusBar = document.querySelector(".status-bar");
    const topNavigationButtons = document.querySelectorAll(
@@ -1285,6 +1296,7 @@ function switchContent(mode) {
 
    const showSecondaryView = () => {
        worldmapHome?.setAttribute("hidden", "");
+       topicDrillHome?.setAttribute("hidden", "");
        questView?.setAttribute("hidden", "");
        statusBar?.setAttribute("hidden", "");
        document.getElementById("questListe").style.display = "none";
@@ -1297,9 +1309,10 @@ function switchContent(mode) {
    const activeNavigationMode =
        mode === "campaign" ||
        mode === "missions" ||
-       mode === "comedy" ||
        mode === "youtube"
            ? "quests"
+           : mode === "topic-drill"
+               ? "topic-drill"
            : mode;
 
    topNavigationButtons.forEach(button => {
@@ -1310,12 +1323,19 @@ function switchContent(mode) {
    });
 
    document.querySelectorAll(".mobile-menu-button").forEach(button => {
+       const isTopicDrillMode =
+           mode === "topic-drill" ||
+           mode === "missions";
        button.classList.toggle(
            "is-active",
            button.dataset.contentMode === mode ||
            (
                button.dataset.contentMode === "quests" &&
                mode === "campaign"
+           ) ||
+           (
+               button.dataset.contentMode === "topic-drill" &&
+               isTopicDrillMode
            )
        );
    });
@@ -1325,7 +1345,6 @@ function switchContent(mode) {
    [
        [campaignListButton, "campaign"],
        [youtubeListButton, "youtube"],
-       [comedyListButton, "comedy"],
        [missionsMenuButton, "missions"]
    ].forEach(([button, buttonMode]) => {
        if (!button) {
@@ -1354,6 +1373,12 @@ function switchContent(mode) {
            }
            break;
 
+       case "topic-drill":
+           document.body.classList.remove("mobile-chronik-mode");
+           showSecondaryView();
+           topicDrillHome?.removeAttribute("hidden");
+           break;
+
         case "campaign":
            document.body.classList.remove("mobile-chronik-mode");
            showSecondaryView();
@@ -1362,17 +1387,6 @@ function switchContent(mode) {
            document.getElementById("questViewEyebrow").textContent =
                "Deine Lernpfade";
            document.getElementById("questViewTitle").textContent = "Quests";
-           ladeKarten();
-           break;
-
-       case "comedy":
-           document.body.classList.remove("mobile-chronik-mode");
-           showSecondaryView();
-           questView?.removeAttribute("hidden");
-           document.getElementById("questListe").style.display = "block";
-           document.getElementById("questViewEyebrow").textContent =
-               "Eine fortlaufende Serie";
-           document.getElementById("questViewTitle").textContent = "😂 Komödie";
            ladeKarten();
            break;
 
@@ -1449,7 +1463,6 @@ campaignMenuButton.onclick = function () {
 
 const campaignListButton = document.getElementById("campaignListButton");
 const youtubeListButton = document.getElementById("youtubeListButton");
-const comedyListButton = document.getElementById("comedyListButton");
 
 if (campaignListButton) {
     campaignListButton.onclick = function () {
@@ -1460,12 +1473,6 @@ if (campaignListButton) {
 if (youtubeListButton) {
     youtubeListButton.onclick = function () {
         switchContent("youtube");
-    };
-}
-
-if (comedyListButton) {
-    comedyListButton.onclick = function () {
-        switchContent("comedy");
     };
 }
 
@@ -1481,6 +1488,15 @@ missionsMenuButton.onclick = function () {
 };
 
 }
+
+document.querySelectorAll("[data-topic-drill-mode]").forEach(button => {
+    button.addEventListener("click", () => {
+        const mode = button.dataset.topicDrillMode;
+        if (mode) {
+            switchContent(mode);
+        }
+    });
+});
 
 const achievementButton =
     document.getElementById("achievementButton");
@@ -1546,4 +1562,8 @@ if (achievementButton) {
 
 if (chronikButton) {
     chronikButton.dataset.contentMode = "chronik";
+}
+
+if (new URLSearchParams(window.location.search).get("view") === "topic-drill") {
+    switchContent("topic-drill");
 }

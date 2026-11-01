@@ -98,7 +98,7 @@
 
 .comedy-reading-thai {
     margin: 0;
-    font-family: "Noto Serif Thai", "Sarabun", sans-serif;
+    font-family: var(--thai-font-family);
     font-size: clamp(1.35rem, 2.1vw, 1.8rem);
     line-height: 1.65;
 }
@@ -151,7 +151,7 @@
 .comedy-reading-dictionary h3 {
     margin: 4px 0 0;
     color: #ffd56f;
-    font-family: "Noto Serif Thai", "Sarabun", sans-serif;
+    font-family: var(--thai-font-family);
     font-size: 1.8rem;
     font-weight: 400;
 }
@@ -230,7 +230,7 @@
 
 .comedy-reading-dictionary-occurrences .comedy-reading-dictionary-thai {
     color: #fff8e7;
-    font-family: "Noto Serif Thai", "Sarabun", sans-serif;
+    font-family: var(--thai-font-family);
 }
 
 @media (max-width: 800px) {

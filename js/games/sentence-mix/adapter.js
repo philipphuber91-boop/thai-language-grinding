@@ -293,6 +293,19 @@
 
         async loadContent(url) {
             let content = null;
+            if (url && (url.includes("super-slang") || url.includes("superSlang"))) {
+                if (typeof window !== "undefined" && window.superSlangContent) {
+                    content = window.superSlangContent;
+                } else {
+                    const res = await fetch(url || "../data/super-slang.json");
+                    if (!res.ok) {
+                        throw new Error("Super-Slang Content konnte nicht geladen werden: " + res.status);
+                    }
+                    content = await res.json();
+                }
+                return extractAllPlayableSentences(content);
+            }
+
             if (typeof window !== "undefined" && window.thaiGigaDrill && typeof window.thaiGigaDrill.loadContent === "function") {
                 content = await window.thaiGigaDrill.loadContent(url);
             } else if (typeof window !== "undefined" && window.thaiGigaDrill && typeof window.thaiGigaDrill.getContentFromStorage === "function") {
@@ -311,10 +324,19 @@
             return extractAllPlayableSentences(content);
         },
 
-        async loadPlaylist(url) {
+        async loadPlaylist(url, customStorageKey) {
+            let searchParams = null;
+            if (typeof window !== "undefined" && window.location && window.location.search) {
+                searchParams = new URLSearchParams(window.location.search);
+            }
+            const storageKey = customStorageKey ||
+                searchParams?.get("key") ||
+                searchParams?.get("playlistKey") ||
+                "thaiGigaDrill:v1:audio-playlist";
+
             let raw = "";
             try {
-                raw = localStorage.getItem("thaiGigaDrill:v1:audio-playlist") || "";
+                raw = localStorage.getItem(storageKey) || "";
             } catch (error) {
                 throw new Error("Die Audio-Playlist konnte nicht gelesen werden.", { cause: error });
             }
@@ -337,7 +359,13 @@
                 return [];
             }
 
-            const sentences = await this.loadContent(url);
+            let sentences = [];
+            if (storageKey.includes("superSlang") || sentenceIds.some(id => id.startsWith("slang-"))) {
+                sentences = await this.loadContent("../data/super-slang.json");
+            } else {
+                sentences = await this.loadContent(url);
+            }
+
             const sentencesById = new Map(sentences.map(sentence => [sentence.sentenceId, sentence]));
             return sentenceIds
                 .map(sentenceId => sentencesById.get(sentenceId))

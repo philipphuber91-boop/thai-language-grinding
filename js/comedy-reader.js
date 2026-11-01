@@ -185,7 +185,7 @@
                     <strong>${escapeHtml(line.speaker)}</strong>
                 </div>
                 <p class="comedy-reading-thai" lang="th">${line.tokenMarkup}</p>
-                <p class="comedy-reading-german">${escapeHtml(line.deutsch)}</p>
+                <p class="comedy-reading-german thai-giga-translation">${escapeHtml(line.deutsch)}</p>
             </article>
         `).join("");
 

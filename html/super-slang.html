@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#130f19">
+    <title>Super Slang · Thai Topic Drill</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&family=Noto+Sans+Thai:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/thai-giga.css">
+    <link rel="stylesheet" href="../css/super-slang.css">
+    <link rel="manifest" href="../manifest.json">
+</head>
+<body class="super-slang-page">
+    <button
+        id="superSlangSidebarToggle"
+        class="super-slang-sidebar-toggle"
+        type="button"
+        aria-label="Projektmenü öffnen"
+        aria-expanded="false"
+        aria-controls="superSlangSidebar">☰</button>
+    <div id="superSlangSidebarBackdrop" class="super-slang-sidebar-backdrop"></div>
+    <button
+        id="superSlangPlayerToggle"
+        class="thai-giga-player-toggle"
+        type="button"
+        aria-label="Audio-Player öffnen"
+        aria-expanded="false"
+        aria-controls="superSlangAudioPlayer">🎧</button>
+    <button
+        id="thaiGigaSettingsToggle"
+        class="thai-giga-settings-toggle"
+        type="button"
+        aria-label="Einstellungen öffnen"
+        aria-expanded="false"
+        aria-controls="thaiGigaSettingsPanel">⚙</button>
+
+    <div id="thaiGigaSettingsBackdrop" class="thai-giga-settings-backdrop" hidden></div>
+    <section
+        id="thaiGigaSettingsPanel"
+        class="thai-giga-settings-panel"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="thaiGigaSettingsTitle"
+        hidden>
+        <header class="thai-giga-settings-header">
+            <h2 id="thaiGigaSettingsTitle">Einstellungen</h2>
+            <button
+                id="thaiGigaSettingsClose"
+                class="thai-giga-settings-close"
+                type="button"
+                aria-label="Einstellungen schließen">✕</button>
+        </header>
+        <div class="thai-giga-settings-section">
+            <label class="thai-giga-settings-label" for="thaiGigaThemeSelect">
+                Farbschema
+            </label>
+            <select id="thaiGigaThemeSelect" class="thai-giga-settings-select">
+                <option value="classic">Thai Classic (aktuell)</option>
+                <option value="night">Nachtmodus</option>
+                <option value="desert">Wüstenmodus</option>
+                <option value="japanese">Japanisches Design</option>
+            </select>
+        </div>
+        <div class="thai-giga-settings-section">
+            <label class="thai-giga-settings-label" for="thaiGigaFontSelect">
+                Thai-Schriftart
+            </label>
+            <select id="thaiGigaFontSelect" class="thai-giga-settings-select">
+                <option value="standard">Standard</option>
+                <option value="noto-sans-thai">Noto Sans Thai</option>
+                <option value="sarabun">Sarabun</option>
+                <option value="prompt">Prompt</option>
+                <option value="kanit">Kanit</option>
+            </select>
+        </div>
+        <div class="thai-giga-settings-section">
+            <label class="thai-giga-settings-row" for="thaiGigaTransliterationToggle">
+                <span class="thai-giga-settings-label">Umschrift anzeigen</span>
+                <input id="thaiGigaTransliterationToggle" type="checkbox" checked>
+            </label>
+            <label class="thai-giga-settings-row" for="thaiGigaTranslationToggle">
+                <span class="thai-giga-settings-label">Übersetzung anzeigen</span>
+                <input id="thaiGigaTranslationToggle" type="checkbox" checked>
+            </label>
+            <label class="thai-giga-settings-row" for="thaiGigaWordSeparationToggle">
+                <span class="thai-giga-settings-label">Wörter separieren</span>
+                <input id="thaiGigaWordSeparationToggle" type="checkbox" checked>
+            </label>
+            <label class="thai-giga-settings-row" for="thaiGigaToneColorsToggle">
+                <span class="thai-giga-settings-label">Tonfarben anzeigen</span>
+                <input id="thaiGigaToneColorsToggle" type="checkbox" checked>
+            </label>
+            <div class="thai-giga-tone-legend" aria-label="Tonfarben-Legende">
+                <span><i class="thai-tone-swatch thai-tone-low"></i>Tief</span>
+                <span><i class="thai-tone-swatch thai-tone-mid"></i>Mittel</span>
+                <span><i class="thai-tone-swatch thai-tone-high"></i>Hoch</span>
+                <span><i class="thai-tone-swatch thai-tone-rising"></i>Steigend</span>
+                <span><i class="thai-tone-swatch thai-tone-falling"></i>Fallend</span>
+            </div>
+        </div>
+    </section>
+
+    <aside id="superSlangSidebar" class="super-slang-sidebar" aria-label="Super-Slang-Navigation">
+        <div class="super-slang-menu-card">
+            <a class="super-slang-back-link" href="index.html?view=topic-drill">
+                ← Zurück zum Thai Topic Drill
+            </a>
+            <p class="super-slang-menu-eyebrow">Thai Topic Drill</p>
+            <div class="super-slang-menu-heading">💬 Super Slang</div>
+            <nav class="super-slang-chapter-nav" aria-label="Projektbereiche">
+                <a href="#superSlangIntro">Projektstart</a>
+                <a href="#story-slang-s1">Story 1: โดนเทหรือเปล่า</a>
+                <a href="#story-slang-s2">Story 2: ชานมแก้วนี้เอาเรื่อง</a>
+                <a href="#superSlangDictionarySection">Slang-Glossar (83 Wörter)</a>
+                <a href="#superSlangAudioPlayer">Audio-Player</a>
+            </nav>
+        </div>
+    </aside>
+
+    <header class="super-slang-topbar">
+        <p>Thai Topic Drill · Neues Unterregister</p>
+        <h1>SUPER <span>SLANG</span></h1>
+    </header>
+
+    <main class="super-slang-main">
+        <section id="superSlangIntro" class="super-slang-hero" aria-labelledby="superSlangTitle">
+            <p class="super-slang-eyebrow">Thai Topic Drill · Unterregister</p>
+            <h2 id="superSlangTitle">Thai, wie es im Alltag klingt.</h2>
+            <p>
+                Echtes modernes Umgangsthai in praxisnahen Mini-Stories: 6–10 Sätze pro Szene mit natürlicher Wiederholung, 
+                Token-Glossar, Wortsegmentierung, Tonfarben und direkter Anbindung an den Audioplayer, Wortmix (Satzmix) und RSVP/Typing.
+            </p>
+            <div class="super-slang-badges" aria-label="Projektzuordnung">
+                <span>💬 Super Slang Serie</span>
+                <span>☕ 2 Mini-Stories</span>
+                <span>🔥 15 Sätze</span>
+                <span>📖 83 Slang-Wörter</span>
+                <span>🎲 Wortmix &amp; RSVP Ready</span>
+            </div>
+            <div class="super-slang-quick-bar" aria-label="Schnellstart">
+                <a href="#story-slang-s1" class="super-slang-action-btn">☕ Story 1: โดนเทหรือเปล่า</a>
+                <a href="#story-slang-s2" class="super-slang-action-btn">🧋 Story 2: ชานมแก้วนี้เอาเรื่อง</a>
+                <a href="#superSlangDictionarySection" class="super-slang-action-btn">📖 Slang-Glossar</a>
+                <button id="superSlangAddAllStories" class="super-slang-action-btn is-primary" type="button">+ Alle 15 Sätze in Playlist</button>
+                <button id="superSlangPlayInWordmix" class="super-slang-action-btn" type="button">🎲 Im Wortmix spielen</button>
+            </div>
+        </section>
+
+        <section
+            id="superSlangAudioPlayer"
+            class="thai-giga-audio-player"
+            data-drill-audio-player
+            data-drill-audio-prefix="superSlang"
+            data-drill-audio-storage-namespace="superSlang"
+            data-drill-audio-api="superSlangAudio"
+            data-drill-audio-content="superSlangContent"
+            data-drill-audio-item-label="Slang"
+            aria-label="Super-Slang-Playlist">
+            <header class="thai-giga-audio-header">
+                <div>
+                    <p class="thai-giga-eyebrow">Audio-Player · Super Slang</p>
+                </div>
+                <span id="superSlangAudioCount" class="thai-giga-audio-count">0/0</span>
+            </header>
+            <div class="thai-giga-audio-controls">
+                <label>
+                    <input id="superSlangAudioLoop" type="checkbox" checked>
+                    <span>🔁 Dauerschleife</span>
+                </label>
+                <label>
+                    <input id="superSlangAudioShuffle" type="checkbox">
+                    <span>🔀 Shuffle</span>
+                </label>
+            </div>
+            <div class="thai-giga-audio-controls">
+                <button id="superSlangAudioPrevious" type="button" disabled>⏮ Zurück</button>
+                <button id="superSlangAudioPlayPause" class="is-primary" type="button" disabled>▶ Abspielen</button>
+                <button id="superSlangAudioNext" type="button" disabled>Weiter ⏭</button>
+            </div>
+            <label class="thai-giga-audio-speed" for="superSlangAudioSpeed">
+                <span>Wiedergabegeschwindigkeit</span>
+                <input id="superSlangAudioSpeed" type="range" min="0.5" max="1.5" step="0.05" value="0.85">
+                <output id="superSlangAudioSpeedValue" for="superSlangAudioSpeed">0,85×</output>
+            </label>
+            <div class="thai-giga-audio-actions">
+                <button id="superSlangAudioOpenTyping" type="button" disabled>Typing</button>
+                <button id="superSlangAudioOpenRsvp" type="button" disabled>Speedreading</button>
+                <button id="superSlangAudioOpenSentenceMix" type="button" disabled>Wortmix</button>
+                <button id="superSlangAudioClear" type="button" disabled>Playlist leeren</button>
+            </div>
+            <ol id="superSlangAudioPlaylist" class="thai-giga-audio-playlist" aria-label="Super-Slang-Playlist"></ol>
+            <p id="superSlangAudioStatus" class="thai-giga-audio-status" role="status" aria-live="polite">
+                Sammle Sätze mit „+ Playlist“ und spiele sie hier ab oder starte den Wortmix!
+            </p>
+        </section>
+
+        <section id="superSlangStoriesSection" class="super-slang-section" aria-labelledby="superSlangStoriesTitle">
+            <div class="super-slang-section-heading">
+                <p class="super-slang-eyebrow">Mini-Stories Curriculum</p>
+                <h2 id="superSlangStoriesTitle">Echte Dialoge mit Slang-Drill</h2>
+                <p>
+                    Tippe auf ein beliebiges Thai-Wort, um das interaktive Slang-Glossar zu öffnen. 
+                    Ein Klick auf die Satzkarte blendet die deutsche Übersetzung ein oder aus.
+                </p>
+            </div>
+            <div id="superSlangStoriesContainer"></div>
+        </section>
+
+        <section id="superSlangDictionarySection" class="super-slang-section" aria-labelledby="superSlangDictTitle">
+            <div class="super-slang-section-heading">
+                <p class="super-slang-eyebrow">Wortschatz &amp; Slang-Register</p>
+                <h2 id="superSlangDictTitle">Token-Glossar · Super Slang</h2>
+                <p>
+                    Alle 83 vorkommenden Wörter und Slang-Ausdrücke mit Silben-Tonfarben, Umschrift, Bedeutungen und Anwendungsbeispielen.
+                </p>
+            </div>
+            <div class="super-slang-dict-toolbar">
+                <input
+                    id="superSlangDictSearch"
+                    class="super-slang-dict-search"
+                    type="search"
+                    placeholder="Wort auf Thai, Umschrift oder Deutsch suchen..."
+                    aria-label="Wort suchen">
+                <span id="superSlangDictCount" class="super-slang-story-badge">83 Wörter</span>
+            </div>
+            <div id="superSlangDictGrid" class="super-slang-dict-grid" aria-live="polite"></div>
+        </section>
+
+        <aside id="superSlangDictionary" class="thai-giga-dictionary thai-giga-dictionary-floating" aria-label="Wörterbuch" aria-live="polite" hidden></aside>
+
+        <section
+            id="thaiGigaSpeedreading"
+            class="thai-giga-speedreading"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="thaiGigaSpeedreadingScope"
+            hidden>
+            <div class="thai-giga-speedreading-panel">
+                <header class="thai-giga-speedreading-header">
+                    <div>
+                        <p id="thaiGigaSpeedreadingScope" class="thai-giga-eyebrow">Speed Reading</p>
+                        <div class="thai-giga-speedreading-options" aria-label="Speedreading-Anzeige">
+                            <label>
+                                <input id="thaiGigaSpeedreadingThai" type="checkbox" checked>
+                                <span>Thai</span>
+                            </label>
+                            <label>
+                                <input id="thaiGigaSpeedreadingTransliteration" type="checkbox" checked>
+                                <span>Umschrift</span>
+                            </label>
+                            <label>
+                                <input id="thaiGigaSpeedreadingTranslation" type="checkbox" checked>
+                                <span>Übersetzung</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="thai-giga-speedreading-header-actions">
+                        <details class="thai-giga-rsvp-font-settings">
+                            <summary aria-label="RSVP-Einstellungen öffnen" title="RSVP-Einstellungen">⚙</summary>
+                            <div class="thai-giga-rsvp-font-settings-panel" role="group" aria-label="RSVP-Einstellungen">
+                                <p class="thai-giga-rsvp-font-settings-title">Schriftgrößen</p>
+                                <label class="thai-giga-rsvp-font-setting" for="thaiGigaRsvpThaiFontSize">
+                                    <span>Thai <output id="thaiGigaRsvpThaiFontSizeValue">28 px</output></span>
+                                    <input
+                                        id="thaiGigaRsvpThaiFontSize"
+                                        type="range"
+                                        min="20"
+                                        max="88"
+                                        step="1"
+                                        value="28"
+                                        aria-label="Thai-Schriftgröße">
+                                </label>
+                                <label class="thai-giga-rsvp-font-setting" for="thaiGigaRsvpTransliterationFontSize">
+                                    <span>Umschrift <output id="thaiGigaRsvpTransliterationFontSizeValue">22 px</output></span>
+                                    <input
+                                        id="thaiGigaRsvpTransliterationFontSize"
+                                        type="range"
+                                        min="20"
+                                        max="76"
+                                        step="1"
+                                        value="22"
+                                        aria-label="Umschrift-Schriftgröße">
+                                </label>
+                                <label class="thai-giga-rsvp-font-setting" for="thaiGigaRsvpGermanFontSize">
+                                    <span>Deutsch <output id="thaiGigaRsvpGermanFontSizeValue">22 px</output></span>
+                                    <input
+                                        id="thaiGigaRsvpGermanFontSize"
+                                        type="range"
+                                        min="20"
+                                        max="76"
+                                        step="1"
+                                        value="22"
+                                        aria-label="Deutsche Schriftgröße">
+                                </label>
+                                <div class="thai-giga-rsvp-font-setting-options" aria-label="Weitere Anzeigeoptionen">
+                                    <label>
+                                        <input id="thaiGigaSpeedreadingWordSeparation" type="checkbox" checked>
+                                        <span>Wörter separieren</span>
+                                    </label>
+                                    <label>
+                                        <input id="thaiGigaSpeedreadingToneColors" type="checkbox" checked>
+                                        <span>Tonfarben</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </details>
+                        <button
+                            id="thaiGigaSpeedreadingClose"
+                            class="thai-giga-speedreading-close"
+                            type="button"
+                            aria-label="Speedreading schließen">✕</button>
+                    </div>
+                </header>
+                <div class="thai-giga-rsvp-header-divider" aria-hidden="true"></div>
+                <div class="thai-giga-rsvp-top-repetitions">
+                    <label class="thai-giga-rsvp-repetitions" title="Wiederholungen">
+                        <span class="thai-giga-rsvp-repeat-icon" aria-hidden="true">↻</span>
+                        <span class="sr-only">Wiederholungen</span>
+                        <select id="thaiGigaRsvpRepetitions" aria-label="Wiederholungen">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="infinite">∞</option>
+                        </select>
+                    </label>
+                </div>
+                <div id="thaiGigaSpeedreadingList" class="thai-giga-speedreading-list"></div>
+                <div class="thai-giga-rsvp-controls" aria-label="RSVP-Steuerung">
+                    <output id="thaiGigaRsvpProgress" class="thai-giga-rsvp-progress" aria-label="RSVP-Fortschritt">0/0</output>
+                    <div class="thai-giga-rsvp-mode" role="group" aria-label="RSVP-Modus">
+                        <button type="button" data-thai-giga-rsvp-mode="word" aria-pressed="true">WORD</button>
+                        <button type="button" data-thai-giga-rsvp-mode="chunk" aria-pressed="false">CHUNK</button>
+                    </div>
+                    <div class="thai-giga-rsvp-wpm">
+                        <button type="button" data-thai-giga-rsvp-wpm="-25" aria-label="WPM verringern">−</button>
+                        <output id="thaiGigaRsvpWpm" aria-live="polite">300 WPM</output>
+                        <button type="button" data-thai-giga-rsvp-wpm="25" aria-label="WPM erhöhen">+</button>
+                    </div>
+                    <label class="thai-giga-rsvp-wpm-slider" for="thaiGigaRsvpWpmSlider">
+                        <span class="sr-only">RSVP-Geschwindigkeit</span>
+                        <input
+                            id="thaiGigaRsvpWpmSlider"
+                            type="range"
+                            min="25"
+                            max="800"
+                            step="25"
+                            value="300"
+                            aria-label="RSVP-Geschwindigkeit in Wörtern pro Minute">
+                    </label>
+                    <div class="thai-giga-rsvp-transport" role="group" aria-label="RSVP-Navigation">
+                        <button type="button" data-thai-giga-rsvp-action="previous" aria-label="Vorherige Einheit">⏮</button>
+                        <button type="button" class="is-primary" data-thai-giga-rsvp-action="play" aria-label="Abspielen">▶</button>
+                        <button type="button" data-thai-giga-rsvp-action="next" aria-label="Nächste Einheit">⏭</button>
+                    </div>
+                    <output
+                        id="thaiGigaRsvpStopwatch"
+                        class="thai-giga-rsvp-stopwatch"
+                        aria-label="Verstrichene Zeit"
+                        title="Verstrichene Zeit">⏱ 00:00</output>
+                    <label class="thai-giga-rsvp-position-slider" for="thaiGigaRsvpPositionSlider">
+                        <span class="sr-only">Position in der RSVP-Wiedergabe</span>
+                        <input
+                            id="thaiGigaRsvpPositionSlider"
+                            type="range"
+                            min="0"
+                            max="0"
+                            step="1"
+                            value="0"
+                            aria-label="Position in der RSVP-Wiedergabe">
+                    </label>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="../data/super-slang.js"></script>
+    <script src="../js/thai-giga-tts-config.js"></script>
+    <script src="../js/quest-audio.js"></script>
+    <script src="../js/drill-audio-player.js"></script>
+    <script src="../js/thai-giga-rsvp.js"></script>
+    <script src="../js/thai-giga-settings.js"></script>
+    <script src="../js/super-slang.js"></script>
+    <script src="../js/pwa-register.js"></script>
+</body>
+</html>

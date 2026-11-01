@@ -16,7 +16,7 @@
  * müssen den Cache in Safari nicht manuell löschen.
  */
 
-const CACHE_VERSION = 'v238';
+const CACHE_VERSION = 'v242';
 const CACHE_NAME = `thai-language-grinding-${CACHE_VERSION}`;
 
 // App-Shell: alles, was für Start und Offline-Betrieb gebraucht wird.
@@ -30,6 +30,8 @@ const PRECACHE_ASSETS = [
     'html/achievements.html',
     'html/japanese.html',
     'html/thai-giga.html',
+    'html/super-slang.html',
+    'html/comedy.html',
     'html/thai-giga-dictionary.html',
     'html/inworld-voice-comparison.html',
     'html/satzmix.html',
@@ -40,6 +42,9 @@ const PRECACHE_ASSETS = [
     'css/account.css',
     'css/japanese.css',
     'css/thai-giga.css',
+    'css/super-slang.css',
+    'css/comedy.css',
+    'css/topic-drill.css',
     'css/comedy-reader.css',
     'css/thailand-quiz.css',
     'css/sentence-mix.css',
@@ -56,6 +61,8 @@ const PRECACHE_ASSETS = [
     'data/missions.js',
     'data/comedy.js',
     'data/comedy-glossary.js',
+    'data/super-slang.js',
+    'data/super-slang.json',
     'data/thailand-quiz.js',
     'data/thailand-quiz-words.js',
     'data/japanese-grammar.js',
@@ -78,6 +85,7 @@ const PRECACHE_ASSETS = [
     'js/thailand-quiz-vocabulary.js',
     'js/thailand-quiz.js',
     'js/comedy-reader.js',
+    'js/comedy-drill.js',
     'js/keyboard.js',
     'js/typing-feedback.js',
     'js/thai-giga-tts-config.js',
@@ -89,6 +97,8 @@ const PRECACHE_ASSETS = [
     'js/japanese-drill.js',
     'js/thai-giga-drill.js',
     'js/thai-giga-audio.js',
+    'js/drill-audio-player.js',
+    'js/super-slang.js',
     'js/thai-giga-reader.js',
     'js/thai-giga-settings.js',
     'js/games/sentence-mix/adapter.js',

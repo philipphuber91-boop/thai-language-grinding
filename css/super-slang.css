@@ -1,0 +1,531 @@
+:root {
+    --super-slang-bg: #130f19;
+    --super-slang-panel: #211929;
+    --super-slang-panel-light: #30243a;
+    --super-slang-border: rgba(199, 144, 239, .38);
+    --super-slang-accent: #d7a4f3;
+    --super-slang-highlight: #ffcb71;
+    --super-slang-text: #f5eef9;
+    --super-slang-muted: #c9bbd4;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-width: 320px;
+    scroll-behavior: smooth;
+}
+
+body.super-slang-page {
+    min-height: 100vh;
+    margin: 0;
+    color: var(--super-slang-text);
+    background:
+        radial-gradient(circle at 75% -5%, rgba(181, 108, 225, .2), transparent 35rem),
+        linear-gradient(145deg, #130f19, #1d1424 54%, #100c14);
+    font-family: "Noto Sans Thai", "Segoe UI", sans-serif;
+}
+
+.super-slang-sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 30;
+    width: min(320px, calc(100vw - 48px));
+    padding: 28px 20px;
+    overflow-y: auto;
+    transform: translateX(-105%);
+    transition: transform .22s ease;
+}
+
+.super-slang-sidebar.is-open {
+    transform: translateX(0);
+}
+
+.super-slang-menu-card {
+    min-height: 100%;
+    padding: 24px 20px;
+    border: 1px solid var(--super-slang-border);
+    border-radius: 18px;
+    background: rgba(33, 25, 41, .96);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, .4);
+}
+
+.super-slang-back-link,
+.super-slang-chapter-nav a {
+    color: var(--super-slang-muted);
+    text-decoration: none;
+}
+
+.super-slang-back-link {
+    display: inline-block;
+    margin-bottom: 36px;
+    font-size: .9rem;
+}
+
+.super-slang-back-link:hover,
+.super-slang-back-link:focus-visible,
+.super-slang-chapter-nav a:hover,
+.super-slang-chapter-nav a:focus-visible {
+    color: var(--super-slang-highlight);
+}
+
+.super-slang-menu-eyebrow,
+.super-slang-eyebrow {
+    margin: 0 0 8px;
+    color: var(--super-slang-accent);
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.super-slang-menu-heading {
+    margin-bottom: 28px;
+    color: var(--super-slang-highlight);
+    font-family: Kanit, "Noto Sans Thai", sans-serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+}
+
+.super-slang-chapter-nav {
+    display: grid;
+    gap: 8px;
+}
+
+.super-slang-chapter-nav a {
+    padding: 12px 14px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+}
+
+.super-slang-chapter-nav a:hover,
+.super-slang-chapter-nav a:focus-visible {
+    border-color: var(--super-slang-border);
+    background: rgba(215, 164, 243, .08);
+    outline: none;
+}
+
+.super-slang-sidebar-toggle {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 40;
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border: 1px solid var(--super-slang-border);
+    border-radius: 12px;
+    color: var(--super-slang-highlight);
+    background: var(--super-slang-panel);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .28);
+    cursor: pointer;
+    font-size: 1.25rem;
+}
+
+.super-slang-sidebar-toggle:hover,
+.super-slang-sidebar-toggle:focus-visible {
+    background: var(--super-slang-panel-light);
+    outline: 2px solid var(--super-slang-accent);
+    outline-offset: 2px;
+}
+
+.super-slang-sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 29;
+    background: rgba(0, 0, 0, .62);
+}
+
+.super-slang-sidebar-backdrop.is-visible {
+    display: block;
+}
+
+.super-slang-topbar {
+    padding: 24px 76px 20px;
+    border-bottom: 1px solid var(--super-slang-border);
+    text-align: center;
+}
+
+.super-slang-topbar p {
+    margin: 0 0 2px;
+    color: var(--super-slang-muted);
+    font-size: .85rem;
+    letter-spacing: .08em;
+}
+
+.super-slang-topbar h1 {
+    margin: 0;
+    color: var(--super-slang-text);
+    font-family: Kanit, "Noto Sans Thai", sans-serif;
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: .08em;
+}
+
+.super-slang-topbar h1 span {
+    color: var(--super-slang-highlight);
+}
+
+.super-slang-main {
+    width: min(1120px, 100%);
+    margin: 0 auto;
+    padding: 42px 28px 64px;
+}
+
+.super-slang-hero {
+    position: relative;
+    overflow: hidden;
+    padding: clamp(28px, 6vw, 64px);
+    border: 1px solid var(--super-slang-border);
+    border-radius: 24px;
+    background:
+        radial-gradient(circle at 92% 10%, rgba(215, 164, 243, .22), transparent 21rem),
+        linear-gradient(135deg, rgba(48, 36, 58, .96), rgba(30, 21, 37, .98));
+    box-shadow: 0 18px 42px rgba(0, 0, 0, .28);
+}
+
+.super-slang-hero h2 {
+    max-width: 760px;
+    margin: 0 0 16px;
+    color: var(--super-slang-highlight);
+    font-family: Kanit, "Noto Sans Thai", sans-serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 600;
+    line-height: 1.15;
+}
+
+.super-slang-hero > p:not(.super-slang-eyebrow) {
+    max-width: 760px;
+    margin: 0;
+    color: var(--super-slang-text);
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.super-slang-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 26px;
+}
+
+.super-slang-badges span {
+    padding: 7px 12px;
+    border: 1px solid rgba(215, 164, 243, .32);
+    border-radius: 999px;
+    color: var(--super-slang-muted);
+    background: rgba(19, 15, 25, .48);
+    font-size: .82rem;
+}
+
+.super-slang-section {
+    padding: 52px 0 44px;
+}
+
+.super-slang-section-heading {
+    max-width: 740px;
+    margin-bottom: 24px;
+}
+
+.super-slang-section-heading h2,
+.super-slang-status h2 {
+    margin: 0 0 10px;
+    color: var(--super-slang-text);
+    font-family: Kanit, "Noto Sans Thai", sans-serif;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-weight: 600;
+}
+
+.super-slang-section-heading > p:last-child,
+.super-slang-status > div:last-child > p:last-child {
+    margin: 0;
+    color: var(--super-slang-muted);
+    line-height: 1.75;
+}
+
+.super-slang-principles {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.super-slang-principle {
+    padding: 22px;
+    border: 1px solid rgba(199, 144, 239, .25);
+    border-radius: 16px;
+    background: rgba(33, 25, 41, .72);
+}
+
+.super-slang-principle > span {
+    color: var(--super-slang-highlight);
+    font-size: 1.4rem;
+}
+
+.super-slang-principle h3 {
+    margin: 12px 0 8px;
+    color: var(--super-slang-accent);
+    font-family: Kanit, "Noto Sans Thai", sans-serif;
+    font-size: 1.2rem;
+}
+
+.super-slang-principle p {
+    margin: 0;
+    color: var(--super-slang-muted);
+    line-height: 1.65;
+}
+
+.super-slang-status {
+    display: flex;
+    align-items: flex-start;
+    gap: 18px;
+    padding: 24px;
+    border: 1px solid rgba(255, 203, 113, .34);
+    border-radius: 16px;
+    background: rgba(255, 203, 113, .06);
+}
+
+.super-slang-status-mark {
+    display: grid;
+    flex: 0 0 44px;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--super-slang-highlight);
+    background: rgba(255, 203, 113, .12);
+    font-size: 1.3rem;
+}
+
+.super-slang-status .super-slang-eyebrow {
+    margin-top: 1px;
+}
+
+@media (max-width: 760px) {
+    .super-slang-main {
+        padding: 28px 18px 44px;
+    }
+
+    .super-slang-principles {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .super-slang-topbar {
+        padding: 24px 64px 18px;
+    }
+
+    .super-slang-topbar p {
+        font-size: .72rem;
+    }
+
+    .super-slang-main {
+        padding-right: 14px;
+        padding-left: 14px;
+    }
+
+    .super-slang-badges {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .super-slang-status {
+        gap: 12px;
+        padding: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .super-slang-sidebar {
+        transition: none;
+    }
+}
+
+/* Super Slang Story & Interactive Styles */
+.super-slang-story-card {
+    margin-bottom: 32px;
+    padding: clamp(20px, 4vw, 32px);
+    border: 1px solid var(--super-slang-border);
+    border-radius: 20px;
+    background: rgba(30, 21, 37, 0.82);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+.super-slang-story-header {
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(215, 164, 243, 0.15);
+}
+
+.super-slang-story-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.super-slang-story-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: rgba(215, 164, 243, 0.18);
+    color: var(--super-slang-highlight);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.super-slang-story-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.super-slang-action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: 1px solid var(--super-slang-border);
+    border-radius: 12px;
+    background: var(--super-slang-panel);
+    color: var(--super-slang-text);
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.super-slang-action-btn:hover {
+    background: var(--super-slang-panel-light);
+    border-color: var(--super-slang-accent);
+    color: var(--super-slang-highlight);
+}
+
+.super-slang-action-btn.is-primary {
+    background: linear-gradient(135deg, #c790ef, #8e44ad);
+    color: #fff;
+    border-color: transparent;
+}
+
+.super-slang-action-btn.is-added {
+    background: rgba(46, 204, 113, 0.2);
+    border-color: rgba(46, 204, 113, 0.5);
+    color: #2ecc71;
+}
+
+.super-slang-speaker-tag {
+    display: inline-block;
+    padding: 2px 8px;
+    margin-right: 8px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    vertical-align: middle;
+}
+
+.super-slang-speaker-fah {
+    background: rgba(243, 156, 18, 0.2);
+    color: #f39c12;
+    border: 1px solid rgba(243, 156, 18, 0.4);
+}
+
+.super-slang-speaker-nan {
+    background: rgba(155, 89, 182, 0.2);
+    color: #c790ef;
+    border: 1px solid rgba(155, 89, 182, 0.4);
+}
+
+.super-slang-speaker-art {
+    background: rgba(52, 152, 219, 0.2);
+    color: #5dade2;
+    border: 1px solid rgba(52, 152, 219, 0.4);
+}
+
+.super-slang-speaker-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.super-slang-speaker-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    background: rgba(0, 0, 0, 0.25);
+    color: var(--super-slang-muted);
+}
+
+.super-slang-slang-tag {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: rgba(255, 203, 113, 0.15);
+    color: #ffcb71;
+    border: 1px solid rgba(255, 203, 113, 0.3);
+    font-size: 0.82rem;
+    font-weight: 500;
+}
+
+/* Dictionary section */
+.super-slang-dict-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.super-slang-dict-search {
+    flex: 1 1 300px;
+    max-width: 480px;
+    padding: 12px 18px;
+    border: 1px solid var(--super-slang-border);
+    border-radius: 12px;
+    background: var(--super-slang-panel);
+    color: var(--super-slang-text);
+    font-size: 1rem;
+}
+
+.super-slang-dict-search:focus {
+    outline: 2px solid var(--super-slang-accent);
+    border-color: transparent;
+}
+
+.super-slang-dict-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+}
+
+.super-slang-quick-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+    padding: 16px;
+    border: 1px solid var(--super-slang-border);
+    border-radius: 16px;
+    background: rgba(25, 18, 32, 0.6);
+}
+
