@@ -9,12 +9,24 @@
          Geräten (z.B. beim schnellen Doppeltippen einer Taste). Desktop-Browser ignorieren diese
          Einschränkung für Tastatur-/Mausbasiertes Zoomen (Strg +/-), daher bleibt Desktop unberührt. -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+    <script>
+        (() => {
+            const updateMobileViewportHeight = () => {
+                const height = window.visualViewport?.height || window.innerHeight;
+                document.documentElement.style.setProperty("--mobile-vh", `${height}px`);
+            };
+
+            updateMobileViewportHeight();
+            window.addEventListener("resize", updateMobileViewportHeight, { passive: true });
+            window.visualViewport?.addEventListener("resize", updateMobileViewportHeight, { passive: true });
+        })();
+    </script>
 
     <title>Typing Mode</title>
 
     <link rel="stylesheet" href="../style.css">
     <!-- Nur additive Anpassungen für schmale Viewports, ändert keine bestehende Desktop-Regel -->
-    <link rel="stylesheet" href="../css/mobile.css?v=24">
+    <link rel="stylesheet" href="../css/mobile.css?v=25">
 
     <!-- PWA: Installierbarkeit & Offline-Support, ohne bestehende Optik/Logik zu verändern -->
     <link rel="manifest" href="../manifest.json">
