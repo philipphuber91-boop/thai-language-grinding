@@ -4,11 +4,16 @@
     const sidebar = document.getElementById("superSlangSidebar");
     const backdrop = document.getElementById("superSlangSidebarBackdrop");
     const toggle = document.getElementById("superSlangSidebarToggle");
+    const storiesSection = document.getElementById("superSlangStoriesSection");
+    const dictSection = document.getElementById("superSlangDictionarySection");
+    const tabStories = document.getElementById("superSlangTabStories");
+    const tabGlossary = document.getElementById("superSlangTabGlossary");
     const storiesContainer = document.getElementById("superSlangStoriesContainer");
     const dictGrid = document.getElementById("superSlangDictGrid");
     const dictSearch = document.getElementById("superSlangDictSearch");
     const dictCount = document.getElementById("superSlangDictCount");
     const dictPopup = document.getElementById("superSlangDictionary");
+    const addAllPlayerButton = document.getElementById("superSlangAudioAddAll");
     const addAllButton = document.getElementById("superSlangAddAllStories");
     const wordmixButton = document.getElementById("superSlangPlayInWordmix");
 
@@ -201,26 +206,6 @@
                 <header class="super-slang-story-header">
                     <div class="super-slang-story-meta">
                         <span class="super-slang-story-badge">Mini-Story ${storyIndex + 1}</span>
-                        <div class="super-slang-story-actions">
-                            <button
-                                class="super-slang-action-btn"
-                                type="button"
-                                data-slang-story-playlist="${escapeHtml(story.id)}">
-                                + Story in Playlist
-                            </button>
-                            <button
-                                class="super-slang-action-btn"
-                                type="button"
-                                data-slang-story-play="${escapeHtml(story.id)}">
-                                ▶ Story abspielen
-                            </button>
-                            <button
-                                class="super-slang-action-btn"
-                                type="button"
-                                data-slang-story-rsvp="${escapeHtml(story.id)}">
-                                ⚡ RSVP Speedreading
-                            </button>
-                        </div>
                     </div>
                     <h3 style="margin: 0 0 6px; font-size: 1.45rem; color: var(--super-slang-highlight);">${escapeHtml(story.title)}</h3>
                     <p style="margin: 0 0 12px; color: var(--super-slang-muted); font-size: 0.95rem; line-height: 1.6;">${escapeHtml(story.description || "")}</p>
@@ -306,14 +291,14 @@
                     <summary>Beispiele in den Mini-Stories (${examples.length})</summary>
                     <div class="thai-giga-dictionary-sentences">
                         ${examples.map(ex => `
-                            <div class="thai-giga-dictionary-example">
+                            <button type="button" class="thai-giga-dictionary-example" data-example-sentence-id="${escapeHtml(ex.id)}" title="Zu diesem Satz in der Story springen">
                                 <span class="thai-giga-dictionary-example-thai" lang="th">
                                     ${renderSentenceTokenMarkup(ex, false)}
                                 </span>
                                 <span class="thai-giga-dictionary-example-translation">
                                     ${escapeHtml(ex.translation)}
                                 </span>
-                            </div>
+                            </button>
                         `).join("")}
                     </div>
                 </details>
@@ -325,6 +310,14 @@
 
         dictPopup.querySelector(".thai-giga-dictionary-close")?.addEventListener("click", () => {
             closeDictionary();
+        });
+
+        dictPopup.querySelectorAll("[data-example-sentence-id]").forEach(btn => {
+            btn.addEventListener("click", () => {
+                const sId = btn.dataset.exampleSentenceId;
+                closeDictionary();
+                switchView("stories", `sentence-${sId}`);
+            });
         });
     }
 
@@ -418,6 +411,13 @@
             const allAdded = allSentenceIds.length > 0 && allSentenceIds.every(id => playlistIds.has(id));
             addAllButton.classList.toggle("is-added", allAdded);
             addAllButton.textContent = allAdded ? "✓ Alle 15 Sätze in Playlist" : "+ Alle 15 Sätze in Playlist";
+        }
+
+        if (addAllPlayerButton) {
+            const allSentenceIds = Array.from(sentencesById.keys());
+            const allAdded = allSentenceIds.length > 0 && allSentenceIds.every(id => playlistIds.has(id));
+            addAllPlayerButton.classList.toggle("is-added", allAdded);
+            addAllPlayerButton.textContent = allAdded ? "✓ Alle 15 Sätze" : "+ Alle 15 Sätze";
         }
     }
 
@@ -575,6 +575,22 @@
             });
         }
 
+        if (addAllPlayerButton) {
+            addAllPlayerButton.addEventListener("click", () => {
+                const allSentenceIds = Array.from(sentencesById.keys());
+                const playerState = window.superSlangAudio?.getState();
+                const playlistIds = new Set((playerState?.playlist || []).map(item => item.id));
+                const allAdded = allSentenceIds.length > 0 && allSentenceIds.every(id => playlistIds.has(id));
+
+                if (allAdded) {
+                    window.superSlangAudio?.removeStory(allSentenceIds);
+                } else {
+                    window.superSlangAudio?.addStory(allSentenceIds);
+                }
+                updatePlaylistButtons();
+            });
+        }
+
         if (wordmixButton) {
             wordmixButton.addEventListener("click", () => {
                 const playerState = window.superSlangAudio?.getState();
@@ -585,6 +601,78 @@
                 window.location.href = "satzmix.html?source=playlist&key=superSlang%3Av1%3Aaudio-playlist";
             });
         }
+
+        // View switching: Mini-Stories vs. Token-Glossar
+        function switchView(viewName, targetId) {
+            const isGlossary = viewName === "glossary";
+            if (storiesSection) storiesSection.hidden = isGlossary;
+            if (dictSection) dictSection.hidden = !isGlossary;
+
+            if (tabStories) {
+                tabStories.classList.toggle("is-active", !isGlossary);
+                tabStories.setAttribute("aria-selected", String(!isGlossary));
+            }
+            if (tabGlossary) {
+                tabGlossary.classList.toggle("is-active", isGlossary);
+                tabGlossary.setAttribute("aria-selected", String(isGlossary));
+            }
+
+            document.querySelectorAll(".super-slang-chapter-nav [data-view-target]").forEach(link => {
+                const targetView = link.dataset.viewTarget;
+                const isItemActive = (!isGlossary && targetView === "stories" && !link.classList.contains("super-slang-nav-sublink")) ||
+                                     (isGlossary && targetView === "glossary");
+                link.classList.toggle("is-active", isItemActive);
+            });
+
+            if (targetId) {
+                setTimeout(() => {
+                    const targetEl = document.getElementById(targetId);
+                    if (targetEl) {
+                        targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+                        targetEl.focus?.();
+                    }
+                }, 60);
+            }
+        }
+
+        tabStories?.addEventListener("click", () => {
+            switchView("stories");
+            if (window.location.hash !== "#stories") {
+                history.replaceState(null, "", "#stories");
+            }
+        });
+
+        tabGlossary?.addEventListener("click", () => {
+            switchView("glossary");
+            if (window.location.hash !== "#glossar") {
+                history.replaceState(null, "", "#glossar");
+            }
+            dictSearch?.focus();
+        });
+
+        document.querySelectorAll("[data-view-target]").forEach(link => {
+            link.addEventListener("click", event => {
+                const view = link.dataset.viewTarget;
+                const href = link.getAttribute("href") || "";
+                const targetId = href.startsWith("#") ? href.slice(1) : "";
+                switchView(view, targetId);
+                closeSidebar();
+            });
+        });
+
+        function handleHash() {
+            const hash = window.location.hash;
+            if (hash === "#glossar" || hash === "#glossary" || hash === "#superSlangDictionarySection") {
+                switchView("glossary");
+            } else if (hash.startsWith("#story-") || hash.startsWith("#sentence-")) {
+                switchView("stories", hash.slice(1));
+            } else {
+                switchView("stories");
+            }
+        }
+
+        window.addEventListener("hashchange", handleHash);
+        handleHash();
 
         window.addEventListener("superSlang:playlist-updated", updatePlaylistButtons);
         setTimeout(updatePlaylistButtons, 200);

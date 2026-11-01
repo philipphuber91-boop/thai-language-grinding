@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="../css/super-slang.css">
     <link rel="manifest" href="../manifest.json">
 </head>
-<body class="super-slang-page">
+<body class="thai-giga-page super-slang-page">
     <button
         id="superSlangSidebarToggle"
         class="super-slang-sidebar-toggle"
@@ -113,11 +113,10 @@
             <p class="super-slang-menu-eyebrow">Thai Topic Drill</p>
             <div class="super-slang-menu-heading">💬 Super Slang</div>
             <nav class="super-slang-chapter-nav" aria-label="Projektbereiche">
-                <a href="#superSlangIntro">Projektstart</a>
-                <a href="#story-slang-s1">Story 1: โดนเทหรือเปล่า</a>
-                <a href="#story-slang-s2">Story 2: ชานมแก้วนี้เอาเรื่อง</a>
-                <a href="#superSlangDictionarySection">Slang-Glossar (83 Wörter)</a>
-                <a href="#superSlangAudioPlayer">Audio-Player</a>
+                <a href="#stories" class="super-slang-nav-link is-active" data-view-target="stories">📖 Mini-Stories</a>
+                <a href="#story-slang-s1" class="super-slang-nav-sublink" data-view-target="stories">☕ Story 1: โดนเทหรือเปล่า</a>
+                <a href="#story-slang-s2" class="super-slang-nav-sublink" data-view-target="stories">🧋 Story 2: ชานมแก้วนี้เอาเรื่อง</a>
+                <a href="#glossar" class="super-slang-nav-link" data-view-target="glossary">📚 Token-Glossar (83 Wörter)</a>
             </nav>
         </div>
     </aside>
@@ -128,28 +127,26 @@
     </header>
 
     <main class="super-slang-main">
-        <section id="superSlangIntro" class="super-slang-hero" aria-labelledby="superSlangTitle">
-            <p class="super-slang-eyebrow">Thai Topic Drill · Unterregister</p>
-            <h2 id="superSlangTitle">Thai, wie es im Alltag klingt.</h2>
-            <p>
-                Echtes modernes Umgangsthai in praxisnahen Mini-Stories: 6–10 Sätze pro Szene mit natürlicher Wiederholung, 
-                Token-Glossar, Wortsegmentierung, Tonfarben und direkter Anbindung an den Audioplayer, Wortmix (Satzmix) und RSVP/Typing.
-            </p>
-            <div class="super-slang-badges" aria-label="Projektzuordnung">
-                <span>💬 Super Slang Serie</span>
-                <span>☕ 2 Mini-Stories</span>
-                <span>🔥 15 Sätze</span>
-                <span>📖 83 Slang-Wörter</span>
-                <span>🎲 Wortmix &amp; RSVP Ready</span>
-            </div>
-            <div class="super-slang-quick-bar" aria-label="Schnellstart">
-                <a href="#story-slang-s1" class="super-slang-action-btn">☕ Story 1: โดนเทหรือเปล่า</a>
-                <a href="#story-slang-s2" class="super-slang-action-btn">🧋 Story 2: ชานมแก้วนี้เอาเรื่อง</a>
-                <a href="#superSlangDictionarySection" class="super-slang-action-btn">📖 Slang-Glossar</a>
-                <button id="superSlangAddAllStories" class="super-slang-action-btn is-primary" type="button">+ Alle 15 Sätze in Playlist</button>
-                <button id="superSlangPlayInWordmix" class="super-slang-action-btn" type="button">🎲 Im Wortmix spielen</button>
-            </div>
-        </section>
+        <nav class="super-slang-view-tabs" role="tablist" aria-label="Bereich auswählen">
+            <button
+                id="superSlangTabStories"
+                class="super-slang-tab is-active"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="superSlangStoriesSection">
+                📖 Mini-Stories
+            </button>
+            <button
+                id="superSlangTabGlossary"
+                class="super-slang-tab"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="superSlangDictionarySection">
+                📚 Token-Glossar (83 Wörter)
+            </button>
+        </nav>
 
         <section
             id="superSlangAudioPlayer"
@@ -188,6 +185,7 @@
                 <output id="superSlangAudioSpeedValue" for="superSlangAudioSpeed">0,85×</output>
             </label>
             <div class="thai-giga-audio-actions">
+                <button id="superSlangAudioAddAll" type="button">+ Alle 15 Sätze</button>
                 <button id="superSlangAudioOpenTyping" type="button" disabled>Typing</button>
                 <button id="superSlangAudioOpenRsvp" type="button" disabled>Speedreading</button>
                 <button id="superSlangAudioOpenSentenceMix" type="button" disabled>Wortmix</button>
@@ -211,7 +209,7 @@
             <div id="superSlangStoriesContainer"></div>
         </section>
 
-        <section id="superSlangDictionarySection" class="super-slang-section" aria-labelledby="superSlangDictTitle">
+        <section id="superSlangDictionarySection" class="super-slang-section" aria-labelledby="superSlangDictTitle" hidden>
             <div class="super-slang-section-heading">
                 <p class="super-slang-eyebrow">Wortschatz &amp; Slang-Register</p>
                 <h2 id="superSlangDictTitle">Token-Glossar · Super Slang</h2>
