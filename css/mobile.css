@@ -2371,6 +2371,7 @@
         /* Prevent the whole page from moving while in the typing screen on mobile */
         height:var(--mobile-vh, 100dvh);
         min-height:var(--mobile-vh, 100dvh);
+        padding-bottom:max(24px, env(safe-area-inset-bottom));
         padding-right:max(0px, env(safe-area-inset-right));
         padding-left:max(0px, env(safe-area-inset-left));
         overflow:hidden; /* disallow native scrolling */
