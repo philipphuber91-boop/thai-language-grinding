@@ -12,8 +12,6 @@
     const dictSearch = document.getElementById("superSlangDictSearch");
     const dictCount = document.getElementById("superSlangDictCount");
     const dictPopup = document.getElementById("superSlangDictionary");
-    const addAllPlayerButton = document.getElementById("superSlangAudioAddAll");
-    const addAllButton = document.getElementById("superSlangAddAllStories");
     const wordmixButton = document.getElementById("superSlangPlayInWordmix");
 
     let content = null;
@@ -78,6 +76,9 @@
     function getSpeakerClass(speakerId) {
         if (!speakerId) return "";
         const lower = String(speakerId).toLowerCase();
+        if (lower.includes("ploy")) return "super-slang-speaker-ploy";
+        if (lower.includes("non")) return "super-slang-speaker-non";
+        if (lower.includes("ohm")) return "super-slang-speaker-ohm";
         if (lower.includes("fah")) return "super-slang-speaker-fah";
         if (lower.includes("nan")) return "super-slang-speaker-nan";
         if (lower.includes("art")) return "super-slang-speaker-art";
@@ -136,7 +137,8 @@
     }
 
     function renderSentence(sentence, index, story) {
-        const speaker = (story.speakers || []).find(s => s.id === sentence.speakerId);
+        const speaker = (story.speakers || []).find(s => s.id === sentence.speakerId) ||
+            (sentence.speaker ? { id: sentence.speaker.toLowerCase(), name: sentence.speaker } : null);
         const speakerTag = speaker
             ? `<span class="super-slang-speaker-tag ${getSpeakerClass(speaker.id)}">${escapeHtml(speaker.name)}</span>`
             : "";
@@ -185,40 +187,33 @@
     }
 
     function renderStory(story, storyIndex) {
-        const speakerChips = (story.speakers || []).map(s => `
-            <span class="super-slang-speaker-chip">
-                <span class="super-slang-speaker-tag ${getSpeakerClass(s.id)}">${escapeHtml(s.name)}</span>
-                <strong>${escapeHtml(s.thai)}</strong> · ${escapeHtml(s.role)}
-            </span>
-        `).join("");
-
-        const slangBadges = (story.slangHighlights || []).map(s => `
-            <span class="super-slang-slang-tag">${escapeHtml(s)}</span>
-        `).join("");
-
         const sentencesMarkup = (story.sentences || [])
             .map((sentence, idx) => renderSentence(sentence, idx, story))
             .join("");
 
         return `
-            <article id="story-${escapeHtml(story.id)}" class="super-slang-story-card" data-story-id="${escapeHtml(story.id)}">
+            <article id="story-${escapeHtml(story.id)}" class="super-slang-story-card is-collapsed" data-story-id="${escapeHtml(story.id)}">
                 <header class="super-slang-story-header">
                     <div class="super-slang-story-meta">
                         <span class="super-slang-story-badge">Mini-Story ${storyIndex + 1}</span>
-                        <button class="super-slang-story-toggle" type="button" aria-expanded="true" title="Mini-Story zuklappen">
-                            <span class="super-slang-story-toggle-icon" aria-hidden="true">▼</span>
+                        <button
+                            class="thai-giga-playlist-button"
+                            type="button"
+                            data-slang-story-playlist="${escapeHtml(story.id)}"
+                            aria-label="Ganze Story zur Audio-Playlist hinzufügen"
+                            title="Ganze Story zur Audio-Playlist hinzufügen">
                         </button>
                     </div>
-                    <h3 class="super-slang-story-title" style="margin: 0 0 6px; font-size: 1.45rem; color: var(--super-slang-highlight);">${escapeHtml(story.title)}</h3>
-                    <p class="super-slang-story-desc" style="margin: 0 0 12px; color: var(--super-slang-muted); font-size: 0.95rem; line-height: 1.6;">${escapeHtml(story.description || "")}</p>
-                    <div class="super-slang-slang-tags" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px;">
-                        ${slangBadges}
-                    </div>
-                    <div class="super-slang-speaker-chips">
-                        ${speakerChips}
-                    </div>
+                    <button
+                        class="super-slang-story-summary"
+                        type="button"
+                        aria-expanded="false"
+                        aria-controls="story-content-${escapeHtml(story.id)}">
+                        <span class="super-slang-story-title" role="heading" aria-level="3">${escapeHtml(story.title)}</span>
+                        <span class="super-slang-story-desc">${escapeHtml(story.description || story.context || "")}</span>
+                    </button>
                 </header>
-                <div class="thai-giga-sentences">
+                <div id="story-content-${escapeHtml(story.id)}" class="thai-giga-sentences">
                     ${sentencesMarkup}
                 </div>
             </article>
@@ -228,10 +223,10 @@
     function setStoryCollapsed(storyCard, collapsed) {
         if (!storyCard) return;
         storyCard.classList.toggle("is-collapsed", collapsed);
-        const toggleBtn = storyCard.querySelector(".super-slang-story-toggle");
-        if (toggleBtn) {
-            toggleBtn.setAttribute("aria-expanded", String(!collapsed));
-            toggleBtn.setAttribute("title", collapsed ? "Mini-Story aufklappen" : "Mini-Story zuklappen");
+        const summary = storyCard.querySelector(".super-slang-story-summary");
+        if (summary) {
+            summary.setAttribute("aria-expanded", String(!collapsed));
+            summary.setAttribute("aria-label", collapsed ? "Mini-Story aufklappen" : "Mini-Story zuklappen");
         }
     }
 
@@ -421,22 +416,12 @@
             const sentenceIds = story ? story.sentences.map(s => s.id) : [];
             const allAdded = sentenceIds.length > 0 && sentenceIds.every(id => playlistIds.has(id));
             button.classList.toggle("is-added", allAdded);
-            button.textContent = allAdded ? "✓ Story in Playlist" : "+ Story in Playlist";
+            button.setAttribute(
+                "aria-label",
+                allAdded ? "Ganze Story aus der Audio-Playlist entfernen" : "Ganze Story zur Audio-Playlist hinzufügen"
+            );
+            button.title = allAdded ? "Ganze Story aus der Audio-Playlist entfernen" : "Ganze Story zur Audio-Playlist hinzufügen";
         });
-
-        if (addAllButton) {
-            const allSentenceIds = Array.from(sentencesById.keys());
-            const allAdded = allSentenceIds.length > 0 && allSentenceIds.every(id => playlistIds.has(id));
-            addAllButton.classList.toggle("is-added", allAdded);
-            addAllButton.textContent = allAdded ? "✓ Alle 15 Sätze in Playlist" : "+ Alle 15 Sätze in Playlist";
-        }
-
-        if (addAllPlayerButton) {
-            const allSentenceIds = Array.from(sentencesById.keys());
-            const allAdded = allSentenceIds.length > 0 && allSentenceIds.every(id => playlistIds.has(id));
-            addAllPlayerButton.classList.toggle("is-added", allAdded);
-            addAllPlayerButton.textContent = allAdded ? "✓ Alle 15 Sätze" : "+ Alle 15 Sätze";
-        }
     }
 
     function initializeSentenceEvents() {
@@ -511,8 +496,20 @@
         });
 
         storiesContainer.querySelectorAll(".super-slang-story-header").forEach(header => {
-            header.addEventListener("click", () => {
+            header.addEventListener("click", event => {
+                // Ignore clicks on buttons inside header (e.g. playlist button)
+                if (event.target.closest("button")) return;
                 const card = header.closest(".super-slang-story-card");
+                if (card) {
+                    toggleStoryCollapsed(card);
+                }
+            });
+        });
+
+        storiesContainer.querySelectorAll(".super-slang-story-summary").forEach(summary => {
+            summary.addEventListener("click", event => {
+                event.stopPropagation();
+                const card = summary.closest(".super-slang-story-card");
                 if (card) {
                     toggleStoryCollapsed(card);
                 }
@@ -576,6 +573,7 @@
         if (storiesContainer) {
             storiesContainer.innerHTML = allStories.map((story, idx) => renderStory(story, idx)).join("");
             initializeSentenceEvents();
+            updatePlaylistButtons();
         }
 
         renderWordGrid();
@@ -583,38 +581,6 @@
         if (dictSearch) {
             dictSearch.addEventListener("input", () => {
                 renderWordGrid(dictSearch.value);
-            });
-        }
-
-        if (addAllButton) {
-            addAllButton.addEventListener("click", () => {
-                const allSentenceIds = Array.from(sentencesById.keys());
-                const playerState = window.superSlangAudio?.getState();
-                const playlistIds = new Set((playerState?.playlist || []).map(item => item.id));
-                const allAdded = allSentenceIds.every(id => playlistIds.has(id));
-
-                if (allAdded) {
-                    window.superSlangAudio?.removeStory(allSentenceIds);
-                } else {
-                    window.superSlangAudio?.addStory(allSentenceIds);
-                }
-                updatePlaylistButtons();
-            });
-        }
-
-        if (addAllPlayerButton) {
-            addAllPlayerButton.addEventListener("click", () => {
-                const allSentenceIds = Array.from(sentencesById.keys());
-                const playerState = window.superSlangAudio?.getState();
-                const playlistIds = new Set((playerState?.playlist || []).map(item => item.id));
-                const allAdded = allSentenceIds.length > 0 && allSentenceIds.every(id => playlistIds.has(id));
-
-                if (allAdded) {
-                    window.superSlangAudio?.removeStory(allSentenceIds);
-                } else {
-                    window.superSlangAudio?.addStory(allSentenceIds);
-                }
-                updatePlaylistButtons();
             });
         }
 
@@ -644,6 +610,9 @@
             }
             if (targetId === "story-slang-s2" || targetId === "story-2") {
                 return document.getElementById("story-slang-story-02") || storiesSection;
+            }
+            if (targetId === "story-slang-s3" || targetId === "story-3") {
+                return document.getElementById("story-slang-story-03") || storiesSection;
             }
             return document.getElementById(targetId) || (isGlossary ? dictSection : storiesSection);
         }

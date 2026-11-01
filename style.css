@@ -8993,7 +8993,7 @@ body:has(#worldmapHome) .topbar{
 
 .worldmap-home{
     display:grid;
-    grid-template-columns:minmax(220px, .9fr) minmax(360px, 1.25fr) minmax(260px, 1fr);
+    grid-template-columns:minmax(220px, .9fr) minmax(260px, 1fr);
     gap:8px;
     min-height:calc(100vh - 295px);
     padding:1px;

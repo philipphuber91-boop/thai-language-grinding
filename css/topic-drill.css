@@ -45,6 +45,7 @@
 
 .topic-drill-register-card {
     display: flex;
+    width: 100%;
     min-height: 230px;
     align-items: flex-start;
     gap: 16px;

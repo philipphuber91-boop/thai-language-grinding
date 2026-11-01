@@ -379,6 +379,18 @@ body.super-slang-page {
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
 }
 
+.super-slang-story-card.is-collapsed {
+    background: transparent;
+    border-style: dashed;
+    border-color: rgba(215, 164, 243, 0.45);
+    box-shadow: none;
+}
+
+.super-slang-story-card.is-collapsed:hover {
+    background: rgba(30, 21, 37, 0.58);
+    border-color: var(--super-slang-accent);
+}
+
 .super-slang-story-header {
     margin-bottom: 24px;
     padding-bottom: 18px;
@@ -388,36 +400,14 @@ body.super-slang-page {
     transition: margin-bottom 0.2s ease, padding-bottom 0.2s ease;
 }
 
-.super-slang-story-header:hover .super-slang-story-title {
+.super-slang-story-summary:focus-visible {
+    outline: 2px solid var(--super-slang-accent);
+    outline-offset: 4px;
+    border-radius: 6px;
+}
+
+.super-slang-story-summary:hover .super-slang-story-title {
     color: var(--super-slang-accent);
-}
-
-.super-slang-story-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    padding: 0;
-    margin-left: auto;
-    border: 1px solid var(--super-slang-border);
-    border-radius: 8px;
-    background: rgba(215, 164, 243, 0.1);
-    color: var(--super-slang-highlight);
-    cursor: pointer;
-    font-size: 0.8rem;
-    line-height: 1;
-    transition: background 0.2s ease, border-color 0.2s ease;
-}
-
-.super-slang-story-toggle:hover {
-    background: rgba(215, 164, 243, 0.22);
-    border-color: var(--super-slang-accent);
-}
-
-.super-slang-story-toggle-icon {
-    display: inline-block;
-    transition: transform 0.2s ease;
 }
 
 .super-slang-story-card.is-collapsed .super-slang-story-header {
@@ -431,14 +421,8 @@ body.super-slang-page {
 }
 
 .super-slang-story-card.is-collapsed .super-slang-story-desc,
-.super-slang-story-card.is-collapsed .super-slang-slang-tags,
-.super-slang-story-card.is-collapsed .super-slang-speaker-chips,
 .super-slang-story-card.is-collapsed .thai-giga-sentences {
-    display: none;
-}
-
-.super-slang-story-card.is-collapsed .super-slang-story-toggle-icon {
-    transform: rotate(-90deg);
+    display: none !important;
 }
 
 .super-slang-story-meta {
@@ -448,6 +432,43 @@ body.super-slang-page {
     justify-content: space-between;
     gap: 12px;
     margin-bottom: 12px;
+}
+
+.super-slang-story-summary {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: inherit;
+    box-shadow: none;
+    cursor: pointer;
+    font: inherit;
+    text-align: left;
+}
+
+.super-slang-story-summary:hover,
+.super-slang-story-summary:focus {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: none;
+    transform: none;
+}
+
+.super-slang-story-title {
+    display: block;
+    margin: 0 0 6px;
+    font-size: 1.45rem;
+    color: var(--super-slang-highlight);
+}
+
+.super-slang-story-desc {
+    display: block;
+    margin: 0 0 12px;
+    color: var(--super-slang-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
 }
 
 .super-slang-story-badge {
@@ -462,45 +483,6 @@ body.super-slang-page {
     font-weight: 600;
 }
 
-.super-slang-story-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.super-slang-action-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    border: 1px solid var(--super-slang-border);
-    border-radius: 12px;
-    background: var(--super-slang-panel);
-    color: var(--super-slang-text);
-    font-size: 0.88rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.super-slang-action-btn:hover {
-    background: var(--super-slang-panel-light);
-    border-color: var(--super-slang-accent);
-    color: var(--super-slang-highlight);
-}
-
-.super-slang-action-btn.is-primary {
-    background: linear-gradient(135deg, #c790ef, #8e44ad);
-    color: #fff;
-    border-color: transparent;
-}
-
-.super-slang-action-btn.is-added {
-    background: rgba(46, 204, 113, 0.2);
-    border-color: rgba(46, 204, 113, 0.5);
-    color: #2ecc71;
-}
-
 .super-slang-speaker-tag {
     display: inline-block;
     padding: 2px 8px;
@@ -511,6 +493,24 @@ body.super-slang-page {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     vertical-align: middle;
+}
+
+.super-slang-speaker-ploy {
+    background: rgba(243, 156, 18, 0.2);
+    color: #f39c12;
+    border: 1px solid rgba(243, 156, 18, 0.4);
+}
+
+.super-slang-speaker-non {
+    background: rgba(52, 152, 219, 0.2);
+    color: #5dade2;
+    border: 1px solid rgba(52, 152, 219, 0.4);
+}
+
+.super-slang-speaker-ohm {
+    background: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+    border: 1px solid rgba(46, 204, 113, 0.4);
 }
 
 .super-slang-speaker-fah {
@@ -529,35 +529,6 @@ body.super-slang-page {
     background: rgba(52, 152, 219, 0.2);
     color: #5dade2;
     border: 1px solid rgba(52, 152, 219, 0.4);
-}
-
-.super-slang-speaker-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 10px;
-}
-
-.super-slang-speaker-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 4px 10px;
-    border-radius: 8px;
-    font-size: 0.8rem;
-    background: rgba(0, 0, 0, 0.25);
-    color: var(--super-slang-muted);
-}
-
-.super-slang-slang-tag {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 999px;
-    background: rgba(255, 203, 113, 0.15);
-    color: #ffcb71;
-    border: 1px solid rgba(255, 203, 113, 0.3);
-    font-size: 0.82rem;
-    font-weight: 500;
 }
 
 /* Dictionary section */
@@ -665,5 +636,3 @@ body[data-thai-tone-colors="false"] .thai-tone-rising,
 body[data-thai-tone-colors="false"] .thai-tone-mixed {
     color: inherit !important;
 }
-
-

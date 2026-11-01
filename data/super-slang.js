@@ -9,9 +9,16 @@ const superSlangContent = {
       "id": "slang-gae",
       "thai": "แก",
       "transliteration": "gae",
-      "meanings": ["du", "ihr", "Ey / Alter"],
+      "meanings": [
+        "du",
+        "ihr",
+        "Ey / Alter"
+      ],
       "syllables": [
-        { "thai": "แก", "transliteration": "gae" }
+        {
+          "thai": "แก",
+          "transliteration": "gae"
+        }
       ],
       "note": "Sehr vertrautes Pronomen unter Gleichaltrigen und engen Freunden ('Ey / du'). Nicht zu Fremden oder Älteren sagen!"
     },
@@ -19,27 +26,47 @@ const superSlangContent = {
       "id": "word-yuu",
       "thai": "อยู่",
       "transliteration": "yùu",
-      "meanings": ["sich befinden", "sein", "wohnen"],
+      "meanings": [
+        "sich befinden",
+        "sein",
+        "wohnen"
+      ],
       "syllables": [
-        { "thai": "อยู่", "transliteration": "yùu" }
+        {
+          "thai": "อยู่",
+          "transliteration": "yùu"
+        }
       ]
     },
     {
       "id": "word-nai",
       "thai": "ไหน",
       "transliteration": "nǎi",
-      "meanings": ["wo", "welcher"],
+      "meanings": [
+        "wo",
+        "welcher"
+      ],
       "syllables": [
-        { "thai": "ไหน", "transliteration": "nǎi" }
+        {
+          "thai": "ไหน",
+          "transliteration": "nǎi"
+        }
       ]
     },
     {
       "id": "slang-nia",
       "thai": "เนี่ย",
       "transliteration": "nîa",
-      "meanings": ["denn", "eigentlich", "hier"],
+      "meanings": [
+        "denn",
+        "eigentlich",
+        "hier"
+      ],
       "syllables": [
-        { "thai": "เนี่ย", "transliteration": "nîa" }
+        {
+          "thai": "เนี่ย",
+          "transliteration": "nîa"
+        }
       ],
       "note": "Umgangssprachlicher Fokus- und Nachdrückpartikel in Fragen und Ausrufen ('denn eigentlich')."
     },
@@ -47,9 +74,16 @@ const superSlangContent = {
       "id": "word-saai",
       "thai": "สาย",
       "transliteration": "sǎai",
-      "meanings": ["spät", "spät dran sein", "Linie"],
+      "meanings": [
+        "spät",
+        "spät dran sein",
+        "Linie"
+      ],
       "syllables": [
-        { "thai": "สาย", "transliteration": "sǎai" }
+        {
+          "thai": "สาย",
+          "transliteration": "sǎai"
+        }
       ],
       "note": "Im Kontext von Uhrzeit: zu spät kommen / spät dran sein."
     },
@@ -57,18 +91,32 @@ const superSlangContent = {
       "id": "word-laew",
       "thai": "แล้ว",
       "transliteration": "lɛ́ɛw",
-      "meanings": ["bereits", "schon", "danach"],
+      "meanings": [
+        "bereits",
+        "schon",
+        "danach"
+      ],
       "syllables": [
-        { "thai": "แล้ว", "transliteration": "lɛ́ɛw" }
+        {
+          "thai": "แล้ว",
+          "transliteration": "lɛ́ɛw"
+        }
       ]
     },
     {
       "id": "word-na",
       "thai": "นะ",
       "transliteration": "ná",
-      "meanings": ["gell", "nicht wahr", "bitte"],
+      "meanings": [
+        "gell",
+        "nicht wahr",
+        "bitte"
+      ],
       "syllables": [
-        { "thai": "นะ", "transliteration": "ná" }
+        {
+          "thai": "นะ",
+          "transliteration": "ná"
+        }
       ],
       "note": "Häufiger Satzendpartikel für sanfte Aufforderungen, Rückversicherungen oder Nachdruck."
     },
@@ -76,54 +124,91 @@ const superSlangContent = {
       "id": "name-ohm",
       "thai": "โอม",
       "transliteration": "Ohm",
-      "meanings": ["Ohm (Spitzname)"],
+      "meanings": [
+        "Ohm (Spitzname)"
+      ],
       "syllables": [
-        { "thai": "โอม", "transliteration": "Ohm" }
+        {
+          "thai": "โอม",
+          "transliteration": "Ohm"
+        }
       ]
     },
     {
       "id": "word-yang",
       "thai": "ยัง",
       "transliteration": "yang",
-      "meanings": ["noch", "immer noch"],
+      "meanings": [
+        "noch",
+        "immer noch"
+      ],
       "syllables": [
-        { "thai": "ยัง", "transliteration": "yang" }
+        {
+          "thai": "ยัง",
+          "transliteration": "yang"
+        }
       ]
     },
     {
       "id": "word-mai",
       "thai": "ไม่",
       "transliteration": "mâi",
-      "meanings": ["nicht", "nein"],
+      "meanings": [
+        "nicht",
+        "nein"
+      ],
       "syllables": [
-        { "thai": "ไม่", "transliteration": "mâi" }
+        {
+          "thai": "ไม่",
+          "transliteration": "mâi"
+        }
       ]
     },
     {
       "id": "word-maa",
       "thai": "มา",
       "transliteration": "maa",
-      "meanings": ["kommen", "herkommen"],
+      "meanings": [
+        "kommen",
+        "herkommen"
+      ],
       "syllables": [
-        { "thai": "มา", "transliteration": "maa" }
+        {
+          "thai": "มา",
+          "transliteration": "maa"
+        }
       ]
     },
     {
       "id": "word-iik",
       "thai": "อีก",
       "transliteration": "ìik",
-      "meanings": ["wieder", "noch", "mehr"],
+      "meanings": [
+        "wieder",
+        "noch",
+        "mehr"
+      ],
       "syllables": [
-        { "thai": "อีก", "transliteration": "ìik" }
+        {
+          "thai": "อีก",
+          "transliteration": "ìik"
+        }
       ]
     },
     {
       "id": "word-roer",
       "thai": "เหรอ",
       "transliteration": "rə̌ə",
-      "meanings": ["echt?", "wirklich?", "oder?"],
+      "meanings": [
+        "echt?",
+        "wirklich?",
+        "oder?"
+      ],
       "syllables": [
-        { "thai": "เหรอ", "transliteration": "rə̌ə" }
+        {
+          "thai": "เหรอ",
+          "transliteration": "rə̌ə"
+        }
       ],
       "note": "Gesprochene Form von หรือ für Nachfragen und Erstaunen."
     },
@@ -131,28 +216,51 @@ const superSlangContent = {
       "id": "word-rue-waa",
       "thai": "หรือว่า",
       "transliteration": "rʉ̌ʉ-wâa",
-      "meanings": ["oder etwa", "oder vielleicht"],
+      "meanings": [
+        "oder etwa",
+        "oder vielleicht"
+      ],
       "syllables": [
-        { "thai": "หรือ", "transliteration": "rʉ̌ʉ" },
-        { "thai": "ว่า", "transliteration": "wâa" }
+        {
+          "thai": "หรือ",
+          "transliteration": "rʉ̌ʉ"
+        },
+        {
+          "thai": "ว่า",
+          "transliteration": "wâa"
+        }
       ]
     },
     {
       "id": "word-rao",
       "thai": "เรา",
       "transliteration": "rao",
-      "meanings": ["wir", "uns", "ich (unter Freunden)"],
+      "meanings": [
+        "wir",
+        "uns",
+        "ich (unter Freunden)"
+      ],
       "syllables": [
-        { "thai": "เรา", "transliteration": "rao" }
+        {
+          "thai": "เรา",
+          "transliteration": "rao"
+        }
       ]
     },
     {
       "id": "word-doon",
       "thai": "โดน",
       "transliteration": "doon",
-      "meanings": ["treffen", "abbekommen", "Passivpartikel"],
+      "meanings": [
+        "treffen",
+        "abbekommen",
+        "Passivpartikel"
+      ],
       "syllables": [
-        { "thai": "โดน", "transliteration": "doon" }
+        {
+          "thai": "โดน",
+          "transliteration": "doon"
+        }
       ],
       "note": "Wird vor Verben gesetzt, um ein Passiv mit meist unerwünschter Folge auszudrücken."
     },
@@ -160,9 +268,17 @@ const superSlangContent = {
       "id": "slang-thee",
       "thai": "เท",
       "transliteration": "thee",
-      "meanings": ["ausgießen", "versetzen", "sitzenlassen", "ghosten"],
+      "meanings": [
+        "ausgießen",
+        "versetzen",
+        "sitzenlassen",
+        "ghosten"
+      ],
       "syllables": [
-        { "thai": "เท", "transliteration": "thee" }
+        {
+          "thai": "เท",
+          "transliteration": "thee"
+        }
       ],
       "note": "Wörtlich 'auskippen'. Im Slang: eine Verabredung platzen lassen oder jemanden sitzenlassen/ghosten. 'โดนเท' = versetzt werden."
     },
@@ -170,27 +286,47 @@ const superSlangContent = {
       "id": "word-yaa",
       "thai": "อย่า",
       "transliteration": "yàa",
-      "meanings": ["tu nicht", "bloß nicht"],
+      "meanings": [
+        "tu nicht",
+        "bloß nicht"
+      ],
       "syllables": [
-        { "thai": "อย่า", "transliteration": "yàa" }
+        {
+          "thai": "อย่า",
+          "transliteration": "yàa"
+        }
       ]
     },
     {
       "id": "word-phoeng",
       "thai": "เพิ่ง",
       "transliteration": "phə̂ng",
-      "meanings": ["gerade erst", "voreilig"],
+      "meanings": [
+        "gerade erst",
+        "voreilig"
+      ],
       "syllables": [
-        { "thai": "เพิ่ง", "transliteration": "phə̂ng" }
+        {
+          "thai": "เพิ่ง",
+          "transliteration": "phə̂ng"
+        }
       ]
     },
     {
       "id": "slang-noyd",
       "thai": "นอยด์",
       "transliteration": "nɔ́y",
-      "meanings": ["paranoid", "geschmollt sein", "down sein", "beleidigt"],
+      "meanings": [
+        "paranoid",
+        "geschmollt sein",
+        "down sein",
+        "beleidigt"
+      ],
       "syllables": [
-        { "thai": "นอยด์", "transliteration": "nɔ́y" }
+        {
+          "thai": "นอยด์",
+          "transliteration": "nɔ́y"
+        }
       ],
       "note": "Vom englischen 'paranoid'. Bedeutet im Thai-Slang gekränkt sein, schmollen oder sich unnötig Sorgen machen."
     },
@@ -198,47 +334,83 @@ const superSlangContent = {
       "id": "word-bpai-loey",
       "thai": "ไปเลย",
       "transliteration": "bpai ləəy",
-      "meanings": ["gleich so", "sofort ganz"],
+      "meanings": [
+        "gleich so",
+        "sofort ganz"
+      ],
       "syllables": [
-        { "thai": "ไป", "transliteration": "bpai" },
-        { "thai": "เลย", "transliteration": "ləəy" }
+        {
+          "thai": "ไป",
+          "transliteration": "bpai"
+        },
+        {
+          "thai": "เลย",
+          "transliteration": "ləəy"
+        }
       ]
     },
     {
       "id": "word-khao",
       "thai": "เขา",
       "transliteration": "khǎo",
-      "meanings": ["er", "sie", "die anderen"],
+      "meanings": [
+        "er",
+        "sie",
+        "die anderen"
+      ],
       "syllables": [
-        { "thai": "เขา", "transliteration": "khǎo" }
+        {
+          "thai": "เขา",
+          "transliteration": "khǎo"
+        }
       ]
     },
     {
       "id": "word-gam-lang",
       "thai": "กำลัง",
       "transliteration": "gam-lang",
-      "meanings": ["gerade dabei sein", "Kraft"],
+      "meanings": [
+        "gerade dabei sein",
+        "Kraft"
+      ],
       "syllables": [
-        { "thai": "กำ", "transliteration": "gam" },
-        { "thai": "ลัง", "transliteration": "lang" }
+        {
+          "thai": "กำ",
+          "transliteration": "gam"
+        },
+        {
+          "thai": "ลัง",
+          "transliteration": "lang"
+        }
       ]
     },
     {
       "id": "word-song",
       "thai": "ส่ง",
       "transliteration": "sòng",
-      "meanings": ["senden", "schicken"],
+      "meanings": [
+        "senden",
+        "schicken"
+      ],
       "syllables": [
-        { "thai": "ส่ง", "transliteration": "sòng" }
+        {
+          "thai": "ส่ง",
+          "transliteration": "sòng"
+        }
       ]
     },
     {
       "id": "slang-line",
       "thai": "ไลน์",
       "transliteration": "Line",
-      "meanings": ["LINE (Chat-App)"],
+      "meanings": [
+        "LINE (Chat-App)"
+      ],
       "syllables": [
-        { "thai": "ไลน์", "transliteration": "Line" }
+        {
+          "thai": "ไลน์",
+          "transliteration": "Line"
+        }
       ],
       "note": "Die Chat-App LINE ist in Thailand das Hauptkommunikationsmittel im Alltag."
     },
@@ -246,47 +418,85 @@ const superSlangContent = {
       "id": "word-baawk",
       "thai": "บอก",
       "transliteration": "bɔ̀ɔk",
-      "meanings": ["sagen", "erzählen"],
+      "meanings": [
+        "sagen",
+        "erzählen"
+      ],
       "syllables": [
-        { "thai": "บอก", "transliteration": "bɔ̀ɔk" }
+        {
+          "thai": "บอก",
+          "transliteration": "bɔ̀ɔk"
+        }
       ]
     },
     {
       "id": "word-waa",
       "thai": "ว่า",
       "transliteration": "wâa",
-      "meanings": ["dass", "sagen"],
+      "meanings": [
+        "dass",
+        "sagen"
+      ],
       "syllables": [
-        { "thai": "ว่า", "transliteration": "wâa" }
+        {
+          "thai": "ว่า",
+          "transliteration": "wâa"
+        }
       ]
     },
     {
       "id": "word-rot-dtit",
       "thai": "รถติด",
       "transliteration": "rót-dtìt",
-      "meanings": ["Stau haben", "Verkehr stockt"],
+      "meanings": [
+        "Stau haben",
+        "Verkehr stockt"
+      ],
       "syllables": [
-        { "thai": "รถ", "transliteration": "rót" },
-        { "thai": "ติด", "transliteration": "dtìt" }
+        {
+          "thai": "รถ",
+          "transliteration": "rót"
+        },
+        {
+          "thai": "ติด",
+          "transliteration": "dtìt"
+        }
       ]
     },
     {
       "id": "word-maak",
       "thai": "มาก",
       "transliteration": "mâak",
-      "meanings": ["sehr", "viel"],
+      "meanings": [
+        "sehr",
+        "viel"
+      ],
       "syllables": [
-        { "thai": "มาก", "transliteration": "mâak" }
+        {
+          "thai": "มาก",
+          "transliteration": "mâak"
+        }
       ]
     },
     {
       "id": "slang-waa-san",
       "thai": "ว่าซั่น",
       "transliteration": "wâa-sân",
-      "meanings": ["soso", "angeblich", "wer's glaubt", "ach so"],
+      "meanings": [
+        "soso",
+        "angeblich",
+        "wer's glaubt",
+        "ach so"
+      ],
       "syllables": [
-        { "thai": "ว่า", "transliteration": "wâa" },
-        { "thai": "ซั่น", "transliteration": "sân" }
+        {
+          "thai": "ว่า",
+          "transliteration": "wâa"
+        },
+        {
+          "thai": "ซั่น",
+          "transliteration": "sân"
+        }
       ],
       "note": "Kult-Ausdruck aus dem Isan (ว่าอย่างนั้น). Wird landesweit für scherzhafte, ironische oder skeptische Kommentare genutzt."
     },
@@ -294,28 +504,49 @@ const superSlangContent = {
       "id": "word-ngan",
       "thai": "งั้น",
       "transliteration": "ngán",
-      "meanings": ["dann", "in dem Fall"],
+      "meanings": [
+        "dann",
+        "in dem Fall"
+      ],
       "syllables": [
-        { "thai": "งั้น", "transliteration": "ngán" }
+        {
+          "thai": "งั้น",
+          "transliteration": "ngán"
+        }
       ]
     },
     {
       "id": "word-nang",
       "thai": "นั่ง",
       "transliteration": "nâng",
-      "meanings": ["sitzen"],
+      "meanings": [
+        "sitzen"
+      ],
       "syllables": [
-        { "thai": "นั่ง", "transliteration": "nâng" }
+        {
+          "thai": "นั่ง",
+          "transliteration": "nâng"
+        }
       ]
     },
     {
       "id": "slang-chill",
       "thai": "ชิลๆ",
       "transliteration": "chin-chin",
-      "meanings": ["chillig", "entspannt", "locker"],
+      "meanings": [
+        "chillig",
+        "entspannt",
+        "locker"
+      ],
       "syllables": [
-        { "thai": "ชิล", "transliteration": "chin" },
-        { "thai": "ๆ", "transliteration": "chin" }
+        {
+          "thai": "ชิล",
+          "transliteration": "chin"
+        },
+        {
+          "thai": "ๆ",
+          "transliteration": "chin"
+        }
       ],
       "note": "Vom englischen 'chill'. Extrem gebräuchlich für gemütlich, entspannt oder stressfrei."
     },
@@ -323,29 +554,53 @@ const superSlangContent = {
       "id": "word-raaw",
       "thai": "รอ",
       "transliteration": "rɔɔ",
-      "meanings": ["warten"],
+      "meanings": [
+        "warten"
+      ],
       "syllables": [
-        { "thai": "รอ", "transliteration": "rɔɔ" }
+        {
+          "thai": "รอ",
+          "transliteration": "rɔɔ"
+        }
       ]
     },
     {
       "id": "word-bpai-gaawn",
       "thai": "ไปก่อน",
       "transliteration": "bpai gɔ̀ɔn",
-      "meanings": ["vorerst", "erst einmal"],
+      "meanings": [
+        "vorerst",
+        "erst einmal"
+      ],
       "syllables": [
-        { "thai": "ไป", "transliteration": "bpai" },
-        { "thai": "ก่อน", "transliteration": "gɔ̀ɔn" }
+        {
+          "thai": "ไป",
+          "transliteration": "bpai"
+        },
+        {
+          "thai": "ก่อน",
+          "transliteration": "gɔ̀ɔn"
+        }
       ]
     },
     {
       "id": "slang-khee-loey",
       "thai": "เคเลย",
       "transliteration": "khee ləəy",
-      "meanings": ["alles klar", "abgemacht", "passt"],
+      "meanings": [
+        "alles klar",
+        "abgemacht",
+        "passt"
+      ],
       "syllables": [
-        { "thai": "เค", "transliteration": "khee" },
-        { "thai": "เลย", "transliteration": "ləəy" }
+        {
+          "thai": "เค",
+          "transliteration": "khee"
+        },
+        {
+          "thai": "เลย",
+          "transliteration": "ləəy"
+        }
       ],
       "note": "Umgangssprachlich für 'OK sofort / abgemacht'."
     },
@@ -353,37 +608,67 @@ const superSlangContent = {
       "id": "word-chaa-nom",
       "thai": "ชานม",
       "transliteration": "chaa-nom",
-      "meanings": ["Milchtee"],
+      "meanings": [
+        "Milchtee"
+      ],
       "syllables": [
-        { "thai": "ชา", "transliteration": "chaa" },
-        { "thai": "นม", "transliteration": "nom" }
+        {
+          "thai": "ชา",
+          "transliteration": "chaa"
+        },
+        {
+          "thai": "นม",
+          "transliteration": "nom"
+        }
       ]
     },
     {
       "id": "word-raan",
       "thai": "ร้าน",
       "transliteration": "ráan",
-      "meanings": ["Laden", "Geschäft", "Café"],
+      "meanings": [
+        "Laden",
+        "Geschäft",
+        "Café"
+      ],
       "syllables": [
-        { "thai": "ร้าน", "transliteration": "ráan" }
+        {
+          "thai": "ร้าน",
+          "transliteration": "ráan"
+        }
       ]
     },
     {
       "id": "word-nii",
       "thai": "นี้",
       "transliteration": "níi",
-      "meanings": ["dieser", "diese", "dieses"],
+      "meanings": [
+        "dieser",
+        "diese",
+        "dieses"
+      ],
       "syllables": [
-        { "thai": "นี้", "transliteration": "níi" }
+        {
+          "thai": "นี้",
+          "transliteration": "níi"
+        }
       ]
     },
     {
       "id": "slang-bpang",
       "thai": "ปัง",
       "transliteration": "bpang",
-      "meanings": ["der Knaller", "schlägt voll ein", "umwerfend", "slay"],
+      "meanings": [
+        "der Knaller",
+        "schlägt voll ein",
+        "umwerfend",
+        "slay"
+      ],
       "syllables": [
-        { "thai": "ปัง", "transliteration": "bpang" }
+        {
+          "thai": "ปัง",
+          "transliteration": "bpang"
+        }
       ],
       "note": "Wörtlich Lautmalerei für einen Knall ('Peng'). Im Slang DAS Wort für sensationellen Erfolg, Aussehen oder Geschmack."
     },
@@ -391,73 +676,125 @@ const superSlangContent = {
       "id": "word-dtoeng",
       "thai": "ต้อง",
       "transliteration": "dtɔ̂ng",
-      "meanings": ["müssen"],
+      "meanings": [
+        "müssen"
+      ],
       "syllables": [
-        { "thai": "ต้อง", "transliteration": "dtɔ̂ng" }
+        {
+          "thai": "ต้อง",
+          "transliteration": "dtɔ̂ng"
+        }
       ]
     },
     {
       "id": "word-laawng",
       "thai": "ลอง",
       "transliteration": "lɔɔng",
-      "meanings": ["probieren", "testen", "versuchen"],
+      "meanings": [
+        "probieren",
+        "testen",
+        "versuchen"
+      ],
       "syllables": [
-        { "thai": "ลอง", "transliteration": "lɔɔng" }
+        {
+          "thai": "ลอง",
+          "transliteration": "lɔɔng"
+        }
       ]
     },
     {
       "id": "word-oo-khee",
       "thai": "โอเค",
       "transliteration": "oo-khee",
-      "meanings": ["okay"],
+      "meanings": [
+        "okay"
+      ],
       "syllables": [
-        { "thai": "โอ", "transliteration": "oo" },
-        { "thai": "เค", "transliteration": "khee" }
+        {
+          "thai": "โอ",
+          "transliteration": "oo"
+        },
+        {
+          "thai": "เค",
+          "transliteration": "khee"
+        }
       ]
     },
     {
       "id": "word-sang",
       "thai": "สั่ง",
       "transliteration": "sàng",
-      "meanings": ["bestellen", "befehlen"],
+      "meanings": [
+        "bestellen",
+        "befehlen"
+      ],
       "syllables": [
-        { "thai": "สั่ง", "transliteration": "sàng" }
+        {
+          "thai": "สั่ง",
+          "transliteration": "sàng"
+        }
       ]
     },
     {
       "id": "word-loey",
       "thai": "เลย",
       "transliteration": "ləəy",
-      "meanings": ["sofort", "schon", "überhaupt"],
+      "meanings": [
+        "sofort",
+        "schon",
+        "überhaupt"
+      ],
       "syllables": [
-        { "thai": "เลย", "transliteration": "ləəy" }
+        {
+          "thai": "เลย",
+          "transliteration": "ləəy"
+        }
       ]
     },
     {
       "id": "word-diao",
       "thai": "เดี๋ยว",
       "transliteration": "dǐao",
-      "meanings": ["gleich", "kurz", "schon gut"],
+      "meanings": [
+        "gleich",
+        "kurz",
+        "schon gut"
+      ],
       "syllables": [
-        { "thai": "เดี๋ยว", "transliteration": "dǐao" }
+        {
+          "thai": "เดี๋ยว",
+          "transliteration": "dǐao"
+        }
       ]
     },
     {
       "id": "word-chan",
       "thai": "ฉัน",
       "transliteration": "chǎn",
-      "meanings": ["ich"],
+      "meanings": [
+        "ich"
+      ],
       "syllables": [
-        { "thai": "ฉัน", "transliteration": "chǎn" }
+        {
+          "thai": "ฉัน",
+          "transliteration": "chǎn"
+        }
       ]
     },
     {
       "id": "word-liang",
       "thai": "เลี้ยง",
       "transliteration": "líang",
-      "meanings": ["einladen", "spendieren", "aufziehen"],
+      "meanings": [
+        "einladen",
+        "spendieren",
+        "aufziehen"
+      ],
       "syllables": [
-        { "thai": "เลี้ยง", "transliteration": "líang" }
+        {
+          "thai": "เลี้ยง",
+          "transliteration": "líang"
+        }
       ],
       "note": "Im Kontext von Essen/Trinken: die Rechnung übernehmen / jemanden einladen."
     },
@@ -465,85 +802,156 @@ const superSlangContent = {
       "id": "word-eeng",
       "thai": "เอง",
       "transliteration": "eeng",
-      "meanings": ["selbst", "allein"],
+      "meanings": [
+        "selbst",
+        "allein"
+      ],
       "syllables": [
-        { "thai": "เอง", "transliteration": "eeng" }
+        {
+          "thai": "เอง",
+          "transliteration": "eeng"
+        }
       ]
     },
     {
       "id": "word-thuk-khon",
       "thai": "ทุกคน",
       "transliteration": "thúk-khon",
-      "meanings": ["alle", "jeder", "Leute"],
+      "meanings": [
+        "alle",
+        "jeder",
+        "Leute"
+      ],
       "syllables": [
-        { "thai": "ทุก", "transliteration": "thúk" },
-        { "thai": "คน", "transliteration": "khon" }
+        {
+          "thai": "ทุก",
+          "transliteration": "thúk"
+        },
+        {
+          "thai": "คน",
+          "transliteration": "khon"
+        }
       ]
     },
     {
       "id": "word-khaaw-thoot",
       "thai": "ขอโทษ",
       "transliteration": "khɔ̌ɔ-thôot",
-      "meanings": ["Entschuldigung", "Verzeihung"],
+      "meanings": [
+        "Entschuldigung",
+        "Verzeihung"
+      ],
       "syllables": [
-        { "thai": "ขอ", "transliteration": "khɔ̌ɔ" },
-        { "thai": "โทษ", "transliteration": "thôot" }
+        {
+          "thai": "ขอ",
+          "transliteration": "khɔ̌ɔ"
+        },
+        {
+          "thai": "โทษ",
+          "transliteration": "thôot"
+        }
       ]
     },
     {
       "id": "word-thii",
       "thai": "ที่",
       "transliteration": "thîi",
-      "meanings": ["dass", "an", "bei", "Ort"],
+      "meanings": [
+        "dass",
+        "an",
+        "bei",
+        "Ort"
+      ],
       "syllables": [
-        { "thai": "ที่", "transliteration": "thîi" }
+        {
+          "thai": "ที่",
+          "transliteration": "thîi"
+        }
       ]
     },
     {
       "id": "word-hai",
       "thai": "ให้",
       "transliteration": "hâi",
-      "meanings": ["geben", "lassen", "für"],
+      "meanings": [
+        "geben",
+        "lassen",
+        "für"
+      ],
       "syllables": [
-        { "thai": "ให้", "transliteration": "hâi" }
+        {
+          "thai": "ให้",
+          "transliteration": "hâi"
+        }
       ]
     },
     {
       "id": "word-nuek",
       "thai": "นึก",
       "transliteration": "nʉ́k",
-      "meanings": ["denken", "glauben", "sich erinnern"],
+      "meanings": [
+        "denken",
+        "glauben",
+        "sich erinnern"
+      ],
       "syllables": [
-        { "thai": "นึก", "transliteration": "nʉ́k" }
+        {
+          "thai": "นึก",
+          "transliteration": "nʉ́k"
+        }
       ]
     },
     {
       "id": "word-ja",
       "thai": "จะ",
       "transliteration": "jà",
-      "meanings": ["werden", "Zukunftspartikel"],
+      "meanings": [
+        "werden",
+        "Zukunftspartikel"
+      ],
       "syllables": [
-        { "thai": "จะ", "transliteration": "jà" }
+        {
+          "thai": "จะ",
+          "transliteration": "jà"
+        }
       ]
     },
     {
       "id": "word-phuak-rao",
       "thai": "พวกเรา",
       "transliteration": "phûak-rao",
-      "meanings": ["wir", "uns", "unsere Gruppe"],
+      "meanings": [
+        "wir",
+        "uns",
+        "unsere Gruppe"
+      ],
       "syllables": [
-        { "thai": "พวก", "transliteration": "phûak" },
-        { "thai": "เรา", "transliteration": "rao" }
+        {
+          "thai": "พวก",
+          "transliteration": "phûak"
+        },
+        {
+          "thai": "เรา",
+          "transliteration": "rao"
+        }
       ]
     },
     {
       "id": "word-sa-laew",
       "thai": "ซะแล้ว",
       "transliteration": "sá-lɛ́ɛw",
-      "meanings": ["schon (geschehen)"],
+      "meanings": [
+        "schon (geschehen)"
+      ],
       "syllables": [
-        { "thai": "ซะ", "transliteration": "sá" },
-        { "thai": "แล้ว", "transliteration": "lɛ́ɛw" }
+        {
+          "thai": "ซะ",
+          "transliteration": "sá"
+        },
+        {
+          "thai": "แล้ว",
+          "transliteration": "lɛ́ɛw"
+        }
       ],
       "note": "Gesprochene Verkürzung von เสียแล้ว, zeigt an, dass etwas Unerwartetes eingetreten ist."
     },
@@ -551,57 +959,104 @@ const superSlangContent = {
       "id": "word-nae-naawn",
       "thai": "แน่นอน",
       "transliteration": "nɛ̂ɛ-nɔɔn",
-      "meanings": ["sicher", "garantiert", "auf jeden Fall"],
+      "meanings": [
+        "sicher",
+        "garantiert",
+        "auf jeden Fall"
+      ],
       "syllables": [
-        { "thai": "แน่", "transliteration": "nɛ̂ɛ" },
-        { "thai": "นอน", "transliteration": "nɔɔn" }
+        {
+          "thai": "แน่",
+          "transliteration": "nɛ̂ɛ"
+        },
+        {
+          "thai": "นอน",
+          "transliteration": "nɔɔn"
+        }
       ]
     },
     {
       "id": "word-a-rai",
       "thai": "อะไร",
       "transliteration": "à-rai",
-      "meanings": ["was", "etwas"],
+      "meanings": [
+        "was",
+        "etwas"
+      ],
       "syllables": [
-        { "thai": "อะ", "transliteration": "à" },
-        { "thai": "ไร", "transliteration": "rai" }
+        {
+          "thai": "อะ",
+          "transliteration": "à"
+        },
+        {
+          "thai": "ไร",
+          "transliteration": "rai"
+        }
       ]
     },
     {
       "id": "word-gin",
       "thai": "กิน",
       "transliteration": "gin",
-      "meanings": ["essen", "trinken"],
+      "meanings": [
+        "essen",
+        "trinken"
+      ],
       "syllables": [
-        { "thai": "กิน", "transliteration": "gin" }
+        {
+          "thai": "กิน",
+          "transliteration": "gin"
+        }
       ]
     },
     {
       "id": "word-gan",
       "thai": "กัน",
       "transliteration": "gan",
-      "meanings": ["zusammen", "einander"],
+      "meanings": [
+        "zusammen",
+        "einander"
+      ],
       "syllables": [
-        { "thai": "กัน", "transliteration": "gan" }
+        {
+          "thai": "กัน",
+          "transliteration": "gan"
+        }
       ]
     },
     {
       "id": "word-rue-yang",
       "thai": "หรือยัง",
       "transliteration": "rʉ̌ʉ-yang",
-      "meanings": ["oder noch nicht?", "schon?"],
+      "meanings": [
+        "oder noch nicht?",
+        "schon?"
+      ],
       "syllables": [
-        { "thai": "หรือ", "transliteration": "rʉ̌ʉ" },
-        { "thai": "ยัง", "transliteration": "yang" }
+        {
+          "thai": "หรือ",
+          "transliteration": "rʉ̌ʉ"
+        },
+        {
+          "thai": "ยัง",
+          "transliteration": "yang"
+        }
       ]
     },
     {
       "id": "slang-fin",
       "thai": "ฟิน",
       "transliteration": "fin",
-      "meanings": ["himmlisch", "im siebten Himmel", "purer Genuss"],
+      "meanings": [
+        "himmlisch",
+        "im siebten Himmel",
+        "purer Genuss"
+      ],
       "syllables": [
-        { "thai": "ฟิน", "transliteration": "fin" }
+        {
+          "thai": "ฟิน",
+          "transliteration": "fin"
+        }
       ],
       "note": "Von engl. 'finish / finale', beschreibt das Gefühl vollkommener Zufriedenheit oder Genuss ('pure bliss')."
     },
@@ -609,68 +1064,125 @@ const superSlangContent = {
       "id": "word-a-raawy",
       "thai": "อร่อย",
       "transliteration": "à-rɔ̀y",
-      "meanings": ["lecker", "schmackhaft"],
+      "meanings": [
+        "lecker",
+        "schmackhaft"
+      ],
       "syllables": [
-        { "thai": "อ", "transliteration": "à" },
-        { "thai": "ร่อย", "transliteration": "rɔ̀y" }
+        {
+          "thai": "อ",
+          "transliteration": "à"
+        },
+        {
+          "thai": "ร่อย",
+          "transliteration": "rɔ̀y"
+        }
       ]
     },
     {
       "id": "word-sut-sut",
       "thai": "สุดๆ",
       "transliteration": "sùt-sùt",
-      "meanings": ["extrem", "vollkommen", "mega"],
+      "meanings": [
+        "extrem",
+        "vollkommen",
+        "mega"
+      ],
       "syllables": [
-        { "thai": "สุด", "transliteration": "sùt" },
-        { "thai": "ๆ", "transliteration": "sùt" }
+        {
+          "thai": "สุด",
+          "transliteration": "sùt"
+        },
+        {
+          "thai": "ๆ",
+          "transliteration": "sùt"
+        }
       ]
     },
     {
       "id": "word-chaa-khiao",
       "thai": "ชาเขียว",
       "transliteration": "chaa-khǐao",
-      "meanings": ["Grüntee"],
+      "meanings": [
+        "Grüntee"
+      ],
       "syllables": [
-        { "thai": "ชา", "transliteration": "chaa" },
-        { "thai": "เขียว", "transliteration": "khǐao" }
+        {
+          "thai": "ชา",
+          "transliteration": "chaa"
+        },
+        {
+          "thai": "เขียว",
+          "transliteration": "khǐao"
+        }
       ]
     },
     {
       "id": "word-phrik-sot",
       "thai": "พริกสด",
       "transliteration": "phrík-sòt",
-      "meanings": ["frischer Chili"],
+      "meanings": [
+        "frischer Chili"
+      ],
       "syllables": [
-        { "thai": "พริก", "transliteration": "phrík" },
-        { "thai": "สด", "transliteration": "sòt" }
+        {
+          "thai": "พริก",
+          "transliteration": "phrík"
+        },
+        {
+          "thai": "สด",
+          "transliteration": "sòt"
+        }
       ]
     },
     {
       "id": "word-khaawng",
       "thai": "ของ",
       "transliteration": "khɔ̌ɔng",
-      "meanings": ["von", "Sache", "Dinge"],
+      "meanings": [
+        "von",
+        "Sache",
+        "Dinge"
+      ],
       "syllables": [
-        { "thai": "ของ", "transliteration": "khɔ̌ɔng" }
+        {
+          "thai": "ของ",
+          "transliteration": "khɔ̌ɔng"
+        }
       ]
     },
     {
       "id": "word-mai-frag",
       "thai": "ไหม",
       "transliteration": "mǎi",
-      "meanings": ["Fragepartikel (?)"],
+      "meanings": [
+        "Fragepartikel (?)"
+      ],
       "syllables": [
-        { "thai": "ไหม", "transliteration": "mǎi" }
+        {
+          "thai": "ไหม",
+          "transliteration": "mǎi"
+        }
       ]
     },
     {
       "id": "slang-ao-rueang",
       "thai": "เอาเรื่อง",
       "transliteration": "ao-rʉ̂ang",
-      "meanings": ["hat's in sich", "nicht ohne", "ganz schön krass"],
+      "meanings": [
+        "hat's in sich",
+        "nicht ohne",
+        "ganz schön krass"
+      ],
       "syllables": [
-        { "thai": "เอา", "transliteration": "ao" },
-        { "thai": "เรื่อง", "transliteration": "rʉ̂ang" }
+        {
+          "thai": "เอา",
+          "transliteration": "ao"
+        },
+        {
+          "thai": "เรื่อง",
+          "transliteration": "rʉ̂ang"
+        }
       ],
       "note": "Wörtlich 'eine Sache nehmen'. Im Slang eine Anerkennung für Dinge, die unerwartet intensiv, scharf oder heftig sind."
     },
@@ -678,28 +1190,50 @@ const superSlangContent = {
       "id": "word-sai",
       "thai": "ใส่",
       "transliteration": "sài",
-      "meanings": ["hineintun", "hineingeben", "anziehen"],
+      "meanings": [
+        "hineintun",
+        "hineingeben",
+        "anziehen"
+      ],
       "syllables": [
-        { "thai": "ใส่", "transliteration": "sài" }
+        {
+          "thai": "ใส่",
+          "transliteration": "sài"
+        }
       ]
     },
     {
       "id": "word-phrik",
       "thai": "พริก",
       "transliteration": "phrík",
-      "meanings": ["Chili"],
+      "meanings": [
+        "Chili"
+      ],
       "syllables": [
-        { "thai": "พริก", "transliteration": "phrík" }
+        {
+          "thai": "พริก",
+          "transliteration": "phrík"
+        }
       ]
     },
     {
       "id": "slang-nia-na",
       "thai": "เนี่ยนะ",
       "transliteration": "nîa ná",
-      "meanings": ["etwa?!", "ernsthaft?!", "wirklich?!"],
+      "meanings": [
+        "etwa?!",
+        "ernsthaft?!",
+        "wirklich?!"
+      ],
       "syllables": [
-        { "thai": "เนี่ย", "transliteration": "nîa" },
-        { "thai": "นะ", "transliteration": "ná" }
+        {
+          "thai": "เนี่ย",
+          "transliteration": "nîa"
+        },
+        {
+          "thai": "นะ",
+          "transliteration": "ná"
+        }
       ],
       "note": "Drückt ungläubiges Staunen oder Skepsis aus ('Das meinst du doch wohl nicht ernst?!')."
     },
@@ -707,9 +1241,17 @@ const superSlangContent = {
       "id": "slang-bong",
       "thai": "บ้ง",
       "transliteration": "bông",
-      "meanings": ["Flop", "Fail", "daneben", "ruiniert"],
+      "meanings": [
+        "Flop",
+        "Fail",
+        "daneben",
+        "ruiniert"
+      ],
       "syllables": [
-        { "thai": "บ้ง", "transliteration": "bông" }
+        {
+          "thai": "บ้ง",
+          "transliteration": "bông"
+        }
       ],
       "note": "Das exakte Slang-Gegenteil von ปัง. Wenn etwas völlig nach hinten losgeht, hässlich ist oder scheußlich schmeckt."
     },
@@ -717,11 +1259,24 @@ const superSlangContent = {
       "id": "slang-yaa-haa-tham",
       "thai": "อย่าหาทำ",
       "transliteration": "yàa-hǎa-tham",
-      "meanings": ["Lass den Quatsch", "Tu dir das nicht an", "Mach so einen Mist bloß nicht"],
+      "meanings": [
+        "Lass den Quatsch",
+        "Tu dir das nicht an",
+        "Mach so einen Mist bloß nicht"
+      ],
       "syllables": [
-        { "thai": "อย่า", "transliteration": "yàa" },
-        { "thai": "หา", "transliteration": "hǎa" },
-        { "thai": "ทำ", "transliteration": "tham" }
+        {
+          "thai": "อย่า",
+          "transliteration": "yàa"
+        },
+        {
+          "thai": "หา",
+          "transliteration": "hǎa"
+        },
+        {
+          "thai": "ทำ",
+          "transliteration": "tham"
+        }
       ],
       "note": "Wörtlich: 'Such dir das nicht zu tun'. Gewaltig beliebter Warn-Slang in thailändischen Social Media."
     },
@@ -729,18 +1284,31 @@ const superSlangContent = {
       "id": "word-gaaw",
       "thai": "ก็",
       "transliteration": "gɔ̂",
-      "meanings": ["auch", "doch", "eben"],
+      "meanings": [
+        "auch",
+        "doch",
+        "eben"
+      ],
       "syllables": [
-        { "thai": "ก็", "transliteration": "gɔ̂" }
+        {
+          "thai": "ก็",
+          "transliteration": "gɔ̂"
+        }
       ]
     },
     {
       "id": "slang-woer",
       "thai": "เวอร์",
       "transliteration": "wə̂ə",
-      "meanings": ["übertrieben", "over the top"],
+      "meanings": [
+        "übertrieben",
+        "over the top"
+      ],
       "syllables": [
-        { "thai": "เวอร์", "transliteration": "wə̂ə" }
+        {
+          "thai": "เวอร์",
+          "transliteration": "wə̂ə"
+        }
       ],
       "note": "Von engl. 'over'. Bedeutet maßlos übertrieben oder melodramatisch."
     },
@@ -748,10 +1316,21 @@ const superSlangContent = {
       "id": "slang-goen-boer",
       "thai": "เกินเบอร์",
       "transliteration": "gəən-bəə",
-      "meanings": ["über die Maßen", "völlig übertrieben", "extra", "over the top"],
+      "meanings": [
+        "über die Maßen",
+        "völlig übertrieben",
+        "extra",
+        "over the top"
+      ],
       "syllables": [
-        { "thai": "เกิน", "transliteration": "gəən" },
-        { "thai": "เบอร์", "transliteration": "bəə" }
+        {
+          "thai": "เกิน",
+          "transliteration": "gəən"
+        },
+        {
+          "thai": "เบอร์",
+          "transliteration": "bəə"
+        }
       ],
       "note": "Wörtlich 'die Nummer überschreiten'. Bedeutet, dass jemand dramatisch mehr reagiert als der Anlass hergibt."
     },
@@ -759,50 +1338,466 @@ const superSlangContent = {
       "id": "word-dtalat",
       "thai": "ตลอด",
       "transliteration": "dtà-lɔ̀ɔt",
-      "meanings": ["immer", "ständig", "durchgehend"],
+      "meanings": [
+        "immer",
+        "ständig",
+        "durchgehend"
+      ],
       "syllables": [
-        { "thai": "ต", "transliteration": "dtà" },
-        { "thai": "ลอด", "transliteration": "lɔ̀ɔt" }
+        {
+          "thai": "ต",
+          "transliteration": "dtà"
+        },
+        {
+          "thai": "ลอด",
+          "transliteration": "lɔ̀ɔt"
+        }
       ]
     },
     {
       "id": "slang-haa-haa",
       "thai": "ฮ่าๆ",
       "transliteration": "hâa-hâa",
-      "meanings": ["haha"],
+      "meanings": [
+        "haha"
+      ],
       "syllables": [
-        { "thai": "ฮ่า", "transliteration": "hâa" },
-        { "thai": "ๆ", "transliteration": "hâa" }
+        {
+          "thai": "ฮ่า",
+          "transliteration": "hâa"
+        },
+        {
+          "thai": "ๆ",
+          "transliteration": "hâa"
+        }
       ]
     },
     {
       "id": "word-dtae",
       "thai": "แต่",
       "transliteration": "dtɛ̀ɛ",
-      "meanings": ["aber"],
+      "meanings": [
+        "aber"
+      ],
       "syllables": [
-        { "thai": "แต่", "transliteration": "dtɛ̀ɛ" }
+        {
+          "thai": "แต่",
+          "transliteration": "dtɛ̀ɛ"
+        }
       ]
     },
     {
       "id": "word-ban-yaa-gaat",
       "thai": "บรรยากาศ",
       "transliteration": "ban-yaa-gàat",
-      "meanings": ["Atmosphäre", "Stimmung"],
+      "meanings": [
+        "Atmosphäre",
+        "Stimmung"
+      ],
       "syllables": [
-        { "thai": "บรร", "transliteration": "ban" },
-        { "thai": "ยา", "transliteration": "yaa" },
-        { "thai": "กาศ", "transliteration": "gàat" }
+        {
+          "thai": "บรร",
+          "transliteration": "ban"
+        },
+        {
+          "thai": "ยา",
+          "transliteration": "yaa"
+        },
+        {
+          "thai": "กาศ",
+          "transliteration": "gàat"
+        }
       ]
     },
     {
       "id": "word-dii",
       "thai": "ดี",
       "transliteration": "dii",
-      "meanings": ["gut", "schön"],
+      "meanings": [
+        "gut",
+        "schön"
+      ],
       "syllables": [
-        { "thai": "ดี", "transliteration": "dii" }
+        {
+          "thai": "ดี",
+          "transliteration": "dii"
+        }
       ]
+    },
+    {
+      "id": "name-non",
+      "thai": "นนท์",
+      "transliteration": "Non",
+      "meanings": [
+        "Non (Spitzname)"
+      ],
+      "syllables": [
+        {
+          "thai": "นนท์",
+          "transliteration": "Non"
+        }
+      ]
+    },
+    {
+      "id": "name-ploy",
+      "thai": "พลอย",
+      "transliteration": "Ploy",
+      "meanings": [
+        "Ploy (Spitzname)",
+        "Edelstein"
+      ],
+      "syllables": [
+        {
+          "thai": "พลอย",
+          "transliteration": "Ploy"
+        }
+      ]
+    },
+    {
+      "id": "word-wan-nii",
+      "thai": "วันนี้",
+      "transliteration": "wan-níi",
+      "meanings": [
+        "heute"
+      ],
+      "syllables": [
+        {
+          "thai": "วัน",
+          "transliteration": "wan"
+        },
+        {
+          "thai": "นี้",
+          "transliteration": "níi"
+        }
+      ]
+    },
+    {
+      "id": "word-bpai",
+      "thai": "ไป",
+      "transliteration": "bpai",
+      "meanings": [
+        "gehen",
+        "fahren"
+      ],
+      "syllables": [
+        {
+          "thai": "ไป",
+          "transliteration": "bpai"
+        }
+      ]
+    },
+    {
+      "id": "word-khaao",
+      "thai": "ข้าว",
+      "transliteration": "khâao",
+      "meanings": [
+        "Reis",
+        "Mahlzeit",
+        "Essen"
+      ],
+      "syllables": [
+        {
+          "thai": "ข้าว",
+          "transliteration": "khâao"
+        }
+      ]
+    },
+    {
+      "id": "word-duai-gan",
+      "thai": "ด้วยกัน",
+      "transliteration": "dûai-gan",
+      "meanings": [
+        "zusammen",
+        "miteinander"
+      ],
+      "syllables": [
+        {
+          "thai": "ด้วย",
+          "transliteration": "dûai"
+        },
+        {
+          "thai": "กัน",
+          "transliteration": "gan"
+        }
+      ]
+    },
+    {
+      "id": "word-si",
+      "thai": "สิ",
+      "transliteration": "sì",
+      "meanings": [
+        "doch",
+        "schon",
+        "Aufforderungspartikel"
+      ],
+      "syllables": [
+        {
+          "thai": "สิ",
+          "transliteration": "sì"
+        }
+      ]
+    },
+    {
+      "id": "word-hio",
+      "thai": "หิว",
+      "transliteration": "hǐo",
+      "meanings": [
+        "hungrig sein",
+        "Hunger haben"
+      ],
+      "syllables": [
+        {
+          "thai": "หิว",
+          "transliteration": "hǐo"
+        }
+      ]
+    },
+    {
+      "id": "word-phaaw-dii",
+      "thai": "พอดี",
+      "transliteration": "phɔɔ-dii",
+      "meanings": [
+        "genau passend",
+        "im richtigen Moment"
+      ],
+      "syllables": [
+        {
+          "thai": "พอ",
+          "transliteration": "phɔɔ"
+        },
+        {
+          "thai": "ดี",
+          "transliteration": "dii"
+        }
+      ],
+      "note": "Häufige Wendung: กำลัง...พอดี = gerade genau im passenden Augenblick."
+    },
+    {
+      "id": "word-yaak",
+      "thai": "อยาก",
+      "transliteration": "yàak",
+      "meanings": [
+        "wollen",
+        "möchten",
+        "Lust haben"
+      ],
+      "syllables": [
+        {
+          "thai": "อยาก",
+          "transliteration": "yàak"
+        }
+      ]
+    },
+    {
+      "id": "slang-gin-a-rai-gaw-daai",
+      "thai": "กินอะไรก็ได้",
+      "transliteration": "gin à-rai gɔ̂ dâai",
+      "meanings": [
+        "Egal was (zu essen)",
+        "Ich esse alles",
+        "Mir ist alles recht"
+      ],
+      "syllables": [
+        {
+          "thai": "กิน",
+          "transliteration": "gin"
+        },
+        {
+          "thai": "อะ",
+          "transliteration": "à"
+        },
+        {
+          "thai": "ไร",
+          "transliteration": "rai"
+        },
+        {
+          "thai": "ก็",
+          "transliteration": "gɔ̂"
+        },
+        {
+          "thai": "ได้",
+          "transliteration": "dâai"
+        }
+      ],
+      "note": "Kult-Alltagsphrase bei Essensverabredungen in Thailand: Egal was, Hauptsache etwas zu essen."
+    },
+    {
+      "id": "slang-laew-dtae",
+      "thai": "แล้วแต่",
+      "transliteration": "lɛ́ɛw-dtɛ̀ɛ",
+      "meanings": [
+        "ganz wie (du willst)",
+        "liegt bei dir",
+        "je nachdem"
+      ],
+      "syllables": [
+        {
+          "thai": "แล้ว",
+          "transliteration": "lɛ́ɛw"
+        },
+        {
+          "thai": "แต่",
+          "transliteration": "dtɛ̀ɛ"
+        }
+      ],
+      "note": "Umgangssprachlich für 'ganz wie du meinst'. Häufig: แล้วแต่แก (wie du willst) oder แล้วแต่เลย (wie auch immer)."
+    },
+    {
+      "id": "slang-raan-bpra-jam",
+      "thai": "ร้านประจำ",
+      "transliteration": "ráan bprà-jam",
+      "meanings": [
+        "Stammlokal",
+        "Stammrestaurant",
+        "Stammcafé"
+      ],
+      "syllables": [
+        {
+          "thai": "ร้าน",
+          "transliteration": "ráan"
+        },
+        {
+          "thai": "ประ",
+          "transliteration": "bprà"
+        },
+        {
+          "thai": "จำ",
+          "transliteration": "jam"
+        }
+      ],
+      "note": "Aus ร้าน (Laden) + ประจำ (stetig/gewohnt): das persönliche Stammlokal."
+    },
+    {
+      "id": "word-khaao-ga-phrao",
+      "thai": "ข้าวกะเพรา",
+      "transliteration": "khâao gà-phrao",
+      "meanings": [
+        "Pad Kra Pao mit Reis",
+        "Basilikum-Fleisch mit Reis"
+      ],
+      "syllables": [
+        {
+          "thai": "ข้าว",
+          "transliteration": "khâao"
+        },
+        {
+          "thai": "กะ",
+          "transliteration": "gà"
+        },
+        {
+          "thai": "เพรา",
+          "transliteration": "phrao"
+        }
+      ],
+      "note": "Das thailändische Nationalgericht Nr. 1 für den schnellen Alltagshunger."
+    },
+    {
+      "id": "word-jing",
+      "thai": "จริง",
+      "transliteration": "jing",
+      "meanings": [
+        "wahr",
+        "echt",
+        "wirklich"
+      ],
+      "syllables": [
+        {
+          "thai": "จริง",
+          "transliteration": "jing"
+        }
+      ]
+    },
+    {
+      "id": "word-khoey",
+      "thai": "เคย",
+      "transliteration": "khəəy",
+      "meanings": [
+        "schon einmal",
+        "jemals",
+        "gewohnt sein"
+      ],
+      "syllables": [
+        {
+          "thai": "เคย",
+          "transliteration": "khəəy"
+        }
+      ],
+      "note": "Grammatikpartikel für Erfahrung: ไม่เคย... = noch nie getan."
+    },
+    {
+      "id": "slang-dtit-jai",
+      "thai": "ติดใจ",
+      "transliteration": "dtìt-jai",
+      "meanings": [
+        "auf den Geschmack kommen",
+        "begeistert sein",
+        "Gefallen finden"
+      ],
+      "syllables": [
+        {
+          "thai": "ติด",
+          "transliteration": "dtìt"
+        },
+        {
+          "thai": "ใจ",
+          "transliteration": "jai"
+        }
+      ],
+      "note": "Wörtlich 'das Herz bleibt hängen'. Man ist von etwas so angetan, dass man es immer wieder will."
+    },
+    {
+      "id": "word-chuea",
+      "thai": "เชื่อ",
+      "transliteration": "chʉ̂a",
+      "meanings": [
+        "glauben",
+        "vertrauen"
+      ],
+      "syllables": [
+        {
+          "thai": "เชื่อ",
+          "transliteration": "chʉ̂a"
+        }
+      ]
+    },
+    {
+      "id": "slang-jat-bpai",
+      "thai": "จัดไป",
+      "transliteration": "jàt bpai",
+      "meanings": [
+        "Geht klar!",
+        "Abgemacht!",
+        "Let's do it!",
+        "Wird gemacht!"
+      ],
+      "syllables": [
+        {
+          "thai": "จัด",
+          "transliteration": "jàt"
+        },
+        {
+          "thai": "ไป",
+          "transliteration": "bpai"
+        }
+      ],
+      "note": "Lockerer Alltagsspruch unter Erwachsenen und Freunden. Signalisiert enthusiastische Zustimmung."
+    },
+    {
+      "id": "word-mue",
+      "thai": "มื้อ",
+      "transliteration": "mʉ́ʉ",
+      "meanings": [
+        "Mahlzeit",
+        "Runde",
+        "Essen (Zählwort)"
+      ],
+      "syllables": [
+        {
+          "thai": "มื้อ",
+          "transliteration": "mʉ́ʉ"
+        }
+      ],
+      "note": "Klassifikator für Mahlzeiten: มื้อนี้ = diese Mahlzeit / diese Runde."
     }
   ],
   "levels": [
@@ -822,10 +1817,26 @@ const superSlangContent = {
               "translation": "Ey, der Milchtee hier ist der absolute Hammer!"
             },
             "parts": [
-              { "thai": "แก", "transliteration": "gae", "translation": "Ey / du" },
-              { "thai": "ชานม", "transliteration": "chaa-nom", "translation": "Milchtee" },
-              { "thai": "ร้านนี้", "transliteration": "ráan níi", "translation": "dieser Laden" },
-              { "thai": "ปังมาก", "transliteration": "bpang mâak", "translation": "der absolute Hammer" }
+              {
+                "thai": "แก",
+                "transliteration": "gae",
+                "translation": "Ey / du"
+              },
+              {
+                "thai": "ชานม",
+                "transliteration": "chaa-nom",
+                "translation": "Milchtee"
+              },
+              {
+                "thai": "ร้านนี้",
+                "transliteration": "ráan níi",
+                "translation": "dieser Laden"
+              },
+              {
+                "thai": "ปังมาก",
+                "transliteration": "bpang mâak",
+                "translation": "der absolute Hammer"
+              }
             ],
             "assembly": {
               "thai": "แก + ชานม + ร้านนี้ + ปังมาก",
@@ -837,7 +1848,7 @@ const superSlangContent = {
           "blocks": [
             {
               "id": "super-slang-block-1",
-              "title": "Folge 1–2 — Café-Treffen & Spezialgetränk",
+              "title": "Folge 1–3 — Café-Treffen, Spezialgetränk & Essen gehen",
               "description": "Die ersten beiden Mini-Stories mit lebendigen Reaktionen, Verzug und skurrilen Empfehlungen.",
               "miniStories": [
                 {
@@ -854,13 +1865,55 @@ const superSlangContent = {
                       "transliteration": "gae yùu nǎi nîa, sǎai lέɛw ná",
                       "translation": "Ey, wo bist du eigentlich? Du bist schon spät dran!",
                       "tokens": [
-                        { "id": "slang-s001-t1", "kind": "word", "text": "แก", "wordId": "slang-gae", "contextMeaning": "Ey / du" },
-                        { "id": "slang-s001-t2", "kind": "word", "text": "อยู่", "wordId": "word-yuu", "contextMeaning": "sein / sich aufhalten" },
-                        { "id": "slang-s001-t3", "kind": "word", "text": "ไหน", "wordId": "word-nai", "contextMeaning": "wo" },
-                        { "id": "slang-s001-t4", "kind": "word", "text": "เนี่ย", "wordId": "slang-nia", "contextMeaning": "denn / eigentlich" },
-                        { "id": "slang-s001-t5", "kind": "word", "text": "สาย", "wordId": "word-saai", "contextMeaning": "zu spät" },
-                        { "id": "slang-s001-t6", "kind": "word", "text": "แล้ว", "wordId": "word-laew", "contextMeaning": "schon" },
-                        { "id": "slang-s001-t7", "kind": "word", "text": "นะ", "wordId": "word-na", "contextMeaning": "gell / hey" }
+                        {
+                          "id": "slang-s001-t1",
+                          "kind": "word",
+                          "text": "แก",
+                          "wordId": "slang-gae",
+                          "contextMeaning": "Ey / du"
+                        },
+                        {
+                          "id": "slang-s001-t2",
+                          "kind": "word",
+                          "text": "อยู่",
+                          "wordId": "word-yuu",
+                          "contextMeaning": "sein / sich aufhalten"
+                        },
+                        {
+                          "id": "slang-s001-t3",
+                          "kind": "word",
+                          "text": "ไหน",
+                          "wordId": "word-nai",
+                          "contextMeaning": "wo"
+                        },
+                        {
+                          "id": "slang-s001-t4",
+                          "kind": "word",
+                          "text": "เนี่ย",
+                          "wordId": "slang-nia",
+                          "contextMeaning": "denn / eigentlich"
+                        },
+                        {
+                          "id": "slang-s001-t5",
+                          "kind": "word",
+                          "text": "สาย",
+                          "wordId": "word-saai",
+                          "contextMeaning": "zu spät"
+                        },
+                        {
+                          "id": "slang-s001-t6",
+                          "kind": "word",
+                          "text": "แล้ว",
+                          "wordId": "word-laew",
+                          "contextMeaning": "schon"
+                        },
+                        {
+                          "id": "slang-s001-t7",
+                          "kind": "word",
+                          "text": "นะ",
+                          "wordId": "word-na",
+                          "contextMeaning": "gell / hey"
+                        }
                       ]
                     },
                     {
@@ -872,17 +1925,83 @@ const superSlangContent = {
                       "transliteration": "Ohm yang mâi maa ìik rə̌ə? rʉ̌ʉ-wâa rao doon thee lέɛw?",
                       "translation": "Ohm ist immer noch nicht da? Oder wurden wir etwa versetzt?",
                       "tokens": [
-                        { "id": "slang-s002-t1", "kind": "word", "text": "โอม", "wordId": "name-ohm", "contextMeaning": "Ohm" },
-                        { "id": "slang-s002-t2", "kind": "word", "text": "ยัง", "wordId": "word-yang", "contextMeaning": "immer noch" },
-                        { "id": "slang-s002-t3", "kind": "word", "text": "ไม่", "wordId": "word-mai", "contextMeaning": "nicht" },
-                        { "id": "slang-s002-t4", "kind": "word", "text": "มา", "wordId": "word-maa", "contextMeaning": "gekommen" },
-                        { "id": "slang-s002-t5", "kind": "word", "text": "อีก", "wordId": "word-iik", "contextMeaning": "noch" },
-                        { "id": "slang-s002-t6", "kind": "word", "text": "เหรอ", "wordId": "word-roer", "contextMeaning": "echt? / oder?" },
-                        { "id": "slang-s002-t7", "kind": "word", "text": "หรือว่า", "wordId": "word-rue-waa", "contextMeaning": "oder etwa" },
-                        { "id": "slang-s002-t8", "kind": "word", "text": "เรา", "wordId": "word-rao", "contextMeaning": "wir" },
-                        { "id": "slang-s002-t9", "kind": "word", "text": "โดน", "wordId": "word-doon", "contextMeaning": "wurden (Passiv)" },
-                        { "id": "slang-s002-t10", "kind": "word", "text": "เท", "wordId": "slang-thee", "contextMeaning": "versetzt / geghostet" },
-                        { "id": "slang-s002-t11", "kind": "word", "text": "แล้ว", "wordId": "word-laew", "contextMeaning": "schon" }
+                        {
+                          "id": "slang-s002-t1",
+                          "kind": "word",
+                          "text": "โอม",
+                          "wordId": "name-ohm",
+                          "contextMeaning": "Ohm"
+                        },
+                        {
+                          "id": "slang-s002-t2",
+                          "kind": "word",
+                          "text": "ยัง",
+                          "wordId": "word-yang",
+                          "contextMeaning": "immer noch"
+                        },
+                        {
+                          "id": "slang-s002-t3",
+                          "kind": "word",
+                          "text": "ไม่",
+                          "wordId": "word-mai",
+                          "contextMeaning": "nicht"
+                        },
+                        {
+                          "id": "slang-s002-t4",
+                          "kind": "word",
+                          "text": "มา",
+                          "wordId": "word-maa",
+                          "contextMeaning": "gekommen"
+                        },
+                        {
+                          "id": "slang-s002-t5",
+                          "kind": "word",
+                          "text": "อีก",
+                          "wordId": "word-iik",
+                          "contextMeaning": "noch"
+                        },
+                        {
+                          "id": "slang-s002-t6",
+                          "kind": "word",
+                          "text": "เหรอ",
+                          "wordId": "word-roer",
+                          "contextMeaning": "echt? / oder?"
+                        },
+                        {
+                          "id": "slang-s002-t7",
+                          "kind": "word",
+                          "text": "หรือว่า",
+                          "wordId": "word-rue-waa",
+                          "contextMeaning": "oder etwa"
+                        },
+                        {
+                          "id": "slang-s002-t8",
+                          "kind": "word",
+                          "text": "เรา",
+                          "wordId": "word-rao",
+                          "contextMeaning": "wir"
+                        },
+                        {
+                          "id": "slang-s002-t9",
+                          "kind": "word",
+                          "text": "โดน",
+                          "wordId": "word-doon",
+                          "contextMeaning": "wurden (Passiv)"
+                        },
+                        {
+                          "id": "slang-s002-t10",
+                          "kind": "word",
+                          "text": "เท",
+                          "wordId": "slang-thee",
+                          "contextMeaning": "versetzt / geghostet"
+                        },
+                        {
+                          "id": "slang-s002-t11",
+                          "kind": "word",
+                          "text": "แล้ว",
+                          "wordId": "word-laew",
+                          "contextMeaning": "schon"
+                        }
                       ]
                     },
                     {
@@ -894,13 +2013,55 @@ const superSlangContent = {
                       "transliteration": "yàa phə̂ng nɔ́y bpai ləəy, khǎo gam-lang maa",
                       "translation": "Sei doch nicht gleich angefressen, er ist auf dem Weg!",
                       "tokens": [
-                        { "id": "slang-s003-t1", "kind": "word", "text": "อย่า", "wordId": "word-yaa", "contextMeaning": "tu nicht" },
-                        { "id": "slang-s003-t2", "kind": "word", "text": "เพิ่ง", "wordId": "word-phoeng", "contextMeaning": "gerade erst / voreilig" },
-                        { "id": "slang-s003-t3", "kind": "word", "text": "นอยด์", "wordId": "slang-noyd", "contextMeaning": "angefressen / geschmollt" },
-                        { "id": "slang-s003-t4", "kind": "word", "text": "ไปเลย", "wordId": "word-bpai-loey", "contextMeaning": "gleich so" },
-                        { "id": "slang-s003-t5", "kind": "word", "text": "เขา", "wordId": "word-khao", "contextMeaning": "er" },
-                        { "id": "slang-s003-t6", "kind": "word", "text": "กำลัง", "wordId": "word-gam-lang", "contextMeaning": "gerade dabei zu" },
-                        { "id": "slang-s003-t7", "kind": "word", "text": "มา", "wordId": "word-maa", "contextMeaning": "kommen" }
+                        {
+                          "id": "slang-s003-t1",
+                          "kind": "word",
+                          "text": "อย่า",
+                          "wordId": "word-yaa",
+                          "contextMeaning": "tu nicht"
+                        },
+                        {
+                          "id": "slang-s003-t2",
+                          "kind": "word",
+                          "text": "เพิ่ง",
+                          "wordId": "word-phoeng",
+                          "contextMeaning": "gerade erst / voreilig"
+                        },
+                        {
+                          "id": "slang-s003-t3",
+                          "kind": "word",
+                          "text": "นอยด์",
+                          "wordId": "slang-noyd",
+                          "contextMeaning": "angefressen / geschmollt"
+                        },
+                        {
+                          "id": "slang-s003-t4",
+                          "kind": "word",
+                          "text": "ไปเลย",
+                          "wordId": "word-bpai-loey",
+                          "contextMeaning": "gleich so"
+                        },
+                        {
+                          "id": "slang-s003-t5",
+                          "kind": "word",
+                          "text": "เขา",
+                          "wordId": "word-khao",
+                          "contextMeaning": "er"
+                        },
+                        {
+                          "id": "slang-s003-t6",
+                          "kind": "word",
+                          "text": "กำลัง",
+                          "wordId": "word-gam-lang",
+                          "contextMeaning": "gerade dabei zu"
+                        },
+                        {
+                          "id": "slang-s003-t7",
+                          "kind": "word",
+                          "text": "มา",
+                          "wordId": "word-maa",
+                          "contextMeaning": "kommen"
+                        }
                       ]
                     },
                     {
@@ -912,15 +2073,69 @@ const superSlangContent = {
                       "transliteration": "Ohm sòng Line maa bɔ̀ɔk wâa rót-dtìt mâak, wâa-sân",
                       "translation": "Ohm hat auf Line geschrieben, dass mega Stau ist – soso, angeblich!",
                       "tokens": [
-                        { "id": "slang-s004-t1", "kind": "word", "text": "โอม", "wordId": "name-ohm", "contextMeaning": "Ohm" },
-                        { "id": "slang-s004-t2", "kind": "word", "text": "ส่ง", "wordId": "word-song", "contextMeaning": "geschickt" },
-                        { "id": "slang-s004-t3", "kind": "word", "text": "ไลน์", "wordId": "slang-line", "contextMeaning": "Line-Nachricht" },
-                        { "id": "slang-s004-t4", "kind": "word", "text": "มา", "wordId": "word-maa", "contextMeaning": "her" },
-                        { "id": "slang-s004-t5", "kind": "word", "text": "บอก", "wordId": "word-baawk", "contextMeaning": "gesagt" },
-                        { "id": "slang-s004-t6", "kind": "word", "text": "ว่า", "wordId": "word-waa", "contextMeaning": "dass" },
-                        { "id": "slang-s004-t7", "kind": "word", "text": "รถติด", "wordId": "word-rot-dtit", "contextMeaning": "Stau" },
-                        { "id": "slang-s004-t8", "kind": "word", "text": "มาก", "wordId": "word-maak", "contextMeaning": "sehr" },
-                        { "id": "slang-s004-t9", "kind": "word", "text": "ว่าซั่น", "wordId": "slang-waa-san", "contextMeaning": "soso, angeblich / wer's glaubt" }
+                        {
+                          "id": "slang-s004-t1",
+                          "kind": "word",
+                          "text": "โอม",
+                          "wordId": "name-ohm",
+                          "contextMeaning": "Ohm"
+                        },
+                        {
+                          "id": "slang-s004-t2",
+                          "kind": "word",
+                          "text": "ส่ง",
+                          "wordId": "word-song",
+                          "contextMeaning": "geschickt"
+                        },
+                        {
+                          "id": "slang-s004-t3",
+                          "kind": "word",
+                          "text": "ไลน์",
+                          "wordId": "slang-line",
+                          "contextMeaning": "Line-Nachricht"
+                        },
+                        {
+                          "id": "slang-s004-t4",
+                          "kind": "word",
+                          "text": "มา",
+                          "wordId": "word-maa",
+                          "contextMeaning": "her"
+                        },
+                        {
+                          "id": "slang-s004-t5",
+                          "kind": "word",
+                          "text": "บอก",
+                          "wordId": "word-baawk",
+                          "contextMeaning": "gesagt"
+                        },
+                        {
+                          "id": "slang-s004-t6",
+                          "kind": "word",
+                          "text": "ว่า",
+                          "wordId": "word-waa",
+                          "contextMeaning": "dass"
+                        },
+                        {
+                          "id": "slang-s004-t7",
+                          "kind": "word",
+                          "text": "รถติด",
+                          "wordId": "word-rot-dtit",
+                          "contextMeaning": "Stau"
+                        },
+                        {
+                          "id": "slang-s004-t8",
+                          "kind": "word",
+                          "text": "มาก",
+                          "wordId": "word-maak",
+                          "contextMeaning": "sehr"
+                        },
+                        {
+                          "id": "slang-s004-t9",
+                          "kind": "word",
+                          "text": "ว่าซั่น",
+                          "wordId": "slang-waa-san",
+                          "contextMeaning": "soso, angeblich / wer's glaubt"
+                        }
                       ]
                     },
                     {
@@ -932,13 +2147,55 @@ const superSlangContent = {
                       "transliteration": "ngán rao nâng chin-chin rɔɔ bpai gɔ̀ɔn ná",
                       "translation": "Dann setzen wir uns erst mal gechillt hin und warten, ja?",
                       "tokens": [
-                        { "id": "slang-s005-t1", "kind": "word", "text": "งั้น", "wordId": "word-ngan", "contextMeaning": "dann" },
-                        { "id": "slang-s005-t2", "kind": "word", "text": "เรา", "wordId": "word-rao", "contextMeaning": "wir" },
-                        { "id": "slang-s005-t3", "kind": "word", "text": "นั่ง", "wordId": "word-nang", "contextMeaning": "sitzen" },
-                        { "id": "slang-s005-t4", "kind": "word", "text": "ชิลๆ", "wordId": "slang-chill", "contextMeaning": "ganz gechillt" },
-                        { "id": "slang-s005-t5", "kind": "word", "text": "รอ", "wordId": "word-raaw", "contextMeaning": "warten" },
-                        { "id": "slang-s005-t6", "kind": "word", "text": "ไปก่อน", "wordId": "word-bpai-gaawn", "contextMeaning": "erst einmal" },
-                        { "id": "slang-s005-t7", "kind": "word", "text": "นะ", "wordId": "word-na", "contextMeaning": "gell" }
+                        {
+                          "id": "slang-s005-t1",
+                          "kind": "word",
+                          "text": "งั้น",
+                          "wordId": "word-ngan",
+                          "contextMeaning": "dann"
+                        },
+                        {
+                          "id": "slang-s005-t2",
+                          "kind": "word",
+                          "text": "เรา",
+                          "wordId": "word-rao",
+                          "contextMeaning": "wir"
+                        },
+                        {
+                          "id": "slang-s005-t3",
+                          "kind": "word",
+                          "text": "นั่ง",
+                          "wordId": "word-nang",
+                          "contextMeaning": "sitzen"
+                        },
+                        {
+                          "id": "slang-s005-t4",
+                          "kind": "word",
+                          "text": "ชิลๆ",
+                          "wordId": "slang-chill",
+                          "contextMeaning": "ganz gechillt"
+                        },
+                        {
+                          "id": "slang-s005-t5",
+                          "kind": "word",
+                          "text": "รอ",
+                          "wordId": "word-raaw",
+                          "contextMeaning": "warten"
+                        },
+                        {
+                          "id": "slang-s005-t6",
+                          "kind": "word",
+                          "text": "ไปก่อน",
+                          "wordId": "word-bpai-gaawn",
+                          "contextMeaning": "erst einmal"
+                        },
+                        {
+                          "id": "slang-s005-t7",
+                          "kind": "word",
+                          "text": "นะ",
+                          "wordId": "word-na",
+                          "contextMeaning": "gell"
+                        }
                       ]
                     },
                     {
@@ -950,15 +2207,69 @@ const superSlangContent = {
                       "transliteration": "khee ləəy, chaa-nom ráan níi bpang mâak, gae dtɔ̂ng lɔɔng",
                       "translation": "Alles klar! Der Milchtee hier ist der absolute Hammer, musst du testen!",
                       "tokens": [
-                        { "id": "slang-s006-t1", "kind": "word", "text": "เคเลย", "wordId": "slang-khee-loey", "contextMeaning": "alles klar / abgemacht" },
-                        { "id": "slang-s006-t2", "kind": "word", "text": "ชานม", "wordId": "word-chaa-nom", "contextMeaning": "Milchtee" },
-                        { "id": "slang-s006-t3", "kind": "word", "text": "ร้าน", "wordId": "word-raan", "contextMeaning": "Laden" },
-                        { "id": "slang-s006-t4", "kind": "word", "text": "นี้", "wordId": "word-nii", "contextMeaning": "dieser" },
-                        { "id": "slang-s006-t5", "kind": "word", "text": "ปัง", "wordId": "slang-bpang", "contextMeaning": "der Hammer" },
-                        { "id": "slang-s006-t6", "kind": "word", "text": "มาก", "wordId": "word-maak", "contextMeaning": "sehr" },
-                        { "id": "slang-s006-t7", "kind": "word", "text": "แก", "wordId": "slang-gae", "contextMeaning": "du" },
-                        { "id": "slang-s006-t8", "kind": "word", "text": "ต้อง", "wordId": "word-dtoeng", "contextMeaning": "musst" },
-                        { "id": "slang-s006-t9", "kind": "word", "text": "ลอง", "wordId": "word-laawng", "contextMeaning": "probieren" }
+                        {
+                          "id": "slang-s006-t1",
+                          "kind": "word",
+                          "text": "เคเลย",
+                          "wordId": "slang-khee-loey",
+                          "contextMeaning": "alles klar / abgemacht"
+                        },
+                        {
+                          "id": "slang-s006-t2",
+                          "kind": "word",
+                          "text": "ชานม",
+                          "wordId": "word-chaa-nom",
+                          "contextMeaning": "Milchtee"
+                        },
+                        {
+                          "id": "slang-s006-t3",
+                          "kind": "word",
+                          "text": "ร้าน",
+                          "wordId": "word-raan",
+                          "contextMeaning": "Laden"
+                        },
+                        {
+                          "id": "slang-s006-t4",
+                          "kind": "word",
+                          "text": "นี้",
+                          "wordId": "word-nii",
+                          "contextMeaning": "dieser"
+                        },
+                        {
+                          "id": "slang-s006-t5",
+                          "kind": "word",
+                          "text": "ปัง",
+                          "wordId": "slang-bpang",
+                          "contextMeaning": "der Hammer"
+                        },
+                        {
+                          "id": "slang-s006-t6",
+                          "kind": "word",
+                          "text": "มาก",
+                          "wordId": "word-maak",
+                          "contextMeaning": "sehr"
+                        },
+                        {
+                          "id": "slang-s006-t7",
+                          "kind": "word",
+                          "text": "แก",
+                          "wordId": "slang-gae",
+                          "contextMeaning": "du"
+                        },
+                        {
+                          "id": "slang-s006-t8",
+                          "kind": "word",
+                          "text": "ต้อง",
+                          "wordId": "word-dtoeng",
+                          "contextMeaning": "musst"
+                        },
+                        {
+                          "id": "slang-s006-t9",
+                          "kind": "word",
+                          "text": "ลอง",
+                          "wordId": "word-laawng",
+                          "contextMeaning": "probieren"
+                        }
                       ]
                     },
                     {
@@ -970,13 +2281,55 @@ const superSlangContent = {
                       "transliteration": "oo-khee, sàng ləəy, dǐao chǎn líang eeng",
                       "translation": "Okay, bestell schon! Ich lade dich ein.",
                       "tokens": [
-                        { "id": "slang-s007-t1", "kind": "word", "text": "โอเค", "wordId": "word-oo-khee", "contextMeaning": "okay" },
-                        { "id": "slang-s007-t2", "kind": "word", "text": "สั่ง", "wordId": "word-sang", "contextMeaning": "bestell" },
-                        { "id": "slang-s007-t3", "kind": "word", "text": "เลย", "wordId": "word-loey", "contextMeaning": "schon" },
-                        { "id": "slang-s007-t4", "kind": "word", "text": "เดี๋ยว", "wordId": "word-diao", "contextMeaning": "schon gut / gleich" },
-                        { "id": "slang-s007-t5", "kind": "word", "text": "ฉัน", "wordId": "word-chan", "contextMeaning": "ich" },
-                        { "id": "slang-s007-t6", "kind": "word", "text": "เลี้ยง", "wordId": "word-liang", "contextMeaning": "einladen / spendieren" },
-                        { "id": "slang-s007-t7", "kind": "word", "text": "เอง", "wordId": "word-eeng", "contextMeaning": "selbst" }
+                        {
+                          "id": "slang-s007-t1",
+                          "kind": "word",
+                          "text": "โอเค",
+                          "wordId": "word-oo-khee",
+                          "contextMeaning": "okay"
+                        },
+                        {
+                          "id": "slang-s007-t2",
+                          "kind": "word",
+                          "text": "สั่ง",
+                          "wordId": "word-sang",
+                          "contextMeaning": "bestell"
+                        },
+                        {
+                          "id": "slang-s007-t3",
+                          "kind": "word",
+                          "text": "เลย",
+                          "wordId": "word-loey",
+                          "contextMeaning": "schon"
+                        },
+                        {
+                          "id": "slang-s007-t4",
+                          "kind": "word",
+                          "text": "เดี๋ยว",
+                          "wordId": "word-diao",
+                          "contextMeaning": "schon gut / gleich"
+                        },
+                        {
+                          "id": "slang-s007-t5",
+                          "kind": "word",
+                          "text": "ฉัน",
+                          "wordId": "word-chan",
+                          "contextMeaning": "ich"
+                        },
+                        {
+                          "id": "slang-s007-t6",
+                          "kind": "word",
+                          "text": "เลี้ยง",
+                          "wordId": "word-liang",
+                          "contextMeaning": "einladen / spendieren"
+                        },
+                        {
+                          "id": "slang-s007-t7",
+                          "kind": "word",
+                          "text": "เอง",
+                          "wordId": "word-eeng",
+                          "contextMeaning": "selbst"
+                        }
                       ]
                     }
                   ]
@@ -995,14 +2348,62 @@ const superSlangContent = {
                       "transliteration": "maa lέɛw thúk-khon, khɔ̌ɔ-thôot thîi hâi rɔɔ ná",
                       "translation": "Da bin ich, Leute! Entschuldigt, dass ihr warten musstet.",
                       "tokens": [
-                        { "id": "slang-s008-t1", "kind": "word", "text": "มา", "wordId": "word-maa", "contextMeaning": "gekommen" },
-                        { "id": "slang-s008-t2", "kind": "word", "text": "แล้ว", "wordId": "word-laew", "contextMeaning": "schon" },
-                        { "id": "slang-s008-t3", "kind": "word", "text": "ทุกคน", "wordId": "word-thuk-khon", "contextMeaning": "alle / Leute" },
-                        { "id": "slang-s008-t4", "kind": "word", "text": "ขอโทษ", "wordId": "word-khaaw-thoot", "contextMeaning": "Entschuldigung" },
-                        { "id": "slang-s008-t5", "kind": "word", "text": "ที่", "wordId": "word-thii", "contextMeaning": "dass" },
-                        { "id": "slang-s008-t6", "kind": "word", "text": "ให้", "wordId": "word-hai", "contextMeaning": "lassen" },
-                        { "id": "slang-s008-t7", "kind": "word", "text": "รอ", "wordId": "word-raaw", "contextMeaning": "warten" },
-                        { "id": "slang-s008-t8", "kind": "word", "text": "นะ", "wordId": "word-na", "contextMeaning": "gell" }
+                        {
+                          "id": "slang-s008-t1",
+                          "kind": "word",
+                          "text": "มา",
+                          "wordId": "word-maa",
+                          "contextMeaning": "gekommen"
+                        },
+                        {
+                          "id": "slang-s008-t2",
+                          "kind": "word",
+                          "text": "แล้ว",
+                          "wordId": "word-laew",
+                          "contextMeaning": "schon"
+                        },
+                        {
+                          "id": "slang-s008-t3",
+                          "kind": "word",
+                          "text": "ทุกคน",
+                          "wordId": "word-thuk-khon",
+                          "contextMeaning": "alle / Leute"
+                        },
+                        {
+                          "id": "slang-s008-t4",
+                          "kind": "word",
+                          "text": "ขอโทษ",
+                          "wordId": "word-khaaw-thoot",
+                          "contextMeaning": "Entschuldigung"
+                        },
+                        {
+                          "id": "slang-s008-t5",
+                          "kind": "word",
+                          "text": "ที่",
+                          "wordId": "word-thii",
+                          "contextMeaning": "dass"
+                        },
+                        {
+                          "id": "slang-s008-t6",
+                          "kind": "word",
+                          "text": "ให้",
+                          "wordId": "word-hai",
+                          "contextMeaning": "lassen"
+                        },
+                        {
+                          "id": "slang-s008-t7",
+                          "kind": "word",
+                          "text": "รอ",
+                          "wordId": "word-raaw",
+                          "contextMeaning": "warten"
+                        },
+                        {
+                          "id": "slang-s008-t8",
+                          "kind": "word",
+                          "text": "นะ",
+                          "wordId": "word-na",
+                          "contextMeaning": "gell"
+                        }
                       ]
                     },
                     {
@@ -1014,12 +2415,48 @@ const superSlangContent = {
                       "transliteration": "nʉ́k wâa jà thee phûak-rao sá-lɛ́ɛw",
                       "translation": "Ich dachte schon, du hättest uns sitzenlassen!",
                       "tokens": [
-                        { "id": "slang-s009-t1", "kind": "word", "text": "นึก", "wordId": "word-nuek", "contextMeaning": "dachte" },
-                        { "id": "slang-s009-t2", "kind": "word", "text": "ว่า", "wordId": "word-waa", "contextMeaning": "dass" },
-                        { "id": "slang-s009-t3", "kind": "word", "text": "จะ", "wordId": "word-ja", "contextMeaning": "würdest" },
-                        { "id": "slang-s009-t4", "kind": "word", "text": "เท", "wordId": "slang-thee", "contextMeaning": "sitzenlassen / versetzen" },
-                        { "id": "slang-s009-t5", "kind": "word", "text": "พวกเรา", "wordId": "word-phuak-rao", "contextMeaning": "uns" },
-                        { "id": "slang-s009-t6", "kind": "word", "text": "ซะแล้ว", "wordId": "word-sa-laew", "contextMeaning": "schon" }
+                        {
+                          "id": "slang-s009-t1",
+                          "kind": "word",
+                          "text": "นึก",
+                          "wordId": "word-nuek",
+                          "contextMeaning": "dachte"
+                        },
+                        {
+                          "id": "slang-s009-t2",
+                          "kind": "word",
+                          "text": "ว่า",
+                          "wordId": "word-waa",
+                          "contextMeaning": "dass"
+                        },
+                        {
+                          "id": "slang-s009-t3",
+                          "kind": "word",
+                          "text": "จะ",
+                          "wordId": "word-ja",
+                          "contextMeaning": "würdest"
+                        },
+                        {
+                          "id": "slang-s009-t4",
+                          "kind": "word",
+                          "text": "เท",
+                          "wordId": "slang-thee",
+                          "contextMeaning": "sitzenlassen / versetzen"
+                        },
+                        {
+                          "id": "slang-s009-t5",
+                          "kind": "word",
+                          "text": "พวกเรา",
+                          "wordId": "word-phuak-rao",
+                          "contextMeaning": "uns"
+                        },
+                        {
+                          "id": "slang-s009-t6",
+                          "kind": "word",
+                          "text": "ซะแล้ว",
+                          "wordId": "word-sa-laew",
+                          "contextMeaning": "schon"
+                        }
                       ]
                     },
                     {
@@ -1031,14 +2468,62 @@ const superSlangContent = {
                       "transliteration": "mâi thee nɛ̂ɛ-nɔɔn, sàng à-rai gin gan rʉ̌ʉ-yang?",
                       "translation": "Euch versetzen? Niemals! Habt ihr schon was bestellt?",
                       "tokens": [
-                        { "id": "slang-s010-t1", "kind": "word", "text": "ไม่", "wordId": "word-mai", "contextMeaning": "nicht" },
-                        { "id": "slang-s010-t2", "kind": "word", "text": "เท", "wordId": "slang-thee", "contextMeaning": "versetzen" },
-                        { "id": "slang-s010-t3", "kind": "word", "text": "แน่นอน", "wordId": "word-nae-naawn", "contextMeaning": "auf keinen Fall" },
-                        { "id": "slang-s010-t4", "kind": "word", "text": "สั่ง", "wordId": "word-sang", "contextMeaning": "bestellt" },
-                        { "id": "slang-s010-t5", "kind": "word", "text": "อะไร", "wordId": "word-a-rai", "contextMeaning": "was" },
-                        { "id": "slang-s010-t6", "kind": "word", "text": "กิน", "wordId": "word-gin", "contextMeaning": "essen / trinken" },
-                        { "id": "slang-s010-t7", "kind": "word", "text": "กัน", "wordId": "word-gan", "contextMeaning": "zusammen" },
-                        { "id": "slang-s010-t8", "kind": "word", "text": "หรือยัง", "wordId": "word-rue-yang", "contextMeaning": "schon?" }
+                        {
+                          "id": "slang-s010-t1",
+                          "kind": "word",
+                          "text": "ไม่",
+                          "wordId": "word-mai",
+                          "contextMeaning": "nicht"
+                        },
+                        {
+                          "id": "slang-s010-t2",
+                          "kind": "word",
+                          "text": "เท",
+                          "wordId": "slang-thee",
+                          "contextMeaning": "versetzen"
+                        },
+                        {
+                          "id": "slang-s010-t3",
+                          "kind": "word",
+                          "text": "แน่นอน",
+                          "wordId": "word-nae-naawn",
+                          "contextMeaning": "auf keinen Fall"
+                        },
+                        {
+                          "id": "slang-s010-t4",
+                          "kind": "word",
+                          "text": "สั่ง",
+                          "wordId": "word-sang",
+                          "contextMeaning": "bestellt"
+                        },
+                        {
+                          "id": "slang-s010-t5",
+                          "kind": "word",
+                          "text": "อะไร",
+                          "wordId": "word-a-rai",
+                          "contextMeaning": "was"
+                        },
+                        {
+                          "id": "slang-s010-t6",
+                          "kind": "word",
+                          "text": "กิน",
+                          "wordId": "word-gin",
+                          "contextMeaning": "essen / trinken"
+                        },
+                        {
+                          "id": "slang-s010-t7",
+                          "kind": "word",
+                          "text": "กัน",
+                          "wordId": "word-gan",
+                          "contextMeaning": "zusammen"
+                        },
+                        {
+                          "id": "slang-s010-t8",
+                          "kind": "word",
+                          "text": "หรือยัง",
+                          "wordId": "word-rue-yang",
+                          "contextMeaning": "schon?"
+                        }
                       ]
                     },
                     {
@@ -1050,14 +2535,62 @@ const superSlangContent = {
                       "transliteration": "chǎn gin chaa-nom lɛ́ɛw, fin mâak, à-rɔ̀y sùt-sùt",
                       "translation": "Ich trinke schon Milchtee – himmlisch, mega lecker!",
                       "tokens": [
-                        { "id": "slang-s011-t1", "kind": "word", "text": "ฉัน", "wordId": "word-chan", "contextMeaning": "ich" },
-                        { "id": "slang-s011-t2", "kind": "word", "text": "กิน", "wordId": "word-gin", "contextMeaning": "trinke" },
-                        { "id": "slang-s011-t3", "kind": "word", "text": "ชานม", "wordId": "word-chaa-nom", "contextMeaning": "Milchtee" },
-                        { "id": "slang-s011-t4", "kind": "word", "text": "แล้ว", "wordId": "word-laew", "contextMeaning": "schon" },
-                        { "id": "slang-s011-t5", "kind": "word", "text": "ฟิน", "wordId": "slang-fin", "contextMeaning": "himmlisch / pure Bliss" },
-                        { "id": "slang-s011-t6", "kind": "word", "text": "มาก", "wordId": "word-maak", "contextMeaning": "sehr" },
-                        { "id": "slang-s011-t7", "kind": "word", "text": "อร่อย", "wordId": "word-a-raawy", "contextMeaning": "lecker" },
-                        { "id": "slang-s011-t8", "kind": "word", "text": "สุดๆ", "wordId": "word-sut-sut", "contextMeaning": "extrem / mega" }
+                        {
+                          "id": "slang-s011-t1",
+                          "kind": "word",
+                          "text": "ฉัน",
+                          "wordId": "word-chan",
+                          "contextMeaning": "ich"
+                        },
+                        {
+                          "id": "slang-s011-t2",
+                          "kind": "word",
+                          "text": "กิน",
+                          "wordId": "word-gin",
+                          "contextMeaning": "trinke"
+                        },
+                        {
+                          "id": "slang-s011-t3",
+                          "kind": "word",
+                          "text": "ชานม",
+                          "wordId": "word-chaa-nom",
+                          "contextMeaning": "Milchtee"
+                        },
+                        {
+                          "id": "slang-s011-t4",
+                          "kind": "word",
+                          "text": "แล้ว",
+                          "wordId": "word-laew",
+                          "contextMeaning": "schon"
+                        },
+                        {
+                          "id": "slang-s011-t5",
+                          "kind": "word",
+                          "text": "ฟิน",
+                          "wordId": "slang-fin",
+                          "contextMeaning": "himmlisch / pure Bliss"
+                        },
+                        {
+                          "id": "slang-s011-t6",
+                          "kind": "word",
+                          "text": "มาก",
+                          "wordId": "word-maak",
+                          "contextMeaning": "sehr"
+                        },
+                        {
+                          "id": "slang-s011-t7",
+                          "kind": "word",
+                          "text": "อร่อย",
+                          "wordId": "word-a-raawy",
+                          "contextMeaning": "lecker"
+                        },
+                        {
+                          "id": "slang-s011-t8",
+                          "kind": "word",
+                          "text": "สุดๆ",
+                          "wordId": "word-sut-sut",
+                          "contextMeaning": "extrem / mega"
+                        }
                       ]
                     },
                     {
@@ -1069,15 +2602,69 @@ const superSlangContent = {
                       "transliteration": "lɔɔng chaa-khǐao phrík-sòt khɔ̌ɔng chǎn mǎi? ao-rʉ̂ang yùu ná",
                       "translation": "Willst du meinen Grüntee mit frischem Chili probieren? Der hat's echt in sich!",
                       "tokens": [
-                        { "id": "slang-s012-t1", "kind": "word", "text": "ลอง", "wordId": "word-laawng", "contextMeaning": "probieren" },
-                        { "id": "slang-s012-t2", "kind": "word", "text": "ชาเขียว", "wordId": "word-chaa-khiao", "contextMeaning": "Grüntee" },
-                        { "id": "slang-s012-t3", "kind": "word", "text": "พริกสด", "wordId": "word-phrik-sot", "contextMeaning": "frischer Chili" },
-                        { "id": "slang-s012-t4", "kind": "word", "text": "ของ", "wordId": "word-khaawng", "contextMeaning": "von" },
-                        { "id": "slang-s012-t5", "kind": "word", "text": "ฉัน", "wordId": "word-chan", "contextMeaning": "mir" },
-                        { "id": "slang-s012-t6", "kind": "word", "text": "ไหม", "wordId": "word-mai-frag", "contextMeaning": "?" },
-                        { "id": "slang-s012-t7", "kind": "word", "text": "เอาเรื่อง", "wordId": "slang-ao-rueang", "contextMeaning": "hat's echt in sich" },
-                        { "id": "slang-s012-t8", "kind": "word", "text": "อยู่", "wordId": "word-yuu", "contextMeaning": "schon / durchaus" },
-                        { "id": "slang-s012-t9", "kind": "word", "text": "นะ", "wordId": "word-na", "contextMeaning": "gell" }
+                        {
+                          "id": "slang-s012-t1",
+                          "kind": "word",
+                          "text": "ลอง",
+                          "wordId": "word-laawng",
+                          "contextMeaning": "probieren"
+                        },
+                        {
+                          "id": "slang-s012-t2",
+                          "kind": "word",
+                          "text": "ชาเขียว",
+                          "wordId": "word-chaa-khiao",
+                          "contextMeaning": "Grüntee"
+                        },
+                        {
+                          "id": "slang-s012-t3",
+                          "kind": "word",
+                          "text": "พริกสด",
+                          "wordId": "word-phrik-sot",
+                          "contextMeaning": "frischer Chili"
+                        },
+                        {
+                          "id": "slang-s012-t4",
+                          "kind": "word",
+                          "text": "ของ",
+                          "wordId": "word-khaawng",
+                          "contextMeaning": "von"
+                        },
+                        {
+                          "id": "slang-s012-t5",
+                          "kind": "word",
+                          "text": "ฉัน",
+                          "wordId": "word-chan",
+                          "contextMeaning": "mir"
+                        },
+                        {
+                          "id": "slang-s012-t6",
+                          "kind": "word",
+                          "text": "ไหม",
+                          "wordId": "word-mai-frag",
+                          "contextMeaning": "?"
+                        },
+                        {
+                          "id": "slang-s012-t7",
+                          "kind": "word",
+                          "text": "เอาเรื่อง",
+                          "wordId": "slang-ao-rueang",
+                          "contextMeaning": "hat's echt in sich"
+                        },
+                        {
+                          "id": "slang-s012-t8",
+                          "kind": "word",
+                          "text": "อยู่",
+                          "wordId": "word-yuu",
+                          "contextMeaning": "schon / durchaus"
+                        },
+                        {
+                          "id": "slang-s012-t9",
+                          "kind": "word",
+                          "text": "นะ",
+                          "wordId": "word-na",
+                          "contextMeaning": "gell"
+                        }
                       ]
                     },
                     {
@@ -1089,13 +2676,55 @@ const superSlangContent = {
                       "transliteration": "chaa-khǐao sài phrík nîa ná? bông mâak, yàa-hǎa-tham",
                       "translation": "Grüntee mit Chili?! Völliger Flop, mach so einen Quatsch bloß nicht!",
                       "tokens": [
-                        { "id": "slang-s013-t1", "kind": "word", "text": "ชาเขียว", "wordId": "word-chaa-khiao", "contextMeaning": "Grüntee" },
-                        { "id": "slang-s013-t2", "kind": "word", "text": "ใส่", "wordId": "word-sai", "contextMeaning": "mit / hineingetan" },
-                        { "id": "slang-s013-t3", "kind": "word", "text": "พริก", "wordId": "word-phrik", "contextMeaning": "Chili" },
-                        { "id": "slang-s013-t4", "kind": "word", "text": "เนี่ยนะ", "wordId": "slang-nia-na", "contextMeaning": "etwa?! / ernsthaft?!" },
-                        { "id": "slang-s013-t5", "kind": "word", "text": "บ้ง", "wordId": "slang-bong", "contextMeaning": "Flop / Fail" },
-                        { "id": "slang-s013-t6", "kind": "word", "text": "มาก", "wordId": "word-maak", "contextMeaning": "sehr" },
-                        { "id": "slang-s013-t7", "kind": "word", "text": "อย่าหาทำ", "wordId": "slang-yaa-haa-tham", "contextMeaning": "tu dir das nicht an / lass den Quatsch" }
+                        {
+                          "id": "slang-s013-t1",
+                          "kind": "word",
+                          "text": "ชาเขียว",
+                          "wordId": "word-chaa-khiao",
+                          "contextMeaning": "Grüntee"
+                        },
+                        {
+                          "id": "slang-s013-t2",
+                          "kind": "word",
+                          "text": "ใส่",
+                          "wordId": "word-sai",
+                          "contextMeaning": "mit / hineingetan"
+                        },
+                        {
+                          "id": "slang-s013-t3",
+                          "kind": "word",
+                          "text": "พริก",
+                          "wordId": "word-phrik",
+                          "contextMeaning": "Chili"
+                        },
+                        {
+                          "id": "slang-s013-t4",
+                          "kind": "word",
+                          "text": "เนี่ยนะ",
+                          "wordId": "slang-nia-na",
+                          "contextMeaning": "etwa?! / ernsthaft?!"
+                        },
+                        {
+                          "id": "slang-s013-t5",
+                          "kind": "word",
+                          "text": "บ้ง",
+                          "wordId": "slang-bong",
+                          "contextMeaning": "Flop / Fail"
+                        },
+                        {
+                          "id": "slang-s013-t6",
+                          "kind": "word",
+                          "text": "มาก",
+                          "wordId": "word-maak",
+                          "contextMeaning": "sehr"
+                        },
+                        {
+                          "id": "slang-s013-t7",
+                          "kind": "word",
+                          "text": "อย่าหาทำ",
+                          "wordId": "slang-yaa-haa-tham",
+                          "contextMeaning": "tu dir das nicht an / lass den Quatsch"
+                        }
                       ]
                     },
                     {
@@ -1107,13 +2736,55 @@ const superSlangContent = {
                       "transliteration": "gae gɔ̂ wə̂ə gəən-bəə dtà-lɔ̀ɔt ləəy ná",
                       "translation": "Du übertreibst aber auch immer maßlos!",
                       "tokens": [
-                        { "id": "slang-s014-t1", "kind": "word", "text": "แก", "wordId": "slang-gae", "contextMeaning": "du" },
-                        { "id": "slang-s014-t2", "kind": "word", "text": "ก็", "wordId": "word-gaaw", "contextMeaning": "doch / eben" },
-                        { "id": "slang-s014-t3", "kind": "word", "text": "เวอร์", "wordId": "slang-woer", "contextMeaning": "übertrieben" },
-                        { "id": "slang-s014-t4", "kind": "word", "text": "เกินเบอร์", "wordId": "slang-goen-boer", "contextMeaning": "über die Maßen / over the top" },
-                        { "id": "slang-s014-t5", "kind": "word", "text": "ตลอด", "wordId": "word-dtalat", "contextMeaning": "immer" },
-                        { "id": "slang-s014-t6", "kind": "word", "text": "เลย", "wordId": "word-loey", "contextMeaning": "echt" },
-                        { "id": "slang-s014-t7", "kind": "word", "text": "นะ", "wordId": "word-na", "contextMeaning": "gell" }
+                        {
+                          "id": "slang-s014-t1",
+                          "kind": "word",
+                          "text": "แก",
+                          "wordId": "slang-gae",
+                          "contextMeaning": "du"
+                        },
+                        {
+                          "id": "slang-s014-t2",
+                          "kind": "word",
+                          "text": "ก็",
+                          "wordId": "word-gaaw",
+                          "contextMeaning": "doch / eben"
+                        },
+                        {
+                          "id": "slang-s014-t3",
+                          "kind": "word",
+                          "text": "เวอร์",
+                          "wordId": "slang-woer",
+                          "contextMeaning": "übertrieben"
+                        },
+                        {
+                          "id": "slang-s014-t4",
+                          "kind": "word",
+                          "text": "เกินเบอร์",
+                          "wordId": "slang-goen-boer",
+                          "contextMeaning": "über die Maßen / over the top"
+                        },
+                        {
+                          "id": "slang-s014-t5",
+                          "kind": "word",
+                          "text": "ตลอด",
+                          "wordId": "word-dtalat",
+                          "contextMeaning": "immer"
+                        },
+                        {
+                          "id": "slang-s014-t6",
+                          "kind": "word",
+                          "text": "เลย",
+                          "wordId": "word-loey",
+                          "contextMeaning": "echt"
+                        },
+                        {
+                          "id": "slang-s014-t7",
+                          "kind": "word",
+                          "text": "นะ",
+                          "wordId": "word-na",
+                          "contextMeaning": "gell"
+                        }
                       ]
                     },
                     {
@@ -1125,14 +2796,550 @@ const superSlangContent = {
                       "transliteration": "hâa-hâa, dtɛ̀ɛ ban-yaa-gàat ráan níi chin-chin dii ná",
                       "translation": "Haha, aber die Atmosphäre hier im Laden ist echt gechillt!",
                       "tokens": [
-                        { "id": "slang-s015-t1", "kind": "word", "text": "ฮ่าๆ", "wordId": "slang-haa-haa", "contextMeaning": "haha" },
-                        { "id": "slang-s015-t2", "kind": "word", "text": "แต่", "wordId": "word-dtae", "contextMeaning": "aber" },
-                        { "id": "slang-s015-t3", "kind": "word", "text": "บรรยากาศ", "wordId": "word-ban-yaa-gaat", "contextMeaning": "Atmosphäre" },
-                        { "id": "slang-s015-t4", "kind": "word", "text": "ร้าน", "wordId": "word-raan", "contextMeaning": "Laden" },
-                        { "id": "slang-s015-t5", "kind": "word", "text": "นี้", "wordId": "word-nii", "contextMeaning": "dieser" },
-                        { "id": "slang-s015-t6", "kind": "word", "text": "ชิลๆ", "wordId": "slang-chill", "contextMeaning": "ganz gechillt" },
-                        { "id": "slang-s015-t7", "kind": "word", "text": "ดี", "wordId": "word-dii", "contextMeaning": "gut / schön" },
-                        { "id": "slang-s015-t8", "kind": "word", "text": "นะ", "wordId": "word-na", "contextMeaning": "gell" }
+                        {
+                          "id": "slang-s015-t1",
+                          "kind": "word",
+                          "text": "ฮ่าๆ",
+                          "wordId": "slang-haa-haa",
+                          "contextMeaning": "haha"
+                        },
+                        {
+                          "id": "slang-s015-t2",
+                          "kind": "word",
+                          "text": "แต่",
+                          "wordId": "word-dtae",
+                          "contextMeaning": "aber"
+                        },
+                        {
+                          "id": "slang-s015-t3",
+                          "kind": "word",
+                          "text": "บรรยากาศ",
+                          "wordId": "word-ban-yaa-gaat",
+                          "contextMeaning": "Atmosphäre"
+                        },
+                        {
+                          "id": "slang-s015-t4",
+                          "kind": "word",
+                          "text": "ร้าน",
+                          "wordId": "word-raan",
+                          "contextMeaning": "Laden"
+                        },
+                        {
+                          "id": "slang-s015-t5",
+                          "kind": "word",
+                          "text": "นี้",
+                          "wordId": "word-nii",
+                          "contextMeaning": "dieser"
+                        },
+                        {
+                          "id": "slang-s015-t6",
+                          "kind": "word",
+                          "text": "ชิลๆ",
+                          "wordId": "slang-chill",
+                          "contextMeaning": "ganz gechillt"
+                        },
+                        {
+                          "id": "slang-s015-t7",
+                          "kind": "word",
+                          "text": "ดี",
+                          "wordId": "word-dii",
+                          "contextMeaning": "gut / schön"
+                        },
+                        {
+                          "id": "slang-s015-t8",
+                          "kind": "word",
+                          "text": "นะ",
+                          "wordId": "word-na",
+                          "contextMeaning": "gell"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "slang-story-03",
+                  "title": "Mini-Story 3 — กินอะไรก็ได้ (Egal was – Hauptsache essen!)",
+                  "context": "Non und Ploy verabreden sich spontan nach Feierabend zum Essen. Auf die typische Frage nach dem Essen folgt der thailändische Klassiker schlechthin.",
+                  "speakers": [
+                    {
+                      "id": "non",
+                      "name": "Non",
+                      "thai": "นนท์",
+                      "role": "Der hungrige Kumpel"
+                    },
+                    {
+                      "id": "ploy",
+                      "name": "Ploy",
+                      "thai": "พลอย",
+                      "role": "Die unkomplizierte Freundin"
+                    }
+                  ],
+                  "slangHighlights": [
+                    "กินอะไรก็ได้ (gin à-rai gɔ̂ dâai)",
+                    "แล้วแต่ (lɛ́ɛw-dtɛ̀ɛ)",
+                    "ร้านประจำ (ráan bprà-jam)",
+                    "ติดใจ (dtìt-jai)",
+                    "จัดไป (jàt bpai)"
+                  ],
+                  "sentences": [
+                    {
+                      "id": "slang-s016",
+                      "number": 16,
+                      "numberInStory": 1,
+                      "speaker": "Non",
+                      "speakerId": "non",
+                      "thai": "วันนี้ไปกินข้าวด้วยกันไหม",
+                      "transliteration": "wan-níi bpai gin khâao dûai-gan mǎi",
+                      "translation": "Gehen wir heute zusammen was essen?",
+                      "tokens": [
+                        {
+                          "id": "slang-s016-t1",
+                          "kind": "word",
+                          "text": "วันนี้",
+                          "wordId": "word-wan-nii",
+                          "contextMeaning": "heute"
+                        },
+                        {
+                          "id": "slang-s016-t2",
+                          "kind": "word",
+                          "text": "ไป",
+                          "wordId": "word-bpai",
+                          "contextMeaning": "gehen"
+                        },
+                        {
+                          "id": "slang-s016-t3",
+                          "kind": "word",
+                          "text": "กิน",
+                          "wordId": "word-gin",
+                          "contextMeaning": "essen"
+                        },
+                        {
+                          "id": "slang-s016-t4",
+                          "kind": "word",
+                          "text": "ข้าว",
+                          "wordId": "word-khaao",
+                          "contextMeaning": "was essen / Mahlzeit"
+                        },
+                        {
+                          "id": "slang-s016-t5",
+                          "kind": "word",
+                          "text": "ด้วยกัน",
+                          "wordId": "word-duai-gan",
+                          "contextMeaning": "zusammen"
+                        },
+                        {
+                          "id": "slang-s016-t6",
+                          "kind": "word",
+                          "text": "ไหม",
+                          "wordId": "word-mai-frag",
+                          "contextMeaning": "(Fragepartikel)"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "slang-s017",
+                      "number": 17,
+                      "numberInStory": 2,
+                      "speaker": "Ploy",
+                      "speakerId": "ploy",
+                      "thai": "ไปสิ กำลังหิวพอดีเลย",
+                      "transliteration": "bpai sì, gam-lang hǐo phɔɔ-dii ləəy",
+                      "translation": "Gerne! Ich habe auch gerade genau im richtigen Moment Hunger!",
+                      "tokens": [
+                        {
+                          "id": "slang-s017-t1",
+                          "kind": "word",
+                          "text": "ไป",
+                          "wordId": "word-bpai",
+                          "contextMeaning": "mitgehen"
+                        },
+                        {
+                          "id": "slang-s017-t2",
+                          "kind": "word",
+                          "text": "สิ",
+                          "wordId": "word-si",
+                          "contextMeaning": "klar / doch"
+                        },
+                        {
+                          "id": "slang-s017-t3",
+                          "kind": "word",
+                          "text": "กำลัง",
+                          "wordId": "word-gam-lang",
+                          "contextMeaning": "gerade dabei sein"
+                        },
+                        {
+                          "id": "slang-s017-t4",
+                          "kind": "word",
+                          "text": "หิว",
+                          "wordId": "word-hio",
+                          "contextMeaning": "hungrig sein"
+                        },
+                        {
+                          "id": "slang-s017-t5",
+                          "kind": "word",
+                          "text": "พอดี",
+                          "wordId": "word-phaaw-dii",
+                          "contextMeaning": "genau passend"
+                        },
+                        {
+                          "id": "slang-s017-t6",
+                          "kind": "word",
+                          "text": "เลย",
+                          "wordId": "word-loey",
+                          "contextMeaning": "echt / voll"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "slang-s018",
+                      "number": 18,
+                      "numberInStory": 3,
+                      "speaker": "Non",
+                      "speakerId": "non",
+                      "thai": "แกอยากกินอะไรดี",
+                      "transliteration": "gae yàak gin à-rai dii",
+                      "translation": "Worauf hättest du denn Lust? / Was magst du essen?",
+                      "tokens": [
+                        {
+                          "id": "slang-s018-t1",
+                          "kind": "word",
+                          "text": "แก",
+                          "wordId": "slang-gae",
+                          "contextMeaning": "du / Ey"
+                        },
+                        {
+                          "id": "slang-s018-t2",
+                          "kind": "word",
+                          "text": "อยาก",
+                          "wordId": "word-yaak",
+                          "contextMeaning": "wollen / Lust haben"
+                        },
+                        {
+                          "id": "slang-s018-t3",
+                          "kind": "word",
+                          "text": "กิน",
+                          "wordId": "word-gin",
+                          "contextMeaning": "essen"
+                        },
+                        {
+                          "id": "slang-s018-t4",
+                          "kind": "word",
+                          "text": "อะไร",
+                          "wordId": "word-a-rai",
+                          "contextMeaning": "was"
+                        },
+                        {
+                          "id": "slang-s018-t5",
+                          "kind": "word",
+                          "text": "ดี",
+                          "wordId": "word-dii",
+                          "contextMeaning": "am besten"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "slang-s019",
+                      "number": 19,
+                      "numberInStory": 4,
+                      "speaker": "Ploy",
+                      "speakerId": "ploy",
+                      "thai": "ฉันกินอะไรก็ได้ แล้วแต่แกเลย",
+                      "transliteration": "chǎn gin à-rai gɔ̂ dâai, lɛ́ɛw-dtɛ̀ɛ gae ləəy",
+                      "translation": "Mir ist alles recht! Ganz wie du magst!",
+                      "tokens": [
+                        {
+                          "id": "slang-s019-t1",
+                          "kind": "word",
+                          "text": "ฉัน",
+                          "wordId": "word-chan",
+                          "contextMeaning": "ich"
+                        },
+                        {
+                          "id": "slang-s019-t2",
+                          "kind": "word",
+                          "text": "กินอะไรก็ได้",
+                          "wordId": "slang-gin-a-rai-gaw-daai",
+                          "contextMeaning": "egal was essen / esse alles"
+                        },
+                        {
+                          "id": "slang-s019-t3",
+                          "kind": "word",
+                          "text": "แล้วแต่",
+                          "wordId": "slang-laew-dtae",
+                          "contextMeaning": "ganz wie"
+                        },
+                        {
+                          "id": "slang-s019-t4",
+                          "kind": "word",
+                          "text": "แก",
+                          "wordId": "slang-gae",
+                          "contextMeaning": "du"
+                        },
+                        {
+                          "id": "slang-s019-t5",
+                          "kind": "word",
+                          "text": "เลย",
+                          "wordId": "word-loey",
+                          "contextMeaning": "überhaupt"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "slang-s020",
+                      "number": 20,
+                      "numberInStory": 5,
+                      "speaker": "Non",
+                      "speakerId": "non",
+                      "thai": "งั้นไปร้านประจำของฉันไหม ข้าวกะเพราอร่อยมาก",
+                      "transliteration": "ngán bpai ráan bprà-jam khɔ̌ɔng chǎn mǎi, khâao gà-phrao à-rɔ̀y mâak",
+                      "translation": "Wie wär's mit meinem Stammlokal? Das Pad Kra Pao dort ist mega lecker!",
+                      "tokens": [
+                        {
+                          "id": "slang-s020-t1",
+                          "kind": "word",
+                          "text": "งั้น",
+                          "wordId": "word-ngan",
+                          "contextMeaning": "dann"
+                        },
+                        {
+                          "id": "slang-s020-t2",
+                          "kind": "word",
+                          "text": "ไป",
+                          "wordId": "word-bpai",
+                          "contextMeaning": "gehen"
+                        },
+                        {
+                          "id": "slang-s020-t3",
+                          "kind": "word",
+                          "text": "ร้านประจำ",
+                          "wordId": "slang-raan-bpra-jam",
+                          "contextMeaning": "Stammlokal"
+                        },
+                        {
+                          "id": "slang-s020-t4",
+                          "kind": "word",
+                          "text": "ของ",
+                          "wordId": "word-khaawng",
+                          "contextMeaning": "von"
+                        },
+                        {
+                          "id": "slang-s020-t5",
+                          "kind": "word",
+                          "text": "ฉัน",
+                          "wordId": "word-chan",
+                          "contextMeaning": "mir"
+                        },
+                        {
+                          "id": "slang-s020-t6",
+                          "kind": "word",
+                          "text": "ไหม",
+                          "wordId": "word-mai-frag",
+                          "contextMeaning": "(Fragepartikel)"
+                        },
+                        {
+                          "id": "slang-s020-t7",
+                          "kind": "word",
+                          "text": "ข้าวกะเพรา",
+                          "wordId": "word-khaao-ga-phrao",
+                          "contextMeaning": "Pad Kra Pao mit Reis"
+                        },
+                        {
+                          "id": "slang-s020-t8",
+                          "kind": "word",
+                          "text": "อร่อย",
+                          "wordId": "word-a-raawy",
+                          "contextMeaning": "lecker"
+                        },
+                        {
+                          "id": "slang-s020-t9",
+                          "kind": "word",
+                          "text": "มาก",
+                          "wordId": "word-maak",
+                          "contextMeaning": "sehr"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "slang-s021",
+                      "number": 21,
+                      "numberInStory": 6,
+                      "speaker": "Ploy",
+                      "speakerId": "ploy",
+                      "thai": "จริงเหรอ ฉันไม่เคยกินเลย",
+                      "transliteration": "jing rə̌ə, chǎn mâi khəəy gin ləəy",
+                      "translation": "Echt? Da habe ich noch nie gegessen.",
+                      "tokens": [
+                        {
+                          "id": "slang-s021-t1",
+                          "kind": "word",
+                          "text": "จริง",
+                          "wordId": "word-jing",
+                          "contextMeaning": "wirklich"
+                        },
+                        {
+                          "id": "slang-s021-t2",
+                          "kind": "word",
+                          "text": "เหรอ",
+                          "wordId": "word-roer",
+                          "contextMeaning": "echt? / oder?"
+                        },
+                        {
+                          "id": "slang-s021-t3",
+                          "kind": "word",
+                          "text": "ฉัน",
+                          "wordId": "word-chan",
+                          "contextMeaning": "ich"
+                        },
+                        {
+                          "id": "slang-s021-t4",
+                          "kind": "word",
+                          "text": "ไม่",
+                          "wordId": "word-mai",
+                          "contextMeaning": "nicht"
+                        },
+                        {
+                          "id": "slang-s021-t5",
+                          "kind": "word",
+                          "text": "เคย",
+                          "wordId": "word-khoey",
+                          "contextMeaning": "schon einmal"
+                        },
+                        {
+                          "id": "slang-s021-t6",
+                          "kind": "word",
+                          "text": "กิน",
+                          "wordId": "word-gin",
+                          "contextMeaning": "gegessen"
+                        },
+                        {
+                          "id": "slang-s021-t7",
+                          "kind": "word",
+                          "text": "เลย",
+                          "wordId": "word-loey",
+                          "contextMeaning": "überhaupt"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "slang-s022",
+                      "number": 22,
+                      "numberInStory": 7,
+                      "speaker": "Non",
+                      "speakerId": "non",
+                      "thai": "ลองแล้วจะติดใจ เชื่อฉันสิ",
+                      "transliteration": "lɔɔng lɛ́ɛw jà dtìt-jai, chʉ̂a chǎn sì",
+                      "translation": "Wenn du es probierst, kommst du sofort auf den Geschmack – glaub mir!",
+                      "tokens": [
+                        {
+                          "id": "slang-s022-t1",
+                          "kind": "word",
+                          "text": "ลอง",
+                          "wordId": "word-laawng",
+                          "contextMeaning": "probieren"
+                        },
+                        {
+                          "id": "slang-s022-t2",
+                          "kind": "word",
+                          "text": "แล้ว",
+                          "wordId": "word-laew",
+                          "contextMeaning": "danach / wenn"
+                        },
+                        {
+                          "id": "slang-s022-t3",
+                          "kind": "word",
+                          "text": "จะ",
+                          "wordId": "word-ja",
+                          "contextMeaning": "werden (Zukunft)"
+                        },
+                        {
+                          "id": "slang-s022-t4",
+                          "kind": "word",
+                          "text": "ติดใจ",
+                          "wordId": "slang-dtit-jai",
+                          "contextMeaning": "auf den Geschmack kommen"
+                        },
+                        {
+                          "id": "slang-s022-t5",
+                          "kind": "word",
+                          "text": "เชื่อ",
+                          "wordId": "word-chuea",
+                          "contextMeaning": "glauben / vertrauen"
+                        },
+                        {
+                          "id": "slang-s022-t6",
+                          "kind": "word",
+                          "text": "ฉัน",
+                          "wordId": "word-chan",
+                          "contextMeaning": "mir"
+                        },
+                        {
+                          "id": "slang-s022-t7",
+                          "kind": "word",
+                          "text": "สิ",
+                          "wordId": "word-si",
+                          "contextMeaning": "doch / Aufforderung"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "slang-s023",
+                      "number": 23,
+                      "numberInStory": 8,
+                      "speaker": "Ploy",
+                      "speakerId": "ploy",
+                      "thai": "โอเค จัดไป มื้อนี้แกเลี้ยงนะ",
+                      "transliteration": "oo-khee, jàt bpai, mʉ́ʉ níi gae líang ná",
+                      "translation": "Okay, abgemacht! Diese Runde zahlst aber du, gell!",
+                      "tokens": [
+                        {
+                          "id": "slang-s023-t1",
+                          "kind": "word",
+                          "text": "โอเค",
+                          "wordId": "word-oo-khee",
+                          "contextMeaning": "okay"
+                        },
+                        {
+                          "id": "slang-s023-t2",
+                          "kind": "word",
+                          "text": "จัดไป",
+                          "wordId": "slang-jat-bpai",
+                          "contextMeaning": "abgemacht / let's do it"
+                        },
+                        {
+                          "id": "slang-s023-t3",
+                          "kind": "word",
+                          "text": "มื้อ",
+                          "wordId": "word-mue",
+                          "contextMeaning": "Mahlzeit / Runde"
+                        },
+                        {
+                          "id": "slang-s023-t4",
+                          "kind": "word",
+                          "text": "นี้",
+                          "wordId": "word-nii",
+                          "contextMeaning": "diese"
+                        },
+                        {
+                          "id": "slang-s023-t5",
+                          "kind": "word",
+                          "text": "แก",
+                          "wordId": "slang-gae",
+                          "contextMeaning": "du"
+                        },
+                        {
+                          "id": "slang-s023-t6",
+                          "kind": "word",
+                          "text": "เลี้ยง",
+                          "wordId": "word-liang",
+                          "contextMeaning": "einladen / spendieren"
+                        },
+                        {
+                          "id": "slang-s023-t7",
+                          "kind": "word",
+                          "text": "นะ",
+                          "wordId": "word-na",
+                          "contextMeaning": "gell / hey"
+                        }
                       ]
                     }
                   ]
@@ -1145,7 +3352,7 @@ const superSlangContent = {
     }
   ],
   "archivedIds": []
-}
+};
 
 
 if (typeof window !== "undefined") {

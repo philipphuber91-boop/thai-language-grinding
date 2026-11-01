@@ -8,6 +8,8 @@
     const SENTENCE_ORDER_STORAGE_KEY = "thaiGigaDrill:v1:sentence-mix-sentence-order";
     const TRANSLITERATION_MODE_STORAGE_KEY = "thaiGigaDrill:v1:wordmix-transliteration-mode";
     const WORDMIX_CONFIGURATION_STORAGE_KEY = "thaiGigaDrill:v1:wordmix-configuration";
+    const WORDMIX_SOLVED_SENTENCES_STORAGE_KEY =
+        "thaiGigaDrill:v1:wordmix-solved-sentences";
     const WORDMIX_CONTENT_MODES = ["all", "bosses"];
     const WORDMIX_CONTENT_SOURCES = ["giga", "quests", "both"];
     const WORDMIX_QUEST_FILTER_MODES = ["all", "selected"];
@@ -33,6 +35,23 @@
         kanit: '"Kanit", sans-serif'
     };
     const FONT_OPTIONS = Object.keys(FONT_FAMILIES);
+
+    function recordSolvedWordMixSentence() {
+        try {
+            const currentCount = Number(
+                localStorage.getItem(WORDMIX_SOLVED_SENTENCES_STORAGE_KEY)
+            );
+            const nextCount =
+                (Number.isFinite(currentCount) ? Math.max(0, Math.floor(currentCount)) : 0) +
+                1;
+            localStorage.setItem(
+                WORDMIX_SOLVED_SENTENCES_STORAGE_KEY,
+                String(nextCount)
+            );
+        } catch (error) {
+            console.warn("Wortmix-Tagesfortschritt konnte nicht gespeichert werden.", error);
+        }
+    }
     const TONE_MARKS = new Map([
         ["\u0300", "low"],
         ["\u0301", "high"],
@@ -1538,6 +1557,7 @@
                 this.currentRound.tokenCount
             );
             window.wordMixPoints.addExact(result.pointsExact);
+            recordSolvedWordMixSentence();
             const xpResult = window.awardPlayerXp(xpReward);
             this.solvedCount++;
             this.totalDurationMs += result.durationMs;

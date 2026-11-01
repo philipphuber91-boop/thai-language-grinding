@@ -1361,6 +1361,7 @@ function switchContent(mode) {
        case "worldmap":
            document.body.classList.remove("mobile-chronik-mode");
            worldmapHome?.removeAttribute("hidden");
+           topicDrillHome?.setAttribute("hidden", "");
            questView?.setAttribute("hidden", "");
            statusBar?.removeAttribute("hidden");
            document.getElementById("questListe").style.display = "none";
@@ -1377,6 +1378,7 @@ function switchContent(mode) {
            document.body.classList.remove("mobile-chronik-mode");
            showSecondaryView();
            topicDrillHome?.removeAttribute("hidden");
+           window.scrollTo(0, 0);
            break;
 
         case "campaign":

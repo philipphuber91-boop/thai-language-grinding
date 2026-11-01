@@ -781,11 +781,9 @@ function getOrCreateDailyHistoryEntry(dateString) {
         entry = {
  
             date: dateString,
- 
             quests: 0,
- 
             playTime: 0,
- 
+            typingTime: 0,
             typedCharacters: 0,
  
             averageCPM: 0,
@@ -845,8 +843,16 @@ function addPlayTimeToDailyHistory(dateString, seconds) {
     entry.playTime = Number(entry.playTime ?? 0) + seconds;
  
 }
- 
-function recordPlayTimeSpan(startMs, endMs) {
+
+function addTypingTimeToDailyHistory(dateString, seconds) {
+
+    const entry = getOrCreateDailyHistoryEntry(dateString);
+
+    entry.typingTime = Number(entry.typingTime ?? 0) + seconds;
+
+}
+
+function recordPlayTimeSpan(startMs, endMs, activityType) {
  
     if (endMs <= startMs) {
  
@@ -869,10 +875,16 @@ function recordPlayTimeSpan(startMs, endMs) {
         const elapsedSeconds = Math.round((segmentEnd - segmentStart) / 1000);
  
         if (elapsedSeconds > 0) {
- 
+
             const dayKey = formatIsoDate(segmentDate);
- 
+
             addPlayTimeToDailyHistory(dayKey, elapsedSeconds);
+
+            if (activityType === "typing") {
+
+                addTypingTimeToDailyHistory(dayKey, elapsedSeconds);
+
+            }
  
             player.stats.totalTime = Number(player.stats.totalTime ?? 0) + elapsedSeconds;
  
@@ -901,6 +913,8 @@ function formatIsoDate(date) {
 const ActivityManager = {
 
     status: "INACTIVE",
+
+    activityType: "game",
 
     activeSince: null,
 
@@ -962,12 +976,14 @@ const ActivityManager = {
 
     sessionActiveMs: 0,
 
-    startPlaying() {
+    startPlaying(activityType = "game") {
 
         if (this.status === "PLAYING") {
+            this.activityType = activityType;
             return;
         }
 
+        this.activityType = activityType;
         this.status = "PLAYING";
         this.activeSince = Date.now();
         this.clearAfkTimers();
@@ -989,6 +1005,7 @@ const ActivityManager = {
         }
 
         this.status = "INACTIVE";
+        this.activityType = "game";
         this.activeSince = null;
         this.sessionActiveMs = 0;
         this.afkAccumulatedMs = 0;
@@ -1146,6 +1163,7 @@ const ActivityManager = {
         }
 
         this.status = "INACTIVE";
+        this.activityType = "game";
         this.activeSince = null;
         this.sessionActiveMs = 0;
         this.clearInactivityTimer();
@@ -1167,7 +1185,7 @@ const ActivityManager = {
         const elapsedMs = now - this.activeSince;
 
         this.sessionActiveMs += elapsedMs;
-        recordPlayTimeSpan(this.activeSince, now);
+        recordPlayTimeSpan(this.activeSince, now, this.activityType);
         this.activeSince = null;
     }
 

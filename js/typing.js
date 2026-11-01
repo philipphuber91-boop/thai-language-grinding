@@ -2072,7 +2072,7 @@ function startePruefung() {
  
     startZeit = Date.now();
  
-    ActivityManager.startPlaying();
+    ActivityManager.startPlaying("typing");
  
     aktualisiereGermanToggle();
  

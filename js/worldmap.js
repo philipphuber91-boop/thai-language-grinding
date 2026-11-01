@@ -492,4 +492,10 @@ document.getElementById("homeStatisticsButton")?.addEventListener(
 );
 
 const requestedView = new URLSearchParams(window.location.search).get("view");
-switchContent(requestedView === "profile" ? "profile" : "worldmap");
+switchContent(
+    requestedView === "profile"
+        ? "profile"
+        : requestedView === "topic-drill"
+            ? "topic-drill"
+            : "worldmap"
+);
