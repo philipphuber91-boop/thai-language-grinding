@@ -205,10 +205,13 @@
                 <header class="super-slang-story-header">
                     <div class="super-slang-story-meta">
                         <span class="super-slang-story-badge">Mini-Story ${storyIndex + 1}</span>
+                        <button class="super-slang-story-toggle" type="button" aria-expanded="true" title="Mini-Story zuklappen">
+                            <span class="super-slang-story-toggle-icon" aria-hidden="true">▼</span>
+                        </button>
                     </div>
-                    <h3 style="margin: 0 0 6px; font-size: 1.45rem; color: var(--super-slang-highlight);">${escapeHtml(story.title)}</h3>
-                    <p style="margin: 0 0 12px; color: var(--super-slang-muted); font-size: 0.95rem; line-height: 1.6;">${escapeHtml(story.description || "")}</p>
-                    <div style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px;">
+                    <h3 class="super-slang-story-title" style="margin: 0 0 6px; font-size: 1.45rem; color: var(--super-slang-highlight);">${escapeHtml(story.title)}</h3>
+                    <p class="super-slang-story-desc" style="margin: 0 0 12px; color: var(--super-slang-muted); font-size: 0.95rem; line-height: 1.6;">${escapeHtml(story.description || "")}</p>
+                    <div class="super-slang-slang-tags" style="display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px;">
                         ${slangBadges}
                     </div>
                     <div class="super-slang-speaker-chips">
@@ -220,6 +223,22 @@
                 </div>
             </article>
         `;
+    }
+
+    function setStoryCollapsed(storyCard, collapsed) {
+        if (!storyCard) return;
+        storyCard.classList.toggle("is-collapsed", collapsed);
+        const toggleBtn = storyCard.querySelector(".super-slang-story-toggle");
+        if (toggleBtn) {
+            toggleBtn.setAttribute("aria-expanded", String(!collapsed));
+            toggleBtn.setAttribute("title", collapsed ? "Mini-Story aufklappen" : "Mini-Story zuklappen");
+        }
+    }
+
+    function toggleStoryCollapsed(storyCard) {
+        if (!storyCard) return;
+        const isCollapsed = storyCard.classList.contains("is-collapsed");
+        setStoryCollapsed(storyCard, !isCollapsed);
     }
 
     function positionDictionary(anchor) {
@@ -491,6 +510,15 @@
             });
         });
 
+        storiesContainer.querySelectorAll(".super-slang-story-header").forEach(header => {
+            header.addEventListener("click", () => {
+                const card = header.closest(".super-slang-story-card");
+                if (card) {
+                    toggleStoryCollapsed(card);
+                }
+            });
+        });
+
         storiesContainer.querySelectorAll("[data-slang-story-rsvp]").forEach(button => {
             button.addEventListener("click", () => {
                 const storyId = button.dataset.slangStoryRsvp;
@@ -649,6 +677,13 @@
 
             const targetEl = resolveTargetElement(targetId, isGlossary);
             if (targetEl) {
+                const storyCard = targetEl.classList.contains("super-slang-story-card")
+                    ? targetEl
+                    : targetEl.closest(".super-slang-story-card");
+                if (storyCard) {
+                    setStoryCollapsed(storyCard, false);
+                }
+
                 requestAnimationFrame(() => {
                     setTimeout(() => {
                         scrollToTarget(targetEl);

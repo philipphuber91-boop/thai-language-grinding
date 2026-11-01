@@ -383,6 +383,62 @@ body.super-slang-page {
     margin-bottom: 24px;
     padding-bottom: 18px;
     border-bottom: 1px solid rgba(215, 164, 243, 0.15);
+    cursor: pointer;
+    user-select: none;
+    transition: margin-bottom 0.2s ease, padding-bottom 0.2s ease;
+}
+
+.super-slang-story-header:hover .super-slang-story-title {
+    color: var(--super-slang-accent);
+}
+
+.super-slang-story-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    margin-left: auto;
+    border: 1px solid var(--super-slang-border);
+    border-radius: 8px;
+    background: rgba(215, 164, 243, 0.1);
+    color: var(--super-slang-highlight);
+    cursor: pointer;
+    font-size: 0.8rem;
+    line-height: 1;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.super-slang-story-toggle:hover {
+    background: rgba(215, 164, 243, 0.22);
+    border-color: var(--super-slang-accent);
+}
+
+.super-slang-story-toggle-icon {
+    display: inline-block;
+    transition: transform 0.2s ease;
+}
+
+.super-slang-story-card.is-collapsed .super-slang-story-header {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.super-slang-story-card.is-collapsed .super-slang-story-title {
+    margin-bottom: 0 !important;
+}
+
+.super-slang-story-card.is-collapsed .super-slang-story-desc,
+.super-slang-story-card.is-collapsed .super-slang-slang-tags,
+.super-slang-story-card.is-collapsed .super-slang-speaker-chips,
+.super-slang-story-card.is-collapsed .thai-giga-sentences {
+    display: none;
+}
+
+.super-slang-story-card.is-collapsed .super-slang-story-toggle-icon {
+    transform: rotate(-90deg);
 }
 
 .super-slang-story-meta {
